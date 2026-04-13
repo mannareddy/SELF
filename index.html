@@ -9,10 +9,19 @@
       background: #000;
       color: #fff;
       font-family: Arial, sans-serif;
-      max-width: 640px;
+      max-width: 720px;
       margin: auto;
       padding: 60px 20px;
-      line-height: 2;
+      line-height: 1.8;
+      font-size: 18px;
+    }
+
+    /* Desktop optimization */
+    @media (min-width: 768px) {
+      body {
+        font-size: 20px;
+        max-width: 760px;
+      }
     }
 
     p {
@@ -28,18 +37,28 @@
       text-decoration: underline;
     }
 
-    /* 🧘 Ultra-subtle presence (almost invisible) */
+    /* 🧘 Calm presence animation */
     .pulse {
-  display: inline-block;
-  animation: pulse 8s ease-in-out infinite;
-}
+      display: inline-block;
+      animation: pulse 6s ease-in-out infinite;
+    }
 
-@keyframes pulse {
-  0%   { opacity: 1; }
-  80%  { opacity: 1; }
-  90%  { opacity: 0.88; }
-  100% { opacity: 1; }
-}
+    @keyframes pulse {
+      0%   { opacity: 1; }
+      80%  { opacity: 1; }
+      90%  { opacity: 0.88; }
+      100% { opacity: 1; }
+    }
+
+    /* Typography hierarchy */
+    .hero {
+      font-size: 30px;
+      letter-spacing: 1px;
+    }
+
+    .highlight {
+      font-size: 22px;
+    }
 
   </style>
 </head>
@@ -47,8 +66,8 @@
 <body>
 
 <div class="center">
-  <p><span class="pulse">*</span>SELF</p>
-  <p>“Who am I?”</p>
+  <p class="hero"><span class="pulse">*</span>SELF</p>
+  <p class="highlight">“Who am I?”</p>
   <p>…</p>
   <p>Not something to be told.</p>
 </div>
@@ -98,8 +117,8 @@
 
 <br><br>
 
-<p>to ask—</p>
-<p>what am I actually looking for?</p>
+<p class="highlight">to ask—</p>
+<p class="highlight">what am I actually looking for?</p>
 
 <br><br><br>
 
@@ -120,7 +139,7 @@
 
 <br>
 
-<p>but what if it’s not?</p>
+<p class="highlight">but what if it’s not?</p>
 
 <br><br><br>
 
@@ -480,7 +499,7 @@ follow it step by step
 <br><br><br>
 
 <div class="center">
-  <p>“Who am I?”</p>
+  <p class="highlight">“Who am I?”</p>
 </div>
 
 <br>
@@ -493,7 +512,7 @@ follow it step by step
 <br><br>
 
 <div class="center">
-  <p>*SELF</p>
+  <p class="hero">*SELF</p>
 </div>
 
 <br>
