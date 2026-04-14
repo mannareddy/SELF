@@ -11,7 +11,7 @@
       font-family: Arial, sans-serif;
       max-width: 720px;
       margin: auto;
-      padding: 60px 20px;
+      padding: 80px 20px;
       line-height: 1.8;
       font-size: 18px;
     }
@@ -28,14 +28,18 @@
       margin: 18px 0;
     }
 
+    /* 🔥 FIXED: same width as content */
     .center {
       text-align: center;
-      margin-bottom: 40px; /* smooth separation */
+      margin: 0 auto 40px auto;
+      max-width: 640px;
     }
 
     .content {
       margin-top: 40px;
       max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     a {
@@ -71,7 +75,7 @@
 
 <body>
 
-<!-- TOP (CENTERED) -->
+<!-- TOP -->
 <div class="center">
   <p class="hero"><span class="pulse">*</span>SELF</p>
   <p class="highlight">“Who am I?”</p>
@@ -79,7 +83,7 @@
   <p>Not something to be told.</p>
 </div>
 
-<!-- CONTENT (LEFT ALIGNED FLOW) -->
+<!-- CONTENT -->
 <div class="content">
 
 <p>This is not meant to be read fully.</p>
@@ -506,7 +510,7 @@ follow it step by step
 
 </div>
 
-<!-- BOTTOM (CENTERED) -->
+<!-- BOTTOM -->
 <div class="center">
   <p class="highlight">“Who am I?”</p>
 
