@@ -11,12 +11,11 @@
       font-family: Arial, sans-serif;
       max-width: 720px;
       margin: auto;
-      padding: 60px 20px;
+      padding: 40px 20px 60px 20px;
       line-height: 1.8;
       font-size: 18px;
     }
 
-    /* Desktop optimization */
     @media (min-width: 768px) {
       body {
         font-size: 20px;
@@ -30,15 +29,26 @@
 
     .center {
       text-align: center;
-      margin-bottom: 40px; /* just spacing, not width forcing */
+      margin-bottom: 40px;
     }
 
     a {
-      color: #fff;
+      color: #aaa;
       text-decoration: underline;
     }
 
-    /* 🧘 Calm presence animation */
+    a:hover {
+      color: #fff;
+    }
+
+    /* Banner */
+    .banner {
+      width: 100%;
+      margin-bottom: 50px;
+      border-radius: 6px;
+    }
+
+    /* Animation */
     .pulse {
       display: inline-block;
       animation: pulse 6s ease-in-out infinite;
@@ -51,7 +61,6 @@
       100% { opacity: 1; }
     }
 
-    /* Typography hierarchy */
     .hero {
       font-size: 30px;
       letter-spacing: 1px;
@@ -61,10 +70,29 @@
       font-size: 22px;
     }
 
+    /* Mindmap section */
+    .explore {
+      margin: 60px 0;
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 80px;
+      text-align: center;
+      opacity: 0.6;
+    }
+
+    .footer img {
+      width: 80px;
+    }
+
   </style>
 </head>
 
 <body>
+
+<!-- HEADER IMAGE -->
+<img src="SELF_CosmicBanner_1500x500.jpg" class="banner">
 
 <!-- TOP -->
 <div class="center">
@@ -76,7 +104,7 @@
 
 <br><br>
 
-<!-- CONTENT (LEFT NATURAL FLOW) -->
+<!-- CONTENT -->
 
 <p>This is not meant to be read fully.</p>
 <p>Just scroll.</p>
@@ -258,147 +286,28 @@
 
 <br>
 
-<p>not something you created</p>
-<p>not something you learned</p>
-
-<br>
-
 <p>just… there</p>
 
 <br><br><br>
 
-<p>but most of the time</p>
-<p>it gets covered</p>
+<!-- EXPLORE SECTION -->
+<div class="explore">
+  <p>If you prefer to explore further:</p>
 
-<br>
+  <p>
+  → <a href="https://app.xmind.com/FUESDZmk" target="_blank">
+  explore visually
+  </a>
+  </p>
 
-<p>by what you’re thinking</p>
-<p>what you’re chasing</p>
-
-<br>
-
-<p>what you’re trying to become</p>
-
-<br><br>
-
-<p>so you start identifying with</p>
-<p>everything that changes</p>
-
-<br>
-
-<p>and forget what doesn’t</p>
-
-<br><br>
-
-<p>and that’s where the confusion begins</p>
-
-<br><br><br>
-
-<p>so maybe this was never about</p>
-<p>finding something new</p>
-
-<br>
-
-<p>but noticing</p>
-<p>what was always there</p>
-
-<br><br>
-
-<p>not outside</p>
-
-<br>
-
-<p>but here</p>
-
-<br><br><br>
-
-<p>some call it awareness</p>
-<p>some call it consciousness</p>
-<p>some call it SELF</p>
-
-<br><br>
-
-<p>names don’t matter</p>
-
-<br>
-
-<p>because it’s not something</p>
-<p>you can define</p>
-
-<br>
-
-<p>only something</p>
-<p>you can see</p>
-
-<br><br><br>
-
-<p>this doesn’t mean</p>
-<p>you stop living</p>
-
-<br>
-
-<p>or stop pursuing things</p>
-
-<br>
-
-<p>it just means</p>
-
-<br>
-
-<p>you stop expecting them</p>
-<p>to complete you</p>
-
-<br><br>
-
-<p>you can still act</p>
-<p>build</p>
-<p>earn</p>
-
-<br>
-
-<p>create</p>
-
-<br>
-
-<p>but without losing yourself in it</p>
-
-<br><br><br>
-
-<p>that’s where</p>
-<p>“*”</p>
-<p>comes in</p>
-
-<br><br>
-
-<p>not fixed</p>
-<p>not defined</p>
-
-<br>
-
-<p>open</p>
-<p>like a wildcard</p>
-
-<br>
-
-<p>everything</p>
-<p>and anything</p>
-
-<br><br>
-
-<p>42 is often called</p>
-
-<br>
-
-<p>but maybe it’s pointing to something</p>
-
-<br>
-
-<p>just… be</p>
-
-<br><br><br>
+  <p>
+  → <a href="https://mapify.so/share-link/U3UKd9tF8M" target="_blank">
+  follow step by step
+  </a>
+  </p>
+</div>
 
 <!-- BOTTOM -->
-
 <div class="center">
   <p class="highlight">“Who am I?”</p>
 
@@ -425,6 +334,11 @@
 
   <p>or maybe this is nothing</p>
   <p>you decide</p>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <img src="SELF_FooterSeal_MutedGrey.png">
 </div>
 
 </body>
