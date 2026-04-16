@@ -1,6 +1,5 @@
-import { Connection, Keypair, LAMPORTS_PER_SOL, Transaction, SystemProgram, PublicKey } from "@solana/web3.js";
+import { Connection, Keypair, LAMPORTS_PER_SOL, Transaction, SystemProgram, PublicKey, sendAndConfirmTransaction } from "@solana/web3.js";
 import { OnlinePumpSdk, getBuyTokenAmountFromSolAmount } from "@pump-fun/pump-sdk";
-import { searcherClient } from "@jito-foundation/jito-js-sdk";
 import * as dotenv from "dotenv";
 import bs58 from "bs58";
 import BN from "bn.js";
@@ -15,12 +14,12 @@ async function forgeSelf() {
 
     console.log(`\n[FORGE] Initiating *SELF: ${mint.publicKey.toBase58()}`);
 
-    // 1. Calculate 0.420 SOL Buy
+    // 1. Calculate the 042 Buy (1.5% Target)
     const global = await sdk.fetchGlobal();
     const solAmount = new BN(0.420 * LAMPORTS_PER_SOL);
     const buyAmount = getBuyTokenAmountFromSolAmount(global, solAmount);
 
-    // 2. Build Instructions
+    // 2. Build the Combined Instructions
     const instructions = await sdk.createAndBuyInstructions({
         mint: mint.publicKey,
         creator: signer.publicKey,
@@ -32,34 +31,33 @@ async function forgeSelf() {
         uri: "https://mannareddy.github.io/SELF/Seal.png",
     });
 
-    // 3. Add Jito Tip Instruction
-    const jitoTipAccount = new PublicKey("96g9sAg9u3mBsJqc9GatvS9kH67fFDPqT4n72r7KAtuW"); // Tokyo Tip Account
-    const jitoTipAmount = parseFloat(process.env.JITO_FEE || "0.01") * LAMPORTS_PER_SOL;
-    
+    // 3. Add Jito Tip INSIDE the same Transaction
+    // Use the official 2026 Devnet Tip Account
+    const jitoTipAccount = new PublicKey("HFqU5X6znB4ccSshS2pTfc86fAogZz9i3a53X21FhHxy"); 
     const tipIx = SystemProgram.transfer({
         fromPubkey: signer.publicKey,
         toPubkey: jitoTipAccount,
-        lamports: jitoTipAmount,
+        lamports: 0.01 * LAMPORTS_PER_SOL,
     });
 
-    // 4. Assemble & Sign Transaction
-    const { blockhash } = await connection.getLatestBlockhash();
+    // 4. Forge the "Atomic" Tx
+    const { blockhash } = await connection.getLatestBlockhash("finalized");
     const tx = new Transaction().add(...instructions, tipIx);
     tx.recentBlockhash = blockhash;
     tx.feePayer = signer.publicKey;
+    
+    // Sign with both you and the new token mint
     tx.sign(signer, mint);
 
-    // 5. Submit Bundle to Jito
-    const jito = searcherClient("tokyo.mainnet.block-engine.jito.wtf");
-    console.log(`[STATUS] Sending Atomic Bundle (Buy: 0.420 SOL | Tip: ${process.env.JITO_FEE} SOL)`);
+    console.log(`[STATUS] Pushing Atomic Signature to the chain...`);
 
     try {
-        const bundleId = await jito.sendBundle([tx]);
-        console.log(`\n[SUCCESS] Bundle Submitted! ID: ${bundleId}`);
+        const signature = await connection.sendRawTransaction(tx.serialize());
+        console.log(`\n[SUCCESS] Token Created & 1.5% Purchased!`);
+        console.log(`[SIGNATURE] ${signature}`);
         console.log(`[VIEW] https://solscan.io/token/${mint.publicKey.toBase58()}?cluster=devnet`);
-        console.log(`\nNOTE: It may take 30-60 seconds for Solscan to index the new token.`);
     } catch (e) {
-        console.error("\n[ERROR] Bundle failed. Check SOL balance or Jito Tip.");
+        console.error(`\n[ERROR] The Forge failed. Check SOL balance or RPC.`);
     }
 }
 
