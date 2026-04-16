@@ -1,5 +1,6 @@
-import { Connection, Keypair, LAMPORTS_PER_SOL, Transaction, SystemProgram, PublicKey, sendAndConfirmTransaction } from "@solana/web3.js";
+import { Connection, Keypair, LAMPORTS_PER_SOL, Transaction, SystemProgram, PublicKey } from "@solana/web3.js";
 import { OnlinePumpSdk, getBuyTokenAmountFromSolAmount } from "@pump-fun/pump-sdk";
+import { createAssociatedTokenAccountInstruction, getAssociatedTokenAddress } from "@solana/spl-token";
 import * as dotenv from "dotenv";
 import bs58 from "bs58";
 import BN from "bn.js";
@@ -14,25 +15,34 @@ async function forgeSelf() {
 
     console.log(`\n[FORGE] Initiating *SELF: ${mint.publicKey.toBase58()}`);
 
-    // 1. Calculate the 042 Buy (1.5% Target)
+    // 1. Setup the "Pocket" (ATA) for your tokens
+    const ata = await getAssociatedTokenAddress(mint.publicKey, signer.publicKey);
+    const createAtaIx = createAssociatedTokenAccountInstruction(
+        signer.publicKey,
+        ata,
+        signer.publicKey,
+        mint.publicKey
+    );
+
+    // 2. Calculate the 042 Buy (Targeting ~1.5% Supply)
     const global = await sdk.fetchGlobal();
     const solAmount = new BN(0.420 * LAMPORTS_PER_SOL);
     const buyAmount = getBuyTokenAmountFromSolAmount(global, solAmount);
 
-    // 2. Build the Combined Instructions
+    // 3. Build instructions (Setting Slippage to 10% for success)
     const instructions = await sdk.createAndBuyInstructions({
         mint: mint.publicKey,
         creator: signer.publicKey,
         user: signer.publicKey,
         solAmount: solAmount,
         amount: buyAmount,
+        slippage: new BN(1000), // 10% slippage buffer
         name: "Moment2Moment",
         symbol: "SELF",
         uri: "https://mannareddy.github.io/SELF/Seal.png",
     });
 
-    // 3. Add Jito Tip INSIDE the same Transaction
-    // Use the official 2026 Devnet Tip Account
+    // 4. Jito Tip (Internal Instruction)
     const jitoTipAccount = new PublicKey("HFqU5X6znB4ccSshS2pTfc86fAogZz9i3a53X21FhHxy"); 
     const tipIx = SystemProgram.transfer({
         fromPubkey: signer.publicKey,
@@ -40,24 +50,23 @@ async function forgeSelf() {
         lamports: 0.01 * LAMPORTS_PER_SOL,
     });
 
-    // 4. Forge the "Atomic" Tx
+    // 5. Build and Sign the Atomic Transaction
     const { blockhash } = await connection.getLatestBlockhash("finalized");
-    const tx = new Transaction().add(...instructions, tipIx);
+    const tx = new Transaction().add(createAtaIx, ...instructions, tipIx);
     tx.recentBlockhash = blockhash;
     tx.feePayer = signer.publicKey;
-    
-    // Sign with both you and the new token mint
     tx.sign(signer, mint);
 
-    console.log(`[STATUS] Pushing Atomic Signature to the chain...`);
+    console.log(`[STATUS] Executing Atomic Forge (Creation + 0.420 SOL Buy)...`);
 
     try {
         const signature = await connection.sendRawTransaction(tx.serialize());
-        console.log(`\n[SUCCESS] Token Created & 1.5% Purchased!`);
+        console.log(`\n[SUCCESS] *SELF is LIVE!`);
         console.log(`[SIGNATURE] ${signature}`);
         console.log(`[VIEW] https://solscan.io/token/${mint.publicKey.toBase58()}?cluster=devnet`);
     } catch (e) {
-        console.error(`\n[ERROR] The Forge failed. Check SOL balance or RPC.`);
+        console.error(`\n[ERROR] Forge failed. Likely insufficient SOL or RPC timeout.`);
+        console.log(e);
     }
 }
 
