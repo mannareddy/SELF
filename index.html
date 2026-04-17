@@ -1,229 +1,150 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>*SELF</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- SEO -->
   <meta name="description" content="The wildcard token. You decide what it becomes.">
 
-  <!-- Open Graph (for X / Telegram previews) -->
-  <meta property="og:title" content="*SELF — You Are The Value">
+  <!-- Open Graph (X, Telegram, Discord preview) -->
+  <meta property="og:title" content="*SELF">
   <meta property="og:description" content="The wildcard token. You decide what it becomes.">
-  <meta property="og:image" content="https://42self.xyz/Banner.jpg">
+  <meta property="og:image" content="https://42self.xyz/assets/images/Banner.jpg">
   <meta property="og:url" content="https://42self.xyz">
-  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
 
   <style>
     body {
-      background: #000;
-      color: #fff;
+      margin: 0;
+      background: black;
+      color: white;
       font-family: Arial, sans-serif;
-      max-width: 720px;
-      margin: auto;
-      padding: 40px 20px 60px;
-      line-height: 1.8;
-      font-size: 18px;
-    }
-
-    a {
-      color: #aaa;
-      text-decoration: underline;
-    }
-
-    a:hover {
-      color: #fff;
+      text-align: center;
     }
 
     .hero {
-      text-align: center;
-      padding: 60px 20px;
-      background: linear-gradient(to bottom, #1a1a2e, #0a0a0a);
-      border-radius: 10px;
-      margin-bottom: 60px;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
 
-    .hero-star {
-      font-size: 100px;
-      color: #ffd700;
+    .logo {
+      font-size: 60px;
+      margin-bottom: 10px;
     }
 
-    .hero-title {
-      font-size: 2.5em;
-      margin: 10px 0;
+    .tagline {
+      font-size: 22px;
+      color: #ccc;
     }
 
-    .hero-sub {
-      font-size: 1.2em;
-      margin: 10px 0 30px;
-      opacity: 0.8;
-    }
-
-    .hero-text {
-      font-size: 1.2em;
-      margin: 20px auto;
+    .sub {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #aaa;
       max-width: 600px;
+    }
+
+    .highlight {
+      color: #ffd700;
+      margin-top: 30px;
+      font-size: 20px;
     }
 
     .banner {
       width: 100%;
-      opacity: 0.45;
-      margin-bottom: 40px;
-      border-radius: 6px;
+      margin-top: 40px;
     }
 
     .section {
-      margin: 80px 0;
-      text-align: center;
+      padding: 60px 20px;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    a {
+      color: #ffd700;
+      text-decoration: none;
     }
 
     .footer {
-      margin-top: 80px;
-      text-align: center;
-      opacity: 0.7;
-    }
-
-    .footer img {
-      width: 80px;
-      margin-top: 20px;
+      margin-top: 60px;
+      padding: 30px;
+      font-size: 14px;
+      color: #888;
     }
   </style>
 </head>
 
 <body>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-star">*</div>
-  <div class="hero-title">*SELF</div>
+  <!-- HERO -->
+  <div class="hero">
+    <div class="logo">*SELF</div>
+    <div class="tagline">YOU ARE THE VALUE</div>
 
-  <p class="hero-sub">Not a meme. A mirror.</p>
+    <div class="sub">
+      Most people don’t lose money.<br>
+      They lose control.
+    </div>
 
-  <p class="hero-text">YOU ARE THE VALUE</p>
+    <div class="highlight">
+      Not a meme. A mirror.
+    </div>
+  </div>
 
-  <p class="hero-text">
-    Most people don’t lose money.<br>
-    They lose control.
-  </p>
+  <!-- BANNER (FIXED PATH) -->
+  <img src="assets/images/Banner.jpg" class="banner">
 
-  <p class="hero-text">
-    Not of the world — but of how they <strong>respond</strong> to it.
-  </p>
+  <!-- SCROLL SECTION -->
+  <div class="section">
+    <p>This is not meant to be read fully.</p>
+    <p>Just scroll.</p>
+    <p>Stop where something clicks.</p>
 
-  <p class="hero-text">
-    Every trigger pulls the same chain:<br>
-    desire → attachment → anger → destruction.
-  </p>
+    <br><br>
 
-  <p class="hero-text">
-    In the internal world, there is only observation —<br>
-    pure awareness, untouched by events.
-  </p>
+    <p>*SELF is the space between trigger and response.</p>
+    <p>You are the screen — not the movie.</p>
 
-  <p class="hero-text" style="color:#ffd700;">
-    *SELF is the space between trigger and response.<br>
-    You are the screen — not the movie.
-  </p>
-</div>
+    <br><br>
 
-<!-- BANNER -->
-<img src="Banner.jpg" class="banner">
+    <p>Every trigger pulls the same chain:</p>
+    <p>desire → attachment → anger → destruction.</p>
 
-<!-- SCROLL -->
-<p>This is not meant to be read fully.</p>
-<p>Just scroll.</p>
-<p>Stop where something clicks.</p>
+    <p>Most never notice it.</p>
+  </div>
 
-<br><br>
+  <!-- DOC LINKS -->
+  <div class="section">
+    <p>
+      <a href="docs/self-mirror.pdf" target="_blank">Read the Mirror</a>
+    </p>
+    <p>
+      <a href="docs/self-framework.pdf" target="_blank">View the Framework</a>
+    </p>
+  </div>
 
-<p>want</p>
-<p>get</p>
-<p>lose</p>
-<p>repeat</p>
+  <!-- COMMUNITY -->
+  <div class="section">
+    <p>
+      X: <a href="https://x.com/042self" target="_blank">@042self</a>
+    </p>
+    <p>
+      Telegram: <a href="https://t.me/selfscreen" target="_blank">t.me/selfscreen</a>
+    </p>
+  </div>
 
-<br><br>
+  <!-- FOOTER IMAGE -->
+  <img src="assets/images/Footer.png" style="width:100%; margin-top:40px;">
 
-<p>what exactly are you expecting to stay?</p>
-
-<br><br>
-
-<p>something is always there aware of it</p>
-
-<br><br>
-
-<p>just… there</p>
-
-<br><br>
-
-<!-- BRIDGE -->
-<div class="section">
-  <h2>What is *SELF?</h2>
-  <p>*SELF is a token and a framework.</p>
-  <p>Not to escape the world — but to understand how you respond to it.</p>
-  <p>The world moves. You respond.</p>
-</div>
-
-<!-- TOKEN -->
-<div class="section">
-  <h2>Token & On-Chain Proof</h2>
-  <p>Name: *SELF</p>
-  <p>Ticker: SELF</p>
-  <p>Supply: 1,000,000,042</p>
-
-  <br>
-
-  <p>Genesis: 0.42 SOL</p>
-  <p style="font-size: 0.9em;">AP6A2nSNddYvJkdSS7jg3NqB8pZMxY7jBhKnHQUZdtwo</p>
-
-  <br>
-
-  <p>No presale</p>
-  <p>No insiders</p>
-  <p>No marketing wallet</p>
-</div>
-
-<!-- MINDMAP -->
-<div class="section">
-  <h2>Explore Deeper</h2>
-
-  <p>
-    <a href="https://app.xmind.com/share/M26C8HYy?xid=GGKaOXaa" target="_blank">
-      Visual Mindmap (XMind)
-    </a>
-  </p>
-
-  <p>
-    <a href="https://app.xmind.com/share/lqVqjxsP?xid=5DgO1Zwl" target="_blank">
-      Structured Version (Mapify)
-    </a>
-  </p>
-</div>
-
-<!-- FOOTER -->
-<div class="footer">
-
-  <p>
-    Follow:
-    <a href="https://x.com/042self" target="_blank">
-      https://x.com/042self
-    </a>
-  </p>
-
-  <p>
-    Join:
-    <a href="https://t.me/selfscreen" target="_blank">
-      Telegram Community
-    </a>
-  </p>
-
-  <br>
-
-  <p>*SELF — The wildcard of being</p>
-  <p>You decide what it becomes.</p>
-
-  <img src="Footer.png">
-
-</div>
+  <div class="footer">
+    42self.xyz
+  </div>
 
 </body>
 </html>
