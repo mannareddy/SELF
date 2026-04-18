@@ -30,38 +30,13 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 0 20px 20px;
+      padding: 0 20px;
     }
 
-    .logo {
-      font-size: 56px;
-      letter-spacing: 2px;
-    }
-
-    .tagline {
-      font-size: 20px;
-      color: #aaa;
-      margin-top: 12px;
-    }
-
-    .sub {
-      margin-top: 24px;
-      font-size: 17px;
-      color: #bbb;
-      max-width: 520px;
-    }
-
-    .highlight {
-      color: #d4af37;
-      margin-top: 28px;
-      font-size: 19px;
-    }
-
-    .anchor {
-      margin-top: 10px;
-      color: #777;
-      font-size: 15px;
-    }
+    .logo { font-size: 56px; }
+    .tagline { font-size: 20px; color: #aaa; margin-top: 12px; }
+    .sub { margin-top: 24px; font-size: 17px; color: #bbb; max-width: 520px; }
+    .highlight { color: #d4af37; margin-top: 28px; font-size: 19px; }
 
     .banner-wrapper {
       position: relative;
@@ -71,18 +46,11 @@
 
     .banner {
       position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
       height: 120%;
       object-fit: cover;
       opacity: 0.6;
       filter: contrast(85%) brightness(90%);
-      transform: translateY(0);
-      transition: transform 0.1s linear;
-
-      mask-image: linear-gradient(to bottom, transparent 0%, black 25%);
-      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 25%);
     }
 
     .section {
@@ -91,62 +59,25 @@
       margin: auto;
     }
 
-    .section p {
-      margin: 14px 0;
+    .hidden {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
     }
 
-    .strong {
-      font-weight: 600;
-      color: #fff;
+    .visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
-    a {
-      color: #d4af37;
-      text-decoration: none;
-    }
+    a { color: #d4af37; text-decoration: none; }
 
-    a:hover {
-      opacity: 0.8;
-    }
-
-    /* CONTRACT */
     .contract-box {
       margin-top: 30px;
       padding: 20px;
       border: 1px solid #333;
       border-radius: 8px;
       background: #111;
-      word-break: break-all;
-    }
-
-    .contract-label {
-      font-size: 13px;
-      color: #888;
-      margin-bottom: 10px;
-    }
-
-    .contract-address {
-      font-size: 14px;
-      color: #fff;
-    }
-
-    .copy-btn {
-      margin-top: 10px;
-      padding: 6px 12px;
-      background: #222;
-      border: 1px solid #444;
-      color: #aaa;
-      cursor: pointer;
-      font-size: 12px;
-    }
-
-    .copy-btn:hover {
-      background: #333;
-    }
-
-    /* OBSERVE LINKS */
-    .observe-links {
-      margin-top: 20px;
     }
 
     .observe-links a {
@@ -156,136 +87,115 @@
       color: #999;
     }
 
-    .observe-links a:hover {
-      color: #d4af37;
-    }
-
-    /* FOOTER */
-    .footer-container {
-      width: 100px;
-      height: 100px;
-      overflow: hidden;
-      margin: 40px auto 0;
-      opacity: 0.7;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .footer-container img {
-      width: 180%;
-      transform: translateY(-10%);
-    }
-
-    .footer {
-      margin-top: 20px;
-      padding: 30px;
-      font-size: 13px;
-      color: #666;
-    }
-
+    .footer { color: #666; padding: 30px; }
   </style>
 </head>
 
 <body>
 
-  <div class="hero">
-    <div class="logo">*SELF</div>
-    <div class="tagline">YOU ARE THE VALUE</div>
+<!-- HERO -->
+<div class="hero">
+  <div class="logo">*SELF</div>
+  <div class="tagline">YOU ARE THE VALUE</div>
 
-    <div class="sub">
-      Most people don’t lose money.<br>
-      They lose control.
-    </div>
-
-    <div class="highlight">
-      Not a meme. A mirror.
-    </div>
-
-    <div class="anchor">
-      A token about control — not price.
-    </div>
+  <div class="sub">
+    Most people don’t lose money.<br>
+    They lose control.
   </div>
 
-  <div class="banner-wrapper">
-    <img src="assets/images/Banner.jpg" class="banner" id="banner">
-  </div>
-
-  <div class="section">
-    <p>This is not meant to be read fully.</p>
-    <p>Scroll slowly.</p>
-    <p>Stop where something resists.</p>
-
-    <br><br>
-
-    <p class="strong">You are the screen — not the movie.</p>
-
-    <br>
-
-    <p>*SELF is the space between trigger and response.</p>
-  </div>
-
-  <!-- CONTRACT + LINKS -->
-  <div class="section">
-    <div class="contract-box">
-      <div class="contract-label">Contract</div>
-      <div class="contract-address" id="contract">
-        PASTE_YOUR_CONTRACT_ADDRESS_HERE
-      </div>
-      <button class="copy-btn" onclick="copyCA()">Copy</button>
-
-      <div class="observe-links">
-        <a id="pumpfun" target="_blank">Observe on pump.fun</a>
-        <a id="birdeye" target="_blank">Observe on Birdeye</a>
-        <a id="dexscreener" target="_blank">Observe on Dexscreener</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <p><a href="docs/self-mirror.pdf" target="_blank">Enter the mirror</a></p>
-    <p><a href="docs/self-framework.pdf" target="_blank">See the framework</a></p>
-  </div>
-
-  <div class="section">
-    <p style="color:#999;">If something clicked:</p>
-    <p><a href="https://t.me/selfscreen" target="_blank">→ Continue here</a></p>
-  </div>
-
-  <div class="section">
-    <p>X: <a href="https://x.com/muraliannareddy" target="_blank">@muraliannareddy</a></p>
-    <p>Telegram: <a href="https://t.me/selfscreen" target="_blank">t.me/selfscreen</a></p>
-  </div>
-
-  <div class="footer-container">
-    <img src="assets/images/Footer.png">
-  </div>
-
-  <div class="footer">
+  <div class="highlight">
     Not a meme. A mirror.
   </div>
+</div>
 
-  <script>
-    const banner = document.getElementById("banner");
+<!-- BANNER -->
+<div class="banner-wrapper">
+  <img src="assets/images/Banner.jpg" class="banner">
+</div>
 
-    window.addEventListener("scroll", () => {
-      let offset = window.scrollY;
-      banner.style.transform = "translateY(" + offset * 0.15 + "px)";
+<!-- LAYER 1 -->
+<div class="section">
+  <p>This is not meant to be read fully.</p>
+  <p>Scroll slowly.</p>
+  <p>Stop where something resists.</p>
+</div>
+
+<!-- LAYER 2 -->
+<div class="section hidden reveal">
+  <p>You are the screen — not the movie.</p>
+  <p>*SELF is the space between trigger and response.</p>
+</div>
+
+<!-- LAYER 3 (DEEP) -->
+<div class="section hidden reveal">
+  <p>Every trigger pulls the same chain:</p>
+  <p>desire → attachment → anger → destruction.</p>
+
+  <p>You already see it.</p>
+  <p>You just don’t stay with it.</p>
+
+  <p>You are not here to believe this.</p>
+  <p>You are here to notice it.</p>
+</div>
+
+<!-- CONTRACT -->
+<div class="section">
+  <div class="contract-box">
+    <p style="color:#888;">Contract</p>
+    <p id="contract">PASTE_YOUR_CONTRACT_ADDRESS_HERE</p>
+    <button onclick="copyCA()">Copy</button>
+
+    <div class="observe-links">
+      <a id="pumpfun" target="_blank">Observe on pump.fun</a>
+      <a id="birdeye" target="_blank">Observe on Birdeye</a>
+      <a id="dexscreener" target="_blank">Observe on Dexscreener</a>
+    </div>
+  </div>
+</div>
+
+<!-- DOCS -->
+<div class="section">
+  <p><a href="docs/self-mirror.pdf" target="_blank">Read the Mirror</a></p>
+  <p><a href="docs/self-framework.pdf" target="_blank">View the Framework</a></p>
+
+  <p style="margin-top:20px; color:#777;">Explore visually:</p>
+  <p><a href="https://app.xmind.com/share/M26C8HYy" target="_blank">Mirror Map</a></p>
+  <p><a href="https://app.xmind.com/share/lqVqjxsP" target="_blank">Framework Map</a></p>
+</div>
+
+<!-- SOCIAL -->
+<div class="section">
+  <p>X: <a href="https://x.com/muraliannareddy">@muraliannareddy</a></p>
+  <p>Telegram: <a href="https://t.me/selfscreen">t.me/selfscreen</a></p>
+</div>
+
+<div class="footer">
+  Not a meme. A mirror.
+</div>
+
+<script>
+  function copyCA() {
+    const text = document.getElementById("contract").innerText;
+    navigator.clipboard.writeText(text);
+    alert("Copied");
+  }
+
+  const ca = document.getElementById("contract").innerText.trim();
+  document.getElementById("pumpfun").href = "https://pump.fun/" + ca;
+  document.getElementById("birdeye").href = "https://birdeye.so/token/" + ca + "?chain=solana";
+  document.getElementById("dexscreener").href = "https://dexscreener.com/solana/" + ca;
+
+  // progressive reveal
+  const reveals = document.querySelectorAll(".reveal");
+  window.addEventListener("scroll", () => {
+    reveals.forEach(el => {
+      const top = el.getBoundingClientRect().top;
+      if (top < window.innerHeight - 100) {
+        el.classList.add("visible");
+      }
     });
-
-    function copyCA() {
-      const text = document.getElementById("contract").innerText;
-      navigator.clipboard.writeText(text);
-      alert("Contract copied");
-    }
-
-    // AUTO LINKS
-    const ca = document.getElementById("contract").innerText.trim();
-
-    document.getElementById("pumpfun").href = "https://pump.fun/" + ca;
-    document.getElementById("birdeye").href = "https://birdeye.so/token/" + ca + "?chain=solana";
-    document.getElementById("dexscreener").href = "https://dexscreener.com/solana/" + ca;
-  </script>
+  });
+</script>
 
 </body>
 </html>
