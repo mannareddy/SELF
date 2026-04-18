@@ -63,7 +63,6 @@
       font-size: 15px;
     }
 
-    /* Banner container for parallax */
     .banner-wrapper {
       position: relative;
       overflow: hidden;
@@ -110,7 +109,58 @@
       opacity: 0.8;
     }
 
-    /* Footer fix (no need to edit image) */
+    /* CONTRACT */
+    .contract-box {
+      margin-top: 30px;
+      padding: 20px;
+      border: 1px solid #333;
+      border-radius: 8px;
+      background: #111;
+      word-break: break-all;
+    }
+
+    .contract-label {
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 10px;
+    }
+
+    .contract-address {
+      font-size: 14px;
+      color: #fff;
+    }
+
+    .copy-btn {
+      margin-top: 10px;
+      padding: 6px 12px;
+      background: #222;
+      border: 1px solid #444;
+      color: #aaa;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    .copy-btn:hover {
+      background: #333;
+    }
+
+    /* OBSERVE LINKS */
+    .observe-links {
+      margin-top: 20px;
+    }
+
+    .observe-links a {
+      display: inline-block;
+      margin: 6px 10px;
+      font-size: 13px;
+      color: #999;
+    }
+
+    .observe-links a:hover {
+      color: #d4af37;
+    }
+
+    /* FOOTER */
     .footer-container {
       width: 100px;
       height: 100px;
@@ -133,12 +183,12 @@
       font-size: 13px;
       color: #666;
     }
+
   </style>
 </head>
 
 <body>
 
-  <!-- HERO -->
   <div class="hero">
     <div class="logo">*SELF</div>
     <div class="tagline">YOU ARE THE VALUE</div>
@@ -157,12 +207,10 @@
     </div>
   </div>
 
-  <!-- BANNER WITH PARALLAX -->
   <div class="banner-wrapper">
     <img src="assets/images/Banner.jpg" class="banner" id="banner">
   </div>
 
-  <!-- SCROLL -->
   <div class="section">
     <p>This is not meant to be read fully.</p>
     <p>Scroll slowly.</p>
@@ -175,53 +223,40 @@
     <br>
 
     <p>*SELF is the space between trigger and response.</p>
-
-    <br><br>
-
-    <p>Every trigger pulls the same chain:</p>
-    <p>desire → attachment → anger → destruction.</p>
-
-    <br>
-
-    <p>You already see it.</p>
-    <p>You just don’t stay with it.</p>
-
-    <br>
-
-    <p>You are not here to believe this.</p>
-    <p>You are here to notice it.</p>
-
-    <br>
-
-    <p>Most never notice it.</p>
   </div>
 
-  <!-- LINKS -->
+  <!-- CONTRACT + LINKS -->
+  <div class="section">
+    <div class="contract-box">
+      <div class="contract-label">Contract</div>
+      <div class="contract-address" id="contract">
+        PASTE_YOUR_CONTRACT_ADDRESS_HERE
+      </div>
+      <button class="copy-btn" onclick="copyCA()">Copy</button>
+
+      <div class="observe-links">
+        <a id="pumpfun" target="_blank">Observe on pump.fun</a>
+        <a id="birdeye" target="_blank">Observe on Birdeye</a>
+        <a id="dexscreener" target="_blank">Observe on Dexscreener</a>
+      </div>
+    </div>
+  </div>
+
   <div class="section">
     <p><a href="docs/self-mirror.pdf" target="_blank">Enter the mirror</a></p>
     <p><a href="docs/self-framework.pdf" target="_blank">See the framework</a></p>
-
-    <br>
-
-    <p style="color:#777;">Or explore it visually:</p>
-
-    <p><a href="https://app.xmind.com/share/M26C8HYy?xid=GGKaOXaa" target="_blank">See it mapped — Mirror</a></p>
-    <p><a href="https://app.xmind.com/share/lqVqjxsP?xid=5DgO1Zwl" target="_blank">See it mapped — Framework</a></p>
   </div>
 
-  <!-- TELEGRAM -->
   <div class="section">
     <p style="color:#999;">If something clicked:</p>
     <p><a href="https://t.me/selfscreen" target="_blank">→ Continue here</a></p>
   </div>
 
-  <!-- COMMUNITY -->
   <div class="section">
     <p>X: <a href="https://x.com/muraliannareddy" target="_blank">@muraliannareddy</a></p>
     <p>Telegram: <a href="https://t.me/selfscreen" target="_blank">t.me/selfscreen</a></p>
   </div>
 
-  <!-- FOOTER -->
   <div class="footer-container">
     <img src="assets/images/Footer.png">
   </div>
@@ -230,7 +265,6 @@
     Not a meme. A mirror.
   </div>
 
-  <!-- PARALLAX SCRIPT -->
   <script>
     const banner = document.getElementById("banner");
 
@@ -238,6 +272,19 @@
       let offset = window.scrollY;
       banner.style.transform = "translateY(" + offset * 0.15 + "px)";
     });
+
+    function copyCA() {
+      const text = document.getElementById("contract").innerText;
+      navigator.clipboard.writeText(text);
+      alert("Contract copied");
+    }
+
+    // AUTO LINKS
+    const ca = document.getElementById("contract").innerText.trim();
+
+    document.getElementById("pumpfun").href = "https://pump.fun/" + ca;
+    document.getElementById("birdeye").href = "https://birdeye.so/token/" + ca + "?chain=solana";
+    document.getElementById("dexscreener").href = "https://dexscreener.com/solana/" + ca;
   </script>
 
 </body>
