@@ -5,10 +5,8 @@
   <title>*SELF</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- SEO -->
   <meta name="description" content="The wildcard token. You decide what it becomes.">
 
-  <!-- Open Graph -->
   <meta property="og:title" content="*SELF">
   <meta property="og:description" content="The wildcard token. You decide what it becomes.">
   <meta property="og:image" content="https://42self.xyz/assets/images/Banner.jpg">
@@ -23,6 +21,7 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
       text-align: center;
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
     .hero {
@@ -64,12 +63,27 @@
       font-size: 15px;
     }
 
-    /* Banner softened */
+    /* Banner container for parallax */
+    .banner-wrapper {
+      position: relative;
+      overflow: hidden;
+      height: 60vh;
+    }
+
     .banner {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
-      margin-top: 40px;
-      opacity: 0.7;
-      filter: contrast(90%) brightness(95%);
+      height: 120%;
+      object-fit: cover;
+      opacity: 0.6;
+      filter: contrast(85%) brightness(90%);
+      transform: translateY(0);
+      transition: transform 0.1s linear;
+
+      mask-image: linear-gradient(to bottom, transparent 0%, black 25%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 25%);
     }
 
     .section {
@@ -96,7 +110,7 @@
       opacity: 0.8;
     }
 
-    /* FOOTER FIX (works even with bad image padding) */
+    /* Footer fix (no need to edit image) */
     .footer-container {
       width: 100px;
       height: 100px;
@@ -109,9 +123,8 @@
     }
 
     .footer-container img {
-      width: 180%; /* zoom into center */
-      height: auto;
-      transform: translateY(-10%); /* adjust vertical crop */
+      width: 180%;
+      transform: translateY(-10%);
     }
 
     .footer {
@@ -120,7 +133,6 @@
       font-size: 13px;
       color: #666;
     }
-
   </style>
 </head>
 
@@ -129,7 +141,6 @@
   <!-- HERO -->
   <div class="hero">
     <div class="logo">*SELF</div>
-
     <div class="tagline">YOU ARE THE VALUE</div>
 
     <div class="sub">
@@ -146,8 +157,10 @@
     </div>
   </div>
 
-  <!-- BANNER -->
-  <img src="assets/images/Banner.jpg" class="banner">
+  <!-- BANNER WITH PARALLAX -->
+  <div class="banner-wrapper">
+    <img src="assets/images/Banner.jpg" class="banner" id="banner">
+  </div>
 
   <!-- SCROLL -->
   <div class="section">
@@ -183,68 +196,49 @@
     <p>Most never notice it.</p>
   </div>
 
-  <!-- EXPLORATION -->
+  <!-- LINKS -->
   <div class="section">
-
-    <p>
-      <a href="docs/self-mirror.pdf" target="_blank">Enter the mirror</a>
-    </p>
-
-    <p>
-      <a href="docs/self-framework.pdf" target="_blank">See the framework</a>
-    </p>
+    <p><a href="docs/self-mirror.pdf" target="_blank">Enter the mirror</a></p>
+    <p><a href="docs/self-framework.pdf" target="_blank">See the framework</a></p>
 
     <br>
 
-    <p style="margin-top:30px; color:#777;">
-      Or explore it visually:
-    </p>
+    <p style="color:#777;">Or explore it visually:</p>
 
-    <p>
-      <a href="https://app.xmind.com/share/M26C8HYy?xid=GGKaOXaa" target="_blank">
-        See it mapped — Mirror
-      </a>
-    </p>
-
-    <p>
-      <a href="https://app.xmind.com/share/lqVqjxsP?xid=5DgO1Zwl" target="_blank">
-        See it mapped — Framework
-      </a>
-    </p>
-
+    <p><a href="https://app.xmind.com/share/M26C8HYy?xid=GGKaOXaa" target="_blank">See it mapped — Mirror</a></p>
+    <p><a href="https://app.xmind.com/share/lqVqjxsP?xid=5DgO1Zwl" target="_blank">See it mapped — Framework</a></p>
   </div>
 
-  <!-- CONTINUATION -->
+  <!-- TELEGRAM -->
   <div class="section">
-    <p style="color:#999;">
-      If something clicked:
-    </p>
-
-    <p>
-      <a href="https://t.me/selfscreen" target="_blank">
-        → Continue here
-      </a>
-    </p>
+    <p style="color:#999;">If something clicked:</p>
+    <p><a href="https://t.me/selfscreen" target="_blank">→ Continue here</a></p>
   </div>
 
   <!-- COMMUNITY -->
   <div class="section">
-    <p>
-      X: <a href="https://x.com/042self" target="_blank">@042self</a>
-    </p>
-    <p>
-      Telegram: <a href="https://t.me/selfscreen" target="_blank">t.me/selfscreen</a>
-    </p>
+    <p>X: <a href="https://x.com/042self" target="_blank">@042self</a></p>
+    <p>Telegram: <a href="https://t.me/selfscreen" target="_blank">t.me/selfscreen</a></p>
   </div>
 
-  <!-- FOOTER (FIXED WITHOUT EDITING IMAGE) -->
+  <!-- FOOTER -->
   <div class="footer-container">
-    <img src="assets/images/Footer.png" alt="SELF logo">
+    <img src="assets/images/Footer.png">
   </div>
 
   <div class="footer">
     Not a meme. A mirror.
   </div>
+
+  <!-- PARALLAX SCRIPT -->
+  <script>
+    const banner = document.getElementById("banner");
+
+    window.addEventListener("scroll", () => {
+      let offset = window.scrollY;
+      banner.style.transform = "translateY(" + offset * 0.15 + "px)";
+    });
+  </script>
 
 </body>
 </html>
