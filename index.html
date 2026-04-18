@@ -14,6 +14,8 @@
   <meta name="twitter:card" content="summary_large_image">
 
   <style>
+    * { box-sizing: border-box; }
+
     body {
       margin: 0;
       background: #000;
@@ -21,63 +23,98 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
       text-align: center;
       line-height: 1.6;
-      overflow-x: hidden;
     }
 
+    /* HERO */
     .hero {
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 0 20px;
+      padding: 40px 20px;
     }
 
-    .logo { font-size: 56px; }
+    .logo { font-size: 56px; letter-spacing: 2px; }
     .tagline { font-size: 20px; color: #aaa; margin-top: 12px; }
     .sub { margin-top: 24px; font-size: 17px; color: #bbb; max-width: 520px; }
     .highlight { color: #d4af37; margin-top: 28px; font-size: 19px; }
 
+    /* BANNER */
     .banner-wrapper {
-      position: relative;
+      width: 100%;
       overflow: hidden;
-      height: 60vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #000;
     }
 
     .banner {
-      position: absolute;
       width: 100%;
-      height: 120%;
+      max-height: 500px;
       object-fit: cover;
-      opacity: 0.6;
-      filter: contrast(85%) brightness(90%);
+      opacity: 0.65;
+      display: block;
     }
 
+    /* SECTIONS */
     .section {
       padding: 80px 20px;
       max-width: 640px;
       margin: auto;
     }
 
-    .hidden {
+    .section p {
+      margin: 14px 0;
+    }
+
+    /* PROGRESSIVE REVEAL */
+    .reveal {
       opacity: 0;
       transform: translateY(40px);
       transition: all 0.8s ease;
     }
 
-    .visible {
+    .reveal.visible {
       opacity: 1;
       transform: translateY(0);
     }
 
-    a { color: #d4af37; text-decoration: none; }
+    /* LINKS */
+    a {
+      color: #d4af37;
+      text-decoration: none;
+    }
 
+    a:hover {
+      opacity: 0.8;
+    }
+
+    /* CONTRACT */
     .contract-box {
       margin-top: 30px;
       padding: 20px;
       border: 1px solid #333;
       border-radius: 8px;
       background: #111;
+      word-break: break-all;
+    }
+
+    .contract-label {
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 10px;
+    }
+
+    .copy-btn {
+      margin-top: 10px;
+      padding: 6px 12px;
+      background: #222;
+      border: 1px solid #444;
+      color: #aaa;
+      cursor: pointer;
+      font-size: 12px;
     }
 
     .observe-links a {
@@ -87,7 +124,35 @@
       color: #999;
     }
 
-    .footer { color: #666; padding: 30px; }
+    .observe-links a:hover {
+      color: #d4af37;
+    }
+
+    /* FOOTER LOGO */
+    .footer-logo {
+      margin: 40px auto 10px;
+      width: 70px;
+      opacity: 0.7;
+    }
+
+    .footer-logo img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .footer {
+      padding: 20px;
+      font-size: 13px;
+      color: #666;
+    }
+
+    /* MOBILE */
+    @media (max-width: 600px) {
+      .logo { font-size: 42px; }
+      .tagline { font-size: 16px; }
+      .sub { font-size: 15px; }
+    }
   </style>
 </head>
 
@@ -121,13 +186,13 @@
 </div>
 
 <!-- LAYER 2 -->
-<div class="section hidden reveal">
+<div class="section reveal">
   <p>You are the screen — not the movie.</p>
   <p>*SELF is the space between trigger and response.</p>
 </div>
 
-<!-- LAYER 3 (DEEP) -->
-<div class="section hidden reveal">
+<!-- LAYER 3 -->
+<div class="section reveal">
   <p>Every trigger pulls the same chain:</p>
   <p>desire → attachment → anger → destruction.</p>
 
@@ -141,9 +206,9 @@
 <!-- CONTRACT -->
 <div class="section">
   <div class="contract-box">
-    <p style="color:#888;">Contract</p>
-    <p id="contract">PASTE_YOUR_CONTRACT_ADDRESS_HERE</p>
-    <button onclick="copyCA()">Copy</button>
+    <div class="contract-label">Contract</div>
+    <div id="contract">PASTE_YOUR_CONTRACT_ADDRESS_HERE</div>
+    <button class="copy-btn" onclick="copyCA()">Copy</button>
 
     <div class="observe-links">
       <a id="pumpfun" target="_blank">Observe on pump.fun</a>
@@ -165,8 +230,13 @@
 
 <!-- SOCIAL -->
 <div class="section">
-  <p>X: <a href="https://x.com/muraliannareddy">@muraliannareddy</a></p>
-  <p>Telegram: <a href="https://t.me/selfscreen">t.me/selfscreen</a></p>
+  <p>X: <a href="https://x.com/muraliannareddy" target="_blank">@muraliannareddy</a></p>
+  <p>Telegram: <a href="https://t.me/selfscreen" target="_blank">t.me/selfscreen</a></p>
+</div>
+
+<!-- FOOTER LOGO -->
+<div class="footer-logo">
+  <img src="assets/images/Footer.png" alt="SELF">
 </div>
 
 <div class="footer">
@@ -177,16 +247,17 @@
   function copyCA() {
     const text = document.getElementById("contract").innerText;
     navigator.clipboard.writeText(text);
-    alert("Copied");
+    alert("Contract copied");
   }
 
   const ca = document.getElementById("contract").innerText.trim();
+
   document.getElementById("pumpfun").href = "https://pump.fun/" + ca;
   document.getElementById("birdeye").href = "https://birdeye.so/token/" + ca + "?chain=solana";
   document.getElementById("dexscreener").href = "https://dexscreener.com/solana/" + ca;
 
-  // progressive reveal
   const reveals = document.querySelectorAll(".reveal");
+
   window.addEventListener("scroll", () => {
     reveals.forEach(el => {
       const top = el.getBoundingClientRect().top;
