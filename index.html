@@ -14,8 +14,6 @@
 <meta name="twitter:card" content="summary_large_image">
 
 <style>
-* { box-sizing: border-box; }
-
 body {
   margin: 0;
   background: #000;
@@ -32,28 +30,40 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 40px 20px;
+  padding: 20px;
 }
 
-.logo { font-size: 56px; letter-spacing: 2px; }
-.tagline { font-size: 20px; color: #aaa; margin-top: 12px; }
-.sub { margin-top: 24px; font-size: 17px; color: #bbb; max-width: 520px; }
-.highlight { color: #d4af37; margin-top: 28px; font-size: 19px; }
+.logo {
+  font-size: 56px;
+  letter-spacing: 2px;
+}
+
+.tagline {
+  font-size: 18px;
+  color: #aaa;
+  margin-top: 10px;
+}
+
+.sub {
+  margin-top: 25px;
+  font-size: 18px;
+  color: #bbb;
+  max-width: 520px;
+}
+
+.highlight {
+  color: #d4af37;
+  margin-top: 25px;
+  font-size: 18px;
+}
 
 /* BANNER */
-.banner-wrapper {
-  width: 100%;
-  overflow: hidden;
-}
-
 .banner {
   width: 100%;
-  max-height: 500px;
-  object-fit: cover;
-  opacity: 0.65;
+  opacity: 0.7;
 }
 
-/* SECTIONS */
+/* SECTION */
 .section {
   padding: 80px 20px;
   max-width: 640px;
@@ -74,51 +84,10 @@ a:hover {
   opacity: 0.8;
 }
 
-/* CONTRACT */
-.contract-box {
-  margin-top: 30px;
-  padding: 20px;
-  border: 1px solid #333;
-  border-radius: 8px;
-  background: #111;
-  word-break: break-all;
-}
-
-.contract-label {
-  font-size: 13px;
-  color: #888;
-  margin-bottom: 10px;
-}
-
-.copy-btn {
-  margin-top: 10px;
-  padding: 6px 12px;
-  background: #222;
-  border: 1px solid #444;
-  color: #aaa;
-  cursor: pointer;
-}
-
-.observe-links a {
-  display: inline-block;
-  margin: 6px 10px;
-  font-size: 13px;
-  color: #999;
-}
-
 /* FOOTER */
-.footer-logo {
-  margin: 40px auto 10px;
-  width: 70px;
-  opacity: 0.7;
-}
-
-.footer-logo img {
-  width: 100%;
-}
-
 .footer {
-  padding: 20px;
+  margin-top: 60px;
+  padding: 30px;
   font-size: 13px;
   color: #666;
 }
@@ -150,9 +119,7 @@ a:hover {
 </div>
 
 <!-- BANNER -->
-<div class="banner-wrapper">
-  <img src="assets/images/Banner.jpg" class="banner">
-</div>
+<img src="assets/images/Banner.jpg" class="banner">
 
 <!-- VOID -->
 <div class="section">
@@ -190,74 +157,46 @@ a:hover {
   <p>You are here to notice it.</p>
 </div>
 
-<!-- DEPTH -->
+<!-- HOLD -->
 <div class="section">
-  <p>If you’ve ever asked “what is missing?”</p>
-  <p>You’re already close.</p>
+  <p>If something here feels familiar—</p>
+  <p>you’ll understand why soon.</p>
 </div>
 
-<!-- CONTRACT -->
+<!-- PLACEHOLDER (NO DOCS YET) -->
 <div class="section">
-  <div class="contract-box">
-    <div class="contract-label">Contract</div>
-    <div id="contract">PASTE_YOUR_CONTRACT_ADDRESS_HERE</div>
-    <button class="copy-btn" onclick="copyCA()">Copy</button>
-
-    <div class="observe-links">
-      <a id="pumpfun" target="_blank">pump.fun</a>
-      <a id="birdeye" target="_blank">Birdeye</a>
-      <a id="dexscreener" target="_blank">Dexscreener</a>
-    </div>
-  </div>
-</div>
-
-<!-- DOCS -->
-<div class="section">
-  <p>If you want to go deeper:</p>
-  <p><a href="docs/self-mirror.pdf" target="_blank">Mirror</a></p>
-  <p><a href="docs/self-framework.pdf" target="_blank">Framework</a></p>
-</div>
-
-<!-- VISUAL MAPS -->
-<div class="section">
-  <p style="color:#777;">Explore visually:</p>
-  <p><a href="https://app.xmind.com/share/M26C8HYy" target="_blank">Mirror Map</a></p>
-  <p><a href="https://app.xmind.com/share/lqVqjxsP" target="_blank">Framework Map</a></p>
+  <p style="color:#777;">More will be revealed.</p>
+  <p style="color:#555; font-size:14px;">Stay tuned.</p>
 </div>
 
 <!-- TELEGRAM -->
 <div class="section">
   <p>If something clicked:</p>
-  <p><a href="https://t.me/selfscreen" target="_blank">→ Continue here</a></p>
+  <p>
+    <a href="https://t.me/selfscreen" target="_blank">
+      → Join Telegram
+    </a>
+  </p>
+
+  <p style="color:#666; font-size:13px;">
+    Opens directly on mobile. On desktop, choose “Open in Web”.
+  </p>
 </div>
 
 <!-- SOCIAL -->
 <div class="section">
-  <p>X: <a href="https://x.com/muraliannareddy" target="_blank">@muraliannareddy</a></p>
+  <p>
+    X:
+    <a href="https://x.com/muraliannareddy" target="_blank">
+      @muraliannareddy
+    </a>
+  </p>
 </div>
 
 <!-- FOOTER -->
-<div class="footer-logo">
-  <img src="assets/images/Footer.png">
-</div>
-
 <div class="footer">
   Not a meme. A mirror.
 </div>
-
-<script>
-function copyCA() {
-  const text = document.getElementById("contract").innerText;
-  navigator.clipboard.writeText(text);
-  alert("Contract copied");
-}
-
-const ca = document.getElementById("contract").innerText.trim();
-
-document.getElementById("pumpfun").href = "https://pump.fun/coin/" + ca;
-document.getElementById("birdeye").href = "https://birdeye.so/token/" + ca + "?chain=solana";
-document.getElementById("dexscreener").href = "https://dexscreener.com/solana/" + ca;
-</script>
 
 </body>
 </html>
