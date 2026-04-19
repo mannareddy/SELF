@@ -1,159 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>*SELF</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>*SELF</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="description" content="The wildcard token. You decide what it becomes.">
+<meta name="description" content="Not a meme. A mirror.">
 
-  <meta property="og:title" content="*SELF">
-  <meta property="og:description" content="The wildcard token. You decide what it becomes.">
-  <meta property="og:image" content="https://42self.xyz/assets/images/Banner.jpg">
-  <meta property="og:url" content="https://42self.xyz">
-  <meta name="twitter:card" content="summary_large_image">
+<meta property="og:title" content="*SELF">
+<meta property="og:description" content="Not a meme. A mirror.">
+<meta property="og:image" content="https://42self.xyz/assets/images/Banner.jpg">
+<meta property="og:url" content="https://42self.xyz">
+<meta name="twitter:card" content="summary_large_image">
 
-  <style>
-    * { box-sizing: border-box; }
+<style>
+* { box-sizing: border-box; }
 
-    body {
-      margin: 0;
-      background: #000;
-      color: #e6e6e6;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      text-align: center;
-      line-height: 1.6;
-    }
+body {
+  margin: 0;
+  background: #000;
+  color: #e6e6e6;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  text-align: center;
+  line-height: 1.6;
+}
 
-    /* HERO */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 40px 20px;
-    }
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
 
-    .logo { font-size: 56px; letter-spacing: 2px; }
-    .tagline { font-size: 20px; color: #aaa; margin-top: 12px; }
-    .sub { margin-top: 24px; font-size: 17px; color: #bbb; max-width: 520px; }
-    .highlight { color: #d4af37; margin-top: 28px; font-size: 19px; }
+.logo { font-size: 56px; letter-spacing: 2px; }
+.tagline { font-size: 20px; color: #aaa; margin-top: 12px; }
+.sub { margin-top: 24px; font-size: 17px; color: #bbb; max-width: 520px; }
+.highlight { color: #d4af37; margin-top: 28px; font-size: 19px; }
 
-    /* BANNER */
-    .banner-wrapper {
-      width: 100%;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #000;
-    }
+/* BANNER */
+.banner-wrapper {
+  width: 100%;
+  overflow: hidden;
+}
 
-    .banner {
-      width: 100%;
-      max-height: 500px;
-      object-fit: cover;
-      opacity: 0.65;
-      display: block;
-    }
+.banner {
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  opacity: 0.65;
+}
 
-    /* SECTIONS */
-    .section {
-      padding: 80px 20px;
-      max-width: 640px;
-      margin: auto;
-    }
+/* SECTION */
+.section {
+  padding: 80px 20px;
+  max-width: 640px;
+  margin: auto;
+}
 
-    .section p {
-      margin: 14px 0;
-    }
+.section p {
+  margin: 14px 0;
+}
 
-    /* PROGRESSIVE REVEAL */
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s ease;
-    }
+/* LINKS */
+a {
+  color: #d4af37;
+  text-decoration: none;
+}
 
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+/* CONTRACT */
+.contract-box {
+  margin-top: 30px;
+  padding: 20px;
+  border: 1px solid #333;
+  border-radius: 8px;
+  background: #111;
+  word-break: break-all;
+}
 
-    /* LINKS */
-    a {
-      color: #d4af37;
-      text-decoration: none;
-    }
+.contract-label {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 10px;
+}
 
-    a:hover {
-      opacity: 0.8;
-    }
+.copy-btn {
+  margin-top: 10px;
+  padding: 6px 12px;
+  background: #222;
+  border: 1px solid #444;
+  color: #aaa;
+  cursor: pointer;
+}
 
-    /* CONTRACT */
-    .contract-box {
-      margin-top: 30px;
-      padding: 20px;
-      border: 1px solid #333;
-      border-radius: 8px;
-      background: #111;
-      word-break: break-all;
-    }
+.observe-links a {
+  display: inline-block;
+  margin: 6px 10px;
+  font-size: 13px;
+  color: #999;
+}
 
-    .contract-label {
-      font-size: 13px;
-      color: #888;
-      margin-bottom: 10px;
-    }
+/* FOOTER */
+.footer-logo {
+  margin: 40px auto 10px;
+  width: 70px;
+  opacity: 0.7;
+}
 
-    .copy-btn {
-      margin-top: 10px;
-      padding: 6px 12px;
-      background: #222;
-      border: 1px solid #444;
-      color: #aaa;
-      cursor: pointer;
-      font-size: 12px;
-    }
+.footer-logo img {
+  width: 100%;
+}
 
-    .observe-links a {
-      display: inline-block;
-      margin: 6px 10px;
-      font-size: 13px;
-      color: #999;
-    }
+.footer {
+  padding: 20px;
+  font-size: 13px;
+  color: #666;
+}
 
-    .observe-links a:hover {
-      color: #d4af37;
-    }
-
-    /* FOOTER LOGO */
-    .footer-logo {
-      margin: 40px auto 10px;
-      width: 70px;
-      opacity: 0.7;
-    }
-
-    .footer-logo img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .footer {
-      padding: 20px;
-      font-size: 13px;
-      color: #666;
-    }
-
-    /* MOBILE */
-    @media (max-width: 600px) {
-      .logo { font-size: 42px; }
-      .tagline { font-size: 16px; }
-      .sub { font-size: 15px; }
-    }
-  </style>
+/* MOBILE */
+@media (max-width: 600px) {
+  .logo { font-size: 42px; }
+  .tagline { font-size: 16px; }
+  .sub { font-size: 15px; }
+}
+</style>
 </head>
 
 <body>
@@ -178,29 +150,46 @@
   <img src="assets/images/Banner.jpg" class="banner">
 </div>
 
-<!-- LAYER 1 -->
+<!-- VOID -->
 <div class="section">
-  <p>This is not meant to be read fully.</p>
-  <p>Scroll slowly.</p>
-  <p>Stop where something resists.</p>
+  <p>Have you ever felt something missing—</p>
+  <p>even when things were going well?</p>
 </div>
 
-<!-- LAYER 2 -->
-<div class="section reveal">
-  <p>You are the screen — not the movie.</p>
+<!-- LOOP -->
+<div class="section">
+  <p>You fix the outside.</p>
+  <p>Wealth. Health. Status.</p>
+  <p>But it returns.</p>
+</div>
+
+<!-- SHIFT -->
+<div class="section">
+  <p>That “void” isn’t external.</p>
+  <p>It’s unexamined.</p>
+</div>
+
+<!-- CORE -->
+<div class="section">
   <p>*SELF is the space between trigger and response.</p>
 </div>
 
-<!-- LAYER 3 -->
-<div class="section reveal">
-  <p>Every trigger pulls the same chain:</p>
+<!-- PATTERN -->
+<div class="section">
+  <p>Every trigger runs the same chain:</p>
   <p>desire → attachment → anger → destruction.</p>
+</div>
 
-  <p>You already see it.</p>
-  <p>You just don’t stay with it.</p>
-
+<!-- ANCHOR -->
+<div class="section">
   <p>You are not here to believe this.</p>
   <p>You are here to notice it.</p>
+</div>
+
+<!-- DEPTH -->
+<div class="section">
+  <p>If you’ve ever asked “what is missing?”</p>
+  <p>You’re already close.</p>
 </div>
 
 <!-- CONTRACT -->
@@ -211,32 +200,34 @@
     <button class="copy-btn" onclick="copyCA()">Copy</button>
 
     <div class="observe-links">
-      <a id="pumpfun" target="_blank">Observe on pump.fun</a>
-      <a id="birdeye" target="_blank">Observe on Birdeye</a>
-      <a id="dexscreener" target="_blank">Observe on Dexscreener</a>
+      <a id="pumpfun" target="_blank">pump.fun</a>
+      <a id="birdeye" target="_blank">Birdeye</a>
+      <a id="dexscreener" target="_blank">Dexscreener</a>
     </div>
   </div>
 </div>
 
 <!-- DOCS -->
 <div class="section">
-  <p><a href="docs/self-mirror.pdf" target="_blank">Read the Mirror</a></p>
-  <p><a href="docs/self-framework.pdf" target="_blank">View the Framework</a></p>
+  <p>If you want to go deeper:</p>
+  <p><a href="docs/self-mirror.pdf" target="_blank">Mirror</a></p>
+  <p><a href="docs/self-framework.pdf" target="_blank">Framework</a></p>
+</div>
 
-  <p style="margin-top:20px; color:#777;">Explore visually:</p>
-  <p><a href="https://app.xmind.com/share/M26C8HYy" target="_blank">Mirror Map</a></p>
-  <p><a href="https://app.xmind.com/share/lqVqjxsP" target="_blank">Framework Map</a></p>
+<!-- TELEGRAM -->
+<div class="section">
+  <p>If something clicked:</p>
+  <p><a href="https://t.me/selfscreen" target="_blank">→ Continue here</a></p>
 </div>
 
 <!-- SOCIAL -->
 <div class="section">
   <p>X: <a href="https://x.com/muraliannareddy" target="_blank">@muraliannareddy</a></p>
-  <p>Telegram: <a href="https://t.me/selfscreen" target="_blank">t.me/selfscreen</a></p>
 </div>
 
-<!-- FOOTER LOGO -->
+<!-- FOOTER -->
 <div class="footer-logo">
-  <img src="assets/images/Footer.png" alt="SELF">
+  <img src="assets/images/Footer.png">
 </div>
 
 <div class="footer">
@@ -244,28 +235,17 @@
 </div>
 
 <script>
-  function copyCA() {
-    const text = document.getElementById("contract").innerText;
-    navigator.clipboard.writeText(text);
-    alert("Contract copied");
-  }
+function copyCA() {
+  const text = document.getElementById("contract").innerText;
+  navigator.clipboard.writeText(text);
+  alert("Contract copied");
+}
 
-  const ca = document.getElementById("contract").innerText.trim();
+const ca = document.getElementById("contract").innerText.trim();
 
-  document.getElementById("pumpfun").href = "https://pump.fun/" + ca;
-  document.getElementById("birdeye").href = "https://birdeye.so/token/" + ca + "?chain=solana";
-  document.getElementById("dexscreener").href = "https://dexscreener.com/solana/" + ca;
-
-  const reveals = document.querySelectorAll(".reveal");
-
-  window.addEventListener("scroll", () => {
-    reveals.forEach(el => {
-      const top = el.getBoundingClientRect().top;
-      if (top < window.innerHeight - 100) {
-        el.classList.add("visible");
-      }
-    });
-  });
+document.getElementById("pumpfun").href = "https://pump.fun/" + ca;
+document.getElementById("birdeye").href = "https://birdeye.so/token/" + ca + "?chain=solana";
+document.getElementById("dexscreener").href = "https://dexscreener.com/solana/" + ca;
 </script>
 
 </body>
