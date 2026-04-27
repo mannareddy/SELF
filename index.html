@@ -4,176 +4,245 @@
 <meta charset="UTF-8">
 <title>*SELF</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <meta name="description" content="Not a meme. A mirror.">
 
+<!-- Open Graph -->
+<meta property="og:title" content="*SELF">
+<meta property="og:description" content="Not a meme. A mirror.">
+<meta property="og:url" content="https://42self.xyz">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://42self.xyz/assets/images/Banner.jpg">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@muraliannareddy">
+<meta name="twitter:title" content="*SELF">
+<meta name="twitter:description" content="Not a meme. A mirror.">
+<meta name="twitter:image" content="https://42self.xyz/assets/images/Banner.jpg">
+
 <style>
+* { box-sizing: border-box; }
+
 body {
   margin: 0;
   background: #000;
   color: #e6e6e6;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
   text-align: center;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
-/* HERO */
 .hero {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 40px 20px 60px;
+  position: relative;
 }
 
 .logo {
-  font-size: 56px;
-  letter-spacing: 2px;
+  font-size: 72px;
+  letter-spacing: 4px;
+  font-weight: 300;
+  animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
 }
 
 .tagline {
-  font-size: 20px;
-  margin-top: 12px;
+  font-size: 22px;
+  margin-top: 20px;
+  line-height: 1.8;
+  font-weight: 300;
 }
 
 .sub {
-  margin-top: 25px;
-  font-size: 18px;
-  color: #aaa;
+  margin-top: 30px;
+  font-size: 17px;
+  color: #888;
+  line-height: 1.8;
 }
 
 .highlight {
-  margin-top: 25px;
+  margin-top: 30px;
   color: #d4af37;
+  font-size: 15px;
+  letter-spacing: 2px;
 }
 
-/* SECTIONS */
+.scroll-hint {
+  position: absolute;
+  bottom: 30px;
+  font-size: 11px;
+  color: #333;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  animation: fade 3s ease-in-out infinite;
+}
+
+@keyframes fade {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+.divider {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, transparent, #222, transparent);
+  margin: 0 auto;
+}
+
 .section {
-  padding: 80px 20px;
-  max-width: 640px;
+  padding: 60px 20px;
+  max-width: 580px;
   margin: auto;
 }
 
 .section p {
-  margin: 14px 0;
+  margin: 16px 0;
+  font-size: 18px;
+  color: #ccc;
 }
 
-/* LINKS */
+.section p.gold {
+  color: #d4af37;
+}
+
 a {
   color: #d4af37;
   text-decoration: none;
+  letter-spacing: 1px;
 }
 
-a:hover {
-  opacity: 0.8;
+a:hover { opacity: 0.7; }
+
+.enter-link {
+  font-size: 20px;
+  color: #d4af37;
+  letter-spacing: 3px;
+  display: inline-block;
+  margin-top: 10px;
 }
 
-/* FOOTER */
+.social {
+  padding: 20px;
+  font-size: 14px;
+  color: #444;
+  letter-spacing: 1px;
+}
+
 .footer {
   margin-top: 60px;
-  padding: 30px;
-  font-size: 13px;
-  color: #666;
+  padding: 40px 20px;
+  font-size: 11px;
+  color: #222;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  border-top: 1px solid #111;
 }
 
-/* MOBILE */
 @media (max-width: 600px) {
-  .logo { font-size: 42px; }
-  .tagline { font-size: 18px; }
-  .sub { font-size: 16px; }
+  .logo { font-size: 52px; }
+  .tagline { font-size: 19px; }
+  .sub { font-size: 15px; }
+  .section p { font-size: 16px; }
 }
 </style>
 </head>
-
 <body>
 
-<!-- HERO -->
 <div class="hero">
   <div class="logo">*SELF</div>
-
   <div class="tagline">
-    You knew.<br><br>
-    You just didn’t stop yourself.
+    You knew.<br>
+    You just didn't stop yourself.
   </div>
-
   <div class="sub">
-    Most people don’t lose money.<br>
+    Most people don't lose money.<br>
     They lose control.
   </div>
-
-  <div class="highlight">
-    Not a meme. A mirror.
-  </div>
+  <div class="highlight">Not a meme. A mirror.</div>
+  <div class="scroll-hint">&#8595; continue</div>
 </div>
 
-<!-- CONTENT -->
+<div class="divider"></div>
+
 <div class="section">
   <p>You knew something was off.</p>
-  <p>You just couldn’t point to it.</p>
+  <p>You just couldn't point to it.</p>
 </div>
+
+<div class="divider"></div>
 
 <div class="section">
   <p>You tried to fix it outside.</p>
-  <br>
   <p>Wealth. Health. Status.</p>
-  <br>
-  <p>It didn’t stay fixed.</p>
+  <p>It didn't stay fixed.</p>
 </div>
 
+<div class="divider"></div>
+
 <div class="section">
-  <p>It wasn’t external.</p>
+  <p>It wasn't external.</p>
   <p>It was the moment you stopped noticing.</p>
 </div>
+
+<div class="divider"></div>
 
 <div class="section">
   <p>*SELF is that moment.</p>
   <p>The space between trigger and response.</p>
 </div>
 
+<div class="divider"></div>
+
 <div class="section">
-  <p>It doesn’t happen once.</p>
+  <p>It doesn't happen once.</p>
   <p>It happens in small moments you ignore.</p>
 </div>
 
+<div class="divider"></div>
+
 <div class="section">
-  <p>You’re not here to believe anything.</p>
-  <p>You’re here to notice when it happens.</p>
+  <p>You are not the chaotic movie<br>playing on the screen.</p>
+  <p class="gold">You are the screen itself.</p>
+  <p>The movie is full of noise.<br>
+  The screen stays still.<br>
+  No matter what is projected.</p>
 </div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <p>You're not here to believe anything.</p>
+  <p>You're here to notice when it happens.</p>
+</div>
+
+<div class="divider"></div>
 
 <div class="section">
   <p>If you see it, you already understand.</p>
-  <p>If you don’t, nothing here will convince you.</p>
+  <p>If you don't, nothing here will convince you.</p>
 </div>
 
-<!-- CTA -->
-<div class="section">
-  <p>If you’re paying attention,</p>
-  <p>you know where to go.</p>
+<div class="divider"></div>
 
+<div class="section">
+  <p>If you're paying attention,<br>you know where to go.</p>
   <br>
-
-  <p>
-    <a href="https://t.me/selfscreen" target="_blank">
-      → Enter
-    </a>
-  </p>
+  <a class="enter-link" href="https://t.me/selfscreen" target="_blank">→ Enter</a>
 </div>
 
-<!-- SOCIAL -->
-<div class="section">
-  <p>
-    X:
-    <a href="https://x.com/muraliannareddy" target="_blank">
-      @muraliannareddy
-    </a>
-  </p>
+<div class="social">
+  <a href="https://x.com/muraliannareddy" target="_blank">@muraliannareddy</a>
 </div>
 
-<!-- FOOTER -->
-<div class="footer">
-  Not a meme. A mirror.
-</div>
+<div class="footer">Not a meme. A mirror.</div>
 
 </body>
 </html>
