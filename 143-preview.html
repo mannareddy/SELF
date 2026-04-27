@@ -4,23 +4,32 @@
 <meta charset="UTF-8">
 <title>*SELF</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <meta name="description" content="Not a meme. A mirror.">
 
+<!-- Open Graph -->
 <meta property="og:title" content="*SELF">
 <meta property="og:description" content="Not a meme. A mirror.">
-<meta property="og:image" content="https://42self.xyz/assets/images/Banner.jpg">
 <meta property="og:url" content="https://42self.xyz">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://42self.xyz/assets/images/Banner.jpg">
+
+<!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@muraliannareddy">
+<meta name="twitter:title" content="*SELF">
+<meta name="twitter:description" content="Not a meme. A mirror.">
+<meta name="twitter:image" content="https://42self.xyz/assets/images/Banner.jpg">
 
 <style>
+* { box-sizing: border-box; }
+
 body {
   margin: 0;
   background: #000;
   color: #e6e6e6;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
   text-align: center;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 .hero {
@@ -29,173 +38,319 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 40px 20px 60px;
+  position: relative;
 }
 
-.logo { font-size: 56px; }
-.tagline { color: #aaa; margin-top: 10px; }
+.logo {
+  font-size: 72px;
+  letter-spacing: 4px;
+  font-weight: 300;
+  animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.tagline {
+  font-size: 22px;
+  margin-top: 20px;
+  line-height: 1.8;
+  font-weight: 300;
+}
 
 .sub {
-  margin-top: 25px;
-  font-size: 18px;
-  color: #bbb;
-  max-width: 520px;
+  margin-top: 30px;
+  font-size: 17px;
+  color: #888;
+  line-height: 1.8;
 }
 
 .highlight {
+  margin-top: 30px;
   color: #d4af37;
-  margin-top: 25px;
+  font-size: 15px;
+  letter-spacing: 2px;
 }
 
-.banner {
-  width: 100%;
-  opacity: 0.7;
+.scroll-hint {
+  position: absolute;
+  bottom: 30px;
+  font-size: 11px;
+  color: #333;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  animation: fade 3s ease-in-out infinite;
+}
+
+@keyframes fade {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+.divider {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, transparent, #222, transparent);
+  margin: 0 auto;
 }
 
 .section {
-  padding: 80px 20px;
-  max-width: 640px;
+  padding: 60px 20px;
+  max-width: 580px;
   margin: auto;
 }
+
+.section p {
+  margin: 16px 0;
+  font-size: 18px;
+  color: #ccc;
+}
+
+.section p.gold { color: #d4af37; }
+
+.ca-section {
+  padding: 40px 20px;
+  max-width: 580px;
+  margin: auto;
+}
+
+.ca-box {
+  border: 1px solid #222;
+  padding: 30px 24px;
+  background: #0a0a0a;
+  line-height: 2;
+}
+
+.ca-label {
+  font-size: 11px;
+  color: #444;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.ca-address {
+  font-size: 13px;
+  color: #888;
+  word-break: break-all;
+  letter-spacing: 1px;
+}
+
+.ca-supply {
+  font-size: 12px;
+  color: #333;
+  margin-top: 12px;
+  letter-spacing: 2px;
+}
+
+.copy-btn {
+  margin-top: 16px;
+  padding: 8px 20px;
+  background: transparent;
+  border: 1px solid #333;
+  color: #666;
+  font-size: 12px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s;
+}
+
+.copy-btn:hover {
+  border-color: #d4af37;
+  color: #d4af37;
+}
+
+.observe-links {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.observe-links a {
+  font-size: 12px;
+  color: #444;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.observe-links a:hover { color: #d4af37; }
 
 a {
   color: #d4af37;
   text-decoration: none;
+  letter-spacing: 1px;
 }
 
-.contract-box {
-  margin-top: 30px;
-  padding: 20px;
-  border: 1px solid #333;
-  border-radius: 8px;
-  background: #111;
-  word-break: break-all;
-}
+a:hover { opacity: 0.7; }
 
-.observe-links a {
+.enter-link {
+  font-size: 20px;
+  color: #d4af37;
+  letter-spacing: 3px;
   display: inline-block;
-  margin: 6px 10px;
-  font-size: 13px;
-  color: #999;
+  margin-top: 10px;
 }
 
-.copy-btn {
-  margin-top: 10px;
-  padding: 6px 12px;
-  background: #222;
-  border: 1px solid #444;
-  color: #aaa;
-  cursor: pointer;
+.social {
+  padding: 20px;
+  font-size: 14px;
+  color: #444;
+  letter-spacing: 1px;
 }
 
 .footer {
   margin-top: 60px;
-  padding: 30px;
-  font-size: 13px;
-  color: #666;
+  padding: 40px 20px;
+  font-size: 11px;
+  color: #222;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  border-top: 1px solid #111;
+}
+
+@media (max-width: 600px) {
+  .logo { font-size: 52px; }
+  .tagline { font-size: 19px; }
+  .sub { font-size: 15px; }
+  .section p { font-size: 16px; }
+  .observe-links { gap: 16px; }
 }
 </style>
 </head>
-
 <body>
 
 <div class="hero">
   <div class="logo">*SELF</div>
-  <div class="tagline">YOU ARE THE VALUE</div>
-
+  <div class="tagline">
+    You knew.<br>
+    You just didn't stop yourself.
+  </div>
   <div class="sub">
-    Most people don’t lose money.<br>
+    Most people don't lose money.<br>
     They lose control.
   </div>
-
-  <div class="highlight">
-    Not a meme. A mirror.
-  </div>
+  <div class="highlight">Not a meme. A mirror.</div>
+  <div class="scroll-hint">&#8595; continue</div>
 </div>
 
-<img src="assets/images/Banner.jpg" class="banner">
+<div class="divider"></div>
 
 <div class="section">
-  <p>Have you ever felt something missing—</p>
-  <p>even when things were going well?</p>
+  <p>You knew something was off.</p>
+  <p>You just couldn't point to it.</p>
 </div>
 
+<div class="divider"></div>
+
 <div class="section">
-  <p>You fix the outside.</p>
+  <p>You tried to fix it outside.</p>
   <p>Wealth. Health. Status.</p>
-  <p>But it returns.</p>
+  <p>It didn't stay fixed.</p>
 </div>
 
-<div class="section">
-  <p>That “void” isn’t external.</p>
-  <p>It’s unexamined.</p>
-</div>
+<div class="divider"></div>
 
 <div class="section">
-  <p>*SELF is the space between trigger and response.</p>
+  <p>It wasn't external.</p>
+  <p>It was the moment you stopped noticing.</p>
 </div>
 
-<div class="section">
-  <p>Every trigger runs the same chain:</p>
-  <p>desire → attachment → anger → destruction.</p>
-</div>
+<div class="divider"></div>
 
 <div class="section">
-  <p>You are not here to believe this.</p>
-  <p>You are here to notice it.</p>
+  <p>*SELF is that moment.</p>
+  <p>The space between trigger and response.</p>
 </div>
 
-<!-- CONTRACT -->
+<div class="divider"></div>
+
 <div class="section">
-  <div class="contract-box">
-    <p style="color:#888;">Contract</p>
-    <div id="contract">PASTE_CA_HERE</div>
+  <p>It doesn't happen once.</p>
+  <p>It happens in small moments you ignore.</p>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <p>You are not the chaotic movie<br>playing on the screen.</p>
+  <p class="gold">You are the screen itself.</p>
+  <p>The movie is full of noise.<br>
+  The screen stays still.<br>
+  No matter what is projected.</p>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <p>You're not here to believe anything.</p>
+  <p>You're here to notice when it happens.</p>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <p>If you see it, you already understand.</p>
+  <p>If you don't, nothing here will convince you.</p>
+</div>
+
+<div class="divider"></div>
+
+<!-- CA SECTION -->
+<div class="ca-section">
+  <div class="ca-box">
+    <div class="ca-label">Contract</div>
+    <div class="ca-address" id="contract">PASTE_CA_HERE</div>
+    <div class="ca-supply">$SELF · Solana · Supply: 1,000,000,042</div>
     <button class="copy-btn" onclick="copyCA()">Copy</button>
-
     <div class="observe-links">
-      <a id="pumpfun" target="_blank">pump.fun</a>
-      <a id="birdeye" target="_blank">Birdeye</a>
-      <a id="dexscreener" target="_blank">Dexscreener</a>
+      <a id="pumpfun" href="#" target="_blank">pump.fun</a>
+      <a id="birdeye" href="#" target="_blank">Birdeye</a>
+      <a id="dexscreener" href="#" target="_blank">Dexscreener</a>
     </div>
   </div>
 </div>
 
-<!-- DOCS -->
+<div class="divider"></div>
+
 <div class="section">
-  <p>If you want to go deeper:</p>
-  <p><a href="docs/self-mirror.pdf" target="_blank">Mirror</a></p>
-  <p><a href="docs/self-framework.pdf" target="_blank">Framework</a></p>
+  <p>If you're paying attention,<br>you know where to go.</p>
+  <br>
+  <a class="enter-link" href="https://t.me/selfscreen" target="_blank">→ Enter</a>
 </div>
 
-<!-- MAPS -->
-<div class="section">
-  <p style="color:#777;">Explore visually:</p>
-  <p><a href="YOUR_XMIND_LINK_1" target="_blank">Mirror Map</a></p>
-  <p><a href="YOUR_XMIND_LINK_2" target="_blank">Framework Map</a></p>
+<div class="social">
+  <a href="https://x.com/muraliannareddy" target="_blank">@muraliannareddy</a>
 </div>
 
-<!-- TELEGRAM -->
-<div class="section">
-  <p>If something clicked:</p>
-  <p><a href="https://t.me/selfscreen" target="_blank">→ Continue here</a></p>
-</div>
-
-<div class="footer">
-  Not a meme. A mirror.
-</div>
+<div class="footer">Not a meme. A mirror.</div>
 
 <script>
 function copyCA() {
-  const text = document.getElementById("contract").innerText;
-  navigator.clipboard.writeText(text);
-  alert("Copied");
+  const text = document.getElementById("contract").innerText.trim();
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.querySelector(".copy-btn");
+    btn.innerText = "Copied";
+    setTimeout(() => { btn.innerText = "Copy"; }, 2000);
+  });
 }
 
 const ca = document.getElementById("contract").innerText.trim();
-
-document.getElementById("pumpfun").href = "https://pump.fun/" + ca;
-document.getElementById("birdeye").href = "https://birdeye.so/token/" + ca + "?chain=solana";
-document.getElementById("dexscreener").href = "https://dexscreener.com/solana/" + ca;
+if (ca && ca !== "PASTE_CA_HERE") {
+  document.getElementById("pumpfun").href =
+    "https://pump.fun/" + ca;
+  document.getElementById("birdeye").href =
+    "https://birdeye.so/token/" + ca + "?chain=solana";
+  document.getElementById("dexscreener").href =
+    "https://dexscreener.com/solana/" + ca;
+}
 </script>
 
 </body>
