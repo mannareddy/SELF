@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>*SELF</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>*SELF</title>
 <meta name="description" content="Not a meme. A mirror.">
 
 <!-- Open Graph -->
@@ -11,17 +11,26 @@
 <meta property="og:description" content="Not a meme. A mirror.">
 <meta property="og:url" content="https://42self.xyz">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://42self.xyz/assets/images/Banner.jpg">
+<meta property="og:image" content="https://42self.xyz/Banner.png">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@muraliannareddy">
 <meta name="twitter:title" content="*SELF">
 <meta name="twitter:description" content="Not a meme. A mirror.">
-<meta name="twitter:image" content="https://42self.xyz/assets/images/Banner.jpg">
+<meta name="twitter:image" content="https://42self.xyz/Banner.png">
+
+<!-- Favicon -->
+<link rel="icon" type="image/jpeg" href="Logo_web.jpg">
 
 <style>
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   margin: 0;
@@ -32,6 +41,7 @@ body {
   line-height: 1.7;
 }
 
+/* HERO */
 .hero {
   min-height: 100vh;
   display: flex;
@@ -42,21 +52,16 @@ body {
   position: relative;
 }
 
-.logo {
-  font-size: 72px;
-  letter-spacing: 4px;
-  font-weight: 300;
-  animation: pulse 4s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+.hero-logo {
+  width: 180px;
+  max-width: 60vw;
+  margin-bottom: 30px;
+  opacity: 0.98;
 }
 
 .tagline {
   font-size: 22px;
-  margin-top: 20px;
+  margin-top: 10px;
   line-height: 1.8;
   font-weight: 300;
 }
@@ -64,7 +69,7 @@ body {
 .sub {
   margin-top: 30px;
   font-size: 17px;
-  color: #888;
+  color: #9a9a9a;
   line-height: 1.8;
 }
 
@@ -80,7 +85,7 @@ body {
   position: absolute;
   bottom: 30px;
   font-size: 11px;
-  color: #333;
+  color: #444;
   letter-spacing: 3px;
   text-transform: uppercase;
   animation: fade 3s ease-in-out infinite;
@@ -91,6 +96,21 @@ body {
   50% { opacity: 1; }
 }
 
+/* BANNER */
+.banner-section {
+  padding: 0 20px 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.banner-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid #111;
+}
+
+/* DIVIDER */
 .divider {
   width: 1px;
   height: 60px;
@@ -98,6 +118,7 @@ body {
   margin: 0 auto;
 }
 
+/* CONTENT SECTIONS */
 .section {
   padding: 60px 20px;
   max-width: 580px;
@@ -107,16 +128,17 @@ body {
 .section p {
   margin: 16px 0;
   font-size: 18px;
-  color: #ccc;
+  color: #cccccc;
 }
 
 .section p.gold {
   color: #d4af37;
 }
 
+/* CONTRACT SECTION */
 .ca-section {
   padding: 40px 20px;
-  max-width: 580px;
+  max-width: 700px;
   margin: auto;
 }
 
@@ -129,7 +151,7 @@ body {
 
 .ca-label {
   font-size: 11px;
-  color: #444;
+  color: #888888;
   letter-spacing: 3px;
   text-transform: uppercase;
   margin-bottom: 12px;
@@ -137,14 +159,14 @@ body {
 
 .ca-address {
   font-size: 13px;
-  color: #888;
+  color: #d0d0d0;
   word-break: break-all;
   letter-spacing: 1px;
 }
 
 .ca-supply {
   font-size: 12px;
-  color: #333;
+  color: #777777;
   margin-top: 12px;
   letter-spacing: 2px;
 }
@@ -153,8 +175,8 @@ body {
   margin-top: 16px;
   padding: 8px 20px;
   background: transparent;
-  border: 1px solid #333;
-  color: #666;
+  border: 1px solid #444;
+  color: #b8b8b8;
   font-size: 12px;
   letter-spacing: 2px;
   cursor: pointer;
@@ -167,6 +189,12 @@ body {
   color: #d4af37;
 }
 
+.copy-btn:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+
+/* LINKS */
 .observe-links,
 .resource-links {
   margin-top: 20px;
@@ -179,7 +207,7 @@ body {
 .observe-links a,
 .resource-links a {
   font-size: 12px;
-  color: #444;
+  color: #9a9a9a;
   letter-spacing: 2px;
   text-transform: uppercase;
   text-decoration: none;
@@ -187,14 +215,15 @@ body {
 }
 
 .observe-links a:hover,
-.resource-links a:hover {
+.resource-links a:hover,
+a:hover {
   color: #d4af37;
 }
 
 .resource-title {
   margin-bottom: 20px;
   font-size: 11px;
-  color: #444;
+  color: #888888;
   letter-spacing: 3px;
   text-transform: uppercase;
 }
@@ -205,10 +234,7 @@ a {
   letter-spacing: 1px;
 }
 
-a:hover {
-  opacity: 0.7;
-}
-
+/* COMMUNITY */
 .enter-link {
   font-size: 20px;
   color: #d4af37;
@@ -220,28 +246,57 @@ a:hover {
 .social {
   padding: 20px;
   font-size: 14px;
-  color: #444;
+  color: #777777;
   letter-spacing: 1px;
 }
 
+/* FOOTER */
 .footer {
   margin-top: 60px;
-  padding: 40px 20px;
-  font-size: 11px;
-  color: #222;
-  letter-spacing: 3px;
-  text-transform: uppercase;
+  padding: 50px 20px;
   border-top: 1px solid #111;
+  line-height: 2;
 }
 
+.footer-logo {
+  width: 160px;
+  max-width: 60vw;
+  margin-bottom: 20px;
+  opacity: 0.95;
+}
+
+.footer-text {
+  font-size: 11px;
+  color: #888888;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+/* MOBILE */
 @media (max-width: 600px) {
-  .logo { font-size: 52px; }
-  .tagline { font-size: 19px; }
-  .sub { font-size: 15px; }
-  .section p { font-size: 16px; }
+  .hero-logo {
+    width: 140px;
+  }
+
+  .tagline {
+    font-size: 19px;
+  }
+
+  .sub {
+    font-size: 15px;
+  }
+
+  .section p {
+    font-size: 16px;
+  }
+
   .observe-links,
   .resource-links {
     gap: 16px;
+  }
+
+  .footer-logo {
+    width: 130px;
   }
 }
 </style>
@@ -250,7 +305,7 @@ a:hover {
 
 <!-- HERO -->
 <div class="hero">
-  <div class="logo">*SELF</div>
+  <img src="Logo_web.jpg" alt="SELF Logo" class="hero-logo">
 
   <div class="tagline">
     You knew.<br>
@@ -267,9 +322,14 @@ a:hover {
   <div class="scroll-hint">&#8595; continue</div>
 </div>
 
+<!-- BANNER -->
+<div class="banner-section">
+  <img src="Banner.png" alt="You don't lose money. You lose control." class="banner-image">
+</div>
+
 <div class="divider"></div>
 
-<!-- PHILOSOPHY SECTIONS -->
+<!-- PHILOSOPHY -->
 <div class="section">
   <p>You knew something was off.</p>
   <p>You just couldn't point to it.</p>
@@ -332,12 +392,12 @@ a:hover {
 
 <div class="divider"></div>
 
-<!-- TOKEN SECTION -->
+<!-- CONTRACT -->
 <div class="ca-section">
   <div class="ca-box">
     <div class="ca-label">Contract</div>
 
-    <!-- Replace with your actual token contract address -->
+    <!-- Replace with your actual Solana contract address -->
     <div class="ca-address" id="contract">PASTE_CA_HERE</div>
 
     <div class="ca-supply">$SELF · Solana · Supply: 1,000,000,042</div>
@@ -354,22 +414,21 @@ a:hover {
 
 <div class="divider"></div>
 
-<!-- EXPLORE SECTION -->
+<!-- EXPLORE -->
 <div class="section">
   <div class="resource-title">Explore</div>
 
- <div class="resource-links">
-  <a href="https://app.xmind.com/share/C2A5HwlV?xid=dZCmLh9a" target="_blank" rel="noopener noreferrer">Structured</a>
-  <a href="https://app.xmind.com/M26C8HYy" target="_blank" rel="noopener noreferrer">Visual</a>
-  <a href="https://github.com/mannareddy/SELF" target="_blank" rel="noopener noreferrer">GitHub</a>
-  <a href="https://github.com/mannareddy/SELF/tree/main/docs" target="_blank" rel="noopener noreferrer">GitHub Docs</a>
-  <a href="https://42self.xyz/self/docs/" target="_blank" rel="noopener noreferrer">Docs</a>
-</div>
+  <div class="resource-links">
+    <a href="https://app.xmind.com/share/C2A5HwlV?xid=dZCmLh9a" target="_blank" rel="noopener noreferrer">Structured</a>
+    <a href="https://app.xmind.com/M26C8HYy" target="_blank" rel="noopener noreferrer">Visual</a>
+    <a href="https://github.com/mannareddy/SELF" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <a href="https://github.com/mannareddy/SELF/tree/main/docs" target="_blank" rel="noopener noreferrer">Docs</a>
+  </div>
 </div>
 
 <div class="divider"></div>
 
-<!-- COMMUNITY SECTION -->
+<!-- COMMUNITY -->
 <div class="section">
   <p>If you're paying attention,<br>you know where to go.</p>
   <br>
@@ -386,22 +445,25 @@ a:hover {
 </div>
 
 <!-- FOOTER -->
-<div class="footer">Not a meme. A mirror.</div>
+<div class="footer">
+  <img src="Footer(2).png" alt="SELF Footer Logo" class="footer-logo">
+  <div class="footer-text">Not a meme. A mirror.</div>
+</div>
 
 <script>
 function copyCA() {
-  const text = document.getElementById("contract").innerText.trim();
+  const text = document.getElementById('contract').innerText.trim();
 
-  if (!text || text === "PASTE_CA_HERE") {
-    alert("Please update the contract address first.");
+  if (!text || text === 'PASTE_CA_HERE') {
+    alert('Please update the contract address first.');
     return;
   }
 
   navigator.clipboard.writeText(text).then(() => {
-    const btn = document.querySelector(".copy-btn");
+    const btn = document.querySelector('.copy-btn');
     const original = btn.innerText;
 
-    btn.innerText = "Copied";
+    btn.innerText = 'Copied';
     btn.disabled = true;
 
     setTimeout(() => {
@@ -412,23 +474,26 @@ function copyCA() {
 }
 
 function setLaunchLinks() {
-  const ca = document.getElementById("contract").innerText.trim();
+  const ca = document.getElementById('contract').innerText.trim();
 
-  if (!ca || ca === "PASTE_CA_HERE") {
+  if (!ca || ca === 'PASTE_CA_HERE') {
     return;
   }
 
-  document.getElementById("pumpfun").href =
-    "https://pump.fun/" + ca;
+  // Correct pump.fun URL
+  document.getElementById('pumpfun').href =
+    'https://pump.fun/coin/' + encodeURIComponent(ca);
 
-  document.getElementById("birdeye").href =
-    "https://birdeye.so/token/" + ca + "?chain=solana";
+  // Correct Birdeye URL
+  document.getElementById('birdeye').href =
+    'https://birdeye.so/token/' + encodeURIComponent(ca) + '?chain=solana';
 
-  document.getElementById("dexscreener").href =
-    "https://dexscreener.com/solana/" + ca;
+  // Correct Dexscreener URL
+  document.getElementById('dexscreener').href =
+    'https://dexscreener.com/solana/' + encodeURIComponent(ca);
 }
 
-document.addEventListener("DOMContentLoaded", setLaunchLinks);
+document.addEventListener('DOMContentLoaded', setLaunchLinks);
 </script>
 
 </body>
