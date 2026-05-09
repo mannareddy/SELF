@@ -11,17 +11,17 @@
 <meta property="og:description" content="Not a meme. A mirror.">
 <meta property="og:url" content="https://42self.xyz">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://42self.xyz/Banner.png">
+<meta property="og:image" content="https://42self.xyz/assets/images/Banner.jpg">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@muraliannareddy">
 <meta name="twitter:title" content="*SELF">
 <meta name="twitter:description" content="Not a meme. A mirror.">
-<meta name="twitter:image" content="https://42self.xyz/Banner.png">
+<meta name="twitter:image" content="https://42self.xyz/assets/images/Banner.jpg">
 
 <!-- Favicon -->
-<link rel="icon" type="image/jpeg" href="Logo_web.jpg">
+<link rel="icon" type="image/jpeg" href="./assets/images/Logo_web.jpg">
 
 <style>
 * {
@@ -305,7 +305,7 @@ a {
 
 <!-- HERO -->
 <div class="hero">
-  <img src="Logo_web.jpg" alt="SELF Logo" class="hero-logo">
+  <img src="./assets/images/Logo_web.jpg" alt="SELF Logo" class="hero-logo">
 
   <div class="tagline">
     You knew.<br>
@@ -324,7 +324,7 @@ a {
 
 <!-- BANNER -->
 <div class="banner-section">
-  <img src="Banner.png" alt="You don't lose money. You lose control." class="banner-image">
+  <img src="./assets/images/Banner.jpg" alt="You don't lose money. You lose control." class="banner-image">
 </div>
 
 <div class="divider"></div>
@@ -446,7 +446,7 @@ a {
 
 <!-- FOOTER -->
 <div class="footer">
-  <img src="Footer.png" alt="SELF Footer Logo" class="footer-logo">
+  <img src="./assets/images/Footer.png" alt="SELF Footer Logo" class="footer-logo">
   <div class="footer-text">Not a meme. A mirror.</div>
 </div>
 
@@ -454,46 +454,32 @@ a {
 function copyCA() {
   const text = document.getElementById('contract').innerText.trim();
 
-  if (!text || text === 'PASTE_CA_HERE') {
-    alert('Please update the contract address first.');
-    return;
-  }
-
   navigator.clipboard.writeText(text).then(() => {
     const btn = document.querySelector('.copy-btn');
     const original = btn.innerText;
 
     btn.innerText = 'Copied';
-    btn.disabled = true;
 
     setTimeout(() => {
       btn.innerText = original;
-      btn.disabled = false;
     }, 2000);
   });
 }
 
-function setLaunchLinks() {
+document.addEventListener('DOMContentLoaded', function () {
+
   const ca = document.getElementById('contract').innerText.trim();
 
-  if (!ca || ca === 'PASTE_CA_HERE') {
-    return;
-  }
-
-  // Correct pump.fun URL
   document.getElementById('pumpfun').href =
-    'https://pump.fun/coin/' + encodeURIComponent(ca);
+    `https://pump.fun/coin/${ca}`;
 
-  // Correct Birdeye URL
   document.getElementById('birdeye').href =
-    'https://birdeye.so/token/' + encodeURIComponent(ca) + '?chain=solana';
+    `https://birdeye.so/token/${ca}?chain=solana`;
 
-  // Correct Dexscreener URL
   document.getElementById('dexscreener').href =
-    'https://dexscreener.com/solana/' + encodeURIComponent(ca);
-}
+    `https://dexscreener.com/solana/${ca}`;
 
-document.addEventListener('DOMContentLoaded', setLaunchLinks);
+});
 </script>
 
 </body>
