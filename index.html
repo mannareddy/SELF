@@ -73,6 +73,7 @@ body {
   color: #d4af37;
   font-size: 15px;
   letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 .scroll-hint {
@@ -109,7 +110,9 @@ body {
   color: #ccc;
 }
 
-.section p.gold { color: #d4af37; }
+.section p.gold {
+  color: #d4af37;
+}
 
 .ca-section {
   padding: 40px 20px;
@@ -164,7 +167,8 @@ body {
   color: #d4af37;
 }
 
-.observe-links {
+.observe-links,
+.resource-links {
   margin-top: 20px;
   display: flex;
   justify-content: center;
@@ -172,7 +176,8 @@ body {
   flex-wrap: wrap;
 }
 
-.observe-links a {
+.observe-links a,
+.resource-links a {
   font-size: 12px;
   color: #444;
   letter-spacing: 2px;
@@ -181,7 +186,18 @@ body {
   transition: color 0.3s;
 }
 
-.observe-links a:hover { color: #d4af37; }
+.observe-links a:hover,
+.resource-links a:hover {
+  color: #d4af37;
+}
+
+.resource-title {
+  margin-bottom: 20px;
+  font-size: 11px;
+  color: #444;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
 
 a {
   color: #d4af37;
@@ -189,7 +205,9 @@ a {
   letter-spacing: 1px;
 }
 
-a:hover { opacity: 0.7; }
+a:hover {
+  opacity: 0.7;
+}
 
 .enter-link {
   font-size: 20px;
@@ -221,28 +239,37 @@ a:hover { opacity: 0.7; }
   .tagline { font-size: 19px; }
   .sub { font-size: 15px; }
   .section p { font-size: 16px; }
-  .observe-links { gap: 16px; }
+  .observe-links,
+  .resource-links {
+    gap: 16px;
+  }
 }
 </style>
 </head>
 <body>
 
+<!-- HERO -->
 <div class="hero">
   <div class="logo">*SELF</div>
+
   <div class="tagline">
     You knew.<br>
     You just didn't stop yourself.
   </div>
+
   <div class="sub">
     Most people don't lose money.<br>
     They lose control.
   </div>
+
   <div class="highlight">Not a meme. A mirror.</div>
+
   <div class="scroll-hint">&#8595; continue</div>
 </div>
 
 <div class="divider"></div>
 
+<!-- PHILOSOPHY SECTIONS -->
 <div class="section">
   <p>You knew something was off.</p>
   <p>You just couldn't point to it.</p>
@@ -282,9 +309,11 @@ a:hover { opacity: 0.7; }
 <div class="section">
   <p>You are not the chaotic movie<br>playing on the screen.</p>
   <p class="gold">You are the screen itself.</p>
-  <p>The movie is full of noise.<br>
-  The screen stays still.<br>
-  No matter what is projected.</p>
+  <p>
+    The movie is full of noise.<br>
+    The screen stays still.<br>
+    No matter what is projected.
+  </p>
 </div>
 
 <div class="divider"></div>
@@ -303,54 +332,102 @@ a:hover { opacity: 0.7; }
 
 <div class="divider"></div>
 
-<!-- CA SECTION -->
+<!-- TOKEN SECTION -->
 <div class="ca-section">
   <div class="ca-box">
     <div class="ca-label">Contract</div>
+
+    <!-- Replace with your actual token contract address -->
     <div class="ca-address" id="contract">PASTE_CA_HERE</div>
+
     <div class="ca-supply">$SELF · Solana · Supply: 1,000,000,042</div>
+
     <button class="copy-btn" onclick="copyCA()">Copy</button>
+
     <div class="observe-links">
-      <a id="pumpfun" href="#" target="_blank">pump.fun</a>
-      <a id="birdeye" href="#" target="_blank">Birdeye</a>
-      <a id="dexscreener" href="#" target="_blank">Dexscreener</a>
+      <a id="pumpfun" href="#" target="_blank" rel="noopener noreferrer">pump.fun</a>
+      <a id="birdeye" href="#" target="_blank" rel="noopener noreferrer">Birdeye</a>
+      <a id="dexscreener" href="#" target="_blank" rel="noopener noreferrer">Dexscreener</a>
     </div>
   </div>
 </div>
 
 <div class="divider"></div>
 
+<!-- EXPLORE SECTION -->
+<div class="section">
+  <div class="resource-title">Explore</div>
+
+  <div class="resource-links">
+    <a href="https://app.xmind.com/share/C2A5HwlV?xid=dZCmLh9a" target="_blank" rel="noopener noreferrer">Structured</a>
+    <a href="https://app.xmind.com/M26C8HYy" target="_blank" rel="noopener noreferrer">Visual</a>
+    <a href="https://github.com/muraliannareddy/self" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <a href="https://42self.xyz/self/docs/" target="_blank" rel="noopener noreferrer">Docs</a>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- COMMUNITY SECTION -->
 <div class="section">
   <p>If you're paying attention,<br>you know where to go.</p>
   <br>
-  <a class="enter-link" href="https://t.me/selfscreen" target="_blank">→ Enter</a>
+  <a class="enter-link" href="https://t.me/selfscreen" target="_blank" rel="noopener noreferrer">
+    → Enter
+  </a>
 </div>
 
+<!-- SOCIAL -->
 <div class="social">
-  <a href="https://x.com/muraliannareddy" target="_blank">@muraliannareddy</a>
+  <a href="https://x.com/muraliannareddy" target="_blank" rel="noopener noreferrer">
+    @muraliannareddy
+  </a>
 </div>
 
+<!-- FOOTER -->
 <div class="footer">Not a meme. A mirror.</div>
 
 <script>
 function copyCA() {
   const text = document.getElementById("contract").innerText.trim();
+
+  if (!text || text === "PASTE_CA_HERE") {
+    alert("Please update the contract address first.");
+    return;
+  }
+
   navigator.clipboard.writeText(text).then(() => {
     const btn = document.querySelector(".copy-btn");
+    const original = btn.innerText;
+
     btn.innerText = "Copied";
-    setTimeout(() => { btn.innerText = "Copy"; }, 2000);
+    btn.disabled = true;
+
+    setTimeout(() => {
+      btn.innerText = original;
+      btn.disabled = false;
+    }, 2000);
   });
 }
 
-const ca = document.getElementById("contract").innerText.trim();
-if (ca && ca !== "PASTE_CA_HERE") {
+function setLaunchLinks() {
+  const ca = document.getElementById("contract").innerText.trim();
+
+  if (!ca || ca === "PASTE_CA_HERE") {
+    return;
+  }
+
   document.getElementById("pumpfun").href =
     "https://pump.fun/" + ca;
+
   document.getElementById("birdeye").href =
     "https://birdeye.so/token/" + ca + "?chain=solana";
+
   document.getElementById("dexscreener").href =
     "https://dexscreener.com/solana/" + ca;
 }
+
+document.addEventListener("DOMContentLoaded", setLaunchLinks);
 </script>
 
 </body>
