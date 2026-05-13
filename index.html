@@ -135,6 +135,23 @@ body {
   color: #d4af37;
 }
 
+/* BRIDGE SECTION — token context for non-crypto visitors */
+.bridge-section {
+  padding: 60px 20px;
+  max-width: 580px;
+  margin: auto;
+}
+
+.bridge-section p {
+  margin: 16px 0;
+  font-size: 18px;
+  color: #cccccc;
+}
+
+.bridge-section p.gold {
+  color: #d4af37;
+}
+
 /* CONTRACT SECTION */
 .ca-section {
   padding: 40px 20px;
@@ -234,6 +251,39 @@ a {
   letter-spacing: 1px;
 }
 
+/* WATCH SECTION */
+.watch-section {
+  padding: 60px 20px;
+  max-width: 580px;
+  margin: auto;
+}
+
+.watch-link {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 14px;
+  color: #d4af37;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid #333;
+  padding: 10px 24px;
+  transition: all 0.3s;
+}
+
+.watch-link:hover {
+  border-color: #d4af37;
+  color: #d4af37;
+  background: rgba(212, 175, 55, 0.05);
+}
+
+.watch-note {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #555;
+  letter-spacing: 1px;
+}
+
 /* COMMUNITY */
 .enter-link {
   font-size: 20px;
@@ -243,11 +293,45 @@ a {
   margin-top: 10px;
 }
 
+.enter-secondary {
+  font-size: 15px;
+  color: #9a9a9a;
+  letter-spacing: 2px;
+  display: inline-block;
+  margin-top: 16px;
+  transition: color 0.3s;
+}
+
+.enter-secondary:hover {
+  color: #d4af37;
+}
+
 .social {
   padding: 20px;
   font-size: 14px;
   color: #777777;
   letter-spacing: 1px;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding: 10px 20px 30px;
+}
+
+.social-links a {
+  font-size: 12px;
+  color: #777777;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.social-links a:hover {
+  color: #d4af37;
 }
 
 /* FOOTER */
@@ -286,7 +370,8 @@ a {
     font-size: 15px;
   }
 
-  .section p {
+  .section p,
+  .bridge-section p {
     font-size: 16px;
   }
 
@@ -392,12 +477,22 @@ a {
 
 <div class="divider"></div>
 
+<!-- BRIDGE — token context for non-crypto visitors -->
+<div class="bridge-section">
+  <p>*SELF exists on Solana.</p>
+  <p>Not as a financial instrument.</p>
+  <p class="gold">As a mirror with a ledger.</p>
+  <p>The supply is fixed.<br>The 42 is not decoration.</p>
+  <p>T + O + B + E = 42.<br>To Be.</p>
+</div>
+
+<div class="divider"></div>
+
 <!-- CONTRACT -->
 <div class="ca-section">
   <div class="ca-box">
     <div class="ca-label">Contract</div>
 
-    <!-- Replace with your actual Solana contract address -->
     <div class="ca-address" id="contract">7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump</div>
 
     <div class="ca-supply">$SELF · Solana · Supply: 1,000,000,042</div>
@@ -414,6 +509,27 @@ a {
 
 <div class="divider"></div>
 
+<!-- WATCH — replace YOUTUBE_90SEC_URL and YOUTUBE_5MIN_URL when live -->
+<div class="watch-section">
+  <div class="resource-title">Watch</div>
+
+  <!-- REPLACE: swap href="#" with your actual YouTube Short URL after upload -->
+  <a class="watch-link" href="YOUTUBE_90SEC_URL_HERE" target="_blank" rel="noopener noreferrer">
+    → You Watched Yourself Do It Anyway
+  </a>
+  <div class="watch-note">90 seconds</div>
+
+  <br><br>
+
+  <!-- REPLACE: swap href="#" with your actual YouTube long-form URL after upload -->
+  <a class="watch-link" href="YOUTUBE_5MIN_URL_HERE" target="_blank" rel="noopener noreferrer">
+    → You Are Not The Movie. You Are The Screen.
+  </a>
+  <div class="watch-note">5 minutes</div>
+</div>
+
+<div class="divider"></div>
+
 <!-- EXPLORE -->
 <div class="section">
   <div class="resource-title">Explore</div>
@@ -423,6 +539,12 @@ a {
     <a href="https://app.xmind.com/101oMO2f" target="_blank" rel="noopener noreferrer">Visual</a>
     <a href="https://github.com/mannareddy/SELF" target="_blank" rel="noopener noreferrer">GitHub</a>
     <a href="https://github.com/mannareddy/SELF/tree/main/docs" target="_blank" rel="noopener noreferrer">Docs</a>
+
+    <!-- REPLACE: swap href="#" with your YouTube channel URL after upload -->
+    <a href="YOUTUBE_CHANNEL_URL_HERE" target="_blank" rel="noopener noreferrer">YouTube</a>
+
+    <!-- REPLACE: swap href="#" with your Instagram profile URL after setup -->
+    <a href="INSTAGRAM_URL_HERE" target="_blank" rel="noopener noreferrer">Instagram</a>
   </div>
 </div>
 
@@ -433,15 +555,28 @@ a {
   <p>If you're paying attention,<br>you know where to go.</p>
   <br>
   <a class="enter-link" href="https://t.me/selfscreen" target="_blank" rel="noopener noreferrer">
-    → Enter
+    → Enter Telegram
+  </a>
+  <br>
+
+  <!-- REPLACE: swap href="#" with your YouTube channel URL after upload -->
+  <a class="enter-secondary" href="YOUTUBE_CHANNEL_URL_HERE" target="_blank" rel="noopener noreferrer">
+    → Watch on YouTube
   </a>
 </div>
 
-<!-- SOCIAL -->
-<div class="social">
-  <a href="https://x.com/muraliannareddy" target="_blank" rel="noopener noreferrer">
-    @muraliannareddy
-  </a>
+<div class="divider"></div>
+
+<!-- SOCIAL LINKS -->
+<div class="social-links">
+  <a href="https://x.com/muraliannareddy" target="_blank" rel="noopener noreferrer">X</a>
+  <a href="https://t.me/selfscreen" target="_blank" rel="noopener noreferrer">Telegram</a>
+
+  <!-- REPLACE: swap href="#" with your YouTube channel URL after upload -->
+  <a href="YOUTUBE_CHANNEL_URL_HERE" target="_blank" rel="noopener noreferrer">YouTube</a>
+
+  <!-- REPLACE: swap href="#" with your Instagram profile URL after setup -->
+  <a href="INSTAGRAM_URL_HERE" target="_blank" rel="noopener noreferrer">Instagram</a>
 </div>
 
 <!-- FOOTER -->
