@@ -6,6 +6,15 @@
 <title>*SELF</title>
 <meta name="description" content="Not a meme. A mirror.">
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XC5FG6W949"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XC5FG6W949');
+</script>
+
 <!-- Open Graph -->
 <meta property="og:title" content="*SELF">
 <meta property="og:description" content="Not a meme. A mirror.">
@@ -81,6 +90,81 @@ body {
   text-transform: uppercase;
 }
 
+/* HERO CA — above fold */
+.hero-ca {
+  margin-top: 36px;
+  border: 1px solid #222;
+  padding: 20px 24px;
+  background: #0a0a0a;
+  width: 100%;
+  max-width: 520px;
+}
+
+.hero-ca .ca-label {
+  font-size: 11px;
+  color: #888888;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.hero-ca .ca-address {
+  font-size: 12px;
+  color: #d0d0d0;
+  word-break: break-all;
+  letter-spacing: 1px;
+  margin-bottom: 14px;
+}
+
+.hero-ca-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn-buy {
+  padding: 10px 22px;
+  background: #d4af37;
+  color: #000;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.btn-buy:hover {
+  opacity: 0.85;
+  color: #000;
+}
+
+.copy-btn-hero {
+  padding: 10px 22px;
+  background: transparent;
+  border: 1px solid #444;
+  color: #b8b8b8;
+  font-size: 12px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s;
+}
+
+.copy-btn-hero:hover {
+  border-color: #d4af37;
+  color: #d4af37;
+}
+
+.copy-btn-hero:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+
 .scroll-hint {
   position: absolute;
   bottom: 30px;
@@ -135,7 +219,7 @@ body {
   color: #d4af37;
 }
 
-/* BRIDGE SECTION — token context for non-crypto visitors */
+/* BRIDGE SECTION */
 .bridge-section {
   padding: 60px 20px;
   max-width: 580px;
@@ -152,7 +236,7 @@ body {
   color: #d4af37;
 }
 
-/* CONTRACT SECTION */
+/* CONTRACT SECTION — full detail below fold */
 .ca-section {
   padding: 40px 20px;
   max-width: 700px;
@@ -383,6 +467,25 @@ a {
   .footer-logo {
     width: 130px;
   }
+
+  .hero-ca {
+    padding: 16px;
+  }
+
+  .hero-ca .ca-address {
+    font-size: 11px;
+  }
+
+  .hero-ca-buttons {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .btn-buy,
+  .copy-btn-hero {
+    width: 100%;
+    text-align: center;
+  }
 }
 </style>
 </head>
@@ -403,6 +506,16 @@ a {
   </div>
 
   <div class="highlight">Not a meme. A mirror.</div>
+
+  <!-- CA ABOVE FOLD -->
+  <div class="hero-ca">
+    <div class="ca-label">$SELF · Solana</div>
+    <div class="ca-address" id="contract-hero">7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump</div>
+    <div class="hero-ca-buttons">
+      <a class="btn-buy" id="gmgn-hero" href="#" target="_blank" rel="noopener noreferrer">Buy on GMGN →</a>
+      <button class="copy-btn-hero" onclick="copyCAHero()">Copy CA</button>
+    </div>
+  </div>
 
   <div class="scroll-hint">&#8595; continue</div>
 </div>
@@ -477,7 +590,7 @@ a {
 
 <div class="divider"></div>
 
-<!-- BRIDGE — token context for non-crypto visitors -->
+<!-- BRIDGE -->
 <div class="bridge-section">
   <p>*SELF exists on Solana.</p>
   <p>Not as a financial instrument.</p>
@@ -488,7 +601,7 @@ a {
 
 <div class="divider"></div>
 
-<!-- CONTRACT -->
+<!-- CONTRACT — full detail below fold -->
 <div class="ca-section">
   <div class="ca-box">
     <div class="ca-label">Contract</div>
@@ -503,16 +616,16 @@ a {
       <a id="pumpfun" href="#" target="_blank" rel="noopener noreferrer">pump.fun</a>
       <a id="birdeye" href="#" target="_blank" rel="noopener noreferrer">Birdeye</a>
       <a id="gmgn" target="_blank" rel="noopener">GMGN</a>
+    </div>
   </div>
 </div>
 
 <div class="divider"></div>
 
-<!-- WATCH — replace YOUTUBE_90SEC_URL and YOUTUBE_5MIN_URL when live -->
+<!-- WATCH -->
 <div class="watch-section">
   <div class="resource-title">Watch</div>
 
-  <!-- REPLACE: swap href="#" with your actual YouTube Short URL after upload -->
   <a class="watch-link" href="https://youtu.be/904IS3mxH3o" target="_blank" rel="noopener noreferrer">
     → You Watched Yourself Do It Anyway
   </a>
@@ -520,7 +633,6 @@ a {
 
   <br><br>
 
-  <!-- REPLACE: swap href="#" with your actual YouTube long-form URL after upload -->
   <a class="watch-link" href="https://youtu.be/OPBLi31IAz4" target="_blank" rel="noopener noreferrer">
     → You Are Not The Movie. You Are The Screen.
   </a>
@@ -538,11 +650,7 @@ a {
     <a href="https://app.xmind.com/101oMO2f" target="_blank" rel="noopener noreferrer">Visual</a>
     <a href="https://github.com/mannareddy/SELF" target="_blank" rel="noopener noreferrer">GitHub</a>
     <a href="https://github.com/mannareddy/SELF/tree/main/docs" target="_blank" rel="noopener noreferrer">Docs</a>
-
-    <!-- REPLACE: swap href="#" with your YouTube channel URL after upload -->
     <a href="https://www.youtube.com/channel/UCdQDrBMeE_uhDpqWY9QKlgw" target="_blank" rel="noopener noreferrer">YouTube</a>
-
-    <!-- REPLACE: swap href="#" with your Instagram profile URL after setup -->
     <a href="https://www.instagram.com/muralireddy_79/" target="_blank" rel="noopener noreferrer">Instagram</a>
   </div>
 </div>
@@ -557,8 +665,6 @@ a {
     → Enter Telegram
   </a>
   <br>
-
-  <!-- REPLACE: swap href="#" with your YouTube channel URL after upload -->
   <a class="enter-secondary" href="https://www.youtube.com/channel/UCdQDrBMeE_uhDpqWY9QKlgw" target="_blank" rel="noopener noreferrer">
     → Watch on YouTube
   </a>
@@ -570,11 +676,7 @@ a {
 <div class="social-links">
   <a href="https://x.com/muraliannareddy" target="_blank" rel="noopener noreferrer">X</a>
   <a href="https://t.me/selfscreen" target="_blank" rel="noopener noreferrer">Telegram</a>
-
-  <!-- REPLACE: swap href="#" with your YouTube channel URL after upload -->
   <a href="https://www.youtube.com/channel/UCdQDrBMeE_uhDpqWY9QKlgw" target="_blank" rel="noopener noreferrer">YouTube</a>
-
-  <!-- REPLACE: swap href="#" with your Instagram profile URL after setup -->
   <a href="https://www.instagram.com/muralireddy_79/" target="_blank" rel="noopener noreferrer">Instagram</a>
 </div>
 
@@ -585,34 +687,32 @@ a {
 </div>
 
 <script>
-function copyCA() {
-  const text = document.getElementById('contract').innerText.trim();
+const CA = '7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump';
 
-  navigator.clipboard.writeText(text).then(() => {
+function copyCA() {
+  navigator.clipboard.writeText(CA).then(() => {
     const btn = document.querySelector('.copy-btn');
     const original = btn.innerText;
-
     btn.innerText = 'Copied';
+    setTimeout(() => { btn.innerText = original; }, 2000);
+  });
+}
 
-    setTimeout(() => {
-      btn.innerText = original;
-    }, 2000);
+function copyCAHero() {
+  navigator.clipboard.writeText(CA).then(() => {
+    const btn = document.querySelector('.copy-btn-hero');
+    const original = btn.innerText;
+    btn.innerText = 'Copied';
+    btn.disabled = true;
+    setTimeout(() => { btn.innerText = original; btn.disabled = false; }, 2000);
   });
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-
-  const ca = document.getElementById('contract').innerText.trim();
-
-  document.getElementById('pumpfun').href =
-    `https://pump.fun/coin/${ca}`;
-
-  document.getElementById('birdeye').href =
-    `https://birdeye.so/token/${ca}?chain=solana`;
-
-  document.getElementById('gmgn').href =
-  `https://gmgn.ai/sol/token/solscan_${ca}`;
-
+  document.getElementById('pumpfun').href = `https://pump.fun/coin/${CA}`;
+  document.getElementById('birdeye').href = `https://birdeye.so/token/${CA}?chain=solana`;
+  document.getElementById('gmgn').href = `https://gmgn.ai/sol/token/solscan_${CA}`;
+  document.getElementById('gmgn-hero').href = `https://gmgn.ai/sol/token/solscan_${CA}`;
 });
 </script>
 
