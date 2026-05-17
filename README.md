@@ -1,2 +1,2 @@
 # SELF
-*SELF — not something to be told
+*SELF — Not a Meme.A Mirror.
