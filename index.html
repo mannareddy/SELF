@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,23 +56,64 @@ body {
   line-height: 1.7;
 }
 
-/* ─── FOUNDATIONAL STATEMENT — top of page ─── */
-.foundation-bar {
-  padding: 28px 24px 24px;
-  background: #000;
-  border-bottom: 1px solid #141414;
-  max-width: 720px;
-  margin: 0 auto;
+/* ─── FLOATING LOGO (top-right, glowing) ─── */
+.floating-logo {
+  position: fixed;
+  top: 18px;
+  right: 22px;
+  z-index: 100;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  overflow: hidden;
+  animation: logoGlow 3s ease-in-out infinite;
+  cursor: pointer;
 }
 
+.floating-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@keyframes logoGlow {
+  0%, 100% {
+    box-shadow: 0 0 6px 1px rgba(212, 175, 55, 0.15),
+                0 0 0px 0px rgba(212, 175, 55, 0);
+    opacity: 0.75;
+  }
+  50% {
+    box-shadow: 0 0 18px 5px rgba(212, 175, 55, 0.55),
+                0 0 32px 10px rgba(212, 175, 55, 0.18);
+    opacity: 1;
+  }
+}
+
+/* ─── ABOVE-FOLD SCREEN — everything in viewport height ─── */
+.above-fold {
+  height: 100vh;
+  min-height: 560px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ─── FOUNDATIONAL STATEMENT ─── */
 .foundation-text {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(17px, 2.8vw, 22px);
+  font-size: clamp(15px, 2.2vw, 19px);
   font-weight: 300;
   font-style: italic;
-  color: #c8c8c8;
-  line-height: 1.65;
-  letter-spacing: 0.3px;
+  color: #b0b0b0;
+  line-height: 1.6;
+  letter-spacing: 0.2px;
+  margin-bottom: 20px;
+  max-width: 600px;
 }
 
 .foundation-text em {
@@ -80,66 +122,47 @@ body {
 }
 
 .foundation-divider {
-  width: 40px;
+  width: 36px;
   height: 1px;
-  background: #d4af37;
-  margin: 18px auto 0;
+  background: linear-gradient(90deg, transparent, #d4af37, transparent);
+  margin: 0 auto 20px;
   opacity: 0.5;
 }
 
-/* ─── HERO ─── */
-.hero {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 36px 20px 56px;
-  position: relative;
-}
-
-.hero-logo {
-  width: 160px;
-  max-width: 55vw;
-  margin-bottom: 26px;
-  opacity: 0.98;
-}
-
+/* ─── TAGLINE ─── */
 .tagline {
-  font-size: clamp(19px, 3vw, 23px);
-  margin-top: 8px;
-  line-height: 1.8;
+  font-size: clamp(17px, 2.6vw, 21px);
+  line-height: 1.7;
   font-weight: 300;
   color: #e0e0e0;
+  margin: 0 0 10px;
 }
 
 .sub {
-  margin-top: 22px;
-  font-size: 16px;
-  color: #888;
-  line-height: 1.8;
+  font-size: 14px;
+  color: #777;
+  line-height: 1.7;
+  margin: 0 0 10px;
 }
 
 .highlight {
-  margin-top: 22px;
   color: #d4af37;
-  font-size: 13px;
+  font-size: 11px;
   letter-spacing: 3px;
   text-transform: uppercase;
+  margin-bottom: 20px;
 }
 
 /* ─── HERO CA — above fold ─── */
 .hero-ca {
-  margin-top: 30px;
   border: 1px solid #1e1e1e;
-  padding: 20px 24px 22px;
+  padding: 16px 22px 18px;
   background: #070707;
   width: 100%;
-  max-width: 500px;
+  max-width: 480px;
   position: relative;
 }
 
-/* subtle gold top accent line */
 .hero-ca::before {
   content: '';
   position: absolute;
@@ -151,20 +174,20 @@ body {
 
 .hero-ca .ca-label {
   font-size: 10px;
-  color: #666;
+  color: #555;
   letter-spacing: 3px;
   text-transform: uppercase;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .hero-ca .ca-address {
-  font-size: 11px;
-  color: #bbb;
+  font-size: 10px;
+  color: #aaa;
   word-break: break-all;
-  letter-spacing: 0.8px;
-  margin-bottom: 16px;
+  letter-spacing: 0.6px;
+  margin-bottom: 14px;
   font-family: 'Courier New', monospace;
-  opacity: 0.85;
+  opacity: 0.8;
 }
 
 .hero-ca-buttons {
@@ -176,17 +199,17 @@ body {
 }
 
 .btn-buy {
-  padding: 11px 28px;
+  padding: 10px 26px;
   background: #d4af37;
   color: #000;
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 2.5px;
+  letter-spacing: 2px;
   text-transform: uppercase;
   text-decoration: none;
   border: none;
   cursor: pointer;
-  transition: opacity 0.25s, transform 0.15s;
+  transition: opacity 0.2s, transform 0.15s;
   display: inline-block;
 }
 
@@ -197,15 +220,15 @@ body {
 }
 
 .copy-btn-hero {
-  padding: 11px 22px;
+  padding: 10px 20px;
   background: transparent;
   border: 1px solid #333;
-  color: #999;
+  color: #888;
   font-size: 11px;
   letter-spacing: 2px;
   cursor: pointer;
   text-transform: uppercase;
-  transition: all 0.25s;
+  transition: all 0.2s;
 }
 
 .copy-btn-hero:hover {
@@ -214,15 +237,15 @@ body {
 }
 
 .copy-btn-hero:disabled {
-  opacity: 0.6;
+  opacity: 0.5;
   cursor: default;
 }
 
 .scroll-hint {
   position: absolute;
-  bottom: 28px;
+  bottom: 20px;
   font-size: 10px;
-  color: #333;
+  color: #2a2a2a;
   letter-spacing: 3px;
   text-transform: uppercase;
   animation: fade 3.5s ease-in-out infinite;
@@ -500,24 +523,57 @@ a {
 
 /* ─── MOBILE ─── */
 @media (max-width: 600px) {
-  .foundation-bar {
-    padding: 22px 18px 18px;
+  .floating-logo {
+    width: 36px;
+    height: 36px;
+    top: 14px;
+    right: 16px;
+  }
+
+  .above-fold {
+    padding: 0 16px;
+    min-height: 580px;
   }
 
   .foundation-text {
-    font-size: 16px;
+    font-size: 14px;
+    margin-bottom: 14px;
   }
 
-  .hero-logo {
-    width: 130px;
+  .foundation-divider {
+    margin-bottom: 14px;
   }
 
   .tagline {
-    font-size: 18px;
+    font-size: 17px;
   }
 
   .sub {
-    font-size: 15px;
+    font-size: 13px;
+  }
+
+  .highlight {
+    font-size: 10px;
+    margin-bottom: 16px;
+  }
+
+  .hero-ca {
+    padding: 14px 14px 16px;
+  }
+
+  .hero-ca .ca-address {
+    font-size: 9px;
+  }
+
+  .hero-ca-buttons {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .btn-buy,
+  .copy-btn-hero {
+    width: 100%;
+    text-align: center;
   }
 
   .section p,
@@ -533,57 +589,41 @@ a {
   .footer-logo {
     width: 120px;
   }
-
-  .hero-ca {
-    padding: 16px;
-  }
-
-  .hero-ca .ca-address {
-    font-size: 10px;
-  }
-
-  .hero-ca-buttons {
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .btn-buy,
-  .copy-btn-hero {
-    width: 100%;
-    text-align: center;
-  }
 }
 </style>
 </head>
 <body>
 
-<!-- ─── FOUNDATIONAL STATEMENT ─── -->
-<div class="foundation-bar">
+<!-- ─── FLOATING LOGO (top-right, glowing) ─── -->
+<a href="#" class="floating-logo" title="*SELF">
+  <img src="./assets/images/Logo_web.jpg" alt="SELF Logo">
+</a>
+
+<!-- ─── ABOVE FOLD — everything visible on first load ─── -->
+<div class="above-fold">
+
+  <!-- Foundational statement -->
   <div class="foundation-text">
     The universe doesn't contain Consciousness.<br>
     Consciousness contains the universe.<br>
     <em>*SELF is the practice of knowing that from the inside.</em>
   </div>
+
   <div class="foundation-divider"></div>
-</div>
 
-<!-- ─── HERO ─── -->
-<div class="hero">
-  <img src="./assets/images/Logo_web.jpg" alt="SELF Logo" class="hero-logo">
-
+  <!-- Tagline -->
   <div class="tagline">
     You knew.<br>
     You just didn't stop yourself.
   </div>
 
   <div class="sub">
-    Most people don't lose money.<br>
-    They lose control.
+    Most people don't lose money. They lose control.
   </div>
 
   <div class="highlight">Not a meme. A mirror.</div>
 
-  <!-- CA ABOVE FOLD -->
+  <!-- CA + Buy — fully above fold -->
   <div class="hero-ca">
     <div class="ca-label">$SELF · Solana</div>
     <div class="ca-address" id="contract-hero">7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump</div>
