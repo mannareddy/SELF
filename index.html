@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>*SELF</title>
-<meta name="description" content="Not a meme. A mirror.">
+<meta name="description" content="The universe doesn't contain Consciousness. Consciousness contains the universe.">
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XC5FG6W949"></script>
@@ -17,7 +17,7 @@
 
 <!-- Open Graph -->
 <meta property="og:title" content="*SELF">
-<meta property="og:description" content="Not a meme. A mirror.">
+<meta property="og:description" content="The universe doesn't contain Consciousness. Consciousness contains the universe.">
 <meta property="og:url" content="https://42self.xyz">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://42self.xyz/assets/images/Banner.jpg">
@@ -26,11 +26,16 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@muraliannareddy">
 <meta name="twitter:title" content="*SELF">
-<meta name="twitter:description" content="Not a meme. A mirror.">
+<meta name="twitter:description" content="The universe doesn't contain Consciousness. Consciousness contains the universe.">
 <meta name="twitter:image" content="https://42self.xyz/assets/images/Banner.jpg">
 
 <!-- Favicon -->
 <link rel="icon" type="image/jpeg" href="./assets/images/Logo_web.jpg">
+
+<!-- Cormorant Garamond for the philosophical statement; keep system sans for the rest -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
 
 <style>
 * {
@@ -50,109 +55,157 @@ body {
   line-height: 1.7;
 }
 
-/* HERO */
+/* ─── FOUNDATIONAL STATEMENT — top of page ─── */
+.foundation-bar {
+  padding: 28px 24px 24px;
+  background: #000;
+  border-bottom: 1px solid #141414;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.foundation-text {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(17px, 2.8vw, 22px);
+  font-weight: 300;
+  font-style: italic;
+  color: #c8c8c8;
+  line-height: 1.65;
+  letter-spacing: 0.3px;
+}
+
+.foundation-text em {
+  font-style: normal;
+  color: #d4af37;
+}
+
+.foundation-divider {
+  width: 40px;
+  height: 1px;
+  background: #d4af37;
+  margin: 18px auto 0;
+  opacity: 0.5;
+}
+
+/* ─── HERO ─── */
 .hero {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 40px 20px 60px;
+  padding: 36px 20px 56px;
   position: relative;
 }
 
 .hero-logo {
-  width: 180px;
-  max-width: 60vw;
-  margin-bottom: 30px;
+  width: 160px;
+  max-width: 55vw;
+  margin-bottom: 26px;
   opacity: 0.98;
 }
 
 .tagline {
-  font-size: 22px;
-  margin-top: 10px;
+  font-size: clamp(19px, 3vw, 23px);
+  margin-top: 8px;
   line-height: 1.8;
   font-weight: 300;
+  color: #e0e0e0;
 }
 
 .sub {
-  margin-top: 30px;
-  font-size: 17px;
-  color: #9a9a9a;
+  margin-top: 22px;
+  font-size: 16px;
+  color: #888;
   line-height: 1.8;
 }
 
 .highlight {
-  margin-top: 30px;
+  margin-top: 22px;
   color: #d4af37;
-  font-size: 15px;
-  letter-spacing: 2px;
+  font-size: 13px;
+  letter-spacing: 3px;
   text-transform: uppercase;
 }
 
-/* HERO CA — above fold */
+/* ─── HERO CA — above fold ─── */
 .hero-ca {
-  margin-top: 36px;
-  border: 1px solid #222;
-  padding: 20px 24px;
-  background: #0a0a0a;
+  margin-top: 30px;
+  border: 1px solid #1e1e1e;
+  padding: 20px 24px 22px;
+  background: #070707;
   width: 100%;
-  max-width: 520px;
+  max-width: 500px;
+  position: relative;
+}
+
+/* subtle gold top accent line */
+.hero-ca::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #d4af37 50%, transparent);
+  opacity: 0.45;
 }
 
 .hero-ca .ca-label {
-  font-size: 11px;
-  color: #888888;
+  font-size: 10px;
+  color: #666;
   letter-spacing: 3px;
   text-transform: uppercase;
   margin-bottom: 10px;
 }
 
 .hero-ca .ca-address {
-  font-size: 12px;
-  color: #d0d0d0;
+  font-size: 11px;
+  color: #bbb;
   word-break: break-all;
-  letter-spacing: 1px;
-  margin-bottom: 14px;
+  letter-spacing: 0.8px;
+  margin-bottom: 16px;
+  font-family: 'Courier New', monospace;
+  opacity: 0.85;
 }
 
 .hero-ca-buttons {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   flex-wrap: wrap;
 }
 
 .btn-buy {
-  padding: 10px 22px;
+  padding: 11px 28px;
   background: #d4af37;
   color: #000;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 2px;
+  letter-spacing: 2.5px;
   text-transform: uppercase;
   text-decoration: none;
   border: none;
   cursor: pointer;
-  transition: opacity 0.3s;
+  transition: opacity 0.25s, transform 0.15s;
+  display: inline-block;
 }
 
 .btn-buy:hover {
-  opacity: 0.85;
+  opacity: 0.88;
   color: #000;
+  transform: translateY(-1px);
 }
 
 .copy-btn-hero {
-  padding: 10px 22px;
+  padding: 11px 22px;
   background: transparent;
-  border: 1px solid #444;
-  color: #b8b8b8;
-  font-size: 12px;
+  border: 1px solid #333;
+  color: #999;
+  font-size: 11px;
   letter-spacing: 2px;
   cursor: pointer;
   text-transform: uppercase;
-  transition: all 0.3s;
+  transition: all 0.25s;
 }
 
 .copy-btn-hero:hover {
@@ -161,18 +214,18 @@ body {
 }
 
 .copy-btn-hero:disabled {
-  opacity: 0.7;
+  opacity: 0.6;
   cursor: default;
 }
 
 .scroll-hint {
   position: absolute;
-  bottom: 30px;
-  font-size: 11px;
-  color: #444;
+  bottom: 28px;
+  font-size: 10px;
+  color: #333;
   letter-spacing: 3px;
   text-transform: uppercase;
-  animation: fade 3s ease-in-out infinite;
+  animation: fade 3.5s ease-in-out infinite;
 }
 
 @keyframes fade {
@@ -180,7 +233,7 @@ body {
   50% { opacity: 1; }
 }
 
-/* BANNER */
+/* ─── BANNER ─── */
 .banner-section {
   padding: 0 20px 40px;
   max-width: 1400px;
@@ -191,18 +244,18 @@ body {
   width: 100%;
   height: auto;
   display: block;
-  border: 1px solid #111;
+  border: 1px solid #0f0f0f;
 }
 
-/* DIVIDER */
+/* ─── DIVIDER ─── */
 .divider {
   width: 1px;
   height: 60px;
-  background: linear-gradient(to bottom, transparent, #222, transparent);
+  background: linear-gradient(to bottom, transparent, #1e1e1e, transparent);
   margin: 0 auto;
 }
 
-/* CONTENT SECTIONS */
+/* ─── CONTENT SECTIONS ─── */
 .section {
   padding: 60px 20px;
   max-width: 580px;
@@ -212,14 +265,14 @@ body {
 .section p {
   margin: 16px 0;
   font-size: 18px;
-  color: #cccccc;
+  color: #c8c8c8;
 }
 
 .section p.gold {
   color: #d4af37;
 }
 
-/* BRIDGE SECTION */
+/* ─── BRIDGE SECTION ─── */
 .bridge-section {
   padding: 60px 20px;
   max-width: 580px;
@@ -229,14 +282,14 @@ body {
 .bridge-section p {
   margin: 16px 0;
   font-size: 18px;
-  color: #cccccc;
+  color: #c8c8c8;
 }
 
 .bridge-section p.gold {
   color: #d4af37;
 }
 
-/* CONTRACT SECTION — full detail below fold */
+/* ─── CONTRACT — full detail below fold ─── */
 .ca-section {
   padding: 40px 20px;
   max-width: 700px;
@@ -244,15 +297,25 @@ body {
 }
 
 .ca-box {
-  border: 1px solid #222;
+  border: 1px solid #1a1a1a;
   padding: 30px 24px;
-  background: #0a0a0a;
+  background: #070707;
   line-height: 2;
+  position: relative;
+}
+
+.ca-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #d4af37 50%, transparent);
+  opacity: 0.3;
 }
 
 .ca-label {
   font-size: 11px;
-  color: #888888;
+  color: #666;
   letter-spacing: 3px;
   text-transform: uppercase;
   margin-bottom: 12px;
@@ -260,14 +323,15 @@ body {
 
 .ca-address {
   font-size: 13px;
-  color: #d0d0d0;
+  color: #c8c8c8;
   word-break: break-all;
   letter-spacing: 1px;
+  font-family: 'Courier New', monospace;
 }
 
 .ca-supply {
-  font-size: 12px;
-  color: #777777;
+  font-size: 11px;
+  color: #555;
   margin-top: 12px;
   letter-spacing: 2px;
 }
@@ -276,13 +340,13 @@ body {
   margin-top: 16px;
   padding: 8px 20px;
   background: transparent;
-  border: 1px solid #444;
-  color: #b8b8b8;
-  font-size: 12px;
+  border: 1px solid #333;
+  color: #999;
+  font-size: 11px;
   letter-spacing: 2px;
   cursor: pointer;
   text-transform: uppercase;
-  transition: all 0.3s;
+  transition: all 0.25s;
 }
 
 .copy-btn:hover {
@@ -291,11 +355,11 @@ body {
 }
 
 .copy-btn:disabled {
-  opacity: 0.7;
+  opacity: 0.6;
   cursor: default;
 }
 
-/* LINKS */
+/* ─── LINKS ─── */
 .observe-links,
 .resource-links {
   margin-top: 20px;
@@ -307,12 +371,12 @@ body {
 
 .observe-links a,
 .resource-links a {
-  font-size: 12px;
-  color: #9a9a9a;
+  font-size: 11px;
+  color: #888;
   letter-spacing: 2px;
   text-transform: uppercase;
   text-decoration: none;
-  transition: color 0.3s;
+  transition: color 0.25s;
 }
 
 .observe-links a:hover,
@@ -323,8 +387,8 @@ a:hover {
 
 .resource-title {
   margin-bottom: 20px;
-  font-size: 11px;
-  color: #888888;
+  font-size: 10px;
+  color: #666;
   letter-spacing: 3px;
   text-transform: uppercase;
 }
@@ -335,7 +399,7 @@ a {
   letter-spacing: 1px;
 }
 
-/* WATCH SECTION */
+/* ─── WATCH SECTION ─── */
 .watch-section {
   padding: 60px 20px;
   max-width: 580px;
@@ -345,30 +409,31 @@ a {
 .watch-link {
   display: inline-block;
   margin-top: 12px;
-  font-size: 14px;
+  font-size: 13px;
   color: #d4af37;
   letter-spacing: 2px;
   text-transform: uppercase;
   text-decoration: none;
-  border: 1px solid #333;
-  padding: 10px 24px;
-  transition: all 0.3s;
+  border: 1px solid #222;
+  padding: 11px 26px;
+  transition: all 0.25s;
 }
 
 .watch-link:hover {
   border-color: #d4af37;
   color: #d4af37;
-  background: rgba(212, 175, 55, 0.05);
+  background: rgba(212, 175, 55, 0.04);
+  transform: translateY(-1px);
 }
 
 .watch-note {
-  margin-top: 12px;
-  font-size: 12px;
-  color: #555;
+  margin-top: 10px;
+  font-size: 11px;
+  color: #444;
   letter-spacing: 1px;
 }
 
-/* COMMUNITY */
+/* ─── COMMUNITY ─── */
 .enter-link {
   font-size: 20px;
   color: #d4af37;
@@ -378,23 +443,16 @@ a {
 }
 
 .enter-secondary {
-  font-size: 15px;
-  color: #9a9a9a;
+  font-size: 14px;
+  color: #888;
   letter-spacing: 2px;
   display: inline-block;
   margin-top: 16px;
-  transition: color 0.3s;
+  transition: color 0.25s;
 }
 
 .enter-secondary:hover {
   color: #d4af37;
-}
-
-.social {
-  padding: 20px;
-  font-size: 14px;
-  color: #777777;
-  letter-spacing: 1px;
 }
 
 .social-links {
@@ -406,48 +464,56 @@ a {
 }
 
 .social-links a {
-  font-size: 12px;
-  color: #777777;
+  font-size: 11px;
+  color: #555;
   letter-spacing: 2px;
   text-transform: uppercase;
   text-decoration: none;
-  transition: color 0.3s;
+  transition: color 0.25s;
 }
 
 .social-links a:hover {
   color: #d4af37;
 }
 
-/* FOOTER */
+/* ─── FOOTER ─── */
 .footer {
   margin-top: 60px;
   padding: 50px 20px;
-  border-top: 1px solid #111;
+  border-top: 1px solid #0f0f0f;
   line-height: 2;
 }
 
 .footer-logo {
-  width: 160px;
-  max-width: 60vw;
+  width: 150px;
+  max-width: 55vw;
   margin-bottom: 20px;
-  opacity: 0.95;
+  opacity: 0.9;
 }
 
 .footer-text {
-  font-size: 11px;
-  color: #888888;
+  font-size: 10px;
+  color: #555;
   letter-spacing: 3px;
   text-transform: uppercase;
 }
 
-/* MOBILE */
+/* ─── MOBILE ─── */
 @media (max-width: 600px) {
+  .foundation-bar {
+    padding: 22px 18px 18px;
+  }
+
+  .foundation-text {
+    font-size: 16px;
+  }
+
   .hero-logo {
-    width: 140px;
+    width: 130px;
   }
 
   .tagline {
-    font-size: 19px;
+    font-size: 18px;
   }
 
   .sub {
@@ -465,7 +531,7 @@ a {
   }
 
   .footer-logo {
-    width: 130px;
+    width: 120px;
   }
 
   .hero-ca {
@@ -473,7 +539,7 @@ a {
   }
 
   .hero-ca .ca-address {
-    font-size: 11px;
+    font-size: 10px;
   }
 
   .hero-ca-buttons {
@@ -491,7 +557,17 @@ a {
 </head>
 <body>
 
-<!-- HERO -->
+<!-- ─── FOUNDATIONAL STATEMENT ─── -->
+<div class="foundation-bar">
+  <div class="foundation-text">
+    The universe doesn't contain Consciousness.<br>
+    Consciousness contains the universe.<br>
+    <em>*SELF is the practice of knowing that from the inside.</em>
+  </div>
+  <div class="foundation-divider"></div>
+</div>
+
+<!-- ─── HERO ─── -->
 <div class="hero">
   <img src="./assets/images/Logo_web.jpg" alt="SELF Logo" class="hero-logo">
 
@@ -520,14 +596,14 @@ a {
   <div class="scroll-hint">&#8595; continue</div>
 </div>
 
-<!-- BANNER -->
+<!-- ─── BANNER ─── -->
 <div class="banner-section">
   <img src="./assets/images/Banner.jpg" alt="You don't lose money. You lose control." class="banner-image">
 </div>
 
 <div class="divider"></div>
 
-<!-- PHILOSOPHY -->
+<!-- ─── PHILOSOPHY ─── -->
 <div class="section">
   <p>You knew something was off.</p>
   <p>You just couldn't point to it.</p>
@@ -590,7 +666,7 @@ a {
 
 <div class="divider"></div>
 
-<!-- BRIDGE -->
+<!-- ─── BRIDGE ─── -->
 <div class="bridge-section">
   <p>*SELF exists on Solana.</p>
   <p>Not as a financial instrument.</p>
@@ -601,17 +677,13 @@ a {
 
 <div class="divider"></div>
 
-<!-- CONTRACT — full detail below fold -->
+<!-- ─── CONTRACT — full detail below fold ─── -->
 <div class="ca-section">
   <div class="ca-box">
     <div class="ca-label">Contract</div>
-
     <div class="ca-address" id="contract">7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump</div>
-
     <div class="ca-supply">$SELF · Solana · Supply: 1,000,000,042</div>
-
     <button class="copy-btn" onclick="copyCA()">Copy</button>
-
     <div class="observe-links">
       <a id="pumpfun" href="#" target="_blank" rel="noopener noreferrer">pump.fun</a>
       <a id="birdeye" href="#" target="_blank" rel="noopener noreferrer">Birdeye</a>
@@ -622,7 +694,7 @@ a {
 
 <div class="divider"></div>
 
-<!-- WATCH -->
+<!-- ─── WATCH ─── -->
 <div class="watch-section">
   <div class="resource-title">Watch</div>
 
@@ -641,10 +713,9 @@ a {
 
 <div class="divider"></div>
 
-<!-- EXPLORE -->
+<!-- ─── EXPLORE ─── -->
 <div class="section">
   <div class="resource-title">Explore</div>
-
   <div class="resource-links">
     <a href="https://app.xmind.com/share/OcHbI8Mf?xid=XrVOVKnC" target="_blank" rel="noopener noreferrer">Structured</a>
     <a href="https://app.xmind.com/101oMO2f" target="_blank" rel="noopener noreferrer">Visual</a>
@@ -657,7 +728,7 @@ a {
 
 <div class="divider"></div>
 
-<!-- COMMUNITY -->
+<!-- ─── COMMUNITY ─── -->
 <div class="section">
   <p>If you're paying attention,<br>you know where to go.</p>
   <br>
@@ -672,7 +743,7 @@ a {
 
 <div class="divider"></div>
 
-<!-- SOCIAL LINKS -->
+<!-- ─── SOCIAL LINKS ─── -->
 <div class="social-links">
   <a href="https://x.com/muraliannareddy" target="_blank" rel="noopener noreferrer">X</a>
   <a href="https://t.me/selfscreen" target="_blank" rel="noopener noreferrer">Telegram</a>
@@ -680,7 +751,7 @@ a {
   <a href="https://www.instagram.com/muralireddy_79/" target="_blank" rel="noopener noreferrer">Instagram</a>
 </div>
 
-<!-- FOOTER -->
+<!-- ─── FOOTER ─── -->
 <div class="footer">
   <img src="./assets/images/Footer.png" alt="SELF Footer Logo" class="footer-logo">
   <div class="footer-text">Not a meme. A mirror.</div>
