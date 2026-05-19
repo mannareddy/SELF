@@ -652,6 +652,134 @@ a {
   margin: 32px auto;
   opacity: 0.4;
 }
+
+/* ─── IDENTITY SECTION ─── */
+.identity-section {
+  padding: 70px 20px;
+  max-width: 620px;
+  margin: auto;
+}
+
+.identity-label {
+  font-size: 10px;
+  color: #555;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+
+.identity-headline {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(22px, 3.8vw, 32px);
+  font-weight: 300;
+  color: #e0e0e0;
+  line-height: 1.55;
+  margin-bottom: 28px;
+  letter-spacing: 0.2px;
+}
+
+.identity-headline em {
+  font-style: italic;
+  color: #d4af37;
+}
+
+.identity-body {
+  font-size: 16px;
+  color: #888;
+  line-height: 1.9;
+  margin: 14px 0;
+}
+
+.identity-body strong {
+  color: #c8c8c8;
+  font-weight: 400;
+}
+
+.identity-pill {
+  display: inline-block;
+  margin-top: 24px;
+  padding: 8px 20px;
+  border: 1px solid #2a2a2a;
+  font-size: 10px;
+  color: #555;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+/* ─── RESOURCES SECTION ─── */
+.resources-section {
+  padding: 60px 20px;
+  max-width: 620px;
+  margin: auto;
+}
+
+.resources-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.resource-card {
+  border: 1px solid #181818;
+  padding: 20px 18px;
+  background: #060606;
+  text-align: left;
+  text-decoration: none;
+  display: block;
+  transition: border-color 0.25s, background 0.25s;
+  position: relative;
+}
+
+.resource-card:hover {
+  border-color: #d4af37;
+  background: #0a0900;
+  color: inherit;
+}
+
+.resource-card-label {
+  font-size: 9px;
+  color: #444;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.resource-card-title {
+  font-size: 14px;
+  color: #c8c8c8;
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+.resource-card-desc {
+  font-size: 11px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.resource-card-arrow {
+  position: absolute;
+  bottom: 14px;
+  right: 16px;
+  font-size: 14px;
+  color: #333;
+  transition: color 0.25s;
+}
+
+.resource-card:hover .resource-card-arrow {
+  color: #d4af37;
+}
+
+@media (max-width: 600px) {
+  .resources-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .identity-headline {
+    font-size: 20px;
+  }
+}
 </style>
 </head>
 <body>
@@ -805,6 +933,33 @@ a {
   </div>
 </div>
 
+
+<div class="divider"></div>
+
+<!-- ─── IDENTITY ─── -->
+<div class="identity-section">
+  <div class="identity-label">Your Identity. On-Chain. Forever.</div>
+
+  <div class="identity-headline">
+    Most things in crypto are traded.<br>
+    <em>Your identity is not.</em>
+  </div>
+
+  <div class="identity-body">
+    The *SELF framework is built on a simple truth — no two people walk the same path to Self-Realization. Your journey, your noticing, your practice is uniquely yours.
+  </div>
+
+  <div class="identity-body">
+    <strong>$SELF is being built toward something larger:</strong> a permanent, on-chain record of your individual identity within the framework. Not a profile. Not a username. An immutable mark that you were here, that you noticed, that you chose to begin.
+  </div>
+
+  <div class="identity-body">
+    A lifetime claim. Yours alone. No one else can hold what you hold.
+  </div>
+
+  <div class="identity-pill">Coming — The Identity Layer</div>
+</div>
+
 <div class="divider"></div>
 
 <!-- ─── CONTRACT — full detail below fold ─── -->
@@ -839,6 +994,46 @@ a {
     → You Are Not The Movie. You Are The Screen.
   </a>
   <div class="watch-note">5 minutes</div>
+</div>
+
+
+<div class="divider"></div>
+
+<!-- ─── RESOURCES ─── -->
+<div class="resources-section">
+  <div class="resource-title">Go Deeper</div>
+
+  <div class="resources-grid">
+
+    <a class="resource-card" href="./assets/SELF_OS.pdf.pdf" target="_blank" rel="noopener noreferrer">
+      <div class="resource-card-label">Slide Deck · Entry</div>
+      <div class="resource-card-title">*SELF OS</div>
+      <div class="resource-card-desc">The operating system for human consciousness. Start here.</div>
+      <span class="resource-card-arrow">→</span>
+    </a>
+
+    <a class="resource-card" href="./assets/Variable_of_Being.pdf.pdf" target="_blank" rel="noopener noreferrer">
+      <div class="resource-card-label">Slide Deck · Deep</div>
+      <div class="resource-card-title">The Variable of Being</div>
+      <div class="resource-card-desc">The full architecture. For those already asking the deeper question.</div>
+      <span class="resource-card-arrow">→</span>
+    </a>
+
+    <a class="resource-card" href="https://app.xmind.com/share/OcHbI8Mf?xid=XrVOVKnC" target="_blank" rel="noopener noreferrer">
+      <div class="resource-card-label">Mind Map · Structured</div>
+      <div class="resource-card-title">Framework Map</div>
+      <div class="resource-card-desc">The complete *SELF structure, navigable and interactive.</div>
+      <span class="resource-card-arrow">→</span>
+    </a>
+
+    <a class="resource-card" href="https://github.com/mannareddy/SELF/tree/main/docs" target="_blank" rel="noopener noreferrer">
+      <div class="resource-card-label">Documentation</div>
+      <div class="resource-card-title">The Docs</div>
+      <div class="resource-card-desc">Raw framework text. For those who want to read the source.</div>
+      <span class="resource-card-arrow">→</span>
+    </a>
+
+  </div>
 </div>
 
 <div class="divider"></div>
