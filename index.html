@@ -61,21 +61,18 @@ body {
   top: 16px;
   right: 18px;
   z-index: 100;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
+  display: block;
   text-decoration: none;
   cursor: pointer;
   animation: logoGlow 3s ease-in-out infinite;
 }
 
 .floating-logo-img {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  overflow: hidden;
+  width: 64px;
+  height: 64px;
   display: block;
+  border-radius: 6px;
+  overflow: hidden;
 }
 
 .floating-logo-img img {
@@ -86,11 +83,7 @@ body {
 }
 
 .floating-logo-label {
-  font-size: 9px;
-  letter-spacing: 2px;
-  color: #d4af37;
-  text-transform: uppercase;
-  opacity: 0.85;
+  display: none;
 }
 
 @keyframes logoGlow {
@@ -540,10 +533,13 @@ a {
 /* ─── MOBILE ─── */
 @media (max-width: 600px) {
   .floating-logo {
-    width: 36px;
-    height: 36px;
-    top: 14px;
-    right: 16px;
+    top: 12px;
+    right: 14px;
+  }
+
+  .floating-logo-img {
+    width: 52px;
+    height: 52px;
   }
 
   .above-fold {
@@ -619,7 +615,6 @@ a {
   <div class="floating-logo-img">
     <img src="./assets/images/Logo_web.jpg" alt="SELF Logo">
   </div>
-  <span class="floating-logo-label">SELF</span>
 </a>
 
 <!-- ─── ABOVE FOLD — everything visible on first load ─── -->
