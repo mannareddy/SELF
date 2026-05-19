@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,22 +58,39 @@ body {
 /* ─── FLOATING LOGO (top-right, glowing) ─── */
 .floating-logo {
   position: fixed;
-  top: 18px;
-  right: 22px;
+  top: 16px;
+  right: 18px;
   z-index: 100;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  overflow: hidden;
-  animation: logoGlow 3s ease-in-out infinite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
   cursor: pointer;
+  animation: logoGlow 3s ease-in-out infinite;
 }
 
-.floating-logo img {
+.floating-logo-img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: block;
+}
+
+.floating-logo-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+.floating-logo-label {
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: #d4af37;
+  text-transform: uppercase;
+  opacity: 0.85;
 }
 
 @keyframes logoGlow {
@@ -533,28 +549,32 @@ a {
   .above-fold {
     padding: 0 16px;
     min-height: 580px;
+    justify-content: space-evenly;
   }
 
   .foundation-text {
-    font-size: 14px;
-    margin-bottom: 14px;
+    font-size: 13px;
+    margin-bottom: 8px;
+    line-height: 1.5;
   }
 
   .foundation-divider {
-    margin-bottom: 14px;
+    margin-bottom: 8px;
   }
 
   .tagline {
-    font-size: 17px;
+    font-size: 16px;
+    margin: 0;
   }
 
   .sub {
-    font-size: 13px;
+    font-size: 12px;
+    margin: 4px 0;
   }
 
   .highlight {
     font-size: 10px;
-    margin-bottom: 16px;
+    margin-bottom: 10px;
   }
 
   .hero-ca {
@@ -595,8 +615,11 @@ a {
 <body>
 
 <!-- ─── FLOATING LOGO (top-right, glowing) ─── -->
-<a href="#" class="floating-logo" title="*SELF">
-  <img src="./assets/images/Logo_web.jpg" alt="SELF Logo">
+<a href="#" class="floating-logo" title="SELF">
+  <div class="floating-logo-img">
+    <img src="./assets/images/Logo_web.jpg" alt="SELF Logo">
+  </div>
+  <span class="floating-logo-label">SELF</span>
 </a>
 
 <!-- ─── ABOVE FOLD — everything visible on first load ─── -->
