@@ -3,13 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>*SELF</title>
-<meta name="description" content="Not a meme. A mirror.">
+<title>*SELF — Not a meme. A mirror.</title>
+<meta name="description" content="The universe doesn't contain Consciousness. Consciousness contains the universe. *SELF is the practice of knowing that from the inside.">
 
-<!-- Google Fonts — Cormorant Garamond -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
 
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XC5FG6W949"></script>
@@ -20,34 +19,108 @@
   gtag('config', 'G-XC5FG6W949');
 </script>
 
-<!-- Open Graph -->
-<meta property="og:title" content="*SELF">
-<meta property="og:description" content="Not a meme. A mirror.">
+<!-- OG / Twitter -->
+<meta property="og:title" content="*SELF — Not a meme. A mirror.">
+<meta property="og:description" content="Ignorance of your true SELF is the only poverty that actually matters.">
 <meta property="og:url" content="https://42self.xyz">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://42self.xyz/assets/images/Banner.jpg">
-
-<!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@muraliannareddy">
-<meta name="twitter:title" content="*SELF">
-<meta name="twitter:description" content="Not a meme. A mirror.">
+<meta name="twitter:title" content="*SELF — Not a meme. A mirror.">
+<meta name="twitter:description" content="Ignorance of your true SELF is the only poverty that actually matters.">
 <meta name="twitter:image" content="https://42self.xyz/assets/images/Banner.jpg">
-
-<!-- Favicon -->
 <link rel="icon" type="image/jpeg" href="./assets/images/Logo_web.jpg">
 
 <style>
-* { box-sizing: border-box; }
+/* ── RESET & BASE ─────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 
+:root {
+  --gold: #d4af37;
+  --gold-dim: rgba(212,175,55,0.15);
+  --gold-line: rgba(212,175,55,0.3);
+  --white: #e8e8e8;
+  --grey: #9a9a9a;
+  --dark-grey: #555;
+  --bg: #000;
+  --bg-lift: #080808;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
 body {
-  margin: 0;
-  background: #000;
-  color: #e6e6e6;
-  font-family: 'Cormorant Garamond', Georgia, serif;
+  background: var(--bg);
+  color: var(--white);
+  font-family: var(--serif);
   text-align: center;
-  line-height: 1.8;
+  line-height: 1.85;
+  overflow-x: hidden;
+}
+
+a { color: var(--gold); text-decoration: none; transition: opacity 0.25s; }
+a:hover { opacity: 0.75; }
+
+/* ── FLOATING LOGO ────────────────────────────── */
+.float-logo {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 0 18px 4px rgba(212,175,55,0.45),
+              0 0 40px 10px rgba(212,175,55,0.18);
+  animation: glow-pulse 3s ease-in-out infinite;
+  cursor: pointer;
+}
+.float-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+@keyframes glow-pulse {
+  0%,100% { box-shadow: 0 0 18px 4px rgba(212,175,55,0.45), 0 0 40px 10px rgba(212,175,55,0.18); }
+  50%      { box-shadow: 0 0 28px 8px rgba(212,175,55,0.7),  0 0 60px 18px rgba(212,175,55,0.28); }
+}
+
+/* ── SECTION UTILITY ──────────────────────────── */
+.section {
+  padding: 80px 24px;
+  max-width: 660px;
+  margin: 0 auto;
+}
+.section-wide {
+  padding: 80px 24px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+.divider {
+  width: 1px;
+  height: 70px;
+  background: linear-gradient(to bottom, transparent, #1e1e1e, transparent);
+  margin: 0 auto;
+}
+.gold-line {
+  width: 48px;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.4;
+  margin: 40px auto;
+}
+.label {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--dark-grey);
+  margin-bottom: 40px;
+  display: block;
 }
 
 /* ── HERO ─────────────────────────────────────── */
@@ -57,169 +130,124 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 40px 20px 60px;
+  padding: 100px 24px 80px;
   position: relative;
+  background: radial-gradient(ellipse at 50% 40%, rgba(212,175,55,0.04) 0%, transparent 70%);
 }
 
-.hero-logo {
-  width: 180px;
-  max-width: 60vw;
-  margin-bottom: 30px;
-  opacity: 0.98;
-}
-
-.tagline {
-  font-size: 26px;
-  margin-top: 10px;
-  line-height: 1.9;
+.hero-question {
+  font-size: clamp(28px, 5vw, 46px);
   font-weight: 300;
   font-style: italic;
-  letter-spacing: 0.5px;
-}
-
-.sub {
-  margin-top: 28px;
-  font-size: 19px;
-  color: #9a9a9a;
-  line-height: 1.9;
-  font-weight: 300;
-}
-
-.highlight {
-  margin-top: 30px;
-  color: #d4af37;
-  font-size: 13px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
-
-/* ── COSMOLOGICAL STATEMENT ───────────────────── */
-.cosmo-statement {
-  padding: 80px 20px;
-  max-width: 680px;
-  margin: 0 auto;
-  border-top: 1px solid #111;
-  border-bottom: 1px solid #111;
-}
-
-.cosmo-statement p {
-  font-size: 28px;
-  font-weight: 300;
-  font-style: italic;
-  color: #d4af37;
-  line-height: 1.9;
-  margin: 0 0 18px;
+  color: var(--gold);
+  line-height: 1.55;
+  max-width: 700px;
+  margin-bottom: 24px;
   letter-spacing: 0.3px;
 }
 
-.cosmo-statement p.plain {
-  font-size: 17px;
-  color: #888;
-  font-style: normal;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+.hero-sub {
+  font-size: clamp(17px, 2.5vw, 21px);
+  color: var(--grey);
+  font-weight: 300;
+  max-width: 500px;
+  line-height: 1.9;
+  margin-bottom: 48px;
 }
 
-/* ── HERO CA ──────────────────────────────────── */
+/* Hero CA box */
 .hero-ca {
-  margin-top: 36px;
-  border: 1px solid #222;
-  padding: 20px 24px;
-  background: #0a0a0a;
+  border: 1px solid #1e1e1e;
+  padding: 22px 28px;
+  background: var(--bg-lift);
   width: 100%;
-  max-width: 520px;
+  max-width: 540px;
   position: relative;
 }
-
-/* Corner accents */
-.hero-ca::before,
-.hero-ca::after,
-.ca-box::before,
-.ca-box::after {
+.hero-ca::before {
   content: '';
   position: absolute;
-  width: 14px;
-  height: 14px;
-  border-color: #d4af37;
-  border-style: solid;
+  top: -1px; left: -1px;
+  width: 16px; height: 16px;
+  border-top: 1px solid var(--gold);
+  border-left: 1px solid var(--gold);
 }
-.hero-ca::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
-.hero-ca::after  { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
-
-.hero-ca .ca-label {
-  font-size: 11px;
-  color: #888888;
-  letter-spacing: 3px;
+.hero-ca::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; right: -1px;
+  width: 16px; height: 16px;
+  border-bottom: 1px solid var(--gold);
+  border-right: 1px solid var(--gold);
+}
+.ca-label {
+  font-family: var(--sans);
+  font-size: 10px;
+  color: #666;
+  letter-spacing: 4px;
   text-transform: uppercase;
   margin-bottom: 10px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
-
-.hero-ca .ca-address {
-  font-size: 12px;
-  color: #d0d0d0;
+.ca-address {
+  font-family: var(--sans);
+  font-size: 11.5px;
+  color: #bbb;
   word-break: break-all;
-  letter-spacing: 1px;
-  margin-bottom: 14px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  letter-spacing: 0.8px;
+  margin-bottom: 16px;
 }
-
-.hero-ca-buttons {
+.ca-buttons {
   display: flex;
   justify-content: center;
-  align-items: center;
   gap: 12px;
   flex-wrap: wrap;
 }
-
-.btn-buy {
-  padding: 10px 22px;
-  background: #d4af37;
+.btn-gold {
+  padding: 11px 26px;
+  background: var(--gold);
   color: #000;
+  font-family: var(--sans);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 3px;
   text-transform: uppercase;
-  text-decoration: none;
   border: none;
   cursor: pointer;
-  transition: opacity 0.3s;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  transition: opacity 0.25s;
+  text-decoration: none;
+  display: inline-block;
 }
-.btn-buy:hover { opacity: 0.85; color: #000; }
-
-.copy-btn-hero {
-  padding: 10px 22px;
+.btn-gold:hover { opacity: 0.82; color: #000; }
+.btn-outline {
+  padding: 11px 26px;
   background: transparent;
-  border: 1px solid #444;
-  color: #b8b8b8;
+  border: 1px solid #333;
+  color: #999;
+  font-family: var(--sans);
   font-size: 11px;
   letter-spacing: 2px;
-  cursor: pointer;
   text-transform: uppercase;
-  transition: all 0.3s;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  cursor: pointer;
+  transition: all 0.25s;
 }
-.copy-btn-hero:hover { border-color: #d4af37; color: #d4af37; }
-.copy-btn-hero:disabled { opacity: 0.7; cursor: default; }
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+.btn-outline:disabled { opacity: 0.6; cursor: default; }
 
 .scroll-hint {
   position: absolute;
-  bottom: 30px;
-  font-size: 11px;
-  color: #333;
+  bottom: 32px;
+  font-family: var(--sans);
+  font-size: 10px;
+  color: #2e2e2e;
   letter-spacing: 4px;
   text-transform: uppercase;
-  animation: fade 3s ease-in-out infinite;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  animation: fade 4s ease-in-out infinite;
 }
 @keyframes fade { 0%,100%{opacity:0} 50%{opacity:1} }
 
 /* ── BANNER ───────────────────────────────────── */
 .banner-section {
-  padding: 0 20px 40px;
+  padding: 0 0 0;
   max-width: 1400px;
   margin: 0 auto;
 }
@@ -227,343 +255,439 @@ body {
   width: 100%;
   height: auto;
   display: block;
-  border: 1px solid #111;
+  border-top: 1px solid #0e0e0e;
+  border-bottom: 1px solid #0e0e0e;
 }
 
-/* ── DIVIDER ──────────────────────────────────── */
-.divider {
-  width: 1px;
-  height: 60px;
-  background: linear-gradient(to bottom, transparent, #222, transparent);
+/* ── PHILOSOPHY LINES ─────────────────────────── */
+.phil-line {
+  font-size: clamp(20px, 3vw, 27px);
+  font-weight: 300;
+  color: #ccc;
+  line-height: 1.9;
+  margin: 16px 0;
+}
+.phil-line.gold { color: var(--gold); font-style: italic; }
+.phil-line.dim  { color: #666; font-size: clamp(16px, 2vw, 20px); }
+
+/* ── FRAMEWORK SECTION ────────────────────────── */
+.framework-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2px;
+  max-width: 960px;
+  margin: 48px auto 0;
+  text-align: left;
+}
+.framework-card {
+  padding: 36px 32px;
+  background: var(--bg-lift);
+  border: 1px solid #111;
+  position: relative;
+  transition: border-color 0.3s;
+}
+.framework-card:hover { border-color: #2a2a2a; }
+.framework-card .num {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  opacity: 0.6;
+  margin-bottom: 16px;
+  display: block;
+}
+.framework-card h3 {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--white);
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+.framework-card p {
+  font-family: var(--serif);
+  font-size: 17px;
+  font-weight: 300;
+  color: var(--grey);
+  line-height: 1.85;
+}
+
+/* ── COSMOLOGICAL STATEMENT ───────────────────── */
+.cosmo-block {
+  padding: 90px 24px;
+  background: radial-gradient(ellipse at 50% 50%, rgba(212,175,55,0.05) 0%, transparent 65%);
+  border-top: 1px solid #0e0e0e;
+  border-bottom: 1px solid #0e0e0e;
+}
+.cosmo-block p {
+  font-size: clamp(22px, 4vw, 36px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--gold);
+  line-height: 1.7;
+  max-width: 700px;
+  margin: 0 auto 20px;
+}
+.cosmo-block .plain {
+  font-style: normal;
+  font-size: clamp(15px, 2vw, 19px);
+  color: #666;
+}
+
+/* ── WHY $SELF ────────────────────────────────── */
+.why-section {
+  padding: 90px 24px;
+  background: var(--bg-lift);
+  border-top: 1px solid #0e0e0e;
+  border-bottom: 1px solid #0e0e0e;
+}
+.why-section h2 {
+  font-size: clamp(26px, 4vw, 40px);
+  font-weight: 300;
+  color: var(--white);
+  max-width: 680px;
+  margin: 0 auto 48px;
+  line-height: 1.5;
+}
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  max-width: 960px;
+  margin: 0 auto 48px;
+  text-align: left;
+}
+.why-card {
+  padding: 32px 28px;
+  border: 1px solid #151515;
+  background: #000;
+}
+.why-card .icon {
+  font-size: 28px;
+  margin-bottom: 16px;
+  display: block;
+}
+.why-card h4 {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+.why-card p {
+  font-family: var(--serif);
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--grey);
+  line-height: 1.85;
+}
+.why-closing {
+  max-width: 640px;
+  margin: 0 auto;
+  font-size: clamp(18px, 2.5vw, 24px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--white);
+  line-height: 1.8;
+}
+
+/* ── COSMIC LEDGER ────────────────────────────── */
+.cosmic-section {
+  padding: 90px 24px;
+  max-width: 680px;
   margin: 0 auto;
 }
-
-/* ── CONTENT SECTIONS ─────────────────────────── */
-.section {
-  padding: 60px 20px;
-  max-width: 600px;
-  margin: auto;
-}
-.section p {
-  margin: 18px 0;
-  font-size: 22px;
-  color: #cccccc;
+.cosmic-section p {
+  font-size: clamp(18px, 2.5vw, 23px);
   font-weight: 300;
+  color: #bbb;
+  line-height: 1.95;
+  margin: 18px 0;
+}
+.cosmic-section p.gold {
+  color: var(--gold);
+  font-style: italic;
+  font-size: clamp(20px, 3vw, 28px);
+}
+.cosmic-section p.dim { color: #555; font-size: clamp(15px, 2vw, 18px); }
+
+/* ── WATCH SECTION ────────────────────────────── */
+.watch-section {
+  padding: 80px 24px;
+  background: var(--bg-lift);
+  border-top: 1px solid #0e0e0e;
+  border-bottom: 1px solid #0e0e0e;
+}
+.watch-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-top: 40px;
+}
+.watch-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--gold);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid #222;
+  padding: 14px 30px;
+  transition: all 0.3s;
+  max-width: 420px;
+  width: 100%;
+  justify-content: center;
+}
+.watch-link:hover { border-color: var(--gold); background: var(--gold-dim); opacity: 1; }
+.watch-note {
+  font-family: var(--sans);
+  font-size: 10px;
+  color: #444;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 6px;
+}
+
+/* ── MIRROR ROOM ──────────────────────────────── */
+.mirror-room {
+  padding: 90px 24px;
+  border-top: 1px solid #0e0e0e;
+}
+.mirror-room h2 {
+  font-size: clamp(26px, 4vw, 38px);
+  font-weight: 300;
+  color: var(--white);
+  margin-bottom: 20px;
+  max-width: 580px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+}
+.mirror-room .descriptor {
+  font-size: clamp(16px, 2vw, 20px);
+  font-weight: 300;
+  color: var(--grey);
+  max-width: 540px;
+  margin: 0 auto 48px;
   line-height: 1.9;
 }
-.section p.gold { color: #d4af37; }
-.section p.italic { font-style: italic; }
+.mirror-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+.mirror-link {
+  display: block;
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid #222;
+  padding: 14px 36px;
+  transition: all 0.3s;
+  text-decoration: none;
+  width: 100%;
+  max-width: 380px;
+}
+.mirror-link:hover { border-color: var(--gold); background: var(--gold-dim); opacity: 1; }
+.mirror-link.primary {
+  background: var(--gold);
+  color: #000;
+  border-color: var(--gold);
+  font-weight: 700;
+}
+.mirror-link.primary:hover { opacity: 0.85; }
 
 /* ── BRIDGE ───────────────────────────────────── */
 .bridge-section {
-  padding: 60px 20px;
-  max-width: 600px;
-  margin: auto;
+  padding: 70px 24px;
+  max-width: 580px;
+  margin: 0 auto;
 }
 .bridge-section p {
-  margin: 18px 0;
-  font-size: 22px;
-  color: #cccccc;
+  font-size: clamp(18px, 2.5vw, 23px);
   font-weight: 300;
+  color: #bbb;
   line-height: 1.9;
+  margin: 16px 0;
 }
-.bridge-section p.gold { color: #d4af37; }
-
-/* ── COSMIC LEDGER SECTION ────────────────────── */
-.cosmic-section {
-  padding: 90px 20px;
-  max-width: 680px;
-  margin: 0 auto;
-  border-top: 1px solid #111;
-  border-bottom: 1px solid #111;
-  position: relative;
-}
-
-.cosmic-section .label {
-  font-size: 11px;
-  color: #555;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  margin-bottom: 50px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
-
-.cosmic-section p {
-  font-size: 21px;
-  font-weight: 300;
-  color: #cccccc;
-  line-height: 1.95;
-  margin: 20px 0;
-}
-
-.cosmic-section p.gold {
-  color: #d4af37;
-  font-style: italic;
-  font-size: 24px;
-}
-
-.cosmic-section p.emphasis {
-  font-size: 19px;
-  color: #888;
-  font-style: italic;
-}
-
-.cosmic-section .ledger-line {
-  margin: 50px auto;
-  width: 60px;
-  height: 1px;
-  background: #d4af37;
-  opacity: 0.4;
-}
-
-.cosmic-section .closing {
-  font-size: 14px;
-  color: #555;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  margin-top: 50px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
+.bridge-section p.gold { color: var(--gold); font-style: italic; }
 
 /* ── CONTRACT SECTION ─────────────────────────── */
-.ca-section {
-  padding: 40px 20px;
-  max-width: 700px;
-  margin: auto;
+.ca-full-section {
+  padding: 40px 24px 60px;
+  max-width: 680px;
+  margin: 0 auto;
 }
-
-.ca-box {
-  border: 1px solid #222;
-  padding: 30px 24px;
-  background: #0a0a0a;
-  line-height: 2;
+.ca-full-box {
+  border: 1px solid #1a1a1a;
+  padding: 36px 28px;
+  background: var(--bg-lift);
   position: relative;
 }
-
-.ca-box::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
-.ca-box::after  { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
-
-.ca-label {
-  font-size: 11px;
-  color: #888888;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  margin-bottom: 12px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+.ca-full-box::before {
+  content: '';
+  position: absolute;
+  top: -1px; left: -1px;
+  width: 18px; height: 18px;
+  border-top: 1px solid var(--gold);
+  border-left: 1px solid var(--gold);
 }
-
-.ca-address {
+.ca-full-box::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; right: -1px;
+  width: 18px; height: 18px;
+  border-bottom: 1px solid var(--gold);
+  border-right: 1px solid var(--gold);
+}
+.ca-full-box .ca-address-full {
+  font-family: var(--sans);
   font-size: 13px;
-  color: #d0d0d0;
+  color: #ccc;
   word-break: break-all;
   letter-spacing: 1px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  margin: 12px 0;
 }
-
-.ca-supply {
-  font-size: 12px;
-  color: #777777;
-  margin-top: 12px;
-  letter-spacing: 2px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
-
-.copy-btn {
-  margin-top: 16px;
-  padding: 8px 20px;
-  background: transparent;
-  border: 1px solid #444;
-  color: #b8b8b8;
-  font-size: 12px;
-  letter-spacing: 2px;
-  cursor: pointer;
-  text-transform: uppercase;
-  transition: all 0.3s;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
-.copy-btn:hover { border-color: #d4af37; color: #d4af37; }
-.copy-btn:disabled { opacity: 0.7; cursor: default; }
-
-/* ── LINKS ────────────────────────────────────── */
-.observe-links, .resource-links {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-  flex-wrap: wrap;
-}
-.observe-links a, .resource-links a {
-  font-size: 12px;
-  color: #9a9a9a;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  text-decoration: none;
-  transition: color 0.3s;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
-.observe-links a:hover, .resource-links a:hover, a:hover { color: #d4af37; }
-
-.resource-title {
-  margin-bottom: 20px;
+.ca-full-box .supply {
+  font-family: var(--sans);
   font-size: 11px;
-  color: #888888;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
-
-a {
-  color: #d4af37;
-  text-decoration: none;
-  letter-spacing: 1px;
-}
-
-/* ── WATCH ────────────────────────────────────── */
-.watch-section {
-  padding: 60px 20px;
-  max-width: 600px;
-  margin: auto;
-}
-.watch-link {
-  display: inline-block;
-  margin-top: 12px;
-  font-size: 14px;
-  color: #d4af37;
+  color: #444;
   letter-spacing: 2px;
   text-transform: uppercase;
-  text-decoration: none;
-  border: 1px solid #333;
-  padding: 10px 24px;
-  transition: all 0.3s;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
-.watch-link:hover {
-  border-color: #d4af37;
-  color: #d4af37;
-  background: rgba(212,175,55,0.05);
-}
-.watch-note {
-  margin-top: 12px;
-  font-size: 12px;
-  color: #555;
-  letter-spacing: 1px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
-
-/* ── COMMUNITY ────────────────────────────────── */
-.enter-link {
-  font-size: 20px;
-  color: #d4af37;
-  letter-spacing: 3px;
-  display: inline-block;
   margin-top: 10px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
-.enter-secondary {
-  font-size: 15px;
-  color: #9a9a9a;
-  letter-spacing: 2px;
-  display: inline-block;
-  margin-top: 16px;
-  transition: color 0.3s;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
-.enter-secondary:hover { color: #d4af37; }
-
-.social-links {
+.trade-links {
   display: flex;
   justify-content: center;
-  gap: 24px;
+  gap: 28px;
   flex-wrap: wrap;
-  padding: 10px 20px 30px;
+  margin-top: 20px;
 }
-.social-links a {
-  font-size: 12px;
-  color: #777777;
+.trade-links a {
+  font-family: var(--sans);
+  font-size: 11px;
+  color: #777;
   letter-spacing: 2px;
   text-transform: uppercase;
   text-decoration: none;
-  transition: color 0.3s;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  transition: color 0.25s;
 }
-.social-links a:hover { color: #d4af37; }
+.trade-links a:hover { color: var(--gold); opacity: 1; }
+
+/* ── EXPLORE ──────────────────────────────────── */
+.explore-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px 32px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+.explore-links a {
+  font-family: var(--sans);
+  font-size: 11px;
+  color: #666;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.25s;
+}
+.explore-links a:hover { color: var(--gold); opacity: 1; }
 
 /* ── FOOTER ───────────────────────────────────── */
 .footer {
-  margin-top: 60px;
-  padding: 50px 20px;
-  border-top: 1px solid #111;
-  line-height: 2;
+  padding: 60px 24px 48px;
+  border-top: 1px solid #0e0e0e;
 }
 .footer-logo {
-  width: 160px;
-  max-width: 60vw;
-  margin-bottom: 20px;
-  opacity: 0.95;
+  width: 140px;
+  max-width: 50vw;
+  margin: 0 auto 24px;
+  display: block;
+  opacity: 0.9;
 }
-.footer-text {
-  font-size: 11px;
-  color: #555;
-  letter-spacing: 4px;
+.footer-tagline {
+  font-family: var(--sans);
+  font-size: 10px;
+  color: #333;
+  letter-spacing: 5px;
   text-transform: uppercase;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  margin-bottom: 32px;
+}
+.footer-socials {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+.footer-socials a {
+  font-family: var(--sans);
+  font-size: 10px;
+  color: #444;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.25s;
+}
+.footer-socials a:hover { color: var(--gold); opacity: 1; }
+.footer-ca {
+  font-family: var(--sans);
+  font-size: 10px;
+  color: #2a2a2a;
+  letter-spacing: 1px;
+  word-break: break-all;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
-/* ── MOBILE ───────────────────────────────────── */
-@media (max-width: 600px) {
-  .hero-logo { width: 140px; }
-  .tagline { font-size: 22px; }
-  .sub { font-size: 17px; }
-  .section p, .bridge-section p { font-size: 19px; }
-  .cosmo-statement p { font-size: 22px; }
-  .cosmic-section p { font-size: 18px; }
-  .cosmic-section p.gold { font-size: 20px; }
-  .observe-links, .resource-links { gap: 16px; }
-  .footer-logo { width: 130px; }
-  .hero-ca { padding: 16px; }
-  .hero-ca .ca-address { font-size: 11px; }
-  .hero-ca-buttons { flex-direction: column; gap: 8px; }
-  .btn-buy, .copy-btn-hero { width: 100%; text-align: center; }
+/* ── RESPONSIVE ───────────────────────────────── */
+@media (max-width: 640px) {
+  .hero-question { font-size: 26px; }
+  .framework-grid { grid-template-columns: 1fr; gap: 1px; }
+  .why-grid { grid-template-columns: 1fr; }
+  .float-logo { width: 42px; height: 42px; top: 14px; }
 }
 </style>
 </head>
 <body>
 
-<!-- HERO -->
-<div class="hero">
-  <img src="./assets/images/Logo_web.jpg" alt="SELF Logo" class="hero-logo">
+<!-- FLOATING LOGO -->
+<a href="#" class="float-logo" title="*SELF">
+  <img src="./assets/images/Logo_web.jpg" alt="*SELF">
+</a>
 
-  <div class="tagline">
-    You knew.<br>
-    You just didn't stop yourself.
-  </div>
+<!-- ═══════════════════════════════════════════════
+     SECTION 1 — HERO / HOOK
+     ═══════════════════════════════════════════════ -->
+<section class="hero">
 
-  <div class="sub">
-    Most people don't lose money.<br>
-    They lose control.
-  </div>
+  <p class="hero-question">
+    If Bitcoin is worth $80,000 —<br>
+    what is your own SELF worth?
+  </p>
 
-  <div class="highlight">Not a meme. A mirror.</div>
+  <p class="hero-sub">
+    In any currency you like.
+  </p>
 
   <div class="hero-ca">
     <div class="ca-label">$SELF · Solana</div>
     <div class="ca-address" id="contract-hero">7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump</div>
-    <div class="hero-ca-buttons">
-      <a class="btn-buy" id="gmgn-hero" href="#" target="_blank" rel="noopener noreferrer">Buy on GMGN →</a>
-      <button class="copy-btn-hero" onclick="copyCAHero()">Copy CA</button>
+    <div class="ca-buttons">
+      <a class="btn-gold" id="gmgn-hero" href="#" target="_blank" rel="noopener noreferrer">Buy on GMGN →</a>
+      <button class="btn-outline" onclick="copyCAHero()">Copy CA</button>
     </div>
   </div>
 
-  <div class="scroll-hint">&#8595; continue</div>
-</div>
-
-<!-- COSMOLOGICAL STATEMENT -->
-<div class="cosmo-statement">
-  <p class="plain">The Foundation</p>
-  <p>The universe doesn't contain Consciousness.</p>
-  <p>Consciousness contains the universe.</p>
-  <p style="color:#888; font-style:normal; font-size:19px;">*SELF is the practice of knowing that from the inside.</p>
-</div>
+  <div class="scroll-hint">↓ continue</div>
+</section>
 
 <!-- BANNER -->
 <div class="banner-section">
@@ -572,225 +696,94 @@ a {
 
 <div class="divider"></div>
 
-<!-- PHILOSOPHY -->
-<div class="section">
-  <p>You knew something was off.</p>
-  <p>You just couldn't point to it.</p>
-</div>
+<!-- ═══════════════════════════════════════════════
+     SECTION 2 — THE MIRROR (recognition)
+     ═══════════════════════════════════════════════ -->
+<section class="section">
+  <span class="label">The Mirror</span>
+
+  <p class="phil-line">You knew something was off.</p>
+  <p class="phil-line">You just couldn't point to it.</p>
+</section>
 
 <div class="divider"></div>
 
-<div class="section">
-  <p>You tried to fix it outside.</p>
-  <p>Wealth. Health. Status.</p>
-  <p>It didn't stay fixed.</p>
-</div>
+<section class="section">
+  <p class="phil-line">You tried to fix it outside.</p>
+  <p class="phil-line">Wealth. Health. Status.</p>
+  <p class="phil-line">It didn't stay fixed.</p>
+</section>
 
 <div class="divider"></div>
 
-<div class="section">
-  <p>It wasn't external.</p>
-  <p>It was the moment you stopped noticing.</p>
-</div>
+<section class="section">
+  <p class="phil-line">Justin Sun paid $4.6M for lunch with Warren Buffett.</p>
+  <p class="phil-line dim">Three hours. Not one view changed.</p>
+  <p class="phil-line">Then $30,000,000 for one hour with Elon Musk.</p>
+  <p class="phil-line gold">Musk never responded.</p>
+</section>
 
 <div class="divider"></div>
 
-<div class="section">
-  <p>*SELF is that moment.</p>
-  <p>The space between trigger and response.</p>
-</div>
+<section class="section">
+  <p class="phil-line">Money bought one seat.</p>
+  <p class="phil-line gold">It couldn't buy the other.</p>
+</section>
 
 <div class="divider"></div>
 
-<div class="section">
-  <p>It doesn't happen once.</p>
-  <p>It happens in small moments you ignore.</p>
-</div>
+<section class="section">
+  <p class="phil-line">Have you ever felt a void inside —</p>
+  <p class="phil-line gold">despite having enough?</p>
+  <p class="phil-line">Wealth. Status. Achievements.</p>
+  <p class="phil-line">And still — something missing.</p>
+</section>
 
 <div class="divider"></div>
 
-<div class="section">
-  <p>You are not the chaotic movie<br>playing on the screen.</p>
-  <p class="gold">You are the screen itself.</p>
-  <p>
-    The movie is full of noise.<br>
-    The screen stays still.<br>
-    No matter what is projected.
-  </p>
-</div>
+<section class="section">
+  <p class="phil-line">That void is not a flaw.</p>
+  <p class="phil-line gold">It is a signal.</p>
+  <p class="phil-line dim">Pointing in a different direction.</p>
+</section>
 
 <div class="divider"></div>
 
-<div class="section">
-  <p>You're not here to believe anything.</p>
-  <p>You're here to notice when it happens.</p>
-</div>
+<!-- ═══════════════════════════════════════════════
+     SECTION 3 — THE FRAMEWORK
+     ═══════════════════════════════════════════════ -->
+<section class="section-wide">
+  <span class="label">The Framework</span>
+  <p class="phil-line" style="margin-bottom:8px;">The *SELF operating system. Six layers.</p>
+  <p class="phil-line dim">Most people run on the first one their whole life.</p>
 
-<div class="divider"></div>
+  <div class="framework-grid">
 
-<div class="section">
-  <p>If you see it, you already understand.</p>
-  <p>If you don't, nothing here will convince you.</p>
-</div>
-
-<div class="divider"></div>
-
-<!-- COSMIC LEDGER SECTION -->
-<div class="cosmic-section">
-  <div class="label">The Cosmic Ledger</div>
-
-  <p>You buy Bitcoin. You hold it. You sell it for profit.</p>
-  <p>The transaction lives on a ledger.</p>
-
-  <div class="ledger-line"></div>
-
-  <p class="gold">What if the transaction that actually matters —</p>
-  <p class="gold">every choice, every reaction,<br>every moment you ignored yourself —</p>
-  <p class="gold">is recorded on a ledger no blockchain can contain?</p>
-
-  <div class="ledger-line"></div>
-
-  <p>It travels with you.<br>Beyond this lifetime. Beyond this body.</p>
-
-  <p class="emphasis">You may not believe in reincarnation.<br>You may not believe in God.</p>
-
-  <p>But the balance sheet of who you were —<br>
-  every good deed, every act of cowardice,<br>
-  every moment of genuine awareness —<br>
-  that belongs to the SELF.</p>
-
-  <p>Before it finally returns<br>to the source it came from.</p>
-
-  <div class="ledger-line"></div>
-
-  <p class="gold">The cosmic ledger doesn't have a gas fee.</p>
-  <p>It doesn't need one.</p>
-
-  <div class="closing">Not a meme. A mirror.</div>
-</div>
-
-<div class="divider"></div>
-
-<!-- BRIDGE -->
-<div class="bridge-section">
-  <p>*SELF exists on Solana.</p>
-  <p>Not as a financial instrument.</p>
-  <p class="gold">As a mirror with a ledger.</p>
-  <p>The supply is fixed.<br>The 42 is not decoration.</p>
-  <p>T + O + B + E = 42.<br>To Be.</p>
-</div>
-
-<div class="divider"></div>
-
-<!-- CONTRACT -->
-<div class="ca-section">
-  <div class="ca-box">
-    <div class="ca-label">Contract</div>
-    <div class="ca-address" id="contract">7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump</div>
-    <div class="ca-supply">$SELF · Solana · Supply: 1,000,000,042</div>
-    <button class="copy-btn" onclick="copyCA()">Copy</button>
-    <div class="observe-links">
-      <a id="pumpfun" href="#" target="_blank" rel="noopener noreferrer">pump.fun</a>
-      <a id="birdeye" href="#" target="_blank" rel="noopener noreferrer">Birdeye</a>
-      <a id="gmgn" href="#" target="_blank" rel="noopener noreferrer">GMGN</a>
+    <div class="framework-card">
+      <span class="num">01</span>
+      <h3>The Default OS</h3>
+      <p>Stimulus. Response. Repeat. The autopilot running underneath every trade, every decision, every reaction — and most people never notice it running.</p>
     </div>
-  </div>
-</div>
 
-<div class="divider"></div>
+    <div class="framework-card">
+      <span class="num">02</span>
+      <h3>The Arrival Fallacy</h3>
+      <p>The false belief that the next milestone will finally bring peace. Hedonic Adaptation means what thrills you today becomes routine tomorrow. The void returns every time.</p>
+    </div>
 
-<!-- WATCH -->
-<div class="watch-section">
-  <div class="resource-title">Watch</div>
+    <div class="framework-card">
+      <span class="num">03</span>
+      <h3>The Ego</h3>
+      <p>In Latin, Ego simply means "I." But the Ego is the mask — your name, status, achievements, wounds, the story you tell about yourself. The false self that keeps seeking outside.</p>
+    </div>
 
-  <a class="watch-link" href="https://youtu.be/904IS3mxH3o" target="_blank" rel="noopener noreferrer">
-    → You Watched Yourself Do It Anyway
-  </a>
-  <div class="watch-note">90 seconds</div>
+    <div class="framework-card">
+      <span class="num">04</span>
+      <h3>The True "I"</h3>
+      <p>Your pure, underlying conscious awareness. The silent observer behind every thought. The screen, not the movie. Every tradition that found truth arrived at the same address.</p>
+    </div>
 
-  <br><br>
-
-  <a class="watch-link" href="https://youtu.be/OPBLi31IAz4" target="_blank" rel="noopener noreferrer">
-    → You Are Not The Movie. You Are The Screen.
-  </a>
-  <div class="watch-note">5 minutes</div>
-</div>
-
-<div class="divider"></div>
-
-<!-- EXPLORE -->
-<div class="section">
-  <div class="resource-title">Explore</div>
-  <div class="resource-links">
-    <a href="https://app.xmind.com/share/OcHbI8Mf?xid=XrVOVKnC" target="_blank" rel="noopener noreferrer">Structured</a>
-    <a href="https://app.xmind.com/101oMO2f" target="_blank" rel="noopener noreferrer">Visual</a>
-    <a href="https://github.com/mannareddy/SELF" target="_blank" rel="noopener noreferrer">GitHub</a>
-    <a href="https://github.com/mannareddy/SELF/tree/main/docs" target="_blank" rel="noopener noreferrer">Docs</a>
-    <a href="https://www.youtube.com/channel/UCdQDrBMeE_uhDpqWY9QKlgw" target="_blank" rel="noopener noreferrer">YouTube</a>
-    <a href="https://www.instagram.com/muralireddy_79/" target="_blank" rel="noopener noreferrer">Instagram</a>
-  </div>
-</div>
-
-<div class="divider"></div>
-
-<!-- COMMUNITY -->
-<div class="section">
-  <p>If you're paying attention,<br>you know where to go.</p>
-  <br>
-  <a class="enter-link" href="https://t.me/selfscreen" target="_blank" rel="noopener noreferrer">
-    → Enter Telegram
-  </a>
-  <br>
-  <a class="enter-secondary" href="https://www.youtube.com/channel/UCdQDrBMeE_uhDpqWY9QKlgw" target="_blank" rel="noopener noreferrer">
-    → Watch on YouTube
-  </a>
-</div>
-
-<div class="divider"></div>
-
-<!-- SOCIAL -->
-<div class="social-links">
-  <a href="https://x.com/muraliannareddy" target="_blank" rel="noopener noreferrer">X</a>
-  <a href="https://t.me/selfscreen" target="_blank" rel="noopener noreferrer">Telegram</a>
-  <a href="https://www.youtube.com/channel/UCdQDrBMeE_uhDpqWY9QKlgw" target="_blank" rel="noopener noreferrer">YouTube</a>
-  <a href="https://www.instagram.com/muralireddy_79/" target="_blank" rel="noopener noreferrer">Instagram</a>
-</div>
-
-<!-- FOOTER -->
-<div class="footer">
-  <img src="./assets/images/Footer.png" alt="SELF Footer Logo" class="footer-logo">
-  <div class="footer-text">Not a meme. A mirror.</div>
-</div>
-
-<script>
-const CA = '7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump';
-
-function copyCA() {
-  navigator.clipboard.writeText(CA).then(() => {
-    const btn = document.querySelector('.copy-btn');
-    const orig = btn.innerText;
-    btn.innerText = 'Copied';
-    setTimeout(() => { btn.innerText = orig; }, 2000);
-  });
-}
-
-function copyCAHero() {
-  navigator.clipboard.writeText(CA).then(() => {
-    const btn = document.querySelector('.copy-btn-hero');
-    const orig = btn.innerText;
-    btn.innerText = 'Copied';
-    btn.disabled = true;
-    setTimeout(() => { btn.innerText = orig; btn.disabled = false; }, 2000);
-  });
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-  document.getElementById('pumpfun').href = `https://pump.fun/coin/${CA}`;
-  document.getElementById('birdeye').href = `https://birdeye.so/token/${CA}?chain=solana`;
-  document.getElementById('gmgn').href = `https://gmgn.ai/sol/token/solscan_${CA}`;
-  document.getElementById('gmgn-hero').href = `https://gmgn.ai/sol/token/solscan_${CA}`;
-});
-</script>
-
-</body>
-</html>
+    <div class="framework-card">
+      <span class="num">05</span>
+      <h3>The Gap</h3>
+      <p>The space between trigger and response. The whole practice lives here. Most people collapse it instantly. The RRRR Protocol: R
