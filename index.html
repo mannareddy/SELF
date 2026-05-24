@@ -27,6 +27,18 @@ gtag('config','G-XC5FG6W949');
 <meta name="twitter:image" content="https://42self.xyz/assets/images/Banner.jpg">
 <link rel="icon" type="image/jpeg" href="./assets/images/Logo_web.jpg">
 <style>
+.watch-link-inner{
+  display:flex;flex-direction:column;
+  align-items:center;width:100%;max-width:440px;
+}
+.watch-thumb{
+  width:100%;max-width:440px;height:200px;
+  object-fit:cover;display:block;
+  border:1px solid #1a1a1a;margin-bottom:0;
+  filter:brightness(0.85);
+  transition:filter .3s;
+}
+.watch-thumb:hover{filter:brightness(1);}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 :root{
@@ -201,12 +213,12 @@ a:hover{opacity:.7;}
   <p class="hero-question">If Bitcoin is worth $80,000 —<br>what is your own SELF worth?</p>
   <p class="hero-sub">In any currency you like.</p>
   <div class="hero-ca">
-    <div class="ca-label">$SELF &middot; Solana</div>
-    <div class="ca-address">7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump</div>
-    <div class="ca-buttons">
-      <a class="btn-gold" href="https://gmgn.ai/sol/token/solscan_7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump" target="_blank" rel="noopener noreferrer">Buy on GMGN &rarr;</a>
-      <button class="btn-outline" onclick="copyCA('hero-ca-btn',this)">Copy CA</button>
-    </div>
+  <p class="hero-sub" style="margin-bottom:16px;">$SELF · Solana</p>
+  <a class="btn-outline" href="#contract" 
+   style="display:inline-block;padding:12px 32px;
+   font-size:11px;letter-spacing:3px;">
+  ↓ View Contract
+  </a>
   </div>
   <span class="scroll-hint">&darr; continue</span>
 </section>
@@ -283,14 +295,16 @@ a:hover{opacity:.7;}
       <p>The mask the &ldquo;I&rdquo; wears. Your name, status, achievements, wounds, the story you tell about yourself. The false self that keeps seeking outside. Prerequisite to knowing your true SELF: see through it.</p>
     </div>
     <div class="framework-card">
-      <span class="num">04</span>
-      <h3>The True &ldquo;I&rdquo;</h3>
-      <p>Your pure, underlying conscious awareness. The silent observer behind every thought. The screen, not the movie. Every tradition that found truth arrived at the same address.</p>
-    </div>
+    <span class="num">04</span>
+    <h3>The True &ldquo;I&rdquo;</h3>
+    <p>Your pure, underlying conscious awareness. The silent observer behind every thought. The screen, not the movie — unchanged by whatever plays on it. The senses collect, the mind 
+       projects, the ego claims ownership. But the screen was never the projection. Every tradition that found truth arrived at the 
+       same address.</p>
+</div>
     <div class="framework-card">
       <span class="num">05</span>
       <h3>The Gap</h3>
-      <p>The space between trigger and response. The whole practice lives here. The RRRR Protocol: Recognize &rarr; Reflect &rarr; Reframe &rarr; Respond. Most people collapse it instantly.</p>
+      <p>The RRRR Protocol: Recognize &rarr; Resist &rarr; Release &rarr; Return. The four-step circuit breaker between stimulus and response. Most people collapse it instantly.</p>
     </div>
     <div class="framework-card">
       <span class="num">06</span>
@@ -387,20 +401,38 @@ a:hover{opacity:.7;}
   <span class="label">Watch &amp; Listen</span>
   <p class="phil-line bright">The full framework. Two formats.</p>
   <p class="phil-line dim">Start with 90 seconds.</p>
-  <div class="watch-links">
-    <div>
-      <a class="watch-link" href="https://youtu.be/904IS3mxH3o" target="_blank" rel="noopener">
-        &rarr; You Watched Yourself Do It Anyway
-      </a>
-      <p class="watch-note">Short form &middot; 90 seconds</p>
-    </div>
-    <div>
-      <a class="watch-link" href="https://youtu.be/OPBLi31IAz4" target="_blank" rel="noopener">
-        &rarr; The Market Cap of Your Consciousness
-      </a>
-      <p class="watch-note">Full version &middot; 8 minutes</p>
-    </div>
+ <div class="watch-links">
+  <div class="watch-link-inner">
+    <a href="https://youtu.be/904IS3mxH3o" 
+       target="_blank" rel="noopener">
+      <img 
+        src="https://img.youtube.com/vi/904IS3mxH3o/maxresdefault.jpg"
+        alt="You Watched Yourself Do It Anyway"
+        class="watch-thumb">
+    </a>
+    <a class="watch-link" 
+       href="https://youtu.be/904IS3mxH3o" 
+       target="_blank" rel="noopener">
+      &rarr; You Watched Yourself Do It Anyway
+    </a>
+    <p class="watch-note">Short form &middot; 90 seconds</p>
   </div>
+  <div class="watch-link-inner">
+    <a href="https://youtu.be/OPBLi31IAz4" 
+       target="_blank" rel="noopener">
+      <img 
+        src="https://img.youtube.com/vi/OPBLi31IAz4/maxresdefault.jpg"
+        alt="The Market Cap of Your Consciousness"
+        class="watch-thumb">
+    </a>
+    <a class="watch-link" 
+       href="https://youtu.be/OPBLi31IAz4" 
+       target="_blank" rel="noopener">
+      &rarr; The Market Cap of Your Consciousness
+    </a>
+    <p class="watch-note">Full version &middot; 8 minutes</p>
+  </div>
+</div>
 </section>
 <div class="divider"></div>
 
@@ -432,7 +464,7 @@ a:hover{opacity:.7;}
   <div class="ca-full-box">
     <div class="ca-label">$SELF &middot; Solana</div>
     <div class="ca-address-full">7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump</div>
-    <div class="supply">Supply: 1,000,000,042</div>
+    <div class="supply">Supply: 1,000,000,042  &nbsp;·&nbsp; Fixed Forever</div>
     <div style="margin-top:20px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
       <button class="btn-outline" onclick="copyCA('full-ca-btn',this)">Copy CA</button>
       <a class="btn-gold" href="https://gmgn.ai/sol/token/solscan_7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump" target="_blank" rel="noopener noreferrer"
