@@ -681,7 +681,7 @@ a:hover { opacity: 0.75; }
     <div class="ca-label">$SELF · Solana</div>
     <div class="ca-address" id="contract-hero">7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump</div>
     <div class="ca-buttons">
-      <a class="btn-gold" id="gmgn-hero" href="https://gmgn.ai/sol/token/solscan_7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump" target="_blank" rel="noopener noreferrer">Buy on GMGN →</a>
+      <a class="btn-gold" id="gmgn-hero" href="#" target="_blank" rel="noopener noreferrer">Buy on GMGN →</a>
       <button class="btn-outline" onclick="copyCAHero()">Copy CA</button>
     </div>
   </div>
@@ -891,7 +891,7 @@ a:hover { opacity: 0.75; }
   </p>
 
   <div style="margin-top:40px;">
-    <a class="btn-gold" id="buy-cta" href="#" target="_blank" rel="noopener noreferrer" style="display:inline-block; padding:14px 40px; font-size:12px; letter-spacing:3px;"><a   href="https://gmgn.ai/sol/token/solscan_7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump"   target="_blank"   rel="noopener noreferrer"   class="gmgn-button"   style="     display:inline-block;     position:relative;     z-index:9999;     cursor:pointer;     text-decoration:none;   " >   <a   href="https://gmgn.ai/sol/token/solscan_7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump"   target="_blank"   rel="noopener noreferrer"   class="gmgn-button"   style="     display:inline-block;     position:relative;     z-index:9999;     cursor:pointer;     text-decoration:none;   " >   <a   href="https://gmgn.ai/sol/token/solscan_7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump"   target="_blank"   rel="noopener noreferrer"   class="gmgn-button"   style="     display:inline-block;     position:relative;     z-index:9999;     cursor:pointer;     text-decoration:none;   " >   BUY $SELF ON GMGN → </a> → </a> → </a> →</a>
+    <a class="btn-gold" id="buy-cta" href="#" target="_blank" rel="noopener noreferrer" style="display:inline-block; padding:14px 40px; font-size:12px; letter-spacing:3px;">Buy $SELF on GMGN →</a>
   </div>
 </section>
 
@@ -983,7 +983,7 @@ a:hover { opacity: 0.75; }
     <div class="trade-links">
       <a id="pumpfun" href="#" target="_blank" rel="noopener noreferrer">pump.fun</a>
       <a id="birdeye" href="#" target="_blank" rel="noopener noreferrer">Birdeye</a>
-      <a id="gmgn-full" href="https://gmgn.ai/sol/token/solscan_7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump" target="_blank" rel="noopener noreferrer">GMGN</a>
+      <a id="gmgn-full" href="#" target="_blank" rel="noopener noreferrer">GMGN</a>
     </div>
   </div>
 </section>
@@ -1049,6 +1049,10 @@ function copyCAHero() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+  const gmgn = 'https://gmgn.ai/sol/token/solscan_' + CA;
+  document.getElementById('gmgn-hero').href = gmgn;
+  document.getElementById('buy-cta').href = gmgn;
+  document.getElementById('gmgn-full').href = gmgn;
   document.getElementById('pumpfun').href = 'https://pump.fun/coin/' + CA;
   document.getElementById('birdeye').href = 'https://birdeye.so/token/' + CA + '?chain=solana';
 });
