@@ -3,13 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>*SELF — Not a meme. A mirror.</title>
-<meta name="description" content="The universe doesn't contain Consciousness. Consciousness contains the universe. *SELF is the practice of knowing that from the inside.">
+<title>*SELF</title>
+<meta name="description" content="Not a meme. A mirror.">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
-
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XC5FG6W949"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -18,596 +15,539 @@
   gtag('config', 'G-XC5FG6W949');
 </script>
 
-<meta property="og:title" content="*SELF — Not a meme. A mirror.">
-<meta property="og:description" content="Ignorance of your true SELF is the only poverty that actually matters.">
+<!-- Open Graph -->
+<meta property="og:title" content="*SELF">
+<meta property="og:description" content="Not a meme. A mirror.">
 <meta property="og:url" content="https://42self.xyz">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://42self.xyz/assets/images/Banner.jpg">
+
+<!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@muraliannareddy">
-<meta name="twitter:title" content="*SELF — Not a meme. A mirror.">
-<meta name="twitter:description" content="Ignorance of your true SELF is the only poverty that actually matters.">
+<meta name="twitter:title" content="*SELF">
+<meta name="twitter:description" content="Not a meme. A mirror.">
 <meta name="twitter:image" content="https://42self.xyz/assets/images/Banner.jpg">
+
+<!-- Favicon -->
 <link rel="icon" type="image/jpeg" href="./assets/images/Logo_web.jpg">
 
 <style>
-/* ── RESET ──────────────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+* {
+  box-sizing: border-box;
+}
 
-:root {
-  --gold:      #d4af37;
-  --gold-glow: rgba(212,175,55,0.5);
-  --gold-dim:  rgba(212,175,55,0.12);
-  --white:     #e8e8e8;
-  --mid:       #aaaaaa;
-  --grey:      #888888;
-  --dim:       #666666;
-  --bg:        #000000;
-  --bg-lift:   #060606;
-  --serif:     'Cormorant Garamond', Georgia, serif;
-  --sans:      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--bg);
-  color: var(--white);
-  font-family: var(--serif);
+  margin: 0;
+  background: #000;
+  color: #e6e6e6;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
   text-align: center;
-  line-height: 1.85;
-  overflow-x: hidden;
+  line-height: 1.7;
 }
 
-a { color: var(--gold); text-decoration: none; transition: opacity 0.25s; }
-a:hover { opacity: 0.7; }
-
-/* ── FLOATING LOGO ─────────────────────────────── */
-/* Square logo with gold glow, fixed top-center */
-.float-logo {
-  position: fixed;
-  top: 16px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1000;
-  width: 58px;
-  height: 58px;
-  border-radius: 6px;           /* slight rounding, stays square */
-  overflow: hidden;
-  box-shadow:
-    0 0 12px 3px var(--gold-glow),
-    0 0 36px 8px rgba(212,175,55,0.22),
-    0 0 70px 20px rgba(212,175,55,0.08);
-  animation: glow-pulse 3.5s ease-in-out infinite;
-  cursor: pointer;
-  display: block;
-}
-.float-logo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-@keyframes glow-pulse {
-  0%,100% {
-    box-shadow:
-      0 0 12px 3px var(--gold-glow),
-      0 0 36px 8px rgba(212,175,55,0.22),
-      0 0 70px 20px rgba(212,175,55,0.08);
-  }
-  50% {
-    box-shadow:
-      0 0 20px 6px rgba(212,175,55,0.75),
-      0 0 55px 14px rgba(212,175,55,0.32),
-      0 0 100px 30px rgba(212,175,55,0.12);
-  }
-}
-
-/* ── UTILITIES ─────────────────────────────────── */
-.section      { padding: 80px 24px; max-width: 660px; margin: 0 auto; }
-.section-wide { padding: 80px 24px; max-width: 980px; margin: 0 auto; }
-
-.divider {
-  width: 1px; height: 70px;
-  background: linear-gradient(to bottom, transparent, #1c1c1c, transparent);
-  margin: 0 auto;
-}
-.gold-line {
-  width: 48px; height: 1px;
-  background: var(--gold); opacity: 0.35;
-  margin: 44px auto;
-}
-
-.label {
-  font-family: var(--sans);
-  font-size: 10px; letter-spacing: 5px;
-  text-transform: uppercase; color: var(--dim);
-  margin-bottom: 42px; display: block;
-}
-
-/* ── HERO ──────────────────────────────────────── */
+/* HERO */
 .hero {
   min-height: 100vh;
-  display: flex; flex-direction: column;
-  justify-content: center; align-items: center;
-  padding: 110px 24px 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px 60px;
   position: relative;
-  background: radial-gradient(ellipse at 50% 35%,
-    rgba(212,175,55,0.05) 0%, transparent 68%);
 }
 
-.hero-question {
-  font-size: clamp(26px, 4.5vw, 44px);
-  font-weight: 300; font-style: italic;
-  color: var(--gold); line-height: 1.55;
-  max-width: 680px; margin-bottom: 20px;
-  letter-spacing: 0.3px;
-}
-.hero-sub {
-  font-size: clamp(16px, 2.2vw, 20px);
-  color: var(--mid); font-weight: 300;
-  max-width: 480px; line-height: 1.9; margin-bottom: 50px;
+.hero-logo {
+  width: 180px;
+  max-width: 60vw;
+  margin-bottom: 30px;
+  opacity: 0.98;
 }
 
-/* ── CA BOX (hero) ─────────────────────────────── */
+.tagline {
+  font-size: 22px;
+  margin-top: 10px;
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+.sub {
+  margin-top: 30px;
+  font-size: 17px;
+  color: #9a9a9a;
+  line-height: 1.8;
+}
+
+.highlight {
+  margin-top: 30px;
+  color: #d4af37;
+  font-size: 15px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* HERO CA — above fold */
 .hero-ca {
-  border: 1px solid #1c1c1c;
-  padding: 24px 28px;
-  background: var(--bg-lift);
-  width: 100%; max-width: 540px;
-  position: relative;
+  margin-top: 36px;
+  border: 1px solid #222;
+  padding: 20px 24px;
+  background: #0a0a0a;
+  width: 100%;
+  max-width: 520px;
 }
-.hero-ca::before {
-  content: '';
-  position: absolute; top: -1px; left: -1px;
-  width: 18px; height: 18px;
-  border-top: 1px solid var(--gold);
-  border-left: 1px solid var(--gold);
-}
-.hero-ca::after {
-  content: '';
-  position: absolute; bottom: -1px; right: -1px;
-  width: 18px; height: 18px;
-  border-bottom: 1px solid var(--gold);
-  border-right: 1px solid var(--gold);
-}
-.ca-label {
-  font-family: var(--sans);
-  font-size: 10px; color: var(--dim);
-  letter-spacing: 4px; text-transform: uppercase; margin-bottom: 10px;
-}
-.ca-address {
-  font-family: var(--sans);
-  font-size: 11.5px; color: #bbb;
-  word-break: break-all; letter-spacing: 0.8px; margin-bottom: 18px;
-}
-.ca-buttons { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
 
-.btn-gold {
-  padding: 12px 28px;
-  background: var(--gold); color: #000;
-  font-family: var(--sans); font-size: 11px;
-  font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
-  border: none; cursor: pointer; transition: opacity 0.25s;
-  text-decoration: none; display: inline-block;
+.hero-ca .ca-label {
+  font-size: 11px;
+  color: #888888;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
 }
-.btn-gold:hover { opacity: 0.82; color: #000; }
 
-.btn-outline {
-  padding: 12px 28px;
-  background: transparent; border: 1px solid #333;
-  color: var(--mid); font-family: var(--sans);
-  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
-  cursor: pointer; transition: all 0.25s;
+.hero-ca .ca-address {
+  font-size: 12px;
+  color: #d0d0d0;
+  word-break: break-all;
+  letter-spacing: 1px;
+  margin-bottom: 14px;
 }
-.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
-.btn-outline:disabled { opacity: 0.5; cursor: default; }
+
+.hero-ca-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn-buy {
+  padding: 10px 22px;
+  background: #d4af37;
+  color: #000;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.btn-buy:hover {
+  opacity: 0.85;
+  color: #000;
+}
+
+.copy-btn-hero {
+  padding: 10px 22px;
+  background: transparent;
+  border: 1px solid #444;
+  color: #b8b8b8;
+  font-size: 12px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s;
+}
+
+.copy-btn-hero:hover {
+  border-color: #d4af37;
+  color: #d4af37;
+}
+
+.copy-btn-hero:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
 
 .scroll-hint {
-  position: absolute; bottom: 34px;
-  font-family: var(--sans); font-size: 10px;
-  color: #2c2c2c; letter-spacing: 5px; text-transform: uppercase;
-  animation: fade 4s ease-in-out infinite;
+  position: absolute;
+  bottom: 30px;
+  font-size: 11px;
+  color: #444;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  animation: fade 3s ease-in-out infinite;
 }
-@keyframes fade { 0%,100%{opacity:0} 50%{opacity:1} }
 
-/* ── BANNER ────────────────────────────────────── */
-.banner-section { max-width: 1400px; margin: 0 auto; }
+@keyframes fade {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+/* BANNER */
+.banner-section {
+  padding: 0 20px 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
 .banner-image {
-  width: 100%; height: auto; display: block;
-  border-top: 1px solid #0c0c0c; border-bottom: 1px solid #0c0c0c;
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid #111;
 }
 
-/* ── PHILOSOPHY LINES ──────────────────────────── */
-.phil-line {
-  font-size: clamp(19px, 2.8vw, 26px);
-  font-weight: 300; color: #ccc; line-height: 1.9; margin: 14px 0;
-}
-.phil-line.gold   { color: var(--gold); font-style: italic; }
-.phil-line.dim    { color: var(--grey); font-size: clamp(15px, 2vw, 19px); }
-.phil-line.bright { color: var(--white); }
-
-/* ── FRAMEWORK GRID ────────────────────────────── */
-.framework-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-  gap: 2px; margin: 48px auto 0; text-align: left;
-}
-.framework-card {
-  padding: 38px 32px;
-  background: var(--bg-lift); border: 1px solid #111;
-  transition: border-color 0.3s;
-}
-.framework-card:hover { border-color: #252525; }
-.framework-card .num {
-  font-family: var(--sans); font-size: 10px;
-  letter-spacing: 3px; color: var(--gold); opacity: 0.55;
-  margin-bottom: 18px; display: block;
-}
-.framework-card h3 {
-  font-family: var(--serif); font-size: 22px;
-  font-weight: 400; color: var(--white);
-  margin-bottom: 12px; line-height: 1.4;
-}
-.framework-card p {
-  font-family: var(--serif); font-size: 16.5px;
-  font-weight: 300; color: var(--grey); line-height: 1.88;
+/* DIVIDER */
+.divider {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, transparent, #222, transparent);
+  margin: 0 auto;
 }
 
-/* ── COSMOLOGICAL ──────────────────────────────── */
-.cosmo-block {
-  padding: 90px 24px;
-  background: radial-gradient(ellipse at 50% 50%,
-    rgba(212,175,55,0.06) 0%, transparent 65%);
-  border-top: 1px solid #0e0e0e;
-  border-bottom: 1px solid #0e0e0e;
-}
-.cosmo-block p {
-  font-size: clamp(21px, 3.5vw, 34px);
-  font-weight: 300; font-style: italic;
-  color: var(--gold); line-height: 1.7;
-  max-width: 680px; margin: 0 auto 22px;
-}
-.cosmo-block .plain {
-  font-style: normal; color: var(--grey);
-  font-size: clamp(15px, 2vw, 19px);
+/* CONTENT SECTIONS */
+.section {
+  padding: 60px 20px;
+  max-width: 580px;
+  margin: auto;
 }
 
-/* ── WHY $SELF ─────────────────────────────────── */
-.why-section {
-  padding: 90px 24px;
-  background: var(--bg-lift);
-  border-top: 1px solid #0e0e0e;
-  border-bottom: 1px solid #0e0e0e;
-}
-.why-section h2 {
-  font-size: clamp(24px, 3.5vw, 38px);
-  font-weight: 300; color: var(--white);
-  max-width: 660px; margin: 0 auto 52px; line-height: 1.55;
-}
-.why-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 20px; max-width: 960px; margin: 0 auto 52px;
-  text-align: left;
-}
-.why-card {
-  padding: 32px 28px;
-  border: 1px solid #141414; background: var(--bg);
-}
-.why-card .icon { font-size: 26px; margin-bottom: 16px; display: block; }
-.why-card h4 {
-  font-family: var(--serif); font-size: 20px;
-  font-weight: 400; color: var(--gold); margin-bottom: 10px;
-}
-.why-card p {
-  font-family: var(--serif); font-size: 16px;
-  font-weight: 300; color: var(--grey); line-height: 1.88;
-}
-.why-closing {
-  max-width: 600px; margin: 0 auto;
-  font-size: clamp(18px, 2.5vw, 24px);
-  font-weight: 300; font-style: italic;
-  color: var(--white); line-height: 1.8;
+.section p {
+  margin: 16px 0;
+  font-size: 18px;
+  color: #cccccc;
 }
 
-/* ── COSMIC LEDGER ─────────────────────────────── */
-.cosmic-section {
-  padding: 90px 24px; max-width: 680px; margin: 0 auto;
-}
-.cosmic-section p {
-  font-size: clamp(17px, 2.4vw, 22px);
-  font-weight: 300; color: #bbb; line-height: 1.95; margin: 16px 0;
-}
-.cosmic-section p.gold {
-  color: var(--gold); font-style: italic;
-  font-size: clamp(19px, 2.8vw, 27px);
-}
-.cosmic-section p.dim { color: var(--grey); font-size: clamp(14px, 1.8vw, 17px); }
-
-/* ── WATCH ─────────────────────────────────────── */
-.watch-section {
-  padding: 80px 24px;
-  background: var(--bg-lift);
-  border-top: 1px solid #0e0e0e;
-  border-bottom: 1px solid #0e0e0e;
-}
-.watch-links {
-  display: flex; flex-direction: column;
-  align-items: center; gap: 18px; margin-top: 42px;
-}
-.watch-link {
-  display: inline-flex; align-items: center; gap: 12px;
-  font-family: var(--sans); font-size: 11.5px;
-  color: var(--gold); letter-spacing: 2px; text-transform: uppercase;
-  text-decoration: none; border: 1px solid #252525;
-  padding: 15px 32px; transition: all 0.3s;
-  max-width: 440px; width: 100%; justify-content: center;
-}
-.watch-link:hover {
-  border-color: var(--gold);
-  background: var(--gold-dim); opacity: 1;
-}
-.watch-note {
-  font-family: var(--sans); font-size: 10px;
-  color: var(--dim); letter-spacing: 2px; text-transform: uppercase;
-  margin-top: 7px;
+.section p.gold {
+  color: #d4af37;
 }
 
-/* ── MIRROR ROOM ───────────────────────────────── */
-.mirror-room {
-  padding: 90px 24px;
-  border-top: 1px solid #0e0e0e;
+/* FOUNDATION SECTION — cosmological statement */
+.foundation-section {
+  padding: 80px 20px;
+  max-width: 680px;
+  margin: auto;
+  border-top: 1px solid #1a1a1a;
+  border-bottom: 1px solid #1a1a1a;
 }
-.mirror-room h2 {
-  font-size: clamp(24px, 3.5vw, 36px);
-  font-weight: 300; color: var(--white);
-  max-width: 560px; margin: 0 auto 20px; line-height: 1.5;
-}
-.mirror-room .descriptor {
-  font-size: clamp(15px, 2vw, 19px);
-  font-weight: 300; color: var(--grey);
-  max-width: 520px; margin: 0 auto 52px; line-height: 1.92;
-}
-.mirror-links {
-  display: flex; flex-direction: column;
-  align-items: center; gap: 14px;
-}
-.mirror-link {
-  display: block; font-family: var(--sans);
-  font-size: 11.5px; letter-spacing: 2px; text-transform: uppercase;
-  color: var(--gold); border: 1px solid #252525;
-  padding: 15px 40px; transition: all 0.3s;
-  text-decoration: none; width: 100%; max-width: 380px;
-}
-.mirror-link:hover { border-color: var(--gold); background: var(--gold-dim); opacity: 1; }
-.mirror-link.primary {
-  background: var(--gold); color: #000;
-  border-color: var(--gold); font-weight: 700;
-}
-.mirror-link.primary:hover { opacity: 0.83; }
 
-/* ── BRIDGE ────────────────────────────────────── */
+.foundation-section p {
+  margin: 20px 0;
+  font-size: 20px;
+  color: #cccccc;
+  line-height: 1.9;
+  font-weight: 300;
+}
+
+.foundation-section p.gold {
+  color: #d4af37;
+  font-size: 22px;
+}
+
+.foundation-section p.small {
+  font-size: 13px;
+  color: #666;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+
+/* BRIDGE SECTION */
 .bridge-section {
-  padding: 70px 24px; max-width: 560px; margin: 0 auto;
+  padding: 60px 20px;
+  max-width: 580px;
+  margin: auto;
 }
+
 .bridge-section p {
-  font-size: clamp(17px, 2.3vw, 22px);
-  font-weight: 300; color: #bbb; line-height: 1.9; margin: 16px 0;
+  margin: 16px 0;
+  font-size: 18px;
+  color: #cccccc;
 }
-.bridge-section p.gold { color: var(--gold); font-style: italic; }
 
-/* ── CONTRACT ──────────────────────────────────── */
-.ca-full-section {
-  padding: 40px 24px 60px; max-width: 680px; margin: 0 auto;
+.bridge-section p.gold {
+  color: #d4af37;
 }
-.ca-full-box {
-  border: 1px solid #1a1a1a; padding: 36px 28px;
-  background: var(--bg-lift); position: relative;
-}
-.ca-full-box::before {
-  content: ''; position: absolute; top: -1px; left: -1px;
-  width: 18px; height: 18px;
-  border-top: 1px solid var(--gold); border-left: 1px solid var(--gold);
-}
-.ca-full-box::after {
-  content: ''; position: absolute; bottom: -1px; right: -1px;
-  width: 18px; height: 18px;
-  border-bottom: 1px solid var(--gold); border-right: 1px solid var(--gold);
-}
-.ca-full-box .ca-address-full {
-  font-family: var(--sans); font-size: 13px; color: #ccc;
-  word-break: break-all; letter-spacing: 1px; margin: 12px 0;
-}
-.ca-full-box .supply {
-  font-family: var(--sans); font-size: 11px;
-  color: var(--dim); letter-spacing: 2px; text-transform: uppercase; margin-top: 10px;
-}
-.trade-links {
-  display: flex; justify-content: center;
-  gap: 28px; flex-wrap: wrap; margin-top: 20px;
-}
-.trade-links a {
-  font-family: var(--sans); font-size: 11.5px;
-  color: var(--mid); letter-spacing: 2px; text-transform: uppercase;
-  text-decoration: none; transition: color 0.25s;
-}
-.trade-links a:hover { color: var(--gold); opacity: 1; }
 
-/* ── GO DEEPER ─────────────────────────────────── */
-.explore-links {
-  display: flex; justify-content: center;
-  gap: 20px 36px; flex-wrap: wrap; margin-top: 28px;
+/* CONTRACT SECTION — full detail below fold */
+.ca-section {
+  padding: 40px 20px;
+  max-width: 700px;
+  margin: auto;
 }
-.explore-links a {
-  font-family: var(--sans); font-size: 11.5px;
-  color: var(--mid); letter-spacing: 2px; text-transform: uppercase;
-  text-decoration: none; transition: color 0.25s;
-}
-.explore-links a:hover { color: var(--gold); opacity: 1; }
 
-/* ── FOOTER ────────────────────────────────────── */
-/* All footer elements significantly brighter than before */
+.ca-box {
+  border: 1px solid #222;
+  padding: 30px 24px;
+  background: #0a0a0a;
+  line-height: 2;
+}
+
+.ca-label {
+  font-size: 11px;
+  color: #888888;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.ca-address {
+  font-size: 13px;
+  color: #d0d0d0;
+  word-break: break-all;
+  letter-spacing: 1px;
+}
+
+.ca-supply {
+  font-size: 12px;
+  color: #777777;
+  margin-top: 12px;
+  letter-spacing: 2px;
+}
+
+.copy-btn {
+  margin-top: 16px;
+  padding: 8px 20px;
+  background: transparent;
+  border: 1px solid #444;
+  color: #b8b8b8;
+  font-size: 12px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s;
+}
+
+.copy-btn:hover {
+  border-color: #d4af37;
+  color: #d4af37;
+}
+
+.copy-btn:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+
+/* LINKS */
+.observe-links,
+.resource-links {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.observe-links a,
+.resource-links a {
+  font-size: 12px;
+  color: #9a9a9a;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.observe-links a:hover,
+.resource-links a:hover,
+a:hover {
+  color: #d4af37;
+}
+
+.resource-title {
+  margin-bottom: 20px;
+  font-size: 11px;
+  color: #888888;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+a {
+  color: #d4af37;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+/* WATCH SECTION */
+.watch-section {
+  padding: 60px 20px;
+  max-width: 580px;
+  margin: auto;
+}
+
+.watch-link {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 14px;
+  color: #d4af37;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid #333;
+  padding: 10px 24px;
+  transition: all 0.3s;
+}
+
+.watch-link:hover {
+  border-color: #d4af37;
+  color: #d4af37;
+  background: rgba(212, 175, 55, 0.05);
+}
+
+.watch-note {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #555;
+  letter-spacing: 1px;
+}
+
+/* COMMUNITY */
+.enter-link {
+  font-size: 20px;
+  color: #d4af37;
+  letter-spacing: 3px;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.enter-secondary {
+  font-size: 15px;
+  color: #9a9a9a;
+  letter-spacing: 2px;
+  display: inline-block;
+  margin-top: 16px;
+  transition: color 0.3s;
+}
+
+.enter-secondary:hover {
+  color: #d4af37;
+}
+
+.social {
+  padding: 20px;
+  font-size: 14px;
+  color: #777777;
+  letter-spacing: 1px;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding: 10px 20px 30px;
+}
+
+.social-links a {
+  font-size: 12px;
+  color: #777777;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.social-links a:hover {
+  color: #d4af37;
+}
+
+/* FOOTER */
 .footer {
-  padding: 64px 24px 52px;
-  border-top: 1px solid #141414;
-}
-.footer-logo-wrap {
-  width: 80px; height: 80px; margin: 0 auto 28px;
-  border-radius: 6px; overflow: hidden;
-  box-shadow: 0 0 16px 3px rgba(212,175,55,0.25);
-  background: #000;
-}
-.footer-logo-wrap img {
-  width: 100%; height: 100%; object-fit: cover; display: block;
-}
-.footer-socials {
-  display: flex; justify-content: center;
-  gap: 28px; flex-wrap: wrap; margin-bottom: 28px;
-}
-.footer-socials a {
-  font-family: var(--sans); font-size: 11px;
-  color: var(--mid);                  /* #888 — clearly visible */
-  letter-spacing: 3px; text-transform: uppercase;
-  text-decoration: none; transition: color 0.25s;
-}
-.footer-socials a:hover { color: var(--gold); opacity: 1; }
-
-.footer-tagline {
-  font-family: var(--sans); font-size: 11px;
-  color: var(--grey);                 /* #888 — visible */
-  letter-spacing: 5px; text-transform: uppercase;
-  margin-bottom: 22px;
-}
-.footer-ca {
-  font-family: var(--sans); font-size: 11px;
-  color: var(--dim);                  /* #666 — visible but secondary */
-  letter-spacing: 0.8px; word-break: break-all;
-  max-width: 500px; margin: 0 auto;
+  margin-top: 60px;
+  padding: 50px 20px;
+  border-top: 1px solid #111;
+  line-height: 2;
 }
 
-/* ── RESPONSIVE ────────────────────────────────── */
-@media (max-width: 640px) {
-  .hero-question { font-size: 24px; }
-  .float-logo { width: 46px; height: 46px; top: 12px; }
-  .framework-grid { grid-template-columns: 1fr; gap: 1px; }
-  .why-grid { grid-template-columns: 1fr; }
-  .ca-buttons { flex-direction: column; }
-  .btn-gold, .btn-outline { width: 100%; text-align: center; }
+.footer-logo {
+  width: 160px;
+  max-width: 60vw;
+  margin-bottom: 20px;
+  opacity: 0.95;
+}
+
+.footer-text {
+  font-size: 11px;
+  color: #888888;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .hero-logo {
+    width: 140px;
+  }
+
+  .tagline {
+    font-size: 19px;
+  }
+
+  .sub {
+    font-size: 15px;
+  }
+
+  .section p,
+  .bridge-section p {
+    font-size: 16px;
+  }
+
+  .foundation-section p {
+    font-size: 17px;
+  }
+
+  .foundation-section p.gold {
+    font-size: 19px;
+  }
+
+  .observe-links,
+  .resource-links {
+    gap: 16px;
+  }
+
+  .footer-logo {
+    width: 130px;
+  }
+
+  .hero-ca {
+    padding: 16px;
+  }
+
+  .hero-ca .ca-address {
+    font-size: 11px;
+  }
+
+  .hero-ca-buttons {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .btn-buy,
+  .copy-btn-hero {
+    width: 100%;
+    text-align: center;
+  }
 }
 </style>
 </head>
 <body>
 
-<!-- FLOATING LOGO — square, gold glow -->
-<a href="https://42self.xyz" class="float-logo" title="*SELF · 42self.xyz">
-  <img src="./assets/images/Logo_web.jpg" alt="*SELF">
-</a>
+<!-- HERO -->
+<div class="hero">
+  <img src="./assets/images/Logo_web.jpg" alt="SELF Logo" class="hero-logo">
 
-<!-- ═══════════════════════════════════
-     1 · HERO
-     ═══════════════════════════════════ -->
-<section class="hero">
-  <p class="hero-question">
-    If Bitcoin is worth $80,000 —<br>
-    what is your own SELF worth?
-  </p>
-  <p class="hero-sub">In any currency you like.</p>
+  <div class="tagline">
+    You knew.<br>
+    You just didn't stop yourself.
+  </div>
 
+  <div class="sub">
+    Most people don't lose money.<br>
+    They lose control.
+  </div>
+
+  <div class="highlight">Not a meme. A mirror.</div>
+
+  <!-- CA ABOVE FOLD -->
   <div class="hero-ca">
     <div class="ca-label">$SELF · Solana</div>
-    <div class="ca-address" id="ca-hero">7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump</div>
-    <div class="ca-buttons">
-      <a class="btn-gold" id="gmgn-hero" href="#" target="_blank" rel="noopener">Buy on GMGN →</a>
-      <button class="btn-outline" onclick="copyCAHero()">Copy CA</button>
-    </div>
-  </div>
-  <span class="scroll-hint">↓ continue</span>
-</section>
-
-<!-- BANNER -->
-<div class="banner-section">
-  <img src="./assets/images/Banner.jpg" alt="You don't lose money. You lose control." class="banner-image">
-</div>
-
-<div class="divider"></div>
-
-<!-- ═══════════════════════════════════
-     2 · THE MIRROR
-     ═══════════════════════════════════ -->
-<section class="section">
-  <span class="label">The Mirror</span>
-  <p class="phil-line">You knew something was off.</p>
-  <p class="phil-line">You just couldn't point to it.</p>
-</section>
-
-<div class="divider"></div>
-
-<section class="section">
-  <p class="phil-line">You tried to fix it outside.</p>
-  <p class="phil-line">Wealth. Health. Status.</p>
-  <p class="phil-line">It didn't stay fixed.</p>
-</section>
-
-<div class="divider"></div>
-
-<section class="section">
-  <p class="phil-line">Justin Sun paid $4.6M for lunch with Warren Buffett.</p>
-  <p class="phil-line dim">Three hours. Not one view changed.</p>
-  <p class="phil-line">Then $30,000,000 for one hour with Elon Musk.</p>
-  <p class="phil-line gold">Musk never responded.</p>
-</section>
-
-<div class="divider"></div>
-
-<section class="section">
-  <p class="phil-line">Money bought one seat.</p>
-  <p class="phil-line gold">It couldn't buy the other.</p>
-</section>
-
-<div class="divider"></div>
-
-<section class="section">
-  <p class="phil-line">Have you ever felt a void inside —</p>
-  <p class="phil-line gold">despite having enough?</p>
-  <p class="phil-line">Wealth. Status. Achievements.</p>
-  <p class="phil-line">And still — something missing.</p>
-</section>
-
-<div class="divider"></div>
-
-<section class="section">
-  <p class="phil-line">That void is not a flaw.</p>
-  <p class="phil-line gold">It is a signal.</p>
-  <p class="phil-line dim">Pointing in a different direction.</p>
-</section>
-
-<div class="divider"></div>
-
-<!-- ═══════════════════════════════════
-     3 · THE FRAMEWORK
-     ═══════════════════════════════════ -->
-<section class="section-wide">
-  <span class="label">The Framework</span>
-  <p class="phil-line bright">The *SELF operating system. Six layers.</p>
-  <p class="phil-line dim">Most people run on the first one their whole life.</p>
-
-  <div class="framework-grid">
-    <div class="framework-card">
-      <span class="num">01</span>
-      <h3>The Default OS</h3>
-      <p>Stimulus. Response. Repeat. The autopilot running underneath every trade, every decision, every reaction — and most people never notice it running.</p>
-    </div>
-    <div class="framework-card">
-      <span class="num">02</span>
-      <h3>The Arrival Fallacy</h3>
-      <p>The false belief that the next milestone will finally bring peace. Hedonic Adaptation means what thrills you today becomes routine tomorrow. The void returns every time.</p>
-    </div>
-    <div class="framework-card">
-      <span class="num">03</span>
-      <h3>The Ego</h3>
-      <p>The mask the "I" wears. Your name, status, achievements, wounds, the story you tell about yourself. The false self that keeps seeking outside. The prerequisite to knowing your true SELF: see through it.</p>
-    </div>
-    <div class="framework-card">
-      <span class="num">04</span>
-      <h3>The True "I"</h3>
-      <p>
+    <div class="ca-address" id="contract-hero">7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump</div>
+    <div class="hero-ca-buttons">
+      <a class
