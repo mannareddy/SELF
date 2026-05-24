@@ -10,7 +10,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
 
-<!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XC5FG6W949"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -19,7 +18,6 @@
   gtag('config', 'G-XC5FG6W949');
 </script>
 
-<!-- OG / Twitter -->
 <meta property="og:title" content="*SELF — Not a meme. A mirror.">
 <meta property="og:description" content="Ignorance of your true SELF is the only poverty that actually matters.">
 <meta property="og:url" content="https://42self.xyz">
@@ -33,21 +31,22 @@
 <link rel="icon" type="image/jpeg" href="./assets/images/Logo_web.jpg">
 
 <style>
-/* ── RESET & BASE ─────────────────────────────── */
+/* ── RESET ──────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 
 :root {
-  --gold: #d4af37;
-  --gold-dim: rgba(212,175,55,0.15);
-  --gold-line: rgba(212,175,55,0.3);
-  --white: #e8e8e8;
-  --grey: #9a9a9a;
-  --dark-grey: #555;
-  --bg: #000;
-  --bg-lift: #080808;
-  --serif: 'Cormorant Garamond', Georgia, serif;
-  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --gold:      #d4af37;
+  --gold-glow: rgba(212,175,55,0.5);
+  --gold-dim:  rgba(212,175,55,0.12);
+  --white:     #e8e8e8;
+  --mid:       #aaaaaa;
+  --grey:      #888888;
+  --dim:       #666666;
+  --bg:        #000000;
+  --bg-lift:   #060606;
+  --serif:     'Cormorant Garamond', Georgia, serif;
+  --sans:      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 body {
@@ -60,23 +59,27 @@ body {
 }
 
 a { color: var(--gold); text-decoration: none; transition: opacity 0.25s; }
-a:hover { opacity: 0.75; }
+a:hover { opacity: 0.7; }
 
-/* ── FLOATING LOGO ────────────────────────────── */
+/* ── FLOATING LOGO ─────────────────────────────── */
+/* Square logo with gold glow, fixed top-center */
 .float-logo {
   position: fixed;
-  top: 20px;
+  top: 16px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
+  width: 58px;
+  height: 58px;
+  border-radius: 6px;           /* slight rounding, stays square */
   overflow: hidden;
-  box-shadow: 0 0 18px 4px rgba(212,175,55,0.45),
-              0 0 40px 10px rgba(212,175,55,0.18);
-  animation: glow-pulse 3s ease-in-out infinite;
+  box-shadow:
+    0 0 12px 3px var(--gold-glow),
+    0 0 36px 8px rgba(212,175,55,0.22),
+    0 0 70px 20px rgba(212,175,55,0.08);
+  animation: glow-pulse 3.5s ease-in-out infinite;
   cursor: pointer;
+  display: block;
 }
 .float-logo img {
   width: 100%;
@@ -85,256 +88,191 @@ a:hover { opacity: 0.75; }
   display: block;
 }
 @keyframes glow-pulse {
-  0%,100% { box-shadow: 0 0 18px 4px rgba(212,175,55,0.45), 0 0 40px 10px rgba(212,175,55,0.18); }
-  50%      { box-shadow: 0 0 28px 8px rgba(212,175,55,0.7),  0 0 60px 18px rgba(212,175,55,0.28); }
+  0%,100% {
+    box-shadow:
+      0 0 12px 3px var(--gold-glow),
+      0 0 36px 8px rgba(212,175,55,0.22),
+      0 0 70px 20px rgba(212,175,55,0.08);
+  }
+  50% {
+    box-shadow:
+      0 0 20px 6px rgba(212,175,55,0.75),
+      0 0 55px 14px rgba(212,175,55,0.32),
+      0 0 100px 30px rgba(212,175,55,0.12);
+  }
 }
 
-/* ── SECTION UTILITY ──────────────────────────── */
-.section {
-  padding: 80px 24px;
-  max-width: 660px;
-  margin: 0 auto;
-}
-.section-wide {
-  padding: 80px 24px;
-  max-width: 960px;
-  margin: 0 auto;
-}
+/* ── UTILITIES ─────────────────────────────────── */
+.section      { padding: 80px 24px; max-width: 660px; margin: 0 auto; }
+.section-wide { padding: 80px 24px; max-width: 980px; margin: 0 auto; }
+
 .divider {
-  width: 1px;
-  height: 70px;
-  background: linear-gradient(to bottom, transparent, #1e1e1e, transparent);
+  width: 1px; height: 70px;
+  background: linear-gradient(to bottom, transparent, #1c1c1c, transparent);
   margin: 0 auto;
 }
 .gold-line {
-  width: 48px;
-  height: 1px;
-  background: var(--gold);
-  opacity: 0.4;
-  margin: 40px auto;
-}
-.label {
-  font-family: var(--sans);
-  font-size: 10px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: var(--dark-grey);
-  margin-bottom: 40px;
-  display: block;
+  width: 48px; height: 1px;
+  background: var(--gold); opacity: 0.35;
+  margin: 44px auto;
 }
 
-/* ── HERO ─────────────────────────────────────── */
+.label {
+  font-family: var(--sans);
+  font-size: 10px; letter-spacing: 5px;
+  text-transform: uppercase; color: var(--dim);
+  margin-bottom: 42px; display: block;
+}
+
+/* ── HERO ──────────────────────────────────────── */
 .hero {
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 100px 24px 80px;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  padding: 110px 24px 90px;
   position: relative;
-  background: radial-gradient(ellipse at 50% 40%, rgba(212,175,55,0.04) 0%, transparent 70%);
+  background: radial-gradient(ellipse at 50% 35%,
+    rgba(212,175,55,0.05) 0%, transparent 68%);
 }
 
 .hero-question {
-  font-size: clamp(28px, 5vw, 46px);
-  font-weight: 300;
-  font-style: italic;
-  color: var(--gold);
-  line-height: 1.55;
-  max-width: 700px;
-  margin-bottom: 24px;
+  font-size: clamp(26px, 4.5vw, 44px);
+  font-weight: 300; font-style: italic;
+  color: var(--gold); line-height: 1.55;
+  max-width: 680px; margin-bottom: 20px;
   letter-spacing: 0.3px;
 }
-
 .hero-sub {
-  font-size: clamp(17px, 2.5vw, 21px);
-  color: var(--grey);
-  font-weight: 300;
-  max-width: 500px;
-  line-height: 1.9;
-  margin-bottom: 48px;
+  font-size: clamp(16px, 2.2vw, 20px);
+  color: var(--mid); font-weight: 300;
+  max-width: 480px; line-height: 1.9; margin-bottom: 50px;
 }
 
-/* Hero CA box */
+/* ── CA BOX (hero) ─────────────────────────────── */
 .hero-ca {
-  border: 1px solid #1e1e1e;
-  padding: 22px 28px;
+  border: 1px solid #1c1c1c;
+  padding: 24px 28px;
   background: var(--bg-lift);
-  width: 100%;
-  max-width: 540px;
+  width: 100%; max-width: 540px;
   position: relative;
 }
 .hero-ca::before {
   content: '';
-  position: absolute;
-  top: -1px; left: -1px;
-  width: 16px; height: 16px;
+  position: absolute; top: -1px; left: -1px;
+  width: 18px; height: 18px;
   border-top: 1px solid var(--gold);
   border-left: 1px solid var(--gold);
 }
 .hero-ca::after {
   content: '';
-  position: absolute;
-  bottom: -1px; right: -1px;
-  width: 16px; height: 16px;
+  position: absolute; bottom: -1px; right: -1px;
+  width: 18px; height: 18px;
   border-bottom: 1px solid var(--gold);
   border-right: 1px solid var(--gold);
 }
 .ca-label {
   font-family: var(--sans);
-  font-size: 10px;
-  color: #666;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  margin-bottom: 10px;
+  font-size: 10px; color: var(--dim);
+  letter-spacing: 4px; text-transform: uppercase; margin-bottom: 10px;
 }
 .ca-address {
   font-family: var(--sans);
-  font-size: 11.5px;
-  color: #bbb;
-  word-break: break-all;
-  letter-spacing: 0.8px;
-  margin-bottom: 16px;
+  font-size: 11.5px; color: #bbb;
+  word-break: break-all; letter-spacing: 0.8px; margin-bottom: 18px;
 }
-.ca-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-}
+.ca-buttons { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+
 .btn-gold {
-  padding: 11px 26px;
-  background: var(--gold);
-  color: #000;
-  font-family: var(--sans);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  border: none;
-  cursor: pointer;
-  transition: opacity 0.25s;
-  text-decoration: none;
-  display: inline-block;
+  padding: 12px 28px;
+  background: var(--gold); color: #000;
+  font-family: var(--sans); font-size: 11px;
+  font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+  border: none; cursor: pointer; transition: opacity 0.25s;
+  text-decoration: none; display: inline-block;
 }
 .btn-gold:hover { opacity: 0.82; color: #000; }
+
 .btn-outline {
-  padding: 11px 26px;
-  background: transparent;
-  border: 1px solid #333;
-  color: #999;
-  font-family: var(--sans);
-  font-size: 11px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: all 0.25s;
+  padding: 12px 28px;
+  background: transparent; border: 1px solid #333;
+  color: var(--mid); font-family: var(--sans);
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  cursor: pointer; transition: all 0.25s;
 }
 .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
-.btn-outline:disabled { opacity: 0.6; cursor: default; }
+.btn-outline:disabled { opacity: 0.5; cursor: default; }
 
 .scroll-hint {
-  position: absolute;
-  bottom: 32px;
-  font-family: var(--sans);
-  font-size: 10px;
-  color: #2e2e2e;
-  letter-spacing: 4px;
-  text-transform: uppercase;
+  position: absolute; bottom: 34px;
+  font-family: var(--sans); font-size: 10px;
+  color: #2c2c2c; letter-spacing: 5px; text-transform: uppercase;
   animation: fade 4s ease-in-out infinite;
 }
 @keyframes fade { 0%,100%{opacity:0} 50%{opacity:1} }
 
-/* ── BANNER ───────────────────────────────────── */
-.banner-section {
-  padding: 0 0 0;
-  max-width: 1400px;
-  margin: 0 auto;
-}
+/* ── BANNER ────────────────────────────────────── */
+.banner-section { max-width: 1400px; margin: 0 auto; }
 .banner-image {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-top: 1px solid #0e0e0e;
-  border-bottom: 1px solid #0e0e0e;
+  width: 100%; height: auto; display: block;
+  border-top: 1px solid #0c0c0c; border-bottom: 1px solid #0c0c0c;
 }
 
-/* ── PHILOSOPHY LINES ─────────────────────────── */
+/* ── PHILOSOPHY LINES ──────────────────────────── */
 .phil-line {
-  font-size: clamp(20px, 3vw, 27px);
-  font-weight: 300;
-  color: #ccc;
-  line-height: 1.9;
-  margin: 16px 0;
+  font-size: clamp(19px, 2.8vw, 26px);
+  font-weight: 300; color: #ccc; line-height: 1.9; margin: 14px 0;
 }
-.phil-line.gold { color: var(--gold); font-style: italic; }
-.phil-line.dim  { color: #666; font-size: clamp(16px, 2vw, 20px); }
+.phil-line.gold   { color: var(--gold); font-style: italic; }
+.phil-line.dim    { color: var(--grey); font-size: clamp(15px, 2vw, 19px); }
+.phil-line.bright { color: var(--white); }
 
-/* ── FRAMEWORK SECTION ────────────────────────── */
+/* ── FRAMEWORK GRID ────────────────────────────── */
 .framework-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2px;
-  max-width: 960px;
-  margin: 48px auto 0;
-  text-align: left;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 2px; margin: 48px auto 0; text-align: left;
 }
 .framework-card {
-  padding: 36px 32px;
-  background: var(--bg-lift);
-  border: 1px solid #111;
-  position: relative;
+  padding: 38px 32px;
+  background: var(--bg-lift); border: 1px solid #111;
   transition: border-color 0.3s;
 }
-.framework-card:hover { border-color: #2a2a2a; }
+.framework-card:hover { border-color: #252525; }
 .framework-card .num {
-  font-family: var(--sans);
-  font-size: 10px;
-  letter-spacing: 3px;
-  color: var(--gold);
-  opacity: 0.6;
-  margin-bottom: 16px;
-  display: block;
+  font-family: var(--sans); font-size: 10px;
+  letter-spacing: 3px; color: var(--gold); opacity: 0.55;
+  margin-bottom: 18px; display: block;
 }
 .framework-card h3 {
-  font-family: var(--serif);
-  font-size: 22px;
-  font-weight: 400;
-  color: var(--white);
-  margin-bottom: 12px;
-  line-height: 1.4;
+  font-family: var(--serif); font-size: 22px;
+  font-weight: 400; color: var(--white);
+  margin-bottom: 12px; line-height: 1.4;
 }
 .framework-card p {
-  font-family: var(--serif);
-  font-size: 17px;
-  font-weight: 300;
-  color: var(--grey);
-  line-height: 1.85;
+  font-family: var(--serif); font-size: 16.5px;
+  font-weight: 300; color: var(--grey); line-height: 1.88;
 }
 
-/* ── COSMOLOGICAL STATEMENT ───────────────────── */
+/* ── COSMOLOGICAL ──────────────────────────────── */
 .cosmo-block {
   padding: 90px 24px;
-  background: radial-gradient(ellipse at 50% 50%, rgba(212,175,55,0.05) 0%, transparent 65%);
+  background: radial-gradient(ellipse at 50% 50%,
+    rgba(212,175,55,0.06) 0%, transparent 65%);
   border-top: 1px solid #0e0e0e;
   border-bottom: 1px solid #0e0e0e;
 }
 .cosmo-block p {
-  font-size: clamp(22px, 4vw, 36px);
-  font-weight: 300;
-  font-style: italic;
-  color: var(--gold);
-  line-height: 1.7;
-  max-width: 700px;
-  margin: 0 auto 20px;
+  font-size: clamp(21px, 3.5vw, 34px);
+  font-weight: 300; font-style: italic;
+  color: var(--gold); line-height: 1.7;
+  max-width: 680px; margin: 0 auto 22px;
 }
 .cosmo-block .plain {
-  font-style: normal;
+  font-style: normal; color: var(--grey);
   font-size: clamp(15px, 2vw, 19px);
-  color: #666;
 }
 
-/* ── WHY $SELF ────────────────────────────────── */
+/* ── WHY $SELF ─────────────────────────────────── */
 .why-section {
   padding: 90px 24px;
   background: var(--bg-lift);
@@ -342,76 +280,51 @@ a:hover { opacity: 0.75; }
   border-bottom: 1px solid #0e0e0e;
 }
 .why-section h2 {
-  font-size: clamp(26px, 4vw, 40px);
-  font-weight: 300;
-  color: var(--white);
-  max-width: 680px;
-  margin: 0 auto 48px;
-  line-height: 1.5;
+  font-size: clamp(24px, 3.5vw, 38px);
+  font-weight: 300; color: var(--white);
+  max-width: 660px; margin: 0 auto 52px; line-height: 1.55;
 }
 .why-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 24px;
-  max-width: 960px;
-  margin: 0 auto 48px;
+  gap: 20px; max-width: 960px; margin: 0 auto 52px;
   text-align: left;
 }
 .why-card {
   padding: 32px 28px;
-  border: 1px solid #151515;
-  background: #000;
+  border: 1px solid #141414; background: var(--bg);
 }
-.why-card .icon {
-  font-size: 28px;
-  margin-bottom: 16px;
-  display: block;
-}
+.why-card .icon { font-size: 26px; margin-bottom: 16px; display: block; }
 .why-card h4 {
-  font-family: var(--serif);
-  font-size: 20px;
-  font-weight: 400;
-  color: var(--gold);
-  margin-bottom: 10px;
+  font-family: var(--serif); font-size: 20px;
+  font-weight: 400; color: var(--gold); margin-bottom: 10px;
 }
 .why-card p {
-  font-family: var(--serif);
-  font-size: 16px;
-  font-weight: 300;
-  color: var(--grey);
-  line-height: 1.85;
+  font-family: var(--serif); font-size: 16px;
+  font-weight: 300; color: var(--grey); line-height: 1.88;
 }
 .why-closing {
-  max-width: 640px;
-  margin: 0 auto;
+  max-width: 600px; margin: 0 auto;
   font-size: clamp(18px, 2.5vw, 24px);
-  font-weight: 300;
-  font-style: italic;
-  color: var(--white);
-  line-height: 1.8;
+  font-weight: 300; font-style: italic;
+  color: var(--white); line-height: 1.8;
 }
 
-/* ── COSMIC LEDGER ────────────────────────────── */
+/* ── COSMIC LEDGER ─────────────────────────────── */
 .cosmic-section {
-  padding: 90px 24px;
-  max-width: 680px;
-  margin: 0 auto;
+  padding: 90px 24px; max-width: 680px; margin: 0 auto;
 }
 .cosmic-section p {
-  font-size: clamp(18px, 2.5vw, 23px);
-  font-weight: 300;
-  color: #bbb;
-  line-height: 1.95;
-  margin: 18px 0;
+  font-size: clamp(17px, 2.4vw, 22px);
+  font-weight: 300; color: #bbb; line-height: 1.95; margin: 16px 0;
 }
 .cosmic-section p.gold {
-  color: var(--gold);
-  font-style: italic;
-  font-size: clamp(20px, 3vw, 28px);
+  color: var(--gold); font-style: italic;
+  font-size: clamp(19px, 2.8vw, 27px);
 }
-.cosmic-section p.dim { color: #555; font-size: clamp(15px, 2vw, 18px); }
+.cosmic-section p.dim { color: var(--grey); font-size: clamp(14px, 1.8vw, 17px); }
 
-/* ── WATCH SECTION ────────────────────────────── */
+/* ── WATCH ─────────────────────────────────────── */
 .watch-section {
   padding: 80px 24px;
   background: var(--bg-lift);
@@ -419,274 +332,196 @@ a:hover { opacity: 0.75; }
   border-bottom: 1px solid #0e0e0e;
 }
 .watch-links {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  margin-top: 40px;
+  display: flex; flex-direction: column;
+  align-items: center; gap: 18px; margin-top: 42px;
 }
 .watch-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  font-family: var(--sans);
-  font-size: 12px;
-  color: var(--gold);
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  text-decoration: none;
-  border: 1px solid #222;
-  padding: 14px 30px;
-  transition: all 0.3s;
-  max-width: 420px;
-  width: 100%;
-  justify-content: center;
+  display: inline-flex; align-items: center; gap: 12px;
+  font-family: var(--sans); font-size: 11.5px;
+  color: var(--gold); letter-spacing: 2px; text-transform: uppercase;
+  text-decoration: none; border: 1px solid #252525;
+  padding: 15px 32px; transition: all 0.3s;
+  max-width: 440px; width: 100%; justify-content: center;
 }
-.watch-link:hover { border-color: var(--gold); background: var(--gold-dim); opacity: 1; }
+.watch-link:hover {
+  border-color: var(--gold);
+  background: var(--gold-dim); opacity: 1;
+}
 .watch-note {
-  font-family: var(--sans);
-  font-size: 10px;
-  color: #444;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-top: 6px;
+  font-family: var(--sans); font-size: 10px;
+  color: var(--dim); letter-spacing: 2px; text-transform: uppercase;
+  margin-top: 7px;
 }
 
-/* ── MIRROR ROOM ──────────────────────────────── */
+/* ── MIRROR ROOM ───────────────────────────────── */
 .mirror-room {
   padding: 90px 24px;
   border-top: 1px solid #0e0e0e;
 }
 .mirror-room h2 {
-  font-size: clamp(26px, 4vw, 38px);
-  font-weight: 300;
-  color: var(--white);
-  margin-bottom: 20px;
-  max-width: 580px;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 1.5;
+  font-size: clamp(24px, 3.5vw, 36px);
+  font-weight: 300; color: var(--white);
+  max-width: 560px; margin: 0 auto 20px; line-height: 1.5;
 }
 .mirror-room .descriptor {
-  font-size: clamp(16px, 2vw, 20px);
-  font-weight: 300;
-  color: var(--grey);
-  max-width: 540px;
-  margin: 0 auto 48px;
-  line-height: 1.9;
+  font-size: clamp(15px, 2vw, 19px);
+  font-weight: 300; color: var(--grey);
+  max-width: 520px; margin: 0 auto 52px; line-height: 1.92;
 }
 .mirror-links {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 14px;
+  display: flex; flex-direction: column;
+  align-items: center; gap: 14px;
 }
 .mirror-link {
-  display: block;
-  font-family: var(--sans);
-  font-size: 12px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--gold);
-  border: 1px solid #222;
-  padding: 14px 36px;
-  transition: all 0.3s;
-  text-decoration: none;
-  width: 100%;
-  max-width: 380px;
+  display: block; font-family: var(--sans);
+  font-size: 11.5px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gold); border: 1px solid #252525;
+  padding: 15px 40px; transition: all 0.3s;
+  text-decoration: none; width: 100%; max-width: 380px;
 }
 .mirror-link:hover { border-color: var(--gold); background: var(--gold-dim); opacity: 1; }
 .mirror-link.primary {
-  background: var(--gold);
-  color: #000;
-  border-color: var(--gold);
-  font-weight: 700;
+  background: var(--gold); color: #000;
+  border-color: var(--gold); font-weight: 700;
 }
-.mirror-link.primary:hover { opacity: 0.85; }
+.mirror-link.primary:hover { opacity: 0.83; }
 
-/* ── BRIDGE ───────────────────────────────────── */
+/* ── BRIDGE ────────────────────────────────────── */
 .bridge-section {
-  padding: 70px 24px;
-  max-width: 580px;
-  margin: 0 auto;
+  padding: 70px 24px; max-width: 560px; margin: 0 auto;
 }
 .bridge-section p {
-  font-size: clamp(18px, 2.5vw, 23px);
-  font-weight: 300;
-  color: #bbb;
-  line-height: 1.9;
-  margin: 16px 0;
+  font-size: clamp(17px, 2.3vw, 22px);
+  font-weight: 300; color: #bbb; line-height: 1.9; margin: 16px 0;
 }
 .bridge-section p.gold { color: var(--gold); font-style: italic; }
 
-/* ── CONTRACT SECTION ─────────────────────────── */
+/* ── CONTRACT ──────────────────────────────────── */
 .ca-full-section {
-  padding: 40px 24px 60px;
-  max-width: 680px;
-  margin: 0 auto;
+  padding: 40px 24px 60px; max-width: 680px; margin: 0 auto;
 }
 .ca-full-box {
-  border: 1px solid #1a1a1a;
-  padding: 36px 28px;
-  background: var(--bg-lift);
-  position: relative;
+  border: 1px solid #1a1a1a; padding: 36px 28px;
+  background: var(--bg-lift); position: relative;
 }
 .ca-full-box::before {
-  content: '';
-  position: absolute;
-  top: -1px; left: -1px;
+  content: ''; position: absolute; top: -1px; left: -1px;
   width: 18px; height: 18px;
-  border-top: 1px solid var(--gold);
-  border-left: 1px solid var(--gold);
+  border-top: 1px solid var(--gold); border-left: 1px solid var(--gold);
 }
 .ca-full-box::after {
-  content: '';
-  position: absolute;
-  bottom: -1px; right: -1px;
+  content: ''; position: absolute; bottom: -1px; right: -1px;
   width: 18px; height: 18px;
-  border-bottom: 1px solid var(--gold);
-  border-right: 1px solid var(--gold);
+  border-bottom: 1px solid var(--gold); border-right: 1px solid var(--gold);
 }
 .ca-full-box .ca-address-full {
-  font-family: var(--sans);
-  font-size: 13px;
-  color: #ccc;
-  word-break: break-all;
-  letter-spacing: 1px;
-  margin: 12px 0;
+  font-family: var(--sans); font-size: 13px; color: #ccc;
+  word-break: break-all; letter-spacing: 1px; margin: 12px 0;
 }
 .ca-full-box .supply {
-  font-family: var(--sans);
-  font-size: 11px;
-  color: #444;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-top: 10px;
+  font-family: var(--sans); font-size: 11px;
+  color: var(--dim); letter-spacing: 2px; text-transform: uppercase; margin-top: 10px;
 }
 .trade-links {
-  display: flex;
-  justify-content: center;
-  gap: 28px;
-  flex-wrap: wrap;
-  margin-top: 20px;
+  display: flex; justify-content: center;
+  gap: 28px; flex-wrap: wrap; margin-top: 20px;
 }
 .trade-links a {
-  font-family: var(--sans);
-  font-size: 11px;
-  color: #777;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  text-decoration: none;
-  transition: color 0.25s;
+  font-family: var(--sans); font-size: 11.5px;
+  color: var(--mid); letter-spacing: 2px; text-transform: uppercase;
+  text-decoration: none; transition: color 0.25s;
 }
 .trade-links a:hover { color: var(--gold); opacity: 1; }
 
-/* ── EXPLORE ──────────────────────────────────── */
+/* ── GO DEEPER ─────────────────────────────────── */
 .explore-links {
-  display: flex;
-  justify-content: center;
-  gap: 20px 32px;
-  flex-wrap: wrap;
-  margin-top: 28px;
+  display: flex; justify-content: center;
+  gap: 20px 36px; flex-wrap: wrap; margin-top: 28px;
 }
 .explore-links a {
-  font-family: var(--sans);
-  font-size: 11px;
-  color: #666;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  text-decoration: none;
-  transition: color 0.25s;
+  font-family: var(--sans); font-size: 11.5px;
+  color: var(--mid); letter-spacing: 2px; text-transform: uppercase;
+  text-decoration: none; transition: color 0.25s;
 }
 .explore-links a:hover { color: var(--gold); opacity: 1; }
 
-/* ── FOOTER ───────────────────────────────────── */
+/* ── FOOTER ────────────────────────────────────── */
+/* All footer elements significantly brighter than before */
 .footer {
-  padding: 60px 24px 48px;
-  border-top: 1px solid #0e0e0e;
+  padding: 64px 24px 52px;
+  border-top: 1px solid #141414;
 }
-.footer-logo {
-  width: 140px;
-  max-width: 50vw;
-  margin: 0 auto 24px;
-  display: block;
-  opacity: 0.9;
+.footer-logo-wrap {
+  width: 80px; height: 80px; margin: 0 auto 28px;
+  border-radius: 6px; overflow: hidden;
+  box-shadow: 0 0 16px 3px rgba(212,175,55,0.25);
+  background: #000;
 }
-.footer-tagline {
-  font-family: var(--sans);
-  font-size: 10px;
-  color: #333;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  margin-bottom: 32px;
+.footer-logo-wrap img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
 }
 .footer-socials {
-  display: flex;
-  justify-content: center;
-  gap: 28px;
-  flex-wrap: wrap;
-  margin-bottom: 32px;
+  display: flex; justify-content: center;
+  gap: 28px; flex-wrap: wrap; margin-bottom: 28px;
 }
 .footer-socials a {
-  font-family: var(--sans);
-  font-size: 10px;
-  color: #444;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  text-decoration: none;
-  transition: color 0.25s;
+  font-family: var(--sans); font-size: 11px;
+  color: var(--mid);                  /* #888 — clearly visible */
+  letter-spacing: 3px; text-transform: uppercase;
+  text-decoration: none; transition: color 0.25s;
 }
 .footer-socials a:hover { color: var(--gold); opacity: 1; }
+
+.footer-tagline {
+  font-family: var(--sans); font-size: 11px;
+  color: var(--grey);                 /* #888 — visible */
+  letter-spacing: 5px; text-transform: uppercase;
+  margin-bottom: 22px;
+}
 .footer-ca {
-  font-family: var(--sans);
-  font-size: 10px;
-  color: #2a2a2a;
-  letter-spacing: 1px;
-  word-break: break-all;
-  max-width: 500px;
-  margin: 0 auto;
+  font-family: var(--sans); font-size: 11px;
+  color: var(--dim);                  /* #666 — visible but secondary */
+  letter-spacing: 0.8px; word-break: break-all;
+  max-width: 500px; margin: 0 auto;
 }
 
-/* ── RESPONSIVE ───────────────────────────────── */
+/* ── RESPONSIVE ────────────────────────────────── */
 @media (max-width: 640px) {
-  .hero-question { font-size: 26px; }
+  .hero-question { font-size: 24px; }
+  .float-logo { width: 46px; height: 46px; top: 12px; }
   .framework-grid { grid-template-columns: 1fr; gap: 1px; }
   .why-grid { grid-template-columns: 1fr; }
-  .float-logo { width: 42px; height: 42px; top: 14px; }
+  .ca-buttons { flex-direction: column; }
+  .btn-gold, .btn-outline { width: 100%; text-align: center; }
 }
 </style>
 </head>
 <body>
 
-<!-- FLOATING LOGO -->
-<a href="#" class="float-logo" title="*SELF">
+<!-- FLOATING LOGO — square, gold glow -->
+<a href="https://42self.xyz" class="float-logo" title="*SELF · 42self.xyz">
   <img src="./assets/images/Logo_web.jpg" alt="*SELF">
 </a>
 
-<!-- ═══════════════════════════════════════════════
-     SECTION 1 — HERO / HOOK
-     ═══════════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════
+     1 · HERO
+     ═══════════════════════════════════ -->
 <section class="hero">
-
   <p class="hero-question">
     If Bitcoin is worth $80,000 —<br>
     what is your own SELF worth?
   </p>
-
-  <p class="hero-sub">
-    In any currency you like.
-  </p>
+  <p class="hero-sub">In any currency you like.</p>
 
   <div class="hero-ca">
     <div class="ca-label">$SELF · Solana</div>
-    <div class="ca-address" id="contract-hero">7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump</div>
+    <div class="ca-address" id="ca-hero">7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump</div>
     <div class="ca-buttons">
-      <a class="btn-gold" id="gmgn-hero" href="#" target="_blank" rel="noopener noreferrer">Buy on GMGN →</a>
+      <a class="btn-gold" id="gmgn-hero" href="#" target="_blank" rel="noopener">Buy on GMGN →</a>
       <button class="btn-outline" onclick="copyCAHero()">Copy CA</button>
     </div>
   </div>
-
-  <div class="scroll-hint">↓ continue</div>
+  <span class="scroll-hint">↓ continue</span>
 </section>
 
 <!-- BANNER -->
@@ -696,12 +531,11 @@ a:hover { opacity: 0.75; }
 
 <div class="divider"></div>
 
-<!-- ═══════════════════════════════════════════════
-     SECTION 2 — THE MIRROR (recognition)
-     ═══════════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════
+     2 · THE MIRROR
+     ═══════════════════════════════════ -->
 <section class="section">
   <span class="label">The Mirror</span>
-
   <p class="phil-line">You knew something was off.</p>
   <p class="phil-line">You just couldn't point to it.</p>
 </section>
@@ -749,314 +583,31 @@ a:hover { opacity: 0.75; }
 
 <div class="divider"></div>
 
-<!-- ═══════════════════════════════════════════════
-     SECTION 3 — THE FRAMEWORK
-     ═══════════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════
+     3 · THE FRAMEWORK
+     ═══════════════════════════════════ -->
 <section class="section-wide">
   <span class="label">The Framework</span>
-  <p class="phil-line" style="margin-bottom:8px;">The *SELF operating system. Six layers.</p>
+  <p class="phil-line bright">The *SELF operating system. Six layers.</p>
   <p class="phil-line dim">Most people run on the first one their whole life.</p>
 
   <div class="framework-grid">
-
     <div class="framework-card">
       <span class="num">01</span>
       <h3>The Default OS</h3>
       <p>Stimulus. Response. Repeat. The autopilot running underneath every trade, every decision, every reaction — and most people never notice it running.</p>
     </div>
-
     <div class="framework-card">
       <span class="num">02</span>
       <h3>The Arrival Fallacy</h3>
       <p>The false belief that the next milestone will finally bring peace. Hedonic Adaptation means what thrills you today becomes routine tomorrow. The void returns every time.</p>
     </div>
-
     <div class="framework-card">
       <span class="num">03</span>
       <h3>The Ego</h3>
-      <p>In Latin, Ego simply means "I." But the Ego is the mask — your name, status, achievements, wounds, the story you tell about yourself. The false self that keeps seeking outside.</p>
+      <p>The mask the "I" wears. Your name, status, achievements, wounds, the story you tell about yourself. The false self that keeps seeking outside. The prerequisite to knowing your true SELF: see through it.</p>
     </div>
-
     <div class="framework-card">
       <span class="num">04</span>
       <h3>The True "I"</h3>
-      <p>Your pure, underlying conscious awareness. The silent observer behind every thought. The screen, not the movie. Every tradition that found truth arrived at the same address.</p>
-    </div>
-
-    <div class="framework-card">
-      <span class="num">05</span>
-      <h3>The Gap</h3>
-      <p>The space between trigger and response. The whole practice lives here. Most people collapse it instantly. The RRRR Protocol: Recognize, Reflect, Reframe, Respond.</p>
-    </div>
-
-    <div class="framework-card">
-      <span class="num">06</span>
-      <h3>Self-Realization</h3>
-      <p>Not a destination achievable in one lifetime. A direction. The goal was never arrival — it was the direction. The question is: are you pointed the right way?</p>
-    </div>
-
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ═══════════════════════════════════════════════
-     SECTION 4 — COSMOLOGICAL FOUNDATION
-     ═══════════════════════════════════════════════ -->
-<div class="cosmo-block">
-  <span class="label">The Foundation</span>
-  <p>The universe doesn't contain Consciousness.</p>
-  <p>Consciousness contains the universe.</p>
-  <p class="plain">*SELF is the practice of knowing that from the inside.</p>
-</div>
-
-<div class="divider"></div>
-
-<!-- ═══════════════════════════════════════════════
-     SECTION 5 — COSMIC LEDGER
-     ═══════════════════════════════════════════════ -->
-<section class="section">
-  <span class="label">The Cosmic Ledger</span>
-
-  <p class="phil-line">You buy Bitcoin. You hold it.</p>
-  <p class="phil-line dim">The blockchain records the transaction and forgets you exist.</p>
-</section>
-
-<div class="divider"></div>
-
-<section class="cosmic-section">
-
-  <p class="gold">What if there is something you carry<br>that no blockchain can record —</p>
-  <p class="gold">that no ledger can hold —<br>that no market can price?</p>
-
-  <div class="gold-line"></div>
-
-  <p>Every deed you perform.<br>Every reaction you choose.<br>Every moment you spend in awareness or autopilot.</p>
-  <p>Builds a balance sheet.</p>
-  <p>Not in any market. Not in any wallet.</p>
-  <p class="gold">In the cosmic ledger of your own SELF.</p>
-
-  <div class="gold-line"></div>
-
-  <p class="dim">You may not believe in reincarnation.<br>You may not believe in God.</p>
-  <p>But you cannot deny the balance sheet<br>you are building right now —<br>with every decision, every reaction,<br>every moment you choose noticing over numbness.</p>
-
-  <div class="gold-line"></div>
-
-  <p class="gold">The cosmic ledger doesn't have a gas fee.</p>
-  <p class="dim">It doesn't need one.</p>
-
-</section>
-
-<div class="divider"></div>
-
-<!-- ═══════════════════════════════════════════════
-     SECTION 6 — WHY $SELF (conversion)
-     ═══════════════════════════════════════════════ -->
-<section class="why-section">
-  <span class="label">Why $SELF</span>
-  <h2>Most tokens ask you to believe in the chart.<br>This one asks a different question.</h2>
-
-  <div class="why-grid">
-
-    <div class="why-card">
-      <span class="icon">🪞</span>
-      <h4>A declaration, not a trade</h4>
-      <p>Buying $SELF is a philosophical stake. It says you know the journey matters — not just the balance sheet everyone else is watching.</p>
-    </div>
-
-    <div class="why-card">
-      <span class="icon">🧭</span>
-      <h4>The only rug that matters</h4>
-      <p>What if the real rug pull isn't the chart? What if it's the moment you stopped noticing yourself? Human birth is a supreme gift. The inner market never crashes.</p>
-    </div>
-
-    <div class="why-card">
-      <span class="icon">⚡</span>
-      <h4>Skin in the game of the SELF</h4>
-      <p>Holders feel the framework every time the chart moves. That is a fundamentally different relationship with philosophy than any book or podcast can provide.</p>
-    </div>
-
-    <div class="why-card">
-      <span class="icon">🌐</span>
-      <h4>The Mirror Room</h4>
-      <p>Not a hype chat. A space for people who noticed the gap between trigger and response and couldn't unsee it. The right 30 people in that room outweigh 30,000 passive impressions.</p>
-    </div>
-
-  </div>
-
-  <p class="why-closing">
-    Ignorance of your true SELF<br>
-    is the only poverty that actually matters.
-  </p>
-
-  <div style="margin-top:40px;">
-    <a class="btn-gold" id="buy-cta" href="#" target="_blank" rel="noopener noreferrer" style="display:inline-block; padding:14px 40px; font-size:12px; letter-spacing:3px;">Buy $SELF on GMGN →</a>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ═══════════════════════════════════════════════
-     SECTION 7 — BRIDGE (token meaning)
-     ═══════════════════════════════════════════════ -->
-<section class="bridge-section">
-  <p>*SELF exists on Solana.</p>
-  <p>Not as a financial instrument.</p>
-  <p class="gold">As a mirror with a ledger.</p>
-  <p>The supply is fixed. The 42 is not decoration.</p>
-  <p>T + O + B + E = 42. &nbsp; To Be.</p>
-</section>
-
-<div class="divider"></div>
-
-<!-- ═══════════════════════════════════════════════
-     SECTION 8 — WATCH / LISTEN
-     ═══════════════════════════════════════════════ -->
-<section class="watch-section">
-  <span class="label">Watch &amp; Listen</span>
-  <p class="phil-line" style="max-width:540px; margin:0 auto;">
-    The full framework. Two formats.<br>Start with 90 seconds.
-  </p>
-
-  <div class="watch-links">
-
-    <div>
-      <a class="watch-link" href="https://youtu.be/904IS3mxH3o" target="_blank" rel="noopener noreferrer">
-        → You Watched Yourself Do It Anyway
-      </a>
-      <p class="watch-note">Short form · 90 seconds</p>
-    </div>
-
-    <div>
-      <a class="watch-link" href="https://youtu.be/OPBLi31IAz4" target="_blank" rel="noopener noreferrer">
-        → The Market Cap of Your Consciousness
-      </a>
-      <p class="watch-note">Full version · 5 minutes</p>
-    </div>
-
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ═══════════════════════════════════════════════
-     SECTION 9 — MIRROR ROOM (community CTA)
-     ═══════════════════════════════════════════════ -->
-<section class="mirror-room">
-  <span class="label">The Mirror Room</span>
-  <h2>A space for people who noticed<br>the gap and couldn't unsee it.</h2>
-  <p class="descriptor">
-    Not a hype chat. No price talk. No memes.<br>
-    Just noticing — in the chart, in yourself, in the market.<br>
-    The mirror doesn't chase. It reflects.
-  </p>
-
-  <div class="mirror-links">
-    <a class="mirror-link primary"
-       href="https://x.com/i/chat/group_join/g2056088351590220124/gAK9fW8Y29"
-       target="_blank" rel="noopener noreferrer">
-      → Enter the Mirror Room (X)
-    </a>
-    <a class="mirror-link"
-       href="https://t.me/selfscreen"
-       target="_blank" rel="noopener noreferrer">
-      → Telegram
-    </a>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ═══════════════════════════════════════════════
-     SECTION 10 — CONTRACT
-     ═══════════════════════════════════════════════ -->
-<section class="ca-full-section">
-  <span class="label">Contract</span>
-  <div class="ca-full-box">
-    <div class="ca-label">$SELF · Solana</div>
-    <div class="ca-address-full" id="contract">7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump</div>
-    <div class="supply">Supply: 1,000,000,042</div>
-    <div style="margin-top:20px;">
-      <button class="btn-outline" onclick="copyCA()" style="margin-right:10px;">Copy CA</button>
-    </div>
-    <div class="trade-links">
-      <a id="pumpfun" href="#" target="_blank" rel="noopener noreferrer">pump.fun</a>
-      <a id="birdeye" href="#" target="_blank" rel="noopener noreferrer">Birdeye</a>
-      <a id="gmgn-full" href="#" target="_blank" rel="noopener noreferrer">GMGN</a>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ═══════════════════════════════════════════════
-     SECTION 11 — EXPLORE (framework docs)
-     ═══════════════════════════════════════════════ -->
-<section class="section">
-  <span class="label">Go Deeper</span>
-  <p class="phil-line dim">The full framework. The complete map.</p>
-
-  <div class="explore-links">
-    <a href="https://app.xmind.com/share/OcHbI8Mf?xid=XrVOVKnC" target="_blank" rel="noopener noreferrer">Structured Map</a>
-    <a href="https://app.xmind.com/101oMO2f" target="_blank" rel="noopener noreferrer">Visual Map</a>
-    <a href="https://github.com/mannareddy/SELF/tree/main/docs" target="_blank" rel="noopener noreferrer">Docs</a>
-    <a href="https://github.com/mannareddy/SELF" target="_blank" rel="noopener noreferrer">GitHub</a>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ═══════════════════════════════════════════════
-     FOOTER — social links once, tagline once
-     ═══════════════════════════════════════════════ -->
-<footer class="footer">
-  <img src="./assets/images/Footer.png" alt="*SELF" class="footer-logo">
-
-  <div class="footer-socials">
-    <a href="https://x.com/muraliannareddy" target="_blank" rel="noopener noreferrer">X</a>
-    <a href="https://t.me/selfscreen" target="_blank" rel="noopener noreferrer">Telegram</a>
-    <a href="https://www.youtube.com/channel/UCdQDrBMeE_uhDpqWY9QKlgw" target="_blank" rel="noopener noreferrer">YouTube</a>
-    <a href="https://www.instagram.com/muralireddy_79/" target="_blank" rel="noopener noreferrer">Instagram</a>
-    <a href="https://github.com/mannareddy/SELF" target="_blank" rel="noopener noreferrer">GitHub</a>
-  </div>
-
-  <div class="footer-tagline">Not a meme. A mirror.</div>
-
-  <div class="footer-ca">7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump</div>
-</footer>
-
-<script>
-const CA = '7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump';
-
-function copyCA() {
-  navigator.clipboard.writeText(CA).then(() => {
-    const btn = document.querySelector('.ca-full-box .btn-outline');
-    const orig = btn.innerText;
-    btn.innerText = 'Copied ✓';
-    setTimeout(() => { btn.innerText = orig; }, 2000);
-  });
-}
-
-function copyCAHero() {
-  navigator.clipboard.writeText(CA).then(() => {
-    const btn = document.querySelector('.hero-ca .btn-outline');
-    const orig = btn.innerText;
-    btn.innerText = 'Copied ✓';
-    btn.disabled = true;
-    setTimeout(() => { btn.innerText = orig; btn.disabled = false; }, 2000);
-  });
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-  const gmgn = 'https://gmgn.ai/sol/token/solscan_' + CA;
-  document.getElementById('gmgn-hero').href = gmgn;
-  document.getElementById('buy-cta').href = gmgn;
-  document.getElementById('gmgn-full').href = gmgn;
-  document.getElementById('pumpfun').href = 'https://pump.fun/coin/' + CA;
-  document.getElementById('birdeye').href = 'https://birdeye.so/token/' + CA + '?chain=solana';
-});
-</script>
-
-</body>
-</html>
+      <p>
