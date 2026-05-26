@@ -691,28 +691,21 @@ function copyCA(id, btn) {
     var orig = btn.innerText;
     btn.innerText = 'Copied ✓';
     btn.disabled = true;
-    setTimeout(function() {
-      btn.innerText = orig;
-      btn.disabled = false;
-    }, 2000);
+    setTimeout(function() { btn.innerText = orig; btn.disabled = false; }, 2000);
   });
 }
-
-// Geo badge script
+// Geo badge script (if your current version has it)
 (function() {
   fetch('https://ipapi.co/json/')
     .then(r => r.json())
     .then(d => {
       if (d.country_code && d.region_code) {
-        document.getElementById('geoBadge').innerText =
-          d.region_code.toUpperCase() + ' · ' + d.country_code;
-
+        document.getElementById('geoBadge').innerText = d.region_code.toUpperCase() + ' · ' + d.country_code;
         document.getElementById('geoBadge').classList.add('visible');
       }
     })
     .catch(() => {});
 })();
 </script>
-
 </body>
 </html>
