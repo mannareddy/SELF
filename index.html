@@ -1,3 +1,6 @@
+bash
+
+cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,18 +30,12 @@ gtag('config','G-XC5FG6W949');
 <meta name="twitter:image" content="https://42self.xyz/assets/images/Banner.jpg">
 <link rel="icon" type="image/jpeg" href="./assets/images/Logo_web.jpg">
 <style>
-.watch-link-inner{
-  display:flex;flex-direction:column;
-  align-items:center;width:100%;max-width:440px;
-}
-.watch-thumb{
-  width:100%;max-width:440px;height:200px;
-  object-fit:cover;display:block;
-  border:1px solid #1a1a1a;margin-bottom:0;
-  filter:brightness(0.85);
-  transition:filter .3s;
-}
+/* ─── WATCH THUMBNAILS ─── */
+.watch-link-inner{display:flex;flex-direction:column;align-items:center;width:100%;max-width:440px;}
+.watch-thumb{width:100%;max-width:440px;height:200px;object-fit:cover;display:block;border:1px solid #1a1a1a;margin-bottom:0;filter:brightness(0.85);transition:filter .3s;}
 .watch-thumb:hover{filter:brightness(1);}
+
+/* ─── RESET & ROOT ─── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 :root{
@@ -58,37 +55,37 @@ body{background:var(--bg);color:var(--white);font-family:var(--serif);text-align
 a{color:var(--gold);text-decoration:none;transition:opacity .25s;}
 a:hover{opacity:.7;}
 
-/* FLOATING LOGO */
-.float-logo{
-  position:fixed;top:16px;left:50%;transform:translateX(-50%);
-  z-index:1000;width:58px;height:58px;border-radius:6px;overflow:hidden;
-  box-shadow:0 0 12px 3px var(--gold-glow),0 0 36px 8px rgba(212,175,55,.22),0 0 70px 20px rgba(212,175,55,.08);
-  animation:glow-pulse 3.5s ease-in-out infinite;cursor:pointer;display:block;
-}
+/* ─── FLOATING LOGO ─── */
+.float-logo{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:1000;width:58px;height:58px;border-radius:6px;overflow:hidden;box-shadow:0 0 12px 3px var(--gold-glow),0 0 36px 8px rgba(212,175,55,.22),0 0 70px 20px rgba(212,175,55,.08);animation:glow-pulse 3.5s ease-in-out infinite;cursor:pointer;display:block;}
 .float-logo img{width:100%;height:100%;object-fit:cover;display:block;}
 @keyframes glow-pulse{
   0%,100%{box-shadow:0 0 12px 3px var(--gold-glow),0 0 36px 8px rgba(212,175,55,.22),0 0 70px 20px rgba(212,175,55,.08);}
   50%{box-shadow:0 0 22px 7px rgba(212,175,55,.8),0 0 55px 15px rgba(212,175,55,.35),0 0 100px 32px rgba(212,175,55,.13);}
 }
 
-/* UTILITIES */
+/* ─── GEO BADGE ─── */
+.geo-badge{
+  position:fixed;bottom:18px;right:20px;z-index:900;
+  font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--dim);border:1px solid #1a1a1a;padding:5px 10px;
+  background:rgba(0,0,0,.85);backdrop-filter:blur(6px);
+  opacity:0;transition:opacity .6s ease;pointer-events:none;
+}
+.geo-badge.visible{opacity:1;}
+
+/* ─── UTILITIES ─── */
 .section{padding:80px 24px;max-width:660px;margin:0 auto;}
 .section-wide{padding:80px 24px;max-width:980px;margin:0 auto;}
 .divider{width:1px;height:70px;background:linear-gradient(to bottom,transparent,#1c1c1c,transparent);margin:0 auto;}
 .gold-line{width:48px;height:1px;background:var(--gold);opacity:.35;margin:44px auto;}
 .label{font-family:var(--sans);font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--dim);margin-bottom:42px;display:block;}
 
-/* HERO */
-.hero{
-  min-height:100vh;display:flex;flex-direction:column;
-  justify-content:center;align-items:center;
-  padding:110px 24px 90px;position:relative;
-  background:radial-gradient(ellipse at 50% 35%,rgba(212,175,55,.05) 0%,transparent 68%);
-}
+/* ─── HERO ─── */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:110px 24px 90px;position:relative;background:radial-gradient(ellipse at 50% 35%,rgba(212,175,55,.05) 0%,transparent 68%);}
 .hero-question{font-size:clamp(24px,4.5vw,44px);font-weight:300;font-style:italic;color:var(--gold);line-height:1.55;max-width:680px;margin-bottom:20px;letter-spacing:.3px;}
 .hero-sub{font-size:clamp(16px,2.2vw,20px);color:var(--mid);font-weight:300;max-width:480px;line-height:1.9;margin-bottom:50px;}
 
-/* CA BOX */
+/* ─── CA BOX ─── */
 .hero-ca{border:1px solid #1c1c1c;padding:24px 28px;background:var(--bg-lift);width:100%;max-width:540px;position:relative;}
 .hero-ca::before{content:'';position:absolute;top:-1px;left:-1px;width:18px;height:18px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);}
 .hero-ca::after{content:'';position:absolute;bottom:-1px;right:-1px;width:18px;height:18px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);}
@@ -103,17 +100,17 @@ a:hover{opacity:.7;}
 .scroll-hint{position:absolute;bottom:34px;font-family:var(--sans);font-size:10px;color:#2c2c2c;letter-spacing:5px;text-transform:uppercase;animation:fade 4s ease-in-out infinite;}
 @keyframes fade{0%,100%{opacity:0;}50%{opacity:1;}}
 
-/* BANNER */
+/* ─── BANNER ─── */
 .banner-section{max-width:1400px;margin:0 auto;}
 .banner-image{width:100%;height:auto;display:block;border-top:1px solid #0c0c0c;border-bottom:1px solid #0c0c0c;}
 
-/* PHIL LINES */
+/* ─── PHIL LINES ─── */
 .phil-line{font-size:clamp(18px,2.8vw,26px);font-weight:300;color:#ccc;line-height:1.9;margin:14px 0;}
 .phil-line.gold{color:var(--gold);font-style:italic;}
 .phil-line.dim{color:var(--grey);font-size:clamp(14px,2vw,19px);}
 .phil-line.bright{color:var(--white);}
 
-/* FRAMEWORK */
+/* ─── FRAMEWORK ─── */
 .framework-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:2px;margin:48px auto 0;text-align:left;}
 .framework-card{padding:38px 32px;background:var(--bg-lift);border:1px solid #111;transition:border-color .3s;}
 .framework-card:hover{border-color:#252525;}
@@ -121,12 +118,67 @@ a:hover{opacity:.7;}
 .framework-card h3{font-family:var(--serif);font-size:22px;font-weight:400;color:var(--white);margin-bottom:12px;line-height:1.4;}
 .framework-card p{font-family:var(--serif);font-size:16.5px;font-weight:300;color:var(--grey);line-height:1.88;}
 
-/* COSMO */
+/* ─── IDENTITY LAYER ─── */
+.identity-section{padding:90px 24px;background:var(--bg-lift);border-top:1px solid #0e0e0e;border-bottom:1px solid #0e0e0e;}
+.identity-section h2{font-size:clamp(20px,3vw,32px);font-weight:300;color:var(--white);max-width:560px;margin:0 auto 16px;line-height:1.5;}
+.identity-section .sub{font-size:clamp(14px,2vw,18px);color:var(--grey);max-width:480px;margin:0 auto 60px;font-style:italic;}
+.identity-spine{max-width:760px;margin:0 auto;position:relative;}
+.identity-spine::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,#1c1c1c 10%,#1c1c1c 90%,transparent);transform:translateX(-50%);}
+.identity-node{display:flex;gap:32px;margin-bottom:2px;position:relative;align-items:stretch;}
+.identity-node:nth-child(even){flex-direction:row-reverse;}
+.identity-node-content{width:calc(50% - 28px);background:var(--bg);border:1px solid #111;padding:32px 28px;text-align:left;transition:border-color .35s;cursor:default;}
+.identity-node-content:hover{border-color:#2a2a2a;}
+.identity-node-dot{width:56px;flex-shrink:0;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;}
+.identity-node-dot::after{content:attr(data-num);font-family:var(--sans);font-size:9px;letter-spacing:2px;color:var(--gold);opacity:.6;width:32px;height:32px;border:1px solid #252525;background:var(--bg);display:flex;align-items:center;justify-content:center;border-radius:50%;}
+.identity-node-spacer{width:calc(50% - 28px);}
+.identity-node-content .layer-label{font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.55;margin-bottom:10px;display:block;}
+.identity-node-content h4{font-family:var(--serif);font-size:20px;font-weight:400;color:var(--white);margin-bottom:12px;}
+.identity-node-content .symptom{font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#444;margin-bottom:8px;}
+.identity-node-content p{font-family:var(--serif);font-size:16px;font-weight:300;color:var(--grey);line-height:1.85;margin-bottom:14px;}
+.identity-node-content .practice{font-family:var(--sans);font-size:10px;color:var(--gold);letter-spacing:1.5px;border-top:1px solid #141414;padding-top:14px;margin-top:4px;}
+
+/* ─── IPO CAMPAIGN ─── */
+.ipo-section{
+  padding:100px 24px;
+  background:radial-gradient(ellipse at 50% 0%,rgba(212,175,55,.07) 0%,transparent 60%);
+  border-top:1px solid #0e0e0e;border-bottom:1px solid #0e0e0e;
+  position:relative;overflow:hidden;
+}
+.ipo-section::before{
+  content:'IPO';
+  position:absolute;top:-40px;left:50%;transform:translateX(-50%);
+  font-family:var(--sans);font-size:clamp(120px,18vw,240px);font-weight:900;
+  color:rgba(212,175,55,0.025);letter-spacing:-10px;pointer-events:none;
+  white-space:nowrap;
+}
+.ipo-kicker{font-family:var(--sans);font-size:9px;letter-spacing:6px;text-transform:uppercase;color:var(--gold);opacity:.55;margin-bottom:24px;display:block;}
+.ipo-headline{font-size:clamp(26px,4.5vw,52px);font-weight:300;color:var(--white);line-height:1.3;max-width:700px;margin:0 auto 20px;}
+.ipo-headline em{font-style:italic;color:var(--gold);}
+.ipo-sub{font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:560px;margin:0 auto 52px;line-height:1.95;}
+.ipo-table{max-width:660px;margin:0 auto 52px;border:1px solid #141414;}
+.ipo-table-row{display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid #0d0d0d;}
+.ipo-table-row:last-child{border-bottom:none;}
+.ipo-table-row.header .ipo-cell{font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);padding:14px 20px;}
+.ipo-cell{font-family:var(--serif);font-size:clamp(14px,2vw,17px);font-weight:300;color:var(--grey);padding:18px 20px;text-align:left;border-right:1px solid #0d0d0d;}
+.ipo-cell:last-child{border-right:none;}
+.ipo-cell.gold{color:var(--gold);}
+.ipo-cell.bright{color:var(--white);}
+.ipo-countdown{max-width:560px;margin:0 auto 48px;}
+.ipo-countdown-label{font-family:var(--sans);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--dim);margin-bottom:22px;}
+.countdown-blocks{display:flex;justify-content:center;gap:20px;}
+.countdown-unit{text-align:center;}
+.countdown-num{font-family:var(--sans);font-size:clamp(32px,5vw,56px);font-weight:300;color:var(--gold);line-height:1;display:block;}
+.countdown-label{font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-top:6px;display:block;}
+.ipo-quote{max-width:600px;margin:0 auto 52px;font-size:clamp(17px,2.5vw,24px);font-weight:300;font-style:italic;color:var(--mid);line-height:1.8;border-left:1px solid var(--gold);padding-left:28px;text-align:left;opacity:.7;}
+.ipo-upanishad{max-width:560px;margin:0 auto;font-size:clamp(13px,1.8vw,16px);font-family:var(--sans);color:var(--dim);letter-spacing:.5px;line-height:1.8;border-top:1px solid #111;padding-top:32px;}
+.ipo-upanishad em{color:var(--gold);font-style:normal;}
+
+/* ─── COSMO ─── */
 .cosmo-block{padding:90px 24px;background:radial-gradient(ellipse at 50% 50%,rgba(212,175,55,.06) 0%,transparent 65%);border-top:1px solid #0e0e0e;border-bottom:1px solid #0e0e0e;}
 .cosmo-block p{font-size:clamp(20px,3.5vw,34px);font-weight:300;font-style:italic;color:var(--gold);line-height:1.7;max-width:680px;margin:0 auto 22px;}
 .cosmo-block .plain{font-style:normal;color:var(--grey);font-size:clamp(14px,2vw,19px);}
 
-/* WHY */
+/* ─── WHY ─── */
 .why-section{padding:90px 24px;background:var(--bg-lift);border-top:1px solid #0e0e0e;border-bottom:1px solid #0e0e0e;}
 .why-section h2{font-size:clamp(22px,3.5vw,38px);font-weight:300;color:var(--white);max-width:660px;margin:0 auto 52px;line-height:1.55;}
 .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;max-width:960px;margin:0 auto 52px;text-align:left;}
@@ -136,20 +188,20 @@ a:hover{opacity:.7;}
 .why-card p{font-family:var(--serif);font-size:16px;font-weight:300;color:var(--grey);line-height:1.88;}
 .why-closing{max-width:600px;margin:0 auto;font-size:clamp(18px,2.5vw,24px);font-weight:300;font-style:italic;color:var(--white);line-height:1.8;}
 
-/* COSMIC */
+/* ─── COSMIC LEDGER ─── */
 .cosmic-section{padding:90px 24px;max-width:680px;margin:0 auto;}
 .cosmic-section p{font-size:clamp(16px,2.4vw,22px);font-weight:300;color:#bbb;line-height:1.95;margin:16px 0;}
 .cosmic-section p.gold{color:var(--gold);font-style:italic;font-size:clamp(18px,2.8vw,27px);}
 .cosmic-section p.dim{color:var(--grey);font-size:clamp(13px,1.8vw,17px);}
 
-/* WATCH */
+/* ─── WATCH ─── */
 .watch-section{padding:80px 24px;background:var(--bg-lift);border-top:1px solid #0e0e0e;border-bottom:1px solid #0e0e0e;}
 .watch-links{display:flex;flex-direction:column;align-items:center;gap:18px;margin-top:42px;}
 .watch-link{display:inline-flex;align-items:center;gap:12px;font-family:var(--sans);font-size:11.5px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:1px solid #252525;padding:15px 32px;transition:all .3s;max-width:440px;width:100%;justify-content:center;}
 .watch-link:hover{border-color:var(--gold);background:var(--gold-dim);opacity:1;}
 .watch-note{font-family:var(--sans);font-size:10px;color:var(--dim);letter-spacing:2px;text-transform:uppercase;margin-top:7px;}
 
-/* MIRROR ROOM */
+/* ─── MIRROR ROOM ─── */
 .mirror-room{padding:90px 24px;border-top:1px solid #0e0e0e;}
 .mirror-room h2{font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:560px;margin:0 auto 20px;line-height:1.5;}
 .mirror-room .descriptor{font-size:clamp(14px,2vw,19px);font-weight:300;color:var(--grey);max-width:520px;margin:0 auto 52px;line-height:1.92;}
@@ -159,12 +211,47 @@ a:hover{opacity:.7;}
 .mirror-link.primary{background:var(--gold);color:#000;border-color:var(--gold);font-weight:700;}
 .mirror-link.primary:hover{opacity:.83;}
 
-/* BRIDGE */
+/* ─── COLLAB ─── */
+.collab-section{padding:60px 24px;max-width:560px;margin:0 auto;text-align:center;}
+.collab-section p{font-size:clamp(15px,2vw,19px);color:var(--grey);font-weight:300;line-height:1.9;margin-bottom:24px;}
+.collab-section .collab-note{font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);}
+.collab-tag{display:inline-block;border:1px solid #222;padding:4px 12px;font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:24px;}
+
+/* ─── BRIDGE ─── */
 .bridge-section{padding:70px 24px;max-width:560px;margin:0 auto;}
 .bridge-section p{font-size:clamp(16px,2.3vw,22px);font-weight:300;color:#bbb;line-height:1.9;margin:16px 0;}
 .bridge-section p.gold{color:var(--gold);font-style:italic;}
 
-/* CONTRACT */
+/* ─── FAQ ─── */
+.faq-section{padding:90px 24px;background:var(--bg-lift);border-top:1px solid #0e0e0e;border-bottom:1px solid #0e0e0e;}
+.faq-section h2{font-size:clamp(20px,3vw,32px);font-weight:300;color:var(--white);max-width:560px;margin:0 auto 52px;line-height:1.5;}
+.faq-list{max-width:680px;margin:0 auto;text-align:left;}
+.faq-item{border-bottom:1px solid #111;overflow:hidden;}
+.faq-item:first-child{border-top:1px solid #111;}
+.faq-q{
+  width:100%;background:none;border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:24px 4px;font-family:var(--serif);font-size:clamp(17px,2.2vw,21px);
+  font-weight:400;color:var(--white);text-align:left;transition:color .25s;
+}
+.faq-q:hover{color:var(--gold);}
+.faq-q .faq-icon{
+  flex-shrink:0;width:20px;height:20px;border:1px solid #2a2a2a;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--sans);font-size:14px;color:var(--gold);
+  transition:transform .35s ease,border-color .25s;
+}
+.faq-item.open .faq-q .faq-icon{transform:rotate(45deg);border-color:var(--gold);}
+.faq-a{
+  max-height:0;overflow:hidden;
+  transition:max-height .45s cubic-bezier(0,1,.25,1),padding .35s;
+}
+.faq-item.open .faq-a{max-height:600px;}
+.faq-a-inner{padding:0 4px 28px;font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-weight:300;color:var(--grey);line-height:1.9;}
+.faq-a-inner a{color:var(--gold);}
+.faq-a-inner strong{color:var(--mid);font-weight:400;}
+
+/* ─── CONTRACT ─── */
 .ca-full-section{padding:40px 24px 60px;max-width:680px;margin:0 auto;}
 .ca-full-box{border:1px solid #1a1a1a;padding:36px 28px;background:var(--bg-lift);position:relative;}
 .ca-full-box::before{content:'';position:absolute;top:-1px;left:-1px;width:18px;height:18px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);}
@@ -175,12 +262,12 @@ a:hover{opacity:.7;}
 .trade-links a{font-family:var(--sans);font-size:11.5px;color:var(--mid);letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:color .25s;}
 .trade-links a:hover{color:var(--gold);opacity:1;}
 
-/* GO DEEPER */
+/* ─── GO DEEPER ─── */
 .explore-links{display:flex;justify-content:center;gap:20px 36px;flex-wrap:wrap;margin-top:28px;}
 .explore-links a{font-family:var(--sans);font-size:11.5px;color:var(--mid);letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:color .25s;}
 .explore-links a:hover{color:var(--gold);opacity:1;}
 
-/* FOOTER */
+/* ─── FOOTER ─── */
 .footer{padding:64px 24px 52px;border-top:1px solid #141414;}
 .footer-logo-wrap{width:80px;height:80px;margin:0 auto 28px;border-radius:6px;overflow:hidden;box-shadow:0 0 16px 3px rgba(212,175,55,.25);background:#000;}
 .footer-logo-wrap img{width:100%;height:100%;object-fit:cover;display:block;}
@@ -190,7 +277,7 @@ a:hover{opacity:.7;}
 .footer-tagline{font-family:var(--sans);font-size:11px;color:var(--grey);letter-spacing:5px;text-transform:uppercase;margin-bottom:22px;}
 .footer-ca{font-family:var(--sans);font-size:11px;color:var(--dim);letter-spacing:.8px;word-break:break-all;max-width:500px;margin:0 auto;}
 
-/* RESPONSIVE */
+/* ─── RESPONSIVE ─── */
 @media(max-width:640px){
   .hero-question{font-size:22px;}
   .float-logo{width:46px;height:46px;top:12px;}
@@ -198,27 +285,41 @@ a:hover{opacity:.7;}
   .why-grid{grid-template-columns:1fr;}
   .ca-buttons{flex-direction:column;}
   .btn-gold,.btn-outline{width:100%;text-align:center;}
+  .identity-spine::before{left:20px;}
+  .identity-node,.identity-node:nth-child(even){flex-direction:column;gap:0;}
+  .identity-node-content{width:100%;}
+  .identity-node-spacer{display:none;}
+  .identity-node-dot{width:40px;height:40px;margin:0 auto;}
+  .ipo-table-row{grid-template-columns:1fr 1fr;}
+  .ipo-table-row .ipo-cell:nth-child(2){display:none;}
+  .ipo-table-row.header .ipo-cell:nth-child(2){display:none;}
+  .countdown-num{font-size:36px;}
+  .geo-badge{display:none;}
 }
 </style>
 </head>
 <body>
+
+<!-- GEO BADGE -->
+<div class="geo-badge" id="geoBadge"></div>
 
 <!-- FLOATING LOGO -->
 <a href="https://42self.xyz" class="float-logo" title="*SELF">
   <img src="./assets/images/Logo_web.jpg" alt="*SELF">
 </a>
 
-<!-- 1. HERO -->
+<!-- ═══════════════════════════════════ -->
+<!-- 1. HERO                             -->
+<!-- ═══════════════════════════════════ -->
 <section class="hero">
   <p class="hero-question">If Bitcoin is worth $80,000 —<br>what is your own SELF worth?</p>
   <p class="hero-sub">In any currency you like.</p>
   <div class="hero-ca">
-  <p class="hero-sub" style="margin-bottom:16px;">$SELF · Solana</p>
-  <a class="btn-outline" href="#contract" 
-   style="display:inline-block;padding:12px 32px;
-   font-size:11px;letter-spacing:3px;">
-  ↓ View Contract
-  </a>
+    <p class="hero-sub" style="margin-bottom:16px;">$SELF · Solana</p>
+    <a class="btn-outline" href="#contract"
+       style="display:inline-block;padding:12px 32px;font-size:11px;letter-spacing:3px;">
+      ↓ View Contract
+    </a>
   </div>
   <span class="scroll-hint">&darr; continue</span>
 </section>
@@ -229,7 +330,9 @@ a:hover{opacity:.7;}
 </div>
 <div class="divider"></div>
 
-<!-- 2. THE MIRROR -->
+<!-- ═══════════════════════════════════ -->
+<!-- 2. THE MIRROR                       -->
+<!-- ═══════════════════════════════════ -->
 <section class="section">
   <span class="label">The Mirror</span>
   <p class="phil-line">You knew something was off.</p>
@@ -273,7 +376,9 @@ a:hover{opacity:.7;}
 </section>
 <div class="divider"></div>
 
-<!-- 3. THE FRAMEWORK -->
+<!-- ═══════════════════════════════════ -->
+<!-- 3. THE FRAMEWORK                    -->
+<!-- ═══════════════════════════════════ -->
 <section class="section-wide">
   <span class="label">The Framework</span>
   <p class="phil-line bright">The *SELF operating system. Six layers.</p>
@@ -295,16 +400,14 @@ a:hover{opacity:.7;}
       <p>The mask the &ldquo;I&rdquo; wears. Your name, status, achievements, wounds, the story you tell about yourself. The false self that keeps seeking outside. Prerequisite to knowing your true SELF: see through it.</p>
     </div>
     <div class="framework-card">
-    <span class="num">04</span>
-    <h3>The True &ldquo;I&rdquo;</h3>
-    <p>Your pure, underlying conscious awareness. The silent observer behind every thought. The screen, not the movie — unchanged by whatever plays on it. The senses collect, the mind 
-       projects, the ego claims ownership. But the screen was never the projection. Every tradition that found truth arrived at the 
-       same address.</p>
-</div>
+      <span class="num">04</span>
+      <h3>The True &ldquo;I&rdquo;</h3>
+      <p>Your pure, underlying conscious awareness. The silent observer behind every thought. The screen, not the movie &mdash; unchanged by whatever plays on it. Every tradition that found truth arrived at the same address.</p>
+    </div>
     <div class="framework-card">
       <span class="num">05</span>
       <h3>The Gap</h3>
-      <p>The RRRR Protocol: Recognize &rarr; Resist &rarr; Release &rarr; Return. The four-step circuit breaker between stimulus and response. Most people collapse it instantly.</p>
+      <p>The RRRR Protocol: Recognize &rarr; Reflect &rarr; Reframe &rarr; Respond. The four-step circuit breaker between stimulus and response. Most people collapse it instantly.</p>
     </div>
     <div class="framework-card">
       <span class="num">06</span>
@@ -315,7 +418,95 @@ a:hover{opacity:.7;}
 </section>
 <div class="divider"></div>
 
-<!-- 4. COSMOLOGICAL FOUNDATION -->
+<!-- ═══════════════════════════════════ -->
+<!-- 4. IDENTITY LAYER (NEW)             -->
+<!-- ═══════════════════════════════════ -->
+<section class="identity-section">
+  <span class="label">The Identity Layer</span>
+  <h2>You are not what happened to you.<br>You are what notices what happened.</h2>
+  <p class="sub">Each layer is a depth you can reach. Most people stop at the surface.</p>
+
+  <div class="identity-spine">
+
+    <div class="identity-node">
+      <div class="identity-node-content">
+        <span class="layer-label">Surface · Layer 01</span>
+        <h4>The Reactor</h4>
+        <p class="symptom">What it looks like</p>
+        <p>Every notification pulls you. Every loss rattles you. Every win inflates you. The stimulus controls the narrative. This is not weakness — it is the factory setting every human is born with.</p>
+        <p class="practice">Practice: Notice the next time you react before you think. That noticing is the beginning.</p>
+      </div>
+      <div class="identity-node-dot" data-num="01"></div>
+      <div class="identity-node-spacer"></div>
+    </div>
+
+    <div class="identity-node">
+      <div class="identity-node-spacer"></div>
+      <div class="identity-node-dot" data-num="02"></div>
+      <div class="identity-node-content">
+        <span class="layer-label">The Trap · Layer 02</span>
+        <h4>The Milestone Seeker</h4>
+        <p class="symptom">What it looks like</p>
+        <p>You hit the target. The relief lasts days, maybe weeks. Then a quiet void returns — larger, if anything, because you had proof the target wasn't the answer. You set a bigger target. The cycle continues.</p>
+        <p class="practice">Practice: After your next win, sit with the feeling for 24 hours before planning the next move. What is it pointing at?</p>
+      </div>
+    </div>
+
+    <div class="identity-node">
+      <div class="identity-node-content">
+        <span class="layer-label">The Mask · Layer 03</span>
+        <h4>The Persona</h4>
+        <p class="symptom">What it looks like</p>
+        <p>You become your credentials, your net worth, your reputation. The persona is useful — society requires it. The danger is when you forget it is a mask and mistake it for the face beneath.</p>
+        <p class="practice">Practice: Ask — if I removed every title and achievement, who remains? That remainder is the direction of travel.</p>
+      </div>
+      <div class="identity-node-dot" data-num="03"></div>
+      <div class="identity-node-spacer"></div>
+    </div>
+
+    <div class="identity-node">
+      <div class="identity-node-spacer"></div>
+      <div class="identity-node-dot" data-num="04"></div>
+      <div class="identity-node-content">
+        <span class="layer-label">The Core · Layer 04</span>
+        <h4>The Witness</h4>
+        <p class="symptom">What it looks like</p>
+        <p>Something in you watches the anger without being the anger. Watches the fear without becoming the fear. Pure conscious awareness — the screen, not the movie. Every tradition that found truth arrived at exactly this address.</p>
+        <p class="practice">Practice: In your next heated moment, ask — who is watching this reaction? That question is the layer.</p>
+      </div>
+    </div>
+
+    <div class="identity-node">
+      <div class="identity-node-content">
+        <span class="layer-label">The Tool · Layer 05</span>
+        <h4>The Gap</h4>
+        <p class="symptom">What it looks like</p>
+        <p>Between trigger and response there is a space. It is usually collapsed — milliseconds, invisible. The RRRR Protocol opens it: Recognize the trigger. Reflect on what it's activating. Reframe what is actually true. Then Respond from choice, not reflex.</p>
+        <p class="practice">Practice: The next time you want to send an angry message — pause. Run RRRR. Send what remains.</p>
+      </div>
+      <div class="identity-node-dot" data-num="05"></div>
+      <div class="identity-node-spacer"></div>
+    </div>
+
+    <div class="identity-node">
+      <div class="identity-node-spacer"></div>
+      <div class="identity-node-dot" data-num="06"></div>
+      <div class="identity-node-content">
+        <span class="layer-label">The Direction · Layer 06</span>
+        <h4>Self-Realization</h4>
+        <p class="symptom">What it looks like</p>
+        <p>Not an arrival. Not an enlightenment. Not a reward. A direction of travel — chosen daily, broken daily, returned to daily. The measure is not how far you've come. It is whether you are pointed right.</p>
+        <p class="practice">Practice: Ask each morning — am I pointed in the direction of my true SELF today? That question is the practice.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- ═══════════════════════════════════ -->
+<!-- 5. COSMOLOGICAL FOUNDATION          -->
+<!-- ═══════════════════════════════════ -->
 <div class="cosmo-block">
   <span class="label">The Foundation</span>
   <p>The universe doesn&rsquo;t contain Consciousness.</p>
@@ -324,7 +515,9 @@ a:hover{opacity:.7;}
 </div>
 <div class="divider"></div>
 
-<!-- 5. COSMIC LEDGER -->
+<!-- ═══════════════════════════════════ -->
+<!-- 6. COSMIC LEDGER                    -->
+<!-- ═══════════════════════════════════ -->
 <section class="section">
   <span class="label">The Cosmic Ledger</span>
   <p class="phil-line">You buy Bitcoin. You hold it. You sell it.</p>
@@ -348,7 +541,89 @@ a:hover{opacity:.7;}
 </section>
 <div class="divider"></div>
 
-<!-- 6. WHY $SELF -->
+<!-- ═══════════════════════════════════ -->
+<!-- 7. IPO CAMPAIGN SECTION (NEW)       -->
+<!-- ═══════════════════════════════════ -->
+<section class="ipo-section" id="ipo">
+  <span class="ipo-kicker">June 12, 2026 · Internal Public Offering</span>
+  <h2 class="ipo-headline">The largest IPO in history<br><em>is not SpaceX.</em></h2>
+  <p class="ipo-sub">
+    SpaceX files for &asymp;$1.8 trillion. The world watches. Every analyst on Earth
+    prices one asset this week.<br><br>
+    The most undervalued IPO in history has no ticker. No prospectus. No investment bank.
+  </p>
+
+  <div class="ipo-table">
+    <div class="ipo-table-row header">
+      <div class="ipo-cell">Attribute</div>
+      <div class="ipo-cell">SpaceX IPO</div>
+      <div class="ipo-cell">Internal Public Offering</div>
+    </div>
+    <div class="ipo-table-row">
+      <div class="ipo-cell dim">Asset</div>
+      <div class="ipo-cell">SpaceX equity</div>
+      <div class="ipo-cell gold">Your SELF</div>
+    </div>
+    <div class="ipo-table-row">
+      <div class="ipo-cell dim">Supply</div>
+      <div class="ipo-cell">Dilutable</div>
+      <div class="ipo-cell gold">One. Fixed forever.</div>
+    </div>
+    <div class="ipo-table-row">
+      <div class="ipo-cell dim">Valuation</div>
+      <div class="ipo-cell">~$1.8 trillion</div>
+      <div class="ipo-cell gold">Undefined. Yours to set.</div>
+    </div>
+    <div class="ipo-table-row">
+      <div class="ipo-cell dim">Roadshow</div>
+      <div class="ipo-cell">Goldman Sachs</div>
+      <div class="ipo-cell gold">This page.</div>
+    </div>
+    <div class="ipo-table-row">
+      <div class="ipo-cell dim">Dilution</div>
+      <div class="ipo-cell">Possible</div>
+      <div class="ipo-cell gold bright">None. Impossible.</div>
+    </div>
+    <div class="ipo-table-row">
+      <div class="ipo-cell dim">Appreciation</div>
+      <div class="ipo-cell">Market dependent</div>
+      <div class="ipo-cell gold">Begins the moment you stop ignoring it.</div>
+    </div>
+  </div>
+
+  <div class="ipo-countdown" id="countdownWrap">
+    <p class="ipo-countdown-label">SpaceX IPO expected in</p>
+    <div class="countdown-blocks">
+      <div class="countdown-unit">
+        <span class="countdown-num" id="cd-days">--</span>
+        <span class="countdown-label">Days</span>
+      </div>
+      <div class="countdown-unit">
+        <span class="countdown-num" id="cd-hours">--</span>
+        <span class="countdown-label">Hours</span>
+      </div>
+      <div class="countdown-unit">
+        <span class="countdown-num" id="cd-min">--</span>
+        <span class="countdown-label">Minutes</span>
+      </div>
+    </div>
+  </div>
+
+  <blockquote class="ipo-quote">
+    &ldquo;We do not love a spouse, children, or wealth for their own sake — but for the Self residing within them and within us.&rdquo;
+  </blockquote>
+  <p class="ipo-upanishad">
+    — Brihadaranyaka Upanishad<br><br>
+    SpaceX is not valued at $1.8 trillion.<br>
+    The <em>Self</em> animating the person who built it is.<br><br>
+    When did you last take your own SELF public?
+  </p>
+</section>
+<div class="divider"></div>
+
+<!-- ═══════════════════════════════════ -->
+<!-- 8. WHY $SELF                        -->
+<!-- ═══════════════════════════════════ -->
 <section class="why-section">
   <span class="label">Why $SELF</span>
   <h2>Most tokens ask you to believe in the chart.<br>This one asks a different question.</h2>
@@ -378,7 +653,8 @@ a:hover{opacity:.7;}
     Ignorance of your true SELF<br>is the only poverty that actually matters.
   </p>
   <div style="margin-top:44px;">
-    <a class="btn-gold" href="https://gmgn.ai/sol/token/solscan_7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump" target="_blank" rel="noopener noreferrer"
+    <a class="btn-gold" href="https://gmgn.ai/sol/token/solscan_7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump"
+       target="_blank" rel="noopener noreferrer"
        style="display:inline-block;padding:14px 44px;font-size:12px;letter-spacing:3px;">
       Buy $SELF on GMGN &rarr;
     </a>
@@ -386,57 +662,41 @@ a:hover{opacity:.7;}
 </section>
 <div class="divider"></div>
 
-<!-- 7. BRIDGE -->
-<section class="bridge-section">
-  <p>*SELF exists on Solana.</p>
-  <p>Not as a financial instrument.</p>
-  <p class="gold">As a mirror with a ledger.</p>
-  <p>The supply is fixed. The 42 is not decoration.</p>
-  <p>T + O + B + E = 42. &nbsp; To Be.</p>
-</section>
-<div class="divider"></div>
-
-<!-- 8. WATCH -->
+<!-- ═══════════════════════════════════ -->
+<!-- 9. WATCH & LISTEN                   -->
+<!-- ═══════════════════════════════════ -->
 <section class="watch-section">
   <span class="label">Watch &amp; Listen</span>
   <p class="phil-line bright">The full framework. Two formats.</p>
   <p class="phil-line dim">Start with 90 seconds.</p>
- <div class="watch-links">
-  <div class="watch-link-inner">
-    <a href="https://youtu.be/904IS3mxH3o" 
-       target="_blank" rel="noopener">
-      <img 
-        src="https://img.youtube.com/vi/904IS3mxH3o/maxresdefault.jpg"
-        alt="You Watched Yourself Do It Anyway"
-        class="watch-thumb">
-    </a>
-    <a class="watch-link" 
-       href="https://youtu.be/904IS3mxH3o" 
-       target="_blank" rel="noopener">
-      &rarr; You Watched Yourself Do It Anyway
-    </a>
-    <p class="watch-note">Short form &middot; 90 seconds</p>
+  <div class="watch-links">
+    <div class="watch-link-inner">
+      <a href="https://youtu.be/904IS3mxH3o" target="_blank" rel="noopener">
+        <img src="https://img.youtube.com/vi/904IS3mxH3o/maxresdefault.jpg"
+             alt="You Watched Yourself Do It Anyway" class="watch-thumb">
+      </a>
+      <a class="watch-link" href="https://youtu.be/904IS3mxH3o" target="_blank" rel="noopener">
+        &rarr; You Watched Yourself Do It Anyway
+      </a>
+      <p class="watch-note">Short form &middot; 90 seconds</p>
+    </div>
+    <div class="watch-link-inner">
+      <a href="https://youtu.be/OPBLi31IAz4" target="_blank" rel="noopener">
+        <img src="https://img.youtube.com/vi/OPBLi31IAz4/maxresdefault.jpg"
+             alt="The Market Cap of Your Consciousness" class="watch-thumb">
+      </a>
+      <a class="watch-link" href="https://youtu.be/OPBLi31IAz4" target="_blank" rel="noopener">
+        &rarr; The Market Cap of Your Consciousness
+      </a>
+      <p class="watch-note">Full version &middot; 8 minutes</p>
+    </div>
   </div>
-  <div class="watch-link-inner">
-    <a href="https://youtu.be/OPBLi31IAz4" 
-       target="_blank" rel="noopener">
-      <img 
-        src="https://img.youtube.com/vi/OPBLi31IAz4/maxresdefault.jpg"
-        alt="The Market Cap of Your Consciousness"
-        class="watch-thumb">
-    </a>
-    <a class="watch-link" 
-       href="https://youtu.be/OPBLi31IAz4" 
-       target="_blank" rel="noopener">
-      &rarr; The Market Cap of Your Consciousness
-    </a>
-    <p class="watch-note">Full version &middot; 8 minutes</p>
-  </div>
-</div>
 </section>
 <div class="divider"></div>
 
-<!-- 9. MIRROR ROOM -->
+<!-- ═══════════════════════════════════ -->
+<!-- 10. MIRROR ROOM                     -->
+<!-- ═══════════════════════════════════ -->
 <section class="mirror-room">
   <span class="label">The Mirror Room</span>
   <h2>A space for people who noticed<br>the gap and couldn&rsquo;t unsee it.</h2>
@@ -458,16 +718,132 @@ a:hover{opacity:.7;}
 </section>
 <div class="divider"></div>
 
-<!-- 10. CONTRACT -->
-<section class="ca-full-section">
+<!-- ═══════════════════════════════════ -->
+<!-- 11. COLLABORATION (NEW)             -->
+<!-- ═══════════════════════════════════ -->
+<section class="collab-section">
+  <span class="collab-tag">Open to Collaboration</span>
+  <p>
+    If the framework resonates with work you are building &mdash; writing, research, philosophy,
+    trading psychology, consciousness, or the intersection of any of these &mdash; reach out.
+  </p>
+  <p class="collab-note">
+    <a href="https://x.com/muraliannareddy" target="_blank" rel="noopener"
+       style="color:var(--dim);letter-spacing:3px;">@muraliannareddy on X</a>
+  </p>
+</section>
+<div class="divider"></div>
+
+<!-- ═══════════════════════════════════ -->
+<!-- 12. BRIDGE                          -->
+<!-- ═══════════════════════════════════ -->
+<section class="bridge-section">
+  <p>*SELF exists on Solana.</p>
+  <p>Not as a financial instrument.</p>
+  <p class="gold">As a mirror with a ledger.</p>
+  <p>The supply is fixed. The 42 is not decoration.</p>
+  <p>T + O + B + E = 42. &nbsp; To Be.</p>
+</section>
+<div class="divider"></div>
+
+<!-- ═══════════════════════════════════ -->
+<!-- 13. FAQ (NEW)                       -->
+<!-- ═══════════════════════════════════ -->
+<section class="faq-section" id="faq">
+  <span class="label">Questions</span>
+  <h2>What people ask first.</h2>
+  <div class="faq-list">
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        What is $SELF?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <div class="faq-a-inner">
+          $SELF is a Solana-based digital token and a philosophical operating system. The token is the on-chain declaration — a way to hold skin in the game of your own inner journey. The operating system is a 6-layer framework for understanding who you actually are beneath the ego, the achievements, and the autopilot. <strong>Contract:</strong> 7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump. All authorities revoked. Supply fixed.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Is this a meme coin?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <div class="faq-a-inner">
+          No. The tagline answers it directly: not a meme. A mirror. Meme coins ask you to believe in the chart. $SELF asks a different question — one you can ask with or without ever touching the token. The token is a stake in the framework. The framework exists whether the token exists or not. The question — <em>what is your true SELF worth?</em> — predates blockchain by several thousand years.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        What does &ldquo;supply: 1,000,000,042&rdquo; mean?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <div class="faq-a-inner">
+          The 42 is not decoration. In <em>The Hitchhiker's Guide to the Galaxy</em>, 42 is the answer to the ultimate question of life, the universe, and everything. The SELF framework arrives at the same place: the only answer worth finding is the one that points inward. T + O + B + E = 42. To Be. The supply is fixed at this number forever. All mint authority revoked on deployment. No new tokens can ever be created.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        What is the Cosmic Ledger?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <div class="faq-a-inner">
+          Every deed, every reaction, every moment of awareness or autopilot — builds a balance sheet. Not in any market. Not in any wallet. The blockchain records transactions and forgets you exist. The Cosmic Ledger records something else: the quality of attention you brought to your own life. You may not believe in reincarnation or God. You cannot deny the balance sheet you are building right now — with every choice. The cosmic ledger doesn&rsquo;t have a gas fee.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        How do I buy $SELF?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <div class="faq-a-inner">
+          Buy on <a href="https://gmgn.ai/sol/token/solscan_7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump" target="_blank" rel="noopener">GMGN</a>, <a href="https://pump.fun/coin/7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump" target="_blank" rel="noopener">pump.fun</a>, or <a href="https://birdeye.so/token/7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump?chain=solana" target="_blank" rel="noopener">Birdeye</a>. You need a Solana wallet (Phantom, Solflare). Contract address: <strong>7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump</strong>. Rugcheck score: 1/100. All authorities revoked. This is not financial advice — it is a philosophical one.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Who is this for?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <div class="faq-a-inner">
+          Anyone who has felt the Arrival Fallacy — hit the target, felt the brief relief, watched the void return. Anyone who has caught themselves reacting before they thought, and hated it. Traders who map markets better than they map themselves. Builders who reach every milestone and still feel something is missing. Anyone who has asked, in a quiet moment: <em>what am I actually worth — not in any market?</em> The Mirror Room is for the same people. The token is optional. The question is not.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- ═══════════════════════════════════ -->
+<!-- 14. CONTRACT                        -->
+<!-- ═══════════════════════════════════ -->
+<section class="ca-full-section" id="contract">
   <span class="label">Contract</span>
   <div class="ca-full-box">
     <div class="ca-label">$SELF &middot; Solana</div>
     <div class="ca-address-full">7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump</div>
-    <div class="supply">Supply: 1,000,000,042  &nbsp;·&nbsp; Fixed Forever</div>
+    <div class="supply">Supply: 1,000,000,042 &nbsp;·&nbsp; Fixed Forever</div>
     <div style="margin-top:20px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
-      <button class="btn-outline" onclick="copyCA('full-ca-btn',this)">Copy CA</button>
-      <a class="btn-gold" href="https://gmgn.ai/sol/token/solscan_7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump" target="_blank" rel="noopener noreferrer"
+      <button class="btn-outline" onclick="copyCA(this)">Copy CA</button>
+      <a class="btn-gold"
+         href="https://gmgn.ai/sol/token/solscan_7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump"
+         target="_blank" rel="noopener noreferrer"
          style="display:inline-block;padding:12px 28px;font-size:11px;letter-spacing:3px;">
         Buy on GMGN &rarr;
       </a>
@@ -481,7 +857,9 @@ a:hover{opacity:.7;}
 </section>
 <div class="divider"></div>
 
-<!-- 11. GO DEEPER -->
+<!-- ═══════════════════════════════════ -->
+<!-- 15. GO DEEPER                       -->
+<!-- ═══════════════════════════════════ -->
 <section class="section">
   <span class="label">Go Deeper</span>
   <p class="phil-line dim">The full framework. The complete map.</p>
@@ -494,7 +872,9 @@ a:hover{opacity:.7;}
 </section>
 <div class="divider"></div>
 
-<!-- FOOTER -->
+<!-- ═══════════════════════════════════ -->
+<!-- FOOTER                              -->
+<!-- ═══════════════════════════════════ -->
 <footer class="footer">
   <div class="footer-logo-wrap">
     <img src="./assets/images/Logo_web.jpg" alt="*SELF">
@@ -506,19 +886,73 @@ a:hover{opacity:.7;}
     <a href="https://www.instagram.com/muralireddy_79/" target="_blank" rel="noopener">Instagram</a>
     <a href="https://github.com/mannareddy/SELF" target="_blank" rel="noopener">GitHub</a>
   </div>
-  <div class="footer-tagline">Not a meme. A mirror.</div>
+  <div class="footer-tagline">Not a meme. A mirror. &#x1FA9E;</div>
   <div class="footer-ca">7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump</div>
 </footer>
 
+<!-- ═══════════════════════════════════ -->
+<!-- SCRIPTS                             -->
+<!-- ═══════════════════════════════════ -->
 <script>
-function copyCA(id, btn) {
-  navigator.clipboard.writeText('7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump').then(function() {
-    var orig = btn.innerText;
-    btn.innerText = 'Copied ✓';
-    btn.disabled = true;
-    setTimeout(function() { btn.innerText = orig; btn.disabled = false; }, 2000);
+/* ── COPY CA ── */
+function copyCA(btn){
+  navigator.clipboard.writeText('7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump').then(function(){
+    var orig=btn.innerText;
+    btn.innerText='Copied ✓';btn.disabled=true;
+    setTimeout(function(){btn.innerText=orig;btn.disabled=false;},2000);
   });
 }
+
+/* ── FAQ ACCORDION ── */
+function toggleFaq(btn){
+  var item=btn.closest('.faq-item');
+  var isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(function(el){el.classList.remove('open');});
+  if(!isOpen){item.classList.add('open');}
+}
+
+/* ── COUNTDOWN TO JUNE 12 2026 ── */
+(function(){
+  var target=new Date('2026-06-12T09:30:00-04:00').getTime();
+  function tick(){
+    var now=Date.now(),diff=target-now;
+    if(diff<=0){
+      document.getElementById('countdownWrap').innerHTML='<p style="font-family:var(--sans);font-size:11px;letter-spacing:3px;color:var(--gold);text-transform:uppercase">The IPO is live. The Internal Public Offering never closed.</p>';
+      return;
+    }
+    var d=Math.floor(diff/86400000),
+        h=Math.floor((diff%86400000)/3600000),
+        m=Math.floor((diff%3600000)/60000);
+    document.getElementById('cd-days').textContent=String(d).padStart(2,'0');
+    document.getElementById('cd-hours').textContent=String(h).padStart(2,'0');
+    document.getElementById('cd-min').textContent=String(m).padStart(2,'0');
+  }
+  tick();setInterval(tick,30000);
+})();
+
+/* ── GEO DETECTION → GA4 custom event ── */
+(function(){
+  try{
+    fetch('https://ipapi.co/json/',{signal:AbortSignal.timeout(4000)})
+      .then(function(r){return r.json();})
+      .then(function(d){
+        if(d&&d.country_name){
+          var badge=document.getElementById('geoBadge');
+          badge.textContent='Visiting from '+d.country_name;
+          badge.classList.add('visible');
+          if(typeof gtag==='function'){
+            gtag('event','visitor_geo',{
+              visitor_country:d.country_name,
+              visitor_city:d.city||'',
+              visitor_region:d.region||''
+            });
+          }
+        }
+      }).catch(function(){});
+  }catch(e){}
+})();
 </script>
 </body>
 </html>
+
+
