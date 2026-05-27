@@ -81,10 +81,10 @@ a:hover{opacity:.7;}
 .banner-section{max-width:1400px;margin:0 auto;}
 .banner-image{width:100%;height:auto;display:block;border-top:1px solid #111;border-bottom:1px solid #111;}
 
-/* PHIL LINES */
+/* PHIL LINES — FIX 4a: boosted dim size */
 .phil-line{font-size:clamp(18px,2.8vw,26px);font-weight:300;color:var(--mid);line-height:1.9;margin:14px 0;}
 .phil-line.gold{color:var(--gold);font-style:italic;}
-.phil-line.dim{color:var(--grey);font-size:clamp(15px,2vw,20px);}
+.phil-line.dim{color:var(--grey);font-size:clamp(16px,2.1vw,21px);}
 .phil-line.bright{color:var(--white);}
 
 /* FRAMEWORK GRID */
@@ -100,14 +100,14 @@ a:hover{opacity:.7;}
 .cosmo-block p{font-size:clamp(20px,3.5vw,34px);font-weight:300;font-style:italic;color:var(--gold);line-height:1.7;max-width:680px;margin:0 auto 22px;}
 .cosmo-block .plain{font-style:normal;color:var(--grey);font-size:clamp(15px,2vw,20px);}
 
-/* CORE VISION STATEMENT — NEW SECTION */
+/* CORE VISION */
 .vision-section{padding:90px 24px;background:var(--bg-lift);border-top:1px solid #111;border-bottom:1px solid #111;}
 .vision-box{max-width:720px;margin:0 auto;padding:60px 32px;border:1px solid #2a2a2a;background:radial-gradient(ellipse at 50% 50%,rgba(212,175,55,.05) 0%,transparent 70%);position:relative;}
 .vision-statement{font-size:clamp(20px,3.5vw,32px);font-weight:300;color:var(--gold);line-height:1.8;margin-bottom:0;}
 .vision-pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px;text-align:left;margin-top:44px;}
 .vision-pillar{border-left:2px solid var(--gold);padding-left:24px;}
 .vision-pillar-tag{font-size:13px;font-weight:400;color:var(--gold);margin-bottom:10px;letter-spacing:1px;display:block;}
-.vision-pillar p{font-size:16px;font-weight:300;color:var(--grey);line-height:1.85;}
+.vision-pillar p{font-size:17px;font-weight:300;color:var(--grey);line-height:1.85;}
 
 /* COSMIC LEDGER */
 .cosmic-section{padding:90px 24px;max-width:680px;margin:0 auto;}
@@ -120,8 +120,6 @@ a:hover{opacity:.7;}
 .ipo-headline{font-size:clamp(24px,4vw,44px);font-weight:300;color:var(--white);line-height:1.4;max-width:700px;margin:0 auto 20px;}
 .ipo-headline em{font-style:italic;color:var(--gold);}
 .ipo-sub{font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:560px;margin:0 auto 52px;line-height:1.95;}
-
-/* IPO TABLE */
 .ipo-table{max-width:680px;margin:0 auto 52px;border:2px solid #2a2a2a;border-radius:2px;overflow:hidden;}
 .ipo-table-row{display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid #1e1e1e;}
 .ipo-table-row:last-child{border-bottom:none;}
@@ -134,9 +132,9 @@ a:hover{opacity:.7;}
 .ipo-cell.gold{color:var(--gold);}
 .ipo-cell.bright{color:var(--white);font-weight:400;}
 .ipo-table-row:nth-child(odd):not(.header){background:rgba(255,255,255,.008);}
-
 .ipo-quote{max-width:600px;margin:0 auto 52px;font-size:clamp(17px,2.5vw,24px);font-weight:300;font-style:italic;color:var(--mid);line-height:1.8;border-left:2px solid var(--gold);padding-left:28px;text-align:left;}
-.ipo-upanishad{max-width:560px;margin:0 auto;font-size:clamp(13px,1.8vw,16px);font-family:var(--sans);color:var(--grey);letter-spacing:.5px;line-height:1.8;border-top:1px solid #1e1e1e;padding-top:32px;}
+/* FIX 4b: boosted ipo-upanishad */
+.ipo-upanishad{max-width:560px;margin:0 auto;font-size:clamp(14px,2vw,17px);font-family:var(--sans);color:var(--grey);letter-spacing:.5px;line-height:1.85;border-top:1px solid #1e1e1e;padding-top:32px;}
 .ipo-upanishad em{color:var(--gold);font-style:normal;}
 
 /* WHY */
@@ -157,7 +155,8 @@ a:hover{opacity:.7;}
 .watch-thumb:hover{filter:brightness(1);}
 .watch-link{display:inline-flex;align-items:center;gap:12px;font-family:var(--sans);font-size:11.5px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:1px solid #2a2a2a;border-top:none;padding:15px 32px;transition:all .3s;width:100%;max-width:440px;justify-content:center;}
 .watch-link:hover{border-color:var(--gold);background:var(--gold-dim);opacity:1;}
-.watch-note{font-family:var(--sans);font-size:10px;color:var(--dim);letter-spacing:2px;text-transform:uppercase;margin-top:7px;}
+/* FIX 4c: boosted watch-note */
+.watch-note{font-family:var(--sans);font-size:11px;color:var(--dim);letter-spacing:2px;text-transform:uppercase;margin-top:8px;}
 
 /* MIRROR ROOM */
 .mirror-room{padding:90px 24px;border-top:1px solid #111;}
@@ -169,7 +168,7 @@ a:hover{opacity:.7;}
 .mirror-link.primary{background:var(--gold);color:#000;border-color:var(--gold);font-weight:700;}
 .mirror-link.primary:hover{opacity:.83;}
 
-/* IDENTITY SECTION */
+/* IDENTITY */
 .identity-section{padding:90px 24px;background:var(--bg-lift);border-top:1px solid #111;border-bottom:1px solid #111;}
 .identity-section h2{font-size:clamp(22px,3.5vw,38px);font-weight:300;color:var(--white);max-width:660px;margin:0 auto 16px;line-height:1.5;}
 .identity-section .sub{font-size:clamp(14px,2vw,19px);color:var(--grey);max-width:520px;margin:0 auto 52px;font-style:italic;line-height:1.85;}
@@ -179,14 +178,15 @@ a:hover{opacity:.7;}
 .identity-card .layer-tag{font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.65;margin-bottom:14px;display:block;}
 .identity-card h4{font-family:var(--serif);font-size:21px;font-weight:400;color:var(--white);margin-bottom:14px;line-height:1.35;}
 .identity-card p{font-family:var(--serif);font-size:16px;font-weight:300;color:var(--grey);line-height:1.88;margin-bottom:16px;}
-.identity-card .practice{font-family:var(--sans);font-size:10.5px;color:var(--gold);letter-spacing:.8px;border-top:1px solid #1e1e1e;padding-top:16px;line-height:1.7;opacity:.85;}
+/* FIX 4d: boosted practice label */
+.identity-card .practice{font-family:var(--sans);font-size:12px;color:var(--gold);letter-spacing:.8px;border-top:1px solid #1e1e1e;padding-top:16px;line-height:1.7;opacity:.9;}
 
 /* BRIDGE */
 .bridge-section{padding:70px 24px;max-width:560px;margin:0 auto;}
-.bridge-section p{font-size:clamp(16px,2.3vw,22px);font-weight:300;color:var(--mid);line-height:1.9;margin:16px 0;}
+.bridge-section p{font-size:clamp(17px,2.3vw,23px);font-weight:300;color:var(--mid);line-height:1.9;margin:16px 0;}
 .bridge-section p.gold{color:var(--gold);font-style:italic;}
 
-/* FAQ */
+/* FAQ — FIX 4e: boosted answer size */
 .faq-section{padding:90px 24px;background:var(--bg-lift);border-top:1px solid #111;border-bottom:1px solid #111;}
 .faq-section h2{font-size:clamp(20px,3vw,32px);font-weight:300;color:var(--white);max-width:560px;margin:0 auto 52px;line-height:1.5;}
 .faq-list{max-width:680px;margin:0 auto;text-align:left;}
@@ -194,13 +194,18 @@ a:hover{opacity:.7;}
 .faq-item:first-child{border-top:1px solid #1a1a1a;}
 .faq-q{width:100%;background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:24px 4px;font-family:var(--serif);font-size:clamp(17px,2.2vw,21px);font-weight:400;color:var(--white);text-align:left;transition:color .25s;}
 .faq-q:hover{color:var(--gold);}
-.faq-icon{flex-shrink:0;width:22px;height:22px;border:1px solid #333;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-size:15px;color:var(--gold);transition:transform .35s ease,border-color .25s;}
+.faq-icon{flex-shrink:0;width:22px;height:22px;border:1px solid #333;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-size:15px;color:var(--gold);transition:transform .35s ease,border-color .25s;line-height:1;}
 .faq-item.open .faq-q .faq-icon{transform:rotate(45deg);border-color:var(--gold);}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(0,1,.25,1),padding .35s;}
-.faq-item.open .faq-a{max-height:600px;}
-.faq-a-inner{padding:0 4px 28px;font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-weight:300;color:var(--grey);line-height:1.9;}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(0,1,.25,1);}
+.faq-item.open .faq-a{max-height:800px;}
+.faq-a-inner{padding:0 4px 28px;font-family:var(--serif);font-size:clamp(16px,2vw,19px);font-weight:300;color:var(--grey);line-height:1.95;}
 .faq-a-inner a{color:var(--gold);}
 .faq-a-inner strong{color:var(--mid);font-weight:400;}
+.rrrr-version{margin-bottom:18px;padding:16px 18px;border:1px solid #1e1e1e;background:var(--bg);}
+.rrrr-version:last-child{margin-bottom:0;}
+.rrrr-label{font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;display:block;}
+.rrrr-steps{font-size:clamp(16px,2vw,19px);color:var(--white);margin-bottom:8px;font-family:var(--serif);}
+.rrrr-desc{font-size:clamp(14px,1.8vw,17px);color:var(--grey);line-height:1.8;}
 
 /* CONTRACT */
 .ca-full-section{padding:40px 24px 60px;max-width:680px;margin:0 auto;}
@@ -248,22 +253,25 @@ a:hover{opacity:.7;}
   <img src="./assets/images/Logo_web.jpg" alt="*SELF">
 </a>
 
-<!-- HERO - UPDATED OPENING -->
+<!-- HERO -->
 <section class="hero">
   <p class="hero-question">What is your own SELF worth?</p>
   <p class="hero-sub">Not in dollars. In purpose. In the unique value only you can offer.</p>
   <p class="hero-sub" style="margin-bottom:16px;font-size:13px;letter-spacing:3px;font-family:var(--sans);text-transform:uppercase;">$SELF &middot; Solana</p>
-  <a class="btn-outline" href="#contract" onclick="document.getElementById('contract').scrollIntoView({behavior:'smooth'}); return false;" style="display:inline-block;padding:12px 32px;font-size:11px;letter-spacing:3px;">↓ View Contract</a>
+  <!-- FIX 1: smooth scroll + id target on contract section -->
+  <a class="btn-outline" href="#contract"
+     onclick="event.preventDefault();document.getElementById('contract').scrollIntoView({behavior:'smooth'});"
+     style="display:inline-block;padding:12px 32px;font-size:11px;letter-spacing:3px;">&#8595; View Contract</a>
   <span class="scroll-hint">&darr; continue</span>
 </section>
 
-<!-- BANNER - UNCHANGED -->
+<!-- BANNER -->
 <div class="banner-section">
   <img src="./assets/images/Banner.jpg" alt="You don't lose money. You lose control." class="banner-image">
 </div>
 <div class="divider"></div>
 
-<!-- THE MIRROR - UNCHANGED -->
+<!-- THE MIRROR -->
 <section class="section">
   <span class="label">The Mirror</span>
   <p class="phil-line">You knew something was off.</p>
@@ -307,7 +315,7 @@ a:hover{opacity:.7;}
 </section>
 <div class="divider"></div>
 
-<!-- THE FRAMEWORK - UNCHANGED -->
+<!-- THE FRAMEWORK -->
 <section class="section-wide">
   <span class="label">The Framework</span>
   <p class="phil-line bright">The *SELF operating system. Six layers.</p>
@@ -337,11 +345,11 @@ a:hover{opacity:.7;}
     <div class="framework-card">
       <span class="num">05</span>
       <h3>The Gap (RRRR Protocol)</h3>
-      <p style="font-size:15px;margin-bottom:16px;"><strong style="color:var(--gold);">Version 1 — Stop the Impulse:</strong><br>
-      Recognize → Resist → Return → Release<br>
+      <p style="font-size:15px;margin-bottom:16px;"><strong style="color:var(--gold);">Version 1 &mdash; Stop the Impulse:</strong><br>
+      Recognize &rarr; Resist &rarr; Return &rarr; Release<br>
       <span style="font-size:14px;color:var(--grey);">For anger, addiction, revenge-trading. Stop the behaviour before it happens. Resist. Return to baseline. Release.</span></p>
-      <p style="font-size:15px;"><strong style="color:var(--gold);">Version 2 — Process the Emotion:</strong><br>
-      Recognize → Reflect → Reframe → Respond<br>
+      <p style="font-size:15px;"><strong style="color:var(--gold);">Version 2 &mdash; Process the Emotion:</strong><br>
+      Recognize &rarr; Reflect &rarr; Reframe &rarr; Respond<br>
       <span style="font-size:14px;color:var(--grey);">For relationships, grief, decisions. Understand what triggered you. Reflect on meaning. Reframe. Respond from clarity.</span></p>
     </div>
     <div class="framework-card">
@@ -353,7 +361,7 @@ a:hover{opacity:.7;}
 </section>
 <div class="divider"></div>
 
-<!-- COSMOLOGICAL FOUNDATION - UNCHANGED -->
+<!-- COSMOLOGICAL FOUNDATION -->
 <div class="cosmo-block">
   <span class="label">The Foundation</span>
   <p>The universe doesn&rsquo;t contain Consciousness.</p>
@@ -362,7 +370,7 @@ a:hover{opacity:.7;}
 </div>
 <div class="divider"></div>
 
-<!-- CORE VISION STATEMENT - NEW SECTION ONLY -->
+<!-- CORE VISION STATEMENT -->
 <section class="vision-section">
   <span class="label">Core Vision Statement</span>
   <div class="vision-box">
@@ -381,7 +389,7 @@ a:hover{opacity:.7;}
 </section>
 <div class="divider"></div>
 
-<!-- COSMIC LEDGER - UNCHANGED -->
+<!-- COSMIC LEDGER -->
 <section class="section">
   <span class="label">The Cosmic Ledger</span>
   <p class="phil-line">You buy Bitcoin. You hold it. You sell it.</p>
@@ -405,12 +413,11 @@ a:hover{opacity:.7;}
 </section>
 <div class="divider"></div>
 
-<!-- IPO SECTION - NO COUNTDOWN -->
+<!-- IPO SECTION -->
 <section class="ipo-section">
   <span class="label">The Internal Public Offering</span>
   <p class="ipo-headline">While the world <em>waits</em> for external IPOs,<br>the most undervalued IPO <em>trades right now.</em></p>
   <p class="ipo-sub">Not on Wall Street. On the cosmic ledger. Your consciousness. Your direction. Your choice.</p>
-  
   <div class="ipo-table">
     <div class="ipo-table-row header">
       <div class="ipo-cell">Attribute</div>
@@ -443,18 +450,16 @@ a:hover{opacity:.7;}
       <div class="ipo-cell gold">You notice more</div>
     </div>
   </div>
-
   <p class="ipo-quote">While the world bids on reaching Mars, most people never reach themselves. The difference? One requires a rocket. The other requires a practice.</p>
-  
   <div class="ipo-upanishad">
     <strong>From the Brihadaranyaka Upanishad:</strong><br>
-    <em>"We do not love a spouse, children, or wealth for their own sake, but for the sake of the Self residing within them and within us."</em><br><br>
+    <em>&ldquo;We do not love a spouse, children, or wealth for their own sake, but for the sake of the Self residing within them and within us.&rdquo;</em><br><br>
     The same divine, limitless Self is in everything and everyone. Our love for any external object or person is ultimately a reflection of our innate love for our own innermost consciousness.
   </div>
 </section>
 <div class="divider"></div>
 
-<!-- WHY $SELF - UNCHANGED -->
+<!-- WHY $SELF -->
 <section class="why-section">
   <span class="label">Why $SELF</span>
   <h2>Most tokens ask you to believe in the chart.<br>This one asks a different question.</h2>
@@ -487,19 +492,19 @@ a:hover{opacity:.7;}
 </section>
 <div class="divider"></div>
 
-<!-- BRIDGE - UPDATED WITH SELF-RELIANCE -->
+<!-- BRIDGE -->
 <section class="bridge-section">
   <p>*SELF exists on Solana.</p>
   <p>Not as a financial instrument.</p>
   <p class="gold">As a mirror with a ledger.</p>
-  <p>A teacher can direct you on the path.<br><span style="font-size:16px;color:var(--grey);">But you have to walk through it yourself.</span></p>
+  <p>A teacher can direct you on the path.<br><span style="font-size:17px;color:var(--grey);">But you have to walk through it yourself.</span></p>
   <p class="gold" style="margin-top:28px;">That walk is non-negotiable.</p>
   <p>The supply is fixed. The 42 is not decoration.</p>
   <p>T + O + B + E = 42. &nbsp; To Be.</p>
 </section>
 <div class="divider"></div>
 
-<!-- WATCH - UNCHANGED -->
+<!-- WATCH -->
 <section class="watch-section">
   <span class="label">Watch &amp; Listen</span>
   <p class="phil-line bright">The full framework. Two formats.</p>
@@ -523,7 +528,7 @@ a:hover{opacity:.7;}
 </section>
 <div class="divider"></div>
 
-<!-- MIRROR ROOM - UNCHANGED -->
+<!-- MIRROR ROOM -->
 <section class="mirror-room">
   <span class="label">The Mirror Room</span>
   <h2>A space for people who noticed<br>the gap and couldn&rsquo;t unsee it.</h2>
@@ -535,43 +540,43 @@ a:hover{opacity:.7;}
 </section>
 <div class="divider"></div>
 
-<!-- IDENTITY LAYER - UPDATED WITH BUDDHA INSIGHT -->
+<!-- IDENTITY LAYER -->
 <section class="identity-section">
   <span class="label">Your Identity in the Ledger</span>
   <h2>Every holder of $SELF becomes part of something permanent.</h2>
-  <p class="sub">Your wallet address. Your public key. Your stake in knowing your own SELF. Recorded on the Solana blockchain forever.<br><br><em style="color:var(--gold);font-size:16px;">"Be a lamp unto yourself."</em><br><span style="font-size:13px;color:var(--grey);">— Buddha's final teaching. No borrowed light. Your own direct experience is the only truth.</span></p>
+  <p class="sub">Your wallet address. Your public key. Your stake in knowing your own SELF. Recorded on the Solana blockchain forever.<br><br><em style="color:var(--gold);font-size:16px;">&ldquo;Be a lamp unto yourself.&rdquo;</em><br><span style="font-size:13px;color:var(--grey);">— Buddha&rsquo;s final teaching. No borrowed light. Your own direct experience is the only truth.</span></p>
   <div class="identity-grid">
     <div class="identity-card">
       <span class="layer-tag">Layer 1</span>
       <h4>Your Unique Value</h4>
-      <p>Each human is unique. Not just in appearance, but in instincts and capabilities. There is something only you can offer the world — a product, service, or presence that carries your singular mark. That is your true worth.</p>
+      <p>Each human is unique. Not just in appearance, but in instincts and capabilities. There is something only you can offer the world &mdash; a product, service, or presence that carries your singular mark. That is your true worth.</p>
       <p class="practice">Practice: What is that one thing only you can offer?</p>
     </div>
     <div class="identity-card">
       <span class="layer-tag">Layer 2</span>
       <h4>The Direction Test</h4>
       <p>Are you accumulating or reducing? Panicking or noticing? Trading emotionally or from awareness? The blockchain records direction.</p>
-      <p class="practice">Practice: Before each action, ask: Which version of me is this?</p>
+      <p class="practice">Practice: Before each action, ask &mdash; which version of me is this?</p>
     </div>
     <div class="identity-card">
       <span class="layer-tag">Layer 3</span>
       <h4>Accountability to Self</h4>
-      <p>The blockchain doesn't judge. It just records. In that recording, you become accountable to yourself. That's the whole practice.</p>
+      <p>The blockchain doesn&rsquo;t judge. It just records. In that recording, you become accountable to yourself. That&rsquo;s the whole practice.</p>
       <p class="practice">Practice: Every transaction is a vote. What are you voting for?</p>
     </div>
   </div>
 </section>
 <div class="divider"></div>
 
-<!-- CONTRACT - UNCHANGED -->
-<section class="ca-full-section">
+<!-- CONTRACT — FIX 1: id="contract" added -->
+<section class="ca-full-section" id="contract">
   <span class="label">Contract</span>
   <div class="ca-full-box">
     <div class="ca-label">$SELF &middot; Solana</div>
     <div class="ca-address-full">7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump</div>
     <div class="supply">Supply: 1,000,000,042 &nbsp;&middot;&nbsp; Fixed Forever</div>
     <div style="margin-top:20px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
-      <button class="btn-outline" onclick="copyCA('full-ca-btn',this)">Copy CA</button>
+      <button class="btn-outline" onclick="copyCA(this)">Copy CA</button>
       <a class="btn-gold" href="https://gmgn.ai/sol/token/solscan_7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:12px 28px;font-size:11px;letter-spacing:3px;">Buy on GMGN &rarr;</a>
     </div>
     <div class="trade-links">
@@ -583,7 +588,7 @@ a:hover{opacity:.7;}
 </section>
 <div class="divider"></div>
 
-<!-- GO DEEPER - UNCHANGED -->
+<!-- GO DEEPER -->
 <section class="section">
   <span class="label">Go Deeper</span>
   <p class="phil-line dim">The full framework. The complete map.</p>
@@ -596,94 +601,121 @@ a:hover{opacity:.7;}
 </section>
 <div class="divider"></div>
 
-<!-- FAQ - UNCHANGED -->
+<!-- FAQ — FIX 2: RRRR both versions | FIX 3: orphaned item repaired -->
 <section class="faq-section">
   <span class="label">Common Questions</span>
   <h2>The questions people ask when they start noticing.</h2>
   <div class="faq-list">
+
+    <!-- FIX 2: RRRR Protocol — both versions -->
     <div class="faq-item">
       <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
         <span>What is the RRRR Protocol?</span>
         <span class="faq-icon">+</span>
       </button>
       <div class="faq-a">
-        <div class="faq-a-inner">Recognize → Reflect → Reframe → Respond. The gap between stimulus and reaction. Most people collapse it instantly and blame external circumstance. The protocol teaches you to notice the gap, pause inside it, question your first instinct, and respond from awareness instead of autopilot. It's testable in real-time.</div>
+        <div class="faq-a-inner">
+          <p style="margin-bottom:18px;">The RRRR Protocol has two versions depending on what you are facing. Both start with the same first step &mdash; Recognize. That moment of noticing is where everything changes.</p>
+          <div class="rrrr-version">
+            <span class="rrrr-label">Version 1 &mdash; Stop the Impulse</span>
+            <p class="rrrr-steps">Recognize &rarr; Resist &rarr; Return &rarr; Release</p>
+            <p class="rrrr-desc">Use this when you need to stop impulsive behaviour before it happens &mdash; revenge trading, sending the angry message, reaching for the drink, reacting before you think. Recognize the trigger. Resist acting on the first impulse. Return to baseline (breathe, step away). Release the charge without acting on it. The behaviour never happens. This is the emergency protocol.</p>
+          </div>
+          <div class="rrrr-version">
+            <span class="rrrr-label">Version 2 &mdash; Process the Emotion</span>
+            <p class="rrrr-steps">Recognize &rarr; Reflect &rarr; Reframe &rarr; Respond</p>
+            <p class="rrrr-desc">Use this for emotional intelligence and deeper processing &mdash; navigating a difficult relationship, a career decision, grief, or a long-held pattern. Stopping the impulse isn&rsquo;t enough here. You need to understand it. Recognize what triggered you. Reflect on what it is really activating underneath. Reframe the narrative &mdash; what is actually true? Then Respond from awareness, not reflex.</p>
+          </div>
+        </div>
       </div>
     </div>
+
     <div class="faq-item">
       <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
         <span>Is this a token or a philosophy?</span>
         <span class="faq-icon">+</span>
       </button>
       <div class="faq-a">
-        <div class="faq-a-inner">Both. Most tokens ask you to believe in the chart. $SELF asks you to believe in the framework. Buying the token is not an investment decision — it's a philosophical stake. You're saying: I see the map. I'm walking it. And I'm doing it publicly on an immutable ledger.</div>
+        <div class="faq-a-inner">Both. Most tokens ask you to believe in the chart. $SELF asks you to believe in the framework. Buying the token is not an investment decision &mdash; it&rsquo;s a philosophical stake. You&rsquo;re saying: I see the map. I&rsquo;m walking it. And I&rsquo;m doing it publicly on an immutable ledger.</div>
       </div>
     </div>
+
     <div class="faq-item">
       <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
         <span>What is the Arrival Fallacy?</span>
         <span class="faq-icon">+</span>
       </button>
       <div class="faq-a">
-        <div class="faq-a-inner">The false belief that the next milestone — more money, more status, more achievement — will finally bring peace. It won't. Hedonic adaptation resets your baseline every time. You get the promotion, and six months later you're back to baseline discontent. The void returns. That's not a problem to fix externally — it's a signal pointing inward.</div>
+        <div class="faq-a-inner">The false belief that the next milestone &mdash; more money, more status, more achievement &mdash; will finally bring peace. It won&rsquo;t. Hedonic adaptation resets your baseline every time. You get the promotion, and six months later you&rsquo;re back to baseline discontent. The void returns. That&rsquo;s not a problem to fix externally &mdash; it&rsquo;s a signal pointing inward.</div>
       </div>
     </div>
+
     <div class="faq-item">
       <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
         <span>What makes this different from other spiritual projects?</span>
         <span class="faq-icon">+</span>
       </button>
       <div class="faq-a">
-        <div class="faq-a-inner">Two things. First: we don't ask you to believe. We ask you to notice. The framework is testable in real-time — in your reactions, your trades, your relationships. Second: we put skin in the game. You hold $SELF, the chart moves, and suddenly philosophy becomes immediate. That friction is the whole point.</div>
+        <div class="faq-a-inner">Two things. First: we don&rsquo;t ask you to believe. We ask you to notice. The framework is testable in real-time &mdash; in your reactions, your trades, your relationships. Second: we put skin in the game. You hold $SELF, the chart moves, and suddenly philosophy becomes immediate. That friction is the whole point.</div>
       </div>
     </div>
+
     <div class="faq-item">
       <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-        <span>Is there actually a "cosmic ledger"?</span>
+        <span>Is there actually a &ldquo;cosmic ledger&rdquo;?</span>
         <span class="faq-icon">+</span>
       </button>
       <div class="faq-a">
-        <div class="faq-a-inner">Depends on what you believe. But here's what's certain: every deed, every reaction, every moment you spend in awareness or autopilot builds a balance sheet inside you. Whether that's literal reincarnation, Karma, or just the neurology of habit formation — the math is the same. You are becoming what you practice.</div>
+        <div class="faq-a-inner">Depends on what you believe. But here&rsquo;s what&rsquo;s certain: every deed, every reaction, every moment you spend in awareness or autopilot builds a balance sheet inside you. Whether that&rsquo;s literal reincarnation, Karma, or just the neurology of habit formation &mdash; the math is the same. You are becoming what you practice.</div>
       </div>
     </div>
+
     <div class="faq-item">
       <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-        <span>How do I know if I'm in the right direction?</span>
+        <span>How do I know if I&rsquo;m in the right direction?</span>
         <span class="faq-icon">+</span>
       </button>
       <div class="faq-a">
-        <div class="faq-a-inner">Self-realization is not a destination you arrive at in one lifetime. That's the feature, not the bug. The question isn't "Am I there yet?" It's "Am I pointed right?" Are you noticing more? Are you reacting less? Are you choosing from awareness instead of fear? If yes — you're walking the path.</div>
+        <div class="faq-a-inner">Self-realization is not a destination you arrive at in one lifetime. That&rsquo;s the feature, not the bug. The question isn&rsquo;t &ldquo;Am I there yet?&rdquo; It&rsquo;s &ldquo;Am I pointed right?&rdquo; Are you noticing more? Are you reacting less? Are you choosing from awareness instead of fear? If yes &mdash; you&rsquo;re walking the path.</div>
       </div>
     </div>
+
     <div class="faq-item">
       <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
         <span>Why Solana and not another chain?</span>
         <span class="faq-icon">+</span>
       </button>
       <div class="faq-a">
-        <div class="faq-a-inner">Speed and transparency. Solana's high throughput means the ledger records without friction. No waiting. The supply is fixed forever (1,000,000,042 tokens), all authorities revoked. No dilution. No rug-pull risk. The mechanism itself becomes part of the message: this is immutable, this is yours, this is the cosmic ledger made visible.</div>
+        <div class="faq-a-inner">Speed and transparency. Solana&rsquo;s high throughput means the ledger records without friction. No waiting. The supply is fixed forever (1,000,000,042 tokens), all authorities revoked. No dilution. No rug-pull risk. The mechanism itself becomes part of the message: this is immutable, this is yours, this is the cosmic ledger made visible.</div>
       </div>
     </div>
+
     <div class="faq-item">
       <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
         <span>What is my unique value?</span>
         <span class="faq-icon">+</span>
       </button>
       <div class="faq-a">
-        <div class="faq-a-inner">That one thing only you can offer the world. Not necessarily a new innovation or technology — something the world needs that carries your unique mark. Ask yourself: "What would I be willing to pay for if I were on the other side of the value exchange?" If that is something only you can offer, that drives you, that you're passionate about achieving — that is your worth. Not in dollars. In purpose. And that discovery requires listening to your inner voice, which means spending time with your own SELF. No one else can do it for you.</div>
+        <div class="faq-a-inner">That one thing only you can offer the world. Not necessarily a new innovation or technology &mdash; something the world needs that carries your unique mark. Ask yourself: &ldquo;What would I be willing to pay for if I were on the other side of the value exchange?&rdquo; If that is something only you can offer, that drives you, that you&rsquo;re passionate about achieving &mdash; that is your worth. Not in dollars. In purpose. That discovery requires listening to your inner voice, which means spending time with your own SELF. No one else can do it for you.</div>
       </div>
     </div>
+
+    <!-- FIX 3: Restored broken orphaned FAQ item with proper structure -->
+    <div class="faq-item">
+      <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        <span>What is the Mirror Room?</span>
         <span class="faq-icon">+</span>
       </button>
       <div class="faq-a">
-        <div class="faq-a-inner">Not a hype chat. Not a trading group. A space for people who noticed the gap and couldn't unsee it. You post what you noticed — in the market, in yourself, in the framework. No price talk. No memes. Just noticing. The mirror doesn't chase you to buy more. It reflects what you're already seeing.</div>
+        <div class="faq-a-inner">Not a hype chat. Not a trading group. A space for people who noticed the gap and couldn&rsquo;t unsee it. You post what you noticed &mdash; in the market, in yourself, in the framework. No price talk. No memes. Just noticing. The mirror doesn&rsquo;t chase you to buy more. It reflects what you&rsquo;re already seeing. <a href="https://x.com/i/chat/group_join/g2056088351590220124/gAK9fW8Y29" target="_blank" rel="noopener">Enter the Mirror Room &rarr;</a></div>
       </div>
     </div>
+
   </div>
 </section>
 <div class="divider"></div>
 
-<!-- FOOTER - UNCHANGED -->
+<!-- FOOTER -->
 <footer class="footer">
   <div class="footer-logo-wrap">
     <img src="./assets/images/Logo_web.jpg" alt="*SELF">
@@ -700,25 +732,28 @@ a:hover{opacity:.7;}
 </footer>
 
 <script>
-function copyCA(id, btn) {
-  navigator.clipboard.writeText('7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump').then(function() {
-    var orig = btn.innerText;
-    btn.innerText = 'Copied ✓';
-    btn.disabled = true;
-    setTimeout(function() { btn.innerText = orig; btn.disabled = false; }, 2000);
+function copyCA(btn){
+  navigator.clipboard.writeText('7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump').then(function(){
+    var orig=btn.innerText;
+    btn.innerText='Copied \u2713';btn.disabled=true;
+    setTimeout(function(){btn.innerText=orig;btn.disabled=false;},2000);
   });
 }
-// Geo badge script (if your current version has it)
-(function() {
-  fetch('https://ipapi.co/json/')
-    .then(r => r.json())
-    .then(d => {
-      if (d.country_code && d.region_code) {
-        document.getElementById('geoBadge').innerText = d.region_code.toUpperCase() + ' · ' + d.country_code;
-        document.getElementById('geoBadge').classList.add('visible');
-      }
-    })
-    .catch(() => {});
+(function(){
+  try{
+    fetch('https://ipapi.co/json/',{signal:AbortSignal.timeout(4000)})
+      .then(function(r){return r.json();})
+      .then(function(d){
+        if(d&&d.country_code){
+          var b=document.getElementById('geoBadge');
+          b.textContent=(d.region_code?d.region_code+' \u00b7 ':'')+d.country_code;
+          b.classList.add('visible');
+          if(typeof gtag==='function'){
+            gtag('event','visitor_geo',{visitor_country:d.country_name,visitor_city:d.city||'',visitor_region:d.region||''});
+          }
+        }
+      }).catch(function(){});
+  }catch(e){}
 })();
 </script>
 </body>
