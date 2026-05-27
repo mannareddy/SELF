@@ -64,6 +64,17 @@ a:hover{opacity:.7;}
   transition:background .3s;
 }
 .site-nav.scrolled{background:rgba(0,0,0,0.97);}
+
+/* reading progress bar */
+.progress-bar{
+  position:absolute;
+  bottom:0;left:0;
+  height:2px;
+  width:0%;
+  background:linear-gradient(90deg,rgba(212,175,55,.4) 0%,var(--gold) 100%);
+  transition:width .1s linear;
+  pointer-events:none;
+}
 .nav-items{
   display:flex;
   align-items:center;
@@ -400,6 +411,7 @@ body{padding-top:var(--nav-h);}
 
 <!-- ─── STICKY NAV ──────────────────────────────────────────────────────────── -->
 <nav class="site-nav" id="siteNav" aria-label="Site navigation">
+  <div class="progress-bar" id="progressBar"></div>
   <ul class="nav-items">
     <li><a href="#framework">Framework</a></li>
     <li><a href="#ledger">Ledger</a></li>
@@ -942,7 +954,14 @@ function copyCA(btn){
   sections.forEach(function(s){s.el=document.getElementById(s.id);});
   var navLinks = document.querySelectorAll('.nav-items li a');
 
+  var progressBar = document.getElementById('progressBar');
+
   function onScroll(){
+    /* progress bar */
+    var doc = document.documentElement;
+    var scrolled = window.scrollY;
+    var total = doc.scrollHeight - doc.clientHeight;
+    progressBar.style.width = (total > 0 ? (scrolled / total * 100) : 0) + '%';
     /* shadow */
     if(window.scrollY>10) nav.classList.add('scrolled');
     else nav.classList.remove('scrolled');
