@@ -41,13 +41,74 @@ html{scroll-behavior:smooth;}
   --bg-lift:#060606;
   --serif:'Cormorant Garamond',Georgia,serif;
   --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --nav-h:44px;
 }
 body{background:var(--bg);color:var(--white);font-family:var(--serif);text-align:center;line-height:1.85;overflow-x:hidden;}
 a{color:var(--gold);text-decoration:none;transition:opacity .25s;}
 a:hover{opacity:.7;}
 
+/* ─── STICKY NAV ─────────────────────────────────────────────────────────── */
+.site-nav{
+  position:fixed;
+  top:0;left:0;right:0;
+  z-index:999;
+  height:var(--nav-h);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:0;
+  background:rgba(0,0,0,0.88);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid #1c1c1c;
+  transition:background .3s;
+}
+.site-nav.scrolled{background:rgba(0,0,0,0.97);}
+.nav-items{
+  display:flex;
+  align-items:center;
+  gap:0;
+  list-style:none;
+  padding:0;margin:0;
+}
+.nav-items li a{
+  display:block;
+  font-family:var(--sans);
+  font-size:10px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--dim);
+  padding:0 18px;
+  height:var(--nav-h);
+  line-height:var(--nav-h);
+  transition:color .2s;
+  border-right:1px solid #1a1a1a;
+  white-space:nowrap;
+}
+.nav-items li:first-child a{border-left:1px solid #1a1a1a;}
+.nav-items li a:hover{color:var(--gold);opacity:1;}
+.nav-items li a.active{color:var(--gold);}
+
+/* hide nav on very small screens, show hamburger concept via scroll-only */
+@media(max-width:540px){
+  .nav-items li a{
+    font-size:8.5px;
+    letter-spacing:1.5px;
+    padding:0 10px;
+  }
+}
+@media(max-width:380px){
+  .site-nav{justify-content:flex-start;overflow-x:auto;}
+  .nav-items{padding:0 8px;}
+  .nav-items li a{padding:0 9px;}
+}
+
+/* push hero down so nav doesn't overlap */
+body{padding-top:var(--nav-h);}
+/* logo moves down to sit below nav */
+
 /* FLOATING LOGO */
-.float-logo{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:1000;width:58px;height:58px;border-radius:6px;overflow:hidden;box-shadow:0 0 12px 3px var(--gold-glow),0 0 36px 8px rgba(212,175,55,.22),0 0 70px 20px rgba(212,175,55,.08);animation:glow-pulse 3.5s ease-in-out infinite;cursor:pointer;display:block;}
+.float-logo{position:fixed;top:calc(var(--nav-h) + 10px);left:50%;transform:translateX(-50%);z-index:1000;width:58px;height:58px;border-radius:6px;overflow:hidden;box-shadow:0 0 12px 3px var(--gold-glow),0 0 36px 8px rgba(212,175,55,.22),0 0 70px 20px rgba(212,175,55,.08);animation:glow-pulse 3.5s ease-in-out infinite;cursor:pointer;display:block;}
 .float-logo img{width:100%;height:100%;object-fit:cover;display:block;}
 @keyframes glow-pulse{
   0%,100%{box-shadow:0 0 12px 3px var(--gold-glow),0 0 36px 8px rgba(212,175,55,.22),0 0 70px 20px rgba(212,175,55,.08);}
@@ -66,7 +127,7 @@ a:hover{opacity:.7;}
 .label{font-family:var(--sans);font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--dim);margin-bottom:42px;display:block;}
 
 /* HERO */
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:110px 24px 90px;position:relative;background:radial-gradient(ellipse at 50% 35%,rgba(212,175,55,.05) 0%,transparent 68%);}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:130px 24px 90px;position:relative;background:radial-gradient(ellipse at 50% 35%,rgba(212,175,55,.05) 0%,transparent 68%);}
 .hero-question{font-size:clamp(24px,4.5vw,44px);font-weight:300;font-style:italic;color:var(--gold);line-height:1.55;max-width:680px;margin-bottom:20px;letter-spacing:.3px;}
 .hero-sub{font-size:clamp(16px,2.2vw,20px);color:var(--mid);font-weight:300;max-width:480px;line-height:1.9;margin-bottom:24px;}
 .btn-gold{padding:12px 28px;background:var(--gold);color:#000;font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;border:none;cursor:pointer;transition:opacity .25s;text-decoration:none;display:inline-block;}
@@ -81,11 +142,51 @@ a:hover{opacity:.7;}
 .banner-section{max-width:1400px;margin:0 auto;}
 .banner-image{width:100%;height:auto;display:block;border-top:1px solid #111;border-bottom:1px solid #111;}
 
-/* PHIL LINES — FIX 4a: boosted dim size */
+/* PHIL LINES */
 .phil-line{font-size:clamp(18px,2.8vw,26px);font-weight:300;color:var(--mid);line-height:1.9;margin:14px 0;}
 .phil-line.gold{color:var(--gold);font-style:italic;}
 .phil-line.dim{color:var(--grey);font-size:clamp(16px,2.1vw,21px);}
 .phil-line.bright{color:var(--white);}
+
+/* ─── EDITORIAL PULL-QUOTE ────────────────────────────────────────────────── */
+.pull-quote{
+  max-width:680px;
+  margin:56px auto;
+  padding:36px 0 36px 32px;
+  border-left:3px solid var(--gold);
+  text-align:left;
+  position:relative;
+}
+.pull-quote::before{
+  content:'\201C';
+  position:absolute;
+  top:-10px;left:20px;
+  font-size:80px;
+  color:var(--gold);
+  opacity:.18;
+  font-family:var(--serif);
+  line-height:1;
+}
+.pull-quote p{
+  font-family:var(--serif);
+  font-size:clamp(20px,3vw,29px);
+  font-weight:300;
+  font-style:italic;
+  color:var(--white);
+  line-height:1.65;
+  margin:0;
+}
+.pull-quote cite{
+  display:block;
+  margin-top:14px;
+  font-family:var(--sans);
+  font-size:10px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--gold);
+  font-style:normal;
+  opacity:.75;
+}
 
 /* FRAMEWORK GRID */
 .framework-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:2px;margin:48px auto 0;text-align:left;}
@@ -133,7 +234,6 @@ a:hover{opacity:.7;}
 .ipo-cell.bright{color:var(--white);font-weight:400;}
 .ipo-table-row:nth-child(odd):not(.header){background:rgba(255,255,255,.008);}
 .ipo-quote{max-width:600px;margin:0 auto 52px;font-size:clamp(17px,2.5vw,24px);font-weight:300;font-style:italic;color:var(--mid);line-height:1.8;border-left:2px solid var(--gold);padding-left:28px;text-align:left;}
-/* FIX 4b: boosted ipo-upanishad */
 .ipo-upanishad{max-width:560px;margin:0 auto;font-size:clamp(14px,2vw,17px);font-family:var(--sans);color:var(--grey);letter-spacing:.5px;line-height:1.85;border-top:1px solid #1e1e1e;padding-top:32px;}
 .ipo-upanishad em{color:var(--gold);font-style:normal;}
 
@@ -155,7 +255,6 @@ a:hover{opacity:.7;}
 .watch-thumb:hover{filter:brightness(1);}
 .watch-link{display:inline-flex;align-items:center;gap:12px;font-family:var(--sans);font-size:11.5px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:1px solid #2a2a2a;border-top:none;padding:15px 32px;transition:all .3s;width:100%;max-width:440px;justify-content:center;}
 .watch-link:hover{border-color:var(--gold);background:var(--gold-dim);opacity:1;}
-/* FIX 4c: boosted watch-note */
 .watch-note{font-family:var(--sans);font-size:11px;color:var(--dim);letter-spacing:2px;text-transform:uppercase;margin-top:8px;}
 
 /* MIRROR ROOM */
@@ -178,7 +277,6 @@ a:hover{opacity:.7;}
 .identity-card .layer-tag{font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.65;margin-bottom:14px;display:block;}
 .identity-card h4{font-family:var(--serif);font-size:21px;font-weight:400;color:var(--white);margin-bottom:14px;line-height:1.35;}
 .identity-card p{font-family:var(--serif);font-size:16px;font-weight:300;color:var(--grey);line-height:1.88;margin-bottom:16px;}
-/* FIX 4d: boosted practice label */
 .identity-card .practice{font-family:var(--sans);font-size:12px;color:var(--gold);letter-spacing:.8px;border-top:1px solid #1e1e1e;padding-top:16px;line-height:1.7;opacity:.9;}
 
 /* BRIDGE */
@@ -186,7 +284,7 @@ a:hover{opacity:.7;}
 .bridge-section p{font-size:clamp(17px,2.3vw,23px);font-weight:300;color:var(--mid);line-height:1.9;margin:16px 0;}
 .bridge-section p.gold{color:var(--gold);font-style:italic;}
 
-/* FAQ — FIX 4e: boosted answer size */
+/* FAQ */
 .faq-section{padding:90px 24px;background:var(--bg-lift);border-top:1px solid #111;border-bottom:1px solid #111;}
 .faq-section h2{font-size:clamp(20px,3vw,32px);font-weight:300;color:var(--white);max-width:560px;margin:0 auto 52px;line-height:1.5;}
 .faq-list{max-width:680px;margin:0 auto;text-align:left;}
@@ -234,19 +332,82 @@ a:hover{opacity:.7;}
 .footer-tagline{font-family:var(--sans);font-size:11px;color:var(--grey);letter-spacing:5px;text-transform:uppercase;margin-bottom:22px;}
 .footer-ca{font-family:var(--sans);font-size:11px;color:var(--dim);letter-spacing:.8px;word-break:break-all;max-width:500px;margin:0 auto;}
 
-/* RESPONSIVE */
+/* ─── MOBILE TYPOGRAPHY REFINEMENTS ─────────────────────────────────────── */
 @media(max-width:640px){
-  .hero-question{font-size:22px;}
-  .float-logo{width:46px;height:46px;top:12px;}
-  .framework-grid,.identity-grid,.why-grid{grid-template-columns:1fr;gap:1px;}
+  /* Hero breathing room below nav+logo */
+  .hero{padding-top:160px;padding-bottom:80px;}
+  .hero-question{font-size:26px;letter-spacing:.1px;}
+  .hero-sub{font-size:17px;line-height:1.85;}
+
+  /* Phil lines — tighten spacing so walls of text don't blur */
+  .phil-line{font-size:19px;margin:10px 0;line-height:1.8;}
+  .phil-line.dim{font-size:17px;}
+
+  /* Sections — extra horizontal padding so text has breathing room */
+  .section,.section-wide,.cosmic-section,.bridge-section{padding-left:20px;padding-right:20px;}
+
+  /* Cosmic ledger — tighten */
+  .cosmic-section p{font-size:17px;margin:12px 0;}
+  .cosmic-section p.gold{font-size:19px;}
+  .cosmic-section p.dim{font-size:15px;}
+
+  /* Pull-quote — compact on mobile */
+  .pull-quote{margin:36px auto;padding:24px 0 24px 22px;}
+  .pull-quote p{font-size:19px;}
+  .pull-quote::before{font-size:56px;top:-4px;left:8px;}
+
+  /* IPO table — collapse middle column */
   .ipo-table-row{grid-template-columns:1fr 1fr;}
-  .ipo-table-row .ipo-cell:nth-child(2),.ipo-table-row.header .ipo-cell:nth-child(2){display:none;}
+  .ipo-table-row .ipo-cell:nth-child(2),
+  .ipo-table-row.header .ipo-cell:nth-child(2){display:none;}
+
+  /* Cards — single column */
+  .framework-grid,.identity-grid,.why-grid{grid-template-columns:1fr;gap:1px;}
+
+  /* Watch thumbnails */
   .watch-thumb{height:180px;}
+
+  /* Vision pillars — stack */
   .vision-pillars{grid-template-columns:1fr;}
+
+  /* FAQ — readable question size */
+  .faq-q{font-size:17px;padding:20px 4px;}
+  .faq-a-inner{font-size:16px;}
+
+  /* Framework cards — slightly tighter */
+  .framework-card,.identity-card{padding:28px 22px;}
+  .framework-card h3{font-size:20px;}
+  .framework-card p{font-size:15.5px;}
+  .identity-card h4{font-size:19px;}
+  .identity-card p{font-size:15px;}
+
+  /* Floated logo */
+  .float-logo{width:46px;height:46px;}
+
+  /* Nav scroll on tiny screens */
+  .site-nav{justify-content:flex-start;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .site-nav::-webkit-scrollbar{display:none;}
+  .nav-items{padding:0 8px;}
+}
+
+@media(max-width:380px){
+  .nav-items li a{font-size:8px;letter-spacing:1px;padding:0 8px;}
+  .hero-question{font-size:22px;}
 }
 </style>
 </head>
 <body>
+
+<!-- ─── STICKY NAV ──────────────────────────────────────────────────────────── -->
+<nav class="site-nav" id="siteNav" aria-label="Site navigation">
+  <ul class="nav-items">
+    <li><a href="#framework">Framework</a></li>
+    <li><a href="#ledger">Ledger</a></li>
+    <li><a href="#ipo">IPO</a></li>
+    <li><a href="#mirror">Mirror Room</a></li>
+    <li><a href="#contract">Contract</a></li>
+  </ul>
+</nav>
 
 <div class="geo-badge" id="geoBadge"></div>
 <a href="https://42self.xyz" class="float-logo" title="*SELF">
@@ -258,7 +419,6 @@ a:hover{opacity:.7;}
   <p class="hero-question">What is your own SELF worth?</p>
   <p class="hero-sub">Not in dollars. In purpose. In the unique value only you can offer.</p>
   <p class="hero-sub" style="margin-bottom:16px;font-size:13px;letter-spacing:3px;font-family:var(--sans);text-transform:uppercase;">$SELF &middot; Solana</p>
-  <!-- FIX 1: smooth scroll + id target on contract section -->
   <a class="btn-outline" href="#contract"
      onclick="event.preventDefault();document.getElementById('contract').scrollIntoView({behavior:'smooth'});"
      style="display:inline-block;padding:12px 32px;font-size:11px;letter-spacing:3px;">&#8595; View Contract</a>
@@ -316,7 +476,7 @@ a:hover{opacity:.7;}
 <div class="divider"></div>
 
 <!-- THE FRAMEWORK -->
-<section class="section-wide">
+<section class="section-wide" id="framework">
   <span class="label">The Framework</span>
   <p class="phil-line bright">The *SELF operating system. Six layers.</p>
   <p class="phil-line dim">Most people run on the first one their whole life.</p>
@@ -390,17 +550,21 @@ a:hover{opacity:.7;}
 <div class="divider"></div>
 
 <!-- COSMIC LEDGER -->
-<section class="section">
+<section class="section" id="ledger">
   <span class="label">The Cosmic Ledger</span>
   <p class="phil-line">You buy Bitcoin. You hold it. You sell it.</p>
   <p class="phil-line dim">The blockchain records the transaction and forgets you exist.</p>
 </section>
 <div class="divider"></div>
 
+<!-- PULL-QUOTE: Cosmic Ledger -->
+<div style="max-width:680px;margin:0 auto;padding:0 24px;">
+  <div class="pull-quote">
+    <p>What if there is something you carry that no blockchain can record &mdash; that no ledger can hold &mdash; that no market can price?</p>
+  </div>
+</div>
+
 <section class="cosmic-section">
-  <p class="gold">What if there is something you carry that no blockchain can record &mdash;</p>
-  <p class="gold">that no ledger can hold &mdash; that no market can price?</p>
-  <div class="gold-line"></div>
   <p>Every deed you perform. Every reaction you choose.<br>Every moment spent in awareness or autopilot.<br>Builds a balance sheet.</p>
   <p>Not in any market. Not in any wallet.</p>
   <p class="gold">In the cosmic ledger of your own SELF.</p>
@@ -414,7 +578,7 @@ a:hover{opacity:.7;}
 <div class="divider"></div>
 
 <!-- IPO SECTION -->
-<section class="ipo-section">
+<section class="ipo-section" id="ipo">
   <span class="label">The Internal Public Offering</span>
   <p class="ipo-headline">While the world <em>waits</em> for external IPOs,<br>the most undervalued IPO <em>trades right now.</em></p>
   <p class="ipo-sub">Not on Wall Street. On the cosmic ledger. Your consciousness. Your direction. Your choice.</p>
@@ -450,7 +614,15 @@ a:hover{opacity:.7;}
       <div class="ipo-cell gold">You notice more</div>
     </div>
   </div>
-  <p class="ipo-quote">While the world bids on reaching Mars, most people never reach themselves. The difference? One requires a rocket. The other requires a practice.</p>
+
+  <!-- PULL-QUOTE: IPO -->
+  <div style="max-width:700px;margin:0 auto 52px;">
+    <div class="pull-quote" style="text-align:left;">
+      <p>While the world bids on reaching Mars, most people never reach themselves.</p>
+      <cite>One requires a rocket. The other requires a practice.</cite>
+    </div>
+  </div>
+
   <div class="ipo-upanishad">
     <strong>From the Brihadaranyaka Upanishad:</strong><br>
     <em>&ldquo;We do not love a spouse, children, or wealth for their own sake, but for the sake of the Self residing within them and within us.&rdquo;</em><br><br>
@@ -529,7 +701,7 @@ a:hover{opacity:.7;}
 <div class="divider"></div>
 
 <!-- MIRROR ROOM -->
-<section class="mirror-room">
+<section class="mirror-room" id="mirror">
   <span class="label">The Mirror Room</span>
   <h2>A space for people who noticed<br>the gap and couldn&rsquo;t unsee it.</h2>
   <p class="descriptor">Not a hype chat. No price talk. No memes.<br>Post what you noticed &mdash; in the chart, in yourself, in the market.<br>The mirror doesn&rsquo;t chase. It reflects.</p>
@@ -568,7 +740,7 @@ a:hover{opacity:.7;}
 </section>
 <div class="divider"></div>
 
-<!-- CONTRACT — FIX 1: id="contract" added -->
+<!-- CONTRACT -->
 <section class="ca-full-section" id="contract">
   <span class="label">Contract</span>
   <div class="ca-full-box">
@@ -601,13 +773,12 @@ a:hover{opacity:.7;}
 </section>
 <div class="divider"></div>
 
-<!-- FAQ — FIX 2: RRRR both versions | FIX 3: orphaned item repaired -->
+<!-- FAQ -->
 <section class="faq-section">
   <span class="label">Common Questions</span>
   <h2>The questions people ask when they start noticing.</h2>
   <div class="faq-list">
 
-    <!-- FIX 2: RRRR Protocol — both versions -->
     <div class="faq-item">
       <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
         <span>What is the RRRR Protocol?</span>
@@ -700,7 +871,6 @@ a:hover{opacity:.7;}
       </div>
     </div>
 
-    <!-- FIX 3: Restored broken orphaned FAQ item with proper structure -->
     <div class="faq-item">
       <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
         <span>What is the Mirror Room?</span>
@@ -732,6 +902,7 @@ a:hover{opacity:.7;}
 </footer>
 
 <script>
+/* Copy CA */
 function copyCA(btn){
   navigator.clipboard.writeText('7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump').then(function(){
     var orig=btn.innerText;
@@ -739,6 +910,8 @@ function copyCA(btn){
     setTimeout(function(){btn.innerText=orig;btn.disabled=false;},2000);
   });
 }
+
+/* Geo badge */
 (function(){
   try{
     fetch('https://ipapi.co/json/',{signal:AbortSignal.timeout(4000)})
@@ -754,6 +927,39 @@ function copyCA(btn){
         }
       }).catch(function(){});
   }catch(e){}
+})();
+
+/* Nav: scroll shadow + active state */
+(function(){
+  var nav = document.getElementById('siteNav');
+  var sections = [
+    {id:'framework', el:null},
+    {id:'ledger',    el:null},
+    {id:'ipo',       el:null},
+    {id:'mirror',    el:null},
+    {id:'contract',  el:null}
+  ];
+  sections.forEach(function(s){s.el=document.getElementById(s.id);});
+  var navLinks = document.querySelectorAll('.nav-items li a');
+
+  function onScroll(){
+    /* shadow */
+    if(window.scrollY>10) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+
+    /* active link */
+    var fromTop = window.scrollY + 80;
+    var current = '';
+    sections.forEach(function(s){
+      if(s.el && s.el.offsetTop <= fromTop) current = s.id;
+    });
+    navLinks.forEach(function(a){
+      a.classList.toggle('active', a.getAttribute('href')==='#'+current);
+    });
+  }
+
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
 })();
 </script>
 </body>
