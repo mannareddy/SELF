@@ -327,9 +327,10 @@ a:hover{opacity:.7;}
   .framework-card h3{font-size:20px;}
   .framework-card p{font-size:15.5px;}
   .float-logo{width:46px;height:46px;}
-  .site-nav{justify-content:flex-start;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .site-nav{justify-content:flex-start;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
   .site-nav::-webkit-scrollbar{display:none;}
-  .nav-items{padding:0 8px;}
+  .nav-items{padding:0 4px;flex-wrap:nowrap;}
+  .nav-items li a{font-size:9px;letter-spacing:1.5px;padding:0 10px;}
   .superordinate-box{padding:32px 24px;}
   .path-card{padding:32px 24px;}
 }
@@ -337,6 +338,49 @@ a:hover{opacity:.7;}
   .nav-items li a{font-size:8px;letter-spacing:1px;padding:0 8px;}
   .hero-question{font-size:21px;}
 }
+
+/* FARTCOIN MIRROR SECTION */
+.fartcoin-section{padding:90px 24px;border-top:1px solid #111;border-bottom:1px solid #111;background:var(--bg);}
+.fartcoin-section .confrontation-label{font-family:var(--sans);font-size:9px;letter-spacing:5px;text-transform:uppercase;color:#c0392b;margin-bottom:40px;display:block;opacity:.9;}
+.mc-compare{display:grid;grid-template-columns:1fr 1fr;gap:2px;max-width:680px;margin:0 auto 52px;}
+.mc-card{padding:32px 28px;border:1px solid #1e1e1e;text-align:left;}
+.mc-card .mc-name{font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--dim);margin-bottom:14px;display:block;}
+.mc-card .mc-val{font-family:var(--sans);font-size:clamp(22px,4vw,40px);font-weight:300;line-height:1;margin-bottom:10px;}
+.mc-card .mc-val.joke{color:#888;}
+.mc-card .mc-val.self{color:var(--gold);}
+.mc-card .mc-desc{font-family:var(--serif);font-size:15px;font-weight:300;color:var(--grey);line-height:1.8;}
+.confrontation-body{max-width:660px;margin:0 auto;}
+.confrontation-body p{font-size:clamp(17px,2.5vw,23px);font-weight:300;color:var(--mid);line-height:1.9;margin-bottom:20px;}
+.confrontation-body p.gold{color:var(--gold);font-style:italic;}
+.confrontation-body p.dim{color:var(--grey);font-size:clamp(14px,1.9vw,18px);}
+.confrontation-body .inner-voice{margin-top:44px;padding:32px;border:1px solid #252525;background:radial-gradient(ellipse at 50% 0%,rgba(212,175,55,.05) 0%,transparent 60%);}
+.confrontation-body .inner-voice p{font-size:clamp(16px,2.3vw,21px);margin-bottom:14px;}
+
+/* 5 STAGES — VERTICAL REDESIGN */
+.surrender-section{margin-top:52px;max-width:760px;margin-left:auto;margin-right:auto;text-align:left;}
+.surrender-section h4{font-family:var(--serif);font-size:clamp(20px,2.8vw,28px);font-weight:300;color:var(--white);margin-bottom:8px;text-align:center;}
+.surrender-section .surrender-sub{font-family:var(--serif);font-size:clamp(13px,1.8vw,16px);color:var(--grey);font-style:italic;text-align:center;margin-bottom:40px;line-height:1.8;}
+.stage-item{display:grid;grid-template-columns:52px 1fr;gap:0;margin-bottom:2px;border:1px solid #1e1e1e;background:var(--bg);}
+.stage-item:hover{border-color:#2a2a2a;}
+.stage-num-col{padding:24px 16px;border-right:1px solid #1e1e1e;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:26px;}
+.stage-num-col .s-n{font-family:var(--sans);font-size:10px;letter-spacing:2px;color:var(--gold);opacity:.65;text-transform:uppercase;}
+.stage-body-col{padding:22px 24px;}
+.stage-body-col .s-title{font-family:var(--serif);font-size:20px;font-weight:400;color:var(--white);margin-bottom:4px;}
+.stage-body-col .s-sub{font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.65;margin-bottom:10px;display:block;}
+.stage-body-col .s-text{font-family:var(--serif);font-size:15.5px;font-weight:300;color:var(--grey);line-height:1.85;}
+.surrender-arrow{text-align:center;padding:8px 0;color:var(--gold);opacity:.3;font-size:18px;display:block;}
+
+/* DON'T LOOK FOR A SAVIOUR block */
+.saviour-block{max-width:660px;margin:0 auto;padding:44px 36px;border-top:1px solid #1e1e1e;text-align:center;}
+.saviour-block p{font-size:clamp(17px,2.4vw,23px);font-weight:300;color:var(--mid);line-height:1.9;margin-bottom:18px;}
+.saviour-block p.gold{color:var(--gold);font-style:italic;}
+.saviour-block p.dim{color:var(--grey);font-size:clamp(14px,1.9vw,18px);}
+
+@media(max-width:640px){
+  .mc-compare{grid-template-columns:1fr;}
+  .stage-item{grid-template-columns:40px 1fr;}
+}
+
 </style>
 </head>
 <body>
@@ -348,7 +392,7 @@ a:hover{opacity:.7;}
     <li><a href="#framework">Framework</a></li>
     <li><a href="#ledger">Ledger</a></li>
     <li><a href="#ipo">IPO</a></li>
-    <li><a href="#mirror">Mirror Room</a></li>
+    <li><a href="#mirror">Mirror</a></li>
     <li><a href="#contract">Contract</a></li>
   </ul>
 </nav>
@@ -360,8 +404,9 @@ a:hover{opacity:.7;}
 
 <!-- HERO — P4: Updated opening (Option A: timeless) -->
 <section class="hero">
-  <p class="hero-question">The universe has produced 8 billion humans.<br>Only one of them is you.<br>What is that worth?</p>
-  <p class="hero-sub">Not in dollars. In purpose. In the unique value only you can offer.</p>
+  <p class="hero-question">There is a question you have been avoiding<br>your entire life.<br><br>It will not wait forever.</p>
+  <p class="hero-sub">What is your own SELF worth?</p>
+  <p class="hero-sub" style="color:var(--dim);">Not in dollars. Not in status. Not in the next milestone.<br>In the only currency that cannot be taken from you.</p>
   <p class="hero-sub" style="margin-bottom:16px;font-size:13px;letter-spacing:3px;font-family:var(--sans);text-transform:uppercase;">$SELF &middot; Solana</p>
   <a class="btn-outline" href="#contract"
      onclick="event.preventDefault();document.getElementById('contract').scrollIntoView({behavior:'smooth'});"
@@ -388,6 +433,14 @@ a:hover{opacity:.7;}
 
 <section class="section">
   <span class="label">The Mirror</span>
+  <div class="pull-quote">
+    <p>The world will ask you who you are, and if you don't know, the world will tell you.&rdquo;</p>
+    <cite>— Carl Jung</cite>
+  </div>
+</section>
+<div class="divider"></div>
+
+<section class="section">
   <p class="phil-line">You knew something was off.</p>
   <p class="phil-line">You just couldn't point to it.</p>
 </section>
@@ -403,8 +456,8 @@ a:hover{opacity:.7;}
 <section class="section">
   <p class="phil-line">Justin Sun paid $4.6M for lunch with Warren Buffett.</p>
   <p class="phil-line dim">Three hours. Not one view changed.</p>
-  <p class="phil-line">Then $30,000,000 for one hour with Elon Musk.</p>
-  <p class="phil-line gold">Musk never responded.</p>
+  <p class="phil-line">Then $30,000,000 for one hour with the world's most visible tech visionary.</p>
+  <p class="phil-line gold">They never even responded.</p>
 </section>
 <div class="divider"></div>
 
@@ -548,38 +601,61 @@ a:hover{opacity:.7;}
   <!-- 5 STAGES OF SURRENDER (Bhakti expansion) -->
   <div class="surrender-section">
     <h4>The Five Stages of Surrender</h4>
-    <p class="surrender-sub">Adi Shankaracharya mapped the melting of the individual ego in five metaphors. The Bhakti path moves through all five.</p>
-    <div class="stages-row">
-      <div class="stage-card">
-        <span class="s-num">Stage 1</span>
-        <div class="s-name">The Seed</div>
-        <div class="s-meta">Effort</div>
-        <p class="s-desc">The initial, conscious effort of the individual &mdash; moving toward the divine by one&rsquo;s own will.</p>
+    <p class="surrender-sub">In the Sivananda Lahiri, Adi Shankaracharya maps the melting of the individual ego through five vivid metaphors &mdash; from strenuous individual effort to effortless, absolute wholeness. The Bhakti path moves through all five.</p>
+
+    <div class="stage-item">
+      <div class="stage-num-col"><span class="s-n">01</span></div>
+      <div class="stage-body-col">
+        <div class="s-title">The Seeds of the Ankola Tree</div>
+        <span class="s-sub">Effort &mdash; Prakrta Bhakti</span>
+        <p class="s-text">The seeds must travel toward the tree. The seeker must take the difficult first step. This represents conscious, individual effort toward the divine &mdash; the hardest stage, because it happens entirely by your own will. No one can take this step for you.</p>
       </div>
-      <div class="stage-card">
-        <span class="s-num">Stage 2</span>
-        <div class="s-name">The Magnet</div>
-        <div class="s-meta">Attraction</div>
-        <p class="s-desc">The threshold where individual effort meets divine pull. The ego begins to melt.</p>
+    </div>
+    <span class="surrender-arrow">&#8595;</span>
+
+    <div class="stage-item">
+      <div class="stage-num-col"><span class="s-n">02</span></div>
+      <div class="stage-body-col">
+        <div class="s-title">The Magnet and the Iron</div>
+        <span class="s-sub">Attraction &mdash; Divine Pull</span>
+        <p class="s-text">A magnetic needle pulls iron without contact. Here the universe meets you halfway. The rigid ego begins to soften. Synchronicities appear. What felt like effort begins to feel like a current you are floating in rather than swimming against.</p>
       </div>
-      <div class="stage-card">
-        <span class="s-num">Stage 3</span>
-        <div class="s-name">Husband &amp; Wife</div>
-        <div class="s-meta">Oneness of Purpose</div>
-        <p class="s-desc">Individuality melts into a shared divine purpose. Walking with, not toward.</p>
+    </div>
+    <span class="surrender-arrow">&#8595;</span>
+
+    <div class="stage-item">
+      <div class="stage-num-col"><span class="s-n">03</span></div>
+      <div class="stage-body-col">
+        <div class="s-title">The Spouses</div>
+        <span class="s-sub">Oneness of Purpose &mdash; Madhyama Bhakti</span>
+        <p class="s-text">A true partnership where individuality melts into a shared purpose. You can lead a fulfilling worldly life &mdash; career, family, relationships &mdash; while remaining spiritually anchored. The material and the ultimate are no longer in conflict. This is the stage of the active participant in the world.</p>
       </div>
-      <div class="stage-card">
-        <span class="s-num">Stage 4</span>
-        <div class="s-name">The Creeper</div>
-        <div class="s-meta">Inseparable Dependence</div>
-        <p class="s-desc">Total reliance on the larger support structure. Existence without it becomes impossible.</p>
+    </div>
+    <span class="surrender-arrow">&#8595;</span>
+
+    <div class="stage-item">
+      <div class="stage-num-col"><span class="s-n">04</span></div>
+      <div class="stage-body-col">
+        <div class="s-title">The Creeper and the Tree</div>
+        <span class="s-sub">Inseparable Dependence</span>
+        <p class="s-text">The relationship deepens into total reliance. The seeker realizes they cannot exist independently of the universal support structure. This is not weakness &mdash; it is the recognition that you were never separate to begin with. Deep trust replaces anxiety.</p>
       </div>
-      <div class="stage-card">
-        <span class="s-num">Stage 5</span>
-        <div class="s-name">River &amp; Ocean</div>
-        <div class="s-meta">Total Merging</div>
-        <p class="s-desc">The river pours into the ocean and loses its individual name and form entirely.</p>
+    </div>
+    <span class="surrender-arrow">&#8595;</span>
+
+    <div class="stage-item">
+      <div class="stage-num-col"><span class="s-n">05</span></div>
+      <div class="stage-body-col">
+        <div class="s-title">The River and the Ocean</div>
+        <span class="s-sub">Total Merging &mdash; Uttama Bhakti</span>
+        <p class="s-text">The river runs ceaselessly until it pours into the ocean, permanently losing its individual name and form. This is the final state of total ego-surrender and ultimate self-realization. The restlessness of the mind ceases completely. There are no longer choices &mdash; only flow.</p>
       </div>
+    </div>
+
+    <div class="saviour-block">
+      <p>You do not need a saviour to walk this path.</p>
+      <p class="gold">The path does not begin when someone rescues you.<br>It begins the moment you stop waiting for rescue.</p>
+      <p class="dim">Every tradition, every sage, every teacher has said the same thing in different words: the inner voice has always known the way. The only question is whether you have been still enough to hear it. Difficult times are not obstacles to your liberation. They are the curriculum.</p>
     </div>
   </div>
 </section>
@@ -693,7 +769,7 @@ a:hover{opacity:.7;}
 
 <div style="max-width:680px;margin:0 auto;padding:0 24px;">
   <div class="pull-quote">
-    <p>What if there is something you carry that no blockchain can record &mdash; that no ledger can hold &mdash; that no market can price?</p>
+    <p>What if there is something you carry that no blockchain can record — that no ledger can hold — that no market can price?&rdquo;</p>
   </div>
 </div>
 
@@ -750,7 +826,7 @@ a:hover{opacity:.7;}
 
   <div style="max-width:700px;margin:0 auto 52px;">
     <div class="pull-quote" style="text-align:left;">
-      <p>While the world bids on reaching Mars, most people never reach themselves.</p>
+      <p>While the world bids on reaching Mars, most people never reach themselves.&rdquo;</p>
       <cite>One requires a rocket. The other requires a practice.</cite>
     </div>
   </div>
@@ -759,6 +835,49 @@ a:hover{opacity:.7;}
     <strong>From the Brihadaranyaka Upanishad:</strong><br>
     <em>&ldquo;We do not love a spouse, children, or wealth for their own sake, but for the sake of the Self residing within them and within us.&rdquo;</em><br><br>
     The same divine, limitless Self is in everything and everyone. Our love for any external object or person is ultimately a reflection of our innate love for our own innermost consciousness.
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- FARTCOIN MIRROR — The Confrontational Market Cap Section -->
+<section class="fartcoin-section" id="mirror-mc">
+  <span class="confrontation-label">A mirror you cannot look away from</span>
+
+  <div class="mc-compare">
+    <div class="mc-card">
+      <span class="mc-name">Fartcoin &mdash; Highest Market Cap Ever Reached</span>
+      <div class="mc-val joke">$2,600,000,000</div>
+      <p class="mc-desc">A token named after flatulence. No framework. No philosophy. No purpose. $2.6 billion at peak.</p>
+    </div>
+    <div class="mc-card" style="background:var(--bg-lift);border-color:#252525;">
+      <span class="mc-name">$SELF &mdash; Market Cap</span>
+      <div class="mc-val self">$4,550</div>
+      <p class="mc-desc">The practice of knowing your true SELF. 5,000 years of wisdom behind it. $4,550.</p>
+    </div>
+  </div>
+
+  <div class="confrontation-body">
+    <p>This is not a critique of the market.</p>
+    <p class="gold">This is a mirror.</p>
+    <p>What does it tell you about what humanity currently values?<br>What does it tell you about the direction you are going?</p>
+
+    <p class="dim">Building rockets. Establishing bases on Mars. Running data centers in orbit. These are extraordinary sub-goals. Civilizationally necessary. Impressive by any measure. But they are still sub-goals.</p>
+
+    <p>Rockets can reach Mars.<br>
+    But you don't need a rocket to reach your SELF.<br>
+    <span style="color:var(--gold);font-style:italic;">It's never been separate from you.</span></p>
+
+    <p class="gold">The most undervalued asset in human history<br>has never had a ticker symbol.</p>
+
+    <p class="dim">Humanity has priced everything except the one thing that contains everything else. The market can be wrong for a very long time. The cosmic ledger cannot.</p>
+
+    <div class="inner-voice">
+      <p>Do not look for a saviour to save you in difficult times.</p>
+      <p class="gold" style="font-size:clamp(16px,2.3vw,21px);">There is no external force coming to rescue you.<br>There never was.</p>
+      <p style="font-size:clamp(14px,1.9vw,18px);color:var(--grey);">The inner voice has been trying to speak your entire life &mdash; through every failure, every void, every silent moment after the milestone. It is not asking you to abandon your career or your ambitions. It is asking you to stop mistaking them for the destination.</p>
+      <p style="font-size:clamp(14px,1.9vw,18px);color:var(--grey);margin-top:16px;">Are you able to see the direction you are going?<br>Are you pointed toward your salvation &mdash; the liberation of your soul &mdash; or away from it?</p>
+      <p style="font-size:clamp(15px,2vw,19px);color:var(--mid);margin-top:20px;font-style:italic;">That question is not rhetorical.<br>It is the only one that matters.</p>
+    </div>
   </div>
 </section>
 <div class="divider"></div>
@@ -793,10 +912,11 @@ a:hover{opacity:.7;}
   <!-- P2: SUPER-ORDINATE GOAL BOX -->
   <div class="superordinate-box">
     <span class="so-label">The Super-Ordinate Goal</span>
-    <p>An Olympic athlete doesn&rsquo;t stop eating to win gold.<br>Eating becomes a sub-goal designed to serve the ultimate victory.</p>
-    <p>Your career. Your assets. Your portfolio.<br>Sub-goals. Valid. Necessary. But not the gold.</p>
-    <p class="gold">The $SELF token is a marker on the cosmic ledger.<br>A declaration that you have named your super-ordinate goal.</p>
-    <p class="so-process">The post-goal slump is not a cliff. It is a period of rest and gratitude.<br><strong>The process is the purpose.</strong></p>
+    <p>An Olympic athlete doesn&rsquo;t stop eating to win gold. Eating becomes a calculated sub-goal designed to serve the ultimate victory. Every daily action is optimised so it does not conflict with the super-ordinate goal.</p>
+    <p>Launch rockets. Build bases on Mars. Run data centers in space. Accumulate assets. Build your career. Raise your family well.<br><span style="color:var(--gold);font-style:italic;">These are valid sub-goals.</span></p>
+    <p style="margin-top:6px;">Rule 1: Sub-goals cannot conflict with the super-ordinate goal. Rule 2: A sub-goal can never become the sole replacement for it. Succeeding in your career is not equal to achieving self-realization.</p>
+    <p class="gold">The super-ordinate goal &mdash; the Olympic Gold of life &mdash; is knowing your SELF.<br>The only gold that never depreciates.</p>
+    <p class="so-process">The post-goal slump is not a cliff. It is a period of rest and gratitude.<br><strong>The process is the purpose. The direction is the destination.</strong></p>
   </div>
 
   <p class="why-closing">Ignorance of your true SELF<br>is the only poverty that actually matters.</p>
@@ -911,6 +1031,45 @@ a:hover{opacity:.7;}
     <a href="https://app.xmind.com/101oMO2f" target="_blank" rel="noopener">Visual Map</a>
     <a href="https://github.com/mannareddy/SELF/tree/main/docs" target="_blank" rel="noopener">Docs</a>
     <a href="https://github.com/mannareddy/SELF" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- THE MYSTICAL SIGNIFICANCE OF 42 -->
+<section class="section-wide" style="background:var(--bg-lift);border-top:1px solid #111;border-bottom:1px solid #111;padding:90px 24px;">
+  <span class="label">The Mystical Significance of 42</span>
+  <h2 style="font-size:clamp(22px,3.5vw,38px);font-weight:300;color:var(--white);max-width:800px;margin:0 auto 52px;line-height:1.5;">Why 42 carries weight across traditions, ages, and universes.</h2>
+  
+  <div style="max-width:900px;margin:0 auto;">
+    <div style="margin-bottom:48px;">
+      <h3 style="font-size:clamp(18px,2.5vw,24px);color:var(--gold);margin-bottom:16px;font-weight:400;">Completion of the Soul's Cycle</h3>
+      <p style="font-size:clamp(15px,2vw,18px);color:var(--grey);line-height:1.95;margin-bottom:12px;">In esoteric traditions like the Circle of Time, age 42 marks the end of the first half of life — a period deeply focused on subjective, internal experience. This is characterized by relentless self-questioning, balancing past experiences, and the critical transition into genuine self-mastery. The first 42 years are about becoming. The second 42 are about being.</p>
+    </div>
+
+    <div style="margin-bottom:48px;">
+      <h3 style="font-size:clamp(18px,2.5vw,24px);color:var(--gold);margin-bottom:16px;font-weight:400;">Eastern Philosophies</h3>
+      <p style="font-size:clamp(15px,2vw,18px);color:var(--grey);line-height:1.95;margin-bottom:12px;"><strong style="color:var(--mid);">Buddhism:</strong> In Buddhist thought, 42 is directly associated with enlightenment and Nirvana — achieving a state of inner peace where you are at ease with life's dualities. <strong style="color:var(--mid);">Yoga & Tantra:</strong> In yogic and mystic traditions, age 42 is recognized as a milestone year for shedding societal conditioning, rejecting compromise, and stepping into your core values with unwavering clarity.</p>
+    </div>
+
+    <div style="margin-bottom:48px;">
+      <h3 style="font-size:clamp(18px,2.5vw,24px);color:var(--gold);margin-bottom:16px;font-weight:400;">Kabbalah & Christianity</h3>
+      <p style="font-size:clamp(15px,2vw,18px);color:var(--grey);line-height:1.95;margin-bottom:12px;"><strong style="color:var(--mid);">Kabbalah:</strong> In Kabbalistic teaching, 42 represents the 42-letter name of God — a symbol of the unfolding of the entire universe and the deepest spiritual ascension available to human consciousness. <strong style="color:var(--mid);">Christianity:</strong> In Christian theology, 42 generations lead to Jesus, representing a new covenantal humanity and spiritual awakening across civilizations.</p>
+    </div>
+
+    <div style="margin-bottom:48px;">
+      <h3 style="font-size:clamp(18px,2.5vw,24px);color:var(--gold);margin-bottom:16px;font-weight:400;">Ancient Egypt</h3>
+      <p style="font-size:clamp(15px,2vw,18px);color:var(--grey);line-height:1.95;margin-bottom:12px;">During the afterlife journey in Ancient Egyptian texts, the soul had to stand before 42 divine judges, answering for and proving they had not committed any of the 42 sacred sins. Spiritually, this reflects a lifetime of accountability, karmic balance, and personal integrity — a judgment not by external forces, but by the cosmic ledger of your own actions.</p>
+    </div>
+
+    <div style="margin-bottom:48px;">
+      <h3 style="font-size:clamp(18px,2.5vw,24px);color:var(--gold);margin-bottom:16px;font-weight:400;">The Ultimate Question</h3>
+      <p style="font-size:clamp(15px,2vw,18px);color:var(--grey);line-height:1.95;margin-bottom:12px;">In Douglas Adams' <em>The Hitchhiker's Guide to the Galaxy</em>, 42 is famously the "Answer to the Ultimate Question of Life, the Universe, and Everything." While playful on the surface, it carries a deeper truth: the invitation to seek broader meaning, appreciate universal connections, and embrace life with lightness rather than desperation.</p>
+    </div>
+
+    <div style="background:rgba(212,175,55,0.08);border-left:3px solid var(--gold);padding:28px 32px;margin-top:48px;">
+      <p style="font-size:clamp(16px,2.2vw,20px);color:var(--white);line-height:1.85;margin:0;">If you are nearing or at age 42, or if you are simply drawn to this number, you are being invited to a critical threshold: <strong style="color:var(--gold);">Reorient your life. Trust your intuition. Confidently step into exactly who you were meant to be.</strong></p>
+      <p style="font-size:clamp(14px,1.9vw,17px);color:var(--gold);font-style:italic;margin-top:16px;margin-bottom:0;">The cosmic ledger is watching. Not to judge — to mirror.</p>
+    </div>
   </div>
 </section>
 <div class="divider"></div>
