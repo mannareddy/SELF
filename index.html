@@ -405,12 +405,12 @@ a:hover{opacity:.7;}
 <!-- HERO — P4: Updated opening (Option A: timeless) -->
 <section class="hero">
   <p class="hero-question">There is a question you have been avoiding<br>your entire life.<br><br>It will not wait forever.</p>
-  <p class="hero-sub">What is your own SELF worth?</p>
-  <p class="hero-sub" style="color:var(--dim);">Not in dollars. Not in status. Not in the next milestone.<br>In the only currency that cannot be taken from you.</p>
-  <p class="hero-sub" style="margin-bottom:16px;font-size:13px;letter-spacing:3px;font-family:var(--sans);text-transform:uppercase;">$SELF &middot; Solana</p>
-  <a class="btn-outline" href="#contract"
+  <p class="hero-sub" style="font-size:clamp(22px,3.5vw,32px);color:var(--gold);font-weight:400;margin-bottom:28px;margin-top:24px;">What is your own SELF worth?</p>
+  <p class="hero-sub" style="color:var(--dim);margin-bottom:28px;">Not in dollars. Not in status. Not in the next milestone.<br>In the only currency that cannot be taken from you.</p>
+  <p class="hero-sub" style="margin-bottom:32px;font-size:13px;letter-spacing:3px;font-family:var(--sans);text-transform:uppercase;">$SELF &middot; Solana</p>
+  <a class="btn-gold" href="#contract"
      onclick="event.preventDefault();document.getElementById('contract').scrollIntoView({behavior:'smooth'});"
-     style="display:inline-block;padding:12px 32px;font-size:11px;letter-spacing:3px;">&#8595; View Contract</a>
+     style="display:inline-block;padding:14px 44px;font-size:11px;letter-spacing:3px;margin-bottom:20px;">✓ View Contract</a>
   <span class="scroll-hint">&darr; continue</span>
 </section>
 
@@ -434,7 +434,7 @@ a:hover{opacity:.7;}
 <section class="section">
   <span class="label">The Mirror</span>
   <div class="pull-quote">
-    <p>The world will ask you who you are, and if you don't know, the world will tell you.&rdquo;</p>
+    <p>&ldquo;The world will ask you who you are, and if you don't know, the world will tell you.&rdquo;</p>
     <cite>— Carl Jung</cite>
   </div>
 </section>
@@ -454,8 +454,8 @@ a:hover{opacity:.7;}
 <div class="divider"></div>
 
 <section class="section">
-  <p class="phil-line">Justin Sun paid $4.6M for lunch with Warren Buffett.</p>
-  <p class="phil-line dim">Three hours. Not one view changed.</p>
+  <p class="phil-line">A cryptocurrency founder paid $4.6M for lunch with the world's most respected value investor.</p>
+  <p class="phil-line dim">Three hours. Not one philosophy changed.</p>
   <p class="phil-line">Then $30,000,000 for one hour with the world's most visible tech visionary.</p>
   <p class="phil-line gold">They never even responded.</p>
 </section>
@@ -491,6 +491,23 @@ a:hover{opacity:.7;}
     <button class="void-btn" onclick="showVoidResponse('no',this)">Not really</button>
   </div>
   <div class="void-response" id="voidResponse"></div>
+</section>
+<div class="divider"></div>
+
+<!-- THE MISSION -->
+<section class="section" style="background:var(--bg-lift);border-top:1px solid #111;border-bottom:1px solid #111;padding:90px 24px;">
+  <span class="label">The Mission</span>
+  <div style="max-width:720px;margin:0 auto;text-align:left;">
+    <p style="font-size:clamp(17px,2.3vw,22px);color:var(--white);line-height:1.9;margin-bottom:20px;">Human birth is a supreme gift — a unique opportunity for Self-Realization.</p>
+    
+    <p style="font-size:clamp(16px,2vw,20px);color:var(--mid);line-height:1.95;margin-bottom:16px;"><strong style="color:var(--gold);">Why Realize the SELF?</strong><br>Since it's your life to discover. Everything is loved for the sake of SELF. To gain Immortality. To experience the eternal Joy and Bliss that already exists within us.</p>
+    
+    <p style="font-size:clamp(16px,2vw,20px);color:var(--mid);line-height:1.95;margin-bottom:16px;">This contrasts with the Impermanence of Happiness that we constantly seek in the External World. Hence the adage:</p>
+    
+    <p style="font-size:clamp(17px,2.2vw,21px);color:var(--gold);font-style:italic;line-height:1.85;">&ldquo;This Too Shall Pass&rdquo;</p>
+    
+    <p style="font-size:clamp(15px,1.9vw,19px);color:var(--grey);line-height:1.9;">Nothing lasts forever in life. Change is the only constant. True freedom comes from knowing what remains unchanged — your eternal SELF.</p>
+  </div>
 </section>
 <div class="divider"></div>
 
@@ -662,27 +679,34 @@ a:hover{opacity:.7;}
 <div class="divider"></div>
 
 <!-- INTEGRATION ENGINE -->
-<section class="integration-section">
+<section class="section-wide" style="padding:90px 24px;background:var(--bg-lift);border-top:1px solid #111;border-bottom:1px solid #111;">
   <span class="label">The Integration Engine</span>
-  <h2>Mapping the terrain while welcoming the weather.</h2>
-  <p class="sub">Neither East nor West alone is complete. Together, they produce something neither can achieve alone: true wholeness.</p>
-  <div class="int-grid">
-    <div class="int-card">
-      <span class="int-label">The Western Blueprint</span>
-      <h4>Cognitive Insight</h4>
-      <p>Western psychotherapy gives us the vocabulary to understand our internal mechanics. It names the symptom, maps the cause, and provides structured tools for insight. The blueprint provides the map. Without it, we are blind to our own patterns.</p>
+  <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 20px;line-height:1.5;">Neither East nor West alone. Together, they become whole.</h2>
+  <p style="font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:680px;margin:0 auto 52px;line-height:1.9;">Western psychotherapy and Eastern wisdom traditions are not opposites. They are complements. One maps the terrain. One teaches you to move through it with grace.</p>
+  
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:32px;max-width:980px;margin:0 auto 52px;">
+    <!-- Western -->
+    <div style="padding:42px 36px;border:1px solid #1e1e1e;background:var(--bg);">
+      <div style="font-size:48px;color:var(--gold);margin-bottom:20px;opacity:.7;">①</div>
+      <h3 style="font-family:var(--serif);font-size:24px;color:var(--gold);margin-bottom:12px;font-weight:400;">The Western Blueprint</h3>
+      <p style="font-family:var(--serif);font-size:16px;color:var(--grey);line-height:1.9;margin-bottom:16px;">Cognitive Insight. Psychotherapy gives us vocabulary to understand our internal mechanics. It names the symptom. Maps the cause. Provides structured tools. The blueprint is the map. Without it, we are blind to our own patterns.</p>
+      <p style="font-family:var(--sans);font-size:11px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;opacity:.7;">Psychology · Clarity</p>
     </div>
-    <div class="int-card">
-      <span class="int-label">The Eastern Breath</span>
-      <h4>Radical Acceptance</h4>
-      <p>Eastern traditions hold the mind as an ecology, not a mechanism. Suffering is not an anomaly to fix &mdash; it is a vital message to be listened to and welcomed. The breath provides the resilience. Without it, insight collapses into anxiety.</p>
+    
+    <!-- Eastern -->
+    <div style="padding:42px 36px;border:1px solid #1e1e1e;background:var(--bg);">
+      <div style="font-size:48px;color:var(--gold);margin-bottom:20px;opacity:.7;">②</div>
+      <h3 style="font-family:var(--serif);font-size:24px;color:var(--gold);margin-bottom:12px;font-weight:400;">The Eastern Breath</h3>
+      <p style="font-family:var(--serif);font-size:16px;color:var(--grey);line-height:1.9;margin-bottom:16px;">Radical Acceptance. Eastern traditions hold the mind as an ecology, not a mechanism. Suffering is not an anomaly to fix — it is a vital message. The breath provides resilience. Without it, insight collapses into anxiety.</p>
+      <p style="font-family:var(--sans);font-size:11px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;opacity:.7;">Spirituality · Spaciousness</p>
     </div>
   </div>
-  <div class="int-merge">
-    <p>Symptoms are often a healthy response to an unhealthy societal environment.</p>
-    <p class="plain">Rather than treating the psyche as a problem to be solved, we are invited to become larger containers for our own beingness.</p>
-    <p style="margin-top:18px;font-size:clamp(13px,1.8vw,16px);color:var(--gold);font-style:italic;">&ldquo;It is never about resolution. It is more about spaciousness. How expansive can I become? Become immense.&rdquo;</p>
-    <p class="plain" style="margin-top:8px;">&mdash; James Hillman</p>
+
+  <div style="max-width:720px;margin:0 auto;padding:36px 32px;border:1px solid #2a2a2a;background:rgba(212,175,55,.04);">
+    <p style="font-size:clamp(16px,2.2vw,20px);color:var(--white);line-height:1.9;margin-bottom:16px;">Symptoms are often a healthy response to an unhealthy environment.</p>
+    <p style="font-size:clamp(15px,2vw,19px);color:var(--mid);line-height:1.9;margin-bottom:20px;">Rather than treating the psyche as a problem to solve, become a larger container for your own beingness.</p>
+    <p style="font-size:clamp(15px,2vw,18px);color:var(--gold);font-style:italic;line-height:1.8;">&ldquo;It is never about resolution. It is more about spaciousness. How expansive can I become? Become immense.&rdquo;</p>
+    <p style="font-family:var(--sans);font-size:11px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-top:12px;opacity:.7;">— James Hillman</p>
   </div>
 </section>
 <div class="divider"></div>
@@ -769,7 +793,7 @@ a:hover{opacity:.7;}
 
 <div style="max-width:680px;margin:0 auto;padding:0 24px;">
   <div class="pull-quote">
-    <p>What if there is something you carry that no blockchain can record — that no ledger can hold — that no market can price?&rdquo;</p>
+    <p>&ldquo;What if there is something you carry that no blockchain can record — that no ledger can hold — that no market can price?&rdquo;</p>
   </div>
 </div>
 
@@ -826,7 +850,7 @@ a:hover{opacity:.7;}
 
   <div style="max-width:700px;margin:0 auto 52px;">
     <div class="pull-quote" style="text-align:left;">
-      <p>While the world bids on reaching Mars, most people never reach themselves.&rdquo;</p>
+      <p>&ldquo;While the world bids on reaching Mars, most people never reach themselves.&rdquo;</p>
       <cite>One requires a rocket. The other requires a practice.</cite>
     </div>
   </div>
