@@ -74,9 +74,7 @@ a:hover{opacity:.7;}
 .label{font-family:var(--sans);font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--dim);margin-bottom:42px;display:block;}
 
 /* ── HERO ─────────────────────────────────────────────────────────────────── */
-/* FIX 1: Removed min-height:100vh, changed justify-content to flex-start,
-   adjusted padding, added min-height:auto — per HERO_FIX_EXPLANATION.md */
-.hero{display:flex;flex-direction:column;justify-content:flex-start;align-items:center;padding:80px 24px 80px;position:relative;background:radial-gradient(ellipse at 50% 35%,rgba(212,175,55,.05) 0%,transparent 68%);min-height:auto;}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:130px 24px 90px;position:relative;background:radial-gradient(ellipse at 50% 35%,rgba(212,175,55,.05) 0%,transparent 68%);}
 .hero-question{font-size:clamp(24px,4.5vw,44px);font-weight:300;font-style:italic;color:var(--gold);line-height:1.55;max-width:680px;margin-bottom:20px;letter-spacing:.3px;}
 .hero-sub{font-size:clamp(16px,2.2vw,20px);color:var(--mid);font-weight:300;max-width:480px;line-height:1.9;margin-bottom:24px;}
 .btn-gold{padding:12px 28px;background:var(--gold);color:#000;font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;border:none;cursor:pointer;transition:opacity .25s;text-decoration:none;display:inline-block;}
@@ -303,9 +301,7 @@ a:hover{opacity:.7;}
 
 /* ── RESPONSIVE ───────────────────────────────────────────────────────────── */
 @media(max-width:640px){
-  /* FIX 2: Removed redundant justify-content:flex-start and min-height:auto
-     (now in base CSS). Adjusted padding-top from 115px to 100px. */
-  .hero{padding-top:100px;padding-bottom:80px;}
+  .hero{padding-top:115px;padding-bottom:80px;justify-content:flex-start;min-height:auto;}
   .hero-question{font-size:24px;letter-spacing:.1px;}
   .hero-sub{font-size:17px;line-height:1.85;}
   .phil-line{font-size:19px;margin:10px 0;line-height:1.8;}
@@ -414,7 +410,7 @@ a:hover{opacity:.7;}
   <p class="hero-sub" style="margin-bottom:32px;font-size:13px;letter-spacing:3px;font-family:var(--sans);text-transform:uppercase;">$SELF &middot; Solana</p>
   <a class="btn-gold" href="#contract"
      onclick="event.preventDefault();document.getElementById('contract').scrollIntoView({behavior:'smooth'});"
-     style="display:inline-block;padding:14px 44px;font-size:11px;letter-spacing:3px;margin-bottom:20px;">&#10003; View Contract</a>
+     style="display:inline-block;padding:14px 44px;font-size:11px;letter-spacing:3px;margin-bottom:20px;">✓ View Contract</a>
   <span class="scroll-hint">&darr; continue</span>
 </section>
 
@@ -691,18 +687,18 @@ a:hover{opacity:.7;}
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:32px;max-width:980px;margin:0 auto 52px;">
     <!-- Western -->
     <div style="padding:42px 36px;border:1px solid #1e1e1e;background:var(--bg);">
-      <div style="font-size:48px;color:var(--gold);margin-bottom:20px;opacity:.7;">&#9312;</div>
+      <div style="font-size:48px;color:var(--gold);margin-bottom:20px;opacity:.7;">①</div>
       <h3 style="font-family:var(--serif);font-size:24px;color:var(--gold);margin-bottom:12px;font-weight:400;">The Western Blueprint</h3>
       <p style="font-family:var(--serif);font-size:16px;color:var(--grey);line-height:1.9;margin-bottom:16px;">Cognitive Insight. Psychotherapy gives us vocabulary to understand our internal mechanics. It names the symptom. Maps the cause. Provides structured tools. The blueprint is the map. Without it, we are blind to our own patterns.</p>
-      <p style="font-family:var(--sans);font-size:11px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;opacity:.7;">Psychology &middot; Clarity</p>
+      <p style="font-family:var(--sans);font-size:11px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;opacity:.7;">Psychology · Clarity</p>
     </div>
     
     <!-- Eastern -->
     <div style="padding:42px 36px;border:1px solid #1e1e1e;background:var(--bg);">
-      <div style="font-size:48px;color:var(--gold);margin-bottom:20px;opacity:.7;">&#9313;</div>
+      <div style="font-size:48px;color:var(--gold);margin-bottom:20px;opacity:.7;">②</div>
       <h3 style="font-family:var(--serif);font-size:24px;color:var(--gold);margin-bottom:12px;font-weight:400;">The Eastern Breath</h3>
       <p style="font-family:var(--serif);font-size:16px;color:var(--grey);line-height:1.9;margin-bottom:16px;">Radical Acceptance. Eastern traditions hold the mind as an ecology, not a mechanism. Suffering is not an anomaly to fix — it is a vital message. The breath provides resilience. Without it, insight collapses into anxiety.</p>
-      <p style="font-family:var(--sans);font-size:11px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;opacity:.7;">Spirituality &middot; Spaciousness</p>
+      <p style="font-family:var(--sans);font-size:11px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;opacity:.7;">Spirituality · Spaciousness</p>
     </div>
   </div>
 
@@ -1076,11 +1072,11 @@ a:hover{opacity:.7;}
 
     <div style="margin-bottom:48px;">
       <h3 style="font-size:clamp(18px,2.5vw,24px);color:var(--gold);margin-bottom:16px;font-weight:400;">Eastern Philosophies</h3>
-      <p style="font-size:clamp(15px,2vw,18px);color:var(--grey);line-height:1.95;margin-bottom:12px;"><strong style="color:var(--mid);">Buddhism:</strong> In Buddhist thought, 42 is directly associated with enlightenment and Nirvana — achieving a state of inner peace where you are at ease with life's dualities. <strong style="color:var(--mid);">Yoga &amp; Tantra:</strong> In yogic and mystic traditions, age 42 is recognized as a milestone year for shedding societal conditioning, rejecting compromise, and stepping into your core values with unwavering clarity.</p>
+      <p style="font-size:clamp(15px,2vw,18px);color:var(--grey);line-height:1.95;margin-bottom:12px;"><strong style="color:var(--mid);">Buddhism:</strong> In Buddhist thought, 42 is directly associated with enlightenment and Nirvana — achieving a state of inner peace where you are at ease with life's dualities. <strong style="color:var(--mid);">Yoga & Tantra:</strong> In yogic and mystic traditions, age 42 is recognized as a milestone year for shedding societal conditioning, rejecting compromise, and stepping into your core values with unwavering clarity.</p>
     </div>
 
     <div style="margin-bottom:48px;">
-      <h3 style="font-size:clamp(18px,2.5vw,24px);color:var(--gold);margin-bottom:16px;font-weight:400;">Kabbalah &amp; Christianity</h3>
+      <h3 style="font-size:clamp(18px,2.5vw,24px);color:var(--gold);margin-bottom:16px;font-weight:400;">Kabbalah & Christianity</h3>
       <p style="font-size:clamp(15px,2vw,18px);color:var(--grey);line-height:1.95;margin-bottom:12px;"><strong style="color:var(--mid);">Kabbalah:</strong> In Kabbalistic teaching, 42 represents the 42-letter name of God — a symbol of the unfolding of the entire universe and the deepest spiritual ascension available to human consciousness. <strong style="color:var(--mid);">Christianity:</strong> In Christian theology, 42 generations lead to Jesus, representing a new covenantal humanity and spiritual awakening across civilizations.</p>
     </div>
 
