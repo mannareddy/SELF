@@ -48,7 +48,8 @@ a{color:var(--gold);text-decoration:none;transition:opacity .25s;}
 a:hover{opacity:.7;}
 
 /* ── STICKY NAV ─────────────────────────────────────────────────────────── */
-.site-nav{position:fixed;top:0;left:0;right:0;z-index:999;height:var(--nav-h);display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid #1c1c1c;transition:background .3s;}
+.site-nav{position:fixed;top:0;left:0;right:0;z-index:999;height:var(--nav-h);display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid #1c1c1c;transition:background .3s;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+.site-nav::-webkit-scrollbar{display:none;}
 .site-nav.scrolled{background:rgba(0,0,0,0.97);}
 .progress-bar{position:absolute;bottom:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,rgba(212,175,55,.4) 0%,var(--gold) 100%);transition:width .1s linear;pointer-events:none;}
 .nav-items{display:flex;align-items:center;gap:0;list-style:none;padding:0;margin:0;}
@@ -75,15 +76,19 @@ a:hover{opacity:.7;}
 
 /* ── HERO ─────────────────────────────────────────────────────────────────── */
 .hero{min-height:auto;display:flex;flex-direction:column;justify-content:flex-start;align-items:center;padding:65px 24px 25px;position:relative;background:radial-gradient(ellipse at 50% 35%,rgba(212,175,55,.05) 0%,transparent 68%);}
-.hero-question{font-size:clamp(22px,3.4vw,38px);font-weight:300;font-style:italic;color:var(--gold);line-height:1.55;max-width:680px;margin-bottom:20px;letter-spacing:.3px;}
+.hero-question{font-size:clamp(24px,4.5vw,44px);font-weight:300;font-style:italic;color:var(--gold);line-height:1.55;max-width:680px;margin-bottom:20px;letter-spacing:.3px;}
 .hero-sub{font-size:clamp(16px,2.2vw,20px);color:var(--mid);font-weight:300;max-width:480px;line-height:1.9;margin-bottom:24px;}
 .btn-gold{padding:12px 28px;background:var(--gold);color:#000;font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;border:none;cursor:pointer;transition:opacity .25s;text-decoration:none;display:inline-block;}
 .btn-gold:hover{opacity:.82;color:#000;}
 .btn-outline{padding:12px 28px;background:transparent;border:1px solid #444;color:var(--mid);font-family:var(--sans);font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .25s;display:inline-block;text-decoration:none;}
 .btn-outline:hover{border-color:var(--gold);color:var(--gold);}
 .btn-outline:disabled{opacity:.5;cursor:default;}
-.scroll-hint{position:absolute;bottom:34px;font-family:var(--sans);font-size:10px;color:#444;letter-spacing:5px;text-transform:uppercase;animation:fade 4s ease-in-out infinite;}
+.scroll-hint{position:absolute;bottom:34px;font-family:var(--sans);font-size:10px;color:#555;letter-spacing:5px;text-transform:uppercase;animation:fade 4s ease-in-out infinite;}
 @keyframes fade{0%,100%{opacity:0;}50%{opacity:1;}}
+
+/* ── SECTION-END CONTINUE INDICATOR ─────────────────────────────────────── */
+.continue-hint{display:block;text-align:center;padding:28px 0 8px;font-family:var(--sans);font-size:10px;color:#444;letter-spacing:4px;text-transform:uppercase;animation:fade 3.5s ease-in-out infinite;user-select:none;pointer-events:none;}
+.continue-hint::after{content:'↓';display:block;font-size:16px;margin-top:4px;letter-spacing:0;}
 
 /* ── BANNER ──────────────────────────────────────────────────────────────── */
 .banner-section{max-width:1400px;margin:0 auto;}
@@ -97,7 +102,7 @@ a:hover{opacity:.7;}
 
 /* ── PULL-QUOTE ──────────────────────────────────────────────────────────── */
 .pull-quote{max-width:680px;margin:56px auto;padding:36px 0 36px 32px;border-left:3px solid var(--gold);text-align:left;position:relative;}
-.pull-quote::before{display:none;}
+.pull-quote::before{content:'\201C';position:absolute;top:-10px;left:20px;font-size:80px;color:var(--gold);opacity:.18;font-family:var(--serif);line-height:1;}
 .pull-quote p{font-family:var(--serif);font-size:clamp(20px,3vw,29px);font-weight:300;font-style:italic;color:var(--white);line-height:1.65;margin:0;}
 .pull-quote cite{display:block;margin-top:14px;font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-style:normal;opacity:.75;}
 
@@ -300,11 +305,7 @@ a:hover{opacity:.7;}
 .footer-ca{font-family:var(--sans);font-size:11px;color:var(--dim);letter-spacing:.8px;word-break:break-all;max-width:500px;margin:0 auto;}
 
 
-@media (max-height: 850px) {
-  .scroll-hint{
-    display:none;
-  }
-}
+/* scroll-hint always visible when present */
 
 
 /* ── RESPONSIVE ───────────────────────────────────────────────────────────── */
@@ -335,8 +336,7 @@ a:hover{opacity:.7;}
   .framework-card h3{font-size:20px;}
   .framework-card p{font-size:15.5px;}
   .float-logo{width:46px;height:46px;}
-  .site-nav{justify-content:flex-start;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
-  .site-nav::-webkit-scrollbar{display:none;}
+  .site-nav{justify-content:center;}
   .nav-items{padding:0 4px;flex-wrap:nowrap;}
   .nav-items li a{font-size:9px;letter-spacing:1.5px;padding:0 10px;}
   .superordinate-box{padding:32px 24px;}
@@ -385,8 +385,8 @@ a:hover{opacity:.7;}
 .saviour-block p.dim{color:var(--grey);font-size:clamp(14px,1.9vw,18px);}
 
 @media(max-width:640px){
-  .mc-compare{grid-template-columns:1fr;}
-  .stage-item{grid-template-columns:40px 1fr;}
+  .perceptual-chain-wrap{flex-direction:column!important;}
+  .perceptual-chain-arrow{transform:rotate(90deg);}
 }
 
 </style>
@@ -402,6 +402,7 @@ a:hover{opacity:.7;}
     <li><a href="#ipo">IPO</a></li>
     <li><a href="#mirror">Mirror</a></li>
     <li><a href="#contract">Contract</a></li>
+    <li><a href="#disclaimer">Disclaimer</a></li>
   </ul>
 </nav>
 
@@ -419,7 +420,7 @@ a:hover{opacity:.7;}
   <a class="btn-gold" href="#contract"
      onclick="event.preventDefault();document.getElementById('contract').scrollIntoView({behavior:'smooth'});"
      style="display:inline-block;padding:14px 44px;font-size:11px;letter-spacing:3px;margin-bottom:20px;">✓ View Contract</a>
-  <span class="scroll-hint">&darr; continue</span>
+  <span class="scroll-hint">continue &darr;</span>
 </section>
 
 <!-- BANNER -->
@@ -500,6 +501,7 @@ a:hover{opacity:.7;}
   </div>
   <div class="void-response" id="voidResponse"></div>
 </section>
+<span class="continue-hint">continue</span>
 <div class="divider"></div>
 
 <!-- THE MISSION -->
@@ -529,41 +531,81 @@ a:hover{opacity:.7;}
       <span class="num">01</span>
       <h3>The Default OS</h3>
       <p>Stimulus. Response. Repeat. The autopilot running underneath every trade, every decision, every reaction &mdash; and most people never notice it running.</p>
+      <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">In Sanskrit: <em>Vritti</em> &mdash; the constant stream of neutral mental chatter, images, and fleeting concepts. Raw, unfiltered data before meaning is attached.</p>
     </div>
     <div class="framework-card">
       <span class="num">02</span>
       <h3>The Arrival Fallacy</h3>
-      <p>The false belief that the next milestone will finally bring peace. The brain is wired for the chase, not the catch. Dopamine rewards effort and progress &mdash; when the goal is achieved, production drops, leaving an acute emptiness. What was extraordinary rapidly becomes the new normal.</p>
-      <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">Feeling lost after an achievement is not failure.<br><span style="color:var(--grey);font-style:normal;">It is a symptom of an identity built on outcomes rather than essence.</span></p>
+      <p>The false belief that the next milestone will finally bring peace. The brain is wired for the chase, not the catch. Dopamine rewards effort and progress &mdash; when the goal is achieved, production drops, leaving an acute emptiness.</p>
+      <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">In Sanskrit: <em>Bhava</em> &mdash; the somatic and energetic weight attached to thoughts. Nostalgia for the past. Anxiety about the future. Feeling lost after an achievement is not failure.<br><span style="color:var(--grey);font-style:normal;">It is a symptom of an identity built on outcomes rather than essence.</span></p>
     </div>
     <div class="framework-card">
       <span class="num">03</span>
       <h3>The Ego</h3>
       <p>The mask the &ldquo;I&rdquo; wears. Your name, status, achievements, wounds, the story you tell about yourself. The false self that keeps seeking outside. Prerequisite to knowing your true SELF: see through it.</p>
+      <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">In Sanskrit: <em>Kama &rarr; Ahamkara</em> &mdash; desire collects into a constructed identity that claims ownership: &ldquo;I want this, I feel that.&rdquo; The I-Maker claiming all experience as its own.</p>
     </div>
     <div class="framework-card">
       <span class="num">04</span>
       <h3>The True &ldquo;I&rdquo;</h3>
       <p>Your pure, underlying conscious awareness. The silent observer behind every thought. The screen, not the movie &mdash; unchanged by whatever plays on it. Every tradition that found truth arrived at the same address.</p>
-      <p style="margin-top:14px;font-size:15px;color:var(--gold);font-style:italic;">SAT-CHIT-ANAND.<br><span style="font-size:14px;color:var(--grey);font-style:normal;">Existence. Consciousness. Bliss.<br>That is who you actually are.</span></p>
+      <p style="margin-top:14px;font-size:15px;color:var(--gold);font-style:italic;">SAT-CHIT-ANAND.<br><span style="font-size:14px;color:var(--grey);font-style:normal;">Existence. Consciousness. Bliss.<br>In Sanskrit: <em>Maya / Avidya</em> &mdash; the lens of separation &mdash; is dissolved when you recognize you are not the projection, but the screen. That is who you actually are.</span></p>
     </div>
     <div class="framework-card">
       <span class="num">05</span>
-      <h3>The Gap (RRRR Protocol)</h3>
-      <p style="font-size:15px;margin-bottom:16px;"><strong style="color:var(--gold);">Version 1 &mdash; Stop the Impulse:</strong><br>
-      Recognize &rarr; Resist &rarr; Return &rarr; Release<br>
-      <span style="font-size:14px;color:var(--grey);">For anger, addiction, revenge-trading. Stop the behaviour before it happens. Resist. Return to baseline. Release.</span></p>
-      <p style="font-size:15px;"><strong style="color:var(--gold);">Version 2 &mdash; Process the Emotion:</strong><br>
-      Recognize &rarr; Reflect &rarr; Reframe &rarr; Respond<br>
-      <span style="font-size:14px;color:var(--grey);">For relationships, grief, decisions. Understand what triggered you. Reflect on meaning. Reframe. Respond from clarity.</span></p>
+      <h3>The Gap — RRRR Protocol</h3>
+      <p style="font-size:14px;color:var(--grey);margin-bottom:14px;">Moving from reactive (impulsive) to responsive (intentional). The disruption of the conditioning architecture.</p>
+      <p style="font-size:15px;margin-bottom:12px;"><strong style="color:var(--gold);">G1 — Recognize:</strong> <span style="color:var(--grey);font-size:14px;">Acknowledge and name the trigger. Naming it strips its hidden power.</span></p>
+      <p style="font-size:15px;margin-bottom:12px;"><strong style="color:var(--gold);">G2 — Resist:</strong> <span style="color:var(--grey);font-size:14px;">Implement a strict 60-second pause before reacting. Do not act from the neurochemical state.</span></p>
+      <p style="font-size:15px;margin-bottom:12px;"><strong style="color:var(--gold);">G3 — Release:</strong> <span style="color:var(--grey);font-size:14px;">Disrupt the physiology. Walk away, stretch, breathe &mdash; break the neurochemical loop.</span></p>
+      <p style="font-size:15px;margin-bottom:14px;"><strong style="color:var(--gold);">G4 — Return:</strong> <span style="color:var(--grey);font-size:14px;">Accept what happened. Identify the root cause. Reset from clarity, not reaction.</span></p>
+      <div style="border-top:1px solid #1e1e1e;padding-top:14px;margin-top:4px;">
+        <p style="font-size:13px;color:var(--dim);margin-bottom:6px;letter-spacing:1px;font-family:var(--sans);text-transform:uppercase;">3-Step Circuit Breaker (Emergency)</p>
+        <p style="font-size:14px;color:var(--grey);line-height:1.8;"><strong style="color:var(--mid);">1. Pause</strong> &mdash; Box breathing: Inhale 4s, Hold 4s, Exhale 4s, Hold 4s.<br><strong style="color:var(--mid);">2. Witness &amp; Label</strong> &mdash; What is the exact trigger causing this distress?<br><strong style="color:var(--mid);">3. Detached Action</strong> &mdash; Shift to what you control. Stop watering the weeds.</p>
+      </div>
     </div>
     <div class="framework-card">
       <span class="num">06</span>
       <h3>Self-Realization</h3>
       <p>Not expected to be achieved in one lifetime. That is not a failure &mdash; that is the point. The goal was never arrival. The question is: are you pointed in the right direction?</p>
+      <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">In Sanskrit: <em>Moha / Vipallasa</em> &mdash; delusion is the ultimate end of unchecked conditioning. The loop only functions in the dark. Recognition is liberation. The architecture cannot survive awareness.</p>
     </div>
   </div>
+
+  <!-- THE 4 PHASES OF ONTOLOGICAL LIQUIDATION -->
+  <div style="margin-top:52px;max-width:980px;margin-left:auto;margin-right:auto;">
+    <p style="font-family:var(--sans);font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--dim);margin-bottom:28px;text-align:center;">The Architecture of Self-Destruction</p>
+    <p style="font-size:clamp(15px,2vw,18px);color:var(--grey);max-width:660px;margin:0 auto 40px;line-height:1.9;text-align:center;">When the conditioning runs unchecked, it follows a predictable trajectory &mdash; from the first spark of attachment all the way to destruction. <em style="color:var(--mid);">Recognition of the phase is the intervention.</em></p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2px;">
+      <div style="padding:32px 26px;background:var(--bg);border:1px solid #1e1e1e;text-align:left;">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;color:rgba(212,175,55,.6);margin-bottom:12px;">Phase 1</div>
+        <div style="font-family:var(--serif);font-size:19px;color:var(--white);margin-bottom:8px;">The Spark</div>
+        <div style="font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:14px;">Data to Dependency</div>
+        <p style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.85;">Neutral thoughts (Vritti) gain emotional weight (Bhava). Repeated focus on an object creates a rigid emotional dependency. Contemplation becomes Attachment.</p>
+      </div>
+      <div style="padding:32px 26px;background:var(--bg);border:1px solid #1e1e1e;text-align:left;">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;color:rgba(212,100,55,.7);margin-bottom:12px;">Phase 2</div>
+        <div style="font-family:var(--serif);font-size:19px;color:var(--white);margin-bottom:8px;">The Friction</div>
+        <div style="font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:14px;">Craving to Conflict</div>
+        <p style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.85;">Desire (Kama) operates like a fire &mdash; it demands more fuel. When craving meets reality&rsquo;s resistance, it generates Anger. The craving hits a blocker and explodes.</p>
+      </div>
+      <div style="padding:32px 26px;background:var(--bg);border:1px solid #1e1e1e;text-align:left;">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;color:rgba(200,60,30,.8);margin-bottom:12px;">Phase 3</div>
+        <div style="font-family:var(--serif);font-size:19px;color:var(--white);margin-bottom:8px;">The Fracture</div>
+        <div style="font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:14px;">The Ego&rsquo;s Blindfold</div>
+        <p style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.85;">The Ego (Ahamkara) claims the anger as identity. Illusion (Maya) deepens. You forget your true purpose and spiritual values. The ego narrative is accepted as absolute reality.</p>
+      </div>
+      <div style="padding:32px 26px;background:var(--bg);border:1px solid #3a1a1a;text-align:left;">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;color:rgba(180,30,30,.9);margin-bottom:12px;">Phase 4</div>
+        <div style="font-family:var(--serif);font-size:19px;color:var(--white);margin-bottom:8px;">The Liquidation</div>
+        <div style="font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:14px;">The Final Drop</div>
+        <p style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.85;">Delusion (Moha) is fixed. Intellect is bypassed for raw animalistic reactivity. The SELF is abandoned. Life force drained. <em style="color:#c0392b;">The account is officially blown.</em></p>
+      </div>
+    </div>
+    <p style="font-size:clamp(15px,2vw,19px);color:var(--gold);font-style:italic;text-align:center;margin-top:36px;line-height:1.8;">You cannot be liquidated by external chaos unless you permit it internally.<br><span style="font-size:clamp(13px,1.7vw,16px);color:var(--grey);font-style:normal;">SELF is a reflection of how you respond &mdash; not what happens.</span></p>
+  </div>
 </section>
+<span class="continue-hint">continue</span>
 <div class="divider"></div>
 
 <!-- P3: NAVIGATION ASTROLABE — 5 Pillars of Self-Enquiry (Interactive) -->
@@ -684,6 +726,7 @@ a:hover{opacity:.7;}
     </div>
   </div>
 </section>
+<span class="continue-hint">continue</span>
 <div class="divider"></div>
 
 <!-- INTEGRATION ENGINE -->
@@ -726,17 +769,37 @@ a:hover{opacity:.7;}
   <p>Consciousness contains the universe.</p>
   <p class="plain">*SELF is the practice of knowing that from the inside.</p>
 
-  <!-- P5: Cross-Tradition Table -->
+  <!-- P5: Cross-Tradition Table + Matrix of Completion -->
   <div class="tradition-table">
     <div class="tradition-row header">
       <div class="tradition-cell">Tradition</div>
       <div class="tradition-cell">Core Term</div>
-      <div class="tradition-cell">The Method</div>
+      <div class="tradition-cell">The Method / Structure</div>
     </div>
     <div class="tradition-row">
       <div class="tradition-cell trad">Indian / Dharmic</div>
       <div class="tradition-cell">Moksha / Nirvana</div>
       <div class="tradition-cell">Oneness of individual and universal consciousness</div>
+    </div>
+    <div class="tradition-row">
+      <div class="tradition-cell trad">Ancient Egypt</div>
+      <div class="tradition-cell">Ma&rsquo;at &mdash; 42 divine judges</div>
+      <div class="tradition-cell">42 Nomes (districts), 42 negative confessions for ascension, 42 divine judges in the afterlife</div>
+    </div>
+    <div class="tradition-row">
+      <div class="tradition-cell trad">Kabbalah</div>
+      <div class="tradition-cell">The 42-letter name of God</div>
+      <div class="tradition-cell">The instrument of universal creation. 42 stations during the Israelites&rsquo; wilderness journey</div>
+    </div>
+    <div class="tradition-row">
+      <div class="tradition-cell trad">Christianity</div>
+      <div class="tradition-cell">42 Generations</div>
+      <div class="tradition-cell">42 generations from Abraham to Jesus. A new covenantal humanity and awakening</div>
+    </div>
+    <div class="tradition-row">
+      <div class="tradition-cell trad">Buddhism / Eastern</div>
+      <div class="tradition-cell">Sutra of 42 Sections</div>
+      <div class="tradition-cell">The core teachings of the Buddha contained entirely within the Sutra of 42 Sections. Spiritual completion</div>
     </div>
     <div class="tradition-row">
       <div class="tradition-cell trad">Western Mysticism</div>
@@ -756,11 +819,69 @@ a:hover{opacity:.7;}
     <div class="tradition-row">
       <div class="tradition-cell trad">Indigenous Traditions</div>
       <div class="tradition-cell">Walking in Balance</div>
-      <div class="tradition-cell">Realizing interconnectedness with the web of all life &mdash; the self as inseparable from community and nature</div>
+      <div class="tradition-cell">The self as inseparable from community and nature &mdash; the web of all life</div>
     </div>
   </div>
   <p class="tradition-conclusion">&ldquo;The highest achievement is looking inward to realize our true nature beneath the illusions of the ego.&rdquo;<br><span style="font-family:var(--sans);font-size:10px;letter-spacing:3px;color:var(--gold);opacity:.7;">— The unified conclusion of every wisdom tradition in human history.</span></p>
 </div>
+<div class="divider"></div>
+
+<!-- PERCEPTUAL CHAIN SECTION -->
+<section style="padding:90px 24px;background:var(--bg-lift);border-top:1px solid #111;border-bottom:1px solid #111;">
+  <div style="max-width:760px;margin:0 auto;">
+    <span class="label">The Perceptual Chain</span>
+    <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:660px;margin:0 auto 16px;line-height:1.5;">How the universe reaches you</h2>
+    <p style="font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:560px;margin:0 auto 52px;font-style:italic;line-height:1.85;">The chain through which all experience arrives — and the single shift that changes everything.</p>
+
+    <!-- Chain visual -->
+    <div style="display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap;margin:0 auto 52px;max-width:720px;">
+      <div style="padding:22px 20px;background:var(--bg);border:1px solid #2a2a2a;flex:1;min-width:140px;text-align:center;">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:10px;">01</div>
+        <div style="font-family:var(--serif);font-size:20px;color:var(--white);margin-bottom:6px;">Object</div>
+        <div style="font-family:var(--sans);font-size:11px;color:var(--grey);letter-spacing:.5px;">The World</div>
+      </div>
+      <div style="color:var(--gold);font-size:20px;padding:0 8px;opacity:.5;">→</div>
+      <div style="padding:22px 20px;background:var(--bg);border:1px solid #2a2a2a;flex:1;min-width:140px;text-align:center;">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:10px;">02</div>
+        <div style="font-family:var(--serif);font-size:20px;color:var(--white);margin-bottom:6px;">Senses</div>
+        <div style="font-family:var(--sans);font-size:11px;color:var(--grey);letter-spacing:.5px;">The Lenses</div>
+      </div>
+      <div style="color:var(--gold);font-size:20px;padding:0 8px;opacity:.5;">→</div>
+      <div style="padding:22px 20px;background:var(--bg);border:1px solid #2a2a2a;flex:1;min-width:140px;text-align:center;">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:10px;">03</div>
+        <div style="font-family:var(--serif);font-size:20px;color:var(--white);margin-bottom:6px;">Mind</div>
+        <div style="font-family:var(--sans);font-size:11px;color:var(--grey);letter-spacing:.5px;">The Projector</div>
+      </div>
+      <div style="color:var(--gold);font-size:20px;padding:0 8px;opacity:.5;">→</div>
+      <div style="padding:22px 20px;background:var(--bg);border:1px solid var(--gold);flex:1;min-width:140px;text-align:center;box-shadow:0 0 24px rgba(212,175,55,.12);">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">04</div>
+        <div style="font-family:var(--serif);font-size:20px;color:var(--gold);margin-bottom:6px;">Consciousness</div>
+        <div style="font-family:var(--sans);font-size:11px;color:var(--gold);letter-spacing:.5px;opacity:.75;">The Screen</div>
+      </div>
+    </div>
+
+    <!-- Core realization -->
+    <div style="max-width:680px;margin:0 auto 44px;padding:40px 36px;border:1px solid #2a2a2a;background:radial-gradient(ellipse at 50% 0%,rgba(212,175,55,.06) 0%,transparent 65%);text-align:left;">
+      <p style="font-size:clamp(17px,2.3vw,22px);color:var(--white);line-height:1.85;margin-bottom:18px;">Realization is the process of recognizing that <em style="color:var(--gold);">you are the Screen</em> — not the movie being projected upon it.</p>
+      <p style="font-size:clamp(15px,2vw,19px);color:var(--mid);line-height:1.9;margin-bottom:0;">All Experience is Awareness. The world, your thoughts, your emotions — these are the film. The screen remains unchanged by whatever plays upon it. You are that unchanging screen.</p>
+    </div>
+
+    <!-- The 42 / * explanation -->
+    <div style="max-width:680px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2px;">
+      <div style="padding:36px 30px;background:var(--bg);border:1px solid #1e1e1e;text-align:left;">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:16px;">The Number</div>
+        <div style="font-family:var(--serif);font-size:38px;color:var(--gold);margin-bottom:14px;line-height:1;">42</div>
+        <p style="font-family:var(--serif);font-size:16px;color:var(--grey);line-height:1.88;">The ultimate destination of Human Consciousness. It is the alphanumerical sum of the phrase <em style="color:var(--white);">"TO BE"</em> — T=20, O=15, B=2, E=5 — totaling 42.</p>
+      </div>
+      <div style="padding:36px 30px;background:var(--bg);border:1px solid #1e1e1e;text-align:left;">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:16px;">The Wildcard</div>
+        <div style="font-family:var(--serif);font-size:38px;color:var(--gold);margin-bottom:14px;line-height:1;">*</div>
+        <p style="font-family:var(--serif);font-size:16px;color:var(--grey);line-height:1.88;">In computer science, ASCII code 42 translates exactly to the asterisk (*) — the wildcard for <em style="color:var(--white);">"Everything."</em> Holding the SELF means holding the wildcard: the infinite potential to become Anything you wish TO BE.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<span class="continue-hint">continue</span>
 <div class="divider"></div>
 
 <!-- COSMOLOGY QUOTE -->
@@ -816,6 +937,7 @@ a:hover{opacity:.7;}
   <p class="gold">The cosmic ledger doesn&rsquo;t have a gas fee.</p>
   <p class="dim">It doesn&rsquo;t need one.</p>
 </section>
+<span class="continue-hint">continue</span>
 <div class="divider"></div>
 
 <!-- IPO SECTION -->
@@ -877,14 +999,14 @@ a:hover{opacity:.7;}
 
   <div class="mc-compare">
     <div class="mc-card">
-      <span class="mc-name">Fartcoin &mdash; Market Cap</span>
-      <div class="mc-val joke">$158,000,000</div>
+      <span class="mc-name">Fartcoin &mdash; Highest Market Cap Ever Reached</span>
+      <div class="mc-val joke">$2,600,000,000</div>
       <p class="mc-desc">A token named after flatulence. No framework. No philosophy. No purpose. $2.6 billion at peak.</p>
     </div>
     <div class="mc-card" style="background:var(--bg-lift);border-color:#252525;">
-      <span class="mc-name">SELF &mdash; Market Cap</span>
-      <div class="mc-val self">$2,730</div>
-      <p class="mc-desc">The practice of knowing your true SELF. 5,000 years of wisdom behind it. $4.5 k at peak.</p>
+      <span class="mc-name">$SELF &mdash; Market Cap</span>
+      <div class="mc-val self">$4,550</div>
+      <p class="mc-desc">The practice of knowing your true SELF. 5,000 years of wisdom behind it. $4,550.</p>
     </div>
   </div>
 
@@ -965,9 +1087,47 @@ a:hover{opacity:.7;}
   <p class="gold">As a mirror with a ledger.</p>
   <p>A teacher can direct you on the path.<br><span style="font-size:17px;color:var(--grey);">But you have to walk through it yourself.</span></p>
   <p class="gold" style="margin-top:28px;">That walk is non-negotiable.</p>
-  <p>The supply is fixed. The 42 is not decoration.</p>
-  <p>T + O + B + E = 42. &nbsp;&nbsp; To Be.</p>
+  <p>The supply is fixed at 1,000,000,042.</p>
+  <p>T + O + B + E = 42. &nbsp;&nbsp; <em style="color:var(--gold);">To Be.</em></p>
 </section>
+<div class="divider"></div>
+
+<!-- THE 42 COSMIC BLUEPRINT -->
+<section style="padding:90px 24px;background:var(--bg-lift);border-top:1px solid #111;border-bottom:1px solid #111;">
+  <div style="max-width:860px;margin:0 auto;">
+    <span class="label">The Cosmic Blueprint</span>
+    <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:660px;margin:0 auto 16px;line-height:1.5;">42 is not decoration. It is a frequency.</h2>
+    <p style="font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:580px;margin:0 auto 52px;font-style:italic;line-height:1.85;">Douglas Adams joked that 42 was the &ldquo;Ultimate Answer.&rdquo; He thought it was a random punchline. The universe disagreed.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:2px;margin-bottom:44px;">
+      <div style="padding:32px 28px;background:var(--bg);border:1px solid #1e1e1e;text-align:left;">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:14px;">Astrophysics</div>
+        <p style="font-family:var(--serif);font-size:16px;color:var(--grey);line-height:1.88;">The current expansion rate of the Universe is exactly <strong style="color:var(--white);">42 mi/s/Mpc</strong>. The efficiency rate for turning mass into energy orbiting a spinning black hole is exactly <strong style="color:var(--white);">42%</strong>.</p>
+      </div>
+      <div style="padding:32px 28px;background:var(--bg);border:1px solid #1e1e1e;text-align:left;">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:14px;">Light &amp; Optics</div>
+        <p style="font-family:var(--serif);font-size:16px;color:var(--grey);line-height:1.88;">The critical angle required for a rainbow to appear to the human eye is exactly <strong style="color:var(--white);">42 degrees</strong>. The Orion Nebula &mdash; the closest massive star-forming region to Earth &mdash; is catalogued as <strong style="color:var(--white);">M42</strong>.</p>
+      </div>
+      <div style="padding:32px 28px;background:var(--bg);border:1px solid #1e1e1e;text-align:left;">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:14px;">Mathematics</div>
+        <p style="font-family:var(--serif);font-size:16px;color:var(--grey);line-height:1.88;">The second sphenic number, formed perfectly by three distinct primes: <strong style="color:var(--white);">2 × 3 × 7 = 42</strong>. The sum of the first six even numbers: 2+4+6+8+10+12 = <strong style="color:var(--white);">42</strong>. The minimal grid for fitting hexagons in a square.</p>
+      </div>
+      <div style="padding:32px 28px;background:var(--bg);border:1px solid #1e1e1e;text-align:left;">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:14px;">The Soul&rsquo;s Cycle</div>
+        <p style="font-family:var(--serif);font-size:16px;color:var(--grey);line-height:1.88;">In esoteric traditions, Age <strong style="color:var(--white);">42</strong> marks the end of the first half of life. It is the definitive milestone for shedding societal conditioning, rejecting compromise, and transitioning into a period of genuine certainty.</p>
+      </div>
+    </div>
+
+    <div style="max-width:720px;margin:0 auto;padding:40px 36px;border:1px solid var(--gold);background:radial-gradient(ellipse at 50% 0%,rgba(212,175,55,.07) 0%,transparent 65%);text-align:center;">
+      <p style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:20px;">The Equation of Being</p>
+      <p style="font-family:var(--serif);font-size:clamp(18px,2.8vw,26px);color:var(--white);line-height:1.75;margin-bottom:16px;">In computer science, ASCII code 42 translates exactly to the Asterisk (<strong style="color:var(--gold);">*</strong>) &mdash; the universal wildcard for &ldquo;Everything&rdquo; and &ldquo;Anything.&rdquo;</p>
+      <p style="font-family:var(--serif);font-size:clamp(16px,2.2vw,20px);color:var(--mid);line-height:1.85;margin-bottom:20px;">Holding the *SELF means holding the cosmic wildcard. By operating from this sanctuary, you wield the universe&rsquo;s ultimate variable.</p>
+      <p style="font-family:var(--serif);font-size:clamp(17px,2.4vw,22px);color:var(--gold);font-style:italic;">The universe is built on 42.<br>You are the wildcard. You define the value.</p>
+      <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-top:16px;">Atman = Brahman. To know the *SELF is to know the entire universe.</p>
+    </div>
+  </div>
+</section>
+<span class="continue-hint">continue</span>
 <div class="divider"></div>
 
 <!-- WATCH -->
@@ -1006,30 +1166,59 @@ a:hover{opacity:.7;}
 </section>
 <div class="divider"></div>
 
-<!-- IDENTITY LAYER -->
+<!-- IDENTITY LAYER — Path of Subtilization -->
 <section class="identity-section">
-  <span class="label">Your Identity in the Ledger</span>
-  <h2>Every holder of $SELF becomes part of something permanent.</h2>
-  <p class="sub">Your wallet address. Your public key. Your stake in knowing your own SELF. Recorded on the Solana blockchain forever.<br><br><em style="color:var(--gold);font-size:16px;">&ldquo;Be a lamp unto yourself.&rdquo;</em><br><span style="font-size:13px;color:var(--grey);">— Buddha&rsquo;s final teaching. No borrowed light. Your own direct experience is the only truth.</span></p>
+  <span class="label">The Path of Subtilization</span>
+  <h2>Seven stages. One journey. From body to SELF.</h2>
+  <p class="sub">Every tradition maps the same upward arc &mdash; the 7 Chakras, the 7 Stages of Spiritual Progress, and the 7 Layers of Existence all describe one singular journey: moving from unconscious density to conscious expanse.</p>
   <div class="identity-grid">
     <div class="identity-card">
-      <span class="layer-tag">Layer 1</span>
-      <h4>Your Unique Value</h4>
-      <p>Each human is unique. Not just in appearance, but in instincts and capabilities. There is something only you can offer the world &mdash; a product, service, or presence that carries your singular mark. That is your true worth.</p>
-      <p class="practice">Practice: What is that one thing only you can offer?</p>
+      <span class="layer-tag">Stage 1 &mdash; Root Chakra &middot; Body</span>
+      <h4>Innocence &amp; Material Reality</h4>
+      <p>You enter the world in a state of innocence. Life is ruled by basic needs for security and stability. Still connected to the field of the Absolute &mdash; but the material world begins to distract.</p>
+      <p class="practice">Seed Mantra: LAM &middot; Element: Earth &middot; Layer: The Body (Gross Physical)</p>
     </div>
     <div class="identity-card">
-      <span class="layer-tag">Layer 2</span>
-      <h4>The Direction Test</h4>
-      <p>Are you accumulating or reducing? Panicking or noticing? Trading emotionally or from awareness? The blockchain records direction.</p>
-      <p class="practice">Practice: Before each action, ask &mdash; which version of me is this?</p>
+      <span class="layer-tag">Stage 2 &mdash; Sacral Chakra &middot; Breath</span>
+      <h4>Ego Emergence &amp; Fear</h4>
+      <p>Pure love is overshadowed by fear. You realize you depend on others. Personality forms. Emotions, creative expression, and relationships are governed by approval-seeking.</p>
+      <p class="practice">Seed Mantra: VAM &middot; Element: Water &middot; Layer: The Breath (Prana)</p>
     </div>
     <div class="identity-card">
-      <span class="layer-tag">Layer 3</span>
-      <h4>Accountability to Self</h4>
-      <p>The blockchain doesn&rsquo;t judge. It just records. In that recording, you become accountable to yourself. That&rsquo;s the whole practice.</p>
-      <p class="practice">Practice: Every transaction is a vote. What are you voting for?</p>
+      <span class="layer-tag">Stage 3 &mdash; Solar Plexus &middot; Mind</span>
+      <h4>Power &amp; Knowledge</h4>
+      <p>In your desire to overcome fear, you seek control. Education, career, accumulation. The ego is at its peak attempting to control the external environment. <strong style="color:var(--gold);font-weight:400;">First Fork:</strong> continue material consumption, or sense a deeper meaning and ascend.</p>
+      <p class="practice">Seed Mantra: RAM &middot; Element: Fire &middot; Layer: The Mind (Subtle)</p>
     </div>
+    <div class="identity-card">
+      <span class="layer-tag">Stage 4 &mdash; Heart Chakra &middot; Intellect</span>
+      <h4>Giving &amp; Choice</h4>
+      <p>You realize there is more to life than personal power. Compassion opens. The ego cannot find lasting happiness alone. A shift from &ldquo;I&rdquo; to &ldquo;We&rdquo; breaks the chains of self-centeredness. <strong style="color:var(--gold);font-weight:400;">Second Fork:</strong> ego-driven giving or selfless love.</p>
+      <p class="practice">Seed Mantra: YAM &middot; Element: Air &middot; Layer: The Intellect (Buddhi)</p>
+    </div>
+    <div class="identity-card">
+      <span class="layer-tag">Stage 5 &mdash; Throat Chakra &middot; Memory</span>
+      <h4>The Seeker &amp; Devotion</h4>
+      <p>Your spiritual practices become regular. The longing for enlightenment grows. You study with teachers, read texts, experience glimpses of the goal. The throat opens as you authentically express the inner qualities of your heart.</p>
+      <p class="practice">Seed Mantra: HAM &middot; Element: Ether &middot; Layer: Memory (Repository of Impressions)</p>
+    </div>
+    <div class="identity-card">
+      <span class="layer-tag">Stage 6 &mdash; Third Eye &middot; Ego Layer</span>
+      <h4>Cosmic Consciousness &amp; The Observer</h4>
+      <p>Your mind fully awakens. You become the witness of your actions. The fear of death dissolves. Anartha-nivritti &mdash; freedom from unwanted habits &mdash; emerges. <strong style="color:var(--gold);font-weight:400;">Final Fork:</strong> spiritual pride, or true humility &mdash; &ldquo;How can I serve?&rdquo;</p>
+      <p class="practice">Seed Mantra: OM &middot; Element: Light/Intuition &middot; Layer: The Ego (Observer)</p>
+    </div>
+    <div class="identity-card" style="border-color:#2a2a2a;background:radial-gradient(ellipse at 50% 0%,rgba(212,175,55,.05) 0%,transparent 65%);">
+      <span class="layer-tag" style="opacity:1;">Stage 7 &mdash; Crown Chakra &middot; SELF</span>
+      <h4 style="color:var(--gold);">Perfection &amp; Pure Joy</h4>
+      <p>Your heart now fully awakens. Divine and Unity Consciousness. You still live &ldquo;in the world,&rdquo; but are no longer &ldquo;of the world.&rdquo; Individual identity dissolves into universal consciousness. No longer giver, given, or giving &mdash; only flow. <em style="color:var(--gold);">At the summit of subtilization, the burden of choice vanishes.</em></p>
+      <p class="practice">Seed Mantra: OM &middot; Element: Universal Consciousness &middot; Layer: The SELF (Atman)</p>
+    </div>
+  </div>
+
+  <div style="max-width:680px;margin:44px auto 0;padding:36px 32px;border:1px solid #2a2a2a;background:var(--bg);text-align:center;">
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin-bottom:14px;">The material world seems attractive at first, while the spiritual seems difficult. But as this map reveals, the upward journey leads inevitably to the True Self.</p>
+    <p style="font-family:var(--serif);font-size:clamp(16px,2.2vw,20px);color:var(--gold);font-style:italic;">&ldquo;You are not guided toward results. You are exposed to your own responses.&rdquo;</p>
   </div>
 </section>
 <div class="divider"></div>
@@ -1238,6 +1427,32 @@ a:hover{opacity:.7;}
 </section>
 <div class="divider"></div>
 
+<!-- DISCLAIMER: THE OPEN PROTOCOL -->
+<section id="disclaimer" style="padding:80px 24px;background:var(--bg-lift);border-top:1px solid #111;">
+  <div style="max-width:720px;margin:0 auto;">
+    <span class="label">The Open Protocol</span>
+    <div style="border:1px solid #2a2a2a;padding:52px 44px;background:var(--bg);position:relative;">
+      <!-- corner accents -->
+      <div style="position:absolute;top:-1px;left:-1px;width:18px;height:18px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);"></div>
+      <div style="position:absolute;bottom:-1px;right:-1px;width:18px;height:18px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);"></div>
+
+      <h3 style="font-family:var(--serif);font-size:clamp(18px,2.5vw,24px);font-weight:400;color:var(--white);margin-bottom:28px;line-height:1.45;">Disclaimer</h3>
+
+      <p style="font-family:var(--serif);font-size:clamp(15px,1.9vw,18px);color:var(--grey);line-height:1.95;margin-bottom:20px;">This framework is a tool for personal observation and inquiry. It is not a system of guarantees, nor a source of financial, medical, or professional advice.</p>
+
+      <p style="font-family:var(--serif);font-size:clamp(15px,1.9vw,18px);color:var(--grey);line-height:1.95;margin-bottom:20px;">The concepts, language, and references within this framework draw from Hindu philosophy, scripture, and tradition — not because these hold exclusive claim to the truths described, but because they are the living vocabulary of the person who built it. Every tradition on earth has arrived at these same observations through its own path. This one happens to have arrived through that door. <em style="color:var(--mid);">The door is not the destination.</em></p>
+
+      <p style="font-family:var(--serif);font-size:clamp(15px,1.9vw,18px);color:var(--grey);line-height:1.95;margin-bottom:20px;">The *SELF initiative exists within an open, decentralized environment where outcomes are determined entirely by participant behaviour. Volatility, loss, inactivity, or indifference are all possible outcomes. Nothing is engineered to ensure growth, stability, or return.</p>
+
+      <div style="border-left:2px solid var(--gold);padding-left:22px;margin:32px 0;">
+        <p style="font-family:var(--serif);font-size:clamp(16px,2.1vw,19px);color:var(--white);line-height:1.85;font-style:italic;">You are not guided toward results. You are exposed to your own responses. This framework provides the screen. You remain the one who interprets the experience.</p>
+      </div>
+
+      <p style="font-family:var(--serif);font-size:clamp(15px,1.9vw,18px);color:var(--grey);line-height:1.95;margin-bottom:0;">Participation is voluntary, and this framework belongs to no religion, nationality, age, or background. What you take from it depends entirely on how you engage with it — not on where you come from.</p>
+    </div>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer class="footer">
   <div class="footer-logo-wrap">
@@ -1303,7 +1518,8 @@ function showVoidResponse(type, btn){
     {id:'ledger',   el:null},
     {id:'ipo',      el:null},
     {id:'mirror',   el:null},
-    {id:'contract', el:null}
+    {id:'contract', el:null},
+    {id:'disclaimer',el:null}
   ];
   sections.forEach(function(s){s.el=document.getElementById(s.id);});
   var navLinks=document.querySelectorAll('.nav-items li a');
