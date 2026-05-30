@@ -108,9 +108,9 @@ section{scroll-margin-top:140px;}
 
 /* ── PULL-QUOTE ──────────────────────────────────────────────────────────── */
 .pull-quote{max-width:680px;margin:56px auto;padding:36px 0 36px 32px;border-left:3px solid var(--gold);text-align:left;position:relative;}
-.pull-quote::before{content:'\201C';position:absolute;top:-10px;left:20px;font-size:80px;color:var(--gold);opacity:.18;font-family:var(--serif);line-height:1;}
+/* pull-quote decorative marks removed — HTML entities handle quotes */
 .pull-quote p{font-family:var(--serif);font-size:clamp(20px,3vw,29px);font-weight:300;font-style:italic;color:var(--white);line-height:1.65;margin:0;}
-.pull-quote p::after{content:'\201D';margin-left:4px;font-size:32px;opacity:.18;}
+/* pull-quote ::after removed */
 .pull-quote cite{display:block;margin-top:14px;font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-style:normal;opacity:.75;}
 
 /* ── P6: VOID TEST ───────────────────────────────────────────────────────── */
@@ -133,9 +133,8 @@ section{scroll-margin-top:140px;}
 .framework-card .num{font-family:var(--sans);font-size:10px;letter-spacing:3px;color:var(--gold);opacity:.7;margin-bottom:18px;display:block;}
 .framework-card h3{font-family:var(--serif);font-size:22px;font-weight:400;color:var(--white);margin-bottom:12px;line-height:1.4;}
 .framework-card p{font-family:var(--serif);font-size:16.5px;font-weight:300;color:var(--grey);line-height:1.88;}
-.framework-card::after{content:'Expand ▼';position:absolute;top:32px;right:28px;font-size:10px;font-family:var(--sans);letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);opacity:.7;transition:all .3s;}
-.framework-card.collapsed::after{content:'Collapse ▲';}
-.framework-card:not(.collapsed) .framework-content{display:block;}
+.framework-card::after{content:'Collapse ▲';position:absolute;top:32px;right:28px;font-size:10px;font-family:var(--sans);letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);opacity:.7;transition:all .3s;}
+.framework-card.collapsed::after{content:'Expand ▼';}
 
 /* ── P3: ASTROLABE / 5 PILLARS ───────────────────────────────────────────── */
 .astrolabe-section{padding:90px 24px;background:radial-gradient(ellipse at 50% 100%,rgba(212,175,55,.06) 0%,transparent 60%);border-top:1px solid #111;border-bottom:1px solid #111;}
@@ -147,8 +146,7 @@ section{scroll-margin-top:140px;}
 .pillar-card.open{border-color:var(--gold);}
 .pillar-card .p-num{font-family:var(--sans);font-size:10px;letter-spacing:3px;color:var(--gold);opacity:.65;margin-bottom:10px;display:block;}
 .pillar-card .p-title{font-family:var(--serif);font-size:21px;font-weight:400;color:var(--white);margin-bottom:0;line-height:1.35;}
-.pillar-card .p-expand{font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.6;margin-top:8px;display:block;transition:opacity .2s;}
-.pillar-card.open .p-expand{opacity:.9;}
+.pillar-card .p-expand{font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-top:8px;display:block;transition:all .2s;}
 .pillar-card .p-body{font-family:var(--serif);font-size:15.5px;font-weight:300;color:var(--grey);line-height:1.88;margin-top:16px;display:none;border-top:1px solid #1e1e1e;padding-top:16px;}
 .pillar-card.open .p-body{display:block;}
 .astrolabe-cta{font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:500px;margin:0 auto;font-style:italic;line-height:1.85;}
@@ -323,10 +321,10 @@ section{scroll-margin-top:140px;}
 /* scroll-hint always visible when present */
 
 
-.identity-section h2{cursor:pointer;user-select:none;position:relative;padding-right:24px;transition:color .2s;}
-.identity-section h2::after{content:'▼';position:absolute;right:0;font-size:14px;color:var(--gold);opacity:.6;transition:transform .3s;}
-.identity-section.collapsed h2{color:var(--dim);}
-.identity-section.collapsed h2::after{transform:rotate(-180deg);}
+.identity-section h2{cursor:pointer;user-select:none;position:relative;padding-right:70px;transition:color .2s;}
+.identity-section h2::after{content:'Expand ▼';position:absolute;right:0;font-size:10px;font-family:var(--sans);letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);opacity:.8;top:50%;transform:translateY(-50%);transition:all .3s;}
+.identity-section.collapsed h2{color:var(--mid);}
+.identity-section:not(.collapsed) h2::after{content:'Collapse ▲';}
 .identity-grid{overflow:hidden;transition:max-height .5s ease,opacity .3s ease;max-height:3000px;opacity:1;}
 .identity-section.collapsed .identity-grid{max-height:0;opacity:0;}
 .identity-section.collapsed .identity-section-footer{max-height:0;overflow:hidden;opacity:0;}
@@ -341,7 +339,7 @@ section{scroll-margin-top:140px;}
   .cosmic-section p.gold{font-size:19px;}
   .pull-quote{margin:36px auto;padding:24px 0 24px 22px;}
   .pull-quote p{font-size:19px;}
-  .pull-quote::before{font-size:56px;top:-4px;left:8px;}
+  /* pull-quote::before mobile override removed */
   .ipo-table-row{grid-template-columns:1fr 1fr;}
   .ipo-table-row .ipo-cell:nth-child(2),.ipo-table-row.header .ipo-cell:nth-child(2){display:none;}
   .framework-grid,.identity-grid,.why-grid,.pillar-grid{grid-template-columns:1fr;gap:1px;}
@@ -399,12 +397,9 @@ section{scroll-margin-top:140px;}
 .stage-body-col .s-text{font-family:var(--serif);font-size:15.5px;font-weight:300;color:var(--grey);line-height:1.85;}
 .surrender-arrow{text-align:center;padding:8px 0;color:var(--gold);opacity:.3;font-size:18px;display:block;}
 /* SURRENDER TOGGLE */
-.surrender-section h4{cursor:pointer;user-select:none;display:flex;align-items:center;justify-content:center;gap:12px;}
-.surrender-section h4::after{content:'';font-size:10px;color:var(--gold);opacity:.6;transition:all .3s;font-family:var(--sans);}
-.surrender-section.collapsed .stage-expand-label::before{content:'▶ Expand';}
-.surrender-section .stage-expand-label::before{content:'▼ Collapse';}
-.surrender-section.collapsed .stage-expand-label{font-size:0;}
-.surrender-section .stage-expand-label{font-size:10px;}
+.surrender-section h4{cursor:pointer;user-select:none;display:flex;align-items:center;justify-content:center;gap:16px;}
+.stage-expand-label{font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;padding:4px 10px;border:1px solid #2a2a2a;transition:all .25s;}
+.surrender-section h4:hover .stage-expand-label{border-color:var(--gold);}
 .surrender-content{overflow:hidden;transition:max-height .5s ease,opacity .3s ease;max-height:3000px;opacity:1;}
 .surrender-section.collapsed .surrender-content{max-height:0;opacity:0;}
 
@@ -583,34 +578,34 @@ section{scroll-margin-top:140px;}
   <span class="label">The Framework</span>
   <p class="phil-line bright">The *SELF operating system. Six layers.</p>
   <p class="phil-line dim">Most people run on the first one their whole life.</p>
-  <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;color:#555;text-transform:uppercase;margin-bottom:8px;">Tap any card to expand or collapse &#9660;</p>
+  <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;color:#555;text-transform:uppercase;margin-bottom:8px;">Cards collapsed by default &mdash; tap any to expand</p>
   <div class="framework-grid">
-    <div class="framework-card">
+    <div class="framework-card collapsed">
       <span class="num">01</span>
       <h3>The Default OS</h3><div class="framework-content">
       <p>Stimulus. Response. Repeat. The autopilot running underneath every trade, every decision, every reaction &mdash; and most people never notice it running.</p>
       <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">In Sanskrit: <em>Vritti</em> &mdash; the constant stream of neutral mental chatter, images, and fleeting concepts. Raw, unfiltered data before meaning is attached.</p>
     </div></div>
-    <div class="framework-card">
+    <div class="framework-card collapsed">
       <span class="num">02</span>
       <h3>The Arrival Fallacy</h3><div class="framework-content">
       <p>The false belief that the next milestone will finally bring peace. The brain is wired for the chase, not the catch. Dopamine rewards effort and progress &mdash; when the goal is achieved, production drops, leaving an acute emptiness.</p>
       <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">In Sanskrit: <em>Bhava</em> &mdash; the somatic and energetic weight attached to thoughts. Nostalgia for the past. Anxiety about the future. Feeling lost after an achievement is not failure.<br><span style="color:var(--grey);font-style:normal;">It is a symptom of an identity built on outcomes rather than essence.</span></p>
     </div></div>
-    <div class="framework-card">
+    <div class="framework-card collapsed">
       <span class="num">03</span>
       <h3>The Ego</h3><div class="framework-content">
       <p>The mask the &ldquo;I&rdquo; wears. Your name, status, achievements, wounds, the story you tell about yourself. The false self that keeps seeking outside. Prerequisite to knowing your true SELF: see through it.</p>
       <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">In Sanskrit: <em>Kama &rarr; Ahamkara</em> &mdash; desire collects into a constructed identity that claims ownership: &ldquo;I want this, I feel that.&rdquo; The I-Maker claiming all experience as its own.</p>
     </div></div>
-    <div class="framework-card">
+    <div class="framework-card collapsed">
       <span class="num">04</span>
       <h3>The True &ldquo;I&rdquo;</h3><div class="framework-content">
       <p>Your pure, underlying conscious awareness. The silent observer behind every thought. The screen, not the movie &mdash; unchanged by whatever plays on it. Every tradition that found truth arrived at the same address.</p>
       <p style="margin-top:14px;font-size:15px;color:var(--gold);font-style:italic;">SAT-CHIT-ANAND.<br><span style="font-size:14px;font-style:normal;">Existence. Consciousness. Bliss.</span></p>
       <p style="margin-top:10px;font-size:14px;color:var(--gold);font-style:italic;">In Sanskrit: <em>Maya / Avidya</em> &mdash; the lens of separation &mdash; is dissolved when you recognize you are not the projection, but the screen. That is who you actually are.</p>
     </div></div>
-    <div class="framework-card">
+    <div class="framework-card collapsed">
       <span class="num">05</span>
       <h3>The Gap — RRRR Protocol</h3><div class="framework-content">
       <p style="font-size:14px;color:var(--grey);margin-bottom:16px;">The space between trigger and response. Moving from reactive to intentional.</p>
@@ -629,7 +624,7 @@ section{scroll-margin-top:140px;}
         <p style="font-size:15px;margin-bottom:0;"><strong style="color:var(--gold);">Respond</strong> <span style="color:var(--grey);font-size:14px;">— Choose from clarity, not the wound.</span></p>
       </div></div>
     </div>
-    <div class="framework-card">
+    <div class="framework-card collapsed">
       <span class="num">06</span>
       <h3>Self-Realization</h3><div class="framework-content">
       <p>Not expected to be achieved in one lifetime. That is not a failure &mdash; that is the point. The goal was never arrival. The question is: are you pointed in the right direction?</p>
@@ -738,7 +733,7 @@ section{scroll-margin-top:140px;}
 
   <!-- 5 STAGES OF SURRENDER (Bhakti expansion) -->
   <div class="surrender-section collapsed">
-    <h4>The Five Stages of Surrender <span class="stage-expand-label" style="font-family:var(--sans);font-size:10px;color:var(--gold);letter-spacing:2px;font-weight:300;opacity:.7;">&nbsp;&#9654; Expand</span></h4>
+    <h4>The Five Stages of Surrender <span class="stage-expand-label">Expand ▼</span></h4>
     <p class="surrender-sub">In the Sivananda Lahiri, Adi Shankaracharya maps the melting of the individual ego through five vivid metaphors &mdash; from strenuous individual effort to effortless, absolute wholeness. The Bhakti path moves through all five.</p><div class="surrender-content">
 
     <div class="stage-item">
@@ -1222,7 +1217,7 @@ section{scroll-margin-top:140px;}
 <div class="divider"></div>
 
 <!-- IDENTITY LAYER — Path of Subtilization -->
-<section class="identity-section">
+<section class="identity-section collapsed">
   <span class="label">The Path of Subtilization</span>
   <h2>Seven stages. One journey. From body to SELF.</h2>
   <p class="sub">Every tradition maps the same upward arc &mdash; the 7 Chakras, the 7 Stages of Spiritual Progress, and the 7 Layers of Existence all describe one singular journey: moving from unconscious density to conscious expanse.</p>
@@ -1448,6 +1443,24 @@ section{scroll-margin-top:140px;}
 
     <div class="faq-item">
       <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');var lbl=this.querySelector('.faq-icon');if(lbl){lbl.innerHTML=item.classList.contains('open')?'Collapse &#9660;':'Expand &#9654;';}">
+        <span>Do I know my own worth?</span>
+        <span class="faq-icon">Expand &#9654;</span>
+      </button>
+      <div class="faq-a">
+        <div class="faq-a-inner">
+          <p style="margin-bottom:16px;">The belief that <strong>&ldquo;I am not enough&rdquo;</strong> is an illusion &mdash; one that prevents us from seeing the truth that is already present.</p>
+          <p style="margin-bottom:16px;">Self-worth is not something to be earned or proven. It is simply a <strong style="color:var(--gold);">Realization</strong> &mdash; a recognition of who you truly are. A knowing.</p>
+          <div style="border-left:2px solid var(--gold);padding-left:20px;margin:20px 0;">
+            <p style="font-style:italic;color:var(--mid);margin-bottom:8px;">I am the whole. The totality. That includes every part of me.</p>
+          </div>
+          <p style="margin-bottom:16px;">When we recognize our self-worth, that is when we step into our greatness. That is when we align with our authentic power. That is when we can finally realize our full, true potential.</p>
+          <p style="color:var(--gold);font-style:italic;margin-bottom:0;">I am worthy &mdash; and so are you.<br><span style="font-family:var(--sans);font-size:12px;letter-spacing:1px;font-style:normal;color:var(--mid);">The only question remaining: do you know it?</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');var lbl=this.querySelector('.faq-icon');if(lbl){lbl.innerHTML=item.classList.contains('open')?'Collapse &#9660;':'Expand &#9654;';}">
         <span>What is the Mirror Room?</span>
         <span class="faq-icon">Expand &#9654;</span>
       </button>
@@ -1471,7 +1484,7 @@ section{scroll-margin-top:140px;}
 
       <h3 style="font-family:var(--serif);font-size:clamp(18px,2.5vw,24px);font-weight:400;color:var(--white);margin-bottom:28px;line-height:1.45;cursor:pointer;user-select:none;display:flex;align-items:center;justify-content:space-between;">Disclaimer <span style="font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;transition:all .3s;" class="disclaimer-toggle">Expand &#9660;</span></h3>
 
-      <div class="disclaimer-content" style="max-height:1000px;transition:max-height .4s ease,opacity .3s ease;overflow:hidden;">
+      <div class="disclaimer-content" style="max-height:0;opacity:0;transition:max-height .4s ease,opacity .3s ease;overflow:hidden;">
       <p style="font-family:var(--serif);font-size:clamp(15px,1.9vw,18px);color:var(--grey);line-height:1.95;margin-bottom:20px;">This framework is a tool for personal observation and inquiry. It is not financial, medical, or professional advice. Outcomes — including volatility, loss, or inactivity — are determined entirely by participant behaviour.</p>
 
       <div style="border-left:2px solid var(--gold);padding-left:22px;margin:24px 0;">
@@ -1607,15 +1620,6 @@ function showVoidResponse(type, btn){
     });
   });
 
-  /* --- 5 Stages of Surrender: click h4 to toggle --- */
-  var surrenderSection = document.querySelector('.surrender-section');
-  var surrenderH4 = surrenderSection ? surrenderSection.querySelector('h4') : null;
-  if(surrenderH4){
-    surrenderH4.addEventListener('click',function(){
-      surrenderSection.classList.toggle('collapsed');
-    });
-  }
-
   /* --- Path of Subtilization: click h2 to toggle --- */
   document.querySelectorAll('.identity-section').forEach(function(section){
     var h2 = section.querySelector('h2');
@@ -1648,16 +1652,15 @@ function showVoidResponse(type, btn){
     }
   }
 
-  /* --- 5 Stages toggle: update label text --- */
-  var surrenderSection2 = document.querySelector('.surrender-section');
-  var surrenderH4 = surrenderSection2 ? surrenderSection2.querySelector('h4') : null;
+  /* --- 5 Stages toggle: single listener --- */
+  var surrenderSection = document.querySelector('.surrender-section');
+  var surrenderH4 = surrenderSection ? surrenderSection.querySelector('h4') : null;
   if(surrenderH4){
     surrenderH4.addEventListener('click',function(){
-      var lbl = surrenderSection2.querySelector('.stage-expand-label');
-      if(surrenderSection2.classList.contains('collapsed')){
-        if(lbl) lbl.innerHTML = '&nbsp;&#9660; Collapse';
-      } else {
-        if(lbl) lbl.innerHTML = '&nbsp;&#9654; Expand';
+      surrenderSection.classList.toggle('collapsed');
+      var lbl = surrenderSection.querySelector('.stage-expand-label');
+      if(lbl){
+        lbl.textContent = surrenderSection.classList.contains('collapsed') ? 'Expand ▼' : 'Collapse ▲';
       }
     });
   }
