@@ -87,10 +87,36 @@ section{scroll-margin-top:140px;}
 .gold-line{width:48px;height:1px;background:var(--gold);opacity:.45;margin:44px auto;}
 .label{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--gold);opacity:.85;margin-bottom:42px;display:block;}
 
-/* ── HERO ─────────────────────────────────────────────────────────────────── */
-.hero{min-height:auto;display:flex;flex-direction:column;justify-content:flex-start;align-items:center;padding:66px 24px 20px;position:relative;background:radial-gradient(ellipse at 50% 35%,rgba(212,175,55,.05) 0%,transparent 68%);}
-.hero-question{font-size:clamp(22px,3.8vw,38px);font-weight:300;font-style:italic;color:var(--gold);line-height:1.5;max-width:680px;margin-bottom:16px;letter-spacing:.3px;}
-.hero-sub{font-size:clamp(16px,2.2vw,20px);color:var(--mid);font-weight:300;max-width:480px;line-height:1.9;margin-bottom:24px;}
+/* ── NAV SEARCH BUTTON ───────────────────────────────────────────────────── */
+.nav-search-btn{position:sticky;right:0;flex-shrink:0;background:rgba(0,0,0,.92);border:none;border-left:1px solid #1a1a1a;color:var(--dim);cursor:pointer;width:44px;height:var(--nav-h);display:flex;align-items:center;justify-content:center;transition:color .2s;padding:0;margin-left:auto;}
+.nav-search-btn:hover{color:var(--gold);}
+
+/* ── SEARCH MODAL ────────────────────────────────────────────────────────── */
+.search-modal{position:fixed;inset:0;z-index:9999;display:none;align-items:flex-start;justify-content:center;padding-top:80px;}
+.search-modal.open{display:flex;}
+.search-overlay{position:absolute;inset:0;background:rgba(0,0,0,.8);backdrop-filter:blur(4px);}
+.search-box{position:relative;width:100%;max-width:560px;margin:0 16px;z-index:1;}
+.search-input-wrap{display:flex;align-items:center;gap:10px;background:#0d0d0d;border:1px solid #333;padding:12px 16px;}
+.search-input-wrap:focus-within{border-color:var(--gold);}
+.search-input{flex:1;background:transparent;border:none;outline:none;font-family:var(--serif);font-size:18px;color:var(--white);min-width:0;}
+.search-input::placeholder{color:var(--dim);}
+.search-close-btn{background:transparent;border:1px solid #333;color:var(--dim);font-family:var(--sans);font-size:10px;letter-spacing:2px;padding:4px 8px;cursor:pointer;flex-shrink:0;}
+.search-results{background:#0d0d0d;border:1px solid #222;border-top:none;max-height:360px;overflow-y:auto;}
+.search-result{display:block;padding:14px 16px;border-bottom:1px solid #1a1a1a;cursor:pointer;text-align:left;transition:background .15s;text-decoration:none;}
+.search-result:last-child{border-bottom:none;}
+.search-result:hover,.search-result.active{background:#141414;}
+.search-result-title{font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:3px;}
+.search-result-desc{font-family:var(--sans);font-size:11px;color:var(--dim);letter-spacing:.5px;line-height:1.5;}
+.search-result mark{background:transparent;color:var(--gold);}
+.search-empty{padding:20px 16px;font-family:var(--sans);font-size:12px;color:var(--dim);letter-spacing:1px;text-align:center;}
+
+/* ── HERO COMPACT — button always above fold on any screen ───────────────── */
+.hero{min-height:calc(100vh - var(--nav-h));display:flex;flex-direction:column;justify-content:center;align-items:center;padding:70px 24px 20px;position:relative;background:radial-gradient(ellipse at 50% 35%,rgba(212,175,55,.05) 0%,transparent 68%);}
+.hero-question{font-size:clamp(19px,3.2vw,34px);font-weight:300;font-style:italic;color:var(--gold);line-height:1.45;max-width:680px;margin-bottom:10px;letter-spacing:.3px;}
+.hero-sub{font-size:clamp(15px,2vw,18px);color:var(--mid);font-weight:300;max-width:480px;line-height:1.85;margin-bottom:8px;}
+
+/* ── EXPAND LABEL (shared by arch, why) ──────────────────────────────────── */
+.expand-label{display:inline-block;font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);border:1px solid rgba(212,175,55,.3);padding:4px 12px;margin-left:12px;transition:border-color .25s;vertical-align:middle;}
 .btn-gold{padding:14px 44px;background:var(--gold);color:#000;font-family:var(--sans);font-size:12px;font-weight:800;letter-spacing:3px;text-transform:uppercase;border:none;cursor:pointer;transition:opacity .25s,transform .2s;text-decoration:none;display:inline-block;box-shadow:0 0 20px rgba(212,175,55,.3);}
 .btn-gold:hover{opacity:.9;color:#000;transform:scale(1.05);}
 .btn-gold:active{transform:scale(0.98);}
@@ -445,7 +471,6 @@ section{scroll-margin-top:140px;}
 <nav class="site-nav" id="siteNav" aria-label="Site navigation">
   <div class="progress-bar" id="progressBar"></div>
   <ul class="nav-items">
-    <li><a href="#home" id="nav-home">Home</a></li>
     <li><a href="#framework">Framework</a></li>
     <li><a href="#ledger">Ledger</a></li>
     <li><a href="#ipo">IPO</a></li>
@@ -453,7 +478,24 @@ section{scroll-margin-top:140px;}
     <li><a href="#contract">Contract</a></li>
     <li><a href="#disclaimer">Disclaimer</a></li>
   </ul>
+  <!-- Search icon pinned to right — always visible -->
+  <button class="nav-search-btn" id="navSearchBtn" aria-label="Search sections" title="Search sections (/)">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+  </button>
 </nav>
+
+<!-- SEARCH MODAL -->
+<div id="searchModal" class="search-modal" aria-hidden="true" role="dialog" aria-label="Search sections">
+  <div class="search-overlay" onclick="closeSearch()"></div>
+  <div class="search-box">
+    <div class="search-input-wrap">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--dim);flex-shrink:0;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="searchInput" class="search-input" placeholder="Search sections, concepts, questions…" autocomplete="off" spellcheck="false">
+      <button class="search-close-btn" onclick="closeSearch()" aria-label="Close search">ESC</button>
+    </div>
+    <div id="searchResults" class="search-results"></div>
+  </div>
+</div>
 
 <div class="geo-badge" id="geoBadge"></div>
 <a href="https://42self.xyz" class="float-logo" title="*SELF">
@@ -462,14 +504,14 @@ section{scroll-margin-top:140px;}
 
 <!-- HERO — P4: Updated opening (Option A: timeless) -->
 <section class="hero" id="home">
-  <p class="hero-question" style="margin-bottom:2px;">There is a question you have been avoiding<br>your entire life.<br>It will not wait forever.</p>
-  <p class="hero-sub" style="font-size:clamp(22px,3.5vw,32px);color:var(--gold);font-weight:400;margin-bottom:6px;margin-top:2px;">What is your own SELF worth?</p>
-  <p class="hero-sub" style="color:var(--dim);margin-bottom:2px;">Not in dollars. Not in status. Not in the next milestone.<br>In the only currency that cannot be taken from you.</p>
-  <p class="hero-sub" style="color:var(--grey);font-size:clamp(15px,1.9vw,18px);font-style:italic;margin-bottom:6px;margin-top:0;">If today were the last day you had &mdash;<br>would the answer change?</p>
-  <p class="hero-sub" style="margin-bottom:8px;font-size:12px;letter-spacing:3px;font-family:var(--sans);text-transform:uppercase;">$SELF &middot; Solana</p>
+  <p class="hero-question" style="margin-bottom:6px;">There is a question you have been avoiding<br>your entire life.<br>It will not wait forever.</p>
+  <p class="hero-sub" style="font-size:clamp(20px,3.2vw,30px);color:var(--gold);font-weight:400;margin-bottom:4px;margin-top:2px;">What is your own SELF worth?</p>
+  <p class="hero-sub" style="color:var(--dim);margin-bottom:2px;font-size:clamp(14px,1.8vw,17px);">Not in dollars. Not in status. Not in the next milestone.<br>In the only currency that cannot be taken from you.</p>
+  <p class="hero-sub" style="color:var(--grey);font-size:clamp(13px,1.6vw,16px);font-style:italic;margin-bottom:4px;margin-top:0;">If today were the last day you had &mdash; would the answer change?</p>
+  <p class="hero-sub" style="margin-bottom:10px;font-size:11px;letter-spacing:3px;font-family:var(--sans);text-transform:uppercase;">$SELF &middot; Solana</p>
   <a class="btn-gold" href="#contract"
      onclick="event.preventDefault();document.getElementById('contract').scrollIntoView({behavior:'smooth'});"
-     style="display:inline-block;padding:11px 36px;font-size:11px;letter-spacing:3px;margin-bottom:10px;">&#10003; View Contract</a>
+     style="display:inline-block;padding:11px 40px;font-size:11px;letter-spacing:3px;margin-bottom:8px;">&#10003; View Contract</a>
   <span class="scroll-hint">continue &darr;</span>
 </section>
 
@@ -646,7 +688,7 @@ section{scroll-margin-top:140px;}
   <div style="margin-top:52px;max-width:980px;margin-left:auto;margin-right:auto;">
     <div id="arch-toggle" onclick="archToggle()" style="cursor:pointer;user-select:none;padding:20px 0 16px;">
       <p style="font-family:var(--sans);font-size:10px;font-weight:500;letter-spacing:5px;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:8px;text-align:center;">The Architecture of Self-Destruction</p>
-      <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:660px;margin:0 auto 8px;line-height:1.5;text-align:center;">When the conditioning runs unchecked <span id="arch-chevron" style="font-size:14px;color:var(--gold);opacity:.6;transition:transform .3s;display:inline-block;">&#9660;</span></h2>
+      <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:660px;margin:0 auto 8px;line-height:1.5;text-align:center;">When the conditioning runs unchecked <span id="arch-expand-label" class="expand-label">Expand &#9660;</span></h2>
       <p style="font-size:clamp(13px,1.7vw,15px);color:var(--dim);text-align:center;font-family:var(--sans);letter-spacing:2px;text-transform:uppercase;margin-bottom:0;">Tap to expand &mdash; collapsed by default</p>
     </div>
     <div id="arch-content" style="max-height:0;overflow:hidden;transition:max-height .5s ease,opacity .3s ease;opacity:0;">
@@ -677,7 +719,7 @@ section{scroll-margin-top:140px;}
         <p style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.85;">Delusion (Moha) is fixed. Intellect is bypassed for raw animalistic reactivity. The SELF is abandoned. Life force drained. <em style="color:#c0392b;">The account is officially blown.</em></p>
       </div>
     </div>
-    <p style="font-size:clamp(15px,2vw,19px);color:var(--gold);font-style:italic;text-align:center;margin-top:36px;line-height:1.8;">You cannot be liquidated by external chaos unless you permit it internally.<br><span style="font-size:clamp(13px,1.7vw,16px);color:var(--grey);font-style:normal;">SELF is a reflection of how you respond &mdash; not what happens.</span></p>
+    </div>
     </div><!-- /arch-content -->
   </div>
 </section>
@@ -1130,7 +1172,7 @@ section{scroll-margin-top:140px;}
 <!-- WHY $SELF — P2: Super-Ordinate Goal Frame Added -->
 <section class="why-section">
   <span class="label">Why $SELF</span>
-  <h2 id="why-toggle" onclick="whyToggle()" style="cursor:pointer;user-select:none;position:relative;padding-right:28px;">Most tokens ask you to believe in the chart.<br>This one asks a different question. <span id="why-chevron" style="font-size:14px;color:var(--gold);opacity:.6;transition:transform .3s;display:inline-block;vertical-align:middle;">&#9660;</span></h2>
+  <h2 id="why-toggle" onclick="whyToggle()" style="cursor:pointer;user-select:none;position:relative;">Most tokens ask you to believe in the chart.<br>This one asks a different question. <span id="why-expand-label" class="expand-label">Expand &#9660;</span></h2>
   <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:28px;">Tap to expand &mdash; collapsed by default</p>
   <div id="why-content" style="max-height:0;overflow:hidden;transition:max-height .6s ease,opacity .3s ease;opacity:0;">
   <div class="why-grid">
@@ -1155,9 +1197,10 @@ section{scroll-margin-top:140px;}
       <p>Not a hype chat. A space for people who noticed the gap between trigger and response and couldn&rsquo;t unsee it. No price talk. Just noticing.</p>
     </div>
   </div>
+  </div><!-- /why-content -->
 
-  <!-- P2: SUPER-ORDINATE GOAL BOX -->
-  <div class="superordinate-box">
+  <!-- SUPER-ORDINATE GOAL — standalone, always visible below why cards -->
+  <div class="superordinate-box" style="margin-top:36px;">
     <span class="so-label">The Super-Ordinate Goal</span>
     <p>An Olympic athlete doesn&rsquo;t stop eating to win gold. Eating becomes a calculated sub-goal designed to serve the ultimate victory. Every daily action is optimised so it does not conflict with the super-ordinate goal.</p>
     <p>Launch rockets. Build bases on Mars. Run data centers in space. Accumulate assets. Build your career. Raise your family well.<br><span style="color:var(--gold);font-style:italic;">These are valid sub-goals.</span></p>
@@ -1165,8 +1208,6 @@ section{scroll-margin-top:140px;}
     <p class="gold">The super-ordinate goal &mdash; the Olympic Gold of life &mdash; is knowing your SELF.<br>The only gold that never depreciates.</p>
     <p class="so-process">The post-goal slump is not a cliff. It is a period of rest and gratitude.<br><strong>The process is the purpose. The direction is the destination.</strong></p>
   </div>
-
-  </div><!-- /why-content -->
 
   <p class="why-closing">Ignorance of your true SELF<br>is the only poverty that actually matters.</p>
   <div style="margin-top:44px;">
@@ -1649,17 +1690,15 @@ function showVoidResponse(type, btn){
   window.archToggle = function(){
     archOpen = !archOpen;
     var content = document.getElementById('arch-content');
-    var chevron = document.getElementById('arch-chevron');
+    var lbl = document.getElementById('arch-expand-label');
     if(archOpen){
       content.style.maxHeight = content.scrollHeight + 'px';
       content.style.opacity = '1';
-      chevron.style.transform = 'rotate(180deg)';
-      content.closest('[style]') && content.previousElementSibling && 
-        (content.previousElementSibling.querySelector('[style*="collapsed"]') || true);
+      if(lbl) lbl.innerHTML = 'Collapse &#9650;';
     } else {
       content.style.maxHeight = '0';
       content.style.opacity = '0';
-      chevron.style.transform = 'rotate(0deg)';
+      if(lbl) lbl.innerHTML = 'Expand &#9660;';
     }
   };
 
@@ -1668,15 +1707,15 @@ function showVoidResponse(type, btn){
   window.whyToggle = function(){
     whyOpen = !whyOpen;
     var content = document.getElementById('why-content');
-    var chevron = document.getElementById('why-chevron');
+    var lbl = document.getElementById('why-expand-label');
     if(whyOpen){
       content.style.maxHeight = content.scrollHeight + 'px';
       content.style.opacity = '1';
-      chevron.style.transform = 'rotate(180deg)';
+      if(lbl) lbl.innerHTML = 'Collapse &#9650;';
     } else {
       content.style.maxHeight = '0';
       content.style.opacity = '0';
-      chevron.style.transform = 'rotate(0deg)';
+      if(lbl) lbl.innerHTML = 'Expand &#9660;';
     }
   };
 
@@ -1693,6 +1732,138 @@ function showVoidResponse(type, btn){
         window.scrollTo({top:top, behavior:'smooth'});
       }
     });
+  });
+})();
+
+/* ── SEARCH ENGINE ────────────────────────────────────────────────────────── */
+(function(){
+  // All searchable sections / concepts
+  var SECTIONS = [
+    {title:'Home — Opening Question',desc:'There is a question you have been avoiding your entire life.',id:'home'},
+    {title:'The Mirror',desc:'You knew something was off. The void inside despite having enough.',id:'framework'},
+    {title:'The Void Test',desc:'Did the void disappear after you got what you wanted?',id:'framework'},
+    {title:'The Mission',desc:'Eternal joy already lies within you. It has always been there.',id:'framework'},
+    {title:'The Framework — 6 Layers',desc:'The *SELF operating system. Default OS, Arrival Fallacy, Ego, True I, Gap, Self-Realization.',id:'framework'},
+    {title:'Architecture of Self-Destruction',desc:'Four phases: Spark, Friction, Ego\'s Blindfold, Liquidation. The conditioning spiral.',id:'framework'},
+    {title:'5 Pillars of Self-Enquiry',desc:'Who am I? Where am I from? Why am I here? What can I do? Where am I going?',id:'framework'},
+    {title:'The Two Paths — Jnana & Bhakti',desc:'Path of Knowledge vs Path of Devotion. Both lead to the same SELF.',id:'framework'},
+    {title:'5 Stages of Surrender',desc:'Seed, Magnet, Spouses, Creeper, River & Ocean. The melting of the ego.',id:'framework'},
+    {title:'You Do Not Need a Saviour',desc:'The path begins when you stop waiting for rescue.',id:'framework'},
+    {title:'The Integration Engine',desc:'Western Blueprint (cognitive insight) + Eastern Breath (radical acceptance) = True Wholeness.',id:'framework'},
+    {title:'Cosmological Foundation',desc:'The universe doesn\'t contain Consciousness. Consciousness contains the universe.',id:'framework'},
+    {title:'The Traditions — All Paths Converge',desc:'Indian, Greek, Western Mystic, Indigenous, Modern Psychology — all point inward.',id:'framework'},
+    {title:'The Perceptual Chain',desc:'Object → Senses → Mind → Consciousness. SELF is a reflection of how you respond.',id:'framework'},
+    {title:'Core Vision Statement',desc:'To Envision, Embrace, and Empower Humanity. No One Is Left Behind.',id:'framework'},
+    {title:'The Cosmic Ledger',desc:'Every reaction, every deed builds a balance sheet. Not in any wallet. In the SELF.',id:'ledger'},
+    {title:'The Internal Public Offering (IPO)',desc:'The most undervalued IPO in history trades right now. Your consciousness. Your direction.',id:'ipo'},
+    {title:'Fartcoin vs $SELF — The Mirror',desc:'$2.6 billion vs $4,450. What the market reveals about where we are headed.',id:'ipo'},
+    {title:'Why $SELF',desc:'A declaration, not a trade. Skin in the game of the SELF.',id:'ipo'},
+    {title:'The Super-Ordinate Goal',desc:'Launch rockets, build Mars bases — valid sub-goals. Self-realization is the Olympic Gold.',id:'ipo'},
+    {title:'The RRRR Protocol',desc:'Recognize → Resist → Return → Release (stop impulse). Recognize → Reflect → Reframe → Respond (process emotion).',id:'framework'},
+    {title:'The Mirror Room',desc:'Not a hype chat. Post what you noticed. No price talk. Just noticing.',id:'mirror'},
+    {title:'Path of Subtilization — 7 Levels',desc:'Body, Breath, Mind, Intellect, Memory, Ego, Crown. The hardware blueprint.',id:'mirror'},
+    {title:'The Cosmic Blueprint — 42',desc:'T+O+B+E=42. Astrophysics, optics, mathematics, ASCII wildcard. The frequency.',id:'contract'},
+    {title:'Atman = Brahman',desc:'The Individual SELF is ontologically equivalent to the Supreme Reality.',id:'contract'},
+    {title:'Contract — $SELF Token',desc:'CA: 7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump · Supply: 1,000,000,042 fixed.',id:'contract'},
+    {title:'Disclaimer',desc:'This framework is a tool for personal observation and inquiry.',id:'disclaimer'},
+    {title:'SAT-CHIT-ANAND',desc:'Existence. Consciousness. Bliss. That is who you actually are.',id:'framework'},
+    {title:'The Arrival Fallacy',desc:'The brain is wired for the chase, not the catch. Dopamine and the post-goal slump.',id:'framework'},
+    {title:'The Ego — The Mask',desc:'The false self that keeps seeking outside. Ahamkara, the I-maker.',id:'framework'},
+    {title:'Self-Realization',desc:'Not arrival. Direction. Are you pointed the right way?',id:'framework'},
+    {title:'Carl Jung Quotes',desc:'Who looks outside dreams; who looks inside awakes. The unconscious becomes fate.',id:'framework'},
+    {title:'Francis Weller Quote',desc:'We have exchanged a cosmology of connection for an ideology of separation.',id:'framework'},
+    {title:'Buddha\'s Final Teaching',desc:'Be a lamp unto yourself. dipa — lamp and island. Trust your inner wisdom.',id:'framework'},
+  ];
+
+  var modal = document.getElementById('searchModal');
+  var input = document.getElementById('searchInput');
+  var results = document.getElementById('searchResults');
+  var btn = document.getElementById('navSearchBtn');
+  var activeIdx = -1;
+
+  function openSearch(){
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden','false');
+    input.value = '';
+    renderResults('');
+    setTimeout(function(){input.focus();},50);
+  }
+  function closeSearch(){
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden','true');
+    activeIdx = -1;
+  }
+  window.closeSearch = closeSearch;
+
+  function highlight(text, q){
+    if(!q) return text;
+    var re = new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');
+    return text.replace(re,'<mark>$1</mark>');
+  }
+
+  function renderResults(q){
+    var filtered = q
+      ? SECTIONS.filter(function(s){
+          return s.title.toLowerCase().indexOf(q.toLowerCase())>-1 ||
+                 s.desc.toLowerCase().indexOf(q.toLowerCase())>-1;
+        })
+      : SECTIONS;
+    activeIdx = -1;
+    if(!filtered.length){
+      results.innerHTML = '<div class="search-empty">No results for &ldquo;'+q+'&rdquo;</div>';
+      return;
+    }
+    results.innerHTML = filtered.map(function(s,i){
+      return '<a class="search-result" data-id="'+s.id+'" data-idx="'+i+'">'
+        +'<div class="search-result-title">'+highlight(s.title,q)+'</div>'
+        +'<div class="search-result-desc">'+highlight(s.desc.substring(0,90)+(s.desc.length>90?'…':''),q)+'</div>'
+        +'</a>';
+    }).join('');
+    results.querySelectorAll('.search-result').forEach(function(el){
+      el.addEventListener('click',function(){
+        var id = this.getAttribute('data-id');
+        var target = document.getElementById(id);
+        if(target){
+          var navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'))||44;
+          var top = target.getBoundingClientRect().top + window.scrollY - navH - 20;
+          closeSearch();
+          setTimeout(function(){window.scrollTo({top:top,behavior:'smooth'});},100);
+        }
+      });
+    });
+  }
+
+  if(btn) btn.addEventListener('click', openSearch);
+  if(input){
+    input.addEventListener('input',function(){renderResults(this.value.trim());});
+    input.addEventListener('keydown',function(e){
+      var items = results.querySelectorAll('.search-result');
+      if(e.key==='ArrowDown'){
+        e.preventDefault();
+        activeIdx = Math.min(activeIdx+1, items.length-1);
+        items.forEach(function(el,i){el.classList.toggle('active',i===activeIdx);});
+        if(items[activeIdx]) items[activeIdx].scrollIntoView({block:'nearest'});
+      } else if(e.key==='ArrowUp'){
+        e.preventDefault();
+        activeIdx = Math.max(activeIdx-1, 0);
+        items.forEach(function(el,i){el.classList.toggle('active',i===activeIdx);});
+        if(items[activeIdx]) items[activeIdx].scrollIntoView({block:'nearest'});
+      } else if(e.key==='Enter'){
+        if(activeIdx>=0 && items[activeIdx]) items[activeIdx].click();
+        else if(items.length) items[0].click();
+      } else if(e.key==='Escape'){
+        closeSearch();
+      }
+    });
+  }
+  // Keyboard shortcut: press "/" to open search
+  document.addEventListener('keydown',function(e){
+    if(e.key==='/' && !modal.classList.contains('open') && document.activeElement.tagName!=='INPUT'){
+      e.preventDefault();
+      openSearch();
+    } else if(e.key==='Escape' && modal.classList.contains('open')){
+      closeSearch();
+    }
   });
 })();
 
