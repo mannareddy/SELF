@@ -52,17 +52,19 @@ a:hover{opacity:.7;}
 .site-nav::-webkit-scrollbar{display:none;}
 .site-nav.scrolled{background:rgba(0,0,0,0.98);}
 .progress-bar{position:absolute;bottom:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,rgba(212,175,55,.4) 0%,var(--gold) 100%);transition:width .1s linear;pointer-events:none;}
-.nav-items{display:inline-flex;align-items:center;gap:0;list-style:none;padding:0;margin:0;}
+.nav-items{display:flex;align-items:center;gap:0;list-style:none;padding:0;margin:0;}
 .nav-items li a{display:block;font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);padding:0 10px;height:var(--nav-h);line-height:var(--nav-h);transition:color .2s;border-right:1px solid #1a1a1a;white-space:nowrap;}
 .nav-items li:first-child a{border-left:1px solid #1a1a1a;}
 .nav-items li a:hover{color:var(--gold);opacity:1;}
 .nav-items li a.active{color:var(--gold);}
 @media(max-width:640px){
-  .nav-items li a{font-size:7.5px;letter-spacing:.2px;padding:0 6px;}
+  .nav-items li a{font-size:7px;letter-spacing:0;padding:0 6px;}
   .nav-items li:first-child a{padding-left:6px;}
+  .nav-search-btn{display:none;}
 }
 @media(max-width:480px){
   .nav-items li a{font-size:6.5px;letter-spacing:0;padding:0 5px;}
+  .nav-search-btn{display:none;}
 }
 @media(max-width:430px){
   .nav-items li a{font-size:6px;letter-spacing:0;padding:0 4px;}
@@ -114,8 +116,8 @@ section{scroll-margin-top:140px;}
 .search-empty{padding:20px 16px;font-family:var(--sans);font-size:12px;color:var(--dim);letter-spacing:1px;text-align:center;}
 
 /* ── HERO COMPACT — button always above fold on any screen ───────────────── */
-.hero{min-height:calc(100vh - var(--nav-h));display:flex;flex-direction:column;justify-content:center;align-items:center;padding:70px 24px 20px;position:relative;background:radial-gradient(ellipse at 50% 35%,rgba(212,175,55,.05) 0%,transparent 68%);}
-.hero-question{font-size:clamp(19px,3.2vw,34px);font-weight:300;font-style:italic;color:var(--gold);line-height:1.45;max-width:680px;margin-bottom:10px;letter-spacing:.3px;}
+.hero{min-height:calc(100vh - var(--nav-h));display:flex;flex-direction:column;justify-content:center;align-items:center;padding:60px 24px 16px;position:relative;background:radial-gradient(ellipse at 50% 35%,rgba(212,175,55,.05) 0%,transparent 68%);}
+.hero-question{font-size:clamp(17px,2.6vw,28px);font-weight:300;font-style:italic;color:var(--gold);line-height:1.45;max-width:620px;margin-bottom:10px;letter-spacing:.3px;text-align:center;}
 .hero-sub{font-size:clamp(15px,2vw,18px);color:var(--mid);font-weight:300;max-width:480px;line-height:1.85;margin-bottom:8px;}
 
 /* ── EXPAND LABEL (shared by arch, why) ──────────────────────────────────── */
@@ -405,13 +407,11 @@ section{scroll-margin-top:140px;}
   .framework-card h3{font-size:20px;}
   .framework-card p{font-size:15.5px;}
   .float-logo{width:46px;height:46px;}
-  .nav-items{padding:0 4px;flex-wrap:nowrap;}
-  .nav-items li a{font-size:9px;letter-spacing:1.5px;padding:0 10px;}
+  .nav-items{padding:0 2px;flex-wrap:nowrap;}
   .superordinate-box{padding:32px 24px;}
   .path-card{padding:32px 24px;}
 }
 @media(max-width:380px){
-  .nav-items li a{font-size:8px;letter-spacing:1px;padding:0 8px;}
   .hero-question{font-size:21px;}
 }
 
@@ -504,17 +504,39 @@ section{scroll-margin-top:140px;}
   <img src="./assets/images/Logo_web.jpg" alt="*SELF">
 </a>
 
-<!-- HERO — P4: Updated opening (Option A: timeless) -->
+<!-- HERO — Structured, enclosed, typographically intentional -->
 <section class="hero" id="home">
-  <p class="hero-question" style="margin-bottom:6px;">There is a question you have been avoiding<br>your entire life.<br>It will not wait forever.</p>
-  <p class="hero-sub" style="font-size:clamp(20px,3.2vw,30px);color:var(--gold);font-weight:400;margin-bottom:4px;margin-top:2px;">What is your own SELF worth?</p>
-  <p class="hero-sub" style="color:var(--dim);margin-bottom:2px;font-size:clamp(14px,1.8vw,17px);">Not in dollars. Not in status. Not in the next milestone.<br>In the only currency that cannot be taken from you.</p>
-  <p class="hero-sub" style="color:var(--grey);font-size:clamp(13px,1.6vw,16px);font-style:italic;margin-bottom:4px;margin-top:0;">If today were the last day you had &mdash; would the answer change?</p>
-  <p class="hero-sub" style="margin-bottom:10px;font-size:11px;letter-spacing:3px;font-family:var(--sans);text-transform:uppercase;">$SELF &middot; Solana</p>
-  <a class="btn-gold" href="#contract"
+
+  <!-- Opening — italic gold, same serif voice as pull-quotes -->
+  <p class="hero-question" style="margin-bottom:24px;">There is a question you have been avoiding<br>your entire life.<br>It will not wait forever.</p>
+
+  <!-- Core question — enclosed box with corner accents -->
+  <div style="position:relative;max-width:540px;width:100%;border:1px solid #2a2a2a;background:rgba(212,175,55,.04);padding:22px 32px 20px;margin-bottom:14px;text-align:center;">
+    <div style="position:absolute;top:-1px;left:-1px;width:16px;height:16px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);"></div>
+    <div style="position:absolute;top:-1px;right:-1px;width:16px;height:16px;border-top:1px solid var(--gold);border-right:1px solid var(--gold);"></div>
+    <div style="position:absolute;bottom:-1px;left:-1px;width:16px;height:16px;border-bottom:1px solid var(--gold);border-left:1px solid var(--gold);"></div>
+    <div style="position:absolute;bottom:-1px;right:-1px;width:16px;height:16px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);"></div>
+
+    <p style="font-family:var(--serif);font-size:clamp(20px,3vw,30px);font-weight:400;color:var(--gold);line-height:1.35;margin-bottom:12px;">What is your own SELF worth?</p>
+    <p style="font-family:var(--serif);font-size:clamp(12px,1.5vw,15px);color:var(--dim);line-height:1.85;margin-bottom:10px;">Not in dollars. Not in status. Not in the next milestone.<br>In the only currency that cannot be taken from you.</p>
+    <div style="border-top:1px solid #1e1e1e;padding-top:10px;margin-top:2px;">
+      <p style="font-family:var(--serif);font-size:clamp(13px,1.7vw,17px);color:var(--mid);font-style:italic;line-height:1.7;margin-bottom:0;">If today were the last day of your life &mdash;<br>how would that change your perspective on SELF?</p>
+    </div>
+  </div>
+
+  <!-- Gold pill — CA as anchor, scrolls to contract -->
+  <a href="#contract"
      onclick="event.preventDefault();document.getElementById('contract').scrollIntoView({behavior:'smooth'});"
-     style="display:inline-block;padding:11px 40px;font-size:11px;letter-spacing:3px;margin-bottom:8px;">&#10003; View Contract</a>
-  <span class="scroll-hint">continue &darr;</span>
+     style="display:inline-flex;align-items:center;gap:8px;margin-top:10px;padding:9px 20px;background:var(--gold);color:#000;font-family:var(--sans);font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;text-decoration:none;transition:opacity .25s;box-shadow:0 0 18px rgba(212,175,55,.35);max-width:90%;overflow:hidden;"
+     title="7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump"
+     onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+    <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:260px;">CA: 7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump</span>
+    <svg width="10" height="10" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
+      <path d="M6 1v9M2 7l4 4 4-4" stroke="#000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+  <span class="scroll-hint" style="margin-top:8px;">continue &darr;</span>
+
 </section>
 
 <!-- BANNER -->
