@@ -61,7 +61,7 @@ a:hover{opacity:.7;}
 @media(max-width:380px){.nav-items li a{font-size:7px;letter-spacing:0px;padding:0 4px;}}
 
 /* ── FLOATING LOGO ───────────────────────────────────────────────────────── */
-.float-logo{position:fixed;top:calc(var(--nav-h)+10px);left:50%;transform:translateX(-50%);z-index:500;width:58px;height:58px;border-radius:6px;overflow:hidden;box-shadow:0 0 12px 3px var(--gold-glow),0 0 36px 8px rgba(212,175,55,.22),0 0 70px 20px rgba(212,175,55,.08);animation:glow-pulse 3.5s ease-in-out infinite;cursor:pointer;display:block;transition:opacity .3s;}
+.float-logo{position:fixed;top:calc(var(--nav-h)+4px);left:50%;transform:translateX(-50%);z-index:500;width:58px;height:58px;border-radius:6px;overflow:hidden;box-shadow:0 0 12px 3px var(--gold-glow),0 0 36px 8px rgba(212,175,55,.22),0 0 70px 20px rgba(212,175,55,.08);animation:glow-pulse 3.5s ease-in-out infinite;cursor:pointer;display:block;transition:opacity .3s;}
 .float-logo.hidden{opacity:0;pointer-events:none;}
 .float-logo img{width:100%;height:100%;object-fit:cover;display:block;}
 @keyframes glow-pulse{0%,100%{box-shadow:0 0 12px 3px var(--gold-glow),0 0 36px 8px rgba(212,175,55,.22),0 0 70px 20px rgba(212,175,55,.08);}50%{box-shadow:0 0 22px 7px rgba(212,175,55,.8),0 0 55px 15px rgba(212,175,55,.35),0 0 100px 32px rgba(212,175,55,.13);}}
@@ -77,10 +77,10 @@ section{scroll-margin-top:140px;}
 .section-wide{padding:80px 24px;max-width:980px;margin:0 auto;}
 .divider{width:1px;height:70px;background:linear-gradient(to bottom,transparent,#2a2a2a,transparent);margin:0 auto;}
 .gold-line{width:48px;height:1px;background:var(--gold);opacity:.45;margin:44px auto;}
-.label{font-family:var(--sans);font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--dim);margin-bottom:42px;display:block;}
+.label{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--gold);opacity:.85;margin-bottom:42px;display:block;}
 
 /* ── HERO ─────────────────────────────────────────────────────────────────── */
-.hero{min-height:auto;display:flex;flex-direction:column;justify-content:flex-start;align-items:center;padding:50px 24px 40px;position:relative;background:radial-gradient(ellipse at 50% 35%,rgba(212,175,55,.05) 0%,transparent 68%);}
+.hero{min-height:auto;display:flex;flex-direction:column;justify-content:flex-start;align-items:center;padding:36px 24px 32px;position:relative;background:radial-gradient(ellipse at 50% 35%,rgba(212,175,55,.05) 0%,transparent 68%);}
 .hero-question{font-size:clamp(24px,4.5vw,44px);font-weight:300;font-style:italic;color:var(--gold);line-height:1.55;max-width:680px;margin-bottom:20px;letter-spacing:.3px;}
 .hero-sub{font-size:clamp(16px,2.2vw,20px);color:var(--mid);font-weight:300;max-width:480px;line-height:1.9;margin-bottom:24px;}
 .btn-gold{padding:14px 44px;background:var(--gold);color:#000;font-family:var(--sans);font-size:12px;font-weight:800;letter-spacing:3px;text-transform:uppercase;border:none;cursor:pointer;transition:opacity .25s,transform .2s;text-decoration:none;display:inline-block;box-shadow:0 0 20px rgba(212,175,55,.3);}
@@ -112,6 +112,21 @@ section{scroll-margin-top:140px;}
 .pull-quote p{font-family:var(--serif);font-size:clamp(20px,3vw,29px);font-weight:300;font-style:italic;color:var(--white);line-height:1.65;margin:0;}
 /* pull-quote ::after removed */
 .pull-quote cite{display:block;margin-top:14px;font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-style:normal;opacity:.75;}
+
+
+/* ── COSMO-QUOTE (redistributed Jung / Alder quotes) ────────────────────── */
+.cosmo-quote{max-width:660px;margin:44px auto;padding:36px 32px;border-left:3px solid var(--gold);background:var(--bg-lift);border:1px solid #1e1e1e;border-left:3px solid var(--gold);position:relative;text-align:left;}
+.cosmo-quote::before{content:none;}
+.cosmo-quote p{font-family:var(--serif);font-size:clamp(18px,2.5vw,24px);font-weight:300;font-style:italic;color:var(--white);line-height:1.75;margin-bottom:14px;}
+.cosmo-quote cite{font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-style:normal;opacity:.75;display:block;}
+
+/* ── MIRROR / SYMPTOMS BLOCK ─────────────────────────────────────────────── */
+.symptoms-block-box{max-width:660px;margin:0 auto;padding:44px 40px;border:1px solid #2a2a2a;background:var(--bg-lift);position:relative;}
+.symptoms-block-box::before{content:'';position:absolute;top:-1px;left:-1px;width:20px;height:20px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);}
+.symptoms-block-box::after{content:'';position:absolute;bottom:-1px;right:-1px;width:20px;height:20px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);}
+.symptoms-block p{font-size:clamp(18px,2.8vw,28px);font-weight:300;color:var(--mid);line-height:1.75;margin-bottom:14px;}
+.symptoms-block p.gold{color:var(--gold);font-style:italic;}
+.symptoms-block .small{font-size:clamp(14px,1.8vw,17px);color:var(--grey);font-style:italic;line-height:1.9;}
 
 /* ── P6: VOID TEST ───────────────────────────────────────────────────────── */
 .void-test{padding:70px 24px;background:radial-gradient(ellipse at 50% 50%,rgba(212,175,55,.06) 0%,transparent 65%);border-top:1px solid #111;border-bottom:1px solid #111;}
@@ -329,7 +344,7 @@ section{scroll-margin-top:140px;}
 .identity-section.collapsed .identity-grid{max-height:0;opacity:0;}
 .identity-section.collapsed .identity-section-footer{max-height:0;overflow:hidden;opacity:0;}
 @media(max-width:640px){
-  .hero{padding-top:115px;padding-bottom:80px;justify-content:flex-start;min-height:auto;}
+  .hero{padding-top:84px;padding-bottom:60px;justify-content:flex-start;min-height:auto;}
   .hero-question{font-size:24px;letter-spacing:.1px;}
   .hero-sub{font-size:17px;line-height:1.85;}
   .phil-line{font-size:19px;margin:10px 0;line-height:1.8;}
@@ -355,7 +370,6 @@ section{scroll-margin-top:140px;}
   .framework-card h3{font-size:20px;}
   .framework-card p{font-size:15.5px;}
   .float-logo{width:46px;height:46px;}
-  .site-nav{justify-content:flex-start;}
   .nav-items{padding:0 4px;flex-wrap:nowrap;}
   .nav-items li a{font-size:9px;letter-spacing:1.5px;padding:0 10px;}
   .superordinate-box{padding:32px 24px;}
@@ -415,13 +429,6 @@ section{scroll-margin-top:140px;}
 }
 
 
-/* ── MIRROR QUOTES BOX ───────────────────────────────────────────────────── */
-.mirror-quotes-box{max-width:640px;margin:32px auto 0;border:1px solid #1e1e1e;background:var(--bg-lift);overflow:hidden;}
-.mirror-quote-item{padding:24px 32px;border-bottom:1px solid #161616;text-align:left;}
-.mirror-quote-item:last-child{border-bottom:none;}
-.mirror-quote-item p{font-family:var(--serif);font-size:clamp(15px,1.9vw,18px);font-style:italic;color:var(--mid);line-height:1.9;margin-bottom:8px;}
-.mirror-quote-item cite{font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-style:normal;opacity:.75;}
-
 </style>
 </head>
 <body>
@@ -447,13 +454,14 @@ section{scroll-margin-top:140px;}
 
 <!-- HERO — P4: Updated opening (Option A: timeless) -->
 <section class="hero" id="home">
-  <p class="hero-question" style="margin-bottom:8px;">There is a question you have been avoiding<br>your entire life.<br>It will not wait forever.</p>
-  <p class="hero-sub" style="font-size:clamp(22px,3.5vw,32px);color:var(--gold);font-weight:400;margin-bottom:12px;margin-top:8px;">What is your own SELF worth?</p>
-  <p class="hero-sub" style="color:var(--dim);margin-bottom:8px;">Not in dollars. Not in status. Not in the next milestone.<br>In the only currency that cannot be taken from you.</p>
-  <p class="hero-sub" style="margin-bottom:18px;font-size:13px;letter-spacing:3px;font-family:var(--sans);text-transform:uppercase;">$SELF &middot; Solana</p>
+  <p class="hero-question" style="margin-bottom:4px;">There is a question you have been avoiding<br>your entire life.<br>It will not wait forever.</p>
+  <p class="hero-sub" style="font-size:clamp(22px,3.5vw,32px);color:var(--gold);font-weight:400;margin-bottom:8px;margin-top:4px;">What is your own SELF worth?</p>
+  <p class="hero-sub" style="color:var(--dim);margin-bottom:4px;">Not in dollars. Not in status. Not in the next milestone.<br>In the only currency that cannot be taken from you.</p>
+  <p class="hero-sub" style="color:var(--grey);font-size:clamp(15px,1.9vw,18px);font-style:italic;margin-bottom:10px;margin-top:2px;">If today were the last day you had &mdash;<br>would the answer change?</p>
+  <p class="hero-sub" style="margin-bottom:12px;font-size:13px;letter-spacing:3px;font-family:var(--sans);text-transform:uppercase;">$SELF &middot; Solana</p>
   <a class="btn-gold" href="#contract"
      onclick="event.preventDefault();document.getElementById('contract').scrollIntoView({behavior:'smooth'});"
-     style="display:inline-block;padding:14px 44px;font-size:11px;letter-spacing:3px;margin-bottom:20px;">&#10003; View Contract</a>
+     style="display:inline-block;padding:13px 44px;font-size:11px;letter-spacing:3px;margin-bottom:16px;">&#10003; View Contract</a>
   <span class="scroll-hint">continue &darr;</span>
 </section>
 
@@ -465,12 +473,12 @@ section{scroll-margin-top:140px;}
 
 <!-- THE MIRROR -->
 <section class="section">
-  <div class="symptoms-block">
+  <div class="symptoms-block-box"><div class="symptoms-block">
     <p>Most people treat anxiety as a malfunction.</p>
     <p class="gold">Eastern wisdom treats it as a message.</p>
     <p class="small">Suffering is not a personal failure to fit into society.<br>It is a valid signal communicating a misalignment with the larger whole.</p>
     <p class="small" style="margin-top:12px;color:var(--dim);">The fix is not to silence the signal. It is to understand what it is pointing at.</p>
-  </div>
+  </div></div>
 </section>
 <div class="divider"></div>
 
@@ -480,24 +488,7 @@ section{scroll-margin-top:140px;}
     <p>&ldquo;The world will ask you who you are, and if you don&rsquo;t know, the world will tell you.&rdquo;</p>
     <cite>— Carl Jung</cite>
   </div>
-  <div class="mirror-quotes-box">
-    <div class="mirror-quote-item">
-      <p>&ldquo;Until you make the unconscious conscious, it will direct your life and you will call it fate.&rdquo;</p>
-      <cite>— Carl Jung</cite>
-    </div>
-    <div class="mirror-quote-item">
-      <p>&ldquo;The privilege of a lifetime is to become who you truly are.&rdquo;</p>
-      <cite>— Carl Jung</cite>
-    </div>
-    <div class="mirror-quote-item">
-      <p>&ldquo;Who looks outside, dreams; who looks inside, awakes.&rdquo;</p>
-      <cite>— Carl Jung</cite>
-    </div>
-    <div class="mirror-quote-item">
-      <p>&ldquo;One of the greatest regrets in life is being what others would want you to be, rather than being yourself.&rdquo;</p>
-      <cite>— Shannon Alder</cite>
-    </div>
-  </div>
+
 </section>
 <div class="divider"></div>
 
@@ -517,7 +508,7 @@ section{scroll-margin-top:140px;}
 <section class="section">
   <p class="phil-line">A cryptocurrency founder paid $4.6M for lunch with the world's most respected value investor.</p>
   <p class="phil-line dim">Three hours. Not one philosophy changed.</p>
-  <p class="phil-line">Then offered $30,000,000 for one hour meeting with the world's most visible tech visionary.</p>
+  <p class="phil-line">Then $30,000,000 for one hour with the world's most visible tech visionary.</p>
   <p class="phil-line gold">They never even responded.</p>
 </section>
 <div class="divider"></div>
@@ -560,15 +551,21 @@ section{scroll-margin-top:140px;}
 <section class="section" style="background:var(--bg-lift);border-top:1px solid #111;border-bottom:1px solid #111;padding:90px 24px;">
   <span class="label">The Mission</span>
   <div style="max-width:720px;margin:0 auto;text-align:left;">
-    <p style="font-size:clamp(17px,2.3vw,22px);color:var(--white);line-height:1.9;margin-bottom:20px;">Human birth is a supreme gift — a unique opportunity for Self-Realization.</p>
-    
-    <p style="font-size:clamp(16px,2vw,20px);color:var(--mid);line-height:1.95;margin-bottom:16px;"><strong style="color:var(--gold);">Why Realize the SELF?</strong><br>Since it's your life to discover. Everything is loved for the sake of SELF. To gain Immortality. To experience the eternal Joy and Bliss that already exists within us.</p>
-    
-    <p style="font-size:clamp(16px,2vw,20px);color:var(--mid);line-height:1.95;margin-bottom:16px;">This contrasts with the Impermanence of Happiness that we constantly seek in the External World. Hence the adage:</p>
-    
+    <p style="font-size:clamp(17px,2.3vw,22px);color:var(--white);line-height:1.9;margin-bottom:20px;">Human birth is a supreme gift &mdash; a unique opportunity for Self-Realization.</p>
+
+    <p style="font-size:clamp(16px,2vw,20px);color:var(--mid);line-height:1.95;margin-bottom:16px;"><strong style="color:var(--gold);">Why Realize the SELF?</strong><br>Since it&rsquo;s your life to discover. Everything is loved for the sake of SELF. To gain Immortality. To experience the eternal Joy and Bliss that already exists within you &mdash; not as a distant destination, but as a present recognition.</p>
+
+    <p style="font-size:clamp(16px,2vw,20px);color:var(--mid);line-height:1.95;margin-bottom:16px;">The eternal joy, the bliss, the consciousness you are searching for in the next achievement, the next milestone, the next external event &mdash; it already lies within you. It has always been there. Waiting not to be achieved, but to be <em style="color:var(--gold);">experienced.</em></p>
+
+    <p style="font-size:clamp(16px,2vw,20px);color:var(--mid);line-height:1.95;margin-bottom:16px;">This is what contrasts with the Impermanence of Happiness we constantly seek in the External World. Hence the adage:</p>
+
     <p style="font-size:clamp(17px,2.2vw,21px);color:var(--gold);font-style:italic;line-height:1.85;">&ldquo;This Too Shall Pass&rdquo;</p>
-    
-    <p style="font-size:clamp(15px,1.9vw,19px);color:var(--grey);line-height:1.9;">Nothing lasts forever in life. Change is the only constant. True freedom comes from knowing what remains unchanged — your eternal SELF.</p>
+
+    <p style="font-size:clamp(15px,1.9vw,19px);color:var(--grey);line-height:1.9;">Nothing lasts forever in life. Change is the only constant. True freedom comes from knowing what remains unchanged &mdash; your eternal SELF. And that knowing is available not eventually, but today.</p>
+  </div>
+  <div class="cosmo-quote" style="max-width:660px;margin:36px auto 0;">
+    <p>&ldquo;The privilege of a lifetime is to become who you truly are.&rdquo;</p>
+    <cite>&mdash; Carl Jung</cite>
   </div>
 </section>
 <div class="divider"></div>
@@ -578,6 +575,10 @@ section{scroll-margin-top:140px;}
   <span class="label">The Framework</span>
   <p class="phil-line bright">The *SELF operating system. Six layers.</p>
   <p class="phil-line dim">Most people run on the first one their whole life.</p>
+  <div class="cosmo-quote" style="max-width:660px;margin:0 auto 36px;">
+    <p>&ldquo;Until you make the unconscious conscious, it will direct your life and you will call it fate.&rdquo;</p>
+    <cite>&mdash; Carl Jung</cite>
+  </div>
   <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;color:#555;text-transform:uppercase;margin-bottom:8px;">Cards collapsed by default &mdash; tap any to expand</p>
   <div class="framework-grid">
     <div class="framework-card collapsed">
@@ -603,6 +604,7 @@ section{scroll-margin-top:140px;}
       <h3>The True &ldquo;I&rdquo;</h3><div class="framework-content">
       <p>Your pure, underlying conscious awareness. The silent observer behind every thought. The screen, not the movie &mdash; unchanged by whatever plays on it. Every tradition that found truth arrived at the same address.</p>
       <p style="margin-top:14px;font-size:15px;color:var(--gold);font-style:italic;">SAT-CHIT-ANAND.<br><span style="font-size:14px;font-style:normal;">Existence. Consciousness. Bliss.</span></p>
+      <p style="margin-top:10px;font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;border-top:1px solid #1e1e1e;padding-top:12px;">Atman (Individual SELF) = Brahman (Supreme Reality)</p>
       <p style="margin-top:10px;font-size:14px;color:var(--gold);font-style:italic;">In Sanskrit: <em>Maya / Avidya</em> &mdash; the lens of separation &mdash; is dissolved when you recognize you are not the projection, but the screen. That is who you actually are.</p>
     </div></div>
     <div class="framework-card collapsed">
@@ -785,14 +787,23 @@ section{scroll-margin-top:140px;}
       </div>
     </div>
 
-    <div style="max-width:660px;margin:52px auto 0;padding:44px 36px;border:1px solid #2a2a2a;background:var(--bg);text-align:center;position:relative;">
-      <div style="position:absolute;top:-1px;left:-1px;width:16px;height:16px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);"></div>
-      <div style="position:absolute;bottom:-1px;right:-1px;width:16px;height:16px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);"></div>
-      <p style="font-size:clamp(17px,2.4vw,23px);font-weight:300;color:var(--mid);line-height:1.9;margin-bottom:18px;">You do not need a saviour to walk this path.</p>
-      <p style="font-size:clamp(16px,2.2vw,21px);color:var(--gold);font-style:italic;line-height:1.8;margin-bottom:16px;">The path does not begin when someone rescues you.<br>It begins the moment you stop waiting for rescue.</p>
-      <p style="font-size:clamp(14px,1.9vw,18px);color:var(--grey);line-height:1.9;">Every tradition, every sage, every teacher has said the same thing in different words: the inner voice has always known the way. The only question is whether you have been still enough to hear it. Difficult times are not obstacles to your liberation. They are the curriculum.</p>
-    </div>
-  </div></div>
+  </div></div><!-- /surrender-content /surrender-section -->
+
+  <!-- SAVIOUR BOX — standalone, always visible below stages -->
+  <div style="max-width:660px;margin:44px auto 0;padding:40px 36px;border:1px solid #2a2a2a;background:var(--bg);text-align:center;position:relative;">
+    <div style="position:absolute;top:-1px;left:-1px;width:16px;height:16px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);"></div>
+    <div style="position:absolute;bottom:-1px;right:-1px;width:16px;height:16px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);"></div>
+    <p style="font-size:clamp(17px,2.4vw,23px);font-weight:300;color:var(--mid);line-height:1.9;margin-bottom:18px;">You do not need a saviour to walk this path.</p>
+    <p style="font-size:clamp(16px,2.2vw,21px);color:var(--gold);font-style:italic;line-height:1.8;margin-bottom:16px;">The path does not begin when someone rescues you.<br>It begins the moment you stop waiting for rescue.</p>
+    <p style="font-size:clamp(14px,1.9vw,18px);color:var(--grey);line-height:1.9;">Every tradition, every sage, every teacher has said the same thing in different words: the inner voice has always known the way. The only question is whether you have been still enough to hear it. Difficult times are not obstacles to your liberation. They are the curriculum.</p>
+  </div>
+
+  <!-- BUDDHA'S FINAL TEACHING — follows naturally from "be your own lamp" -->
+  <div style="max-width:660px;margin:20px auto 0;padding:36px 36px 36px;border:1px solid #1e1e1e;background:var(--bg-lift);text-align:left;">
+    <p style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:16px;">Buddha&rsquo;s Final Teaching</p>
+    <p style="font-family:var(--serif);font-size:clamp(18px,2.5vw,24px);color:var(--white);font-style:italic;line-height:1.75;margin-bottom:14px;">&ldquo;Be a lamp unto yourself.&rdquo;</p>
+    <p style="font-family:var(--serif);font-size:clamp(14px,1.9vw,17px);color:var(--grey);line-height:1.9;">These were the Buddha&rsquo;s final words. Not a doctrine. Not a deity. A direction: <em style="color:var(--mid);">look inward.</em> Genuine realization cannot be transferred from books, teachers, or traditions &mdash; outside perspectives are constantly shifting. In Pali, <em style="color:var(--mid);">dipa</em> means both lamp and island: be your own steady ground. Trust your own direct experience. No one else can do it for you.</p>
+  </div>
 </section>
 <span class="continue-hint">continue</span>
 <div class="divider"></div>
@@ -897,6 +908,16 @@ section{scroll-margin-top:140px;}
 </div>
 <div class="divider"></div>
 
+<!-- FRANCIS WELLER QUOTE — placed here: after Foundation (all traditions point inward),
+     Weller's lament "we've forgotten the sacred" bridges to the Vision Statement -->
+<section class="section">
+  <div class="cosmo-quote">
+    <p>&ldquo;We have exchanged a cosmology of connection for an ideology of separation. We have demarcated ourselves from the world. The human and the sacred has been forgotten.&rdquo;</p>
+    <cite>&mdash; Francis Weller</cite>
+  </div>
+</section>
+<div class="divider"></div>
+
 <!-- PERCEPTUAL CHAIN SECTION -->
 <section style="padding:90px 24px;background:var(--bg-lift);border-top:1px solid #111;border-bottom:1px solid #111;">
   <div style="max-width:760px;margin:0 auto;">
@@ -938,16 +959,13 @@ section{scroll-margin-top:140px;}
     </div>
     </div>
 </section>
-<span class="continue-hint">continue</span>
-<div class="divider"></div>
-
-<!-- COSMOLOGY QUOTE -->
 <section class="section">
   <div class="cosmo-quote">
-    <p>&ldquo;We have exchanged a cosmology of connection for an ideology of separation. We have demarcated ourselves from the world. The human and the sacred has been forgotten.&rdquo;</p>
-    <cite>&mdash; Francis Weller</cite>
+    <p>&ldquo;Who looks outside, dreams; who looks inside, awakes.&rdquo;</p>
+    <cite>&mdash; Carl Jung</cite>
   </div>
 </section>
+<span class="continue-hint">continue</span>
 <div class="divider"></div>
 
 <!-- CORE VISION STATEMENT -->
@@ -1000,8 +1018,8 @@ section{scroll-margin-top:140px;}
 <!-- IPO SECTION -->
 <section class="ipo-section" id="ipo">
   <span class="label">The Internal Public Offering</span>
-  <p class="ipo-headline">While the world <em>waits</em> for external IPOs,<br>the most undervalued IPO <em>trades right now.</em></p>
-  <p class="ipo-sub">Not on Wall Street. On the cosmic ledger. Your consciousness. Your direction. Your choice.</p>
+  <p class="ipo-headline">While the world chases external IPOs, rocket launches,<br>moon bases, and the next memecoin &mdash;<br>the most undervalued IPO <em>trades right now.</em></p>
+  <p class="ipo-sub">Sub-goals. All of them. Valid. Impressive. But sub-goals.<br>Not on Wall Street. On the cosmic ledger. Your consciousness. Your direction. Your choice.</p>
   <div class="ipo-table">
     <div class="ipo-table-row header">
       <div class="ipo-cell">Attribute</div>
@@ -1067,22 +1085,32 @@ section{scroll-margin-top:140px;}
     </div>
   </div>
 
-  <div class="confrontation-body">
-    <p>This is not a critique of the market.</p>
-    <p class="gold">This is a mirror.</p>
-    <p>What does it tell you about what humanity currently values?<br>What does it tell you about the direction you are pointed in?</p>
-
-    <p class="dim">Building rockets. Establishing bases on Mars. Running data centers in orbit. These are extraordinary sub-goals. Civilisationally necessary. Impressive by any measure. But they are still sub-goals.</p>
-
-    <p>Rockets can reach Mars.<br>
-    But you don't need a rocket to reach your SELF.<br>
-    <span style="color:var(--gold);font-style:italic;">It has never been separate from you.</span></p>
-
-    <p class="gold">The most undervalued asset in human history<br>has never had a ticker symbol.</p>
-
-    <p class="dim">Humanity has priced everything except the one thing that contains everything else. The market can be wrong for a very long time. The cosmic ledger cannot.</p>
+  <!-- Mirror reflection box -->
+  <div style="max-width:660px;margin:0 auto 44px;border:1px solid #252525;background:var(--bg-lift);">
+    <div style="padding:36px 36px 20px;">
+      <p style="font-size:clamp(17px,2.5vw,22px);font-weight:300;color:var(--mid);line-height:1.9;margin-bottom:12px;">This is not a critique of the market.</p>
+      <p style="font-size:clamp(18px,2.7vw,24px);font-weight:300;color:var(--gold);font-style:italic;line-height:1.85;margin-bottom:12px;">This is a mirror.</p>
+      <p style="font-size:clamp(15px,2vw,19px);font-weight:300;color:var(--mid);line-height:1.9;margin-bottom:20px;">What does it tell you about what humanity currently values?<br>What does it tell you about the direction you are pointed in?</p>
+    </div>
+    <div style="padding:0 36px 20px;border-top:1px solid #1e1e1e;">
+      <p style="font-size:clamp(14px,1.9vw,18px);color:var(--grey);line-height:1.9;margin-top:20px;margin-bottom:12px;">Building rockets. Establishing bases on Mars. Running data centers in orbit. These are extraordinary sub-goals. Civilisationally necessary. Impressive by any measure. But they are still sub-goals.</p>
+      <p style="font-size:clamp(15px,2vw,19px);color:var(--mid);line-height:1.9;margin-bottom:12px;">Rockets can reach Mars.<br>But you don&rsquo;t need a rocket to reach your SELF.<br><span style="color:var(--gold);font-style:italic;">It has never been separate from you.</span></p>
+    </div>
+    <div style="padding:20px 36px 28px;border-top:1px solid #1e1e1e;background:rgba(212,175,55,.03);">
+      <p style="font-size:clamp(16px,2.2vw,20px);color:var(--gold);font-style:italic;line-height:1.8;margin-bottom:10px;">The most undervalued asset in human history<br>has never had a ticker symbol.</p>
+      <p style="font-size:clamp(13px,1.7vw,16px);color:var(--grey);line-height:1.85;">Humanity has priced everything except the one thing that contains everything else. The market can be wrong for a very long time. The cosmic ledger cannot.</p>
+    </div>
   </div>
-  <p style="font-size:clamp(15px,2vw,19px);color:var(--mid);margin-top:20px;font-style:italic;">That question is not rhetorical.<br>It is the only one that matters.</p>
+
+  <div style="max-width:660px;margin:44px auto 0;padding:44px 40px;border:1px solid var(--gold);background:radial-gradient(ellipse at 50% 0%,rgba(212,175,55,.07) 0%,transparent 65%);text-align:center;position:relative;">
+    <div style="position:absolute;top:-1px;left:-1px;width:20px;height:20px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);"></div>
+    <div style="position:absolute;bottom:-1px;right:-1px;width:20px;height:20px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);"></div>
+    <p style="font-family:var(--sans);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:20px;">You have had access to it every day of your life.</p>
+    <p style="font-family:var(--serif);font-size:clamp(20px,3vw,30px);font-weight:300;color:var(--white);line-height:1.7;margin-bottom:20px;">Even <em style="color:var(--gold);">today.</em></p>
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,19px);color:var(--mid);line-height:1.9;margin-bottom:24px;">Would you rather invest in something that fades faster than it arrived &mdash; or something that holds a digital identity of you, a memorable version that carries your imprint even after you leave this world?</p>
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,19px);color:var(--mid);line-height:1.9;margin-bottom:24px;">No copycat can touch it. No pump.fun clone can replicate it. Unlike every token manufactured to disguise itself as you and vanish with your money &mdash; your SELF is the one thing that cannot be forged.</p>
+    <p style="font-family:var(--serif);font-size:clamp(16px,2.2vw,21px);color:var(--gold);font-style:italic;line-height:1.8;margin-bottom:28px;">Or you can wait. And regret it &mdash; on your deathbed &mdash; under the ignorance of your true SELF.</p>
+  </div>
 </section>
 <div class="divider"></div>
 
@@ -1140,6 +1168,12 @@ section{scroll-margin-top:140px;}
   <p>The supply is fixed at 1,000,000,042.</p>
   <p>T + O + B + E = 42. &nbsp;&nbsp; <em style="color:var(--gold);">To Be.</em></p>
 </section>
+<section class="section">
+  <div class="cosmo-quote">
+    <p>&ldquo;One of the greatest regrets in life is being what others would want you to be, rather than being yourself.&rdquo;</p>
+    <cite>&mdash; Shannon Alder</cite>
+  </div>
+</section>
 <div class="divider"></div>
 
 <!-- THE 42 COSMIC BLUEPRINT -->
@@ -1173,7 +1207,7 @@ section{scroll-margin-top:140px;}
       <p style="font-family:var(--serif);font-size:clamp(18px,2.8vw,26px);color:var(--white);line-height:1.75;margin-bottom:16px;">In computer science, ASCII code 42 translates exactly to the Asterisk (<strong style="color:var(--gold);">*</strong>) &mdash; the universal wildcard for &ldquo;Everything&rdquo; and &ldquo;Anything.&rdquo;</p>
       <p style="font-family:var(--serif);font-size:clamp(16px,2.2vw,20px);color:var(--mid);line-height:1.85;margin-bottom:20px;">Holding the *SELF means holding the cosmic wildcard. By operating from this sanctuary, you wield the universe&rsquo;s ultimate variable.</p>
       <p style="font-family:var(--serif);font-size:clamp(17px,2.4vw,22px);color:var(--gold);font-style:italic;">The universe is built on 42.<br>You are the wildcard. You define the value.</p>
-      <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-top:16px;">Atman (Individual Self) = Brahman (Supreme Reality). To know the *SELF is to know the entire universe.</p>
+      <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-top:16px;">Atman = Brahman. To know the *SELF is to know the entire universe.</p>
     </div>
   </div>
 </section>
@@ -1211,7 +1245,7 @@ section{scroll-margin-top:140px;}
   <p class="descriptor">Not a hype chat. No price talk. No memes.<br>Post what you noticed &mdash; in the chart, in yourself, in the market.<br>The mirror doesn&rsquo;t chase. It reflects.</p>
   <div class="mirror-links">
     <a class="mirror-link primary" href="https://x.com/i/chat/group_join/g2056088351590220124/gAK9fW8Y29" target="_blank" rel="noopener">&rarr; Enter the Mirror Room (X)</a>
-    <a class="mirror-link" href="https://t.me/+v6py4dWGU6g2MTU9" target="_blank" rel="noopener">&rarr; Telegram</a>
+    <a class="mirror-link" href="https://t.me/selfscreen" target="_blank" rel="noopener">&rarr; Telegram</a>
   </div>
 </section>
 <div class="divider"></div>
@@ -1263,6 +1297,7 @@ section{scroll-margin-top:140px;}
       <h4>Perfection &amp; Pure Joy</h4>
       <p>Your heart now fully awakens. Divine and Unity Consciousness. You still live &ldquo;in the world,&rdquo; but are no longer &ldquo;of the world.&rdquo; Individual identity dissolves into universal consciousness. No longer giver, given, or giving &mdash; only flow. <em style="color:var(--gold);">At the summit of subtilization, the burden of choice vanishes.</em></p>
       <p class="practice">Seed Mantra: OM &middot; Element: Universal Consciousness &middot; Layer: The SELF (Atman)</p>
+      <p style="font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-top:12px;padding-top:12px;border-top:1px solid #1e1e1e;">Atman (Individual SELF) = Brahman (Supreme Reality)</p>
     </div>
   </div>
 
@@ -1504,7 +1539,7 @@ section{scroll-margin-top:140px;}
   </div>
   <div class="footer-socials">
     <a href="https://x.com/muraliannareddy" target="_blank" rel="noopener">X</a>
-    <a href="https://t.me/+v6py4dWGU6g2MTU9" target="_blank" rel="noopener">Telegram</a>
+    <a href="https://t.me/selfscreen" target="_blank" rel="noopener">Telegram</a>
     <a href="https://www.youtube.com/channel/UCdQDrBMeE_uhDpqWY9QKlgw" target="_blank" rel="noopener">YouTube</a>
     <a href="https://www.instagram.com/muralireddy_79/" target="_blank" rel="noopener">Instagram</a>
     <a href="https://github.com/mannareddy/SELF" target="_blank" rel="noopener">GitHub</a>
