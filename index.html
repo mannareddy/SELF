@@ -1608,18 +1608,15 @@ section{scroll-margin-top:140px;}
 </section>
 <div class="divider"></div>
 
-<!-- DISCLAIMER: THE OPEN PROTOCOL -->
+<!-- DISCLAIMER -->
 <section id="disclaimer" style="scroll-margin-top:140px;padding:80px 24px;background:var(--bg-lift);border-top:1px solid #111;">
   <div style="max-width:720px;margin:0 auto;">
-    <span class="label">The Open Protocol</span>
-    <div style="border:1px solid #2a2a2a;padding:52px 44px;background:var(--bg);position:relative;">
-      <!-- corner accents -->
+    <div style="border:1px solid #2a2a2a;padding:48px 44px;background:var(--bg);position:relative;">
       <div style="position:absolute;top:-1px;left:-1px;width:18px;height:18px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);"></div>
       <div style="position:absolute;bottom:-1px;right:-1px;width:18px;height:18px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);"></div>
 
-      <h3 style="font-family:var(--serif);font-size:clamp(18px,2.5vw,24px);font-weight:400;color:var(--white);margin-bottom:28px;line-height:1.45;cursor:pointer;user-select:none;display:flex;align-items:center;justify-content:space-between;">Disclaimer <span style="font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;transition:all .3s;" class="disclaimer-toggle">Expand &#9660;</span></h3>
+      <h3 style="font-family:var(--serif);font-size:clamp(18px,2.5vw,24px);font-weight:400;color:var(--white);margin-bottom:28px;line-height:1.45;text-align:center;">Disclaimer</h3>
 
-      <div class="disclaimer-content" style="max-height:0;opacity:0;transition:max-height .4s ease,opacity .3s ease;overflow:hidden;">
       <p style="font-family:var(--serif);font-size:clamp(15px,1.9vw,18px);color:var(--grey);line-height:1.95;margin-bottom:20px;">This framework is a tool for personal observation and inquiry. It is not financial, medical, or professional advice. Outcomes — including volatility, loss, or inactivity — are determined entirely by participant behaviour.</p>
 
       <div style="border-left:2px solid var(--gold);padding-left:22px;margin:24px 0;">
@@ -1627,7 +1624,6 @@ section{scroll-margin-top:140px;}
       </div>
 
       <p style="font-family:var(--serif);font-size:clamp(15px,1.9vw,18px);color:var(--grey);line-height:1.95;margin-bottom:0;">This framework belongs to no religion, nationality, or background. The vocabulary draws from Hindu tradition — not because it holds exclusive claim, but because it is the living language of the person who built it. <em style="color:var(--mid);">The door is not the destination.</em></p>
-      </div>
     </div>
   </div>
 </section>
@@ -1934,26 +1930,7 @@ function showVoidResponse(type, btn){
   }
 
   /* --- Disclaimer: click h3 to toggle --- */
-  var disclaimerSection = document.getElementById('disclaimer');
-  if(disclaimerSection){
-    var disclaimerH3 = disclaimerSection.querySelector('h3');
-    var disclaimerContent = disclaimerSection.querySelector('.disclaimer-content');
-    var disclaimerToggle = disclaimerH3 ? disclaimerH3.querySelector('.disclaimer-toggle') : null;
-    if(disclaimerH3 && disclaimerContent){
-      disclaimerH3.addEventListener('click',function(){
-        var isOpen = disclaimerContent.style.maxHeight !== '0px' && disclaimerContent.style.maxHeight !== '';
-        if(isOpen){
-          disclaimerContent.style.maxHeight = '0px';
-          disclaimerContent.style.opacity = '0';
-          if(disclaimerToggle) disclaimerToggle.innerHTML = 'Expand &#9660;';
-        } else {
-          disclaimerContent.style.maxHeight = '2000px';
-          disclaimerContent.style.opacity = '1';
-          if(disclaimerToggle) disclaimerToggle.innerHTML = 'Collapse &#9650;';
-        }
-      });
-    }
-  }
+  /* disclaimer toggle removed — content always visible */
 
   /* --- 5 Stages toggle: single listener --- */
   var surrenderSection = document.querySelector('.surrender-section');
