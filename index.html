@@ -471,6 +471,7 @@ section{scroll-margin-top:140px;}
 <nav class="site-nav" id="siteNav" aria-label="Site navigation">
   <div class="progress-bar" id="progressBar"></div>
   <ul class="nav-items">
+    <li><a href="#home" id="nav-home">Home</a></li>
     <li><a href="#framework">Framework</a></li>
     <li><a href="#ledger">Ledger</a></li>
     <li><a href="#ipo">IPO</a></li>
@@ -958,8 +959,12 @@ section{scroll-margin-top:140px;}
       <div class="tradition-cell">The self as inseparable from community and nature &mdash; the web of all life</div>
     </div>
   </div>
-  <p class="tradition-conclusion">&ldquo;The highest achievement is looking inward to realize our true nature beneath the illusions of the ego.&rdquo;<br><span style="font-family:var(--sans);font-size:10px;letter-spacing:3px;color:var(--gold);opacity:.7;">— The unified conclusion of every wisdom tradition in human history.</span></p>
   </div></div><!-- end foundation-content -->
+</div>
+
+<div style="max-width:820px;margin:32px auto 0;padding:28px 32px;border-left:3px solid var(--gold);background:var(--bg-lift);">
+  <p style="font-family:var(--serif);font-size:clamp(16px,2.1vw,19px);font-style:italic;color:var(--mid);line-height:1.85;margin-bottom:10px;">&ldquo;The highest achievement is looking inward to realize our true nature beneath the illusions of the ego.&rdquo;</p>
+  <span style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.75;">&mdash; The unified conclusion of every wisdom tradition in human history</span>
 </div>
 <div class="divider"></div>
 
@@ -1068,6 +1073,22 @@ section{scroll-margin-top:140px;}
   <p class="dim">It doesn&rsquo;t need one.</p>
 </section>
 <span class="continue-hint">continue</span>
+<div class="divider"></div>
+
+<!-- SUPER-ORDINATE GOAL — before IPO so user understands sub-goals context -->
+<section class="section-wide" style="scroll-margin-top:140px;padding:80px 24px;background:var(--bg-lift);border-top:1px solid #111;border-bottom:1px solid #111;">
+  <div style="max-width:720px;margin:0 auto;">
+    <span class="label">The Super-Ordinate Goal</span>
+    <div class="superordinate-box" style="margin-top:0;">
+    <span class="so-label">The Super-Ordinate Goal</span>
+    <p>An Olympic athlete doesn&rsquo;t stop eating to win gold. Eating becomes a calculated sub-goal designed to serve the ultimate victory. Every daily action is optimised so it does not conflict with the super-ordinate goal.</p>
+    <p>Launch rockets. Build bases on Mars. Run data centers in space. Accumulate assets. Build your career. Raise your family well.<br><span style="color:var(--gold);font-style:italic;">These are valid sub-goals.</span></p>
+    <p style="margin-top:6px;">Rule 1: Sub-goals cannot conflict with the super-ordinate goal. Rule 2: A sub-goal can never become the sole replacement for it. Succeeding in your career is not equal to achieving self-realization.</p>
+    <p class="gold">The super-ordinate goal &mdash; the Olympic Gold of life &mdash; is knowing your SELF.<br>The only gold that never depreciates.</p>
+    <p class="so-process">The post-goal slump is not a cliff. It is a period of rest and gratitude.<br><strong>The process is the purpose. The direction is the destination.</strong></p>
+  </div>
+  </div>
+</section>
 <div class="divider"></div>
 
 <!-- IPO SECTION -->
@@ -1199,15 +1220,6 @@ section{scroll-margin-top:140px;}
   </div>
   </div><!-- /why-content -->
 
-  <!-- SUPER-ORDINATE GOAL — standalone, always visible below why cards -->
-  <div class="superordinate-box" style="margin-top:36px;">
-    <span class="so-label">The Super-Ordinate Goal</span>
-    <p>An Olympic athlete doesn&rsquo;t stop eating to win gold. Eating becomes a calculated sub-goal designed to serve the ultimate victory. Every daily action is optimised so it does not conflict with the super-ordinate goal.</p>
-    <p>Launch rockets. Build bases on Mars. Run data centers in space. Accumulate assets. Build your career. Raise your family well.<br><span style="color:var(--gold);font-style:italic;">These are valid sub-goals.</span></p>
-    <p style="margin-top:6px;">Rule 1: Sub-goals cannot conflict with the super-ordinate goal. Rule 2: A sub-goal can never become the sole replacement for it. Succeeding in your career is not equal to achieving self-realization.</p>
-    <p class="gold">The super-ordinate goal &mdash; the Olympic Gold of life &mdash; is knowing your SELF.<br>The only gold that never depreciates.</p>
-    <p class="so-process">The post-goal slump is not a cliff. It is a period of rest and gratitude.<br><strong>The process is the purpose. The direction is the destination.</strong></p>
-  </div>
 
   <p class="why-closing">Ignorance of your true SELF<br>is the only poverty that actually matters.</p>
   <div style="margin-top:44px;">
@@ -1652,6 +1664,7 @@ function showVoidResponse(type, btn){
   var progressBar=document.getElementById('progressBar');
   var floatLogo=document.querySelector('.float-logo');
   var sections=[
+    {id:'home',     el:null},
     {id:'framework',el:null},
     {id:'ledger',   el:null},
     {id:'ipo',      el:null},
