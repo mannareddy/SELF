@@ -43,16 +43,35 @@ html{scroll-behavior:smooth;}
   --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
   --nav-h:44px;
 }
+/* ── LIGHT THEME ─────────────────────────────────────────────────────────── */
+[data-theme="light"]{
+  --bg:#faf8f3;--bg-lift:#f0ead8;--white:#1a1208;--gold:#8a6a12;--mid:#5a4a2a;--grey:#6b5d3f;--dim:#b8a88a;
+  --gold-glow:rgba(138,106,18,0.3);--gold-dim:rgba(138,106,18,0.1);
+}
+[data-theme="light"] body{background:#faf8f3;color:#1a1208;}
+[data-theme="light"] .site-nav{background:rgba(250,248,243,0.96);border-bottom:1px solid rgba(0,0,0,0.1);}
+[data-theme="light"] .nav-items li a{color:#4a3a1a;}
+[data-theme="light"] .banner-section{opacity:.9;mix-blend-mode:multiply;}
+[data-theme="light"] .framework-card,[data-theme="light"] .pillar-card,[data-theme="light"] .identity-card,
+[data-theme="light"] .why-card,[data-theme="light"] .faq-item,[data-theme="light"] .surrender-section,
+[data-theme="light"] .bg-lift{background:#f0ead8 !important;}
+[data-theme="light"] .divider{background:rgba(0,0,0,0.06);}
+[data-theme="light"] #searchModal .search-box{background:#faf8f3;border-color:rgba(0,0,0,0.15);}
+[data-theme="light"] .search-input{color:#1a1208;}
+[data-theme="light"] .search-result{background:#f0ead8;border-color:rgba(0,0,0,0.1);}
+[data-theme="light"] .search-result-title{color:#1a1208;}
+[data-theme="light"] #themeToggleBtn{border-color:rgba(0,0,0,0.2);color:#5a4a2a;}
+
 body{background:var(--bg);color:var(--white);font-family:var(--serif);text-align:center;line-height:1.85;overflow-x:hidden;padding-top:var(--nav-h);}
 a{color:var(--gold);text-decoration:none;transition:opacity .25s;}
 a:hover{opacity:.7;}
 
 /* ── STICKY NAV ─────────────────────────────────────────────────────────── */
-.site-nav{position:fixed;top:0;left:0;right:0;z-index:999;height:var(--nav-h);display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid #1c1c1c;transition:background .3s;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;white-space:nowrap;position:fixed;}
+.site-nav{position:fixed;top:0;left:0;right:0;z-index:999;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 24px;background:rgba(0,0,0,0.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid #1c1c1c;transition:background .3s;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;white-space:nowrap;position:fixed;}
 .site-nav::-webkit-scrollbar{display:none;}
 .site-nav.scrolled{background:rgba(0,0,0,0.98);}
 .progress-bar{position:absolute;bottom:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,rgba(212,175,55,.4) 0%,var(--gold) 100%);transition:width .1s linear;pointer-events:none;}
-.nav-items{display:flex;align-items:center;gap:0;list-style:none;padding:0;margin:0;}
+.nav-items{display:flex;list-style:none;height:100%;flex:1;justify-content:space-evenly;}
 .nav-items li a{display:block;font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);padding:0 10px;height:var(--nav-h);line-height:var(--nav-h);transition:color .2s;border-right:1px solid #1a1a1a;white-space:nowrap;}
 .nav-items li:first-child a{border-left:1px solid #1a1a1a;}
 .nav-items li a:hover{color:var(--gold);opacity:1;}
@@ -480,7 +499,8 @@ section{scroll-margin-top:140px;}
     <li><a href="#contract">Contract</a></li>
     <li><a href="#disclaimer">Disclaimer</a></li>
   </ul>
-  <!-- Search icon pinned to right — always visible -->
+  <!-- Theme + Search icons pinned to right -->
+  <button id="themeToggleBtn" onclick="toggleTheme()" title="Toggle light/dark theme" aria-label="Toggle theme" style="position:absolute;right:52px;top:0;background:none;border:none;border-left:1px solid #1a1a1a;color:var(--dim);cursor:pointer;width:44px;height:var(--nav-h);display:flex;align-items:center;justify-content:center;font-size:14px;z-index:2;transition:color .2s;padding:0;">&#9788;</button>
   <button class="nav-search-btn" id="navSearchBtn" aria-label="Search sections" title="Search sections (/)">
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
   </button>
@@ -535,9 +555,9 @@ section{scroll-margin-top:140px;}
       <path d="M6 1v9M2 7l4 4 4-4" stroke="#000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
   </a>
-  <span class="scroll-hint" style="margin-top:8px;">continue &darr;</span>
 
 </section>
+<div style="text-align:center;padding:14px 0 2px;font-family:var(--sans);font-size:10px;color:#444;letter-spacing:4px;text-transform:uppercase;animation:fade 3.5s ease-in-out infinite;user-select:none;pointer-events:none;">CONTINUE &#8595;</div>
 
 <!-- BANNER -->
 <div class="banner-section">
@@ -716,7 +736,50 @@ section{scroll-margin-top:140px;}
       <p style="font-size:clamp(13px,1.7vw,15px);color:var(--dim);text-align:center;font-family:var(--sans);letter-spacing:2px;text-transform:uppercase;margin-bottom:0;">Tap to expand &mdash; collapsed by default</p>
     </div>
     <div id="arch-content" style="max-height:0;overflow:hidden;transition:max-height .5s ease,opacity .3s ease;opacity:0;">
-    <p style="font-size:clamp(15px,2vw,18px);color:var(--grey);max-width:660px;margin:0 auto 40px;line-height:1.9;text-align:center;"><em style="color:var(--mid);">Recognition of the phase is the intervention.</em></p>
+    <p style="font-size:clamp(15px,2vw,18px);color:var(--grey);max-width:660px;margin:0 auto 24px;line-height:1.9;text-align:center;"><em style="color:var(--mid);">Recognition of the phase is the intervention. This is the complete 8-stage spiral from the original framework.</em></p>
+    <div style="max-width:760px;margin:0 auto 36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:2px;">
+      <div style="padding:20px 18px;background:var(--bg);border:1px solid #1e1e1e;">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;color:rgba(212,175,55,.6);margin-bottom:8px;">Stage 1</div>
+        <div style="font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:6px;">Contemplation</div>
+        <p style="font-family:var(--serif);font-size:13.5px;color:var(--grey);line-height:1.8;">The mind dwells on an external object or desire. Neutral at first &mdash; just attention.</p>
+      </div>
+      <div style="padding:20px 18px;background:var(--bg);border:1px solid #1e1e1e;">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;color:rgba(212,175,55,.55);margin-bottom:8px;">Stage 2</div>
+        <div style="font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:6px;">Attachment</div>
+        <p style="font-family:var(--serif);font-size:13.5px;color:var(--grey);line-height:1.8;">Repeated focus creates rigid emotional dependency. Contemplation becomes craving.</p>
+      </div>
+      <div style="padding:20px 18px;background:var(--bg);border:1px solid #1e1e1e;">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;color:rgba(212,120,55,.65);margin-bottom:8px;">Stage 3</div>
+        <div style="font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:6px;">Lust / Desire</div>
+        <p style="font-family:var(--serif);font-size:13.5px;color:var(--grey);line-height:1.8;">Desire is like fire &mdash; the more you satisfy it, the more it demands. It becomes all-consuming.</p>
+      </div>
+      <div style="padding:20px 18px;background:var(--bg);border:1px solid #1e1e1e;">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;color:rgba(212,80,40,.7);margin-bottom:8px;">Stage 4</div>
+        <div style="font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:6px;">Anger</div>
+        <p style="font-family:var(--serif);font-size:13.5px;color:var(--grey);line-height:1.8;">The heat of unfulfilled expectations when a craving is blocked. The first visible symptom.</p>
+      </div>
+      <div style="padding:20px 18px;background:var(--bg);border:1px solid #1e1e1e;">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;color:rgba(200,60,30,.75);margin-bottom:8px;">Stage 5</div>
+        <div style="font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:6px;">Delusion</div>
+        <p style="font-family:var(--serif);font-size:13.5px;color:var(--grey);line-height:1.8;">Anger clouds judgment and distorts your view of reality. The ego narrative is accepted as fact.</p>
+      </div>
+      <div style="padding:20px 18px;background:var(--bg);border:1px solid #1e1e1e;">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;color:rgba(180,40,20,.8);margin-bottom:8px;">Stage 6</div>
+        <div style="font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:6px;">Loss of Memory</div>
+        <p style="font-family:var(--serif);font-size:13.5px;color:var(--grey);line-height:1.8;">You forget your true purpose and spiritual values. The higher self is abandoned.</p>
+      </div>
+      <div style="padding:20px 18px;background:var(--bg);border:1px solid #1e1e1e;">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;color:rgba(160,20,10,.85);margin-bottom:8px;">Stage 7</div>
+        <div style="font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:6px;">Loss of Intelligence</div>
+        <p style="font-family:var(--serif);font-size:13.5px;color:var(--grey);line-height:1.8;">The intellect is bypassed for raw animalistic reactivity. Reasoning is no longer available.</p>
+      </div>
+      <div style="padding:20px 18px;background:var(--bg);border:1px solid #3a1010;">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;color:rgba(180,30,30,.9);margin-bottom:8px;">Stage 8</div>
+        <div style="font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:6px;">Destruction</div>
+        <p style="font-family:var(--serif);font-size:13.5px;color:var(--grey);line-height:1.8;">The individual abandons the SELF for self-destructive behaviour. <em style="color:#c0392b;">The account is blown.</em></p>
+      </div>
+    </div>
+    <div style="display:none;"><!-- old 4-phase grid preserved below -->
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2px;">
       <div style="padding:32px 26px;background:var(--bg);border:1px solid #1e1e1e;text-align:left;">
         <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;color:rgba(212,175,55,.6);margin-bottom:12px;">Phase 1</div>
@@ -1105,7 +1168,7 @@ section{scroll-margin-top:140px;}
     <div class="superordinate-box" style="margin-top:0;">
     <span class="so-label">The Super-Ordinate Goal</span>
     <p>An Olympic athlete doesn&rsquo;t stop eating to win gold. Eating becomes a calculated sub-goal designed to serve the ultimate victory. Every daily action is optimised so it does not conflict with the super-ordinate goal.</p>
-    <p>Launch rockets. Build bases on Mars. Run data centers in space. Accumulate assets. Build your career. Raise your family well.<br><span style="color:var(--gold);font-style:italic;">These are valid sub-goals.</span></p>
+    <p>Accumulate assets. Build your career. Raise your family well. Pursue every ambition you carry.<br><span style="color:var(--gold);font-style:italic;">These are valid sub-goals.</span></p>
     <p style="margin-top:6px;">Rule 1: Sub-goals cannot conflict with the super-ordinate goal. Rule 2: A sub-goal can never become the sole replacement for it. Succeeding in your career is not equal to achieving self-realization.</p>
     <p class="gold">The super-ordinate goal &mdash; the Olympic Gold of life &mdash; is knowing your SELF.<br>The only gold that never depreciates.</p>
     <p class="so-process">The post-goal slump is not a cliff. It is a period of rest and gratitude.<br><strong>The process is the purpose. The direction is the destination.</strong></p>
@@ -1157,8 +1220,8 @@ section{scroll-margin-top:140px;}
 
   <div style="max-width:700px;margin:0 auto 52px;">
     <div class="pull-quote" style="text-align:left;">
-      <p>&ldquo;While the world bids on reaching Mars, most people never reach themselves.&rdquo;</p>
-      <cite>One requires a rocket. The other requires a practice.</cite>
+      <p>&ldquo;The universe has been mapped to its outermost edge. The human interior remains largely unexplored.&rdquo;</p>
+      <cite>One requires a telescope. The other requires stillness.</cite>
     </div>
   </div>
 
@@ -1469,6 +1532,35 @@ section{scroll-margin-top:140px;}
       </div>
     </div>
 
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');var lbl=this.querySelector('.faq-icon');if(lbl){lbl.innerHTML=item.classList.contains('open')?'Collapse &#9660;':'Expand &#9654;';}">
+        <span>What is the 3-Step Circuit Breaker?</span>
+        <span class="faq-icon">Expand &#9654;</span>
+      </button>
+      <div class="faq-a">
+        <div class="faq-a-inner">
+          <p style="margin-bottom:18px;">The 3-Step Circuit Breaker is the emergency interrupt for the autopilot. When the RRRR Protocol feels too structured for a moment of acute distress, this severs the automatic programme instantly.</p>
+          <div style="border:1px solid #1e1e1e;padding:28px 24px;background:var(--bg-lift);margin-bottom:6px;">
+            <p style="font-family:var(--sans);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:20px;">The 3 Steps</p>
+            <div style="margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid #1a1a1a;">
+              <p style="font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:8px;"><strong style="color:var(--gold);font-weight:400;">1. Pause &mdash; Box Breathing</strong></p>
+              <p style="font-size:16px;color:var(--grey);line-height:1.85;">Inhale 4 seconds. Hold 4 seconds. Exhale 4 seconds. Hold 4 seconds. One complete box. This severs the neurochemical loop of the auto-pilot programme &mdash; no willpower required, just the breath.</p>
+            </div>
+            <div style="margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid #1a1a1a;">
+              <p style="font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:8px;"><strong style="color:var(--gold);font-weight:400;">2. Witness and Label</strong></p>
+              <p style="font-size:16px;color:var(--grey);line-height:1.85;">Step back. Ask: &ldquo;What is the exact trigger causing this distress?&rdquo; Naming the emotion strips its hidden power. You move from being inside the reaction to observing it from the screen.</p>
+            </div>
+            <div>
+              <p style="font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:8px;"><strong style="color:var(--gold);font-weight:400;">3. Detached Action</strong></p>
+              <p style="font-size:16px;color:var(--grey);line-height:1.85;">Shift focus to what you can control. Act while remaining detached from the outcome &mdash; success or failure. Stop watering the weeds. Act from the SELF, not from the wound.</p>
+            </div>
+          </div>
+          <p style="font-size:15px;color:var(--dim);font-style:italic;margin-top:12px;">Use the Circuit Breaker for acute moments. Use the full RRRR Protocol for deeper processing and reflection.</p>
+        </div>
+      </div>
+    </div>
+
     <div class="faq-item">
       <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');var lbl=this.querySelector('.faq-icon');if(lbl){lbl.innerHTML=item.classList.contains('open')?'Collapse &#9660;':'Expand &#9654;';}">
         <span>Is this a token or a philosophy?</span>
@@ -1590,6 +1682,64 @@ section{scroll-margin-top:140px;}
           </div>
           <p style="margin-bottom:16px;">When we recognize our self-worth, that is when we step into our greatness. That is when we align with our authentic power. That is when we can finally realize our full, true potential.</p>
           <p style="color:var(--gold);font-style:italic;margin-bottom:0;">I am worthy &mdash; and so are you.<br><span style="font-family:var(--sans);font-size:12px;letter-spacing:1px;font-style:normal;color:var(--mid);">The only question remaining: do you know it?</span></p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');var lbl=this.querySelector('.faq-icon');if(lbl){lbl.innerHTML=item.classList.contains('open')?'Collapse &#9660;':'Expand &#9654;';}">
+        <span>What are the 4 Rules of Daily Guidance?</span>
+        <span class="faq-icon">Expand &#9654;</span>
+      </button>
+      <div class="faq-a">
+        <div class="faq-a-inner">
+          <p style="margin-bottom:18px;">The four operational rules for daily life drawn from the *SELF framework. Simple enough to remember in the heat of a moment. Deep enough to govern a lifetime.</p>
+          <div style="border:1px solid #1e1e1e;overflow:hidden;background:var(--bg-lift);">
+            <div style="padding:22px 24px;border-bottom:1px solid #1a1a1a;">
+              <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:8px;">Rule 1</p>
+              <p style="font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:6px;">Comparison Culture &mdash; Compare only to Yesterday's self</p>
+              <p style="font-size:15px;color:var(--grey);line-height:1.85;">Do not compare yourself to others. Only compare the person you were yesterday to the person you are today. Learn from mistakes. Figure out what works. Be the best version of yourself by adapting to your own circumstances.</p>
+            </div>
+            <div style="padding:22px 24px;border-bottom:1px solid #1a1a1a;">
+              <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:8px;">Rule 2</p>
+              <p style="font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:6px;">The Starting Point &mdash; Begin exactly where you stand</p>
+              <p style="font-size:15px;color:var(--grey);line-height:1.85;">Begin exactly where you are right now. Focus only on how you <em style="color:var(--mid);">respond</em> to life's challenges &mdash; that is the only thing you control. Contain your energy. Direct it toward higher purpose instead of dissipating it through emotion.</p>
+            </div>
+            <div style="padding:22px 24px;border-bottom:1px solid #1a1a1a;">
+              <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:8px;">Rule 3</p>
+              <p style="font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:6px;">The Direction &mdash; Be the change you want to see</p>
+              <p style="font-size:15px;color:var(--grey);line-height:1.85;">If you do not dictate your own direction, you will be pulled into someone else's. Practice mindfulness to return to the present moment &mdash; life is happening only right now, not in the past or future.</p>
+            </div>
+            <div style="padding:22px 24px;">
+              <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:8px;">Rule 4</p>
+              <p style="font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:6px;">The Reality Check &mdash; Verify your goals against reality</p>
+              <p style="font-size:15px;color:var(--grey);line-height:1.85;">Find people who have already achieved the goals you are pursuing. Ask: does the reality of that achievement align with your true inner needs? If not, reprogram the path. Start working on your inner SELF right now, so you will not regret it on your deathbed.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');var lbl=this.querySelector('.faq-icon');if(lbl){lbl.innerHTML=item.classList.contains('open')?'Collapse &#9660;':'Expand &#9654;';}">
+        <span>What are the Logotherapy Tools for finding meaning?</span>
+        <span class="faq-icon">Expand &#9654;</span>
+      </button>
+      <div class="faq-a">
+        <div class="faq-a-inner">
+          <p style="margin-bottom:16px;">Viktor Frankl&rsquo;s Logotherapy gives us three practical tools for discovering meaning beyond the symptom. These complement the RRRR Protocol by operating at a deeper level of questioning.</p>
+          <div style="margin-bottom:18px;padding:20px 22px;border-left:3px solid var(--gold);background:var(--bg-lift);">
+            <p style="font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:6px;">Dereflection &mdash; Shift to higher purpose</p>
+            <p style="font-size:15.5px;color:var(--grey);line-height:1.85;">Shift focus from the problem to a higher purpose. Ask: <em style="color:var(--mid);">What would your life look like without this problem?</em> This moves attention from the wound to the direction.</p>
+          </div>
+          <div style="margin-bottom:18px;padding:20px 22px;border-left:3px solid var(--gold);background:var(--bg-lift);">
+            <p style="font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:6px;">Paradoxical Intention &mdash; Face the fear directly</p>
+            <p style="font-size:15.5px;color:var(--grey);line-height:1.85;">Remove the power of fear by intentionally focusing on what you fear most. The anxiety about the anxiety is often worse than the thing itself. Name it fully and watch its grip loosen.</p>
+          </div>
+          <div style="padding:20px 22px;border-left:3px solid var(--gold);background:var(--bg-lift);">
+            <p style="font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:6px;">Socratic Dialogue &mdash; The answers are within</p>
+            <p style="font-size:15.5px;color:var(--grey);line-height:1.85;">The answers do not come from outside. They are realized through careful questioning. Ask: <em style="color:var(--mid);">Is there anything in your life you would die for?</em> If yes &mdash; that is your direction. That is your super-ordinate goal.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -1797,21 +1947,31 @@ function showVoidResponse(type, btn){
     {title:'The Internal Public Offering (IPO)',desc:'The most undervalued IPO in history trades right now. Your consciousness. Your direction.',id:'ipo'},
     {title:'Fartcoin vs $SELF — The Mirror',desc:'$2.6 billion vs $4,450. What the market reveals about where we are headed.',id:'ipo'},
     {title:'Why $SELF',desc:'A declaration, not a trade. Skin in the game of the SELF.',id:'ipo'},
-    {title:'The Super-Ordinate Goal',desc:'Launch rockets, build Mars bases — valid sub-goals. Self-realization is the Olympic Gold.',id:'ipo'},
-    {title:'The RRRR Protocol',desc:'Recognize → Resist → Return → Release (stop impulse). Recognize → Reflect → Reframe → Respond (process emotion).',id:'framework'},
-    {title:'The Mirror Room',desc:'Not a hype chat. Post what you noticed. No price talk. Just noticing.',id:'mirror'},
-    {title:'Path of Subtilization — 7 Levels',desc:'Body, Breath, Mind, Intellect, Memory, Ego, Crown. The hardware blueprint.',id:'mirror'},
-    {title:'The Cosmic Blueprint — 42',desc:'T+O+B+E=42. Astrophysics, optics, mathematics, ASCII wildcard. The frequency.',id:'contract'},
-    {title:'Atman = Brahman',desc:'The Individual SELF is ontologically equivalent to the Supreme Reality.',id:'contract'},
-    {title:'Contract — $SELF Token',desc:'CA: 7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump · Supply: 1,000,000,042 fixed.',id:'contract'},
-    {title:'Disclaimer',desc:'This framework is a tool for personal observation and inquiry.',id:'disclaimer'},
-    {title:'SAT-CHIT-ANAND',desc:'Existence. Consciousness. Bliss. That is who you actually are.',id:'framework'},
-    {title:'The Arrival Fallacy',desc:'The brain is wired for the chase, not the catch. Dopamine and the post-goal slump.',id:'framework'},
-    {title:'The Ego — The Mask',desc:'The false self that keeps seeking outside. Ahamkara, the I-maker.',id:'framework'},
-    {title:'Self-Realization',desc:'Not arrival. Direction. Are you pointed the right way?',id:'framework'},
-    {title:'Carl Jung Quotes',desc:'Who looks outside dreams; who looks inside awakes. The unconscious becomes fate.',id:'framework'},
-    {title:'Francis Weller Quote',desc:'We have exchanged a cosmology of connection for an ideology of separation.',id:'framework'},
-    {title:'Buddha\'s Final Teaching',desc:'Be a lamp unto yourself. dipa — lamp and island. Trust your inner wisdom.',id:'framework'},
+    {title:'The Super-Ordinate Goal',        desc:'Every action oriented toward the ultimate goal: knowing your SELF. The Olympic Gold that never depreciates.',id:'mirror'},
+    {title:'The RRRR Protocol — Stop the Impulse',desc:'Recognize → Resist → Return → Release. Stop the behaviour before it happens. The emergency protocol.',id:'ledger'},
+    {title:'The RRRR Protocol — Process Emotion', desc:'Recognize → Reflect → Reframe → Respond. For grief, relationships, long-held patterns. Respond from awareness.',id:'ledger'},
+    {title:'The 3-Step Circuit Breaker',          desc:'Pause (box breathing: 4-4-4-4). Witness and Label the trigger. Detached Action — what can I control?',id:'ledger'},
+    {title:'The Mirror Room',                     desc:'Not a hype chat. Post what you noticed. No price talk. Just noticing. The community of the gap.',id:'mirror'},
+    {title:'Path of Subtilization — 7 Levels',   desc:'Body → Breath → Mind → Intellect → Memory → Ego → SELF. The hardware blueprint of consciousness.',id:'ledger'},
+    {title:'The Cosmic Blueprint — 42',           desc:'T+O+B+E=42. Astrophysics, optics, mathematics, traditions, ASCII wildcard. The universal frequency.',id:'ledger'},
+    {title:'Atman = Brahman',                     desc:'The Individual SELF is ontologically equivalent to the Supreme Reality. To know SELF is to know the universe.',id:'ledger'},
+    {title:'Contract — $SELF Token',              desc:'CA: 7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump · Supply: 1,000,000,042 · All authorities revoked.',id:'contract'},
+    {title:'Disclaimer — The Open Protocol',      desc:'Tool for personal observation and inquiry. Not financial, medical or professional advice.',id:'disclaimer'},
+    {title:'SAT-CHIT-ANAND',                      desc:'Sat: Existence. Chit: Consciousness. Anand: Bliss. The source code of reality. That is who you are.',id:'ledger'},
+    {title:'The Arrival Fallacy',                 desc:'The brain is wired for the chase, not the catch. Dopamine and the post-goal slump explained.',id:'framework'},
+    {title:'The Ego — Ahamkara, The I-Maker',     desc:'The mask the I wears. Collects desires, solidifies them as identity. The false self seeking outside.',id:'framework'},
+    {title:'Self-Realization — Direction, Not Arrival',desc:'Not expected in one lifetime. The question: are you pointed the right way? Noticing more? Reacting less?',id:'framework'},
+    {title:'Architecture of Self-Destruction',    desc:'8 stages: Contemplation → Attachment → Lust → Anger → Delusion → Loss of Memory → Loss of Intelligence → Destruction.',id:'framework'},
+    {title:'The Integration Engine',              desc:'Western Blueprint (cognitive map) + Eastern Breath (radical acceptance) = True Wholeness. James Hillman.',id:'ledger'},
+    {title:'5 Stages of Surrender',               desc:'Seed → Magnet → Oneness of Purpose → Total Reliance → River meets Ocean. No saviour needed.',id:'ledger'},
+    {title:'The Perceptual Chain',                desc:'Object → Senses → Mind → Consciousness (The Screen). You are the screen, not the movie projected on it.',id:'ledger'},
+    {title:'The Void Test',                       desc:'Did the void disappear after you got what you wanted? The signal pointing inward.',id:'ledger'},
+    {title:'The IPO — The Original Offering',     desc:'Every soul enters the world with a unique gift. The first and most important public offering.',id:'ipo'},
+    {title:'Why $SELF — A Declaration',           desc:'Buying $SELF is a philosophical stake. Skin in the game of the SELF. The inner market never crashes.',id:'mirror'},
+    {title:'Carl Jung — The Unconscious',         desc:'Until you make the unconscious conscious, it will direct your life and you will call it fate.',id:'framework'},
+    {title:'Buddha — Be a Lamp Unto Yourself',    desc:'Be a lamp unto yourself. dipa: lamp and island. Trust your own direct experience.',id:'ledger'},
+    {title:'Logotherapy Tools',                   desc:'Dereflection, Paradoxical Intention, Socratic Dialogue. Finding meaning beyond the symptom.',id:'ledger'},
+    {title:'4 Rules of Daily Guidance',           desc:'Comparison only with yesterday. Start where you are. Be the change. Reality check your goals.',id:'ledger'},
   ];
 
   var modal = document.getElementById('searchModal');
@@ -1963,6 +2123,26 @@ function toggleFoundation(btn){
     btn.setAttribute('aria-expanded','true');
   }
 }
+/* ── THEME TOGGLE ─────────────────────────────────────────────────────────── */
+function toggleTheme(){
+  var html = document.documentElement;
+  var current = html.getAttribute('data-theme');
+  var next = (current === 'light') ? 'dark' : 'light';
+  html.setAttribute('data-theme', next === 'dark' ? '' : 'light');
+  localStorage.setItem('selfTheme', next);
+  var btn = document.getElementById('themeToggleBtn');
+  if(btn) btn.innerHTML = (next === 'light') ? '&#9790;' : '&#9788;';
+}
+// Apply saved theme on load
+(function(){
+  var saved = localStorage.getItem('selfTheme');
+  if(saved === 'light'){
+    document.documentElement.setAttribute('data-theme','light');
+    var btn = document.getElementById('themeToggleBtn');
+    if(btn) btn.innerHTML = '&#9790;';
+  }
+})();
+
 </script>
 </body>
 </html>
