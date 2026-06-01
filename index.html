@@ -45,8 +45,8 @@ html{scroll-behavior:smooth;}
 }
 /* ── LIGHT THEME ─────────────────────────────────────────────────────────── */
 [data-theme="light"]{
-  --bg:#faf8f3;--bg-lift:#ede6d0;--white:#1a1208;--gold:#8a6a12;--mid:#4a3a18;--grey:#5a4a2a;--dim:#7a6a4a;
-  --gold-glow:rgba(138,106,18,0.3);--gold-dim:rgba(138,106,18,0.1);
+  --bg:#faf8f3;--bg-lift:#ede6d0;--white:#0f0a02;--gold:#7a5e0e;--mid:#2e2008;--grey:#3d2e10;--dim:#5a4a2a;
+  --gold-glow:rgba(122,94,14,0.3);--gold-dim:rgba(122,94,14,0.1);
 }
 /* Light: body & base */
 [data-theme="light"] body{background:#faf8f3 !important;color:#1a1208 !important;}
@@ -88,6 +88,13 @@ html{scroll-behavior:smooth;}
 [data-theme="light"] .tradition-row td{color:#4a3a1a !important;border-color:rgba(0,0,0,0.1) !important;}
 [data-theme="light"] .tradition-row th{color:#8a6a12 !important;background:#e5ddc5 !important;}
 [data-theme="light"] .ipo-table td,[data-theme="light"] .ipo-table th{border-color:rgba(0,0,0,0.1) !important;color:#4a3a1a !important;}
+[data-theme="light"] .ipo-table-row.header{background:#c8bfa0 !important;}
+[data-theme="light"] .ipo-table-row.header .ipo-cell{color:#3a2a0a !important;border-right-color:rgba(0,0,0,0.15) !important;}
+[data-theme="light"] .ipo-table{border-color:rgba(0,0,0,0.2) !important;}
+[data-theme="light"] .ipo-table-row{border-bottom-color:rgba(0,0,0,0.1) !important;}
+[data-theme="light"] .ipo-cell{color:#4a3a1a !important;}
+[data-theme="light"] .tradition-row.header{background:#c8bfa0 !important;}
+[data-theme="light"] .tradition-row.header td,[data-theme="light"] .tradition-row.header th{color:#3a2a0a !important;border-color:rgba(0,0,0,0.15) !important;}
 [data-theme="light"] .ca-box{background:#ede6d0 !important;border-color:rgba(0,0,0,0.15) !important;}
 [data-theme="light"] .ca-addr{color:#1a1208 !important;}
 [data-theme="light"] .ca-address-full{color:#1a1208 !important;}
@@ -129,6 +136,54 @@ html{scroll-behavior:smooth;}
 [data-theme="light"] [style*="border-top:1px solid #1e1e1e"]{border-color:rgba(0,0,0,0.1) !important;}
 [data-theme="light"] [style*="background:var(--bg-lift)"]{background:#ede6d0 !important;}
 [data-theme="light"] [style*="background:rgba(212,175,55"]{background:rgba(138,106,18,0.1) !important;}
+/* Hint text visibility */
+[data-theme="light"] .scroll-hint{color:#8a7a5a !important;}
+[data-theme="light"] .continue-hint{color:#7a6a4a !important;}
+[data-theme="light"] [style*="color:#555"]{color:#7a6a4a !important;}
+[data-theme="light"] [style*="color:#444"]{color:#6a5a3a !important;}
+/* Hover borders */
+[data-theme="light"] .framework-card:hover{border-color:rgba(0,0,0,0.25) !important;}
+[data-theme="light"] .identity-card:hover{border-color:rgba(0,0,0,0.25) !important;}
+/* mc-val joke color */
+[data-theme="light"] .mc-card .mc-val.joke{color:#5a4a2a !important;}
+/* Stage items */
+[data-theme="light"] .stage-item{border-color:rgba(0,0,0,0.1) !important;}
+/* Red accent text — keep readable */
+[data-theme="light"] [style*="color:#c0392b"]{color:#b03020 !important;}
+/* Search modal hardcoded darks */
+[data-theme="light"] .search-input-wrap{background:#faf8f3 !important;border-color:rgba(0,0,0,0.2) !important;}
+[data-theme="light"] .search-results{background:#f0ead8 !important;border-color:rgba(0,0,0,0.1) !important;}
+[data-theme="light"] .search-result:hover,[data-theme="light"] .search-result.active{background:#e5ddc5 !important;}
+/* mc-card inline border */
+[data-theme="light"] [style*="border-color:#252525"]{border-color:rgba(0,0,0,0.12) !important;}
+/* Identity card inline radial */
+[data-theme="light"] .identity-card[style]{background:#ede6d0 !important;}
+/* Ipo box inline border */
+[data-theme="light"] [style*="max-width:720px;margin:0 auto;border:1px solid #2a2a2a"]{border-color:rgba(0,0,0,0.15) !important;background:#ede6d0 !important;}
+/* Super-ordinate box */
+[data-theme="light"] .superordinate-box{background:#e5ddc5 !important;border-color:rgba(0,0,0,0.15) !important;}
+[data-theme="light"] .superordinate-box p{color:#3a2a0a !important;}
+/* Fartcoin confrontation box */
+[data-theme="light"] .confrontation-body p{color:#4a3a1a !important;}
+[data-theme="light"] .confrontation-body .gold{color:#8a6a12 !important;}
+[data-theme="light"] .confrontation-body .dim{color:#6a5a3a !important;}
+/* Cosmic quote */
+[data-theme="light"] .cosmo-quote{border-left-color:rgba(138,106,18,0.5) !important;background:#e5ddc5 !important;}
+/* Pull quote */
+[data-theme="light"] .pull-quote{border-left-color:rgba(138,106,18,0.6) !important;background:#e5ddc5 !important;}
+/* Mirror room section */
+[data-theme="light"] .mirror-room-links a{border-color:rgba(138,106,18,0.4) !important;color:#4a3a1a !important;}
+/* Why cards */
+[data-theme="light"] .why-card{border-color:rgba(0,0,0,0.1) !important;}
+[data-theme="light"] .why-card h3{color:#1a1208 !important;}
+[data-theme="light"] .why-card p{color:#4a3a1a !important;}
+/* Path cards */
+[data-theme="light"] .path-card h3{color:#1a1208 !important;}
+[data-theme="light"] .path-card p{color:#4a3a1a !important;}
+/* Pillar cards */
+[data-theme="light"] .pillar-card{background:#ede6d0 !important;border-color:rgba(0,0,0,0.1) !important;}
+[data-theme="light"] .pillar-card h3{color:#1a1208 !important;}
+[data-theme="light"] .pillar-card p{color:#4a3a1a !important;}
 
 body{background:var(--bg);color:var(--white);font-family:var(--serif);text-align:center;line-height:1.85;overflow-x:hidden;padding-top:var(--nav-h);}
 a{color:var(--gold);text-decoration:none;transition:opacity .25s;}
