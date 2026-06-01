@@ -90,6 +90,8 @@ html{scroll-behavior:smooth;}
 [data-theme="light"] .ipo-table td,[data-theme="light"] .ipo-table th{border-color:rgba(0,0,0,0.1) !important;color:#4a3a1a !important;}
 [data-theme="light"] .ca-box{background:#ede6d0 !important;border-color:rgba(0,0,0,0.15) !important;}
 [data-theme="light"] .ca-addr{color:#1a1208 !important;}
+[data-theme="light"] .ca-address-full{color:#1a1208 !important;}
+[data-theme="light"] .ca-full-box{background:#ede6d0 !important;border-color:rgba(0,0,0,0.15) !important;}
 [data-theme="light"] .surrender-stage{background:#e5ddc5 !important;border-color:rgba(0,0,0,0.1) !important;}
 [data-theme="light"] .surrender-stage h5{color:#1a1208 !important;}
 [data-theme="light"] .surrender-stage p{color:#4a3a1a !important;}
@@ -419,8 +421,8 @@ section{scroll-margin-top:140px;}
 .faq-item:first-child{border-top:1px solid #1a1a1a;}
 .faq-q{width:100%;background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:24px 4px;font-family:var(--serif);font-size:clamp(17px,2.2vw,21px);font-weight:400;color:var(--white);text-align:left;transition:color .25s;}
 .faq-q:hover{color:var(--gold);}
-.faq-icon{flex-shrink:0;font-family:var(--sans);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);opacity:.8;transition:all .25s;white-space:nowrap;padding:4px 8px;border:1px solid #2a2a2a;}
-.faq-item.open .faq-q .faq-icon{border-color:var(--gold);}
+.faq-icon{width:28px;height:28px;border-radius:50%;border:1px solid rgba(212,175,55,.5);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--gold);font-size:18px;font-weight:300;line-height:1;transition:all .25s;font-family:var(--sans);}
+.faq-item.open .faq-q .faq-icon{background:var(--gold);color:#000;border-color:var(--gold);}
 .faq-a{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(0,1,.25,1);}
 .faq-item.open .faq-a{max-height:900px;}
 .faq-a-inner{padding:0 4px 28px;font-family:var(--serif);font-size:clamp(16px,2vw,19px);font-weight:300;color:var(--grey);line-height:1.95;}
@@ -438,7 +440,7 @@ section{scroll-margin-top:140px;}
 .ca-full-box::before{content:'';position:absolute;top:-1px;left:-1px;width:18px;height:18px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);}
 .ca-full-box::after{content:'';position:absolute;bottom:-1px;right:-1px;width:18px;height:18px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);}
 .ca-label{font-family:var(--sans);font-size:10px;color:var(--dim);letter-spacing:4px;text-transform:uppercase;margin-bottom:10px;}
-.ca-address-full{font-family:var(--sans);font-size:12px;color:#ddd;word-break:break-all;letter-spacing:1px;margin:12px 0;}
+.ca-address-full{font-family:var(--sans);font-size:12px;color:#ddd;word-break:break-all;letter-spacing:1px;margin:12px 0;transition:color .3s;}
 .supply{font-family:var(--sans);font-size:11px;color:var(--dim);letter-spacing:2px;text-transform:uppercase;margin-top:10px;}
 .trade-links{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-top:20px;}
 .trade-links a{font-family:var(--sans);font-size:11.5px;color:var(--mid);letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:color .25s;}
@@ -1586,13 +1588,16 @@ section{scroll-margin-top:140px;}
 <section class="faq-section">
   <span class="label">Common Questions</span>
   <h2>The questions people ask when they start noticing.</h2>
-  <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;color:#555;text-transform:uppercase;margin-bottom:32px;margin-top:-20px;">Each question collapsed by default &mdash; tap to expand</p>
+  <button class="faq-expand-all-btn" id="faqExpandAllBtn" onclick="toggleFaqAll()">
+    Expand All &nbsp;<span id="faqExpandAllIcon" style="font-size:18px;line-height:1;">+</span>
+  </button>
+  <div class="faq-list-wrap" id="faqListWrap">
   <div class="faq-list">
 
     <div class="faq-item">
-      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');var lbl=this.querySelector('.faq-icon');if(lbl){lbl.innerHTML=item.classList.contains('open')?'Collapse &#9660;':'Expand &#9654;';}">
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>What is the RRRR Protocol?</span>
-        <span class="faq-icon">Expand &#9654;</span>
+        <span class="faq-icon">+</span>
       </button>
       <div class="faq-a">
         <div class="faq-a-inner">
@@ -1613,9 +1618,9 @@ section{scroll-margin-top:140px;}
 
 
     <div class="faq-item">
-      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');var lbl=this.querySelector('.faq-icon');if(lbl){lbl.innerHTML=item.classList.contains('open')?'Collapse &#9660;':'Expand &#9654;';}">
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>What is the 3-Step Circuit Breaker?</span>
-        <span class="faq-icon">Expand &#9654;</span>
+        <span class="faq-icon">+</span>
       </button>
       <div class="faq-a">
         <div class="faq-a-inner">
@@ -1641,9 +1646,9 @@ section{scroll-margin-top:140px;}
     </div>
 
     <div class="faq-item">
-      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');var lbl=this.querySelector('.faq-icon');if(lbl){lbl.innerHTML=item.classList.contains('open')?'Collapse &#9660;':'Expand &#9654;';}">
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>Is this a token or a philosophy?</span>
-        <span class="faq-icon">Expand &#9654;</span>
+        <span class="faq-icon">+</span>
       </button>
       <div class="faq-a">
         <div class="faq-a-inner">Both. Most tokens ask you to believe in the chart. $SELF asks you to believe in the framework. Buying the token is not an investment decision &mdash; it&rsquo;s a philosophical stake. You&rsquo;re saying: I see the map. I&rsquo;m walking it. And I&rsquo;m doing it publicly on an immutable ledger.</div>
@@ -1651,9 +1656,9 @@ section{scroll-margin-top:140px;}
     </div>
 
     <div class="faq-item">
-      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');var lbl=this.querySelector('.faq-icon');if(lbl){lbl.innerHTML=item.classList.contains('open')?'Collapse &#9660;':'Expand &#9654;';}">
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>What is the Arrival Fallacy?</span>
-        <span class="faq-icon">Expand &#9654;</span>
+        <span class="faq-icon">+</span>
       </button>
       <div class="faq-a">
         <div class="faq-a-inner">The false belief that the next milestone &mdash; more money, more status, more achievement &mdash; will finally bring peace. It won&rsquo;t. Hedonic adaptation resets your baseline every time. You get the promotion, and six months later you&rsquo;re back to baseline discontent. The void returns. That&rsquo;s not a problem to fix externally &mdash; it&rsquo;s a signal pointing inward.</div>
@@ -1661,9 +1666,9 @@ section{scroll-margin-top:140px;}
     </div>
 
     <div class="faq-item">
-      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');var lbl=this.querySelector('.faq-icon');if(lbl){lbl.innerHTML=item.classList.contains('open')?'Collapse &#9660;':'Expand &#9654;';}">
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>What makes this different from other spiritual projects?</span>
-        <span class="faq-icon">Expand &#9654;</span>
+        <span class="faq-icon">+</span>
       </button>
       <div class="faq-a">
         <div class="faq-a-inner">Two things. First: we don&rsquo;t ask you to believe. We ask you to notice. The framework is testable in real-time &mdash; in your reactions, your trades, your relationships. Second: we put skin in the game. You hold $SELF, the chart moves, and suddenly philosophy becomes immediate. That friction is the whole point.</div>
@@ -1671,9 +1676,9 @@ section{scroll-margin-top:140px;}
     </div>
 
     <div class="faq-item">
-      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');var lbl=this.querySelector('.faq-icon');if(lbl){lbl.innerHTML=item.classList.contains('open')?'Collapse &#9660;':'Expand &#9654;';}">
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>What is the Integration Engine?</span>
-        <span class="faq-icon">Expand &#9654;</span>
+        <span class="faq-icon">+</span>
       </button>
       <div class="faq-a">
         <div class="faq-a-inner">The Integration Engine is the idea that Western psychotherapy and Eastern wisdom traditions are not opposites &mdash; they are complements that together produce something neither achieves alone. Western therapy gives us the map: the vocabulary to name our suffering, understand our patterns, and build cognitive insight. Eastern traditions give us the resilience: the ability to hold suffering with spaciousness rather than trying to eliminate it. The Western Blueprint resolves the symptom through cognitive insight. The Eastern Breath expands the container through radical acceptance. Together: True Wholeness. Alan Watts said it best: if you look deeply into Buddhism, Taoism, Vedanta, and Yoga, you find something resembling psychotherapy. The *SELF framework is that integration made practical.</div>
@@ -1681,9 +1686,9 @@ section{scroll-margin-top:140px;}
     </div>
 
     <div class="faq-item">
-      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');var lbl=this.querySelector('.faq-icon');if(lbl){lbl.innerHTML=item.classList.contains('open')?'Collapse &#9660;':'Expand &#9654;';}">
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>Isn&rsquo;t this just Eastern spirituality?</span>
-        <span class="faq-icon">Expand &#9654;</span>
+        <span class="faq-icon">+</span>
       </button>
       <div class="faq-a">
         <div class="faq-a-inner">No &mdash; it&rsquo;s every tradition. Indian philosophy calls it Moksha. Western mysticism calls it Divinization. Ancient Greeks called it Know Thyself. Modern psychology calls it Self-Actualization. Every wisdom tradition in human history has arrived at the same conclusion: the highest achievement is looking inward to realize your true nature beneath the illusions of the ego. *SELF is not picking a tradition. It&rsquo;s pointing at what they all found.</div>
@@ -1691,9 +1696,9 @@ section{scroll-margin-top:140px;}
     </div>
 
     <div class="faq-item">
-      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');var lbl=this.querySelector('.faq-icon');if(lbl){lbl.innerHTML=item.classList.contains('open')?'Collapse &#9660;':'Expand &#9654;';}">
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>Is there actually a &ldquo;cosmic ledger&rdquo;?</span>
-        <span class="faq-icon">Expand &#9654;</span>
+        <span class="faq-icon">+</span>
       </button>
       <div class="faq-a">
         <div class="faq-a-inner">Depends on what you believe. But here&rsquo;s what&rsquo;s certain: every deed, every reaction, every moment you spend in awareness or autopilot builds a balance sheet inside you. Whether that&rsquo;s literal reincarnation, Karma, or just the neurology of habit formation &mdash; the math is the same. You are becoming what you practice.</div>
@@ -1701,9 +1706,9 @@ section{scroll-margin-top:140px;}
     </div>
 
     <div class="faq-item">
-      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');var lbl=this.querySelector('.faq-icon');if(lbl){lbl.innerHTML=item.classList.contains('open')?'Collapse &#9660;':'Expand &#9654;';}">
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>How do I know if I&rsquo;m in the right direction?</span>
-        <span class="faq-icon">Expand &#9654;</span>
+        <span class="faq-icon">+</span>
       </button>
       <div class="faq-a">
         <div class="faq-a-inner">Self-realization is not a destination you arrive at in one lifetime. That&rsquo;s the feature, not the bug. The question isn&rsquo;t &ldquo;Am I there yet?&rdquo; It&rsquo;s &ldquo;Am I pointed right?&rdquo; Are you noticing more? Are you reacting less? Are you choosing from awareness instead of fear? If yes &mdash; you&rsquo;re walking the path.</div>
@@ -1711,9 +1716,9 @@ section{scroll-margin-top:140px;}
     </div>
 
     <div class="faq-item">
-      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');var lbl=this.querySelector('.faq-icon');if(lbl){lbl.innerHTML=item.classList.contains('open')?'Collapse &#9660;':'Expand &#9654;';}">
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>Why Solana and not another chain?</span>
-        <span class="faq-icon">Expand &#9654;</span>
+        <span class="faq-icon">+</span>
       </button>
       <div class="faq-a">
         <div class="faq-a-inner">Speed and transparency. Solana&rsquo;s high throughput means the ledger records without friction. No waiting. The supply is fixed forever (1,000,000,042 tokens), all authorities revoked. No dilution. No rug-pull risk. The mechanism itself becomes part of the message: this is immutable, this is yours, this is the cosmic ledger made visible.</div>
@@ -1721,9 +1726,9 @@ section{scroll-margin-top:140px;}
     </div>
 
     <div class="faq-item">
-      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');var lbl=this.querySelector('.faq-icon');if(lbl){lbl.innerHTML=item.classList.contains('open')?'Collapse &#9660;':'Expand &#9654;';}">
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>What is the significance of the number 42 and the * symbol?</span>
-        <span class="faq-icon">Expand &#9654;</span>
+        <span class="faq-icon">+</span>
       </button>
       <div class="faq-a">
         <div class="faq-a-inner">
@@ -1738,9 +1743,9 @@ section{scroll-margin-top:140px;}
     </div>
 
     <div class="faq-item">
-      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');var lbl=this.querySelector('.faq-icon');if(lbl){lbl.innerHTML=item.classList.contains('open')?'Collapse &#9660;':'Expand &#9654;';}">
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>What is my unique value?</span>
-        <span class="faq-icon">Expand &#9654;</span>
+        <span class="faq-icon">+</span>
       </button>
       <div class="faq-a">
         <div class="faq-a-inner">That one thing only you can offer the world. Not necessarily a new innovation or technology &mdash; something the world needs that carries your unique mark. Ask yourself: &ldquo;What would I be willing to pay for if I were on the other side of the value exchange?&rdquo; If that is something only you can offer, that drives you, that you&rsquo;re passionate about achieving &mdash; that is your worth. Not in dollars. In purpose. That discovery requires listening to your inner voice. No one else can do it for you.</div>
@@ -1748,9 +1753,9 @@ section{scroll-margin-top:140px;}
     </div>
 
     <div class="faq-item">
-      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');var lbl=this.querySelector('.faq-icon');if(lbl){lbl.innerHTML=item.classList.contains('open')?'Collapse &#9660;':'Expand &#9654;';}">
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>Do I know my own worth?</span>
-        <span class="faq-icon">Expand &#9654;</span>
+        <span class="faq-icon">+</span>
       </button>
       <div class="faq-a">
         <div class="faq-a-inner">
@@ -1767,9 +1772,9 @@ section{scroll-margin-top:140px;}
 
 
     <div class="faq-item">
-      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');var lbl=this.querySelector('.faq-icon');if(lbl){lbl.innerHTML=item.classList.contains('open')?'Collapse &#9660;':'Expand &#9654;';}">
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>What are the 4 Rules of Daily Guidance?</span>
-        <span class="faq-icon">Expand &#9654;</span>
+        <span class="faq-icon">+</span>
       </button>
       <div class="faq-a">
         <div class="faq-a-inner">
@@ -1800,9 +1805,9 @@ section{scroll-margin-top:140px;}
       </div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');var lbl=this.querySelector('.faq-icon');if(lbl){lbl.innerHTML=item.classList.contains('open')?'Collapse &#9660;':'Expand &#9654;';}">
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>What are the Logotherapy Tools for finding meaning?</span>
-        <span class="faq-icon">Expand &#9654;</span>
+        <span class="faq-icon">+</span>
       </button>
       <div class="faq-a">
         <div class="faq-a-inner">
@@ -1824,9 +1829,9 @@ section{scroll-margin-top:140px;}
     </div>
 
     <div class="faq-item">
-      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');var lbl=this.querySelector('.faq-icon');if(lbl){lbl.innerHTML=item.classList.contains('open')?'Collapse &#9660;':'Expand &#9654;';}">
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>What is the Mirror Room?</span>
-        <span class="faq-icon">Expand &#9654;</span>
+        <span class="faq-icon">+</span>
       </button>
       <div class="faq-a">
         <div class="faq-a-inner">Not a hype chat. Not a trading group. A space for people who noticed the gap and couldn&rsquo;t unsee it. You post what you noticed &mdash; in the market, in yourself, in the framework. No price talk. No memes. Just noticing. The mirror doesn&rsquo;t chase you to buy more. It reflects what you&rsquo;re already seeing. <a href="https://x.com/i/chat/group_join/g2056088351590220124/gAK9fW8Y29" target="_blank" rel="noopener">Enter the Mirror Room &rarr;</a></div>
@@ -1875,6 +1880,34 @@ section{scroll-margin-top:140px;}
 
 <script>
 /* ── COPY CA ─────────────────────────────────────────────────────────────── */
+function toggleFaqAll(){
+  var wrap = document.getElementById('faqListWrap');
+  var btn = document.getElementById('faqExpandAllBtn');
+  var icon = document.getElementById('faqExpandAllIcon');
+  if(!wrap) return;
+  var isOpen = wrap.classList.contains('open');
+  if(isOpen){
+    // Collapse all
+    wrap.classList.remove('open');
+    document.querySelectorAll('.faq-item').forEach(function(item){
+      item.classList.remove('open');
+      var ic = item.querySelector('.faq-icon');
+      if(ic) ic.innerHTML = '+';
+    });
+    if(icon) icon.innerHTML = '+';
+    if(btn) btn.innerHTML = 'Expand All &nbsp;<span id="faqExpandAllIcon" style="font-size:18px;line-height:1;">+</span>';
+  } else {
+    // Expand section + all items
+    wrap.classList.add('open');
+    document.querySelectorAll('.faq-item').forEach(function(item){
+      item.classList.add('open');
+      var ic = item.querySelector('.faq-icon');
+      if(ic) ic.innerHTML = '&minus;';
+    });
+    if(btn) btn.innerHTML = 'Collapse All &nbsp;<span id="faqExpandAllIcon" style="font-size:18px;line-height:1;">&minus;</span>';
+  }
+}
+
 function copyCA(btn){
   navigator.clipboard.writeText('7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump').then(function(){
     var orig=btn.innerText;
@@ -2233,9 +2266,13 @@ function toggleTheme(){
   document.querySelectorAll('.identity-section').forEach(function(s){s.classList.add('collapsed');});
   document.querySelectorAll('.faq-item').forEach(function(f){
     f.classList.remove('open');
-    var icon=f.querySelector('.faq-icon');
-    if(icon) icon.innerHTML='Expand &#9654;';
+    var ic=f.querySelector('.faq-icon');
+    if(ic) ic.innerHTML='+';
   });
+  var fw=document.getElementById('faqListWrap');
+  if(fw){fw.classList.remove('open');}
+  var fb=document.getElementById('faqExpandAllBtn');
+  if(fb) fb.innerHTML='Expand All &nbsp;<span id="faqExpandAllIcon" style="font-size:18px;line-height:1;">+</span>';
 }
 // Apply saved theme on load
 (function(){
