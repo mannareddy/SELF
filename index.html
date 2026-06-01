@@ -45,22 +45,88 @@ html{scroll-behavior:smooth;}
 }
 /* ── LIGHT THEME ─────────────────────────────────────────────────────────── */
 [data-theme="light"]{
-  --bg:#faf8f3;--bg-lift:#f0ead8;--white:#1a1208;--gold:#8a6a12;--mid:#5a4a2a;--grey:#6b5d3f;--dim:#b8a88a;
+  --bg:#faf8f3;--bg-lift:#ede6d0;--white:#1a1208;--gold:#8a6a12;--mid:#4a3a18;--grey:#5a4a2a;--dim:#7a6a4a;
   --gold-glow:rgba(138,106,18,0.3);--gold-dim:rgba(138,106,18,0.1);
 }
-[data-theme="light"] body{background:#faf8f3;color:#1a1208;}
-[data-theme="light"] .site-nav{background:rgba(250,248,243,0.96);border-bottom:1px solid rgba(0,0,0,0.1);}
-[data-theme="light"] .nav-items li a{color:#4a3a1a;}
-[data-theme="light"] .banner-section{opacity:.9;mix-blend-mode:multiply;}
+/* Light: body & base */
+[data-theme="light"] body{background:#faf8f3 !important;color:#1a1208 !important;}
+/* Light: nav */
+[data-theme="light"] .site-nav{background:rgba(250,248,243,0.98) !important;border-bottom:1px solid rgba(0,0,0,0.15) !important;}
+[data-theme="light"] .site-nav.scrolled{background:rgba(250,248,243,1) !important;}
+[data-theme="light"] .nav-items li a{color:#4a3a1a !important;border-right-color:rgba(0,0,0,0.1) !important;}
+[data-theme="light"] .nav-items li a.active{color:#8a6a12 !important;}
+[data-theme="light"] .nav-items li a:hover{color:#8a6a12 !important;}
+[data-theme="light"] .nav-search-btn{background:rgba(250,248,243,0.98) !important;border-left-color:rgba(0,0,0,0.15) !important;color:#5a4a2a !important;}
+[data-theme="light"] #themeToggleBtn{background:rgba(250,248,243,0.98) !important;border-color:rgba(0,0,0,0.15) !important;color:#5a4a2a !important;}
+[data-theme="light"] .progress-bar{background:linear-gradient(90deg,rgba(138,106,18,0.4),#8a6a12);}
+/* Light: section backgrounds */
 [data-theme="light"] .framework-card,[data-theme="light"] .pillar-card,[data-theme="light"] .identity-card,
-[data-theme="light"] .why-card,[data-theme="light"] .faq-item,[data-theme="light"] .surrender-section,
-[data-theme="light"] .bg-lift{background:#f0ead8 !important;}
-[data-theme="light"] .divider{background:rgba(0,0,0,0.06);}
-[data-theme="light"] #searchModal .search-box{background:#faf8f3;border-color:rgba(0,0,0,0.15);}
-[data-theme="light"] .search-input{color:#1a1208;}
-[data-theme="light"] .search-result{background:#f0ead8;border-color:rgba(0,0,0,0.1);}
-[data-theme="light"] .search-result-title{color:#1a1208;}
-[data-theme="light"] #themeToggleBtn{border-color:rgba(0,0,0,0.2);color:#5a4a2a;}
+[data-theme="light"] .why-card,[data-theme="light"] .faq-item,[data-theme="light"] .surrender-section{background:#ede6d0 !important;}
+[data-theme="light"] .bg-lift,[data-theme="light"] section[style*="background:var(--bg-lift)"],
+[data-theme="light"] .ipo-section,[data-theme="light"] .mirror-room,[data-theme="light"] .fartcoin-section,
+[data-theme="light"] .faq-section,[data-theme="light"] .ca-full-section,[data-theme="light"] .bridge-section{background:#ede6d0 !important;}
+[data-theme="light"] .divider{background:rgba(0,0,0,0.08);}
+[data-theme="light"] .banner-section{opacity:.7;mix-blend-mode:multiply;}
+/* Light: text colors */
+[data-theme="light"] .hero-question{color:#8a6a12 !important;}
+[data-theme="light"] .label{color:#8a6a12 !important;}
+[data-theme="light"] .gold-line{background:#8a6a12 !important;}
+[data-theme="light"] .pull-quote p{color:#3a2a0a !important;}
+[data-theme="light"] .pull-quote cite{color:#8a6a12 !important;}
+[data-theme="light"] .cosmo-quote p{color:#3a2a0a !important;}
+[data-theme="light"] .cosmo-quote cite{color:#8a6a12 !important;}
+[data-theme="light"] .symptoms-block-box{border-color:rgba(0,0,0,0.15) !important;background:#ede6d0 !important;}
+[data-theme="light"] .framework-card h3{color:#1a1208 !important;}
+[data-theme="light"] .framework-card p{color:#4a3a1a !important;}
+[data-theme="light"] .framework-card .num{color:#8a6a12 !important;}
+[data-theme="light"] .faq-q{color:#1a1208 !important;}
+[data-theme="light"] .faq-a-inner{color:#4a3a1a !important;}
+[data-theme="light"] .faq-icon{color:#8a6a12 !important;border-color:rgba(138,106,18,0.4) !important;}
+[data-theme="light"] .faq-item{border-bottom-color:rgba(0,0,0,0.1) !important;}
+[data-theme="light"] .mc-card{background:#ede6d0 !important;border-color:rgba(0,0,0,0.1) !important;}
+[data-theme="light"] .mc-name{color:#5a4a2a !important;}
+[data-theme="light"] .tradition-row td{color:#4a3a1a !important;border-color:rgba(0,0,0,0.1) !important;}
+[data-theme="light"] .tradition-row th{color:#8a6a12 !important;background:#e5ddc5 !important;}
+[data-theme="light"] .ipo-table td,[data-theme="light"] .ipo-table th{border-color:rgba(0,0,0,0.1) !important;color:#4a3a1a !important;}
+[data-theme="light"] .ca-box{background:#ede6d0 !important;border-color:rgba(0,0,0,0.15) !important;}
+[data-theme="light"] .ca-addr{color:#1a1208 !important;}
+[data-theme="light"] .surrender-stage{background:#e5ddc5 !important;border-color:rgba(0,0,0,0.1) !important;}
+[data-theme="light"] .surrender-stage h5{color:#1a1208 !important;}
+[data-theme="light"] .surrender-stage p{color:#4a3a1a !important;}
+[data-theme="light"] .identity-card{background:#ede6d0 !important;border-color:rgba(0,0,0,0.1) !important;}
+[data-theme="light"] .identity-card h4{color:#1a1208 !important;}
+[data-theme="light"] .identity-card p{color:#4a3a1a !important;}
+[data-theme="light"] .path-card{background:#ede6d0 !important;border-color:rgba(0,0,0,0.1) !important;}
+[data-theme="light"] .void-btn{border-color:rgba(138,106,18,0.4) !important;color:#4a3a1a !important;}
+[data-theme="light"] .void-btn.active{background:#8a6a12 !important;color:#faf8f3 !important;}
+/* Light: search modal */
+[data-theme="light"] #searchModal{background:rgba(250,248,243,0.97) !important;}
+[data-theme="light"] .search-input-wrap{background:#faf8f3 !important;border-color:rgba(0,0,0,0.2) !important;}
+[data-theme="light"] .search-input{color:#1a1208 !important;}
+[data-theme="light"] .search-input::placeholder{color:#7a6a4a !important;}
+[data-theme="light"] .search-result{background:#ede6d0 !important;border-color:rgba(0,0,0,0.1) !important;}
+[data-theme="light"] .search-result-title{color:#1a1208 !important;}
+[data-theme="light"] .search-result-desc{color:#5a4a2a !important;}
+[data-theme="light"] .search-close-btn{border-color:rgba(0,0,0,0.2) !important;color:#5a4a2a !important;}
+/* Light: footer */
+[data-theme="light"] .footer{background:#e5ddc5 !important;border-top-color:rgba(0,0,0,0.1) !important;}
+[data-theme="light"] .footer-tagline,[data-theme="light"] .footer-ca{color:#5a4a2a !important;}
+/* Light: geo badge */
+[data-theme="light"] .geo-badge{background:rgba(250,248,243,0.95) !important;border-color:rgba(0,0,0,0.15) !important;}
+/* Light: inline dark backgrounds - override key patterns */
+[data-theme="light"] [style*="background:var(--bg);"]{background:#faf8f3 !important;}
+[data-theme="light"] [style*="background:rgba(0,0,0"]{background:transparent !important;}
+[data-theme="light"] [style*="color:var(--white)"]{color:#1a1208 !important;}
+[data-theme="light"] [style*="color:var(--mid)"]{color:#4a3a1a !important;}
+[data-theme="light"] [style*="color:var(--grey)"]{color:#5a4a2a !important;}
+[data-theme="light"] [style*="color:var(--dim)"]{color:#7a6a4a !important;}
+[data-theme="light"] [style*="border:1px solid #2a2a2a"]{border-color:rgba(0,0,0,0.15) !important;}
+[data-theme="light"] [style*="border:1px solid #1e1e1e"]{border-color:rgba(0,0,0,0.1) !important;}
+[data-theme="light"] [style*="border-bottom:1px solid #161616"]{border-color:rgba(0,0,0,0.08) !important;}
+[data-theme="light"] [style*="border-top:1px solid #111"]{border-color:rgba(0,0,0,0.1) !important;}
+[data-theme="light"] [style*="border-top:1px solid #1e1e1e"]{border-color:rgba(0,0,0,0.1) !important;}
+[data-theme="light"] [style*="background:var(--bg-lift)"]{background:#ede6d0 !important;}
+[data-theme="light"] [style*="background:rgba(212,175,55"]{background:rgba(138,106,18,0.1) !important;}
 
 body{background:var(--bg);color:var(--white);font-family:var(--serif);text-align:center;line-height:1.85;overflow-x:hidden;padding-top:var(--nav-h);}
 a{color:var(--gold);text-decoration:none;transition:opacity .25s;}
@@ -71,19 +137,21 @@ a:hover{opacity:.7;}
 .site-nav::-webkit-scrollbar{display:none;}
 .site-nav.scrolled{background:rgba(0,0,0,0.98);}
 .progress-bar{position:absolute;bottom:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,rgba(212,175,55,.4) 0%,var(--gold) 100%);transition:width .1s linear;pointer-events:none;}
-.nav-items{display:flex;list-style:none;height:100%;flex:1;justify-content:space-evenly;}
+.nav-items{display:flex;list-style:none;height:100%;flex:1;justify-content:space-evenly;padding-right:92px;}
 .nav-items li a{display:block;font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);padding:0 10px;height:var(--nav-h);line-height:var(--nav-h);transition:color .2s;border-right:1px solid #1a1a1a;white-space:nowrap;}
 .nav-items li:first-child a{border-left:1px solid #1a1a1a;}
 .nav-items li a:hover{color:var(--gold);opacity:1;}
 .nav-items li a.active{color:var(--gold);}
 @media(max-width:640px){
+  .nav-items{padding-right:0;}
   .nav-items li a{font-size:7px;letter-spacing:0;padding:0 6px;}
   .nav-items li:first-child a{padding-left:6px;}
   .nav-search-btn{display:none;}
+  #themeToggleBtn{display:none;}
+  .nav-icon-item{display:list-item !important;}
 }
 @media(max-width:480px){
   .nav-items li a{font-size:6.5px;letter-spacing:0;padding:0 5px;}
-  .nav-search-btn{display:none;}
 }
 @media(max-width:430px){
   .nav-items li a{font-size:6px;letter-spacing:0;padding:0 4px;}
@@ -112,6 +180,7 @@ section{scroll-margin-top:140px;}
 .label{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--gold);opacity:.85;margin-bottom:42px;display:block;}
 
 /* ── NAV SEARCH BUTTON ───────────────────────────────────────────────────── */
+.nav-icon-item{display:none !important;}
 .nav-search-btn{position:absolute;right:0;top:0;flex-shrink:0;background:rgba(0,0,0,.92);border:none;border-left:1px solid #1a1a1a;color:var(--dim);cursor:pointer;width:44px;height:var(--nav-h);display:flex;align-items:center;justify-content:center;transition:color .2s;padding:0;z-index:2;}
 .nav-search-btn:hover{color:var(--gold);}
 
@@ -498,8 +567,17 @@ section{scroll-margin-top:140px;}
     <li><a href="#mirror">Mirror</a></li>
     <li><a href="#contract">Contract</a></li>
     <li><a href="#disclaimer">Disclaimer</a></li>
+    <!-- Icon items: hidden desktop, visible mobile as last items -->
+    <li class="nav-icon-item">
+      <button onclick="toggleTheme()" title="Toggle theme" style="background:none;border:none;border-left:1px solid #1a1a1a;border-right:1px solid #1a1a1a;color:var(--dim);cursor:pointer;width:36px;height:var(--nav-h);display:flex;align-items:center;justify-content:center;font-size:13px;padding:0;" id="themeToggleMobile">&#9788;</button>
+    </li>
+    <li class="nav-icon-item">
+      <button onclick="document.getElementById('navSearchBtn').click()" title="Search" style="background:none;border:none;border-right:1px solid #1a1a1a;color:var(--dim);cursor:pointer;width:36px;height:var(--nav-h);display:flex;align-items:center;justify-content:center;padding:0;">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+    </li>
   </ul>
-  <!-- Theme + Search icons pinned to right -->
+  <!-- Theme + Search icons pinned to right — desktop only -->
   <button id="themeToggleBtn" onclick="toggleTheme()" title="Toggle light/dark theme" aria-label="Toggle theme" style="position:absolute;right:52px;top:0;background:none;border:none;border-left:1px solid #1a1a1a;color:var(--dim);cursor:pointer;width:44px;height:var(--nav-h);display:flex;align-items:center;justify-content:center;font-size:14px;z-index:2;transition:color .2s;padding:0;">&#9788;</button>
   <button class="nav-search-btn" id="navSearchBtn" aria-label="Search sections" title="Search sections (/)">
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -1508,6 +1586,7 @@ section{scroll-margin-top:140px;}
 <section class="faq-section">
   <span class="label">Common Questions</span>
   <h2>The questions people ask when they start noticing.</h2>
+  <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;color:#555;text-transform:uppercase;margin-bottom:32px;margin-top:-20px;">Each question collapsed by default &mdash; tap to expand</p>
   <div class="faq-list">
 
     <div class="faq-item">
@@ -1738,7 +1817,7 @@ section{scroll-margin-top:140px;}
           </div>
           <div style="padding:20px 22px;border-left:3px solid var(--gold);background:var(--bg-lift);">
             <p style="font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:6px;">Socratic Dialogue &mdash; The answers are within</p>
-            <p style="font-size:15.5px;color:var(--grey);line-height:1.85;">The answers do not come from outside. They are realized through careful questioning. Ask: <em style="color:var(--mid);">Is there anything in your life you would die for?</em> If yes &mdash; that is the direction of your Sub Goal that leads to the Super-Ordinate Goal.</p>
+            <p style="font-size:15.5px;color:var(--grey);line-height:1.85;">The answers do not come from outside. They are realized through careful questioning. Ask: <em style="color:var(--mid);">Is there anything in your life you would die for?</em> If yes &mdash; that is your direction. That is your super-ordinate goal.</p>
           </div>
         </div>
       </div>
@@ -2024,9 +2103,22 @@ function showVoidResponse(type, btn){
         var target = document.getElementById(id);
         if(target){
           var navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'))||44;
-          var top = target.getBoundingClientRect().top + window.scrollY - navH - 20;
+          // Expand collapsed sections automatically
+          if(target.classList.contains('collapsed')) target.classList.remove('collapsed');
+          var faqList = target.querySelector('.faq-list');
+          if(faqList){
+            var firstFaq = faqList.querySelector('.faq-item');
+            if(firstFaq && !firstFaq.classList.contains('open')) firstFaq.classList.add('open');
+          }
+          var foundationContent = target.querySelector('.foundation-content');
+          if(foundationContent && foundationContent.style.maxHeight==='0px'){
+            foundationContent.style.maxHeight='3000px';foundationContent.style.opacity='1';
+          }
           closeSearch();
-          setTimeout(function(){window.scrollTo({top:top,behavior:'smooth'});},100);
+          setTimeout(function(){
+            var top = target.getBoundingClientRect().top + window.scrollY - navH - 20;
+            window.scrollTo({top:top,behavior:'smooth'});
+          },100);
         }
       });
     });
@@ -2131,13 +2223,29 @@ function toggleTheme(){
   html.setAttribute('data-theme', next === 'dark' ? '' : 'light');
   localStorage.setItem('selfTheme', next);
   var btn = document.getElementById('themeToggleBtn');
-  if(btn) btn.innerHTML = (next === 'light') ? '&#9790;' : '&#9788;';
+  var btnM = document.getElementById('themeToggleMobile');
+  var icon = (next === 'light') ? '&#9790;' : '&#9788;';
+  if(btn) btn.innerHTML = icon;
+  if(btnM) btnM.innerHTML = icon;
+  // Collapse all expandable sections on theme switch for clean view
+  document.querySelectorAll('.framework-card').forEach(function(c){c.classList.add('collapsed');});
+  document.querySelectorAll('.surrender-section').forEach(function(s){s.classList.add('collapsed');});
+  document.querySelectorAll('.identity-section').forEach(function(s){s.classList.add('collapsed');});
+  document.querySelectorAll('.faq-item').forEach(function(f){
+    f.classList.remove('open');
+    var icon=f.querySelector('.faq-icon');
+    if(icon) icon.innerHTML='Expand &#9654;';
+  });
 }
 // Apply saved theme on load
 (function(){
   var saved = localStorage.getItem('selfTheme');
   if(saved === 'light'){
     document.documentElement.setAttribute('data-theme','light');
+    var b=document.getElementById('themeToggleBtn');
+    var bM=document.getElementById('themeToggleMobile');
+    if(b) b.innerHTML='&#9790;';
+    if(bM) bM.innerHTML='&#9790;';
     var btn = document.getElementById('themeToggleBtn');
     if(btn) btn.innerHTML = '&#9790;';
   }
