@@ -1588,9 +1588,10 @@ section{scroll-margin-top:140px;}
 <section class="faq-section">
   <span class="label">Common Questions</span>
   <h2>The questions people ask when they start noticing.</h2>
-  <button class="faq-expand-all-btn" id="faqExpandAllBtn" onclick="toggleFaqAll()">
-    Expand All &nbsp;<span id="faqExpandAllIcon" style="font-size:18px;line-height:1;">+</span>
-  </button>
+  <div style="text-align:center;margin-bottom:36px;">
+    <button id="faqExpandAllBtn" onclick="toggleFaqAll()" style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);background:transparent;border:1px solid var(--gold);padding:10px 28px;cursor:pointer;transition:all .3s;opacity:.85;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.85'">Expand &#9660;</button>
+    <p style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#555;margin-top:10px;margin-bottom:0;">Collapsed by default &mdash; tap to expand</p>
+  </div>
   <div class="faq-list-wrap" id="faqListWrap">
   <div class="faq-list">
 
@@ -1883,28 +1884,24 @@ section{scroll-margin-top:140px;}
 function toggleFaqAll(){
   var wrap = document.getElementById('faqListWrap');
   var btn = document.getElementById('faqExpandAllBtn');
-  var icon = document.getElementById('faqExpandAllIcon');
   if(!wrap) return;
   var isOpen = wrap.classList.contains('open');
   if(isOpen){
-    // Collapse all
     wrap.classList.remove('open');
     document.querySelectorAll('.faq-item').forEach(function(item){
       item.classList.remove('open');
       var ic = item.querySelector('.faq-icon');
       if(ic) ic.innerHTML = '+';
     });
-    if(icon) icon.innerHTML = '+';
-    if(btn) btn.innerHTML = 'Expand All &nbsp;<span id="faqExpandAllIcon" style="font-size:18px;line-height:1;">+</span>';
+    if(btn) btn.innerHTML = 'Expand &#9660;';
   } else {
-    // Expand section + all items
     wrap.classList.add('open');
     document.querySelectorAll('.faq-item').forEach(function(item){
       item.classList.add('open');
       var ic = item.querySelector('.faq-icon');
       if(ic) ic.innerHTML = '&minus;';
     });
-    if(btn) btn.innerHTML = 'Collapse All &nbsp;<span id="faqExpandAllIcon" style="font-size:18px;line-height:1;">&minus;</span>';
+    if(btn) btn.innerHTML = 'Collapse &#9650;';
   }
 }
 
@@ -2272,7 +2269,7 @@ function toggleTheme(){
   var fw=document.getElementById('faqListWrap');
   if(fw){fw.classList.remove('open');}
   var fb=document.getElementById('faqExpandAllBtn');
-  if(fb) fb.innerHTML='Expand All &nbsp;<span id="faqExpandAllIcon" style="font-size:18px;line-height:1;">+</span>';
+  if(fb) fb.innerHTML='Expand &#9660;';
 }
 // Apply saved theme on load
 (function(){
