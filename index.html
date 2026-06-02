@@ -66,7 +66,8 @@ html{scroll-behavior:smooth;}
 [data-theme="light"] .ipo-section,[data-theme="light"] .mirror-room,[data-theme="light"] .fartcoin-section,
 [data-theme="light"] .faq-section,[data-theme="light"] .ca-full-section,[data-theme="light"] .bridge-section{background:#ede6d0 !important;}
 [data-theme="light"] .divider{background:rgba(0,0,0,0.08);}
-[data-theme="light"] .banner-section{opacity:.7;mix-blend-mode:multiply;}
+[data-theme="light"] .banner-section{opacity:1;mix-blend-mode:lighten;filter:brightness(1.15) contrast(1.05);}
+[data-theme="light"] .banner-image{filter:brightness(1.2) contrast(1.1);}
 /* Light: text colors */
 [data-theme="light"] .hero-question{color:#8a6a12 !important;}
 [data-theme="light"] .label{color:#8a6a12 !important;}
@@ -119,6 +120,8 @@ html{scroll-behavior:smooth;}
 [data-theme="light"] .search-close-btn{border-color:rgba(0,0,0,0.2) !important;color:#5a4a2a !important;}
 /* Light: footer */
 [data-theme="light"] .footer{background:#e5ddc5 !important;border-top-color:rgba(0,0,0,0.1) !important;}
+[data-theme="light"] .footer-socials a{color:#5a4a2a !important;}
+[data-theme="light"] .footer-socials a:hover{color:#8a6a12 !important;}  
 [data-theme="light"] .footer-tagline,[data-theme="light"] .footer-ca{color:#5a4a2a !important;}
 /* Light: geo badge */
 [data-theme="light"] .geo-badge{background:rgba(250,248,243,0.95) !important;border-color:rgba(0,0,0,0.15) !important;}
@@ -137,6 +140,12 @@ html{scroll-behavior:smooth;}
 [data-theme="light"] [style*="background:var(--bg-lift)"]{background:#ede6d0 !important;}
 [data-theme="light"] [style*="background:rgba(212,175,55"]{background:rgba(138,106,18,0.1) !important;}
 /* Hint text visibility */
+[data-theme="light"] .hero-question{color:#7a5e0e !important;font-weight:400;}
+[data-theme="light"] .phil-line{color:#2a2008 !important;font-weight:400;}
+[data-theme="light"] .phil-line.gold{color:#8a6a12 !important;font-weight:500;}
+[data-theme="light"] .pull-quote p{font-weight:400;color:#1a1208 !important;}
+[data-theme="light"] h2{color:#1a1208 !important;font-weight:400;}
+[data-theme="light"] h3{color:#2a2008 !important;font-weight:400;}  
 [data-theme="light"] .scroll-hint{color:#8a7a5a !important;}
 [data-theme="light"] .continue-hint{color:#7a6a4a !important;}
 [data-theme="light"] [style*="color:#555"]{color:#7a6a4a !important;}
@@ -501,7 +510,10 @@ section{scroll-margin-top:140px;}
 
 /* ── FOOTER ───────────────────────────────────────────────────────────────── */
 .footer{padding:64px 24px 52px;border-top:1px solid #1a1a1a;}
-.footer-logo-wrap{width:80px;height:80px;margin:0 auto 28px;border-radius:6px;overflow:hidden;box-shadow:0 0 16px 3px rgba(212,175,55,.25);background:#000;}
+.footer-logo-wrap{width:80px;height:80px;margin:0 auto 28px;border-radius:6px;overflow:hidden;box-shadow:0 0 16px 3px rgba(212,175,55,.25);background:#000;opacity:1;transition:opacity .3s;}
+.footer-logo-wrap:hover{opacity:0.9;}
+
+[data-theme="light"] .footer-logo-wrap{background:#faf8f3;box-shadow:0 0 16px 3px rgba(122,94,14,.15);}
 .footer-logo-wrap img{width:100%;height:100%;object-fit:cover;display:block;}
 .footer-socials{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-bottom:28px;}
 .footer-socials a{font-family:var(--sans);font-size:11px;color:var(--mid);letter-spacing:3px;text-transform:uppercase;text-decoration:none;transition:color .25s;}
@@ -611,12 +623,11 @@ section{scroll-margin-top:140px;}
   <div class="progress-bar" id="progressBar"></div>
   <ul class="nav-items">
     <li><a href="#home" id="nav-home">Home</a></li>
-    <li><a href="#framework">Framework</a></li>
-    <li><a href="#ledger">Ledger</a></li>
-    <li><a href="#ipo">IPO</a></li>
-    <li><a href="#mirror">Mirror</a></li>
-    <li><a href="#contract">Contract</a></li>
-    <li><a href="#disclaimer">Disclaimer</a></li>
+<li><a href="#framework">Framework</a></li>
+<li><a href="#ledger">Ledger</a></li>
+<li><a href="#ipo">IPO</a></li>
+<li><a href="#mirror">Mirror</a></li>
+<li><a href="#contract">Contract</a></li>
     <!-- Icon items: hidden desktop, visible mobile as last items -->
     <li class="nav-icon-item">
       <button onclick="toggleTheme()" title="Toggle theme" style="background:none;border:none;border-left:1px solid #1a1a1a;border-right:1px solid #1a1a1a;color:var(--dim);cursor:pointer;width:36px;height:var(--nav-h);display:flex;align-items:center;justify-content:center;font-size:13px;padding:0;" id="themeToggleMobile">&#9788;</button>
@@ -2020,8 +2031,8 @@ function showVoidResponse(type, btn){
     // Hide floating logo after hero (approx 300px)
     if(floatLogo){
       // Hide logo after scrolling past hero area so it never overlaps section headers
-      if(scrolled>180)floatLogo.classList.add('hidden');
-      else floatLogo.classList.remove('hidden');
+     if(scrolled>280)floatLogo.classList.add('hidden');  // Hide later, at 280px instead of 180px
+     else floatLogo.classList.remove('hidden');
     }
     var fromTop=scrolled+120;
     var current='';
@@ -2178,30 +2189,58 @@ function showVoidResponse(type, btn){
         +'</a>';
     }).join('');
     results.querySelectorAll('.search-result').forEach(function(el){
-      el.addEventListener('click',function(){
-        var id = this.getAttribute('data-id');
-        var target = document.getElementById(id);
-        if(target){
-          var navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'))||44;
-          // Expand collapsed sections automatically
-          if(target.classList.contains('collapsed')) target.classList.remove('collapsed');
-          var faqList = target.querySelector('.faq-list');
-          if(faqList){
-            var firstFaq = faqList.querySelector('.faq-item');
-            if(firstFaq && !firstFaq.classList.contains('open')) firstFaq.classList.add('open');
-          }
-          var foundationContent = target.querySelector('.foundation-content');
-          if(foundationContent && foundationContent.style.maxHeight==='0px'){
-            foundationContent.style.maxHeight='3000px';foundationContent.style.opacity='1';
-          }
-          closeSearch();
-          setTimeout(function(){
-            var top = target.getBoundingClientRect().top + window.scrollY - navH - 20;
-            window.scrollTo({top:top,behavior:'smooth'});
-          },100);
+  el.addEventListener('click',function(){
+    var id = this.getAttribute('data-id');
+    var target = document.getElementById(id);
+    if(target){
+      var navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'))||44;
+      
+      // Auto-expand collapsed parent sections
+      if(target.classList.contains('collapsed')) target.classList.remove('collapsed');
+      
+      // Expand framework cards
+      var frameworks = target.querySelectorAll('.framework-card.collapsed');
+      frameworks.forEach(function(f){ f.classList.remove('collapsed'); });
+      
+      // Expand identity layer
+      var identity = target.querySelector('.identity-section.collapsed');
+      if(identity) identity.classList.remove('collapsed');
+      
+      // Expand surrender stages
+      var surrender = target.querySelector('.surrender-section.collapsed');
+      if(surrender) surrender.classList.remove('collapsed');
+      
+      // Expand FAQ items (remove BOTH closed class AND add open)
+      var faqList = target.querySelector('.faq-list');
+      if(faqList){
+        var firstFaq = faqList.querySelector('.faq-item.closed');
+        if(firstFaq) {
+          firstFaq.classList.remove('closed');
+          firstFaq.classList.add('open');
+          var ic = firstFaq.querySelector('.faq-icon');
+          if(ic) ic.innerHTML='&minus;';
         }
+      }
+      
+      // Expand foundation
+      var foundationContent = target.querySelector('.foundation-content');
+      if(foundationContent && foundationContent.style.maxHeight==='0px'){
+        foundationContent.style.maxHeight='3000px';
+        foundationContent.style.opacity='1';
+      }
+      
+      closeSearch();
+      
+      // Use requestAnimationFrame instead of timeout for better timing
+      requestAnimationFrame(function(){
+        var top = target.getBoundingClientRect().top + window.scrollY - navH - 20;
+        window.scrollTo({top:top, behavior:'smooth'});
+        // Update URL hash for direct linking support
+        history.replaceState(null, '', '#' + id);
       });
-    });
+    }
+  });
+});
   }
 
   if(btn) btn.addEventListener('click', openSearch);
