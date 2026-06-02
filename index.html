@@ -203,6 +203,8 @@ a:hover{opacity:.7;}
   .nav-items{padding-right:0;}
   .nav-items li a{font-size:clamp(6.5px,2vw,10px);letter-spacing:0.5px;padding:0 clamp(3px,1.5vw,8px);}
   .nav-items li:first-child a{padding-left:clamp(3px,1.5vw,8px);}
+  /* Hide DISCLAIMER completely on mobile to prevent overlap */
+  .nav-items li:nth-child(7){display:none !important;}
   .nav-search-btn{display:none;}
   #themeToggleBtn{display:none;}
   .nav-icon-item{display:list-item !important;}
@@ -668,21 +670,16 @@ section{scroll-margin-top:140px;}
     <p style="font-family:var(--serif);font-size:clamp(20px,3vw,30px);font-weight:400;color:var(--gold);line-height:1.35;margin-bottom:12px;">What is your own SELF worth?</p>
     <p style="font-family:var(--serif);font-size:clamp(12px,1.5vw,15px);color:var(--dim);line-height:1.85;margin-bottom:10px;">Not in dollars. Not in status. Not in the next milestone.<br>In the only currency that cannot be taken from you.</p>
     <div style="border-top:1px solid #1e1e1e;padding-top:10px;margin-top:2px;">
-      <p style="font-family:var(--serif);font-size:clamp(13px,1.7vw,17px);color:var(--mid);font-style:italic;line-height:1.7;margin-bottom:0;">If today were the last day of your life &mdash;<br>how would you see your SELF differently?</p>
+      <p style="font-family:var(--serif);font-size:clamp(13px,1.7vw,17px);color:var(--mid);font-style:italic;line-height:1.7;margin-bottom:0;">If today were the last day of your life &mdash;<br>how would that change your perspective on your own SELF?</p>
     </div>
   </div>
 
-  <!-- Gold pill — CA as anchor, scrolls to contract -->
-  <a href="#contract"
-     onclick="event.preventDefault();document.getElementById('contract').scrollIntoView({behavior:'smooth'});"
-     style="display:inline-flex;align-items:center;gap:8px;margin-top:10px;padding:9px 20px;background:var(--gold);color:#000;font-family:var(--sans);font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;text-decoration:none;transition:opacity .25s;box-shadow:0 0 18px rgba(212,175,55,.35);max-width:90%;overflow:hidden;"
-     title="7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump"
-     onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
-    <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:260px;">CA: 7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump</span>
-    <svg width="10" height="10" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
-      <path d="M6 1v9M2 7l4 4 4-4" stroke="#000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-  </a>
+  <!-- Contract Address Card — Compact, copyable -->
+  <div style="max-width:540px;width:100%;border:1px solid rgba(212,175,55,0.3);background:rgba(212,175,55,0.08);padding:16px 20px;margin:16px auto 0;text-align:center;border-radius:4px;position:relative;">
+    <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:8px;opacity:0.85;">Contract Address</div>
+    <div style="font-family:var(--sans);font-size:11px;color:var(--white);word-break:break-all;letter-spacing:0.5px;margin-bottom:10px;line-height:1.5;font-weight:500;">7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump</div>
+    <button onclick="navigator.clipboard.writeText('7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump');var btn=this;var orig=btn.innerHTML;btn.innerHTML='COPIED ✓';btn.style.opacity='0.7';setTimeout(function(){btn.innerHTML=orig;btn.style.opacity='1';},1500);" style="padding:8px 16px;background:rgba(212,175,55,0.2);border:1px solid rgba(212,175,55,0.5);color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all 0.25s;border-radius:2px;font-weight:600;" onmouseover="this.style.background='rgba(212,175,55,0.35)'" onmouseout="this.style.background='rgba(212,175,55,0.2)'">Copy CA</button>
+  </div>
 
 </section>
 <div style="text-align:center;padding:14px 0 2px;font-family:var(--sans);font-size:10px;color:#444;letter-spacing:4px;text-transform:uppercase;animation:fade 3.5s ease-in-out infinite;user-select:none;pointer-events:none;">CONTINUE &#8595;</div>
@@ -1871,7 +1868,7 @@ section{scroll-margin-top:140px;}
           </div>
           <div style="padding:20px 22px;border-left:3px solid var(--gold);background:var(--bg-lift);">
             <p style="font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:6px;">Socratic Dialogue &mdash; The answers are within</p>
-            <p style="font-size:15.5px;color:var(--grey);line-height:1.85;">The answers do not come from outside. They are realized through careful questioning. Ask: <em style="color:var(--mid);">Is there anything in your life you would die for?</em> If yes &mdash; that is your direction towards super-ordinate goal.</p>
+            <p style="font-size:15.5px;color:var(--grey);line-height:1.85;">The answers do not come from outside. They are realized through careful questioning. Ask: <em style="color:var(--mid);">Is there anything in your life you would die for?</em> If yes &mdash; that is your direction. That is your super-ordinate goal.</p>
           </div>
         </div>
       </div>
@@ -2172,13 +2169,15 @@ function showVoidResponse(type, btn){
       return;
     }
     results.innerHTML = filtered.map(function(s,i){
-      return '<a class="search-result" data-id="'+s.id+'" data-idx="'+i+'">'
+      return '<button class="search-result" data-id="'+s.id+'" data-idx="'+i+'" type="button" style="display:block;width:100%;text-align:left;background:none;border:none;cursor:pointer;padding:14px 16px;border-bottom:1px solid #1a1a1a;text-decoration:none;transition:background .15s;">'
         +'<div class="search-result-title">'+highlight(s.title,q)+'</div>'
         +'<div class="search-result-desc">'+highlight(s.desc.substring(0,90)+(s.desc.length>90?'…':''),q)+'</div>'
-        +'</a>';
+        +'</button>';
     }).join('');
     results.querySelectorAll('.search-result').forEach(function(el){
-      el.addEventListener('click',function(){
+      el.addEventListener('click',function(e){
+        e.preventDefault();
+        e.stopPropagation();
         var id = this.getAttribute('data-id');
         var target = document.getElementById(id);
         if(target){
@@ -2190,15 +2189,20 @@ function showVoidResponse(type, btn){
             var firstFaq = faqList.querySelector('.faq-item');
             if(firstFaq && !firstFaq.classList.contains('open')) firstFaq.classList.add('open');
           }
-          var foundationContent = target.querySelector('.foundation-content');
+          var foundationContent = target.querySelector('#foundationContent');
           if(foundationContent && foundationContent.style.maxHeight==='0px'){
-            foundationContent.style.maxHeight='3000px';foundationContent.style.opacity='1';
+            foundationContent.style.maxHeight='3000px';
+            foundationContent.style.opacity='1';
           }
           closeSearch();
           setTimeout(function(){
-            var top = target.getBoundingClientRect().top + window.scrollY - navH - 20;
-            window.scrollTo({top:top,behavior:'smooth'});
-          },100);
+            var rect = target.getBoundingClientRect();
+            var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            var top = rect.top + scrollTop - navH - 24;
+            window.scrollTo({top:Math.max(0,top),behavior:'smooth'});
+          },150);
+        } else {
+          console.warn('Section not found: '+id);
         }
       });
     });
