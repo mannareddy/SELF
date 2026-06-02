@@ -66,7 +66,8 @@ html{scroll-behavior:smooth;}
 [data-theme="light"] .ipo-section,[data-theme="light"] .mirror-room,[data-theme="light"] .fartcoin-section,
 [data-theme="light"] .faq-section,[data-theme="light"] .ca-full-section,[data-theme="light"] .bridge-section{background:#ede6d0 !important;}
 [data-theme="light"] .divider{background:rgba(0,0,0,0.08);}
-[data-theme="light"] .banner-section{opacity:.7;mix-blend-mode:multiply;}
+[data-theme="light"] .banner-section{opacity:1;mix-blend-mode:lighten;filter:brightness(1.15) contrast(1.05);}
+[data-theme="light"] .banner-image{filter:brightness(1.2) contrast(1.1);}
 /* Light: text colors */
 [data-theme="light"] .hero-question{color:#8a6a12 !important;}
 [data-theme="light"] .label{color:#8a6a12 !important;}
@@ -184,6 +185,15 @@ html{scroll-behavior:smooth;}
 [data-theme="light"] .pillar-card{background:#ede6d0 !important;border-color:rgba(0,0,0,0.1) !important;}
 [data-theme="light"] .pillar-card h3{color:#1a1208 !important;}
 [data-theme="light"] .pillar-card p{color:#4a3a1a !important;}
+/* Text enhancement for better readability */
+[data-theme="light"] .hero-question{font-weight:400 !important;}
+[data-theme="light"] .phil-line{color:#2a2008 !important;font-weight:400 !important;}
+[data-theme="light"] .phil-line.gold{color:#8a6a12 !important;font-weight:500 !important;}
+[data-theme="light"] .pull-quote p{font-weight:400 !important;color:#1a1208 !important;}
+[data-theme="light"] h2{color:#1a1208 !important;font-weight:400 !important;}
+[data-theme="light"] h3{color:#2a2008 !important;font-weight:400 !important;}
+/* Floating logo in light theme */
+[data-theme="light"] .float-logo{box-shadow:0 0 12px 3px rgba(122,94,14,0.3),0 0 36px 8px rgba(122,94,14,0.15),0 0 70px 20px rgba(122,94,14,0.05) !important;}
 
 body{background:var(--bg);color:var(--white);font-family:var(--serif);text-align:center;line-height:1.85;overflow-x:hidden;padding-top:var(--nav-h);}
 a{color:var(--gold);text-decoration:none;transition:opacity .25s;}
@@ -209,9 +219,11 @@ a:hover{opacity:.7;}
   #themeToggleBtn{display:none;}
   .nav-icon-item{display:list-item !important;}
 }
+/* Hide CONTRACT from nav (it belongs in footer with legal links) */
+.nav-items li:nth-child(6){display:none !important;}
 
 /* ── FLOATING LOGO ───────────────────────────────────────────────────────── */
-.float-logo{position:fixed;top:calc(var(--nav-h)+4px);left:50%;transform:translateX(-50%);z-index:500;width:58px;height:58px;border-radius:6px;overflow:hidden;box-shadow:0 0 12px 3px var(--gold-glow),0 0 36px 8px rgba(212,175,55,.22),0 0 70px 20px rgba(212,175,55,.08);animation:glow-pulse 3.5s ease-in-out infinite;cursor:pointer;display:block;transition:opacity .3s;}
+.float-logo{position:fixed;top:8px;left:50%;transform:translateX(-50%);z-index:1001;width:58px;height:58px;border-radius:6px;overflow:hidden;box-shadow:0 0 12px 3px var(--gold-glow),0 0 36px 8px rgba(212,175,55,.22),0 0 70px 20px rgba(212,175,55,.08);animation:glow-pulse 3.5s ease-in-out infinite;cursor:pointer;display:block;transition:opacity .3s;}
 .float-logo.hidden{opacity:0;pointer-events:none;}
 .float-logo img{width:100%;height:100%;object-fit:cover;display:block;}
 @keyframes glow-pulse{0%,100%{box-shadow:0 0 12px 3px var(--gold-glow),0 0 36px 8px rgba(212,175,55,.22),0 0 70px 20px rgba(212,175,55,.08);}50%{box-shadow:0 0 22px 7px rgba(212,175,55,.8),0 0 55px 15px rgba(212,175,55,.35),0 0 100px 32px rgba(212,175,55,.13);}}
@@ -503,13 +515,18 @@ section{scroll-margin-top:140px;}
 
 /* ── FOOTER ───────────────────────────────────────────────────────────────── */
 .footer{padding:64px 24px 52px;border-top:1px solid #1a1a1a;}
-.footer-logo-wrap{width:80px;height:80px;margin:0 auto 28px;border-radius:6px;overflow:hidden;box-shadow:0 0 16px 3px rgba(212,175,55,.25);background:#000;}
+.footer-logo-wrap{width:80px;height:80px;margin:0 auto 28px;border-radius:6px;overflow:hidden;box-shadow:0 0 16px 3px rgba(212,175,55,.25);background:#000;opacity:1;transition:opacity .3s;}
+.footer-logo-wrap:hover{opacity:0.9;}
 .footer-logo-wrap img{width:100%;height:100%;object-fit:cover;display:block;}
 .footer-socials{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-bottom:28px;}
 .footer-socials a{font-family:var(--sans);font-size:11px;color:var(--mid);letter-spacing:3px;text-transform:uppercase;text-decoration:none;transition:color .25s;}
 .footer-socials a:hover{color:var(--gold);opacity:1;}
 .footer-tagline{font-family:var(--sans);font-size:11px;color:var(--grey);letter-spacing:5px;text-transform:uppercase;margin-bottom:22px;}
 .footer-ca{font-family:var(--sans);font-size:11px;color:var(--dim);letter-spacing:.8px;word-break:break-all;max-width:500px;margin:0 auto;}
+/* Light theme footer enhancements */
+[data-theme="light"] .footer-logo-wrap{background:#faf8f3;box-shadow:0 0 16px 3px rgba(122,94,14,.15);}
+[data-theme="light"] .footer-socials a{color:#5a4a2a !important;}
+[data-theme="light"] .footer-socials a:hover{color:#8a6a12 !important;}
 
 
 /* scroll-hint always visible when present */
@@ -657,6 +674,13 @@ section{scroll-margin-top:140px;}
 <!-- HERO — Structured, enclosed, typographically intentional -->
 <section class="hero" id="home">
 
+  <!-- Contract Address Card — Immediately visible, copyable -->
+  <div style="max-width:540px;width:100%;border:1px solid rgba(212,175,55,0.3);background:rgba(212,175,55,0.08);padding:16px 20px;margin:0 auto 24px;text-align:center;border-radius:4px;position:relative;">
+    <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:8px;opacity:0.85;">Contract Address</div>
+    <div style="font-family:var(--sans);font-size:11px;color:var(--white);word-break:break-all;letter-spacing:0.5px;margin-bottom:10px;line-height:1.5;font-weight:500;">7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump</div>
+    <button onclick="navigator.clipboard.writeText('7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump');var btn=this;var orig=btn.innerHTML;btn.innerHTML='COPIED ✓';btn.style.opacity='0.7';setTimeout(function(){btn.innerHTML=orig;btn.style.opacity='1';},1500);" style="padding:8px 16px;background:rgba(212,175,55,0.2);border:1px solid rgba(212,175,55,0.5);color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all 0.25s;border-radius:2px;font-weight:600;" onmouseover="this.style.background='rgba(212,175,55,0.35)'" onmouseout="this.style.background='rgba(212,175,55,0.2)'">Copy CA</button>
+  </div>
+
   <!-- Opening — italic gold, same serif voice as pull-quotes -->
   <p class="hero-question" style="margin-bottom:24px;">There is a question you have been avoiding<br>your entire life.<br>It will not wait forever.</p>
 
@@ -672,13 +696,6 @@ section{scroll-margin-top:140px;}
     <div style="border-top:1px solid #1e1e1e;padding-top:10px;margin-top:2px;">
       <p style="font-family:var(--serif);font-size:clamp(13px,1.7vw,17px);color:var(--mid);font-style:italic;line-height:1.7;margin-bottom:0;">If today were the last day of your life &mdash;<br>how would that change your perspective on your own SELF?</p>
     </div>
-  </div>
-
-  <!-- Contract Address Card — Compact, copyable -->
-  <div style="max-width:540px;width:100%;border:1px solid rgba(212,175,55,0.3);background:rgba(212,175,55,0.08);padding:16px 20px;margin:16px auto 0;text-align:center;border-radius:4px;position:relative;">
-    <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:8px;opacity:0.85;">Contract Address</div>
-    <div style="font-family:var(--sans);font-size:11px;color:var(--white);word-break:break-all;letter-spacing:0.5px;margin-bottom:10px;line-height:1.5;font-weight:500;">7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump</div>
-    <button onclick="navigator.clipboard.writeText('7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump');var btn=this;var orig=btn.innerHTML;btn.innerHTML='COPIED ✓';btn.style.opacity='0.7';setTimeout(function(){btn.innerHTML=orig;btn.style.opacity='1';},1500);" style="padding:8px 16px;background:rgba(212,175,55,0.2);border:1px solid rgba(212,175,55,0.5);color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all 0.25s;border-radius:2px;font-weight:600;" onmouseover="this.style.background='rgba(212,175,55,0.35)'" onmouseout="this.style.background='rgba(212,175,55,0.2)'">Copy CA</button>
   </div>
 
 </section>
@@ -1910,9 +1927,6 @@ section{scroll-margin-top:140px;}
 
 <!-- FOOTER -->
 <footer class="footer">
-  <div class="footer-logo-wrap">
-    <img src="./assets/images/Logo_web.jpg" alt="*SELF">
-  </div>
   <div class="footer-socials">
     <a href="https://x.com/muraliannareddy" target="_blank" rel="noopener">X</a>
     <a href="https://t.me/+v6py4dWGU6g2MTU9" target="_blank" rel="noopener">Telegram</a>
@@ -1922,6 +1936,13 @@ section{scroll-margin-top:140px;}
   </div>
   <div class="footer-tagline">Not a meme. A mirror.</div>
   <div class="footer-ca">7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump</div>
+  <div class="footer-legal-links" style="margin-top:20px;display:flex;justify-content:center;gap:20px;flex-wrap:wrap;">
+    <a href="#contract" style="font-family:var(--sans);font-size:10px;color:var(--dim);letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:color .25s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--dim)'">Contract</a>
+    <a href="#disclaimer" style="font-family:var(--sans);font-size:10px;color:var(--dim);letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:color .25s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--dim)'">Disclaimer</a>
+  </div>
+  <div class="footer-logo-wrap" style="margin-top:32px;">
+    <img src="./assets/images/Logo_web.jpg" alt="*SELF">
+  </div>
 </footer>
 
 <script>
@@ -2017,7 +2038,7 @@ function showVoidResponse(type, btn){
     // Hide floating logo after hero (approx 300px)
     if(floatLogo){
       // Hide logo after scrolling past hero area so it never overlaps section headers
-      if(scrolled>180)floatLogo.classList.add('hidden');
+      if(scrolled>280)floatLogo.classList.add('hidden');
       else floatLogo.classList.remove('hidden');
     }
     var fromTop=scrolled+120;
@@ -2182,25 +2203,52 @@ function showVoidResponse(type, btn){
         var target = document.getElementById(id);
         if(target){
           var navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'))||44;
-          // Expand collapsed sections automatically
+          
+          // Auto-expand collapsed parent sections
           if(target.classList.contains('collapsed')) target.classList.remove('collapsed');
+          
+          // Expand framework cards
+          var frameworks = target.querySelectorAll('.framework-card.collapsed');
+          frameworks.forEach(function(f){ f.classList.remove('collapsed'); });
+          
+          // Expand identity layer
+          var identity = target.querySelector('.identity-section.collapsed');
+          if(identity) identity.classList.remove('collapsed');
+          
+          // Expand surrender stages
+          var surrender = target.querySelector('.surrender-section.collapsed');
+          if(surrender) surrender.classList.remove('collapsed');
+          
+          // Expand FAQ items (remove BOTH closed class AND add open)
           var faqList = target.querySelector('.faq-list');
           if(faqList){
-            var firstFaq = faqList.querySelector('.faq-item');
-            if(firstFaq && !firstFaq.classList.contains('open')) firstFaq.classList.add('open');
+            var firstFaq = faqList.querySelector('.faq-item.closed');
+            if(firstFaq) {
+              firstFaq.classList.remove('closed');
+              firstFaq.classList.add('open');
+              var ic = firstFaq.querySelector('.faq-icon');
+              if(ic) ic.innerHTML='&minus;';
+            }
           }
+          
+          // Expand foundation
           var foundationContent = target.querySelector('#foundationContent');
           if(foundationContent && foundationContent.style.maxHeight==='0px'){
             foundationContent.style.maxHeight='3000px';
             foundationContent.style.opacity='1';
           }
+          
           closeSearch();
-          setTimeout(function(){
+          
+          // Use requestAnimationFrame instead of timeout for better timing
+          requestAnimationFrame(function(){
             var rect = target.getBoundingClientRect();
             var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             var top = rect.top + scrollTop - navH - 24;
-            window.scrollTo({top:Math.max(0,top),behavior:'smooth'});
-          },150);
+            window.scrollTo({top:Math.max(0,top), behavior:'smooth'});
+            // Update URL hash for direct linking support
+            history.replaceState(null, '', '#' + id);
+          });
         } else {
           console.warn('Section not found: '+id);
         }
