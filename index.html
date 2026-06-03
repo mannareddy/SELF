@@ -56,7 +56,6 @@ html{scroll-behavior:smooth;}
 [data-theme="light"] .nav-items li a{color:#4a3a1a !important;border-right-color:rgba(0,0,0,0.1) !important;}
 [data-theme="light"] .nav-items li a.active{color:#8a6a12 !important;}
 [data-theme="light"] .nav-items li a:hover{color:#8a6a12 !important;}
-[data-theme="light"] .nav-search-btn{background:rgba(250,248,243,0.98) !important;border-left-color:rgba(0,0,0,0.15) !important;color:#5a4a2a !important;}
 [data-theme="light"] #themeToggleBtn{background:rgba(250,248,243,0.98) !important;border-color:rgba(0,0,0,0.15) !important;color:#5a4a2a !important;}
 [data-theme="light"] .progress-bar{background:linear-gradient(90deg,rgba(138,106,18,0.4),#8a6a12);}
 /* Light: section backgrounds */
@@ -108,15 +107,6 @@ html{scroll-behavior:smooth;}
 [data-theme="light"] .path-card{background:#ede6d0 !important;border-color:rgba(0,0,0,0.1) !important;}
 [data-theme="light"] .void-btn{border-color:rgba(138,106,18,0.4) !important;color:#4a3a1a !important;}
 [data-theme="light"] .void-btn.active{background:#8a6a12 !important;color:#faf8f3 !important;}
-/* Light: search modal */
-[data-theme="light"] #searchModal{background:rgba(250,248,243,0.97) !important;}
-[data-theme="light"] .search-input-wrap{background:#faf8f3 !important;border-color:rgba(0,0,0,0.2) !important;}
-[data-theme="light"] .search-input{color:#1a1208 !important;}
-[data-theme="light"] .search-input::placeholder{color:#7a6a4a !important;}
-[data-theme="light"] .search-result{background:#ede6d0 !important;border-color:rgba(0,0,0,0.1) !important;}
-[data-theme="light"] .search-result-title{color:#1a1208 !important;}
-[data-theme="light"] .search-result-desc{color:#5a4a2a !important;}
-[data-theme="light"] .search-close-btn{border-color:rgba(0,0,0,0.2) !important;color:#5a4a2a !important;}
 /* Light: footer */
 [data-theme="light"] .footer{background:#e5ddc5 !important;border-top-color:rgba(0,0,0,0.1) !important;}
 [data-theme="light"] .footer-tagline,[data-theme="light"] .footer-ca{color:#5a4a2a !important;}
@@ -151,8 +141,6 @@ html{scroll-behavior:smooth;}
 /* Red accent text — keep readable */
 [data-theme="light"] [style*="color:#c0392b"]{color:#b03020 !important;}
 /* Search modal hardcoded darks */
-[data-theme="light"] .search-input-wrap{background:#faf8f3 !important;border-color:rgba(0,0,0,0.2) !important;}
-[data-theme="light"] .search-results{background:#f0ead8 !important;border-color:rgba(0,0,0,0.1) !important;}
 [data-theme="light"] .search-result:hover,[data-theme="light"] .search-result.active{background:#e5ddc5 !important;}
 /* mc-card inline border */
 [data-theme="light"] [style*="border-color:#252525"]{border-color:rgba(0,0,0,0.12) !important;}
@@ -192,7 +180,7 @@ a:hover{opacity:.7;}
 /* ── STICKY NAV ─────────────────────────────────────────────────────────── */
 .site-nav{
   position:fixed;top:0;left:0;right:0;z-index:999;height:var(--nav-h);
-  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+  display:flex;align-items:center;
   background:rgba(0,0,0,0.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
   border-bottom:1px solid #1c1c1c;transition:background .3s;
   overflow:hidden;
@@ -200,31 +188,33 @@ a:hover{opacity:.7;}
 .site-nav.scrolled{background:rgba(0,0,0,0.98);}
 .progress-bar{position:absolute;bottom:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,rgba(212,175,55,.4) 0%,var(--gold) 100%);transition:width .1s linear;pointer-events:none;}
 /* Nav left / right halves */
-.nav-left,.nav-right{display:flex;align-items:center;height:var(--nav-h);}
+.nav-left,.nav-right{display:flex;align-items:center;height:var(--nav-h);list-style:none;margin:0;padding:0;flex:1;}
 .nav-left{justify-content:flex-end;}
 .nav-right{justify-content:flex-start;}
-.nav-left,.nav-right{list-style:none;margin:0;padding:0;}
-.nav-left li a,.nav-right li a{display:block;font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);padding:0 12px;height:var(--nav-h);line-height:var(--nav-h);transition:color .2s;border-right:1px solid #1a1a1a;white-space:nowrap;}
+.nav-left li a,.nav-right li a{display:block;font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);padding:0 10px;height:var(--nav-h);line-height:var(--nav-h);transition:color .2s;border-right:1px solid #1a1a1a;white-space:nowrap;}
 .nav-left li:first-child a{border-left:1px solid #1a1a1a;}
 .nav-right li a:hover,.nav-left li a:hover{color:var(--gold);opacity:1;}
 .nav-right li a.active,.nav-left li a.active{color:var(--gold);}
 /* Center logo in nav */
-.nav-logo-center{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:5px;overflow:hidden;border:1px solid rgba(212,175,55,0.5);box-shadow:0 0 12px 4px rgba(212,175,55,0.45),0 0 28px 8px rgba(212,175,55,0.2);margin:0 8px;animation:navLogoGlow 3s ease-in-out infinite;flex-shrink:0;}
+.nav-logo-center{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:5px;overflow:hidden;border:1px solid rgba(212,175,55,0.5);box-shadow:0 0 12px 4px rgba(212,175,55,0.45),0 0 28px 8px rgba(212,175,55,0.2);margin:0 6px;animation:navLogoGlow 3s ease-in-out infinite;flex-shrink:0;}
 .nav-logo-center img{width:100%;height:100%;object-fit:cover;display:block;}
 @keyframes navLogoGlow{
   0%,100%{box-shadow:0 0 10px 3px rgba(212,175,55,0.4),0 0 22px 6px rgba(212,175,55,0.15);}
   50%{box-shadow:0 0 20px 7px rgba(212,175,55,0.7),0 0 40px 14px rgba(212,175,55,0.32);}
 }
-/* Theme + Search buttons pinned to right edge */
-#themeToggleBtn{position:absolute;right:44px;top:0;background:rgba(0,0,0,.92);border:none;border-left:1px solid #1a1a1a;color:var(--dim);cursor:pointer;width:44px;height:var(--nav-h);display:flex;align-items:center;justify-content:center;font-size:14px;z-index:2;transition:color .2s;padding:0;}
-@media(max-width:768px){
-  .site-nav{display:flex;align-items:center;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;white-space:nowrap;}
+/* Theme button pinned to right edge — no search button */
+#themeToggleBtn{position:absolute;right:0;top:0;background:rgba(0,0,0,.92);border:none;border-left:1px solid #1a1a1a;color:var(--dim);cursor:pointer;width:44px;height:var(--nav-h);display:flex;align-items:center;justify-content:center;font-size:14px;z-index:2;transition:color .2s;padding:0;}
+#themeToggleBtn:hover{color:var(--gold);}
+/* Reserve space so nav items don't go under the theme button */
+.nav-right{padding-right:44px;}
+@media(max-width:900px){
+  .site-nav{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;white-space:nowrap;}
   .site-nav::-webkit-scrollbar{display:none;}
   .nav-logo-center{width:30px;height:30px;margin:0 3px;flex-shrink:0;}
-  .nav-left,.nav-right{display:flex;}
-  .nav-left li a,.nav-right li a{font-size:clamp(6.5px,1.8vw,9px);letter-spacing:0.4px;padding:0 clamp(4px,1.2vw,9px);}
+  .nav-left,.nav-right{flex:none;}
+  .nav-right{padding-right:0;}
+  .nav-left li a,.nav-right li a{font-size:clamp(6.5px,1.5vw,9px);letter-spacing:0.4px;padding:0 clamp(4px,1vw,8px);}
   .nav-left li:first-child a{border-left:none;}
-  .nav-search-btn{display:none;}
   #themeToggleBtn{display:none;}
   .nav-icon-item{display:list-item !important;}
 }
@@ -244,33 +234,12 @@ section{scroll-margin-top:140px;}
 .gold-line{width:48px;height:1px;background:var(--gold);opacity:.45;margin:44px auto;}
 .label{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--gold);opacity:.85;margin-bottom:42px;display:block;}
 
-/* ── NAV SEARCH BUTTON ───────────────────────────────────────────────────── */
+/* search removed */
 .nav-icon-item{display:none !important;}
-.nav-search-btn{position:absolute;right:0;top:0;flex-shrink:0;background:rgba(0,0,0,.92);border:none;border-left:1px solid #1a1a1a;color:var(--dim);cursor:pointer;width:44px;height:var(--nav-h);display:flex;align-items:center;justify-content:center;transition:color .2s;padding:0;z-index:2;}
-.nav-search-btn:hover{color:var(--gold);}
-
-/* ── SEARCH MODAL ────────────────────────────────────────────────────────── */
-.search-modal{position:fixed;inset:0;z-index:9999;display:none;align-items:flex-start;justify-content:center;padding-top:80px;}
-.search-modal.open{display:flex;}
-.search-overlay{position:absolute;inset:0;background:rgba(0,0,0,.8);backdrop-filter:blur(4px);}
-.search-box{position:relative;width:100%;max-width:560px;margin:0 16px;z-index:1;}
-.search-input-wrap{display:flex;align-items:center;gap:10px;background:#0d0d0d;border:1px solid #333;padding:12px 16px;}
-.search-input-wrap:focus-within{border-color:var(--gold);}
-.search-input{flex:1;background:transparent;border:none;outline:none;font-family:var(--serif);font-size:18px;color:var(--white);min-width:0;}
-.search-input::placeholder{color:var(--dim);}
-.search-close-btn{background:transparent;border:1px solid #333;color:var(--dim);font-family:var(--sans);font-size:10px;letter-spacing:2px;padding:4px 8px;cursor:pointer;flex-shrink:0;}
-.search-results{background:#0d0d0d;border:1px solid #222;border-top:none;max-height:520px;overflow-y:auto;}
-.search-result{display:block;padding:14px 16px;border-bottom:1px solid #1a1a1a;cursor:pointer;text-align:left;transition:background .15s;text-decoration:none;}
-.search-result:last-child{border-bottom:none;}
-.search-result:hover,.search-result.active{background:#141414;}
-.search-result-title{font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:3px;}
-.search-result-desc{font-family:var(--sans);font-size:11px;color:var(--dim);letter-spacing:.5px;line-height:1.5;}
-.search-result mark{background:transparent;color:var(--gold);}
-.search-empty{padding:20px 16px;font-family:var(--sans);font-size:12px;color:var(--dim);letter-spacing:1px;text-align:center;}
 
 /* ── HERO COMPACT — button always above fold on any screen ───────────────── */
-.hero{min-height:auto;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:80px 24px 80px;position:relative;background:radial-gradient(ellipse at 50% 35%,rgba(212,175,55,.05) 0%,transparent 68%);}
-.hero-question{font-size:clamp(17px,2.6vw,28px);font-weight:300;font-style:italic;color:var(--gold);line-height:1.45;max-width:620px;margin-bottom:10px;letter-spacing:.3px;text-align:center;}
+.hero{min-height:auto;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:28px 24px 16px;position:relative;background:radial-gradient(ellipse at 50% 35%,rgba(212,175,55,.05) 0%,transparent 68%);}
+.hero-question{font-size:clamp(15px,2vw,22px);font-weight:300;font-style:italic;color:var(--gold);line-height:1.45;max-width:620px;margin-bottom:10px;letter-spacing:.3px;text-align:center;}
 .hero-sub{font-size:clamp(15px,2vw,18px);color:var(--mid);font-weight:300;max-width:480px;line-height:1.85;margin-bottom:8px;}
 
 /* ── EXPAND LABEL (shared by arch, why) ──────────────────────────────────── */
@@ -617,6 +586,136 @@ section{scroll-margin-top:140px;}
   .perceptual-chain-arrow{transform:rotate(90deg);}
 }
 
+/* ── COLLAPSE TOGGLE BUTTON ──────────────────────────────────────────────── */
+.collapse-toggle-btn{font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);background:transparent;border:1px solid rgba(212,175,55,0.5);padding:10px 28px;cursor:pointer;transition:all .3s;opacity:.85;display:inline-block;margin-bottom:8px;}
+.collapse-toggle-btn:hover{opacity:1;border-color:var(--gold);background:rgba(212,175,55,0.06);}
+.section-collapse-label{font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#555;margin-top:8px;margin-bottom:0;display:block;}
+.section-collapse-wrap{overflow:hidden;transition:max-height .55s cubic-bezier(0,1,.25,1),opacity .35s ease;opacity:1;}
+.section-collapse-wrap.collapsed{max-height:0 !important;opacity:0;}
+
+/* ── THE ARCHITECTURE OF EGO ─────────────────────────────────────────────── */
+.ego-arch-section{padding:90px 24px;background:var(--bg);border-top:1px solid #111;border-bottom:1px solid #111;}
+.ego-arch-section h2{font-size:clamp(22px,3.5vw,38px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;}
+.ego-arch-section .sub{font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:560px;margin:0 auto 52px;font-style:italic;line-height:1.85;}
+.ego-ring-wrap{max-width:700px;margin:0 auto 52px;padding:44px 36px;border:1px solid #2a2a2a;background:radial-gradient(ellipse at 50% 50%,rgba(212,175,55,.04) 0%,transparent 70%);}
+.ego-ring-title{font-family:var(--sans);font-size:9px;letter-spacing:5px;text-transform:uppercase;color:#c0392b;opacity:.85;margin-bottom:24px;display:block;}
+.ego-twin{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:32px;}
+.ego-twin-card{padding:28px 24px;border:1px solid #1e1e1e;text-align:left;}
+.ego-twin-card.attachment{background:rgba(212,175,55,.03);}
+.ego-twin-card.aversion{background:rgba(192,57,43,.03);}
+.ego-twin-card .tc-label{font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;margin-bottom:12px;display:block;}
+.ego-twin-card.attachment .tc-label{color:var(--gold);}
+.ego-twin-card.aversion .tc-label{color:#c0392b;}
+.ego-twin-card h4{font-family:var(--serif);font-size:20px;font-weight:400;color:var(--white);margin-bottom:14px;}
+.ego-twin-card p{font-family:var(--serif);font-size:15px;font-weight:300;color:var(--grey);line-height:1.85;margin-bottom:10px;}
+.ego-twin-card .tc-end{font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);padding-top:10px;border-top:1px solid #1a1a1a;}
+.sl-stage{padding:22px 16px;border:1px solid #1e1e1e;text-align:left;background:var(--bg-lift);position:relative;}
+.sl-num{font-family:var(--sans);font-size:9px;letter-spacing:3px;color:var(--gold);opacity:.6;margin-bottom:8px;display:block;}
+.sl-name{font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:6px;}
+.sl-desc{font-family:var(--serif);font-size:13px;font-weight:300;color:var(--grey);line-height:1.8;}
+.sl-stage.danger{border-color:#3a1010;}
+.sl-stage.danger .sl-num{color:#c0392b;opacity:.8;}
+
+/* ── EGO SUB-SECTION HEADERS ─────────────────────────────────────────────── */
+.ego-sub-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:8px;max-width:820px;margin-left:auto;margin-right:auto;}
+.ego-sub-header-text h3{font-family:var(--serif);font-size:clamp(20px,2.8vw,28px);font-weight:300;color:var(--white);margin-bottom:4px;}
+.ego-sub-header-text p{font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--dim);}
+
+/* ── THE ENNEAGRAM SECTION ───────────────────────────────────────────────── */
+.enn-section{padding:90px 24px;background:var(--bg-lift);border-top:1px solid #111;border-bottom:1px solid #111;}
+.enn-section h2{font-size:clamp(22px,3.5vw,38px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;}
+.enn-section .sub{font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:580px;margin:0 auto 52px;font-style:italic;line-height:1.85;}
+.enn-intro-box{max-width:720px;margin:0 auto 52px;padding:36px 32px;border:1px solid #2a2a2a;background:var(--bg);text-align:left;}
+.enn-intro-box p{font-family:var(--serif);font-size:clamp(16px,2.1vw,19px);color:var(--grey);line-height:1.9;margin-bottom:14px;}
+.enn-intro-box p:last-child{margin-bottom:0;}
+.enn-intro-box p.highlight{color:var(--white);}
+.enn-intro-box p.gold{color:var(--gold);font-style:italic;}
+.enn-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2px;max-width:980px;margin:0 auto 52px;text-align:left;}
+.enneagram-card{padding:32px 28px;background:var(--bg);border:1px solid #1e1e1e;cursor:pointer;transition:border-color .3s;}
+.enneagram-card:hover{border-color:#444;}
+.enneagram-card.open{border-color:var(--gold);}
+.enneagram-card .ec-type{font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--dim);margin-bottom:8px;display:block;}
+.enneagram-card .ec-name{font-family:var(--serif);font-size:22px;font-weight:400;color:var(--white);margin-bottom:4px;}
+.enneagram-card .ec-fear{font-family:var(--sans);font-size:10px;letter-spacing:1px;color:var(--grey);margin-bottom:12px;}
+.enneagram-card .ec-toggle{font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-top:8px;display:block;}
+.enneagram-card .ec-body{display:none;border-top:1px solid #1e1e1e;margin-top:14px;padding-top:14px;}
+.enneagram-card.open .ec-body{display:block;}
+.ec-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;}
+.ec-col-label{font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;}
+.ec-col-label.shadow{color:#c0392b;opacity:.8;}
+.ec-col-label.light{color:var(--gold);}
+.ec-val{font-family:var(--serif);font-size:15px;color:var(--grey);line-height:1.7;}
+.ec-synthesis{font-family:var(--serif);font-size:14px;color:var(--mid);line-height:1.8;font-style:italic;padding-top:10px;border-top:1px solid #1a1a1a;margin-top:10px;}
+
+/* ── THE DESCENT ─────────────────────────────────────────────────────────── */
+.descent-section{padding:90px 24px;background:var(--bg);border-top:1px solid #111;border-bottom:1px solid #111;}
+.descent-section h2{font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:680px;margin:0 auto 16px;line-height:1.5;}
+.descent-section .sub{font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:540px;margin:0 auto 52px;font-style:italic;line-height:1.85;}
+.descent-funnel{max-width:600px;margin:0 auto 52px;}
+.descent-step{padding:22px 28px;border:1px solid #1e1e1e;background:var(--bg-lift);margin-bottom:2px;display:grid;grid-template-columns:52px 1fr;gap:0;text-align:left;transition:border-color .3s;}
+.descent-step:hover{border-color:#333;}
+.descent-step.essence{border-color:var(--gold);background:radial-gradient(ellipse at 50% 0%,rgba(212,175,55,.06) 0%,transparent 70%);}
+.ds-num{font-family:var(--sans);font-size:10px;letter-spacing:2px;color:var(--gold);opacity:.6;padding-top:2px;}
+.ds-num.danger{color:#c0392b;opacity:.8;}
+.ds-title{font-family:var(--serif);font-size:19px;font-weight:400;color:var(--white);margin-bottom:4px;}
+.ds-subtitle{font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:8px;display:block;}
+.ds-text{font-family:var(--serif);font-size:14.5px;font-weight:300;color:var(--grey);line-height:1.85;}
+.descent-step.essence .ds-title{color:var(--gold);}
+.descent-arrow{text-align:center;font-size:16px;color:var(--gold);opacity:.25;padding:4px 0;}
+.antidote-box{max-width:660px;margin:0 auto;padding:44px 36px;border:1px solid var(--gold);background:radial-gradient(ellipse at 50% 0%,rgba(212,175,55,.06) 0%,transparent 65%);text-align:center;position:relative;}
+.antidote-box::before{content:'';position:absolute;top:-1px;left:-1px;width:18px;height:18px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);}
+.antidote-box::after{content:'';position:absolute;bottom:-1px;right:-1px;width:18px;height:18px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);}
+.antidote-box .ad-label{font-family:var(--sans);font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);opacity:.75;margin-bottom:20px;display:block;}
+.antidote-box h3{font-family:var(--serif);font-size:clamp(22px,3vw,30px);font-weight:300;color:var(--white);margin-bottom:20px;line-height:1.5;}
+.antidote-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:20px;text-align:left;}
+.antidote-step{padding:18px 16px;border:1px solid #2a2a2a;background:var(--bg);}
+.as-num{font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:6px;display:block;}
+.as-title{font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:6px;}
+.as-text{font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.8;}
+
+/* ── RASA SYNTHESIS TABLE ────────────────────────────────────────────────── */
+.rasa-section{padding:90px 24px;background:var(--bg-lift);border-top:1px solid #111;border-bottom:1px solid #111;}
+.rasa-section h2{font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;}
+.rasa-section .sub{font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:560px;margin:0 auto 52px;font-style:italic;line-height:1.85;}
+.rasa-table{max-width:900px;margin:0 auto;border:1px solid #2a2a2a;overflow:hidden;}
+.rasa-row{display:grid;grid-template-columns:1.2fr 1fr 1fr 1.2fr;border-bottom:1px solid #1a1a1a;}
+.rasa-row:last-child{border-bottom:none;}
+.rasa-row.header{background:#0a0a0a;}
+.rasa-cell{font-family:var(--serif);font-size:clamp(13px,1.7vw,15px);font-weight:300;color:var(--grey);padding:16px 18px;text-align:left;border-right:1px solid #1a1a1a;}
+.rasa-cell:last-child{border-right:none;}
+.rasa-row.header .rasa-cell{font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);padding:12px 18px;}
+.rasa-cell.type{color:var(--white);font-family:var(--sans);font-size:10px;letter-spacing:1px;}
+.rasa-cell.shadow{color:#c0392b;opacity:.85;font-style:italic;}
+.rasa-cell.light{color:var(--gold);}
+.rasa-row:nth-child(odd):not(.header){background:rgba(255,255,255,.004);}
+.rasa-closing{max-width:680px;margin:36px auto 0;padding:32px 28px;border:1px solid #1e1e1e;border-left:3px solid var(--gold);background:var(--bg);text-align:left;}
+.rasa-closing p{font-family:var(--serif);font-size:clamp(16px,2.1vw,19px);color:var(--grey);line-height:1.9;margin-bottom:12px;}
+.rasa-closing p.gold{color:var(--gold);font-style:italic;margin-bottom:0;}
+
+/* Light theme overrides for EGO sections */
+[data-theme="light"] .ego-twin-card p{color:#2e2008 !important;font-weight:400 !important;}
+[data-theme="light"] .ego-twin-card{background:#e5ddc5 !important;border-color:rgba(0,0,0,0.1) !important;}
+[data-theme="light"] .sl-stage{background:#e5ddc5 !important;border-color:rgba(0,0,0,0.1) !important;}
+[data-theme="light"] .sl-name{color:#1a1208 !important;}
+[data-theme="light"] .sl-desc{color:#2e2008 !important;font-weight:400 !important;}
+[data-theme="light"] .enneagram-card{background:#e5ddc5 !important;border-color:rgba(0,0,0,0.12) !important;}
+[data-theme="light"] .descent-step{background:#e5ddc5 !important;border-color:rgba(0,0,0,0.1) !important;}
+[data-theme="light"] .ds-text{color:#2e2008 !important;font-weight:400 !important;}
+[data-theme="light"] .collapse-toggle-btn{border-color:rgba(138,106,18,0.5) !important;color:#7a5e0e !important;}
+[data-theme="light"] .rasa-row{border-color:rgba(0,0,0,0.08) !important;}
+[data-theme="light"] .ec-val{color:#2e2008 !important;font-weight:400 !important;}
+[data-theme="light"] .ec-synthesis{color:#2e2008 !important;font-weight:400 !important;}
+
+@media(max-width:640px){
+  .ego-twin{grid-template-columns:1fr;}
+  .ec-row{grid-template-columns:1fr;}
+  .enn-grid{grid-template-columns:1fr;gap:1px;}
+  .rasa-row{grid-template-columns:1fr 1fr;}
+  .rasa-row .rasa-cell:nth-child(3){display:none;}
+  .antidote-steps{grid-template-columns:1fr;}
+  .ego-sub-header{flex-direction:column;align-items:flex-start;}
+}
+
 
 </style>
 </head>
@@ -626,10 +725,11 @@ section{scroll-margin-top:140px;}
 <nav class="site-nav" id="siteNav" aria-label="Site navigation">
   <div class="progress-bar" id="progressBar"></div>
 
-  <!-- Left: Home, Framework, Ledger -->
+  <!-- Left: Home, Framework, Ego, Ledger -->
   <ul class="nav-left">
     <li><a href="#home" id="nav-home">Home</a></li>
     <li><a href="#framework">Framework</a></li>
+    <li><a href="#ego">Ego</a></li>
     <li><a href="#ledger">Ledger</a></li>
   </ul>
 
@@ -646,32 +746,11 @@ section{scroll-margin-top:140px;}
     <li class="nav-icon-item" style="display:none;">
       <button onclick="toggleTheme()" title="Toggle theme" style="background:none;border:none;border-left:1px solid #1a1a1a;border-right:1px solid #1a1a1a;color:var(--dim);cursor:pointer;width:36px;height:var(--nav-h);display:flex;align-items:center;justify-content:center;font-size:13px;padding:0;" id="themeToggleMobile">&#9788;</button>
     </li>
-    <li class="nav-icon-item" style="display:none;">
-      <button onclick="document.getElementById('navSearchBtn').click()" title="Search" style="background:none;border:none;border-right:1px solid #1a1a1a;color:var(--dim);cursor:pointer;width:36px;height:var(--nav-h);display:flex;align-items:center;justify-content:center;padding:0;">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      </button>
-    </li>
   </ul>
 
-  <!-- Desktop icon buttons pinned right -->
+  <!-- Desktop theme toggle pinned right -->
   <button id="themeToggleBtn" onclick="toggleTheme()" title="Toggle light/dark theme" aria-label="Toggle theme">&#9788;</button>
-  <button class="nav-search-btn" id="navSearchBtn" aria-label="Search sections" title="Search sections (/)">
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-  </button>
 </nav>
-
-<!-- SEARCH MODAL -->
-<div id="searchModal" class="search-modal" aria-hidden="true" role="dialog" aria-label="Search sections">
-  <div class="search-overlay" onclick="closeSearch()"></div>
-  <div class="search-box">
-    <div class="search-input-wrap">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--dim);flex-shrink:0;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      <input type="text" id="searchInput" class="search-input" placeholder="Search sections, concepts, questions…" autocomplete="off" spellcheck="false">
-      <button class="search-close-btn" onclick="closeSearch()" aria-label="Close search">ESC</button>
-    </div>
-    <div id="searchResults" class="search-results"></div>
-  </div>
-</div>
 
 <div class="geo-badge" id="geoBadge"></div>
 
@@ -682,7 +761,7 @@ section{scroll-margin-top:140px;}
   <p class="hero-question" style="margin-bottom:24px;">There is a question you have been avoiding<br>your entire life.<br>It will not wait forever.</p>
 
   <!-- Core question — enclosed box with corner accents -->
-  <div style="position:relative;max-width:540px;width:100%;border:1px solid #2a2a2a;background:rgba(212,175,55,.04);padding:22px 32px 20px;margin-bottom:14px;text-align:center;">
+  <div style="position:relative;max-width:540px;width:100%;border:1px solid #2a2a2a;background:rgba(212,175,55,.04);padding:16px 28px 16px;margin-bottom:10px;text-align:center;">
     <div style="position:absolute;top:-1px;left:-1px;width:16px;height:16px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);"></div>
     <div style="position:absolute;top:-1px;right:-1px;width:16px;height:16px;border-top:1px solid var(--gold);border-right:1px solid var(--gold);"></div>
     <div style="position:absolute;bottom:-1px;left:-1px;width:16px;height:16px;border-bottom:1px solid var(--gold);border-left:1px solid var(--gold);"></div>
@@ -691,9 +770,7 @@ section{scroll-margin-top:140px;}
     <p style="font-family:var(--serif);font-size:clamp(20px,3vw,30px);font-weight:400;color:var(--gold);line-height:1.35;margin-bottom:12px;">What is your own SELF worth?</p>
     <p style="font-family:var(--serif);font-size:clamp(12px,1.5vw,15px);color:var(--dim);line-height:1.85;margin-bottom:10px;">Not in dollars. Not in status. Not in the next milestone.<br>In the only currency that cannot be taken from you.</p>
     <div style="border-top:1px solid #1e1e1e;padding-top:10px;margin-top:2px;">
-      <p style="font-family:var(--serif);font-size:clamp(13px,1.7vw,17px);color:var(--mid);font-style:italic;line-height:1.7;margin-bottom:0;">If today were the last day of your life &mdash;<br>how would you see your SELF differently?
-
-</p>
+      <p style="font-family:var(--serif);font-size:clamp(13px,1.7vw,17px);color:var(--mid);font-style:italic;line-height:1.7;margin-bottom:0;">If today were the last day of your life &mdash;<br>how would that change your perspective on your own SELF?</p>
     </div>
   </div>
 
@@ -1281,6 +1358,272 @@ section{scroll-margin-top:140px;}
 </section>
 <div class="divider"></div>
 
+<!-- THE ARCHITECTURE OF EGO -->
+<section class="ego-arch-section" id="ego">
+  <span class="label">The Architecture of Ego</span>
+  <h2>Suffering is not random.<br>It is a highly structured feedback loop.</h2>
+  <p class="sub">Designed to protect the illusion of separation. The ego creates an arbitrary boundary between &ldquo;me&rdquo; and the rest of the world &mdash; and suffering is its maintenance system.</p>
+
+  <!-- Ego Root -->
+  <div class="ego-ring-wrap">
+    <span class="ego-ring-title">The Root of All Suffering</span>
+    <p style="font-family:var(--serif);font-size:clamp(17px,2.3vw,22px);color:var(--white);line-height:1.9;margin-bottom:16px;text-align:left;">The ego creates an arbitrary boundary between &ldquo;me&rdquo; and the rest of the world. Spirit misidentifies itself as matter &mdash; we believe we are a discrete body with a past, a future, and endless needs, cutting ourselves off from the whole.</p>
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,19px);color:var(--gold);font-style:italic;line-height:1.85;text-align:left;">The fundamental problem is not your personality. The problem is the subconscious identification that &ldquo;I am some body.&rdquo;</p>
+    <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-top:14px;text-align:left;">&mdash; Eli Jaxon-Bear</p>
+  </div>
+
+  <!-- Twin Reactions -->
+  <div class="ego-sub-header">
+    <div class="ego-sub-header-text">
+      <h3>The Twin Reactions</h3>
+      <p>The two engines of the ego machine</p>
+    </div>
+    <button class="collapse-toggle-btn" onclick="sectionCollapse('twin-reactions',this)">Expand &#9660;</button>
+  </div>
+  <span class="section-collapse-label" style="max-width:820px;margin:0 auto 8px;display:block;">Collapsed by default — tap to expand</span>
+  <div id="twin-reactions" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 52px;">
+    <div class="ego-twin">
+      <div class="ego-twin-card attachment">
+        <span class="tc-label">Driven by Desire</span>
+        <h4>Attachment</h4>
+        <p><strong style="color:var(--mid);font-weight:400;">Mechanism:</strong> Clinging tightly to people, status, or objects.</p>
+        <p><strong style="color:var(--mid);font-weight:400;">Purpose:</strong> Attempting to expand or satisfy the ego&rsquo;s perceived lack.</p>
+        <div class="tc-end">End State: Greed and Envy when unchecked.</div>
+      </div>
+      <div class="ego-twin-card aversion">
+        <span class="tc-label">Driven by Fear</span>
+        <h4>Aversion</h4>
+        <p><strong style="color:var(--mid);font-weight:400;">Mechanism:</strong> Pushing away people, pain, or uncomfortable truths.</p>
+        <p><strong style="color:var(--mid);font-weight:400;">Purpose:</strong> Anxiety that the ego will lose what it has, be harmed, or cease to exist.</p>
+        <div class="tc-end">End State: Isolation and systemic defense.</div>
+      </div>
+    </div>
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--mid);line-height:1.85;margin-top:24px;padding:20px;border:1px solid #1e1e1e;background:var(--bg);">These universal reactions crystalize into specific, repetitive patterns. We call these patterns &lsquo;Personality.&rsquo;</p>
+  </div>
+
+  <!-- Suffering Loop -->
+  <div class="ego-sub-header">
+    <div class="ego-sub-header-text">
+      <h3>The Suffering Loop</h3>
+      <p>Bhagavad Gita &middot; Chapter 2 &middot; Verses 62&ndash;63 &middot; The complete descent</p>
+    </div>
+    <button class="collapse-toggle-btn" onclick="sectionCollapse('suffering-loop',this)">Expand &#9660;</button>
+  </div>
+  <span class="section-collapse-label" style="max-width:820px;margin:0 auto 8px;display:block;">Collapsed by default — tap to expand</span>
+  <div id="suffering-loop" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 52px;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:2px;">
+      <div class="sl-stage"><span class="sl-num">Stage 1</span><div class="sl-name">Contemplation</div><p class="sl-desc">The mind dwells on an object or desire. Neutral at first.</p></div>
+      <div class="sl-stage"><span class="sl-num">Stage 2</span><div class="sl-name">Attachment</div><p class="sl-desc">Repeated focus creates rigid emotional dependency.</p></div>
+      <div class="sl-stage"><span class="sl-num">Stage 3</span><div class="sl-name">Desire</div><p class="sl-desc">Fire that demands more fuel the more it is fed.</p></div>
+      <div class="sl-stage"><span class="sl-num">Stage 4</span><div class="sl-name">Anger</div><p class="sl-desc">When craving hits a blocker. The first visible symptom.</p></div>
+      <div class="sl-stage"><span class="sl-num">Stage 5</span><div class="sl-name">Delusion</div><p class="sl-desc">Anger distorts your view. Ego narrative becomes fact.</p></div>
+      <div class="sl-stage"><span class="sl-num">Stage 6</span><div class="sl-name">Memory Loss</div><p class="sl-desc">You forget your true purpose and spiritual values.</p></div>
+      <div class="sl-stage"><span class="sl-num">Stage 7</span><div class="sl-name">Intelligence Loss</div><p class="sl-desc">Intellect bypassed for raw animalistic reactivity.</p></div>
+      <div class="sl-stage danger"><span class="sl-num">Stage 8</span><div class="sl-name" style="color:#c0392b;">Destruction</div><p class="sl-desc">Self-destructive behaviour. <em style="color:#c0392b;">The account is blown.</em></p></div>
+    </div>
+  </div>
+
+  <!-- Distortion of Satchitananda -->
+  <div class="ego-sub-header">
+    <div class="ego-sub-header-text">
+      <h3>The Distortion of Satchitananda</h3>
+      <p>How the three faces of consciousness become distorted by the ego</p>
+    </div>
+    <button class="collapse-toggle-btn" onclick="sectionCollapse('satchitananda',this)">Expand &#9660;</button>
+  </div>
+  <span class="section-collapse-label" style="max-width:820px;margin:0 auto 8px;display:block;">Collapsed by default — tap to expand</span>
+  <div id="satchitananda" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 0;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2px;">
+      <div style="padding:32px 24px;background:var(--bg-lift);border:1px solid #1e1e1e;text-align:left;">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:10px;">Sat &mdash; Being / Awareness</div>
+        <div style="font-family:var(--serif);font-size:20px;color:var(--white);margin-bottom:8px;">Body Triad</div>
+        <p style="font-family:var(--sans);font-size:11px;letter-spacing:1px;color:var(--dim);margin-bottom:10px;">Types 8, 9, 1</p>
+        <p style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.85;">Pure Awareness filtered through the physical body becomes <span style="color:#c0392b;">Anger</span> and instinctual drives.</p>
+      </div>
+      <div style="padding:32px 24px;background:var(--bg-lift);border:1px solid #1e1e1e;text-align:left;">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:10px;">Chit &mdash; Intelligence / Emptiness</div>
+        <div style="font-family:var(--serif);font-size:20px;color:var(--white);margin-bottom:8px;">Head Triad</div>
+        <p style="font-family:var(--sans);font-size:11px;letter-spacing:1px;color:var(--dim);margin-bottom:10px;">Types 5, 6, 7</p>
+        <p style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.85;">Quiet Intelligence filtered through the mental body becomes <span style="color:#c0392b;">Fear</span> and obsessive doubt.</p>
+      </div>
+      <div style="padding:32px 24px;background:var(--bg-lift);border:1px solid #1e1e1e;text-align:left;">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:10px;">Ananda &mdash; Love / Bliss</div>
+        <div style="font-family:var(--serif);font-size:20px;color:var(--white);margin-bottom:8px;">Heart Triad</div>
+        <p style="font-family:var(--sans);font-size:11px;letter-spacing:1px;color:var(--dim);margin-bottom:10px;">Types 2, 3, 4</p>
+        <p style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.85;">Pure Love filtered through the emotional body becomes <span style="color:#c0392b;">Neediness</span> and image obsession.</p>
+      </div>
+    </div>
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);margin-top:24px;padding:20px 24px;border:1px solid #2a2a2a;background:var(--bg);">Fixation is just Essence filtered through the illusion of a separate body.</p>
+  </div>
+</section>
+<span class="continue-hint">continue</span>
+<div class="divider"></div>
+
+<!-- ENNEAGRAM OF CHARACTER FIXATION -->
+<section class="enn-section">
+  <span class="label">The Enneagram of Character Fixation</span>
+  <h2>The Enneagram is Not Who You Are.</h2>
+  <p class="sub">It is a diagnostic map of who you are NOT. It reveals the 9 specific masks the ego uses to manage the universal engine of desire, fear, and anger.</p>
+
+  <div class="enn-intro-box">
+    <p class="highlight">The fundamental problem is not your personality. The problem is the subconscious identification that &ldquo;I am some body.&rdquo;</p>
+    <p>Using the Enneagram to justify behaviour (&ldquo;I&rsquo;m a Six, that&rsquo;s why I act this way&rdquo;) is going deeper to sleep. The correct use: uncover the subconscious identification to trigger a jailbreak from the fixation.</p>
+    <p class="gold">These are not authentic personalities. They are trance inductions. To break the trance, we must descend.</p>
+  </div>
+
+  <div style="text-align:center;margin-bottom:36px;">
+    <button id="ennExpandBtn" class="collapse-toggle-btn" onclick="toggleEnn(this)">Expand All 9 Types &#9660;</button>
+    <p class="section-collapse-label">Collapsed by default — tap to expand</p>
+  </div>
+
+  <div class="enn-grid" id="ennGrid">
+    <div class="enneagram-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Tap to collapse &#9660;':'Tap to expand &#9654;';}">
+      <span class="ec-type">Type 1 &mdash; The Perfectionist</span>
+      <div class="ec-name">The Perfectionist</div>
+      <div class="ec-fear">Core Fear: Being imperfect or corrupt</div>
+      <span class="ec-toggle">Tap to expand &#9654;</span>
+      <div class="ec-body">
+        <div class="ec-row">
+          <div><span class="ec-col-label shadow">Shadow Rasa</span><div class="ec-val">Vibhatsya (Disgust / Aversion) &mdash; frustration with an imperfect reality</div></div>
+          <div><span class="ec-col-label light">Essence</span><div class="ec-val">Adbhuta (Wonder) &amp; Purity &mdash; allowing reality as it is without judgment</div></div>
+        </div>
+        <div class="ec-synthesis">The 1&rsquo;s relentless drive for perfection manifests as a continuous, low-level disgust or aversion toward the inherent flaws of the world and themselves.</div>
+      </div>
+    </div>
+    <div class="enneagram-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Tap to collapse &#9660;':'Tap to expand &#9654;';}">
+      <span class="ec-type">Type 2 &mdash; The Giver</span>
+      <div class="ec-name">The Giver</div>
+      <div class="ec-fear">Core Fear: Being unlovable</div>
+      <span class="ec-toggle">Tap to expand &#9654;</span>
+      <div class="ec-body">
+        <div class="ec-row">
+          <div><span class="ec-col-label shadow">Shadow Rasa</span><div class="ec-val">Shringara (Needy Love) &mdash; manipulating affection through helpfulness</div></div>
+          <div><span class="ec-col-label light">Essence</span><div class="ec-val">Kindness &mdash; selfless devotion (Bhakti) without expectation of return</div></div>
+        </div>
+        <div class="ec-synthesis">The 2&rsquo;s desperate need to be wanted channels directly into Shringara, using affection as a subconscious strategy to secure their place in the hearts of others.</div>
+      </div>
+    </div>
+    <div class="enneagram-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Tap to collapse &#9660;':'Tap to expand &#9654;';}">
+      <span class="ec-type">Type 3 &mdash; The Achiever</span>
+      <div class="ec-name">The Achiever</div>
+      <div class="ec-fear">Core Fear: Being worthless or a failure</div>
+      <span class="ec-toggle">Tap to expand &#9654;</span>
+      <div class="ec-body">
+        <div class="ec-row">
+          <div><span class="ec-col-label shadow">Shadow Rasa</span><div class="ec-val">Hasya (Performative Joy) &mdash; the mask of success worn to avoid feeling empty</div></div>
+          <div><span class="ec-col-label light">Essence</span><div class="ec-val">Love &amp; Hope &mdash; authentic value expressed through genuine contribution</div></div>
+        </div>
+        <div class="ec-synthesis">The 3&rsquo;s identity becomes the performance itself. The mask of achievement is so well-fitted that removing it feels like annihilation.</div>
+      </div>
+    </div>
+    <div class="enneagram-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Tap to collapse &#9660;':'Tap to expand &#9654;';}">
+      <span class="ec-type">Type 4 &mdash; The Individualist</span>
+      <div class="ec-name">The Individualist</div>
+      <div class="ec-fear">Core Fear: Being ordinary or without identity</div>
+      <span class="ec-toggle">Tap to expand &#9654;</span>
+      <div class="ec-body">
+        <div class="ec-row">
+          <div><span class="ec-col-label shadow">Shadow Rasa</span><div class="ec-val">Karuna (Sorrow) &mdash; romanticising loss and longing as proof of depth</div></div>
+          <div><span class="ec-col-label light">Essence</span><div class="ec-val">Joy &amp; Origin &mdash; recognising the unique light already present</div></div>
+        </div>
+        <div class="ec-synthesis">The 4&rsquo;s fixation on what is missing creates a chronic sorrow that feels more authentic than joy. The wound becomes the identity.</div>
+      </div>
+    </div>
+    <div class="enneagram-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Tap to collapse &#9660;':'Tap to expand &#9654;';}">
+      <span class="ec-type">Type 5 &mdash; The Investigator</span>
+      <div class="ec-name">The Investigator</div>
+      <div class="ec-fear">Core Fear: Being helpless or overwhelmed</div>
+      <span class="ec-toggle">Tap to expand &#9654;</span>
+      <div class="ec-body">
+        <div class="ec-row">
+          <div><span class="ec-col-label shadow">Shadow Rasa</span><div class="ec-val">Bhayanaka (Fear) &mdash; withdrawal as protection from a depleting world</div></div>
+          <div><span class="ec-col-label light">Essence</span><div class="ec-val">Peace / Emptiness &mdash; the infinite resource of inner stillness</div></div>
+        </div>
+        <div class="ec-synthesis">The 5 retreats from the world to preserve a finite inner resource &mdash; not realising that consciousness itself is the inexhaustible resource they seek.</div>
+      </div>
+    </div>
+    <div class="enneagram-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Tap to collapse &#9660;':'Tap to expand &#9654;';}">
+      <span class="ec-type">Type 6 &mdash; The Skeptic</span>
+      <div class="ec-name">The Skeptic</div>
+      <div class="ec-fear">Core Fear: Being without support or guidance</div>
+      <span class="ec-toggle">Tap to expand &#9654;</span>
+      <div class="ec-body">
+        <div class="ec-row">
+          <div><span class="ec-col-label shadow">Shadow Rasa</span><div class="ec-val">Bhayanaka (Anxiety) &mdash; the loop of preparing for what might go wrong</div></div>
+          <div><span class="ec-col-label light">Essence</span><div class="ec-val">Courage (Vira) &amp; Faith &mdash; trusting the ground of being</div></div>
+        </div>
+        <div class="ec-synthesis">The 6&rsquo;s mind never stops scanning for threats. The safety they seek is right here &mdash; in the unchanging awareness beneath every fearful thought.</div>
+      </div>
+    </div>
+    <div class="enneagram-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Tap to collapse &#9660;':'Tap to expand &#9654;';}">
+      <span class="ec-type">Type 7 &mdash; The Enthusiast</span>
+      <div class="ec-name">The Enthusiast</div>
+      <div class="ec-fear">Core Fear: Being deprived or trapped in pain</div>
+      <span class="ec-toggle">Tap to expand &#9654;</span>
+      <div class="ec-body">
+        <div class="ec-row">
+          <div><span class="ec-col-label shadow">Shadow Rasa</span><div class="ec-val">Hasya (Distraction) &mdash; relentless stimulation to outrun an inner emptiness</div></div>
+          <div><span class="ec-col-label light">Essence</span><div class="ec-val">Absorption &amp; Work &mdash; the deep satisfaction of full presence</div></div>
+        </div>
+        <div class="ec-synthesis">The 7 moves faster than pain. But pain is not the enemy &mdash; it is the messenger. Slowing down long enough to feel it is the beginning of liberation.</div>
+      </div>
+    </div>
+    <div class="enneagram-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Tap to collapse &#9660;':'Tap to expand &#9654;';}">
+      <span class="ec-type">Type 8 &mdash; The Challenger</span>
+      <div class="ec-name">The Challenger</div>
+      <div class="ec-fear">Core Fear: Being controlled or harmed by others</div>
+      <span class="ec-toggle">Tap to expand &#9654;</span>
+      <div class="ec-body">
+        <div class="ec-row">
+          <div><span class="ec-col-label shadow">Shadow Rasa</span><div class="ec-val">Raudra (Rage) &mdash; domination as the defence against vulnerability</div></div>
+          <div><span class="ec-col-label light">Essence</span><div class="ec-val">Innocence &amp; Truth &mdash; the strength that needs no protection</div></div>
+        </div>
+        <div class="ec-synthesis">The 8&rsquo;s armour protects the most tender heart in the room. The rage is the wound trying to keep the wound from being seen.</div>
+      </div>
+    </div>
+    <div class="enneagram-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Tap to collapse &#9660;':'Tap to expand &#9654;';}">
+      <span class="ec-type">Type 9 &mdash; The Peacemaker</span>
+      <div class="ec-name">The Peacemaker</div>
+      <div class="ec-fear">Core Fear: Loss of connection or fragmentation</div>
+      <span class="ec-toggle">Tap to expand &#9654;</span>
+      <div class="ec-body">
+        <div class="ec-row">
+          <div><span class="ec-col-label shadow">Shadow Rasa</span><div class="ec-val">Shanta (Numbing) &mdash; merging with the environment to avoid inner conflict</div></div>
+          <div><span class="ec-col-label light">Essence</span><div class="ec-val">Love &amp; Action &mdash; the peace that holds everything, including the self</div></div>
+        </div>
+        <div class="ec-synthesis">The 9 disappears into harmony. But real peace is not the absence of conflict &mdash; it is the presence that can hold conflict without being destroyed by it.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rasa Synthesis Table -->
+  <div style="margin-top:52px;">
+    <h3 style="font-family:var(--serif);font-size:clamp(20px,2.8vw,28px);font-weight:300;color:var(--white);margin-bottom:8px;">The Rasa Synthesis</h3>
+    <p style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--dim);margin-bottom:36px;">The shadow emotion &rarr; the essence beneath it</p>
+    <div class="rasa-table">
+      <div class="rasa-row header"><div class="rasa-cell">Type</div><div class="rasa-cell">Core Fear &middot; Vice</div><div class="rasa-cell shadow">Shadow Rasa</div><div class="rasa-cell light">Essence &middot; Virtue</div></div>
+      <div class="rasa-row"><div class="rasa-cell type">1 — Perfectionist</div><div class="rasa-cell">Imperfect &middot; Anger</div><div class="rasa-cell shadow">Disgust (Vibhatsya)</div><div class="rasa-cell light">Wonder &middot; Serenity</div></div>
+      <div class="rasa-row"><div class="rasa-cell type">2 — Giver</div><div class="rasa-cell">Unlovable &middot; Pride</div><div class="rasa-cell shadow">Attachment (Shringara)</div><div class="rasa-cell light">Kindness &middot; Freedom</div></div>
+      <div class="rasa-row"><div class="rasa-cell type">3 — Achiever</div><div class="rasa-cell">Valueless &middot; Deceit</div><div class="rasa-cell shadow">Performative (Hasya)</div><div class="rasa-cell light">Love &middot; Hope/Law</div></div>
+      <div class="rasa-row"><div class="rasa-cell type">4 — Individualist</div><div class="rasa-cell">Flawed/Common &middot; Envy</div><div class="rasa-cell shadow">Sorrow (Karuna)</div><div class="rasa-cell light">Joy &middot; Origin</div></div>
+      <div class="rasa-row"><div class="rasa-cell type">5 — Investigator</div><div class="rasa-cell">Overwhelmed &middot; Avarice</div><div class="rasa-cell shadow">Fear (Bhayanaka)</div><div class="rasa-cell light">Peace/Emptiness &middot; Omniscience</div></div>
+      <div class="rasa-row"><div class="rasa-cell type">6 — Skeptic</div><div class="rasa-cell">Unprepared &middot; Doubt</div><div class="rasa-cell shadow">Anxiety (Bhayanaka)</div><div class="rasa-cell light">Courage (Vira) &middot; Faith</div></div>
+      <div class="rasa-row"><div class="rasa-cell type">7 — Enthusiast</div><div class="rasa-cell">Pain/Sadness &middot; Gluttony</div><div class="rasa-cell shadow">Distraction (Hasya)</div><div class="rasa-cell light">Absorption &middot; Work</div></div>
+      <div class="rasa-row"><div class="rasa-cell type">8 — Challenger</div><div class="rasa-cell">Controlled &middot; Lust</div><div class="rasa-cell shadow">Rage (Raudra)</div><div class="rasa-cell light">Innocence &middot; Truth</div></div>
+      <div class="rasa-row"><div class="rasa-cell type">9 — Peacemaker</div><div class="rasa-cell">Fragmented &middot; Sloth</div><div class="rasa-cell shadow">Numbing (Shanta)</div><div class="rasa-cell light">Love &middot; Action</div></div>
+    </div>
+  </div>
+
+  <!-- Rasa closing -->
+  <div class="rasa-closing" style="margin-top:36px;">
+    <p>Essence is the true human potential. Basic goodness that shines through when the fixation is dismantled.</p>
+    <p>The fixation perfectly imitates or moves away from the exact Essence it obscures. The shadow Rasa is the distorted mirror of the light you actually are.</p>
+    <p class="gold">Discover what cannot be burned. Discover what is left.</p>
+  </div>
+</section>
+<span class="continue-hint">continue</span>
+<div class="divider"></div>
+
 <!-- COSMIC LEDGER -->
 <section class="section" id="ledger">
   <span class="label">The Cosmic Ledger</span>
@@ -1860,7 +2203,7 @@ section{scroll-margin-top:140px;}
         </div>
         <div style="padding:20px 22px;border-left:3px solid var(--gold);background:var(--bg-lift);">
           <p style="font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:6px;">Socratic Dialogue &mdash; The answers are within</p>
-          <p style="font-size:15.5px;color:var(--grey);line-height:1.85;">The answers do not come from outside. They are realized through careful questioning. Ask: <em style="color:var(--mid);">Is there anything in your life you would die for?</em> If yes &mdash; that is your direction towards super-ordinate goal.</p>
+          <p style="font-size:15.5px;color:var(--grey);line-height:1.85;">The answers do not come from outside. They are realized through careful questioning. Ask: <em style="color:var(--mid);">Is there anything in your life you would die for?</em> If yes &mdash; that is your direction. That is your super-ordinate goal.</p>
         </div>
       </div></div>
     </div>
@@ -2061,168 +2404,6 @@ function showVoidResponse(type, btn){
   });
 })();
 
-/* ── SEARCH ENGINE ────────────────────────────────────────────────────────── */
-(function(){
-  // All searchable sections / concepts
-  var SECTIONS = [
-    {title:'Home — Opening Question',desc:'There is a question you have been avoiding your entire life.',id:'home'},
-    {title:'The Mirror',desc:'You knew something was off. The void inside despite having enough.',id:'framework'},
-    {title:'The Void Test',desc:'Did the void disappear after you got what you wanted?',id:'framework'},
-    {title:'The Mission',desc:'Eternal joy already lies within you. It has always been there.',id:'framework'},
-    {title:'The Framework — 6 Layers',desc:'The *SELF operating system. Default OS, Arrival Fallacy, Ego, True I, Gap, Self-Realization.',id:'framework'},
-    {title:'Architecture of Self-Destruction',desc:'Four phases: Spark, Friction, Ego\'s Blindfold, Liquidation. The conditioning spiral.',id:'framework'},
-    {title:'5 Pillars of Self-Enquiry',desc:'Who am I? Where am I from? Why am I here? What can I do? Where am I going?',id:'framework'},
-    {title:'The Two Paths — Jnana & Bhakti',desc:'Path of Knowledge vs Path of Devotion. Both lead to the same SELF.',id:'framework'},
-    {title:'5 Stages of Surrender',desc:'Seed, Magnet, Spouses, Creeper, River & Ocean. The melting of the ego.',id:'framework'},
-    {title:'You Do Not Need a Saviour',desc:'The path begins when you stop waiting for rescue.',id:'framework'},
-    {title:'The Integration Engine',desc:'Western Blueprint (cognitive insight) + Eastern Breath (radical acceptance) = True Wholeness.',id:'framework'},
-    {title:'Cosmological Foundation',desc:'The universe doesn\'t contain Consciousness. Consciousness contains the universe.',id:'framework'},
-    {title:'The Traditions — All Paths Converge',desc:'Indian, Greek, Western Mystic, Indigenous, Modern Psychology — all point inward.',id:'framework'},
-    {title:'The Perceptual Chain',desc:'Object → Senses → Mind → Consciousness. SELF is a reflection of how you respond.',id:'framework'},
-    {title:'Core Vision Statement',desc:'To Envision, Embrace, and Empower Humanity. No One Is Left Behind.',id:'framework'},
-    {title:'The Cosmic Ledger',desc:'Every reaction, every deed builds a balance sheet. Not in any wallet. In the SELF.',id:'ledger'},
-    {title:'The Internal Public Offering (IPO)',desc:'The most undervalued IPO in history trades right now. Your consciousness. Your direction.',id:'ipo'},
-    {title:'Fartcoin vs $SELF — The Mirror',desc:'$2.6 billion vs $4,450. What the market reveals about where we are headed.',id:'ipo'},
-    {title:'Why $SELF',desc:'A declaration, not a trade. Skin in the game of the SELF.',id:'ipo'},
-    {title:'The Super-Ordinate Goal',        desc:'Every action oriented toward the ultimate goal: knowing your SELF. The Olympic Gold that never depreciates.',id:'mirror'},
-    {title:'The RRRR Protocol — Stop the Impulse',desc:'Recognize → Resist → Return → Release. Stop the behaviour before it happens. The emergency protocol.',id:'ledger'},
-    {title:'The RRRR Protocol — Process Emotion', desc:'Recognize → Reflect → Reframe → Respond. For grief, relationships, long-held patterns. Respond from awareness.',id:'ledger'},
-    {title:'The 3-Step Circuit Breaker',          desc:'Pause (box breathing: 4-4-4-4). Witness and Label the trigger. Detached Action — what can I control?',id:'ledger'},
-    {title:'The Mirror Room',                     desc:'Not a hype chat. Post what you noticed. No price talk. Just noticing. The community of the gap.',id:'mirror'},
-    {title:'Path of Subtilization — 7 Levels',   desc:'Body → Breath → Mind → Intellect → Memory → Ego → SELF. The hardware blueprint of consciousness.',id:'ledger'},
-    {title:'The Cosmic Blueprint — 42',           desc:'T+O+B+E=42. Astrophysics, optics, mathematics, traditions, ASCII wildcard. The universal frequency.',id:'ledger'},
-    {title:'Atman = Brahman',                     desc:'The Individual SELF is ontologically equivalent to the Supreme Reality. To know SELF is to know the universe.',id:'ledger'},
-    {title:'Contract — $SELF Token',              desc:'CA: 7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump · Supply: 1,000,000,042 · All authorities revoked.',id:'contract'},
-    {title:'Disclaimer — The Open Protocol',      desc:'Tool for personal observation and inquiry. Not financial, medical or professional advice.',id:'disclaimer'},
-    {title:'SAT-CHIT-ANAND',                      desc:'Sat: Existence. Chit: Consciousness. Anand: Bliss. The source code of reality. That is who you are.',id:'ledger'},
-    {title:'The Arrival Fallacy',                 desc:'The brain is wired for the chase, not the catch. Dopamine and the post-goal slump explained.',id:'framework'},
-    {title:'The Ego — Ahamkara, The I-Maker',     desc:'The mask the I wears. Collects desires, solidifies them as identity. The false self seeking outside.',id:'framework'},
-    {title:'Self-Realization — Direction, Not Arrival',desc:'Not expected in one lifetime. The question: are you pointed the right way? Noticing more? Reacting less?',id:'framework'},
-    {title:'Architecture of Self-Destruction',    desc:'8 stages: Contemplation → Attachment → Lust → Anger → Delusion → Loss of Memory → Loss of Intelligence → Destruction.',id:'framework'},
-    {title:'The Integration Engine',              desc:'Western Blueprint (cognitive map) + Eastern Breath (radical acceptance) = True Wholeness. James Hillman.',id:'ledger'},
-    {title:'5 Stages of Surrender',               desc:'Seed → Magnet → Oneness of Purpose → Total Reliance → River meets Ocean. No saviour needed.',id:'ledger'},
-    {title:'The Perceptual Chain',                desc:'Object → Senses → Mind → Consciousness (The Screen). You are the screen, not the movie projected on it.',id:'ledger'},
-    {title:'The Void Test',                       desc:'Did the void disappear after you got what you wanted? The signal pointing inward.',id:'ledger'},
-    {title:'The IPO — The Original Offering',     desc:'Every soul enters the world with a unique gift. The first and most important public offering.',id:'ipo'},
-    {title:'Why $SELF — A Declaration',           desc:'Buying $SELF is a philosophical stake. Skin in the game of the SELF. The inner market never crashes.',id:'mirror'},
-    {title:'Carl Jung — The Unconscious',         desc:'Until you make the unconscious conscious, it will direct your life and you will call it fate.',id:'framework'},
-    {title:'Buddha — Be a Lamp Unto Yourself',    desc:'Be a lamp unto yourself. dipa: lamp and island. Trust your own direct experience.',id:'ledger'},
-    {title:'Logotherapy Tools',                   desc:'Dereflection, Paradoxical Intention, Socratic Dialogue. Finding meaning beyond the symptom.',id:'ledger'},
-    {title:'4 Rules of Daily Guidance',           desc:'Comparison only with yesterday. Start where you are. Be the change. Reality check your goals.',id:'ledger'},
-  ];
-
-  var modal = document.getElementById('searchModal');
-  var input = document.getElementById('searchInput');
-  var results = document.getElementById('searchResults');
-  var btn = document.getElementById('navSearchBtn');
-  var activeIdx = -1;
-
-  function openSearch(){
-    modal.classList.add('open');
-    modal.setAttribute('aria-hidden','false');
-    input.value = '';
-    renderResults('');
-    setTimeout(function(){input.focus();},50);
-  }
-  function closeSearch(){
-    modal.classList.remove('open');
-    modal.setAttribute('aria-hidden','true');
-    activeIdx = -1;
-  }
-  window.closeSearch = closeSearch;
-
-  function highlight(text, q){
-    if(!q) return text;
-    var re = new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');
-    return text.replace(re,'<mark>$1</mark>');
-  }
-
-  function renderResults(q){
-    var filtered = q
-      ? SECTIONS.filter(function(s){
-          return s.title.toLowerCase().indexOf(q.toLowerCase())>-1 ||
-                 s.desc.toLowerCase().indexOf(q.toLowerCase())>-1;
-        })
-      : SECTIONS;
-    activeIdx = -1;
-    if(!filtered.length){
-      results.innerHTML = '<div class="search-empty">No results for &ldquo;'+q+'&rdquo;</div>';
-      return;
-    }
-    results.innerHTML = filtered.map(function(s,i){
-      return '<button class="search-result" data-id="'+s.id+'" data-idx="'+i+'" type="button" style="display:block;width:100%;text-align:left;background:none;border:none;cursor:pointer;padding:14px 16px;border-bottom:1px solid #1a1a1a;text-decoration:none;transition:background .15s;">'
-        +'<div class="search-result-title">'+highlight(s.title,q)+'</div>'
-        +'<div class="search-result-desc">'+highlight(s.desc.substring(0,90)+(s.desc.length>90?'…':''),q)+'</div>'
-        +'</button>';
-    }).join('');
-    results.querySelectorAll('.search-result').forEach(function(el){
-      el.addEventListener('click',function(e){
-        e.preventDefault();
-        e.stopPropagation();
-        var id = this.getAttribute('data-id');
-        var target = document.getElementById(id);
-        if(target){
-          var navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'))||44;
-          // Expand collapsed sections automatically
-          if(target.classList.contains('collapsed')) target.classList.remove('collapsed');
-          var faqList = target.querySelector('.faq-list');
-          if(faqList){
-            var firstFaq = faqList.querySelector('.faq-item');
-            if(firstFaq && !firstFaq.classList.contains('open')) firstFaq.classList.add('open');
-          }
-          var foundationContent = target.querySelector('#foundationContent');
-          if(foundationContent && foundationContent.style.maxHeight==='0px'){
-            foundationContent.style.maxHeight='3000px';
-            foundationContent.style.opacity='1';
-          }
-          closeSearch();
-          setTimeout(function(){
-            var rect = target.getBoundingClientRect();
-            var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            var top = rect.top + scrollTop - navH - 24;
-            window.scrollTo({top:Math.max(0,top),behavior:'smooth'});
-          },150);
-        } else {
-          console.warn('Section not found: '+id);
-        }
-      });
-    });
-  }
-
-  if(btn) btn.addEventListener('click', openSearch);
-  if(input){
-    input.addEventListener('input',function(){renderResults(this.value.trim());});
-    input.addEventListener('keydown',function(e){
-      var items = results.querySelectorAll('.search-result');
-      if(e.key==='ArrowDown'){
-        e.preventDefault();
-        activeIdx = Math.min(activeIdx+1, items.length-1);
-        items.forEach(function(el,i){el.classList.toggle('active',i===activeIdx);});
-        if(items[activeIdx]) items[activeIdx].scrollIntoView({block:'nearest'});
-      } else if(e.key==='ArrowUp'){
-        e.preventDefault();
-        activeIdx = Math.max(activeIdx-1, 0);
-        items.forEach(function(el,i){el.classList.toggle('active',i===activeIdx);});
-        if(items[activeIdx]) items[activeIdx].scrollIntoView({block:'nearest'});
-      } else if(e.key==='Enter'){
-        if(activeIdx>=0 && items[activeIdx]) items[activeIdx].click();
-        else if(items.length) items[0].click();
-      } else if(e.key==='Escape'){
-        closeSearch();
-      }
-    });
-  }
-  // Keyboard shortcut: press "/" to open search
-  document.addEventListener('keydown',function(e){
-    if(e.key==='/' && !modal.classList.contains('open') && document.activeElement.tagName!=='INPUT'){
-      e.preventDefault();
-      openSearch();
-    } else if(e.key==='Escape' && modal.classList.contains('open')){
-      closeSearch();
-    }
-  });
-})();
-
 /* ── TOGGLE FUNCTIONALITY FOR COLLAPSIBLES ───────────────────────────────── */
 (function(){
 
@@ -2263,6 +2444,35 @@ function showVoidResponse(type, btn){
   }
 
 })();
+
+/* ── GENERIC SECTION COLLAPSE ────────────────────────────────────────────── */
+function sectionCollapse(id,btn){
+  var wrap=document.getElementById(id);
+  if(!wrap)return;
+  var isCollapsed=wrap.classList.contains('collapsed');
+  if(isCollapsed){
+    wrap.classList.remove('collapsed');
+    if(btn)btn.innerHTML=btn.innerHTML.replace('Expand','Collapse').replace('▼','▲').replace('&#9660;','&#9650;');
+  } else {
+    wrap.classList.add('collapsed');
+    if(btn)btn.innerHTML=btn.innerHTML.replace('Collapse','Expand').replace('▲','▼').replace('&#9650;','&#9660;');
+  }
+}
+
+/* ── ENNEAGRAM EXPAND ALL ────────────────────────────────────────────────── */
+function toggleEnn(btn){
+  var grid=document.getElementById('ennGrid');
+  if(!grid)return;
+  var cards=grid.querySelectorAll('.enneagram-card');
+  var isOpen=btn.innerHTML.indexOf('Collapse')>-1;
+  if(isOpen){
+    cards.forEach(function(c){c.classList.remove('open');var lbl=c.querySelector('.ec-toggle');if(lbl)lbl.innerHTML='Tap to expand &#9654;';});
+    btn.innerHTML='Expand All 9 Types &#9660;';
+  } else {
+    cards.forEach(function(c){c.classList.add('open');var lbl=c.querySelector('.ec-toggle');if(lbl)lbl.innerHTML='Tap to collapse &#9660;';});
+    btn.innerHTML='Collapse All &#9650;';
+  }
+}
 
 /* ── FOUNDATION TOGGLE ───────────────────────────────────────────────────── */
 function toggleFoundation(btn){
