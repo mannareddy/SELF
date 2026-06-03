@@ -617,9 +617,41 @@ section{scroll-margin-top:140px;}
 .sl-stage.danger .sl-num{color:#c0392b;opacity:.8;}
 
 /* ── EGO SUB-SECTION HEADERS ─────────────────────────────────────────────── */
-.ego-sub-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:8px;max-width:820px;margin-left:auto;margin-right:auto;}
-.ego-sub-header-text h3{font-family:var(--serif);font-size:clamp(20px,2.8vw,28px);font-weight:300;color:var(--white);margin-bottom:4px;}
-.ego-sub-header-text p{font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--dim);}
+.ego-sub-header{
+    display:grid;
+    grid-template-columns:1fr auto;
+    align-items:center;
+    gap:24px;
+    max-width:820px;
+    margin:0 auto 8px;
+}
+  .ego-sub-header,
+.ego-sub-header-text{
+    width:100%;
+    text-align:left !important;
+}
+
+.ego-sub-header-text{
+    text-align:left;
+}
+
+.ego-sub-header-text h3{
+    font-family:var(--serif);
+    font-size:clamp(20px,2.8vw,28px);
+    font-weight:300;
+    color:var(--white);
+    margin-bottom:4px;
+    text-align:left;
+}
+
+.ego-sub-header-text p{
+    font-family:var(--sans);
+    font-size:9px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    color:var(--dim);
+    text-align:left;
+}
 
 /* ── THE ENNEAGRAM SECTION ───────────────────────────────────────────────── */
 .enn-section{padding:90px 24px;background:var(--bg-lift);border-top:1px solid #111;border-bottom:1px solid #111;}
