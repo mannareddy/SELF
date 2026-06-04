@@ -181,15 +181,24 @@ a:hover{opacity:.7;}
 
 /* Nav left / right halves */
 .nav-left,.nav-right{display:flex;align-items:center;height:var(--nav-h);list-style:none;margin:0;padding:0;flex:1;}
-.nav-left{justify-content:flex-end;}
-.nav-right{justify-content:flex-start;}
+.nav-left{
+    justify-content:space-evenly;
+}
+
+.nav-right{
+    justify-content:space-evenly;
+}
 .nav-left li a,
 .nav-right li a{
     display:flex;
     align-items:center;
     justify-content:center;
-
-    min-width:110px;
+    .nav-left li,
+    .nav-right li{
+    flex:1;
+} 
+    min-width:auto;
+    width:100%;
 
     font-family:var(--sans);
     font-size:11px;
@@ -250,8 +259,8 @@ a:hover{opacity:.7;}
   .nav-left li a,
   .nav-right li a{
     font-size:8px;
-    letter-spacing:.5px;
-    padding:0 6px;
+    letter-spacing:0.5px;
+    padding:0 5px;
     min-width:auto;
 }
   .nav-left li:first-child a{border-left:none;}
