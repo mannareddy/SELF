@@ -1764,29 +1764,34 @@ section{scroll-margin-top:140px;}
   <span class="label">Common Questions</span>
   <h2>The questions people ask when they start noticing.</h2>
   <div style="text-align:center;margin-bottom:36px;">
-    <button id="faqExpandAllBtn" onclick="toggleFaqAll()" class="collapse-toggle-btn">Expand &#9660;</button>
-    <p class="section-collapse-label">Collapsed by default — tap to expand all</p>
+    <button id="faqExpandAllBtn" onclick="toggleFaqAll()" style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);background:transparent;border:1px solid var(--gold);padding:10px 28px;cursor:pointer;transition:all .3s;opacity:.85;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.85'">Expand &#9660;</button>
+    <p style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#555;margin-top:10px;margin-bottom:0;">Collapsed by default &mdash; tap to expand all questions</p>
   </div>
-  <div class="faq-list" id="faqListWrap">
+  <div class="faq-list-wrap" id="faqListWrap">
+  <div class="faq-list">
 
     <div class="faq-item closed">
-      <button class="faq-q" onclick="faqToggle(this)"><span>What is the RRRR Protocol?</span><span class="faq-icon">+</span></button>
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
+        <span>What is the RRRR Protocol?</span><span class="faq-icon">+</span>
+      </button>
       <div class="faq-a"><div class="faq-a-inner">
-        <p style="margin-bottom:18px;">The RRRR Protocol has two versions depending on what you are facing. Both start with Recognize.</p>
-        <div class="rrrr-version"><span class="rrrr-label">Version 1 &mdash; Stop the Impulse</span><p class="rrrr-steps">Recognize &rarr; Resist &rarr; Return &rarr; Release</p><p class="rrrr-desc">Use this when you need to stop impulsive behaviour before it happens &mdash; revenge trading, sending the angry message, reacting before you think. Recognize the trigger. Resist acting on the first impulse. Return to baseline. Release the charge without acting on it.</p></div>
-        <div class="rrrr-version"><span class="rrrr-label">Version 2 &mdash; Process the Emotion</span><p class="rrrr-steps">Recognize &rarr; Reflect &rarr; Reframe &rarr; Respond</p><p class="rrrr-desc">Use this for deeper processing &mdash; navigating difficult relationships, grief, or a long-held pattern. Recognize what triggered you. Reflect on what it is really activating. Reframe the narrative. Then Respond from awareness, not reflex.</p></div>
+        <p style="margin-bottom:18px;">The RRRR Protocol has two versions depending on what you are facing. Both start with the same first step &mdash; Recognize. That moment of noticing is where everything changes.</p>
+        <div class="rrrr-version"><span class="rrrr-label">Version 1 &mdash; Stop the Impulse</span><p class="rrrr-steps">Recognize &rarr; Resist &rarr; Return &rarr; Release</p><p class="rrrr-desc">Use this when you need to stop impulsive behaviour before it happens &mdash; revenge trading, sending the angry message, reaching for the drink, reacting before you think. Recognize the trigger. Resist acting on the first impulse. Return to baseline (breathe, step away). Release the charge without acting on it. The behaviour never happens. This is the emergency protocol.</p></div>
+        <div class="rrrr-version"><span class="rrrr-label">Version 2 &mdash; Process the Emotion</span><p class="rrrr-steps">Recognize &rarr; Reflect &rarr; Reframe &rarr; Respond</p><p class="rrrr-desc">Use this for emotional intelligence and deeper processing &mdash; navigating a difficult relationship, a career decision, grief, or a long-held pattern. Stopping the impulse isn&rsquo;t enough here. You need to understand it. Recognize what triggered you. Reflect on what it is really activating underneath. Reframe the narrative &mdash; what is actually true? Then Respond from awareness, not reflex.</p></div>
       </div></div>
     </div>
 
     <div class="faq-item closed">
-      <button class="faq-q" onclick="faqToggle(this)"><span>What is the 3-Step Circuit Breaker?</span><span class="faq-icon">+</span></button>
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
+        <span>What is the 3-Step Circuit Breaker?</span><span class="faq-icon">+</span>
+      </button>
       <div class="faq-a"><div class="faq-a-inner">
         <p style="margin-bottom:18px;">The 3-Step Circuit Breaker is the emergency interrupt for the autopilot. When the RRRR Protocol feels too structured for a moment of acute distress, this severs the automatic programme instantly.</p>
         <div style="border:1px solid #1e1e1e;padding:28px 24px;background:var(--bg-lift);margin-bottom:6px;">
           <p style="font-family:var(--sans);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:20px;">The 3 Steps</p>
           <div style="margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid #1a1a1a;">
             <p style="font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:8px;"><strong style="color:var(--gold);font-weight:400;">1. Pause &mdash; Box Breathing</strong></p>
-            <p style="font-size:16px;color:var(--grey);line-height:1.85;">Inhale 4 seconds. Hold 4 seconds. Exhale 4 seconds. Hold 4 seconds. One complete box. This severs the neurochemical loop of the auto-pilot programme.</p>
+            <p style="font-size:16px;color:var(--grey);line-height:1.85;">Inhale 4 seconds. Hold 4 seconds. Exhale 4 seconds. Hold 4 seconds. One complete box. This severs the neurochemical loop of the auto-pilot programme &mdash; no willpower required, just the breath.</p>
           </div>
           <div style="margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid #1a1a1a;">
             <p style="font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:8px;"><strong style="color:var(--gold);font-weight:400;">2. Witness and Label</strong></p>
@@ -1794,14 +1799,17 @@ section{scroll-margin-top:140px;}
           </div>
           <div>
             <p style="font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:8px;"><strong style="color:var(--gold);font-weight:400;">3. Detached Action</strong></p>
-            <p style="font-size:16px;color:var(--grey);line-height:1.85;">Shift focus to what you can control. Act while remaining detached from the outcome. Stop watering the weeds. Act from the SELF, not from the wound.</p>
+            <p style="font-size:16px;color:var(--grey);line-height:1.85;">Shift focus to what you can control. Act while remaining detached from the outcome &mdash; success or failure. Stop watering the weeds. Act from the SELF, not from the wound.</p>
           </div>
         </div>
+        <p style="font-size:15px;color:var(--dim);font-style:italic;margin-top:12px;">Use the Circuit Breaker for acute moments. Use the full RRRR Protocol for deeper processing and reflection.</p>
       </div></div>
     </div>
 
     <div class="faq-item closed">
-      <button class="faq-q" onclick="faqToggle(this)"><span>What is the Enneagram in the context of *SELF?</span><span class="faq-icon">+</span></button>
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
+        <span>What is the Enneagram in the context of *SELF?</span><span class="faq-icon">+</span>
+      </button>
       <div class="faq-a"><div class="faq-a-inner">
         <p>The Enneagram is not a personality typing system to identify with &mdash; it is a diagnostic map of who you are NOT. It reveals the 9 specific masks the ego uses to manage the universal engine of desire, fear, and anger.</p>
         <p>Using the Enneagram to justify behaviour (&ldquo;I&rsquo;m a Six, that&rsquo;s why I act this way&rdquo;) is going deeper into the trance. The correct use is to uncover the subconscious identification and trigger a jailbreak from the fixation.</p>
@@ -1810,7 +1818,9 @@ section{scroll-margin-top:140px;}
     </div>
 
     <div class="faq-item closed">
-      <button class="faq-q" onclick="faqToggle(this)"><span>What are the Nine Rasas?</span><span class="faq-icon">+</span></button>
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
+        <span>What are the Nine Rasas?</span><span class="faq-icon">+</span>
+      </button>
       <div class="faq-a"><div class="faq-a-inner">
         <p>The Rasas are the nine intrinsic human emotions from the Ancient Vedic traditions. They define the body chemistry and emotional weather each ego type generates.</p>
         <p>Each Enneagram type&rsquo;s core belief creates a specific internal environment &mdash; and that environment naturally generates the body chemistry of one of the Nine Rasas. The Shadow Rasa is the distorted version. The Light Rasa is the Essence underneath.</p>
@@ -1819,129 +1829,161 @@ section{scroll-margin-top:140px;}
     </div>
 
     <div class="faq-item closed">
-      <button class="faq-q" onclick="faqToggle(this)"><span>Is this a token or a philosophy?</span><span class="faq-icon">+</span></button>
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
+        <span>Is this a token or a philosophy?</span><span class="faq-icon">+</span>
+      </button>
       <div class="faq-a"><div class="faq-a-inner">Both. Most tokens ask you to believe in the chart. $SELF asks you to believe in the framework. Buying the token is not an investment decision &mdash; it&rsquo;s a philosophical stake. You&rsquo;re saying: I see the map. I&rsquo;m walking it. And I&rsquo;m doing it publicly on an immutable ledger.</div></div>
     </div>
 
     <div class="faq-item closed">
-      <button class="faq-q" onclick="faqToggle(this)"><span>What is the Arrival Fallacy?</span><span class="faq-icon">+</span></button>
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
+        <span>What is the Arrival Fallacy?</span><span class="faq-icon">+</span>
+      </button>
       <div class="faq-a"><div class="faq-a-inner">The false belief that the next milestone &mdash; more money, more status, more achievement &mdash; will finally bring peace. It won&rsquo;t. Hedonic adaptation resets your baseline every time. You get the promotion, and six months later you&rsquo;re back to baseline discontent. The void returns. That&rsquo;s not a problem to fix externally &mdash; it&rsquo;s a signal pointing inward.</div></div>
     </div>
 
     <div class="faq-item closed">
-      <button class="faq-q" onclick="faqToggle(this)"><span>What is the Integration Engine?</span><span class="faq-icon">+</span></button>
-      <div class="faq-a"><div class="faq-a-inner">The Integration Engine is the idea that Western psychotherapy and Eastern wisdom traditions are not opposites &mdash; they are complements that together produce something neither achieves alone. Western therapy gives us the map. Eastern traditions give us the resilience to hold suffering with spaciousness rather than trying to eliminate it. Alan Watts said it best: if you look deeply into Buddhism, Taoism, Vedanta, and Yoga, you find something resembling psychotherapy.</div></div>
-    </div>
-
-    <div class="faq-item closed">
-      <button class="faq-q" onclick="faqToggle(this)"><span>Isn&rsquo;t this just Eastern spirituality?</span><span class="faq-icon">+</span></button>
-      <div class="faq-a"><div class="faq-a-inner">No &mdash; it&rsquo;s every tradition. Indian philosophy calls it Moksha. Western mysticism calls it Divinization. Ancient Greeks called it Know Thyself. Modern psychology calls it Self-Actualization. Every wisdom tradition in human history has arrived at the same conclusion: the highest achievement is looking inward to realize your true nature beneath the illusions of the ego. *SELF is not picking a tradition. It&rsquo;s pointing at what they all found.</div></div>
-    </div>
-
-    <div class="faq-item closed">
-      <button class="faq-q" onclick="faqToggle(this)"><span>Is there actually a &ldquo;cosmic ledger&rdquo;?</span><span class="faq-icon">+</span></button>
-      <div class="faq-a"><div class="faq-a-inner">Depends on what you believe. But here&rsquo;s what&rsquo;s certain: every deed, every reaction, every moment you spend in awareness or autopilot builds a balance sheet inside you. Whether that&rsquo;s literal reincarnation, Karma, or just the neurology of habit formation &mdash; the math is the same. You are becoming what you practice.</div></div>
-    </div>
-
-    <div class="faq-item closed">
-      <button class="faq-q" onclick="faqToggle(this)"><span>How do I know if I&rsquo;m in the right direction?</span><span class="faq-icon">+</span></button>
-      <div class="faq-a"><div class="faq-a-inner">Self-realization is not a destination you arrive at in one lifetime. That&rsquo;s the feature, not the bug. The question isn&rsquo;t &ldquo;Am I there yet?&rdquo; It&rsquo;s &ldquo;Am I pointed right?&rdquo; Are you noticing more? Are you reacting less? Are you choosing from awareness instead of fear? If yes &mdash; you&rsquo;re walking the path.</div></div>
-    </div>
-
-    <div class="faq-item closed">
-      <button class="faq-q" onclick="faqToggle(this)"><span>What makes this different from other spiritual projects?</span><span class="faq-icon">+</span></button>
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
+        <span>What makes this different from other spiritual projects?</span><span class="faq-icon">+</span>
+      </button>
       <div class="faq-a"><div class="faq-a-inner">Two things. First: we don&rsquo;t ask you to believe. We ask you to notice. The framework is testable in real-time &mdash; in your reactions, your trades, your relationships. Second: we put skin in the game. You hold $SELF, the chart moves, and suddenly philosophy becomes immediate. That friction is the whole point.</div></div>
     </div>
 
     <div class="faq-item closed">
-      <button class="faq-q" onclick="faqToggle(this)"><span>Why Solana and not another chain?</span><span class="faq-icon">+</span></button>
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
+        <span>What is the Integration Engine?</span><span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">The Integration Engine is the idea that Western psychotherapy and Eastern wisdom traditions are not opposites &mdash; they are complements that together produce something neither achieves alone. Western therapy gives us the map: the vocabulary to name our suffering, understand our patterns, and build cognitive insight. Eastern traditions give us the resilience: the ability to hold suffering with spaciousness rather than trying to eliminate it. The Western Blueprint resolves the symptom through cognitive insight. The Eastern Breath expands the container through radical acceptance. Together: True Wholeness. Alan Watts said it best: if you look deeply into Buddhism, Taoism, Vedanta, and Yoga, you find something resembling psychotherapy. The *SELF framework is that integration made practical.</div></div>
+    </div>
+
+    <div class="faq-item closed">
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
+        <span>Isn&rsquo;t this just Eastern spirituality?</span><span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">No &mdash; it&rsquo;s every tradition. Indian philosophy calls it Moksha. Western mysticism calls it Divinization. Ancient Greeks called it Know Thyself. Modern psychology calls it Self-Actualization. Every wisdom tradition in human history has arrived at the same conclusion: the highest achievement is looking inward to realize your true nature beneath the illusions of the ego. *SELF is not picking a tradition. It&rsquo;s pointing at what they all found.</div></div>
+    </div>
+
+    <div class="faq-item closed">
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
+        <span>Is there actually a &ldquo;cosmic ledger&rdquo;?</span><span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">Depends on what you believe. But here&rsquo;s what&rsquo;s certain: every deed, every reaction, every moment you spend in awareness or autopilot builds a balance sheet inside you. Whether that&rsquo;s literal reincarnation, Karma, or just the neurology of habit formation &mdash; the math is the same. You are becoming what you practice.</div></div>
+    </div>
+
+    <div class="faq-item closed">
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
+        <span>How do I know if I&rsquo;m in the right direction?</span><span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">Self-realization is not a destination you arrive at in one lifetime. That&rsquo;s the feature, not the bug. The question isn&rsquo;t &ldquo;Am I there yet?&rdquo; It&rsquo;s &ldquo;Am I pointed right?&rdquo; Are you noticing more? Are you reacting less? Are you choosing from awareness instead of fear? If yes &mdash; you&rsquo;re walking the path.</div></div>
+    </div>
+
+    <div class="faq-item closed">
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
+        <span>Why Solana and not another chain?</span><span class="faq-icon">+</span>
+      </button>
       <div class="faq-a"><div class="faq-a-inner">Speed and transparency. Solana&rsquo;s high throughput means the ledger records without friction. No waiting. The supply is fixed forever (1,000,000,042 tokens), all authorities revoked. No dilution. No rug-pull risk. The mechanism itself becomes part of the message: this is immutable, this is yours, this is the cosmic ledger made visible.</div></div>
     </div>
 
     <div class="faq-item closed">
-      <button class="faq-q" onclick="faqToggle(this)"><span>What is the significance of 42 and the * symbol?</span><span class="faq-icon">+</span></button>
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
+        <span>What is the significance of the number 42 and the * symbol?</span><span class="faq-icon">+</span>
+      </button>
       <div class="faq-a"><div class="faq-a-inner">
         <p style="margin-bottom:14px;">42 is not decoration. It converges across science, philosophy, and tradition with unusual precision.</p>
         <p style="margin-bottom:10px;"><strong style="color:var(--gold);">The Word:</strong> T+O+B+E = 20+15+2+5 = 42. The alphanumerical sum of &ldquo;TO BE.&rdquo; The supply of $SELF is exactly 1,000,000,042.</p>
         <p style="margin-bottom:10px;"><strong style="color:var(--gold);">The Symbol:</strong> In computer science, ASCII code 42 is the asterisk (*) &mdash; the universal wildcard meaning &ldquo;Everything&rdquo; and &ldquo;Anything.&rdquo;</p>
         <p style="margin-bottom:10px;"><strong style="color:var(--gold);">Astrophysics:</strong> The current expansion rate of the universe is 42 mi/s/Mpc. A black hole&rsquo;s maximum energy efficiency is 42%.</p>
-        <p style="margin-bottom:0;"><strong style="color:var(--gold);">Traditions:</strong> Kabbalah: 42-letter name of God. Christianity: 42 generations to Jesus. Ancient Egypt: 42 divine judges. Buddhism: Sutra of 42 Sections. Age 42 marks the end of the first half of life in esoteric traditions.</p>
+        <p style="margin-bottom:10px;"><strong style="color:var(--gold);">Traditions:</strong> Kabbalah: 42-letter name of God. Christianity: 42 generations to Jesus. Ancient Egypt: 42 divine judges. Buddhism: Sutra of 42 Sections. Esoteric traditions: Age 42 marks the end of the first half of life &mdash; the shift from becoming to being.</p>
+        <p style="margin-bottom:0;"><strong style="color:var(--gold);">The Punchline:</strong> Douglas Adams said 42 was the &ldquo;Answer to Everything.&rdquo; He thought it was random. The universe disagreed.</p>
       </div></div>
     </div>
 
     <div class="faq-item closed">
-      <button class="faq-q" onclick="faqToggle(this)"><span>What is my unique value?</span><span class="faq-icon">+</span></button>
-      <div class="faq-a"><div class="faq-a-inner">That one thing only you can offer the world. Not necessarily a new innovation or technology &mdash; something the world needs that carries your unique mark. Ask yourself: &ldquo;What would I be willing to pay for if I were on the other side of the value exchange?&rdquo; If that is something only you can offer, that drives you, that you&rsquo;re passionate about achieving &mdash; that is your worth. Not in dollars. In purpose.</div></div>
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
+        <span>What is my unique value?</span><span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">That one thing only you can offer the world. Not necessarily a new innovation or technology &mdash; something the world needs that carries your unique mark. Ask yourself: &ldquo;What would I be willing to pay for if I were on the other side of the value exchange?&rdquo; If that is something only you can offer, that drives you, that you&rsquo;re passionate about achieving &mdash; that is your worth. Not in dollars. In purpose. That discovery requires listening to your inner voice. No one else can do it for you.</div></div>
     </div>
 
     <div class="faq-item closed">
-      <button class="faq-q" onclick="faqToggle(this)"><span>Do I know my own worth?</span><span class="faq-icon">+</span></button>
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
+        <span>Do I know my own worth?</span><span class="faq-icon">+</span>
+      </button>
       <div class="faq-a"><div class="faq-a-inner">
         <p style="margin-bottom:16px;">The belief that <strong>&ldquo;I am not enough&rdquo;</strong> is an illusion &mdash; one that prevents us from seeing the truth that is already present.</p>
         <p style="margin-bottom:16px;">Self-worth is not something to be earned or proven. It is simply a <strong style="color:var(--gold);">Realization</strong> &mdash; a recognition of who you truly are. A knowing.</p>
         <div style="border-left:2px solid var(--gold);padding-left:20px;margin:20px 0;">
           <p style="font-style:italic;color:var(--mid);margin-bottom:8px;">I am the whole. The totality. That includes every part of me.</p>
         </div>
+        <p style="margin-bottom:16px;">When we recognize our self-worth, that is when we step into our greatness. That is when we align with our authentic power. That is when we can finally realize our full, true potential.</p>
         <p style="color:var(--gold);font-style:italic;margin-bottom:0;">I am worthy &mdash; and so are you.<br><span style="font-family:var(--sans);font-size:12px;letter-spacing:1px;font-style:normal;color:var(--mid);">The only question remaining: do you know it?</span></p>
       </div></div>
     </div>
 
     <div class="faq-item closed">
-      <button class="faq-q" onclick="faqToggle(this)"><span>What are the 4 Rules of Daily Guidance?</span><span class="faq-icon">+</span></button>
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
+        <span>What are the 4 Rules of Daily Guidance?</span><span class="faq-icon">+</span>
+      </button>
       <div class="faq-a"><div class="faq-a-inner">
+        <p style="margin-bottom:18px;">The four operational rules for daily life drawn from the *SELF framework. Simple enough to remember in the heat of a moment. Deep enough to govern a lifetime.</p>
         <div style="border:1px solid #1e1e1e;overflow:hidden;background:var(--bg-lift);">
           <div style="padding:22px 24px;border-bottom:1px solid #1a1a1a;">
             <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:8px;">Rule 1</p>
-            <p style="font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:6px;">Compare only to Yesterday&rsquo;s self</p>
-            <p style="font-size:15px;color:var(--grey);line-height:1.85;">Do not compare yourself to others. Only compare the person you were yesterday to the person you are today.</p>
+            <p style="font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:6px;">Comparison Culture &mdash; Compare only to Yesterday&rsquo;s self</p>
+            <p style="font-size:15px;color:var(--grey);line-height:1.85;">Do not compare yourself to others. Only compare the person you were yesterday to the person you are today. Learn from mistakes. Figure out what works. Be the best version of yourself by adapting to your own circumstances.</p>
           </div>
           <div style="padding:22px 24px;border-bottom:1px solid #1a1a1a;">
             <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:8px;">Rule 2</p>
-            <p style="font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:6px;">Begin exactly where you stand</p>
-            <p style="font-size:15px;color:var(--grey);line-height:1.85;">Focus only on how you respond to life&rsquo;s challenges &mdash; that is the only thing you control.</p>
+            <p style="font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:6px;">The Starting Point &mdash; Begin exactly where you stand</p>
+            <p style="font-size:15px;color:var(--grey);line-height:1.85;">Begin exactly where you are right now. Focus only on how you <em style="color:var(--mid);">respond</em> to life&rsquo;s challenges &mdash; that is the only thing you control. Contain your energy. Direct it toward higher purpose instead of dissipating it through emotion.</p>
           </div>
           <div style="padding:22px 24px;border-bottom:1px solid #1a1a1a;">
             <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:8px;">Rule 3</p>
-            <p style="font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:6px;">Be the change you want to see</p>
-            <p style="font-size:15px;color:var(--grey);line-height:1.85;">If you do not dictate your own direction, you will be pulled into someone else&rsquo;s. Practice mindfulness to return to the present moment.</p>
+            <p style="font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:6px;">The Direction &mdash; Be the change you want to see</p>
+            <p style="font-size:15px;color:var(--grey);line-height:1.85;">If you do not dictate your own direction, you will be pulled into someone else&rsquo;s. Practice mindfulness to return to the present moment &mdash; life is happening only right now, not in the past or future.</p>
           </div>
           <div style="padding:22px 24px;">
             <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:8px;">Rule 4</p>
-            <p style="font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:6px;">Verify your goals against reality</p>
-            <p style="font-size:15px;color:var(--grey);line-height:1.85;">Find people who have already achieved the goals you are pursuing. Ask: does the reality of that achievement align with your true inner needs?</p>
+            <p style="font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:6px;">The Reality Check &mdash; Verify your goals against reality</p>
+            <p style="font-size:15px;color:var(--grey);line-height:1.85;">Find people who have already achieved the goals you are pursuing. Ask: does the reality of that achievement align with your true inner needs? If not, reprogram the path. Start working on your inner SELF right now, so you will not regret it on your deathbed.</p>
           </div>
         </div>
       </div></div>
     </div>
 
     <div class="faq-item closed">
-      <button class="faq-q" onclick="faqToggle(this)"><span>What are the Logotherapy Tools for finding meaning?</span><span class="faq-icon">+</span></button>
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
+        <span>What are the Logotherapy Tools for finding meaning?</span><span class="faq-icon">+</span>
+      </button>
       <div class="faq-a"><div class="faq-a-inner">
-        <p style="margin-bottom:16px;">Viktor Frankl&rsquo;s Logotherapy gives us three practical tools for discovering meaning beyond the symptom.</p>
+        <p style="margin-bottom:16px;">Viktor Frankl&rsquo;s Logotherapy gives us three practical tools for discovering meaning beyond the symptom. These complement the RRRR Protocol by operating at a deeper level of questioning.</p>
         <div style="margin-bottom:18px;padding:20px 22px;border-left:3px solid var(--gold);background:var(--bg-lift);">
           <p style="font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:6px;">Dereflection &mdash; Shift to higher purpose</p>
-          <p style="font-size:15.5px;color:var(--grey);line-height:1.85;">Shift focus from the problem to a higher purpose. Ask: <em style="color:var(--mid);">What would your life look like without this problem?</em></p>
+          <p style="font-size:15.5px;color:var(--grey);line-height:1.85;">Shift focus from the problem to a higher purpose. Ask: <em style="color:var(--mid);">What would your life look like without this problem?</em> This moves attention from the wound to the direction.</p>
         </div>
         <div style="margin-bottom:18px;padding:20px 22px;border-left:3px solid var(--gold);background:var(--bg-lift);">
           <p style="font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:6px;">Paradoxical Intention &mdash; Face the fear directly</p>
-          <p style="font-size:15.5px;color:var(--grey);line-height:1.85;">Remove the power of fear by intentionally focusing on what you fear most. Name it fully and watch its grip loosen.</p>
+          <p style="font-size:15.5px;color:var(--grey);line-height:1.85;">Remove the power of fear by intentionally focusing on what you fear most. The anxiety about the anxiety is often worse than the thing itself. Name it fully and watch its grip loosen.</p>
         </div>
         <div style="padding:20px 22px;border-left:3px solid var(--gold);background:var(--bg-lift);">
           <p style="font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:6px;">Socratic Dialogue &mdash; The answers are within</p>
-          <p style="font-size:15.5px;color:var(--grey);line-height:1.85;">Ask: <em style="color:var(--mid);">Is there anything in your life you would die for?</em> If yes &mdash; that is your direction towards the super-ordinate goal.</p>
+          <p style="font-size:15.5px;color:var(--grey);line-height:1.85;">The answers do not come from outside. They are realized through careful questioning. Ask: <em style="color:var(--mid);">Is there anything in your life you would die for?</em> If yes &mdash; that is your direction towards the super-ordinate goal.</p>
         </div>
       </div></div>
     </div>
 
     <div class="faq-item closed">
-      <button class="faq-q" onclick="faqToggle(this)"><span>What is the Mirror Room?</span><span class="faq-icon">+</span></button>
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
+        <span>What is the Mirror Room?</span><span class="faq-icon">+</span>
+      </button>
       <div class="faq-a"><div class="faq-a-inner">Not a hype chat. Not a trading group. A space for people who noticed the gap and couldn&rsquo;t unsee it. You post what you noticed &mdash; in the market, in yourself, in the framework. No price talk. No memes. Just noticing. The mirror doesn&rsquo;t chase you to buy more. It reflects what you&rsquo;re already seeing. <a href="https://x.com/i/chat/group_join/g2056088351590220124/gAK9fW8Y29" target="_blank" rel="noopener">Enter the Mirror Room &rarr;</a></div></div>
     </div>
 
   </div>
+  </div>
 </section>
 <div class="divider"></div>
-
+  
 <!-- DISCLAIMER -->
 <section id="disclaimer" style="scroll-margin-top:140px;padding:80px 24px;background:var(--bg-lift);border-top:1px solid #111;">
   <div style="max-width:720px;margin:0 auto;">
