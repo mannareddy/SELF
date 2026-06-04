@@ -2050,44 +2050,78 @@ function showVoidResponse(type,btn){
     });
   });
 
-  /* WHY TOGGLE */
-  var whyOpen=false;
-  window.whyToggle=function(){
-    whyOpen=!whyOpen;
-    var content=document.getElementById('why-content');
-    var lbl=document.getElementById('why-expand-label');
-    if(whyOpen){content.style.maxHeight=content.scrollHeight+'px';content.style.opacity='1';if(lbl)lbl.innerHTML='Collapse &#9650;';}
-    else{content.style.maxHeight='0';content.style.opacity='0';if(lbl)lbl.innerHTML='Expand &#9660;';}
+  /* ── WHY $SELF TOGGLE ────────────────────────────────────────────────── */
+  var whyOpen = false;
+  window.whyToggle = function(){
+    whyOpen = !whyOpen;
+    var content = document.getElementById('why-content');
+    var lbl = document.getElementById('why-expand-label');
+    if(whyOpen){
+      content.style.maxHeight = content.scrollHeight + 'px';
+      content.style.opacity = '1';
+      if(lbl) lbl.innerHTML = 'Collapse &#9650;';
+    } else {
+      content.style.maxHeight = '0';
+      content.style.opacity = '0';
+      if(lbl) lbl.innerHTML = 'Expand &#9660;';
+    }
   };
 
-  /* FRAMEWORK CARDS */
+  // Override nav link clicks to ensure precise scroll with offset
+  navLinks.forEach(function(link){
+    link.addEventListener('click',function(e){
+      e.preventDefault();
+      var href = this.getAttribute('href');
+      var targetId = href ? href.replace('#','') : '';
+      var target = document.getElementById(targetId);
+      if(target){
+        var offset = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 44;
+        var top = target.getBoundingClientRect().top + window.scrollY - offset - 20;
+        window.scrollTo({top:top, behavior:'smooth'});
+      }
+    });
+  });
+})();
+
+/* ── TOGGLE FUNCTIONALITY FOR COLLAPSIBLES ───────────────────────────────── */
+(function(){
+
+  /* --- Framework cards: click to collapse/expand --- */
   document.querySelectorAll('.framework-card').forEach(function(card){
     card.addEventListener('click',function(e){
-      if(e.target.tagName==='A')return;
+      // Don't toggle if clicking a link inside the card
+      if(e.target.tagName==='A') return;
       this.classList.toggle('collapsed');
     });
   });
 
-  /* IDENTITY SECTION */
-  var identityBtn=document.getElementById('identityExpandBtn');
-  var identitySection=document.querySelector('.identity-section');
-  if(identityBtn&&identitySection){
-    identityBtn.addEventListener('click',function(){
+  /* --- Path of Subtilization: click button to toggle --- */
+  var identityExpandBtn = document.getElementById('identityExpandBtn');
+  var identitySection = document.querySelector('.identity-section');
+  if(identityExpandBtn && identitySection){
+    identityExpandBtn.addEventListener('click', function(){
       identitySection.classList.toggle('collapsed');
-      identityBtn.innerHTML=identitySection.classList.contains('collapsed')?'Expand &#9660;':'Collapse &#9650;';
+      var isCollapsed = identitySection.classList.contains('collapsed');
+      identityExpandBtn.innerHTML = isCollapsed ? 'Expand &#9660;' : 'Collapse &#9650;';
     });
   }
 
-  /* SURRENDER TOGGLE */
-  var surrenderSection=document.querySelector('.surrender-section');
-  var surrenderH4=surrenderSection?surrenderSection.querySelector('h4'):null;
+  /* --- Disclaimer: click h3 to toggle --- */
+  /* disclaimer toggle removed — content always visible */
+
+  /* --- 5 Stages toggle: single listener --- */
+  var surrenderSection = document.querySelector('.surrender-section');
+  var surrenderH4 = surrenderSection ? surrenderSection.querySelector('h4') : null;
   if(surrenderH4){
     surrenderH4.addEventListener('click',function(){
       surrenderSection.classList.toggle('collapsed');
-      var lbl=surrenderSection.querySelector('.stage-expand-label');
-      if(lbl){lbl.textContent=surrenderSection.classList.contains('collapsed')?'Expand ▼':'Collapse ▲';}
+      var lbl = surrenderSection.querySelector('.stage-expand-label');
+      if(lbl){
+        lbl.textContent = surrenderSection.classList.contains('collapsed') ? 'Expand ▼' : 'Collapse ▲';
+      }
     });
   }
+
 })();
 
 /* ── GENERIC SECTION COLLAPSE ────────────────────────────────────────────── */
@@ -2097,47 +2131,17 @@ function sectionCollapse(id,btn){
   var isCollapsed=wrap.classList.contains('collapsed');
   if(isCollapsed){
     wrap.classList.remove('collapsed');
-    if(btn)btn.innerHTML=btn.innerHTML.replace('Expand','Collapse').replace('&#9660;','&#9650;').replace('▼','▲');
-  }else{
-    wrap.classList.add('collapsed');
-    if(btn)btn.innerHTML=btn.innerHTML.replace('Collapse','Expand').replace('&#9650;','&#9660;').replace('▲','▼');
-  }
-}
-
-/* ── FAQ TOGGLE (single item) ────────────────────────────────────────────── */
-function faqToggle(btn){
-  var item=btn.parentElement;
-  item.classList.toggle('open');
-  item.classList.toggle('closed');
-  var ic=btn.querySelector('.faq-icon');
-  if(ic)ic.innerHTML=item.classList.contains('open')?'&minus;':'+';
-}
-
-/* ── FAQ EXPAND ALL ──────────────────────────────────────────────────────── */
-function toggleFaqAll(){
-  var btn=document.getElementById('faqExpandAllBtn');
-  var items=document.querySelectorAll('.faq-item');
-  var isOpen=btn.innerHTML.indexOf('Collapse')>-1;
-  if(isOpen){
-    items.forEach(function(item){item.classList.remove('open');item.classList.add('closed');var ic=item.querySelector('.faq-icon');if(ic)ic.innerHTML='+';});
-    btn.innerHTML='Expand &#9660;';
+    if(btn)btn.innerHTML=btn.innerHTML.replace('Expand','Collapse').replace('▼','▲').replace('&#9660;','&#9650;');
   } else {
-    items.forEach(function(item){item.classList.remove('closed');item.classList.add('open');var ic=item.querySelector('.faq-icon');if(ic)ic.innerHTML='&minus;';});
-    btn.innerHTML='Collapse All &#9650;';
+    wrap.classList.add('collapsed');
+    if(btn)btn.innerHTML=btn.innerHTML.replace('Collapse','Expand').replace('▲','▼').replace('&#9650;','&#9660;');
   }
-}
-
-/* ── FOUNDATION TOGGLE ───────────────────────────────────────────────────── */
-function toggleFoundation(btn){
-  var content=document.getElementById('foundationContent');
-  var isOpen=content.style.maxHeight&&content.style.maxHeight!=='0px';
-  if(isOpen){content.style.maxHeight='0px';content.style.opacity='0';btn.innerHTML='Show Traditions &#9660;';btn.setAttribute('aria-expanded','false');}
-  else{content.style.maxHeight='3000px';content.style.opacity='1';btn.innerHTML='Hide Traditions &#9650;';btn.setAttribute('aria-expanded','true');}
 }
 
 /* ── ENNEAGRAM EXPAND ALL ────────────────────────────────────────────────── */
 function toggleEnn(btn){
   var grid=document.getElementById('ennGrid');
+  if(!grid)return;
   var cards=grid.querySelectorAll('.enneagram-card');
   var isOpen=btn.innerHTML.indexOf('Collapse')>-1;
   if(isOpen){
@@ -2149,69 +2153,63 @@ function toggleEnn(btn){
   }
 }
 
-/* ── COLLAPSIBLE TOGGLES ─────────────────────────────────────────────────── */
-(function(){
-  /* Framework cards */
-  document.querySelectorAll('.framework-card').forEach(function(card){
-    card.addEventListener('click',function(e){
-      if(e.target.tagName==='A')return;
-      this.classList.toggle('collapsed');
-    });
-  });
-
-  /* Identity section expand btn */
-  var identityExpandBtn=document.getElementById('identityExpandBtn');
-  var identitySection=document.querySelector('.identity-section');
-  if(identityExpandBtn&&identitySection){
-    identityExpandBtn.addEventListener('click',function(){
-      identitySection.classList.toggle('collapsed');
-      var isCollapsed=identitySection.classList.contains('collapsed');
-      identityExpandBtn.innerHTML=isCollapsed?'Expand &#9660;':'Collapse &#9650;';
-    });
+/* ── FOUNDATION TOGGLE ───────────────────────────────────────────────────── */
+function toggleFoundation(btn){
+  var content = document.getElementById('foundationContent');
+  var isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
+  if(isOpen){
+    content.style.maxHeight = '0px';
+    content.style.opacity = '0';
+    btn.innerHTML = 'Show Traditions &#9660;';
+    btn.setAttribute('aria-expanded','false');
+  } else {
+    content.style.maxHeight = '3000px';
+    content.style.opacity = '1';
+    btn.innerHTML = 'Hide Traditions &#9650;';
+    btn.setAttribute('aria-expanded','true');
   }
-
-  /* 5 Stages of Surrender toggle */
-  var surrenderSection=document.querySelector('.surrender-section');
-  var surrenderH4=surrenderSection?surrenderSection.querySelector('h4'):null;
-  if(surrenderH4){
-    surrenderH4.addEventListener('click',function(){
-      surrenderSection.classList.toggle('collapsed');
-      var lbl=surrenderSection.querySelector('.stage-expand-label');
-      if(lbl){lbl.textContent=surrenderSection.classList.contains('collapsed')?'Expand ▼':'Collapse ▲';}
-    });
-  }
-
-  /* Collapse wraps — preserve initial max-height from inline style */
-  document.querySelectorAll('.section-collapse-wrap').forEach(function(wrap){
-    if(wrap.style.maxHeight){
-      wrap.setAttribute('data-maxheight',wrap.style.maxHeight);
-    }
-  });
-})();
-
+}
 /* ── THEME TOGGLE ─────────────────────────────────────────────────────────── */
 function toggleTheme(){
-  var html=document.documentElement;
-  var current=html.getAttribute('data-theme');
-  var next=(current==='light')?'dark':'light';
-  html.setAttribute('data-theme',next==='dark'?'':'light');
-  localStorage.setItem('selfTheme',next);
-  var icon=(next==='light')?'&#9790;':'&#9788;';
-  var btn=document.getElementById('themeToggleBtn');
-  var btnM=document.getElementById('themeToggleMobile');
-  if(btn)btn.innerHTML=icon;
-  if(btnM)btnM.innerHTML=icon;
+  var html = document.documentElement;
+  var current = html.getAttribute('data-theme');
+  var next = (current === 'light') ? 'dark' : 'light';
+  html.setAttribute('data-theme', next === 'dark' ? '' : 'light');
+  localStorage.setItem('selfTheme', next);
+  var btn = document.getElementById('themeToggleBtn');
+  var btnM = document.getElementById('themeToggleMobile');
+  var icon = (next === 'light') ? '&#9790;' : '&#9788;';
+  if(btn) btn.innerHTML = icon;
+  if(btnM) btnM.innerHTML = icon;
+  // Collapse all expandable sections on theme switch for clean view
+  document.querySelectorAll('.framework-card').forEach(function(c){c.classList.add('collapsed');});
+  document.querySelectorAll('.surrender-section').forEach(function(s){s.classList.add('collapsed');});
+  document.querySelectorAll('.identity-section').forEach(function(s){s.classList.add('collapsed');});
+  document.querySelectorAll('.faq-item').forEach(function(f){
+    f.classList.remove('open');
+    var ic=f.querySelector('.faq-icon');
+    if(ic) ic.innerHTML='+';
+  });
+  var fw=document.getElementById('faqListWrap');
+  if(fw){fw.classList.remove('open');}
+  var fb=document.getElementById('faqExpandAllBtn');
+  if(fb) fb.innerHTML='Expand &#9660;';
 }
+// Apply saved theme on load
 (function(){
-  var saved=localStorage.getItem('selfTheme');
-  if(saved==='light'){
+  var saved = localStorage.getItem('selfTheme');
+  if(saved === 'light'){
     document.documentElement.setAttribute('data-theme','light');
     var b=document.getElementById('themeToggleBtn');
     var bM=document.getElementById('themeToggleMobile');
-    if(b)b.innerHTML='&#9790;';
-    if(bM)bM.innerHTML='&#9790;';
+    if(b) b.innerHTML='&#9790;';
+    if(bM) bM.innerHTML='&#9790;';
+    var btn = document.getElementById('themeToggleBtn');
+    if(btn) btn.innerHTML = '&#9790;';
   }
 })();
+
 </script>
 </body>
 </html>
+
