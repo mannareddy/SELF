@@ -259,8 +259,12 @@ a:hover{opacity:.7;}
   .site-nav{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;white-space:nowrap;}
   .site-nav::-webkit-scrollbar{display:none;}
   .nav-logo-center{width:20px;height:20px;margin:0 1px;flex-shrink:0;}
-  .nav-left,.nav-right{flex:1;}
-  .nav-right{padding-right:0;}
+  .nav-left{justify-content:flex-start; flex:0 !important;}
+  .nav-right{justify-content:flex-start; flex:0 !important; padding-right:0 !important;}
+  .nav-left li, .nav-right li{flex:0 !important; width:auto !important;}
+  .nav-left li a, .nav-right li a{width:auto !important;}
+  ...
+}
   .nav-left li a,
   .nav-right li a{
     font-size:8px;
