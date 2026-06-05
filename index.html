@@ -528,7 +528,7 @@ section{scroll-margin-top:140px;}
 .ca-full-box::before{content:'';position:absolute;top:-1px;left:-1px;width:18px;height:18px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);}
 .ca-full-box::after{content:'';position:absolute;bottom:-1px;right:-1px;width:18px;height:18px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);}
 .ca-label{font-family:var(--sans);font-size:10px;color:var(--dim);letter-spacing:4px;text-transform:uppercase;margin-bottom:10px;}
-.ca-address-full{font-family:var(--sans);font-size:12px;color:#ddd;word-break:break-all;letter-spacing:1px;margin:12px 0;transition:color .3s;}
+.ca-address-full{font-family:var(--sans);font-size:12px;color:#ddd;word-break:break-all;letter-spacing:1px;margin:12px 0;transition:color .3s;} [data-theme="light"] .ca-address-full{color:#1a1208 !important;}
 .supply{font-family:var(--sans);font-size:11px;color:var(--dim);letter-spacing:2px;text-transform:uppercase;margin-top:10px;}
 .trade-links{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-top:20px;}
 .trade-links a{font-family:var(--sans);font-size:11.5px;color:var(--mid);letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:color .25s;}
@@ -713,6 +713,11 @@ section{scroll-margin-top:140px;}
     display:none;
 }
 
+/* ── THEME TOGGLE (hidden on mobile, shown by nav-icon-item) ─────────────── */
+.nav-icon-item{display:none !important;}
+.nav-mobile-only{display:none !important;}
+.nav-desktop-only{display:list-item !important;}
+
 @media(max-width:900px){
 
     .desktop-label{
@@ -723,6 +728,10 @@ section{scroll-margin-top:140px;}
         display:inline;
     }
 
+  .nav-mobile-only{display:list-item !important;}
+  .nav-desktop-only{display:none !important;}
+}
+
 }
 </style>
 </head>
@@ -732,12 +741,13 @@ section{scroll-margin-top:140px;}
 <nav class="site-nav" id="siteNav" aria-label="Site navigation">
   <div class="progress-bar" id="progressBar"></div>
 
-  <!-- Left: Home, Framework, Ego, Ledger -->
+  <!-- Left: Home, Framework, EGO, Ledger -->
   <ul class="nav-left">
     <li><a href="#home" id="nav-home">Home</a></li>
     <li><a href="#framework">Framework</a></li>
     <li><a href="#ego">Ego</a></li>
-    <li><a href="#ledger">Ledger</a></li>
+    <li><a href="#ledger" class="desktop-only">Ledger</a></li>
+    <li><a href="#ipo" class="mobile-only-nav">IPO</a></li>
   </ul>
 
   <!-- Center: Glowing Logo -->
@@ -745,12 +755,14 @@ section{scroll-margin-top:140px;}
     <img src="./assets/images/Logo_web.jpg" alt="*SELF">
   </a>
 
-  <!-- Right: IPO, Mirror, Contract + mobile theme icon -->
+  <!-- Right: IPO, Mirror, Contract, Disclaimer + mobile items + theme icon -->
   <ul class="nav-right">
-    <li><a href="#ipo">IPO</a></li>
-    <li><a href="#mirror">MIRROR</a></li>
-    <li><a href="#contract">CONTRACT</a></li>    
-    
+    <li><a href="#ipo" class="desktop-only">IPO</a></li>
+    <li><a href="#ledger" class="mobile-only-nav">Ledger</a></li>
+    <li><a href="#mirror">Mirror</a></li>
+    <li><a href="#contract">Contract</a></li>
+    <li><a href="#contract" class="mobile-only-nav">CA</a></li>
+    <li><a href="#disclaimer">Disclaimer</a></li>
     <li class="nav-icon-item">
       <button onclick="toggleTheme()" title="Toggle theme" style="background:none;border:none;border-left:1px solid #1a1a1a;border-right:1px solid #1a1a1a;color:var(--dim);cursor:pointer;width:36px;height:var(--nav-h);display:flex;align-items:center;justify-content:center;font-size:13px;padding:0;" id="themeToggleMobile">&#9788;</button>
     </li>
@@ -2158,12 +2170,14 @@ function showVoidResponse(type, btn){
   var nav=document.getElementById('siteNav');
   var progressBar=document.getElementById('progressBar');
   var sections=[
-    {id:'home',     el:null},
-    {id:'framework',el:null},
-    {id:'ledger',   el:null},
-    {id:'ipo',      el:null},
-    {id:'mirror',   el:null},
-    {id:'contract', el:null}
+    {id:'home',       el:null},
+    {id:'framework',  el:null},
+    {id:'ego',        el:null},
+    {id:'ledger',     el:null},
+    {id:'ipo',        el:null},
+    {id:'mirror',     el:null},
+    {id:'contract',   el:null},
+    {id:'disclaimer', el:null}
   ];
   sections.forEach(function(s){s.el=document.getElementById(s.id);});
   var navLinks=document.querySelectorAll('.nav-left li a, .nav-right li a');
