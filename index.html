@@ -1986,15 +1986,45 @@ section{scroll-margin-top:140px;}
 <div class="divider"></div>
 
 <!-- FAQ — all collapsed by default, full content from HTML-2 -->
-<section class="faq-section">
+<<section class="faq-section">
   <span class="label">Common Questions</span>
   <h2>The questions people ask when they start noticing.</h2>
-  <div style="text-align:center;margin-bottom:36px;">
-    <button id="faqExpandAllBtn" onclick="toggleFaqAll()" style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);background:transparent;border:1px solid var(--gold);padding:10px 28px;cursor:pointer;transition:all .3s;opacity:.85;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.85'">Expand &#9660;</button>
-    <p style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#555;margin-top:10px;margin-bottom:0;">Collapsed by default &mdash; tap to expand all questions</p>
+ 
+  <!-- Level 0: Master show/hide button — always visible -->
+  <div style="text-align:center;margin-bottom:0;">
+    <button
+      id="faqMasterBtn"
+      onclick="faqMasterToggle()"
+      style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);background:transparent;border:1px solid var(--gold);padding:12px 36px;cursor:pointer;transition:all .3s;opacity:.85;margin-bottom:12px;"
+      onmouseover="this.style.opacity='1'"
+      onmouseout="this.style.opacity='.85'">
+      Show All Questions &#9660;
+    </button>
+    <!-- Count injected by JS on load — auto-updates as questions are added -->
+    <p id="faqCountLabel" style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#444;margin-top:0;margin-bottom:0;">
+      tap to reveal
+    </p>
   </div>
-  <div class="faq-list-wrap" id="faqListWrap">
-  <div class="faq-list">
+ 
+  <!-- Level 1: Question list wrapper — hidden on load -->
+  <div id="faqListWrap" style="max-height:0;overflow:hidden;transition:max-height .6s cubic-bezier(0,1,.25,1),opacity .4s ease;opacity:0;">
+ 
+    <!-- Level 1 sub-controls: expand all / collapse all -->
+    <div style="text-align:center;margin:36px 0 24px;">
+      <button
+        id="faqExpandAllBtn"
+        onclick="toggleFaqAll()"
+        style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);background:transparent;border:1px solid rgba(212,175,55,0.5);padding:10px 28px;cursor:pointer;transition:all .3s;opacity:.85;"
+        onmouseover="this.style.opacity='1'"
+        onmouseout="this.style.opacity='.85'">
+        Expand All &#9660;
+      </button>
+      <p style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#444;margin-top:10px;margin-bottom:0;">
+        Or tap any question individually
+      </p>
+    </div>
+ 
+    <div class="faq-list">
 
     <div class="faq-item closed">
       <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
@@ -2341,31 +2371,116 @@ section{scroll-margin-top:140px;}
 <script>
 /* ── COPY CA ─────────────────────────────────────────────────────────────── */
 function toggleFaqAll(){
-  var wrap = document.getElementById('faqListWrap');
-  var btn = document.getElementById('faqExpandAllBtn');
-  if(!wrap) return;
-  var isOpen = wrap.classList.contains('open');
-  if(isOpen){
-    wrap.classList.remove('open');
-    document.querySelectorAll('.faq-item').forEach(function(item){
-      item.classList.remove('open');
-      item.classList.add('closed');
-      var ic = item.querySelector('.faq-icon');
-      if(ic) ic.innerHTML = '+';
-    });
-    if(btn) btn.innerHTML = 'Expand All &#9660;';
+    var wrap = document.getElementById('faqListWrap');
+    var btn = document.getElementById('faqExpandAllBtn');
+    if(!wrap) return;
+    var isOpen = wrap.classList.contains('open');
+    if(isOpen){
+      wrap.classList.remove('open');
+      document.querySelectorAll('.faq-item').forEach(function(item){
+        item.classList.remove('open');
+        item.classList.add('closed');
+        var ic = item.querySelector('.faq-icon');
+        if(ic) ic.innerHTML = '+';
+      });
+      if(btn) btn.innerHTML = 'Expand All &#9660;';
+    } else {
+      wrap.classList.add('open');
+      document.querySelectorAll('.faq-item').forEach(function(item){
+        item.classList.remove('closed');
+        item.classList.add('open');
+        var ic = item.querySelector('.faq-icon');
+        if(ic) ic.innerHTML = '&minus;';
+      });
+      if(btn) btn.innerHTML = 'Collapse All &#9650;';
+    }
+  }
+  ─────────────────────────────────────────────────────────────────────────────
+  REPLACE WITH the block below (delete the old function, paste this in):
+-->
+ 
+/* ── FAQ: SET COUNT LABEL ON LOAD ───────────────────────────────────────── */
+(function(){
+  function setFaqCount(){
+    var count=document.querySelectorAll('.faq-item').length;
+    var label=document.getElementById('faqCountLabel');
+    if(label&&count>0){
+      label.textContent=count+' question'+(count!==1?'s':'')+' — tap to reveal';
+    }
+  }
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',setFaqCount);
   } else {
-    wrap.classList.add('open');
-    document.querySelectorAll('.faq-item').forEach(function(item){
-      item.classList.remove('closed');
-      item.classList.add('open');
-      var ic = item.querySelector('.faq-icon');
-      if(ic) ic.innerHTML = '&minus;';
-    });
-    if(btn) btn.innerHTML = 'Collapse All &#9650;';
+    setFaqCount();
+  }
+})();
+ 
+/* ── FAQ MASTER TOGGLE (Level 0 → Level 1) ─────────────────────────────── */
+var faqListVisible=false;
+function faqMasterToggle(){
+  var wrap=document.getElementById('faqListWrap');
+  var btn=document.getElementById('faqMasterBtn');
+  faqListVisible=!faqListVisible;
+  if(faqListVisible){
+    wrap.style.maxHeight=wrap.scrollHeight+9999+'px';
+    wrap.style.opacity='1';
+    btn.innerHTML='Hide Questions &#9650;';
+  } else {
+    _collapseAllFaq();
+    wrap.style.maxHeight='0';
+    wrap.style.opacity='0';
+    btn.innerHTML='Show All Questions &#9660;';
+    var expandBtn=document.getElementById('faqExpandAllBtn');
+    if(expandBtn) expandBtn.innerHTML='Expand All &#9660;';
+    _faqAllOpen=false;
   }
 }
-
+ 
+/* ── FAQ EXPAND ALL (Level 1 → Level 2) ────────────────────────────────── */
+var _faqAllOpen=false;
+function toggleFaqAll(){
+  var btn=document.getElementById('faqExpandAllBtn');
+  var wrap=document.getElementById('faqListWrap');
+  _faqAllOpen=!_faqAllOpen;
+  if(_faqAllOpen){
+    _openAllFaq();
+    if(btn) btn.innerHTML='Collapse All &#9650;';
+    setTimeout(function(){
+      if(faqListVisible) wrap.style.maxHeight=wrap.scrollHeight+'px';
+    },50);
+  } else {
+    _collapseAllFaq();
+    if(btn) btn.innerHTML='Expand All &#9660;';
+  }
+}
+ 
+/* ── HELPERS ────────────────────────────────────────────────────────────── */
+function _openAllFaq(){
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    item.classList.add('open');
+    item.classList.remove('closed');
+    var ic=item.querySelector('.faq-icon');
+    if(ic) ic.innerHTML='&minus;';
+  });
+}
+function _collapseAllFaq(){
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    item.classList.remove('open');
+    item.classList.add('closed');
+    var ic=item.querySelector('.faq-icon');
+    if(ic) ic.innerHTML='+';
+  });
+}
+ 
+/* ── INDIVIDUAL ITEM: re-measure container height after toggle ──────────── */
+document.addEventListener('click',function(e){
+  var btn=e.target.closest('.faq-q');
+  if(!btn) return;
+  setTimeout(function(){
+    var wrap=document.getElementById('faqListWrap');
+    if(wrap&&faqListVisible) wrap.style.maxHeight=wrap.scrollHeight+'px';
+  },50);
+});
 function copyCA(btn){
   navigator.clipboard.writeText('7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump').then(function(){
     var orig=btn.innerText;
