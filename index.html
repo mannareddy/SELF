@@ -1759,25 +1759,60 @@ section{scroll-margin-top:140px;}
 <!-- WHY $SELF -->
 <section class="why-section">
   <span class="label">Why $SELF</span>
-  <h2 id="why-toggle" onclick="whyToggle()" style="cursor:pointer;user-select:none;position:relative;">Most tokens ask you to believe in the chart.<br>This one asks a different question. <span id="why-expand-label" class="expand-label">Expand &#9660;</span></h2>
+ 
+  <h2 id="why-toggle" onclick="whyToggle()" style="cursor:pointer;user-select:none;position:relative;">
+    Most tokens ask you to believe in the chart.<br>This one asks a different question.
+    <span id="why-expand-label" class="expand-label">Expand &#9660;</span>
+  </h2>
   <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:28px;">Tap to expand</p>
-  <div id="why-content" style="max-height:0;overflow:hidden;transition:max-height .6s ease,opacity .3s ease;opacity:0;border:1px solid #2a2a2a;position:relative;margin-top:28px;">
-  <div style="position:absolute;top:-1px;left:-1px;width:20px;height:20px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);pointer-events:none;"></div>
-  <div style="position:absolute;top:-1px;right:-1px;width:20px;height:20px;border-top:1px solid var(--gold);border-right:1px solid var(--gold);pointer-events:none;"></div>
-  <div style="position:absolute;bottom:-1px;left:-1px;width:20px;height:20px;border-bottom:1px solid var(--gold);border-left:1px solid var(--gold);pointer-events:none;"></div>
-  <div style="position:absolute;bottom:-1px;right:-1px;width:20px;height:20px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);pointer-events:none;"></div>
-  <div style="padding:44px 36px;">  <div class="why-grid">
-    <div class="why-card"><span class="icon">&#x1FA9E;</span><h4>A declaration, not a trade</h4><p>Buying $SELF is a philosophical stake. It says you know the journey matters &mdash; not just the balance sheet everyone else is watching.</p></div>
-    <div class="why-card"><span class="icon">&#x1F9ED;</span><h4>The only rug that matters</h4><p>What if the real rug pull isn&rsquo;t the chart? What if it&rsquo;s the moment you stopped noticing yourself? The inner market never crashes.</p></div>
-    <div class="why-card"><span class="icon">&#x26A1;</span><h4>Skin in the game of the SELF</h4><p>Holders feel the framework every time the chart moves. That is a fundamentally different relationship with philosophy than any book or podcast can provide.</p></div>
-    <div class="why-card"><span class="icon">&#x1F310;</span><h4>The Mirror Room</h4><p>Not a hype chat. A space for people who noticed the gap between trigger and response and couldn&rsquo;t unsee it. No price talk. Just noticing.</p></div>
+ 
+  <!-- Border wrapper — always visible, collapses content inside -->
+  <div style="max-width:820px;margin:0 auto;position:relative;border:1px solid #2a2a2a;">
+    <!-- Gold corner brackets -->
+    <div style="position:absolute;top:-1px;left:-1px;width:20px;height:20px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);pointer-events:none;z-index:1;"></div>
+    <div style="position:absolute;top:-1px;right:-1px;width:20px;height:20px;border-top:1px solid var(--gold);border-right:1px solid var(--gold);pointer-events:none;z-index:1;"></div>
+    <div style="position:absolute;bottom:-1px;left:-1px;width:20px;height:20px;border-bottom:1px solid var(--gold);border-left:1px solid var(--gold);pointer-events:none;z-index:1;"></div>
+    <div style="position:absolute;bottom:-1px;right:-1px;width:20px;height:20px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);pointer-events:none;z-index:1;"></div>
+ 
+    <!-- Collapsible content inside the border -->
+    <div id="why-content" style="max-height:0;overflow:hidden;transition:max-height .6s ease,opacity .3s ease;opacity:0;">
+      <div style="padding:44px 36px;">
+ 
+        <div class="why-grid">
+          <div class="why-card">
+            <span class="icon">&#x1FA9E;</span>
+            <h4>A declaration, not a trade</h4>
+            <p>Buying $SELF is a philosophical stake. It says you know the journey matters &mdash; not just the balance sheet everyone else is watching.</p>
+          </div>
+          <div class="why-card">
+            <span class="icon">&#x1F9ED;</span>
+            <h4>The only rug that matters</h4>
+            <p>What if the real rug pull isn&rsquo;t the chart? What if it&rsquo;s the moment you stopped noticing yourself? The inner market never crashes.</p>
+          </div>
+          <div class="why-card">
+            <span class="icon">&#x26A1;</span>
+            <h4>Skin in the game of the SELF</h4>
+            <p>Holders feel the framework every time the chart moves. That is a fundamentally different relationship with philosophy than any book or podcast can provide.</p>
+          </div>
+          <div class="why-card">
+            <span class="icon">&#x1F310;</span>
+            <h4>The Mirror Room</h4>
+            <p>Not a hype chat. A space for people who noticed the gap between trigger and response and couldn&rsquo;t unsee it. No price talk. Just noticing.</p>
+          </div>
+        </div>
+ 
+        <div style="border-top:1px solid #1e1e1e;margin-top:44px;padding-top:44px;text-align:center;">
+          <p class="why-closing" style="margin-bottom:44px;">Ignorance of your true SELF<br>is the only poverty that actually matters.</p>
+          <a class="btn-gold" href="https://gmgn.ai/sol/token/solscan_7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:14px 44px;font-size:12px;letter-spacing:3px;">Buy $SELF on GMGN &rarr;</a>
+        </div>
+ 
+      </div>
+    </div>
+    <!-- End collapsible -->
+ 
   </div>
-  </div>  
-  </div>
-  <p class="why-closing">Ignorance of your true SELF<br>is the only poverty that actually matters.</p>
-  <div style="margin-top:44px;">
-    <a class="btn-gold" href="https://gmgn.ai/sol/token/solscan_7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:14px 44px;font-size:12px;letter-spacing:3px;">Buy $SELF on GMGN &rarr;</a>
-  </div>
+  <!-- End border wrapper -->
+ 
 </section>
 <div class="divider"></div>
 
