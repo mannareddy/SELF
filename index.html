@@ -261,27 +261,10 @@ a:hover{opacity:.7;}
   .nav-logo-center{width:20px;height:20px;margin:0 1px;flex-shrink:0;}
   .nav-left{justify-content:flex-start; flex:0 !important;}
   .nav-right{justify-content:flex-start; flex:0 !important; padding-right:0 !important;}
-  .nav-left li, .nav-right li{flex:0 !important; width:auto !important;}
-  .nav-left li a, .nav-right li a{width:auto !important;}
-  ...
-}
-  .nav-left li a,
-  .nav-right li a{
-    font-size:8px;
-    letter-spacing:0.5px;
-    padding:0 5px;
-    min-width:auto;
-}
-  .nav-hide-mobile{display:none !important;}   /* ← ADD THIS LINE */
-}
+  .nav-left li,.nav-right li{flex:0 !important; width:auto !important;}
+  .nav-left li a,.nav-right li a{font-size:8px;letter-spacing:0.5px;padding:0 5px;min-width:auto;width:auto !important;}
   .nav-left li:first-child a{border-left:none;}
-  #themeToggleBtn{
-    display:flex !important;
-    align-items:center;
-    justify-content:center;
-    width:42px;
-    min-width:42px;
-}
+  .nav-hide-mobile{display:none !important;}
   .nav-icon-item{display:list-item !important;}
 }
 @media(max-width:480px){
