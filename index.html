@@ -1737,8 +1737,12 @@ section{scroll-margin-top:140px;}
     <p style="font-family:var(--serif);font-size:clamp(16px,2.2vw,21px);color:var(--gold);font-style:italic;line-height:1.8;margin-bottom:28px;">Or you can wait. And regret it &mdash; on your deathbed &mdash; under the ignorance of your true SELF.</p>
   </div>
   <!-- Legacy anchor — strongest conversion argument -->
-  <div style="max-width:660px;margin:24px auto 0;padding:0;">
-    <div style="border-top:1px solid #1e1e1e;padding:44px 40px;background:var(--bg-lift);text-align:center;">
+      <div style="max-width:660px;margin:24px auto 0;padding:0;border:1px solid #2a2a2a;position:relative;">
+      <div style="position:absolute;top:-1px;left:-1px;width:20px;height:20px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);"></div>
+      <div style="position:absolute;top:-1px;right:-1px;width:20px;height:20px;border-top:1px solid var(--gold);border-right:1px solid var(--gold);"></div>
+      <div style="position:absolute;bottom:-1px;left:-1px;width:20px;height:20px;border-bottom:1px solid var(--gold);border-left:1px solid var(--gold);"></div>
+      <div style="position:absolute;bottom:-1px;right:-1px;width:20px;height:20px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);"></div>
+      <div style="padding:44px 40px;background:var(--bg-lift);text-align:center;">
       <div style="font-family:var(--sans);font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:28px;">The Only Balance Sheet That Doesn&rsquo;t Get Liquidated</div>
       <p style="font-family:var(--serif);font-size:clamp(19px,2.8vw,27px);color:var(--white);font-weight:300;line-height:1.75;margin-bottom:16px;">We enter this world with $0 self-made net worth.<br>We leave with $X.</p>
       <p style="font-family:var(--serif);font-size:clamp(17px,2.4vw,23px);color:var(--mid);font-weight:300;line-height:1.8;margin-bottom:20px;">Nothing travels with you.</p>
@@ -1757,13 +1761,18 @@ section{scroll-margin-top:140px;}
   <span class="label">Why $SELF</span>
   <h2 id="why-toggle" onclick="whyToggle()" style="cursor:pointer;user-select:none;position:relative;">Most tokens ask you to believe in the chart.<br>This one asks a different question. <span id="why-expand-label" class="expand-label">Expand &#9660;</span></h2>
   <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:28px;">Tap to expand</p>
-  <div id="why-content" style="max-height:0;overflow:hidden;transition:max-height .6s ease,opacity .3s ease;opacity:0;">
-  <div class="why-grid">
+  <div id="why-content" style="max-height:0;overflow:hidden;transition:max-height .6s ease,opacity .3s ease;opacity:0;border:1px solid #2a2a2a;position:relative;margin-top:28px;">
+  <div style="position:absolute;top:-1px;left:-1px;width:20px;height:20px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);pointer-events:none;"></div>
+  <div style="position:absolute;top:-1px;right:-1px;width:20px;height:20px;border-top:1px solid var(--gold);border-right:1px solid var(--gold);pointer-events:none;"></div>
+  <div style="position:absolute;bottom:-1px;left:-1px;width:20px;height:20px;border-bottom:1px solid var(--gold);border-left:1px solid var(--gold);pointer-events:none;"></div>
+  <div style="position:absolute;bottom:-1px;right:-1px;width:20px;height:20px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);pointer-events:none;"></div>
+  <div style="padding:44px 36px;">  <div class="why-grid">
     <div class="why-card"><span class="icon">&#x1FA9E;</span><h4>A declaration, not a trade</h4><p>Buying $SELF is a philosophical stake. It says you know the journey matters &mdash; not just the balance sheet everyone else is watching.</p></div>
     <div class="why-card"><span class="icon">&#x1F9ED;</span><h4>The only rug that matters</h4><p>What if the real rug pull isn&rsquo;t the chart? What if it&rsquo;s the moment you stopped noticing yourself? The inner market never crashes.</p></div>
     <div class="why-card"><span class="icon">&#x26A1;</span><h4>Skin in the game of the SELF</h4><p>Holders feel the framework every time the chart moves. That is a fundamentally different relationship with philosophy than any book or podcast can provide.</p></div>
     <div class="why-card"><span class="icon">&#x1F310;</span><h4>The Mirror Room</h4><p>Not a hype chat. A space for people who noticed the gap between trigger and response and couldn&rsquo;t unsee it. No price talk. Just noticing.</p></div>
   </div>
+  </div>  
   </div>
   <p class="why-closing">Ignorance of your true SELF<br>is the only poverty that actually matters.</p>
   <div style="margin-top:44px;">
@@ -2159,7 +2168,99 @@ section{scroll-margin-top:140px;}
       </button>
       <div class="faq-a"><div class="faq-a-inner">Not a hype chat. Not a trading group. A space for people who noticed the gap and couldn&rsquo;t unsee it. You post what you noticed &mdash; in the market, in yourself, in the framework. No price talk. No memes. Just noticing. The mirror doesn&rsquo;t chase you to buy more. It reflects what you&rsquo;re already seeing. <a href="https://x.com/i/chat/group_join/g2056088351590220124/gAK9fW8Y29" target="_blank" rel="noopener">Enter the Mirror Room &rarr;</a></div></div>
     </div>
-
+   <!-- NEW FAQ 1: The Dark Night of the Soul -->
+<div class="faq-item closed">
+  <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
+    <span>What is the Dark Night of the Soul?</span><span class="faq-icon">+</span>
+  </button>
+  <div class="faq-a"><div class="faq-a-inner">
+    <p style="margin-bottom:16px;">The Dark Night of the Soul is not a clinical depression to be treated. It is an initiation — the universal threshold experience that every wisdom tradition has mapped and that no tradition calls optional.</p>
+    <p style="margin-bottom:16px;">The most common mistake is treating it as a malfunction: medicating the signal, waiting for it to pass, reaching for the next distraction. Every exit ramp leads back to the same entrance. The signal returns, louder.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin:20px 0;">
+      <div style="padding:20px 18px;background:var(--bg-lift);border:1px solid #1e1e1e;">
+        <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:10px;">The Mistake</p>
+        <p style="font-size:15px;color:var(--grey);line-height:1.85;">Treating it as a depression to be cured. The exit ramps only prolong it.</p>
+      </div>
+      <div style="padding:20px 18px;background:var(--bg-lift);border:1px solid #1e1e1e;border-left:3px solid var(--gold);">
+        <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:10px;">The Truth</p>
+        <p style="font-size:15px;color:var(--grey);line-height:1.85;">It is the Saturnine forge — heavy, real, and necessary. It does not end. It graduates.</p>
+      </div>
+    </div>
+    <p style="margin-bottom:12px;">Abraham Lincoln endured years of depression and repeated failure before the presidency. Nelson Mandela spent 27 years in prison. Neither escaped the dark night — both were forged by it. What emerged was not the man who entered.</p>
+    <p style="color:var(--gold);font-style:italic;">If you have experienced something like this — your journey toward Self-Realization has already started.</p>
+  </div></div>
+</div>
+ 
+<!-- NEW FAQ 2: What is the Perceptual Chain? -->
+<div class="faq-item closed">
+  <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
+    <span>What is the Perceptual Chain?</span><span class="faq-icon">+</span>
+  </button>
+  <div class="faq-a"><div class="faq-a-inner">
+    <p style="margin-bottom:16px;">The Perceptual Chain is the sequence through which all experience reaches you — and the single shift in understanding that changes everything.</p>
+    <p style="margin-bottom:16px;">The chain runs: <strong style="color:var(--mid);font-weight:400;">Object</strong> (the world) → <strong style="color:var(--mid);font-weight:400;">Senses</strong> (your lenses) → <strong style="color:var(--mid);font-weight:400;">Mind</strong> (the projector) → <strong style="color:var(--gold);">Consciousness</strong> (the Screen).</p>
+    <p style="margin-bottom:16px;">Most people identify with the mind — the projector. They believe they are the movie being played. Realization is the recognition that you are the Screen, not the film. The screen remains unchanged by whatever plays upon it. Every emotion, every thought, every external event — these are the movie. You are the unchanging awareness in which they appear.</p>
+    <p style="color:var(--gold);font-style:italic;">All Experience is Awareness. You are not inside consciousness. You are consciousness itself.</p>
+  </div></div>
+</div>
+ 
+<!-- NEW FAQ 3: What is Satchitananda? -->
+<div class="faq-item closed">
+  <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
+    <span>What is Sat-Chit-Ananda?</span><span class="faq-icon">+</span>
+  </button>
+  <div class="faq-a"><div class="faq-a-inner">
+    <p style="margin-bottom:16px;">Sat-Chit-Ananda is the Sanskrit description of the true nature of the SELF — three inseparable qualities of what you actually are beneath the ego:</p>
+    <div style="border:1px solid #1e1e1e;overflow:hidden;background:var(--bg-lift);margin:16px 0;">
+      <div style="padding:20px 22px;border-bottom:1px solid #1a1a1a;">
+        <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:8px;">Sat — Existence / Being</p>
+        <p style="font-size:15px;color:var(--grey);line-height:1.85;">You exist. This cannot be negated — even the thought "I do not exist" requires an exister. Sat is the bedrock. Unborn, undying, always-already present.</p>
+      </div>
+      <div style="padding:20px 22px;border-bottom:1px solid #1a1a1a;">
+        <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:8px;">Chit — Consciousness / Awareness</p>
+        <p style="font-size:15px;color:var(--grey);line-height:1.85;">You are aware. Right now, reading this, there is knowing. That knowing is not the brain — the brain is an object known by awareness. Chit is the light by which all experience is seen.</p>
+      </div>
+      <div style="padding:20px 22px;">
+        <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:8px;">Ananda — Bliss / Joy</p>
+        <p style="font-size:15px;color:var(--grey);line-height:1.85;">The natural resting state of pure awareness is contentless peace — a bliss that requires no trigger. This is not an emotion. It is what remains when grasping and aversion fall away.</p>
+      </div>
+    </div>
+    <p style="margin-bottom:12px;">The Enneagram's three centres (Body, Heart, Head — Types 8/9/1, 2/3/4, 5/6/7) are the ego's distortion of these three qualities. Sat becomes anger, Ananda becomes neediness, Chit becomes fear — when filtered through the illusion of a separate self.</p>
+    <p style="color:var(--gold);font-style:italic;">Self-Realization is not adding Sat-Chit-Ananda to who you are. It is recognizing that this is what you have always already been.</p>
+  </div></div>
+</div>
+ 
+<!-- NEW FAQ 4: What is the Gratitude Recalibration? -->
+<div class="faq-item closed">
+  <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
+    <span>What is the Gratitude Recalibration and why does the Default OS hide it?</span><span class="faq-icon">+</span>
+  </button>
+  <div class="faq-a"><div class="faq-a-inner">
+    <p style="margin-bottom:16px;">The Default OS — your autopilot — is wired for novelty and threat detection. It treats anything constant as background noise and stops registering it. This is called habituation, and it is neurologically efficient but spiritually costly.</p>
+    <p style="margin-bottom:16px;">Air. Light. Water. The three things you would die without in hours — and the three things most people spend an entire lifetime never consciously noticing. Not because they are ungrateful, but because the Default OS has categorised them as irrelevant to survival.</p>
+    <p style="margin-bottom:16px;">The Gratitude Recalibration is not a positive-thinking exercise. It is a practical interrupt of the Default OS — the same gap-between-trigger-and-response that the RRRR Protocol creates, applied to the most fundamental gifts of existence.</p>
+    <div style="border-left:3px solid var(--gold);padding:16px 20px;background:var(--bg-lift);margin:16px 0;">
+      <p style="font-size:15px;color:var(--mid);line-height:1.85;margin-bottom:0;">Before you drink water — pause. Before you breathe — notice. This morning's first breath was free. The Default OS never charges for it. Neither does the SELF.</p>
+    </div>
+    <p style="color:var(--gold);font-style:italic;">Gratitude is not sentiment. It is a recalibration of the Default OS — the one running underneath every trade, every reaction, every decision you have ever made.</p>
+  </div></div>
+</div>
+ 
+<!-- NEW FAQ 5: What is true legacy? -->
+<div class="faq-item closed">
+  <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
+    <span>What does *SELF mean by &ldquo;true legacy&rdquo;?</span><span class="faq-icon">+</span>
+  </button>
+  <div class="faq-a"><div class="faq-a-inner">
+    <p style="margin-bottom:16px;">We enter this world with zero self-made net worth. We leave with X. Nothing travels with us. Nothing, except how many hearts we touched.</p>
+    <p style="margin-bottom:16px;">True legacy is not net worth at peak. It is not the portfolio. It is not the name on a building or the followers on a chart. It is the number of hearts you touched with your genuine contribution — the imprint your SELF left on others that continues radiating after you leave.</p>
+    <p style="margin-bottom:16px;">Even the greatest names in history fell short of the super-ordinate goal. What they achieved were sub-goals. The greatest sub-goal available is: <em style="color:var(--mid);">how many hearts did you touch?</em></p>
+    <div style="border-left:3px solid var(--gold);padding:16px 20px;background:var(--bg-lift);margin:16px 0;">
+      <p style="font-size:15px;color:var(--gold);font-style:italic;line-height:1.85;margin-bottom:0;">Your SELF is the super-ordinate goal. The only one that cannot be taken, liquidated, or diluted. The only balance sheet that survives the final settlement.</p>
+    </div>
+    <p style="color:var(--mid);">No copycat can touch it. No pump.fun clone can replicate it. Unlike every token manufactured to disguise itself as you — your SELF is the one thing that cannot be forged. The question is only whether you invest in it before the deathbed.</p>
+  </div></div>
+</div>
   </div>
   </div>
 </section>
