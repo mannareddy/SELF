@@ -2371,60 +2371,84 @@ section{scroll-margin-top:140px;}
 <script>
 /* ── COPY CA ─────────────────────────────────────────────────────────────── */
  
-/* ── FAQ: SET COUNT LABEL ON LOAD ───────────────────────────────────────── */
-(function(){
-  function setFaqCount(){
-    var count=document.querySelectorAll('.faq-item').length;
-    var label=document.getElementById('faqCountLabel');
-    if(label&&count>0){
-      label.textContent=count+' question'+(count!==1?'s':'')+' — tap to reveal';
+/* ── FAQ MASTER TOGGLE (Level 0 → Level 1) ─────────────────────────────── */
+var faqListVisible = false;
+ 
+function faqMasterToggle() {
+  var wrap = document.getElementById('faqListWrap');
+  var masterBtn = document.getElementById('faqMasterBtn');
+  if (!wrap) return;
+ 
+  faqListVisible = !faqListVisible;
+ 
+  if (faqListVisible) {
+    wrap.style.maxHeight = '999999px';
+    wrap.style.opacity   = '1';
+    wrap.style.overflow  = 'visible';
+    if (masterBtn) masterBtn.innerHTML = 'Hide Questions &#9650;';
+    /* Update count label */
+    var lbl = document.getElementById('faqCountLabel');
+    if (lbl) {
+      var n = document.querySelectorAll('.faq-item').length;
+      lbl.textContent = n + ' question' + (n !== 1 ? 's' : '') + ' — tap any to expand';
     }
-  }
-  if(document.readyState==='loading'){
-    document.addEventListener('DOMContentLoaded',setFaqCount);
   } else {
-    setFaqCount();
+    /* Collapse all open items then hide list */
+    document.querySelectorAll('.faq-item').forEach(function(item) {
+      item.classList.remove('open');
+      item.classList.add('closed');
+      var ic = item.querySelector('.faq-icon');
+      if (ic) ic.innerHTML = '+';
+    });
+    wrap.style.overflow  = 'hidden';
+    wrap.style.maxHeight = '0';
+    wrap.style.opacity   = '0';
+    if (masterBtn) masterBtn.innerHTML = 'Show All Questions &#9660;';
+    /* Reset expand all */
+    var expandBtn = document.getElementById('faqExpandAllBtn');
+    if (expandBtn) expandBtn.innerHTML = 'Expand All &#9660;';
+    _faqAllOpen = false;
+  }
+}
+ 
+/* ── EXPAND ALL / COLLAPSE ALL ──────────────────────────────────────────── */
+var _faqAllOpen = false;
+ 
+function toggleFaqAll() {
+  var btn = document.getElementById('faqExpandAllBtn');
+  _faqAllOpen = !_faqAllOpen;
+ 
+  document.querySelectorAll('.faq-item').forEach(function(item) {
+    if (_faqAllOpen) {
+      item.classList.add('open');
+      item.classList.remove('closed');
+      var ic = item.querySelector('.faq-icon');
+      if (ic) ic.innerHTML = '&minus;';
+    } else {
+      item.classList.remove('open');
+      item.classList.add('closed');
+      var ic = item.querySelector('.faq-icon');
+      if (ic) ic.innerHTML = '+';
+    }
+  });
+ 
+  if (btn) btn.innerHTML = _faqAllOpen ? 'Collapse All &#9650;' : 'Expand All &#9660;';
+}
+ 
+/* ── SET COUNT ON LOAD ───────────────────────────────────────────────────── */
+(function() {
+  function setCount() {
+    var lbl = document.getElementById('faqCountLabel');
+    if (!lbl) return;
+    var n = document.querySelectorAll('.faq-item').length;
+    if (n > 0) lbl.textContent = n + ' question' + (n !== 1 ? 's' : '') + ' — tap to reveal';
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setCount);
+  } else {
+    setCount();
   }
 })();
- 
-/* ── FAQ MASTER TOGGLE (Level 0 → Level 1) ─────────────────────────────── */
-var faqListVisible=false;
-function faqMasterToggle(){
-  var wrap=document.getElementById('faqListWrap');
-  var btn=document.getElementById('faqMasterBtn');
-  faqListVisible=!faqListVisible;
-  if(faqListVisible){
-    wrap.style.maxHeight=wrap.scrollHeight+9999+'px';
-    wrap.style.opacity='1';
-    btn.innerHTML='Hide Questions &#9650;';
-  } else {
-    _collapseAllFaq();
-    wrap.style.maxHeight='0';
-    wrap.style.opacity='0';
-    btn.innerHTML='Show All Questions &#9660;';
-    var expandBtn=document.getElementById('faqExpandAllBtn');
-    if(expandBtn) expandBtn.innerHTML='Expand All &#9660;';
-    _faqAllOpen=false;
-  }
-}
- 
-/* ── FAQ EXPAND ALL (Level 1 → Level 2) ────────────────────────────────── */
-var _faqAllOpen=false;
-function toggleFaqAll(){
-  var btn=document.getElementById('faqExpandAllBtn');
-  var wrap=document.getElementById('faqListWrap');
-  _faqAllOpen=!_faqAllOpen;
-  if(_faqAllOpen){
-    _openAllFaq();
-    if(btn) btn.innerHTML='Collapse All &#9650;';
-    setTimeout(function(){
-      if(faqListVisible) wrap.style.maxHeight=wrap.scrollHeight+'px';
-    },50);
-  } else {
-    _collapseAllFaq();
-    if(btn) btn.innerHTML='Expand All &#9660;';
-  }
-}
  
 /* ── HELPERS ────────────────────────────────────────────────────────────── */
 function _openAllFaq(){
