@@ -1986,11 +1986,11 @@ section{scroll-margin-top:140px;}
 <div class="divider"></div>
 
 <!-- FAQ — all collapsed by default, full content from HTML-2 -->
-<<section class="faq-section">
+<section class="faq-section">
   <span class="label">Common Questions</span>
   <h2>The questions people ask when they start noticing.</h2>
  
-  <!-- Level 0: Master show/hide button — always visible -->
+  <!-- MASTER BUTTON — Level 0, always visible -->
   <div style="text-align:center;margin-bottom:0;">
     <button
       id="faqMasterBtn"
@@ -2000,21 +2000,20 @@ section{scroll-margin-top:140px;}
       onmouseout="this.style.opacity='.85'">
       Show All Questions &#9660;
     </button>
-    <!-- Count injected by JS on load — auto-updates as questions are added -->
-    <p id="faqCountLabel" style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#444;margin-top:0;margin-bottom:0;">
+    <p id="faqCountLabel" style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#444;margin:0;">
       tap to reveal
     </p>
   </div>
  
-  <!-- Level 1: Question list wrapper — hidden on load -->
-  <div id="faqListWrap" style="max-height:0;overflow:hidden;transition:max-height .6s cubic-bezier(0,1,.25,1),opacity .4s ease;opacity:0;">
+  <!-- LIST WRAPPER — hidden on load via JS init -->
+  <div id="faqListWrap">
  
-    <!-- Level 1 sub-controls: expand all / collapse all -->
+    <!-- EXPAND ALL — hidden until list is revealed, shown by JS -->
     <div style="text-align:center;margin:36px 0 24px;">
       <button
         id="faqExpandAllBtn"
         onclick="toggleFaqAll()"
-        style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);background:transparent;border:1px solid rgba(212,175,55,0.5);padding:10px 28px;cursor:pointer;transition:all .3s;opacity:.85;"
+        style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);background:transparent;border:1px solid rgba(212,175,55,0.5);padding:10px 28px;cursor:pointer;transition:all .3s;opacity:.85;display:none;"
         onmouseover="this.style.opacity='1'"
         onmouseout="this.style.opacity='.85'">
         Expand All &#9660;
@@ -2025,6 +2024,14 @@ section{scroll-margin-top:140px;}
     </div>
  
     <div class="faq-list">
+ 
+      <!-- ↓ ALL YOUR EXISTING faq-item DIVS GO HERE — completely unchanged ↓ -->
+ 
+    </div><!-- end .faq-list -->
+  </div><!-- end #faqListWrap -->
+ 
+</section>
+ 
 
     <div class="faq-item closed">
       <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
