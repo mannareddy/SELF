@@ -1990,12 +1990,12 @@ section{scroll-margin-top:140px;}
   <span class="label">Common Questions</span>
   <h2>The questions people ask when they start noticing.</h2>
  
-  <!-- MASTER BUTTON — Level 0, always visible -->
+  <!-- Master button — always visible -->
   <div style="text-align:center;margin-bottom:0;">
     <button
       id="faqMasterBtn"
       onclick="faqMasterToggle()"
-      style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);background:transparent;border:1px solid var(--gold);padding:12px 36px;cursor:pointer;transition:all .3s;opacity:.85;margin-bottom:12px;"
+      style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);background:transparent;border:1px solid var(--gold);padding:12px 36px;cursor:pointer;opacity:.85;margin-bottom:12px;"
       onmouseover="this.style.opacity='1'"
       onmouseout="this.style.opacity='.85'">
       Show All Questions &#9660;
@@ -2005,15 +2005,15 @@ section{scroll-margin-top:140px;}
     </p>
   </div>
  
-  <!-- LIST WRAPPER — hidden on load via JS init -->
-  <div id="faqListWrap">
+  <!-- List wrapper: hidden via inline style so it's collapsed before JS loads -->
+  <div id="faqListWrap" style="max-height:0;overflow:hidden;opacity:0;transition:max-height 0.5s ease,opacity 0.4s ease;">
  
-    <!-- EXPAND ALL — hidden until list is revealed, shown by JS -->
+    <!-- Expand All sub-button -->
     <div style="text-align:center;margin:36px 0 24px;">
       <button
         id="faqExpandAllBtn"
         onclick="toggleFaqAll()"
-        style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);background:transparent;border:1px solid rgba(212,175,55,0.5);padding:10px 28px;cursor:pointer;transition:all .3s;opacity:.85;display:none;"
+        style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);background:transparent;border:1px solid rgba(212,175,55,0.5);padding:10px 28px;cursor:pointer;opacity:.85;"
         onmouseover="this.style.opacity='1'"
         onmouseout="this.style.opacity='.85'">
         Expand All &#9660;
@@ -2022,18 +2022,11 @@ section{scroll-margin-top:140px;}
         Or tap any question individually
       </p>
     </div>
- 
-    <div class="faq-list">
- 
-      <!-- ↓ ALL YOUR EXISTING faq-item DIVS GO HERE — completely unchanged ↓ -->
- 
-    </div><!-- end .faq-list -->
-  </div><!-- end #faqListWrap -->
- 
+     <div class="faq-list">
+    </div>
+   </div>
 </section>
- 
-
-    <div class="faq-item closed">
+     <div class="faq-item closed">
       <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>What is the RRRR Protocol?</span><span class="faq-icon">+</span>
       </button>
@@ -2377,34 +2370,6 @@ section{scroll-margin-top:140px;}
 
 <script>
 /* ── COPY CA ─────────────────────────────────────────────────────────────── */
-function toggleFaqAll(){
-    var wrap = document.getElementById('faqListWrap');
-    var btn = document.getElementById('faqExpandAllBtn');
-    if(!wrap) return;
-    var isOpen = wrap.classList.contains('open');
-    if(isOpen){
-      wrap.classList.remove('open');
-      document.querySelectorAll('.faq-item').forEach(function(item){
-        item.classList.remove('open');
-        item.classList.add('closed');
-        var ic = item.querySelector('.faq-icon');
-        if(ic) ic.innerHTML = '+';
-      });
-      if(btn) btn.innerHTML = 'Expand All &#9660;';
-    } else {
-      wrap.classList.add('open');
-      document.querySelectorAll('.faq-item').forEach(function(item){
-        item.classList.remove('closed');
-        item.classList.add('open');
-        var ic = item.querySelector('.faq-icon');
-        if(ic) ic.innerHTML = '&minus;';
-      });
-      if(btn) btn.innerHTML = 'Collapse All &#9650;';
-    }
-  }
-  ─────────────────────────────────────────────────────────────────────────────
-  REPLACE WITH the block below (delete the old function, paste this in):
--->
  
 /* ── FAQ: SET COUNT LABEL ON LOAD ───────────────────────────────────────── */
 (function(){
