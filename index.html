@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>
-(function(){
-  var t=localStorage.getItem('selfTheme');
-  if(t==='light') document.documentElement.setAttribute('data-theme','light');
-  document.documentElement.style.visibility='hidden';
-})();
-</script>  
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>*SELF — Not a meme. A mirror.</title>
@@ -513,7 +506,9 @@ section{scroll-margin-top:140px;}
 .faq-q:hover{color:var(--gold);}
 .faq-icon{width:28px;height:28px;border-radius:50%;border:1px solid rgba(212,175,55,.5);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--gold);font-size:18px;font-weight:300;line-height:1;transition:all .25s;font-family:var(--sans);}
 .faq-item.open .faq-q .faq-icon{background:var(--gold);color:#000;border-color:var(--gold);}
-.faq-a{overflow:hidden;transition:max-height .45s cubic-bezier(0,1,.25,1);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(0,1,.25,1);}
+.faq-item.open .faq-a{max-height:900px;}
+.faq-item.closed .faq-a{max-height:0;overflow:hidden;opacity:0;}
 .faq-a-inner{padding:0 4px 28px;font-family:var(--serif);font-size:clamp(16px,2vw,19px);font-weight:300;color:var(--grey);line-height:1.95;}
 .faq-a-inner a{color:var(--gold);}
 .faq-a-inner strong{color:var(--mid);font-weight:400;}
@@ -729,8 +724,6 @@ section{scroll-margin-top:140px;}
   }
 
 }
-body{transition:none !important;}
-[data-theme="light"] .cosmo-quote,[data-theme="light"] .rrrr-version,[data-theme="light"] .rrrr-version *{background:#ede6d0 !important;color:#1a1208 !important;}  
 </style>
 </head>
 <body>
@@ -1744,12 +1737,8 @@ body{transition:none !important;}
     <p style="font-family:var(--serif);font-size:clamp(16px,2.2vw,21px);color:var(--gold);font-style:italic;line-height:1.8;margin-bottom:28px;">Or you can wait. And regret it &mdash; on your deathbed &mdash; under the ignorance of your true SELF.</p>
   </div>
   <!-- Legacy anchor — strongest conversion argument -->
-      <div style="max-width:660px;margin:24px auto 0;padding:0;border:1px solid #2a2a2a;position:relative;">
-      <div style="position:absolute;top:-1px;left:-1px;width:20px;height:20px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);"></div>
-      <div style="position:absolute;top:-1px;right:-1px;width:20px;height:20px;border-top:1px solid var(--gold);border-right:1px solid var(--gold);"></div>
-      <div style="position:absolute;bottom:-1px;left:-1px;width:20px;height:20px;border-bottom:1px solid var(--gold);border-left:1px solid var(--gold);"></div>
-      <div style="position:absolute;bottom:-1px;right:-1px;width:20px;height:20px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);"></div>
-      <div style="padding:44px 40px;background:var(--bg-lift);text-align:center;">
+  <div style="max-width:660px;margin:24px auto 0;padding:0;">
+    <div style="border-top:1px solid #1e1e1e;padding:44px 40px;background:var(--bg-lift);text-align:center;">
       <div style="font-family:var(--sans);font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:28px;">The Only Balance Sheet That Doesn&rsquo;t Get Liquidated</div>
       <p style="font-family:var(--serif);font-size:clamp(19px,2.8vw,27px);color:var(--white);font-weight:300;line-height:1.75;margin-bottom:16px;">We enter this world with $0 self-made net worth.<br>We leave with $X.</p>
       <p style="font-family:var(--serif);font-size:clamp(17px,2.4vw,23px);color:var(--mid);font-weight:300;line-height:1.8;margin-bottom:20px;">Nothing travels with you.</p>
@@ -1766,61 +1755,20 @@ body{transition:none !important;}
 <!-- WHY $SELF -->
 <section class="why-section">
   <span class="label">Why $SELF</span>
- 
-  <h2 id="why-toggle" onclick="whyToggle()" style="cursor:pointer;user-select:none;position:relative;">
-    Most tokens ask you to believe in the chart.<br>This one asks a different question.
-    <span id="why-expand-label" class="expand-label">Expand &#9660;</span>
-  </h2>
+  <h2 id="why-toggle" onclick="whyToggle()" style="cursor:pointer;user-select:none;position:relative;">Most tokens ask you to believe in the chart.<br>This one asks a different question. <span id="why-expand-label" class="expand-label">Expand &#9660;</span></h2>
   <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:28px;">Tap to expand</p>
- 
-  <!-- Border wrapper — always visible, collapses content inside -->
-<div id="why-border" style="max-width:820px;margin:0 auto;position:relative;border:1px solid #2a2a2a;display:none;">
- 
-  <!-- Gold corner brackets -->
-    <div style="position:absolute;top:-1px;left:-1px;width:20px;height:20px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);pointer-events:none;z-index:1;"></div>
-    <div style="position:absolute;top:-1px;right:-1px;width:20px;height:20px;border-top:1px solid var(--gold);border-right:1px solid var(--gold);pointer-events:none;z-index:1;"></div>
-    <div style="position:absolute;bottom:-1px;left:-1px;width:20px;height:20px;border-bottom:1px solid var(--gold);border-left:1px solid var(--gold);pointer-events:none;z-index:1;"></div>
-    <div style="position:absolute;bottom:-1px;right:-1px;width:20px;height:20px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);pointer-events:none;z-index:1;"></div>
- 
-    <!-- Collapsible content inside the border -->
-    <div id="why-content" style="max-height:0;overflow:hidden;transition:max-height .6s ease,opacity .3s ease;opacity:0;">
-      <div style="padding:44px 36px;">
- 
-        <div class="why-grid">
-          <div class="why-card">
-            <span class="icon">&#x1FA9E;</span>
-            <h4>A declaration, not a trade</h4>
-            <p>Buying $SELF is a philosophical stake. It says you know the journey matters &mdash; not just the balance sheet everyone else is watching.</p>
-          </div>
-          <div class="why-card">
-            <span class="icon">&#x1F9ED;</span>
-            <h4>The only rug that matters</h4>
-            <p>What if the real rug pull isn&rsquo;t the chart? What if it&rsquo;s the moment you stopped noticing yourself? The inner market never crashes.</p>
-          </div>
-          <div class="why-card">
-            <span class="icon">&#x26A1;</span>
-            <h4>Skin in the game of the SELF</h4>
-            <p>Holders feel the framework every time the chart moves. That is a fundamentally different relationship with philosophy than any book or podcast can provide.</p>
-          </div>
-          <div class="why-card">
-            <span class="icon">&#x1F310;</span>
-            <h4>The Mirror Room</h4>
-            <p>Not a hype chat. A space for people who noticed the gap between trigger and response and couldn&rsquo;t unsee it. No price talk. Just noticing.</p>
-          </div>
-        </div>
- 
-        <div style="border-top:1px solid #1e1e1e;margin-top:44px;padding-top:44px;text-align:center;">
-          <p class="why-closing" style="margin-bottom:44px;">Ignorance of your true SELF<br>is the only poverty that actually matters.</p>
-          <a class="btn-gold" href="https://gmgn.ai/sol/token/solscan_7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:14px 44px;font-size:12px;letter-spacing:3px;">Buy $SELF on GMGN &rarr;</a>
-        </div>
- 
-      </div>
-    </div>
-    <!-- End collapsible -->
- 
+  <div id="why-content" style="max-height:0;overflow:hidden;transition:max-height .6s ease,opacity .3s ease;opacity:0;">
+  <div class="why-grid">
+    <div class="why-card"><span class="icon">&#x1FA9E;</span><h4>A declaration, not a trade</h4><p>Buying $SELF is a philosophical stake. It says you know the journey matters &mdash; not just the balance sheet everyone else is watching.</p></div>
+    <div class="why-card"><span class="icon">&#x1F9ED;</span><h4>The only rug that matters</h4><p>What if the real rug pull isn&rsquo;t the chart? What if it&rsquo;s the moment you stopped noticing yourself? The inner market never crashes.</p></div>
+    <div class="why-card"><span class="icon">&#x26A1;</span><h4>Skin in the game of the SELF</h4><p>Holders feel the framework every time the chart moves. That is a fundamentally different relationship with philosophy than any book or podcast can provide.</p></div>
+    <div class="why-card"><span class="icon">&#x1F310;</span><h4>The Mirror Room</h4><p>Not a hype chat. A space for people who noticed the gap between trigger and response and couldn&rsquo;t unsee it. No price talk. Just noticing.</p></div>
   </div>
-  <!-- End border wrapper -->
- 
+  </div>
+  <p class="why-closing">Ignorance of your true SELF<br>is the only poverty that actually matters.</p>
+  <div style="margin-top:44px;">
+    <a class="btn-gold" href="https://gmgn.ai/sol/token/solscan_7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:14px 44px;font-size:12px;letter-spacing:3px;">Buy $SELF on GMGN &rarr;</a>
+  </div>
 </section>
 <div class="divider"></div>
 
@@ -1996,40 +1944,16 @@ body{transition:none !important;}
 <section class="faq-section">
   <span class="label">Common Questions</span>
   <h2>The questions people ask when they start noticing.</h2>
- 
-  <!-- Master button — always visible -->
-  <div style="text-align:center;margin-bottom:0;">
-    <button
-      id="faqMasterBtn"
-      onclick="faqMasterToggle()"
-      style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);background:transparent;border:1px solid var(--gold);padding:12px 36px;cursor:pointer;opacity:.85;margin-bottom:12px;"
-      onmouseover="this.style.opacity='1'"
-      onmouseout="this.style.opacity='.85'">
-      Show All Questions &#9660;
-    </button>
-    <p id="faqCountLabel" style="display:none;"></p>
+  <div style="text-align:center;margin-bottom:36px;">
+    <button id="faqExpandAllBtn" onclick="toggleFaqAll()" style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);background:transparent;border:1px solid var(--gold);padding:10px 28px;cursor:pointer;transition:all .3s;opacity:.85;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.85'">Expand &#9660;</button>
+    <p style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#555;margin-top:10px;margin-bottom:0;">Collapsed by default &mdash; tap to expand all questions</p>
   </div>
- 
-  <!-- List wrapper: hidden via inline style so it's collapsed before JS loads -->
-  <div id="faqListWrap" style="max-height:0;overflow:hidden;opacity:0;transition:max-height 0.5s ease,opacity 0.4s ease;">
- 
-    <!-- Expand All sub-button -->
-    <div style="text-align:center;margin:36px 0 24px;">
-      <button
-        id="faqExpandAllBtn"
-        onclick="toggleFaqAll()"
-        style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);background:transparent;border:1px solid rgba(212,175,55,0.5);padding:10px 28px;cursor:pointer;opacity:.85;"
-        onmouseover="this.style.opacity='1'"
-        onmouseout="this.style.opacity='.85'">
-        Expand All &#9660;
-      </button>
-      <p style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#444;margin-top:10px;margin-bottom:0;">
-        Or tap any question individually
-      </p>
-    </div>
-    <div class="faq-list">
-     <div class="faq-item closed">
-      <button class="faq-q" onclick="faqItemToggle(this)">
+  <div class="faq-list-wrap" id="faqListWrap">
+  <div class="faq-list">
+
+    <div class="faq-item closed">
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
+        <span>What is the RRRR Protocol?</span><span class="faq-icon">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner">
         <p style="margin-bottom:18px;">The RRRR Protocol has two versions depending on what you are facing. Both start with the same first step &mdash; Recognize. That moment of noticing is where everything changes.</p>
@@ -2039,7 +1963,7 @@ body{transition:none !important;}
     </div>
 
     <div class="faq-item closed">
-<button class="faq-q" onclick="faqItemToggle(this)">
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>What is the 3-Step Circuit Breaker?</span><span class="faq-icon">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner">
@@ -2064,100 +1988,106 @@ body{transition:none !important;}
     </div>
 
     <div class="faq-item closed">
-<button class="faq-q" onclick="faqItemToggle(this)">
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>What is the Enneagram in the context of *SELF?</span><span class="faq-icon">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner">
-       <p>The Enneagram is not a personality typing system to identify with — it is a diagnostic map of who you are NOT. It reveals the 9 specific masks the ego uses to manage the universal engine of desire, fear, and anger.</p>
-        <p>Using it to justify behaviour ("I'm a Six, that's why I act this way") is going deeper into the trance. The correct use: uncover the subconscious identification and trigger a jailbreak from the fixation. Every type leads to the same Black Hole — the unbearableness of being helpless, not good enough, and alone.</p>      </div></div>
+        <p>The Enneagram is not a personality typing system to identify with &mdash; it is a diagnostic map of who you are NOT. It reveals the 9 specific masks the ego uses to manage the universal engine of desire, fear, and anger.</p>
+        <p>Using the Enneagram to justify behaviour (&ldquo;I&rsquo;m a Six, that&rsquo;s why I act this way&rdquo;) is going deeper into the trance. The correct use is to uncover the subconscious identification and trigger a jailbreak from the fixation.</p>
+        <p><strong style="color:var(--gold);">The Enneagram is not a circle of 9 different destinations. It is a 9-sided funnel leading to a single void.</strong> The root of every fixation is the exact same Black Hole of despair &mdash; the unbearableness of being helpless, not good enough, and alone.</p>
+      </div></div>
     </div>
 
     <div class="faq-item closed">
-<button class="faq-q" onclick="faqItemToggle(this)">
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>What are the Nine Rasas?</span><span class="faq-icon">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner">
-        <p>The Rasas are the nine intrinsic human emotions from the Ancient Vedic traditions — the body chemistry and emotional weather each ego type generates. Each Enneagram type's core belief naturally produces one of the Nine Rasas as its shadow state.</p>
-        <p>The Shadow Rasa is the distorted version of the Essence. The Light Rasa is what remains when the fixation is dismantled. The full mapping is in the Rosetta Stone table above.</p>      </div></div>
+        <p>The Rasas are the nine intrinsic human emotions from the Ancient Vedic traditions. They define the body chemistry and emotional weather each ego type generates.</p>
+        <p>Each Enneagram type&rsquo;s core belief creates a specific internal environment &mdash; and that environment naturally generates the body chemistry of one of the Nine Rasas. The Shadow Rasa is the distorted version. The Light Rasa is the Essence underneath.</p>
+        <p>The nine Rasas: <strong style="color:var(--mid);font-weight:400;">Shringara</strong> (Love/Attachment), <strong style="color:var(--mid);font-weight:400;">Hasya</strong> (Joy/Laughter), <strong style="color:var(--mid);font-weight:400;">Karuna</strong> (Sadness/Compassion), <strong style="color:var(--mid);font-weight:400;">Raudra</strong> (Anger/Rage), <strong style="color:var(--mid);font-weight:400;">Vira</strong> (Courage), <strong style="color:var(--mid);font-weight:400;">Bhayanaka</strong> (Fear/Terror), <strong style="color:var(--mid);font-weight:400;">Vibhatsya</strong> (Disgust/Aversion), <strong style="color:var(--mid);font-weight:400;">Adbhuta</strong> (Wonder/Marvel), <strong style="color:var(--mid);font-weight:400;">Shanti</strong> (Peace/Serenity).</p>
+      </div></div>
     </div>
 
     <div class="faq-item closed">
-<button class="faq-q" onclick="faqItemToggle(this)">
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>Is this a token or a philosophy?</span><span class="faq-icon">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner">Both. Most tokens ask you to believe in the chart. $SELF asks you to believe in the framework. Buying the token is not an investment decision &mdash; it&rsquo;s a philosophical stake. You&rsquo;re saying: I see the map. I&rsquo;m walking it. And I&rsquo;m doing it publicly on an immutable ledger.</div></div>
     </div>
 
     <div class="faq-item closed">
-<button class="faq-q" onclick="faqItemToggle(this)">
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>What is the Arrival Fallacy?</span><span class="faq-icon">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner">The false belief that the next milestone &mdash; more money, more status, more achievement &mdash; will finally bring peace. It won&rsquo;t. Hedonic adaptation resets your baseline every time. You get the promotion, and six months later you&rsquo;re back to baseline discontent. The void returns. That&rsquo;s not a problem to fix externally &mdash; it&rsquo;s a signal pointing inward.</div></div>
     </div>
 
     <div class="faq-item closed">
-<button class="faq-q" onclick="faqItemToggle(this)">
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>What makes this different from other spiritual projects?</span><span class="faq-icon">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner">Two things. First: we don&rsquo;t ask you to believe. We ask you to notice. The framework is testable in real-time &mdash; in your reactions, your trades, your relationships. Second: we put skin in the game. You hold $SELF, the chart moves, and suddenly philosophy becomes immediate. That friction is the whole point.</div></div>
     </div>
 
     <div class="faq-item closed">
-<button class="faq-q" onclick="faqItemToggle(this)">
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>What is the Integration Engine?</span><span class="faq-icon">+</span>
       </button>
-      <div class="faq-a"><div class="faq-a-inner">Western psychotherapy maps the terrain — naming the symptom, understanding the pattern, building cognitive insight. Eastern traditions teach you to move through it with grace — holding suffering with spaciousness rather than eliminating it. One gives clarity. The other gives resilience. Together: wholeness that neither produces alone. As Alan Watts observed, look deeply into Buddhism, Taoism, or Vedanta and you find something resembling psychotherapy. The *SELF framework is that integration made practical.</div></div>
+      <div class="faq-a"><div class="faq-a-inner">The Integration Engine is the idea that Western psychotherapy and Eastern wisdom traditions are not opposites &mdash; they are complements that together produce something neither achieves alone. Western therapy gives us the map: the vocabulary to name our suffering, understand our patterns, and build cognitive insight. Eastern traditions give us the resilience: the ability to hold suffering with spaciousness rather than trying to eliminate it. The Western Blueprint resolves the symptom through cognitive insight. The Eastern Breath expands the container through radical acceptance. Together: True Wholeness. Alan Watts said it best: if you look deeply into Buddhism, Taoism, Vedanta, and Yoga, you find something resembling psychotherapy. The *SELF framework is that integration made practical.</div></div>
     </div>
 
     <div class="faq-item closed">
-<button class="faq-q" onclick="faqItemToggle(this)">
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>Isn&rsquo;t this just Eastern spirituality?</span><span class="faq-icon">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner">No &mdash; it&rsquo;s every tradition. Indian philosophy calls it Moksha. Western mysticism calls it Divinization. Ancient Greeks called it Know Thyself. Modern psychology calls it Self-Actualization. Every wisdom tradition in human history has arrived at the same conclusion: the highest achievement is looking inward to realize your true nature beneath the illusions of the ego. *SELF is not picking a tradition. It&rsquo;s pointing at what they all found.</div></div>
     </div>
 
     <div class="faq-item closed">
-<button class="faq-q" onclick="faqItemToggle(this)">
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>Is there actually a &ldquo;cosmic ledger&rdquo;?</span><span class="faq-icon">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner">Depends on what you believe. But here&rsquo;s what&rsquo;s certain: every deed, every reaction, every moment you spend in awareness or autopilot builds a balance sheet inside you. Whether that&rsquo;s literal reincarnation, Karma, or just the neurology of habit formation &mdash; the math is the same. You are becoming what you practice.</div></div>
     </div>
 
     <div class="faq-item closed">
-<button class="faq-q" onclick="faqItemToggle(this)">
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>How do I know if I&rsquo;m in the right direction?</span><span class="faq-icon">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner">Self-realization is not a destination you arrive at in one lifetime. That&rsquo;s the feature, not the bug. The question isn&rsquo;t &ldquo;Am I there yet?&rdquo; It&rsquo;s &ldquo;Am I pointed right?&rdquo; Are you noticing more? Are you reacting less? Are you choosing from awareness instead of fear? If yes &mdash; you&rsquo;re walking the path.</div></div>
     </div>
 
     <div class="faq-item closed">
-<button class="faq-q" onclick="faqItemToggle(this)">
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>Why Solana and not another chain?</span><span class="faq-icon">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner">Speed and transparency. Solana&rsquo;s high throughput means the ledger records without friction. No waiting. The supply is fixed forever (1,000,000,042 tokens), all authorities revoked. No dilution. No rug-pull risk. The mechanism itself becomes part of the message: this is immutable, this is yours, this is the cosmic ledger made visible.</div></div>
     </div>
 
     <div class="faq-item closed">
-<button class="faq-q" onclick="faqItemToggle(this)">
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>What is the significance of the number 42 and the * symbol?</span><span class="faq-icon">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner">
-        <p style="margin-bottom:14px;">42 converges across science, philosophy, and tradition with unusual precision.</p>
-        <p style="margin-bottom:10px;"><strong style="color:var(--gold);">The Word:</strong> T+O+B+E = 20+15+2+5 = 42. The alphanumerical sum of "TO BE." The supply of $SELF is exactly 1,000,000,042.</p>
-        <p style="margin-bottom:10px;"><strong style="color:var(--gold);">The Symbol:</strong> ASCII code 42 is the asterisk (*) — the universal wildcard meaning "Everything" and "Anything."</p>
-        <p style="margin-bottom:0;"><strong style="color:var(--gold);">The Punchline:</strong> Douglas Adams said 42 was the "Answer to Everything." He thought it was random. The universe disagreed. The full convergence across astrophysics, mathematics, and every major wisdom tradition is in the Cosmic Blueprint section above.</p>
+        <p style="margin-bottom:14px;">42 is not decoration. It converges across science, philosophy, and tradition with unusual precision.</p>
+        <p style="margin-bottom:10px;"><strong style="color:var(--gold);">The Word:</strong> T+O+B+E = 20+15+2+5 = 42. The alphanumerical sum of &ldquo;TO BE.&rdquo; The supply of $SELF is exactly 1,000,000,042.</p>
+        <p style="margin-bottom:10px;"><strong style="color:var(--gold);">The Symbol:</strong> In computer science, ASCII code 42 is the asterisk (*) &mdash; the universal wildcard meaning &ldquo;Everything&rdquo; and &ldquo;Anything.&rdquo;</p>
+        <p style="margin-bottom:10px;"><strong style="color:var(--gold);">Astrophysics:</strong> The current expansion rate of the universe is 42 mi/s/Mpc. A black hole&rsquo;s maximum energy efficiency is 42%.</p>
+        <p style="margin-bottom:10px;"><strong style="color:var(--gold);">Traditions:</strong> Kabbalah: 42-letter name of God. Christianity: 42 generations to Jesus. Ancient Egypt: 42 divine judges. Buddhism: Sutra of 42 Sections. Esoteric traditions: Age 42 marks the end of the first half of life &mdash; the shift from becoming to being.</p>
+        <p style="margin-bottom:0;"><strong style="color:var(--gold);">The Punchline:</strong> Douglas Adams said 42 was the &ldquo;Answer to Everything.&rdquo; He thought it was random. The universe disagreed.</p>
       </div></div>
     </div>
 
     <div class="faq-item closed">
-<button class="faq-q" onclick="faqItemToggle(this)">
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>What is my unique value?</span><span class="faq-icon">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner">That one thing only you can offer the world. Not necessarily a new innovation or technology &mdash; something the world needs that carries your unique mark. Ask yourself: &ldquo;What would I be willing to pay for if I were on the other side of the value exchange?&rdquo; If that is something only you can offer, that drives you, that you&rsquo;re passionate about achieving &mdash; that is your worth. Not in dollars. In purpose. That discovery requires listening to your inner voice. No one else can do it for you.</div></div>
     </div>
 
     <div class="faq-item closed">
-<button class="faq-q" onclick="faqItemToggle(this)">
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>Do I know my own worth?</span><span class="faq-icon">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner">
@@ -2172,7 +2102,7 @@ body{transition:none !important;}
     </div>
 
     <div class="faq-item closed">
-<button class="faq-q" onclick="faqItemToggle(this)">
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>What are the 4 Rules of Daily Guidance?</span><span class="faq-icon">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner">
@@ -2181,147 +2111,57 @@ body{transition:none !important;}
           <div style="padding:22px 24px;border-bottom:1px solid #1a1a1a;">
             <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:8px;">Rule 1</p>
             <p style="font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:6px;">Comparison Culture &mdash; Compare only to your Yesterday&rsquo;s self</p>
-            <p style="font-size:15px;color:var(--grey);line-height:1.85;">Only compare who you were yesterday to who you are today. Learn from mistakes. Adapt to your own circumstances — not someone else's highlight reel.</p>          </div>
+            <p style="font-size:15px;color:var(--grey);line-height:1.85;">Do not compare yourself to others. Only compare the person you were yesterday to the person you are today. Learn from mistakes. Figure out what works. Be the best version of yourself by adapting to your own circumstances.</p>
+          </div>
           <div style="padding:22px 24px;border-bottom:1px solid #1a1a1a;">
             <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:8px;">Rule 2</p>
             <p style="font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:6px;">The Starting Point &mdash; Begin exactly from where you stand</p>
-            <p style="font-size:15px;color:var(--grey);line-height:1.85;">Begin exactly where you are. Focus only on how you respond to life's challenges — that is the only variable you control.</p>          </div>
+            <p style="font-size:15px;color:var(--grey);line-height:1.85;">Begin exactly from where you are right now. Focus only on how you <em style="color:var(--mid);">respond</em> to life&rsquo;s challenges &mdash; that is the only thing you control. Contain your energy. Direct it toward higher purpose instead of dissipating it through emotion.</p>
+          </div>
           <div style="padding:22px 24px;border-bottom:1px solid #1a1a1a;">
             <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:8px;">Rule 3</p>
             <p style="font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:6px;">The Direction &mdash; Be the change you want to see</p>
-            <p style="font-size:15px;color:var(--grey);line-height:1.85;">If you don't dictate your direction, someone else will. Practice mindfulness — return to the present moment. Life is happening only now.</p>          </div>
+            <p style="font-size:15px;color:var(--grey);line-height:1.85;">If you do not dictate your own direction, you will be pulled into someone else&rsquo;s. Practice mindfulness to return to the present moment &mdash; life is happening only right now, not in the past or future.</p>
+          </div>
           <div style="padding:22px 24px;">
             <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:8px;">Rule 4</p>
             <p style="font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:6px;">The Reality Check &mdash; Verify your goals against reality</p>
-            <p style="font-size:15px;color:var(--grey);line-height:1.85;">Find people who've achieved what you're pursuing. Ask honestly: does that reality match your inner needs? If not, reprogram the path before the deathbed does it for you.</p>          </div>
+            <p style="font-size:15px;color:var(--grey);line-height:1.85;">Find people who have already achieved the goals you are pursuing. Ask: does the reality of that achievement align with your true inner needs? If not, reprogram the path. Start working on your inner SELF right now, so you will not regret it on your deathbed.</p>
+          </div>
         </div>
       </div></div>
     </div>
 
     <div class="faq-item closed">
-<button class="faq-q" onclick="faqItemToggle(this)">
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>What are the Logotherapy Tools for finding meaning?</span><span class="faq-icon">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner">
-        <p style="margin-bottom:20px;">Viktor Frankl's Logotherapy gives three tools for finding meaning beneath the symptom — complementing the RRRR Protocol at a deeper level.</p>
-        <div style="border:1px solid #1e1e1e;overflow:hidden;background:var(--bg-lift);">
-          <div style="padding:16px 20px;border-bottom:1px solid #1a1a1a;">
-            <p style="font-family:var(--serif);font-size:16px;color:var(--white);margin-bottom:4px;">Dereflection</p>
-            <p style="font-size:14px;color:var(--grey);line-height:1.8;">Shift from the problem to a higher purpose. Ask: what would your life look like without this problem?</p>
-          </div>
-          <div style="padding:16px 20px;border-bottom:1px solid #1a1a1a;">
-            <p style="font-family:var(--serif);font-size:16px;color:var(--white);margin-bottom:4px;">Paradoxical Intention</p>
-            <p style="font-size:14px;color:var(--grey);line-height:1.8;">Face the fear directly. The anxiety about the anxiety is often worse than the thing itself.</p>
-          </div>
-          <div style="padding:16px 20px;">
-            <p style="font-family:var(--serif);font-size:16px;color:var(--white);margin-bottom:4px;">Socratic Dialogue</p>
-            <p style="font-size:14px;color:var(--grey);line-height:1.8;">The answers are within. Ask: is there anything you would die for? If yes — that is your direction towards the super-ordinate goal.</p>
-          </div>
+        <p style="margin-bottom:16px;">Viktor Frankl&rsquo;s Logotherapy gives us three practical tools for discovering meaning beyond the symptom. These complement the RRRR Protocol by operating at a deeper level of questioning.</p>
+        <div style="margin-bottom:18px;padding:20px 22px;border-left:3px solid var(--gold);background:var(--bg-lift);">
+          <p style="font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:6px;">Dereflection &mdash; Shift to higher purpose</p>
+          <p style="font-size:15.5px;color:var(--grey);line-height:1.85;">Shift focus from the problem to a higher purpose. Ask: <em style="color:var(--mid);">What would your life look like without this problem?</em> This moves attention from the wound to the direction.</p>
+        </div>
+        <div style="margin-bottom:18px;padding:20px 22px;border-left:3px solid var(--gold);background:var(--bg-lift);">
+          <p style="font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:6px;">Paradoxical Intention &mdash; Face the fear directly</p>
+          <p style="font-size:15.5px;color:var(--grey);line-height:1.85;">Remove the power of fear by intentionally focusing on what you fear most. The anxiety about the anxiety is often worse than the thing itself. Name it fully and watch its grip loosen.</p>
+        </div>
+        <div style="padding:20px 22px;border-left:3px solid var(--gold);background:var(--bg-lift);">
+          <p style="font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:6px;">Socratic Dialogue &mdash; The answers are within</p>
+          <p style="font-size:15.5px;color:var(--grey);line-height:1.85;">The answers do not come from outside. They are realized through careful questioning. Ask: <em style="color:var(--mid);">Is there anything in your life you would die for?</em> If yes &mdash; that is your direction towards the super-ordinate goal.</p>
         </div>
       </div></div>
     </div>
 
     <div class="faq-item closed">
-<button class="faq-q" onclick="faqItemToggle(this)">
-  <span>What is the Mirror Room?</span><span class="faq-icon">+</span>
-    </button>
+      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
+        <span>What is the Mirror Room?</span><span class="faq-icon">+</span>
+      </button>
       <div class="faq-a"><div class="faq-a-inner">Not a hype chat. Not a trading group. A space for people who noticed the gap and couldn&rsquo;t unsee it. You post what you noticed &mdash; in the market, in yourself, in the framework. No price talk. No memes. Just noticing. The mirror doesn&rsquo;t chase you to buy more. It reflects what you&rsquo;re already seeing. <a href="https://x.com/i/chat/group_join/g2056088351590220124/gAK9fW8Y29" target="_blank" rel="noopener">Enter the Mirror Room &rarr;</a></div></div>
     </div>
-   <!-- NEW FAQ 1: The Dark Night of the Soul -->
-<div class="faq-item closed">
-  <button class="faq-q" faqItemToggle(this)">
-    <span>What is the Dark Night of the Soul?</span><span class="faq-icon">+</span>
-  </button>
-  <div class="faq-a"><div class="faq-a-inner">
-    <p style="margin-bottom:16px;">The Dark Night of the Soul is not a clinical depression to be treated. It is an initiation — the universal threshold experience that every wisdom tradition has mapped and that no tradition calls optional.</p>
-    <p style="margin-bottom:16px;">The most common mistake is treating it as a malfunction: medicating the signal, waiting for it to pass, reaching for the next distraction. Every exit ramp leads back to the same entrance. The signal returns, louder.</p>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin:20px 0;">
-      <div style="padding:20px 18px;background:var(--bg-lift);border:1px solid #1e1e1e;">
-        <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:10px;">The Mistake</p>
-        <p style="font-size:15px;color:var(--grey);line-height:1.85;">Treating it as a depression to be cured. The exit ramps only prolong it.</p>
-      </div>
-      <div style="padding:20px 18px;background:var(--bg-lift);border:1px solid #1e1e1e;border-left:3px solid var(--gold);">
-        <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:10px;">The Truth</p>
-        <p style="font-size:15px;color:var(--grey);line-height:1.85;">It is the Saturnine forge — heavy, real, and necessary. It does not end. It graduates.</p>
-      </div>
-    </div>
-    <p style="margin-bottom:12px;">Abraham Lincoln endured years of depression and repeated failure before the presidency. Nelson Mandela spent 27 years in prison. Neither escaped the dark night — both were forged by it. What emerged was not the man who entered.</p>
-    <p style="color:var(--gold);font-style:italic;">If you have experienced something like this — your journey toward Self-Realization has already started.</p>
-  </div></div>
-</div>
- 
-<!-- NEW FAQ 2: What is the Perceptual Chain? -->
-<div class="faq-item closed">
-  <button class="faq-q" faqItemToggle(this)">
-    <span>What is the Perceptual Chain?</span><span class="faq-icon">+</span>
-  </button>
-  <div class="faq-a"><div class="faq-a-inner">
-    <p style="margin-bottom:16px;">The Perceptual Chain is the sequence through which all experience reaches you — and the single shift in understanding that changes everything.</p>
-    <p style="margin-bottom:16px;">The chain runs: <strong style="color:var(--mid);font-weight:400;">Object</strong> (the world) → <strong style="color:var(--mid);font-weight:400;">Senses</strong> (your lenses) → <strong style="color:var(--mid);font-weight:400;">Mind</strong> (the projector) → <strong style="color:var(--gold);">Consciousness</strong> (the Screen).</p>
-    <p style="margin-bottom:16px;">Most people identify with the mind — the projector. They believe they are the movie being played. Realization is the recognition that you are the Screen, not the film. The screen remains unchanged by whatever plays upon it. Every emotion, every thought, every external event — these are the movie. You are the unchanging awareness in which they appear.</p>
-    <p style="color:var(--gold);font-style:italic;">All Experience is Awareness. You are not inside consciousness. You are consciousness itself.</p>
-  </div></div>
-</div>
- 
-<!-- NEW FAQ 3: What is Satchitananda? -->
-<div class="faq-item closed">
-  <button class="faq-q" faqItemToggle(this)">
-    <span>What is Sat-Chit-Ananda?</span><span class="faq-icon">+</span>
-  </button>
-  <div class="faq-a"><div class="faq-a-inner">
-    <p style="margin-bottom:16px;">Sat-Chit-Ananda is the Sanskrit description of the true nature of the SELF — three inseparable qualities of what you actually are beneath the ego:</p>
-    <div style="border:1px solid #1e1e1e;overflow:hidden;background:var(--bg-lift);margin:16px 0;">
-      <div style="padding:20px 22px;border-bottom:1px solid #1a1a1a;">
-        <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:8px;">Sat — Existence / Being</p>
-        <p style="font-size:15px;color:var(--grey);line-height:1.85;">You exist. This cannot be negated — even the thought "I do not exist" requires an exister. Sat is the bedrock. Unborn, undying, always-already present.</p>
-      </div>
-      <div style="padding:20px 22px;border-bottom:1px solid #1a1a1a;">
-        <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:8px;">Chit — Consciousness / Awareness</p>
-        <p style="font-size:15px;color:var(--grey);line-height:1.85;">You are aware. Right now, reading this, there is knowing. That knowing is not the brain — the brain is an object known by awareness. Chit is the light by which all experience is seen.</p>
-      </div>
-      <div style="padding:20px 22px;">
-        <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:8px;">Ananda — Bliss / Joy</p>
-        <p style="font-size:15px;color:var(--grey);line-height:1.85;">The natural resting state of pure awareness is contentless peace — a bliss that requires no trigger. This is not an emotion. It is what remains when grasping and aversion fall away.</p>
-      </div>
-    </div>
-    <p style="margin-bottom:12px;">The Enneagram's three centres (Body, Heart, Head — Types 8/9/1, 2/3/4, 5/6/7) are the ego's distortion of these three qualities. Sat becomes anger, Ananda becomes neediness, Chit becomes fear — when filtered through the illusion of a separate self.</p>
-    <p style="color:var(--gold);font-style:italic;">Self-Realization is not adding Sat-Chit-Ananda to who you are. It is recognizing that this is what you have always already been.</p>
-  </div></div>
-</div>
- 
-<!-- NEW FAQ 4: What is the Gratitude Recalibration? -->
-<div class="faq-item closed">
-  <button class="faq-q" faqItemToggle(this)">
-    <span>What is the Gratitude Recalibration and why does the Default OS hide it?</span><span class="faq-icon">+</span>
-  </button>
-  <div class="faq-a"><div class="faq-a-inner">
-    <p style="margin-bottom:16px;">The Default OS — your autopilot — is wired for novelty and threat detection. It treats anything constant as background noise and stops registering it. This is called habituation, and it is neurologically efficient but spiritually costly.</p>
-    <p style="margin-bottom:16px;">Air. Light. Water. The three things you would die without in hours — and the three things most people spend an entire lifetime never consciously noticing. Not because they are ungrateful, but because the Default OS has categorised them as irrelevant to survival.</p>
-    <p style="margin-bottom:16px;">The Gratitude Recalibration is not a positive-thinking exercise. It is a practical interrupt of the Default OS — the same gap-between-trigger-and-response that the RRRR Protocol creates, applied to the most fundamental gifts of existence.</p>
-    <div style="border-left:3px solid var(--gold);padding:16px 20px;background:var(--bg-lift);margin:16px 0;">
-      <p style="font-size:15px;color:var(--mid);line-height:1.85;margin-bottom:0;">Before you drink water — pause. Before you breathe — notice. This morning's first breath was free. The Default OS never charges for it. Neither does the SELF.</p>
-    </div>
-    <p style="color:var(--gold);font-style:italic;">Gratitude is not sentiment. It is a recalibration of the Default OS — the one running underneath every trade, every reaction, every decision you have ever made.</p>
-  </div></div>
-</div>
- 
-<!-- NEW FAQ 5: What is true legacy? -->
-<div class="faq-item closed">
-  <button class="faq-q" faqItemToggle(this)">
-    <span>What does *SELF mean by &ldquo;true legacy&rdquo;?</span><span class="faq-icon">+</span>
-  </button>
-  <div class="faq-a"><div class="faq-a-inner">
-    <p style="margin-bottom:16px;">We enter this world with zero self-made net worth. We leave with X. Nothing travels with us. Nothing, except how many hearts we touched.</p>
-    <p style="margin-bottom:16px;">True legacy is not net worth at peak. It is not the portfolio. It is not the name on a building or the followers on a chart. It is the number of hearts you touched with your genuine contribution — the imprint your SELF left on others that continues radiating after you leave.</p>
-    <p style="margin-bottom:16px;">Even the greatest names in history fell short of the super-ordinate goal. What they achieved were sub-goals. The greatest sub-goal available is: <em style="color:var(--mid);">how many hearts did you touch?</em></p>
-    <div style="border-left:3px solid var(--gold);padding:16px 20px;background:var(--bg-lift);margin:16px 0;">
-      <p style="font-size:15px;color:var(--gold);font-style:italic;line-height:1.85;margin-bottom:0;">Your SELF is the super-ordinate goal. The only one that cannot be taken, liquidated, or diluted. The only balance sheet that survives the final settlement.</p>
-    </div>
-    <p style="color:var(--mid);">No copycat can touch it. No pump.fun clone can replicate it. Unlike every token manufactured to disguise itself as you — your SELF is the one thing that cannot be forged. The question is only whether you invest in it before the deathbed.</p>
- </div></div>
-    </div><!-- end last faq-item -->
-    </div><!-- end faq-list -->
-  </div><!-- end faqListWrap -->
+
+  </div>
+  </div>
 </section>
 <div class="divider"></div>
 
@@ -2363,106 +2203,32 @@ body{transition:none !important;}
 
 <script>
 /* ── COPY CA ─────────────────────────────────────────────────────────────── */
- 
-/* ── FAQ MASTER TOGGLE ───────────────────────────────────────────────────── */
-var faqListVisible = false;
- 
-function faqMasterToggle() {
+function toggleFaqAll(){
   var wrap = document.getElementById('faqListWrap');
-  var masterBtn = document.getElementById('faqMasterBtn');
-  if (!wrap) return;
- 
-  faqListVisible = !faqListVisible;
- 
-  if (faqListVisible) {
-    wrap.style.maxHeight = '999999px';
-    wrap.style.opacity   = '1';
-    wrap.style.overflow  = 'hidden'; /* keep hidden — content still shows at 999999px */
-    if (masterBtn) masterBtn.innerHTML = 'Hide Questions &#9650;';
-  } else {
-    _collapseAllFaq();
-    wrap.style.maxHeight = '0';
-    wrap.style.opacity   = '0';
-    wrap.style.overflow  = 'hidden';
-    if (masterBtn) masterBtn.innerHTML = 'Show All Questions &#9660;';
-    var expandBtn = document.getElementById('faqExpandAllBtn');
-    if (expandBtn) expandBtn.innerHTML = 'Expand All &#9660;';
-    _faqAllOpen = false;
-  }
-}
- 
-/* ── FAQ EXPAND ALL ─────────────────────────────────────────────────────── */
-var _faqAllOpen = false;
- 
-function toggleFaqAll() {
   var btn = document.getElementById('faqExpandAllBtn');
-  _faqAllOpen = !_faqAllOpen;
- 
-  document.querySelectorAll('.faq-item').forEach(function(item) {
-    var faqA = item.querySelector('.faq-a');
-    if (_faqAllOpen) {
-      item.classList.add('open');
-      item.classList.remove('closed');
-      var ic = item.querySelector('.faq-icon');
-      if (ic) ic.innerHTML = '&minus;';
-      /* Use 9999px inline to override the 900px CSS cap on individual items */
-      if (faqA) faqA.style.maxHeight = (faqA.scrollHeight + 32) + 'px';
-    } else {
+  if(!wrap) return;
+  var isOpen = wrap.classList.contains('open');
+  if(isOpen){
+    wrap.classList.remove('open');
+    document.querySelectorAll('.faq-item').forEach(function(item){
       item.classList.remove('open');
       item.classList.add('closed');
       var ic = item.querySelector('.faq-icon');
-      if (ic) ic.innerHTML = '+';
-      if (faqA) faqA.style.maxHeight = '0';
-    }
-  });
- 
-  if (btn) btn.innerHTML = _faqAllOpen ? 'Collapse All &#9650;' : 'Expand All &#9660;';
-}
- 
-/* ── HELPERS ────────────────────────────────────────────────────────────── */
-function _collapseAllFaq() {
-  document.querySelectorAll('.faq-item').forEach(function(item) {
-    item.classList.remove('open');
-    item.classList.add('closed');
-    var ic = item.querySelector('.faq-icon');
-    if (ic) ic.innerHTML = '+';
-    var faqA = item.querySelector('.faq-a');
-    if (faqA) faqA.style.maxHeight = '0';
-  });
-}
- 
-/* ── COUNT LABEL ────────────────────────────────────────────────────────── */
-(function() {
-  function setCount() {
-    var lbl = document.getElementById('faqCountLabel');
-    if (!lbl) return;
-    var n = document.querySelectorAll('.faq-item').length;
-    if (n > 0) {
-      lbl.textContent = n + ' question' + (n !== 1 ? 's' : '') + ' — tap to reveal';
-      lbl.style.display = 'block';
-    }
-  }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setCount);
+      if(ic) ic.innerHTML = '+';
+    });
+    if(btn) btn.innerHTML = 'Expand All &#9660;';
   } else {
-    setCount();
+    wrap.classList.add('open');
+    document.querySelectorAll('.faq-item').forEach(function(item){
+      item.classList.remove('closed');
+      item.classList.add('open');
+      var ic = item.querySelector('.faq-icon');
+      if(ic) ic.innerHTML = '&minus;';
+    });
+    if(btn) btn.innerHTML = 'Collapse All &#9650;';
   }
-})();
- 
-/* ── INDIVIDUAL ITEM TOGGLE: re-measure after open ──────────────────────── */
-document.addEventListener('click', function(e) {
-  var btn = e.target.closest('.faq-q');
-  if (!btn) return;
-  /* Let the CSS transition run, then bump wrap height if needed */
-  setTimeout(function() {
-    var wrap = document.getElementById('faqListWrap');
-    /* Only needed if wrap is in a constrained state — at 999999px this is moot
-       but harmless; keeps individual toggle working correctly */
-    if (wrap && faqListVisible && wrap.style.maxHeight !== '999999px') {
-      wrap.style.maxHeight = wrap.scrollHeight + 'px';
-    }
-  }, 500);
-});
+}
+
 function copyCA(btn){
   navigator.clipboard.writeText('7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump').then(function(){
     var orig=btn.innerText;
@@ -2554,26 +2320,20 @@ function showVoidResponse(type, btn){
 
   /* ── WHY $SELF TOGGLE ────────────────────────────────────────────────── */
   var whyOpen = false;
-    window.whyToggle = function(){
-      whyOpen = !whyOpen;
-      var content = document.getElementById('why-content');
-      var lbl = document.getElementById('why-expand-label');
-      var border = document.getElementById('why-border');
-      if(whyOpen){
-        if(border) border.style.display = 'block';
-        content.style.maxHeight = content.scrollHeight + 'px';
-        content.style.opacity = '1';
-        if(lbl) lbl.innerHTML = 'Collapse &#9650;';
-      } else {
-        content.style.maxHeight = '0';
-        content.style.opacity = '0';
-        if(lbl) lbl.innerHTML = 'Expand &#9660;';
-        setTimeout(function(){
-          if(border && !whyOpen) border.style.display = 'none';
-        }, 600); /* matches the 0.6s CSS transition so border hides after content finishes collapsing */
-      }
-    };
- 
+  window.whyToggle = function(){
+    whyOpen = !whyOpen;
+    var content = document.getElementById('why-content');
+    var lbl = document.getElementById('why-expand-label');
+    if(whyOpen){
+      content.style.maxHeight = content.scrollHeight + 'px';
+      content.style.opacity = '1';
+      if(lbl) lbl.innerHTML = 'Collapse &#9650;';
+    } else {
+      content.style.maxHeight = '0';
+      content.style.opacity = '0';
+      if(lbl) lbl.innerHTML = 'Expand &#9660;';
+    }
+  };
 
   // Override nav link clicks to ensure precise scroll with offset
   navLinks.forEach(function(link){
@@ -2693,78 +2453,31 @@ function toggleTheme(){
   document.querySelectorAll('.framework-card').forEach(function(c){c.classList.add('collapsed');});
   document.querySelectorAll('.surrender-section').forEach(function(s){s.classList.add('collapsed');});
   document.querySelectorAll('.identity-section').forEach(function(s){s.classList.add('collapsed');});
- document.querySelectorAll('.faq-item').forEach(function(f){
-  f.classList.remove('open');
-  f.classList.add('closed');
-  var ic=f.querySelector('.faq-icon');
-  if(ic) ic.innerHTML='+';
-  var fa=f.querySelector('.faq-a');
-  if(fa) fa.style.maxHeight='0';
-});
-  /* Reset FAQ on theme toggle */
-   var fw = document.getElementById('faqListWrap');
-  if (fw) {
-    fw.style.maxHeight = '0';
-    fw.style.opacity   = '0';
-    fw.style.overflow  = 'hidden';
-  }
-  faqListVisible = false;
-  _faqAllOpen    = false;
-  /* Reset all individual item answer heights */
   document.querySelectorAll('.faq-item').forEach(function(f){
-  f.classList.remove('open');
-  f.classList.add('closed');
-  var ic=f.querySelector('.faq-icon');
-  if(ic) ic.innerHTML='+';
-  var fa=f.querySelector('.faq-a');
-  if(fa) fa.style.maxHeight='0';
-});
-  var fmb = document.getElementById('faqMasterBtn');
-  if (fmb) fmb.innerHTML = 'Show All Questions &#9660;';
-  var fb = document.getElementById('faqExpandAllBtn');
-  if (fb) fb.innerHTML = 'Expand All &#9660;';
-}
-  document.addEventListener('DOMContentLoaded', function(){
-  document.querySelectorAll('.faq-q').forEach(function(btn){
-    btn.removeAttribute('onclick');
-    btn.addEventListener('click', function(){ faqItemToggle(this); });
+    f.classList.remove('open');
+    var ic=f.querySelector('.faq-icon');
+    if(ic) ic.innerHTML='+';
   });
-});
-  function faqItemToggle(btn){
-  var item = btn.parentElement;
-  var faqA = item.querySelector('.faq-a');
-  var ic   = btn.querySelector('.faq-icon');
-  var isOpen = item.classList.contains('open');
-  if(isOpen){
-    item.classList.remove('open');
-    item.classList.add('closed');
-    if(faqA) faqA.style.maxHeight = '0';
-    if(ic) ic.innerHTML = '+';
-  } else {
-    item.classList.add('open');
-    item.classList.remove('closed');
-    if(faqA) faqA.style.maxHeight = (faqA.scrollHeight + 32) + 'px';
-    if(ic) ic.innerHTML = '&minus;';
-  }
+  var fw=document.getElementById('faqListWrap');
+  if(fw){fw.classList.remove('open');}
+  var fb=document.getElementById('faqExpandAllBtn');
+  if(fb) fb.innerHTML='Expand &#9660;';
 }
-// Attach FAQ item toggles via delegation — replaces inline onclick
-document.addEventListener('DOMContentLoaded', function(){
-  document.querySelectorAll('.faq-q').forEach(function(btn){
-    btn.removeAttribute('onclick');
-    btn.addEventListener('click', function(){ faqItemToggle(this); });
-  });
-});
-// Theme already set in <head> — just sync button icons and reveal
+// Apply saved theme on load
 (function(){
+
   var saved = localStorage.getItem('selfTheme');
   if(saved === 'light'){
+    document.documentElement.setAttribute('data-theme','light');
     var b=document.getElementById('themeToggleBtn');
     var bM=document.getElementById('themeToggleMobile');
     if(b) b.innerHTML='&#9790;';
     if(bM) bM.innerHTML='&#9790;';
+    var btn = document.getElementById('themeToggleBtn');
+    if(btn) btn.innerHTML = '&#9790;';
   }
-  document.documentElement.style.visibility='';
 })();
+
 </script>
 </body>
 </html>
