@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>
+(function(){
+  var t=localStorage.getItem('selfTheme');
+  if(t==='light') document.documentElement.setAttribute('data-theme','light');
+  document.documentElement.style.visibility='hidden';
+})();
+</script>  
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>*SELF — Not a meme. A mirror.</title>
@@ -2572,19 +2579,16 @@ if(fw){ fw.classList.remove('open'); }
 var fb=document.getElementById('faqExpandAllBtn');
 if(fb) fb.innerHTML='Expand &#9660;';
 }
-// Apply saved theme on load
+// Theme already set in <head> — just sync button icons and reveal
 (function(){
-
   var saved = localStorage.getItem('selfTheme');
   if(saved === 'light'){
-    document.documentElement.setAttribute('data-theme','light');
     var b=document.getElementById('themeToggleBtn');
     var bM=document.getElementById('themeToggleMobile');
     if(b) b.innerHTML='&#9790;';
     if(bM) bM.innerHTML='&#9790;';
-    var btn = document.getElementById('themeToggleBtn');
-    if(btn) btn.innerHTML = '&#9790;';
   }
+  document.documentElement.style.visibility='';
 })();
 
 </script>
