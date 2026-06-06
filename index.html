@@ -43,13 +43,7 @@ html{scroll-behavior:smooth;}
   --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
   --nav-h:44px;
 }
-<script>
-/* Apply theme synchronously before first paint to prevent flicker */
-(function(){
-  var t = localStorage.getItem('selfTheme');
-  if(t === 'light') document.documentElement.setAttribute('data-theme','light');
-})();
-</script>
+
 /* ── LIGHT THEME ─────────────────────────────────────────────────────────── */
 [data-theme="light"]{
   --bg:#faf8f3;--bg-lift:#ede6d0;--white:#0f0a02;--gold:#7a5e0e;--mid:#2e2008;--grey:#3d2e10;--dim:#5a4a2a;
@@ -513,7 +507,7 @@ section{scroll-margin-top:140px;}
 .faq-icon{width:28px;height:28px;border-radius:50%;border:1px solid rgba(212,175,55,.5);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--gold);font-size:18px;font-weight:300;line-height:1;transition:all .25s;font-family:var(--sans);}
 .faq-item.open .faq-q .faq-icon{background:var(--gold);color:#000;border-color:var(--gold);}
 .faq-a{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(0,1,.25,1);}
-.faq-item.open .faq-a{max-height:9999px;}
+.faq-item.open .faq-a{max-height:900px;}
 .faq-item.closed .faq-a{max-height:0;overflow:hidden;opacity:0;}
 .faq-a-inner{padding:0 4px 28px;font-family:var(--serif);font-size:clamp(16px,2vw,19px);font-weight:300;color:var(--grey);line-height:1.95;}
 .faq-a-inner a{color:var(--gold);}
@@ -2405,7 +2399,8 @@ function toggleFaqAll() {
       item.classList.remove('closed');
       var ic = item.querySelector('.faq-icon');
       if (ic) ic.innerHTML = '&minus;';
-      if (faqA) faqA.style.maxHeight = '9999px'; /* override CSS cap */
+      /* Use 9999px inline to override the 900px CSS cap on individual items */
+      if (faqA) faqA.style.maxHeight = '9999px';
     } else {
       item.classList.remove('open');
       item.classList.add('closed');
@@ -2698,7 +2693,7 @@ function toggleTheme(){
     if(ic) ic.innerHTML='+';
   });
   /* Reset FAQ on theme toggle */
-  var fw = document.getElementById('faqListWrap');
+   var fw = document.getElementById('faqListWrap');
   if (fw) {
     fw.style.maxHeight = '0';
     fw.style.opacity   = '0';
@@ -2706,7 +2701,15 @@ function toggleTheme(){
   }
   faqListVisible = false;
   _faqAllOpen    = false;
-  _collapseAllFaq();
+  /* Reset all individual item answer heights */
+  document.querySelectorAll('.faq-item').forEach(function(f){
+    f.classList.remove('open');
+    f.classList.add('closed');
+    var ic = f.querySelector('.faq-icon');
+    if (ic) ic.innerHTML = '+';
+    var fa = f.querySelector('.faq-a');
+    if (fa) fa.style.maxHeight = '0';
+  });
   var fmb = document.getElementById('faqMasterBtn');
   if (fmb) fmb.innerHTML = 'Show All Questions &#9660;';
   var fb = document.getElementById('faqExpandAllBtn');
@@ -2714,7 +2717,8 @@ function toggleTheme(){
 }
 // Apply saved theme on load
 (function(){
-
+  /* Apply saved theme — body is visibility:hidden until this runs */
+  document.body.classList.add('theme-loading');
   var saved = localStorage.getItem('selfTheme');
   if(saved === 'light'){
     document.documentElement.setAttribute('data-theme','light');
@@ -2722,9 +2726,11 @@ function toggleTheme(){
     var bM=document.getElementById('themeToggleMobile');
     if(b) b.innerHTML='&#9790;';
     if(bM) bM.innerHTML='&#9790;';
-    var btn = document.getElementById('themeToggleBtn');
-    if(btn) btn.innerHTML = '&#9790;';
   }
+  /* Show body — theme is now applied, no flicker */
+  requestAnimationFrame(function(){
+    document.body.classList.remove('theme-loading');
+  });
 })();
 
 </script>
