@@ -43,7 +43,13 @@ html{scroll-behavior:smooth;}
   --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
   --nav-h:44px;
 }
-
+<script>
+/* Apply theme synchronously before first paint to prevent flicker */
+(function(){
+  var t = localStorage.getItem('selfTheme');
+  if(t === 'light') document.documentElement.setAttribute('data-theme','light');
+})();
+</script>
 /* ── LIGHT THEME ─────────────────────────────────────────────────────────── */
 [data-theme="light"]{
   --bg:#faf8f3;--bg-lift:#ede6d0;--white:#0f0a02;--gold:#7a5e0e;--mid:#2e2008;--grey:#3d2e10;--dim:#5a4a2a;
@@ -507,7 +513,7 @@ section{scroll-margin-top:140px;}
 .faq-icon{width:28px;height:28px;border-radius:50%;border:1px solid rgba(212,175,55,.5);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--gold);font-size:18px;font-weight:300;line-height:1;transition:all .25s;font-family:var(--sans);}
 .faq-item.open .faq-q .faq-icon{background:var(--gold);color:#000;border-color:var(--gold);}
 .faq-a{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(0,1,.25,1);}
-.faq-item.open .faq-a{max-height:900px;}
+.faq-item.open .faq-a{max-height:9999px;}
 .faq-item.closed .faq-a{max-height:0;overflow:hidden;opacity:0;}
 .faq-a-inner{padding:0 4px 28px;font-family:var(--serif);font-size:clamp(16px,2vw,19px);font-weight:300;color:var(--grey);line-height:1.95;}
 .faq-a-inner a{color:var(--gold);}
@@ -2358,7 +2364,7 @@ section{scroll-margin-top:140px;}
 <script>
 /* ── COPY CA ─────────────────────────────────────────────────────────────── */
  
-/* ── FAQ MASTER TOGGLE (Level 0 → Level 1) ─────────────────────────────── */
+/* ── FAQ MASTER TOGGLE ───────────────────────────────────────────────────── */
 var faqListVisible = false;
  
 function faqMasterToggle() {
@@ -2369,41 +2375,29 @@ function faqMasterToggle() {
   faqListVisible = !faqListVisible;
  
   if (faqListVisible) {
-   wrap.style.maxHeight = '999999px';
-   wrap.style.opacity   = '1';
-  if (masterBtn) masterBtn.innerHTML = 'Hide Questions &#9650;';
-    /* Update count label */
-    var lbl = document.getElementById('faqCountLabel');
-  if (lbl) {
-      var n = document.querySelectorAll('.faq-item').length;
-      lbl.textContent = n + ' question' + (n !== 1 ? 's' : '') + ' — tap any to expand';
-    }
+    wrap.style.maxHeight = '999999px';
+    wrap.style.opacity   = '1';
+    wrap.style.overflow  = 'hidden'; /* keep hidden — content still shows at 999999px */
+    if (masterBtn) masterBtn.innerHTML = 'Hide Questions &#9650;';
   } else {
-    /* Collapse all open items then hide list */
-    document.querySelectorAll('.faq-item').forEach(function(item) {
-      item.classList.remove('open');
-      item.classList.add('closed');
-      var ic = item.querySelector('.faq-icon');
-      if (ic) ic.innerHTML = '+';
-    });
-    wrap.style.overflow  = 'hidden';
+    _collapseAllFaq();
     wrap.style.maxHeight = '0';
     wrap.style.opacity   = '0';
+    wrap.style.overflow  = 'hidden';
     if (masterBtn) masterBtn.innerHTML = 'Show All Questions &#9660;';
-    /* Reset expand all */
     var expandBtn = document.getElementById('faqExpandAllBtn');
     if (expandBtn) expandBtn.innerHTML = 'Expand All &#9660;';
     _faqAllOpen = false;
   }
 }
  
-/* ── EXPAND ALL / COLLAPSE ALL ──────────────────────────────────────────── */
+/* ── FAQ EXPAND ALL ─────────────────────────────────────────────────────── */
 var _faqAllOpen = false;
  
 function toggleFaqAll() {
   var btn = document.getElementById('faqExpandAllBtn');
   _faqAllOpen = !_faqAllOpen;
-
+ 
   document.querySelectorAll('.faq-item').forEach(function(item) {
     var faqA = item.querySelector('.faq-a');
     if (_faqAllOpen) {
@@ -2411,7 +2405,7 @@ function toggleFaqAll() {
       item.classList.remove('closed');
       var ic = item.querySelector('.faq-icon');
       if (ic) ic.innerHTML = '&minus;';
-      if (faqA) faqA.style.maxHeight = '900px';
+      if (faqA) faqA.style.maxHeight = '9999px'; /* override CSS cap */
     } else {
       item.classList.remove('open');
       item.classList.add('closed');
@@ -2420,17 +2414,32 @@ function toggleFaqAll() {
       if (faqA) faqA.style.maxHeight = '0';
     }
   });
-
+ 
   if (btn) btn.innerHTML = _faqAllOpen ? 'Collapse All &#9650;' : 'Expand All &#9660;';
 }
  
-/* ── SET COUNT ON LOAD ───────────────────────────────────────────────────── */
+/* ── HELPERS ────────────────────────────────────────────────────────────── */
+function _collapseAllFaq() {
+  document.querySelectorAll('.faq-item').forEach(function(item) {
+    item.classList.remove('open');
+    item.classList.add('closed');
+    var ic = item.querySelector('.faq-icon');
+    if (ic) ic.innerHTML = '+';
+    var faqA = item.querySelector('.faq-a');
+    if (faqA) faqA.style.maxHeight = '0';
+  });
+}
+ 
+/* ── COUNT LABEL ────────────────────────────────────────────────────────── */
 (function() {
   function setCount() {
     var lbl = document.getElementById('faqCountLabel');
     if (!lbl) return;
     var n = document.querySelectorAll('.faq-item').length;
-    if (n > 0) lbl.textContent = n + ' question' + (n !== 1 ? 's' : '') + ' — tap to reveal';
+    if (n > 0) {
+      lbl.textContent = n + ' question' + (n !== 1 ? 's' : '') + ' — tap to reveal';
+      lbl.style.display = 'block';
+    }
   }
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', setCount);
@@ -2439,34 +2448,19 @@ function toggleFaqAll() {
   }
 })();
  
-/* ── HELPERS ────────────────────────────────────────────────────────────── */
-function _openAllFaq(){
-  document.querySelectorAll('.faq-item').forEach(function(item){
-    item.classList.add('open');
-    item.classList.remove('closed');
-    var ic=item.querySelector('.faq-icon');
-    if(ic) ic.innerHTML='&minus;';
-  });
-}
-function _collapseAllFaq(){
-  document.querySelectorAll('.faq-item').forEach(function(item){
-    item.classList.remove('open');
-    item.classList.add('closed');
-    var ic=item.querySelector('.faq-icon');
-    if(ic) ic.innerHTML='+';
-    var faqA=item.querySelector('.faq-a');
-    if(faqA) faqA.style.maxHeight='0';
-  });
-}
- 
-/* ── INDIVIDUAL ITEM: re-measure container height after toggle ──────────── */
-document.addEventListener('click',function(e){
-  var btn=e.target.closest('.faq-q');
-  if(!btn) return;
-  setTimeout(function(){
-    var wrap=document.getElementById('faqListWrap');
-    if(wrap&&faqListVisible) wrap.style.maxHeight=wrap.scrollHeight+'px';
-  },50);
+/* ── INDIVIDUAL ITEM TOGGLE: re-measure after open ──────────────────────── */
+document.addEventListener('click', function(e) {
+  var btn = e.target.closest('.faq-q');
+  if (!btn) return;
+  /* Let the CSS transition run, then bump wrap height if needed */
+  setTimeout(function() {
+    var wrap = document.getElementById('faqListWrap');
+    /* Only needed if wrap is in a constrained state — at 999999px this is moot
+       but harmless; keeps individual toggle working correctly */
+    if (wrap && faqListVisible && wrap.style.maxHeight !== '999999px') {
+      wrap.style.maxHeight = wrap.scrollHeight + 'px';
+    }
+  }, 500);
 });
 function copyCA(btn){
   navigator.clipboard.writeText('7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump').then(function(){
@@ -2703,10 +2697,20 @@ function toggleTheme(){
     var ic=f.querySelector('.faq-icon');
     if(ic) ic.innerHTML='+';
   });
-  var fw=document.getElementById('faqListWrap');
-  if(fw){fw.classList.remove('open');}
-  var fb=document.getElementById('faqExpandAllBtn');
-  if(fb) fb.innerHTML='Expand &#9660;';
+  /* Reset FAQ on theme toggle */
+  var fw = document.getElementById('faqListWrap');
+  if (fw) {
+    fw.style.maxHeight = '0';
+    fw.style.opacity   = '0';
+    fw.style.overflow  = 'hidden';
+  }
+  faqListVisible = false;
+  _faqAllOpen    = false;
+  _collapseAllFaq();
+  var fmb = document.getElementById('faqMasterBtn');
+  if (fmb) fmb.innerHTML = 'Show All Questions &#9660;';
+  var fb = document.getElementById('faqExpandAllBtn');
+  if (fb) fb.innerHTML = 'Expand All &#9660;';
 }
 // Apply saved theme on load
 (function(){
