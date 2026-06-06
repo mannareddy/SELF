@@ -2417,21 +2417,24 @@ var _faqAllOpen = false;
 function toggleFaqAll() {
   var btn = document.getElementById('faqExpandAllBtn');
   _faqAllOpen = !_faqAllOpen;
- 
+
   document.querySelectorAll('.faq-item').forEach(function(item) {
+    var faqA = item.querySelector('.faq-a');
     if (_faqAllOpen) {
       item.classList.add('open');
       item.classList.remove('closed');
       var ic = item.querySelector('.faq-icon');
       if (ic) ic.innerHTML = '&minus;';
+      if (faqA) faqA.style.maxHeight = '900px';
     } else {
       item.classList.remove('open');
       item.classList.add('closed');
       var ic = item.querySelector('.faq-icon');
       if (ic) ic.innerHTML = '+';
+      if (faqA) faqA.style.maxHeight = '0';
     }
   });
- 
+
   if (btn) btn.innerHTML = _faqAllOpen ? 'Collapse All &#9650;' : 'Expand All &#9660;';
 }
  
@@ -2465,6 +2468,8 @@ function _collapseAllFaq(){
     item.classList.add('closed');
     var ic=item.querySelector('.faq-icon');
     if(ic) ic.innerHTML='+';
+    var faqA=item.querySelector('.faq-a');
+    if(faqA) faqA.style.maxHeight='0';
   });
 }
  
