@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>
+(function(){
+  var t=localStorage.getItem('selfTheme');
+  if(t==='light') document.documentElement.setAttribute('data-theme','light');
+  document.documentElement.style.visibility='hidden';
+})();
+</script>  
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>*SELF — Not a meme. A mirror.</title>
@@ -506,9 +513,7 @@ section{scroll-margin-top:140px;}
 .faq-q:hover{color:var(--gold);}
 .faq-icon{width:28px;height:28px;border-radius:50%;border:1px solid rgba(212,175,55,.5);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--gold);font-size:18px;font-weight:300;line-height:1;transition:all .25s;font-family:var(--sans);}
 .faq-item.open .faq-q .faq-icon{background:var(--gold);color:#000;border-color:var(--gold);}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(0,1,.25,1);}
-.faq-item.open .faq-a{max-height:900px;}
-.faq-item.closed .faq-a{max-height:0;overflow:hidden;opacity:0;}
+.faq-a{overflow:hidden;transition:max-height .45s cubic-bezier(0,1,.25,1);}
 .faq-a-inner{padding:0 4px 28px;font-family:var(--serif);font-size:clamp(16px,2vw,19px);font-weight:300;color:var(--grey);line-height:1.95;}
 .faq-a-inner a{color:var(--gold);}
 .faq-a-inner strong{color:var(--mid);font-weight:400;}
@@ -2024,8 +2029,7 @@ body{transition:none !important;}
     </div>
     <div class="faq-list">
      <div class="faq-item closed">
-      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
-        <span>What is the RRRR Protocol?</span><span class="faq-icon">+</span>
+      <button class="faq-q" onclick="faqItemToggle(this)">
       </button>
       <div class="faq-a"><div class="faq-a-inner">
         <p style="margin-bottom:18px;">The RRRR Protocol has two versions depending on what you are facing. Both start with the same first step &mdash; Recognize. That moment of noticing is where everything changes.</p>
@@ -2035,7 +2039,7 @@ body{transition:none !important;}
     </div>
 
     <div class="faq-item closed">
-      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
+      <button class="faq-q" onclick="faqItemToggle(this)">toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>What is the 3-Step Circuit Breaker?</span><span class="faq-icon">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner">
@@ -2060,7 +2064,7 @@ body{transition:none !important;}
     </div>
 
     <div class="faq-item closed">
-      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
+      <button class="faq-q" onclick="faqItemToggle(this)">toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>What is the Enneagram in the context of *SELF?</span><span class="faq-icon">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner">
@@ -2069,7 +2073,7 @@ body{transition:none !important;}
     </div>
 
     <div class="faq-item closed">
-      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
+      <button class="faq-q" onclick="faqItemToggle(this)">toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>What are the Nine Rasas?</span><span class="faq-icon">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner">
@@ -2078,63 +2082,63 @@ body{transition:none !important;}
     </div>
 
     <div class="faq-item closed">
-      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
+      <button class="faq-q" onclick="faqItemToggle(this)">toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>Is this a token or a philosophy?</span><span class="faq-icon">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner">Both. Most tokens ask you to believe in the chart. $SELF asks you to believe in the framework. Buying the token is not an investment decision &mdash; it&rsquo;s a philosophical stake. You&rsquo;re saying: I see the map. I&rsquo;m walking it. And I&rsquo;m doing it publicly on an immutable ledger.</div></div>
     </div>
 
     <div class="faq-item closed">
-      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
+      <button class="faq-q" onclick="faqItemToggle(this)">toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>What is the Arrival Fallacy?</span><span class="faq-icon">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner">The false belief that the next milestone &mdash; more money, more status, more achievement &mdash; will finally bring peace. It won&rsquo;t. Hedonic adaptation resets your baseline every time. You get the promotion, and six months later you&rsquo;re back to baseline discontent. The void returns. That&rsquo;s not a problem to fix externally &mdash; it&rsquo;s a signal pointing inward.</div></div>
     </div>
 
     <div class="faq-item closed">
-      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
+      <button class="faq-q" onclick="faqItemToggle(this)">toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>What makes this different from other spiritual projects?</span><span class="faq-icon">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner">Two things. First: we don&rsquo;t ask you to believe. We ask you to notice. The framework is testable in real-time &mdash; in your reactions, your trades, your relationships. Second: we put skin in the game. You hold $SELF, the chart moves, and suddenly philosophy becomes immediate. That friction is the whole point.</div></div>
     </div>
 
     <div class="faq-item closed">
-      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
+      <button class="faq-q" onclick="faqItemToggle(this)">toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>What is the Integration Engine?</span><span class="faq-icon">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner">Western psychotherapy maps the terrain — naming the symptom, understanding the pattern, building cognitive insight. Eastern traditions teach you to move through it with grace — holding suffering with spaciousness rather than eliminating it. One gives clarity. The other gives resilience. Together: wholeness that neither produces alone. As Alan Watts observed, look deeply into Buddhism, Taoism, or Vedanta and you find something resembling psychotherapy. The *SELF framework is that integration made practical.</div></div>
     </div>
 
     <div class="faq-item closed">
-      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
+      <button class="faq-q" onclick="faqItemToggle(this)">toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>Isn&rsquo;t this just Eastern spirituality?</span><span class="faq-icon">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner">No &mdash; it&rsquo;s every tradition. Indian philosophy calls it Moksha. Western mysticism calls it Divinization. Ancient Greeks called it Know Thyself. Modern psychology calls it Self-Actualization. Every wisdom tradition in human history has arrived at the same conclusion: the highest achievement is looking inward to realize your true nature beneath the illusions of the ego. *SELF is not picking a tradition. It&rsquo;s pointing at what they all found.</div></div>
     </div>
 
     <div class="faq-item closed">
-      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
+      <button class="faq-q" onclick="faqItemToggle(this)">toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>Is there actually a &ldquo;cosmic ledger&rdquo;?</span><span class="faq-icon">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner">Depends on what you believe. But here&rsquo;s what&rsquo;s certain: every deed, every reaction, every moment you spend in awareness or autopilot builds a balance sheet inside you. Whether that&rsquo;s literal reincarnation, Karma, or just the neurology of habit formation &mdash; the math is the same. You are becoming what you practice.</div></div>
     </div>
 
     <div class="faq-item closed">
-      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
+      <button class="faq-q" onclick="faqItemToggle(this)">toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>How do I know if I&rsquo;m in the right direction?</span><span class="faq-icon">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner">Self-realization is not a destination you arrive at in one lifetime. That&rsquo;s the feature, not the bug. The question isn&rsquo;t &ldquo;Am I there yet?&rdquo; It&rsquo;s &ldquo;Am I pointed right?&rdquo; Are you noticing more? Are you reacting less? Are you choosing from awareness instead of fear? If yes &mdash; you&rsquo;re walking the path.</div></div>
     </div>
 
     <div class="faq-item closed">
-      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
+      <button class="faq-q" onclick="faqItemToggle(this)">toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>Why Solana and not another chain?</span><span class="faq-icon">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner">Speed and transparency. Solana&rsquo;s high throughput means the ledger records without friction. No waiting. The supply is fixed forever (1,000,000,042 tokens), all authorities revoked. No dilution. No rug-pull risk. The mechanism itself becomes part of the message: this is immutable, this is yours, this is the cosmic ledger made visible.</div></div>
     </div>
 
     <div class="faq-item closed">
-      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
+      <button class="faq-q" onclick="faqItemToggle(this)">toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>What is the significance of the number 42 and the * symbol?</span><span class="faq-icon">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner">
@@ -2146,14 +2150,14 @@ body{transition:none !important;}
     </div>
 
     <div class="faq-item closed">
-      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
+      <button class="faq-q" onclick="faqItemToggle(this)">toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>What is my unique value?</span><span class="faq-icon">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner">That one thing only you can offer the world. Not necessarily a new innovation or technology &mdash; something the world needs that carries your unique mark. Ask yourself: &ldquo;What would I be willing to pay for if I were on the other side of the value exchange?&rdquo; If that is something only you can offer, that drives you, that you&rsquo;re passionate about achieving &mdash; that is your worth. Not in dollars. In purpose. That discovery requires listening to your inner voice. No one else can do it for you.</div></div>
     </div>
 
     <div class="faq-item closed">
-      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
+      <button class="faq-q" onclick="faqItemToggle(this)">toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>Do I know my own worth?</span><span class="faq-icon">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner">
@@ -2168,7 +2172,7 @@ body{transition:none !important;}
     </div>
 
     <div class="faq-item closed">
-      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
+      <button class="faq-q" onclick="faqItemToggle(this)">toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>What are the 4 Rules of Daily Guidance?</span><span class="faq-icon">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner">
@@ -2195,7 +2199,7 @@ body{transition:none !important;}
     </div>
 
     <div class="faq-item closed">
-      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
+      <button class="faq-q" onclick="faqItemToggle(this)">toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
         <span>What are the Logotherapy Tools for finding meaning?</span><span class="faq-icon">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner">
@@ -2218,14 +2222,14 @@ body{transition:none !important;}
     </div>
 
     <div class="faq-item closed">
-      <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
+      <button class="faq-q" onclick="faqItemToggle(this)">toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
   <span>What is the Mirror Room?</span><span class="faq-icon">+</span>
     </button>
       <div class="faq-a"><div class="faq-a-inner">Not a hype chat. Not a trading group. A space for people who noticed the gap and couldn&rsquo;t unsee it. You post what you noticed &mdash; in the market, in yourself, in the framework. No price talk. No memes. Just noticing. The mirror doesn&rsquo;t chase you to buy more. It reflects what you&rsquo;re already seeing. <a href="https://x.com/i/chat/group_join/g2056088351590220124/gAK9fW8Y29" target="_blank" rel="noopener">Enter the Mirror Room &rarr;</a></div></div>
     </div>
    <!-- NEW FAQ 1: The Dark Night of the Soul -->
 <div class="faq-item closed">
-  <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
+  <button class="faq-q" onclick="faqItemToggle(this)">toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
     <span>What is the Dark Night of the Soul?</span><span class="faq-icon">+</span>
   </button>
   <div class="faq-a"><div class="faq-a-inner">
@@ -2248,7 +2252,7 @@ body{transition:none !important;}
  
 <!-- NEW FAQ 2: What is the Perceptual Chain? -->
 <div class="faq-item closed">
-  <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
+  <button class="faq-q" onclick="faqItemToggle(this)">toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
     <span>What is the Perceptual Chain?</span><span class="faq-icon">+</span>
   </button>
   <div class="faq-a"><div class="faq-a-inner">
@@ -2261,7 +2265,7 @@ body{transition:none !important;}
  
 <!-- NEW FAQ 3: What is Satchitananda? -->
 <div class="faq-item closed">
-  <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
+  <button class="faq-q" onclick="faqItemToggle(this)">toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
     <span>What is Sat-Chit-Ananda?</span><span class="faq-icon">+</span>
   </button>
   <div class="faq-a"><div class="faq-a-inner">
@@ -2287,7 +2291,7 @@ body{transition:none !important;}
  
 <!-- NEW FAQ 4: What is the Gratitude Recalibration? -->
 <div class="faq-item closed">
-  <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
+  <button class="faq-q" onclick="faqItemToggle(this)">toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
     <span>What is the Gratitude Recalibration and why does the Default OS hide it?</span><span class="faq-icon">+</span>
   </button>
   <div class="faq-a"><div class="faq-a-inner">
@@ -2303,7 +2307,7 @@ body{transition:none !important;}
  
 <!-- NEW FAQ 5: What is true legacy? -->
 <div class="faq-item closed">
-  <button class="faq-q" onclick="var item=this.parentElement;item.classList.toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
+  <button class="faq-q" onclick="faqItemToggle(this)">toggle('open');item.classList.toggle('closed');var ic=this.querySelector('.faq-icon');if(ic){ic.innerHTML=item.classList.contains('open')?'&minus;':'+';}">
     <span>What does *SELF mean by &ldquo;true legacy&rdquo;?</span><span class="faq-icon">+</span>
   </button>
   <div class="faq-a"><div class="faq-a-inner">
@@ -2402,7 +2406,7 @@ function toggleFaqAll() {
       var ic = item.querySelector('.faq-icon');
       if (ic) ic.innerHTML = '&minus;';
       /* Use 9999px inline to override the 900px CSS cap on individual items */
-      if (faqA) faqA.style.maxHeight = '9999px';
+      if (faqA) faqA.style.maxHeight = (faqA.scrollHeight + 32) + 'px';
     } else {
       item.classList.remove('open');
       item.classList.add('closed');
@@ -2689,11 +2693,14 @@ function toggleTheme(){
   document.querySelectorAll('.framework-card').forEach(function(c){c.classList.add('collapsed');});
   document.querySelectorAll('.surrender-section').forEach(function(s){s.classList.add('collapsed');});
   document.querySelectorAll('.identity-section').forEach(function(s){s.classList.add('collapsed');});
-  document.querySelectorAll('.faq-item').forEach(function(f){
-    f.classList.remove('open');
-    var ic=f.querySelector('.faq-icon');
-    if(ic) ic.innerHTML='+';
-  });
+ document.querySelectorAll('.faq-item').forEach(function(f){
+  f.classList.remove('open');
+  f.classList.add('closed');
+  var ic=f.querySelector('.faq-icon');
+  if(ic) ic.innerHTML='+';
+  var fa=f.querySelector('.faq-a');
+  if(fa) fa.style.maxHeight='0';
+});
   /* Reset FAQ on theme toggle */
    var fw = document.getElementById('faqListWrap');
   if (fw) {
@@ -2705,36 +2712,46 @@ function toggleTheme(){
   _faqAllOpen    = false;
   /* Reset all individual item answer heights */
   document.querySelectorAll('.faq-item').forEach(function(f){
-    f.classList.remove('open');
-    f.classList.add('closed');
-    var ic = f.querySelector('.faq-icon');
-    if (ic) ic.innerHTML = '+';
-    var fa = f.querySelector('.faq-a');
-    if (fa) fa.style.maxHeight = '0';
-  });
+  f.classList.remove('open');
+  f.classList.add('closed');
+  var ic=f.querySelector('.faq-icon');
+  if(ic) ic.innerHTML='+';
+  var fa=f.querySelector('.faq-a');
+  if(fa) fa.style.maxHeight='0';
+});
   var fmb = document.getElementById('faqMasterBtn');
   if (fmb) fmb.innerHTML = 'Show All Questions &#9660;';
   var fb = document.getElementById('faqExpandAllBtn');
   if (fb) fb.innerHTML = 'Expand All &#9660;';
 }
-// Apply saved theme on load
+  function faqItemToggle(btn){
+  var item = btn.parentElement;
+  var faqA = item.querySelector('.faq-a');
+  var ic   = btn.querySelector('.faq-icon');
+  var isOpen = item.classList.contains('open');
+  if(isOpen){
+    item.classList.remove('open');
+    item.classList.add('closed');
+    if(faqA) faqA.style.maxHeight = '0';
+    if(ic) ic.innerHTML = '+';
+  } else {
+    item.classList.add('open');
+    item.classList.remove('closed');
+    if(faqA) faqA.style.maxHeight = (faqA.scrollHeight + 32) + 'px';
+    if(ic) ic.innerHTML = '&minus;';
+  }
+}
+// Theme already set in <head> — just sync button icons and reveal
 (function(){
-  /* Apply saved theme — body is visibility:hidden until this runs */
-  document.body.classList.add('theme-loading');
   var saved = localStorage.getItem('selfTheme');
   if(saved === 'light'){
-    document.documentElement.setAttribute('data-theme','light');
     var b=document.getElementById('themeToggleBtn');
     var bM=document.getElementById('themeToggleMobile');
     if(b) b.innerHTML='&#9790;';
     if(bM) bM.innerHTML='&#9790;';
   }
-  /* Show body — theme is now applied, no flicker */
-  requestAnimationFrame(function(){
-    document.body.classList.remove('theme-loading');
-  });
+  document.documentElement.style.visibility='';
 })();
-
 </script>
 </body>
 </html>
