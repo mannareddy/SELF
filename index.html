@@ -2724,6 +2724,12 @@ function toggleTheme(){
   var fb = document.getElementById('faqExpandAllBtn');
   if (fb) fb.innerHTML = 'Expand All &#9660;';
 }
+  document.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.removeAttribute('onclick');
+    btn.addEventListener('click', function(){ faqItemToggle(this); });
+  });
+});
   function faqItemToggle(btn){
   var item = btn.parentElement;
   var faqA = item.querySelector('.faq-a');
@@ -2741,6 +2747,13 @@ function toggleTheme(){
     if(ic) ic.innerHTML = '&minus;';
   }
 }
+// Attach FAQ item toggles via delegation — replaces inline onclick
+document.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.removeAttribute('onclick');
+    btn.addEventListener('click', function(){ faqItemToggle(this); });
+  });
+});
 // Theme already set in <head> — just sync button icons and reveal
 (function(){
   var saved = localStorage.getItem('selfTheme');
