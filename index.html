@@ -1026,6 +1026,17 @@ section h2,
   .hero > a[href="#contract"]{margin:0 auto !important;}
   .hero > div[style*="padding:22px 32px"]{padding:14px 18px !important;margin-bottom:0 !important;}
 }
+@media(max-width:900px){
+  .site-nav{
+    justify-content:space-between;
+  }
+  .nav-logo-center{
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:3;
+  }
+}  
 </style>
 </head>
 <body>
@@ -1050,12 +1061,13 @@ section h2,
   <!-- Right: IPO, Mirror, Contract, Disclaimer + mobile items + theme icon -->
   <ul class="nav-right">
   <li style="border-left:1px solid #1a1a1a;"><a href="#ipo">IPO</a></li>
-    <li><a href="#contract"><span class="desktop-label">CONTRACT</span><span class="mobile-label">CA</span></a></li>
-    <li><a href="#disclaimer"><span class="desktop-label">DISCLAIMER</span><span class="mobile-label">INFO</span></a></li>
-   <li class="nav-icon-item" style="border:none;">
-      <button onclick="toggleTheme()" title="Toggle theme" style="background:none;border:none;border-left:1px solid #1a1a1a;color:var(--dim);cursor:pointer;width:36px;height:var(--nav-h);display:flex;align-items:center;justify-content:center;font-size:13px;padding:0;" id="themeToggleMobile">&#9788;</button>
-    </li>
-  </ul>
+  <li><a href="#contract"><span class="desktop-label">CONTRACT</span><span class="mobile-label">CA</span></a></li>
+  <li><a href="#disclaimer"><span class="desktop-label">DISCLAIMER</span><span class="mobile-label">INFO</span></a></li>
+  <li class="nav-hide-mobile"><a href="#faq-section">FAQ</a></li>
+  <li class="nav-icon-item" style="border:none;">
+    <button onclick="toggleTheme()" title="Toggle theme" style="background:none;border:none;border-left:1px solid #1a1a1a;color:var(--dim);cursor:pointer;width:36px;height:var(--nav-h);display:flex;align-items:center;justify-content:center;font-size:13px;padding:0;" id="themeToggleMobile">&#9788;</button>
+  </li>
+</ul>
 
   <!-- Desktop theme toggle pinned right -->
   <button id="themeToggleBtn" onclick="toggleTheme()" title="Toggle light/dark theme" aria-label="Toggle theme">&#9788;</button>
@@ -2654,7 +2666,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
 </section>
 <div class="divider"></div>
 <!-- FAQ — all collapsed by default -->
-<section class="faq-section">
+<section class="faq-section" id="faq-section">
   <span class="label">Common Questions</span>
   <h2>The questions people ask when they start noticing.</h2>
   <div style="text-align:center;margin-bottom:36px;">
