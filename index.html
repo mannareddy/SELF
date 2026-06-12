@@ -92,6 +92,7 @@ html{scroll-behavior:smooth;}
 [data-theme="light"] .tradition-row.header .tradition-cell{color:#3a2a0a !important;font-weight:700 !important;background:#c8bfa0 !important;}
 [data-theme="light"] .rasa-row.header{background:#c8bfa0 !important;}
 [data-theme="light"] .rasa-row.header .rasa-cell{color:#3a2a0a !important;font-weight:700 !important;background:#c8bfa0 !important;}
+[data-theme="light"] [style*="background:#0a0a0a"]{background:#c8bfa0 !important;color:#3a2a0a !important;}
 [data-theme="light"] .ipo-table-row.header{background:#c8bfa0 !important;}
 [data-theme="light"] .ipo-table-row.header .ipo-cell{color:#3a2a0a !important;font-weight:700 !important;background:#c8bfa0 !important;}
 
@@ -176,6 +177,10 @@ html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--white);font-family:var(--serif);text-align:center;line-height:1.85;overflow-x:hidden;padding-top:var(--nav-h);}
 a{color:var(--gold);text-decoration:none;transition:opacity .25s;}
 a:hover{opacity:.7;}
+/* Default OS tier cards */
+[data-theme="light"] [style*="background:rgba(192,57,43,.06)"]{background:rgba(192,57,43,.08) !important;}
+[data-theme="light"] [style*="border:1px solid #3a1010"]{border-color:rgba(192,57,43,.3) !important;}
+[data-theme="light"] [style*="background:rgba(212,175,55,.05)"][style*="border:1px solid var(--gold)"]{background:rgba(138,106,18,.08) !important;}
 
 /* ── STICKY NAV — centered logo, items split left/right ─────────────────── */
 .site-nav{
@@ -683,7 +688,9 @@ section{scroll-margin-top:140px;}
 .rasa-closing{max-width:680px;margin:36px auto 0;padding:32px 28px;border:1px solid #1e1e1e;border-left:3px solid var(--gold);background:var(--bg);text-align:left;}
 .rasa-closing p{font-family:var(--serif);font-size:clamp(16px,2.1vw,19px);color:var(--grey);line-height:1.9;margin-bottom:12px;}
 .rasa-closing p.gold{color:var(--gold);font-style:italic;margin-bottom:0;}
-
+/* ── COGNITION TABLE LIGHT THEME ─────────────────────────────────────────── */
+[data-theme="light"] .cognition-header-row{background:#c8bfa0 !important;}
+[data-theme="light"] .cognition-header-cell{color:#3a2a0a !important;background:#c8bfa0 !important;}
 /* ── MOBILE RESPONSIVE ───────────────────────────────────────────────────── */
 @media(max-width:640px){
   .hero{padding-top:84px;padding-bottom:60px;}
@@ -707,6 +714,7 @@ section{scroll-margin-top:140px;}
   .framework-card,.identity-card{padding:28px 22px;}
   .ego-sub-header{grid-template-columns:1fr;gap:12px;}
   .ego-sub-header .collapse-toggle-btn{justify-self:start;}
+  .evo-grid{grid-template-columns:1fr !important;}
 }
   .desktop-label{
     display:inline;
@@ -715,7 +723,8 @@ section{scroll-margin-top:140px;}
 .mobile-label{
     display:none;
 }
-
+/* Path of Subtilization — evo grid */
+.identity-section [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr !important;}
 /* ── THEME TOGGLE (hidden on mobile, shown by nav-icon-item) ─────────────── */
 .nav-icon-item{display:none !important;}
 
@@ -831,6 +840,12 @@ section{scroll-margin-top:140px;}
   <p class="phil-line">It didn't stay fixed.</p>
 </section>
 <div class="divider"></div>
+<section class="section">
+  <p class="phil-line">When outside stops working,</p>
+  <p class="phil-line gold">something deeper starts talking.</p>
+  <p class="phil-line dim">Every tradition has a name for what comes next.</p>
+</section>
+<div class="divider"></div>
   <section style="padding:90px 24px;background:var(--bg-lift);border-top:1px solid #111;border-bottom:1px solid #111;">
   <div style="max-width:680px;margin:0 auto;">
     <span class="label">The Dark Night</span>
@@ -867,9 +882,14 @@ section{scroll-margin-top:140px;}
   </div>
 </section>
 <div class="divider"></div>
+<section class="section">
+  <p class="phil-line">The search doesn't stop with wealth.</p>
+  <p class="phil-line dim">It just gets more expensive.</p>
+</section>
+<div class="divider"></div>
 
 <section class="section">
-  <p class="phil-line">A cryptocurrency founder paid $4.6M for lunch with the world's most respected value investor.</p>
+  <p class="phil-line">A cryptocurrency founder paid $4.6M for lunch
   <p class="phil-line dim">Three hours. Not one philosophy changed.</p>
   <p class="phil-line">Then $30,000,000 for one hour with the world's most visible tech visionary.</p>
   <p class="phil-line gold">They never even responded.</p>
@@ -1280,12 +1300,32 @@ section{scroll-margin-top:140px;}
     font-style:italic;">None — synthesizes all</div>
   </div>
 </div>
+  <div style="max-width:820px;margin:28px auto 0;padding:28px 32px;border-left:3px solid var(--gold);background:var(--bg-lift);">
+    <p style="font-family:var(--serif);font-size:clamp(16px,2.1vw,19px);font-style:italic;color:var(--mid);line-height:1.85;margin-bottom:10px;">&ldquo;The highest achievement is looking inward to realize our true nature beneath the illusions of the ego.&rdquo;</p>
+    <span style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.75;">&mdash; The unified conclusion of every wisdom tradition in human history</span>
   </div>
-</div>
+  </div>
+  </div><!-- end Aurobindo table -->
 
-<div style="max-width:820px;margin:32px auto 0;padding:28px 32px;border-left:3px solid var(--gold);background:var(--bg-lift);">
-  <p style="font-family:var(--serif);font-size:clamp(16px,2.1vw,19px);font-style:italic;color:var(--mid);line-height:1.85;margin-bottom:10px;">&ldquo;The highest achievement is looking inward to realize our true nature beneath the illusions of the ego.&rdquo;</p>
-  <span style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.75;">&mdash; The unified conclusion of every wisdom tradition in human history</span>
+    <!-- 42 convergence grid — now inside Foundation collapse -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2px;margin:28px 0 0;">
+      <div style="padding:28px 24px;background:var(--bg);border:1px solid #1e1e1e;text-align:left;">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:12px;">Astrophysics</div>
+        <p style="font-family:var(--serif);font-size:15px;color:var(--grey);line-height:1.85;">Universe expansion rate: <strong style="color:var(--white);">42 mi/s/Mpc</strong>. Black hole max energy efficiency: <strong style="color:var(--white);">42%</strong>.</p>
+      </div>
+      <div style="padding:28px 24px;background:var(--bg);border:1px solid #1e1e1e;text-align:left;">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:12px;">Light &amp; Optics</div>
+        <p style="font-family:var(--serif);font-size:15px;color:var(--grey);line-height:1.85;">The critical angle for a rainbow to appear: <strong style="color:var(--white);">42°</strong>. Orion Nebula: <strong style="color:var(--white);">M42</strong>.</p>
+      </div>
+      <div style="padding:28px 24px;background:var(--bg);border:1px solid #1e1e1e;text-align:left;">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:12px;">Mathematics</div>
+        <p style="font-family:var(--serif);font-size:15px;color:var(--grey);line-height:1.85;">2 × 3 × 7 = <strong style="color:var(--white);">42</strong>. Sum of first six even numbers = <strong style="color:var(--white);">42</strong>.</p>
+      </div>
+      <div style="padding:28px 24px;background:var(--bg);border:1px solid #1e1e1e;text-align:left;">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:12px;">The Soul&rsquo;s Cycle</div>
+        <p style="font-family:var(--serif);font-size:15px;color:var(--grey);line-height:1.85;">Age <strong style="color:var(--white);">42</strong> — end of the first half of life. The definitive milestone for shedding societal conditioning.</p>
+      </div>
+    </div>
 </div>
 <div class="divider"></div>
 
@@ -1333,7 +1373,8 @@ section{scroll-margin-top:140px;}
       <p style="font-size:clamp(15px,2vw,19px);color:var(--mid);line-height:1.9;margin-bottom:0;">All Experience is Awareness. The world, your thoughts, your emotions &mdash; these are the film. The screen remains unchanged by whatever plays upon it. You are that unchanging screen.</p>
     </div>
   </div>
-  <div style="max-width:760px;margin:28px auto 0;border:1px solid #1e1e1e;overflow:hidden;">
+ <div style="max-width:760px;margin:28px auto 0;border:1px solid #1e1e1e;overflow-x:auto;-webkit-overflow-scrolling:touch;">
+  <div style="min-width:560px;"><!-- scroll guard -->
   <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;
   color:var(--gold);opacity:.75;padding:14px 20px;background:#0a0a0a;">
   Three Mechanisms of Cognition</div>
@@ -1381,6 +1422,8 @@ section{scroll-margin-top:140px;}
     <div style="font-family:var(--serif);font-size:13.5px;color:var(--gold);padding:14px 16px;">
     Complete, Indivisible Truth</div>
   </div>
+</div>
+</div><!-- end scroll guard -->
 </div>
 </section>
 <section class="section">
@@ -1474,24 +1517,21 @@ section{scroll-margin-top:140px;}
       <div class="sl-stage danger"><span class="sl-num">Stage 8</span><div class="sl-name" style="color:#c0392b;">Destruction</div><p class="sl-desc">Self-destructive behaviour. <em style="color:#c0392b;">The account is blown.</em></p></div>
     </div>
      <!-- Historical anchor for the Suffering Loop -->
-    <div style="max-width:820px;margin:24px auto 0;padding:36px 32px;background:var(--bg);border:1px solid #1e1e1e;border-left:3px solid var(--gold);text-align:left;">
-      <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.75;margin-bottom:16px;">The Loop in History &mdash; 336&ndash;323 BCE</div>
-      <p style="font-family:var(--serif);font-size:clamp(17px,2.2vw,21px);color:var(--white);line-height:1.75;margin-bottom:14px;">Alexander inherited a highly advanced military machine to conquer Persia. He proved to be a brilliant invader but failed to establish a functioning administrative government. His death at 32 instantly exposed this lack of institutional glue, triggering immediate civil war.</p>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2px;margin-bottom:18px;">
-        <div style="padding:18px 16px;background:var(--bg-lift);border:1px solid #1e1e1e;">
-          <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.6;margin-bottom:8px;">Stage 1&ndash;2 &mdash; Contemplation &rarr; Attachment</div>
-          <p style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.8;">The rise. Early campaigns, massive riches, consolidated power. The chart going vertical. The first stories he told himself about who he was.</p>
+   <!-- Historical anchor for the Suffering Loop -->
+    <div style="max-width:820px;margin:24px auto 0;padding:32px 28px;background:var(--bg);border:1px solid #1e1e1e;border-left:3px solid var(--gold);text-align:left;">
+      <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.75;margin-bottom:12px;">The Loop in History &mdash; Alexander the Great, 336&ndash;323 BCE</div>
+      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.85;margin-bottom:16px;">Brilliant invader. No functioning administration. Death at 32 instantly exposed the void. Empire fractured into civil war within months.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:16px;">
+        <div style="padding:16px 18px;background:var(--bg-lift);border:1px solid #1e1e1e;">
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.6;margin-bottom:6px;">Stages 1&ndash;5 — Rise &rarr; Delusion</div>
+          <p style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.8;">Conquest, wealth, divine-authority demands. The army alienated. Fundamentals rotting beneath the narrative. The ego became the lens — he could no longer see it.</p>
         </div>
-        <div style="padding:18px 16px;background:var(--bg-lift);border:1px solid #1e1e1e;">
-          <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.6;margin-bottom:8px;">Stage 3&ndash;5 &mdash; Desire &rarr; Anger &rarr; Delusion</div>
-          <p style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.8;">Demands divine authority. Army alienated. The fundamentals rotting under the narrative. He could not see it. The ego had become the lens.</p>
-        </div>
-        <div style="padding:18px 16px;background:var(--bg-lift);border:1px solid #1e1e1e;border-top:1px solid #3a1010;">
-          <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#c0392b;opacity:.8;margin-bottom:8px;">Stage 6&ndash;8 &mdash; Memory Loss &rarr; Intelligence Loss &rarr; Destruction</div>
-          <p style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.8;">Troops mutiny in India, 326 BCE. Forced retreat. Dead in Babylon, 323 BCE. The account blown. Empire fractured into warring factions.</p>
+        <div style="padding:16px 18px;background:var(--bg-lift);border:1px solid #1e1e1e;border-top:2px solid #c0392b;">
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#c0392b;opacity:.8;margin-bottom:6px;">Stages 6&ndash;8 — Collapse</div>
+          <p style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.8;">Troops mutiny in India, 326 BCE. Forced retreat. Dead in Babylon, 323 BCE. The account blown — exactly as the Gita's loop predicts, written 2000 years prior.</p>
         </div>
       </div>
-      <p style="font-family:var(--serif);font-size:clamp(15px,1.9vw,18px);color:var(--gold);font-style:italic;line-height:1.85;">The Bhagavad Gita mapped this loop 2000 years before it happened.<br><span style="font-style:normal;color:var(--grey);font-size:14px;">The loop is not a theory. It is a timeline. It runs the same way every time.</span></p>
+      <p style="font-family:var(--serif);font-size:clamp(14px,1.8vw,16px);color:var(--gold);font-style:italic;">The loop is not a theory. It is a timeline. It runs the same way every time.</p>
     </div>
    </div>
 
@@ -1852,45 +1892,46 @@ section{scroll-margin-top:140px;}
           </div>
         </div>
         <div style="text-align:center;color:var(--gold);opacity:.25;font-size:16px;padding:4px 0;">↓</div>
-        <div style="padding:24px 28px;background:radial-gradient(ellipse at 50% 0%,rgba(212,175,55,.08) 0%,transparent 65%);border:1px solid var(--gold);display:grid;grid-template-columns:60px 1fr;gap:0;text-align:left;">
+       <div style="padding:24px 28px;background:radial-gradient(ellipse at 50% 0%,rgba(212,175,55,.08) 0%,transparent 65%);border:1px solid var(--gold);display:grid;grid-template-columns:60px 1fr;gap:0;text-align:left;">
           <div style="font-family:var(--sans);font-size:9px;letter-spacing:2px;color:var(--gold);opacity:.8;padding-top:4px;text-transform:uppercase;">∞</div>
           <div>
             <div style="font-family:var(--serif);font-size:20px;color:var(--gold);margin-bottom:4px;">Supermind — The Divine Gnosis</div>
             <span style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:8px;display:block;">Truth-Consciousness · The Real-Idea</span>
             <p style="font-family:var(--serif);font-size:14.5px;color:var(--mid);line-height:1.85;">The only power that can reach the root of Matter and completely transform mind, life, and physical substance without losing its force. Not ascent alone — descent of the Gnosis into the very body.</p>
           </div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:16px;">
-  <div style="padding:28px 28px;background:var(--bg-lift);border:1px solid #1e1e1e;text-align:left;">
-    <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;
-    color:#c0392b;opacity:.85;margin-bottom:18px;">The Sevenfold Ignorance</div>
-    <p style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:2;margin:0;">
-    1. Original — ignorant of the Absolute<br>
-    2. Cosmic — ignorant of the timeless Self<br>
-    3. Egoistic — ignorant of our universal unity<br>
-    4. Temporal — ignorant of our eternal becoming<br>
-    5. Psychological — ignorant of the subliminal<br>
-    6. Constitutional — ignorant of the true soul<br>
-    7. Practical — ignorant of right action</p>
-  </div>
-  <div style="padding:28px 28px;background:var(--bg-lift);border:1px solid #1e1e1e;
-  border-left:3px solid var(--gold);text-align:left;">
-    <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;
-    color:var(--gold);opacity:.85;margin-bottom:18px;">The Sevenfold Knowledge</div>
-    <p style="font-family:var(--serif);font-size:14px;color:var(--mid);line-height:2;margin:0;">
-    1. Knowledge of the Absolute<br>
-    2. Knowledge of the cosmic Self<br>
-    3. Knowledge of unity with all beings<br>
-    4. Knowledge of our immortal persistence<br>
-    5. Knowledge of our inner, greater existence<br>
-    6. Knowledge of our true relation to the soul<br>
-    7. Change of nature into conscious Spirit</p>
-  </div>
-</div>
         </div>
-      </div>
-      <div style="padding:28px 32px;border:1px solid #1e1e1e;border-left:3px solid var(--gold);background:var(--bg-lift);text-align:left;">
+      </div><!-- end steps flex -->
+      <div style="padding:28px 32px;border:1px solid #1e1e1e;border-left:3px solid var(--gold);background:var(--bg-lift);text-align:left;margin-top:2px;">
         <p style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.75;margin-bottom:12px;">The Irreversible Law</p>
         <p style="font-family:var(--serif);font-size:clamp(16px,2.1vw,19px);color:var(--mid);line-height:1.9;margin-bottom:0;">Because Spirit involved itself in Inconscience, the emergence of divine life is a structural inevitability — not a hope. The ignorance is not an error. It is a willed, temporary descent for the joy of evolutionary self-discovery.</p>
+      </div>
+    </div><!-- end stairway-content -->
+
+    <!-- Sevenfold — standalone, always visible -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;max-width:700px;margin:28px auto 0;">
+      <div style="padding:28px 24px;background:var(--bg-lift);border:1px solid #1e1e1e;text-align:left;">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:#c0392b;opacity:.85;margin-bottom:14px;">The Sevenfold Ignorance</div>
+        <p style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:2.05;margin:0;">
+          1. Original — ignorant of the Absolute<br>
+          2. Cosmic — ignorant of the timeless Self<br>
+          3. Egoistic — ignorant of our universal unity<br>
+          4. Temporal — ignorant of our eternal becoming<br>
+          5. Psychological — ignorant of the subliminal<br>
+          6. Constitutional — ignorant of the true soul<br>
+          7. Practical — ignorant of right action
+        </p>
+      </div>
+      <div style="padding:28px 24px;background:var(--bg-lift);border:1px solid #1e1e1e;border-left:3px solid var(--gold);text-align:left;">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.85;margin-bottom:14px;">The Sevenfold Knowledge</div>
+        <p style="font-family:var(--serif);font-size:14px;color:var(--mid);line-height:2.05;margin:0;">
+          1. Knowledge of the Absolute<br>
+          2. Knowledge of the cosmic Self<br>
+          3. Knowledge of unity with all beings<br>
+          4. Knowledge of our immortal persistence<br>
+          5. Knowledge of our inner, greater existence<br>
+          6. Knowledge of our true relation to the soul<br>
+          7. Change of nature into conscious Spirit
+        </p>
       </div>
     </div>
   </div>
@@ -2203,14 +2244,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
     <span class="label">The Cosmic Blueprint</span>
     <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:660px;margin:0 auto 16px;line-height:1.5;">42 is not decoration. It is a frequency.</h2>
     <p style="font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:580px;margin:0 auto 52px;font-style:italic;line-height:1.85;">Douglas Adams joked that 42 was the &ldquo;Ultimate Answer.&rdquo; He thought it was a random punchline. The universe disagreed.</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:2px;margin-bottom:44px;">
-      <div style="padding:32px 28px;background:var(--bg);border:1px solid #1e1e1e;text-align:left;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:14px;">Astrophysics</div><p style="font-family:var(--serif);font-size:16px;color:var(--grey);line-height:1.88;">The current expansion rate of the Universe is exactly <strong style="color:var(--white);">42 mi/s/Mpc</strong>. The efficiency rate for turning mass into energy orbiting a spinning black hole is exactly <strong style="color:var(--white);">42%</strong>.</p></div>
-      <div style="padding:32px 28px;background:var(--bg);border:1px solid #1e1e1e;text-align:left;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:14px;">Light &amp; Optics</div><p style="font-family:var(--serif);font-size:16px;color:var(--grey);line-height:1.88;">The critical angle required for a rainbow to appear to the human eye is exactly <strong style="color:var(--white);">42 degrees</strong>. The Orion Nebula is catalogued as <strong style="color:var(--white);">M42</strong>.</p></div>
-      <div style="padding:32px 28px;background:var(--bg);border:1px solid #1e1e1e;text-align:left;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:14px;">Mathematics</div><p style="font-family:var(--serif);font-size:16px;color:var(--grey);line-height:1.88;">The second sphenic number: <strong style="color:var(--white);">2 × 3 × 7 = 42</strong>. The sum of the first six even numbers: 2+4+6+8+10+12 = <strong style="color:var(--white);">42</strong>.</p></div>
-      <div style="padding:32px 28px;background:var(--bg);border:1px solid #1e1e1e;text-align:left;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:14px;">The Soul&rsquo;s Cycle</div><p style="font-family:var(--serif);font-size:16px;color:var(--grey);line-height:1.88;">In esoteric traditions, Age <strong style="color:var(--white);">42</strong> marks the end of the first half of life &mdash; the definitive milestone for shedding societal conditioning.</p></div>
-    </div>
-    <div style="max-width:720px;margin:0 auto;padding:40px 36px;border:1px solid var(--gold);background:radial-gradient(ellipse at 50% 0%,rgba(212,175,55,.07) 0%,transparent 65%);text-align:center;">
-      <p style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:20px;">The Equation of Being</p>
+    <div style="max-width:720px;margin:0 auto;padding:40px 36px;border:1px solid var(--gold);background:radial-gradient(ellipse at 50% 0%,rgba(212,175,55,.07) 0%,transparent 65%);text-align:center;"><p style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:20px;">The Equation of Being</p>
       <p style="font-family:var(--serif);font-size:clamp(18px,2.8vw,26px);color:var(--white);line-height:1.75;margin-bottom:16px;">In computer science, ASCII code 42 translates exactly to the Asterisk (<strong style="color:var(--gold);">*</strong>) &mdash; the universal wildcard for &ldquo;Everything&rdquo; and &ldquo;Anything.&rdquo;</p>
       <p style="font-family:var(--serif);font-size:clamp(17px,2.4vw,22px);color:var(--gold);font-style:italic;">The universe is built on 42.<br>You are the wildcard. You define the value.</p>
     </div>
@@ -2276,8 +2310,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
   <h2>Seven stages. One journey. From body to SELF.</h2>
   <p class="sub">Every tradition maps the same upward arc &mdash; the 7 Chakras, the 7 Stages of Spiritual Progress, and the 7 Layers of Existence all describe one singular journey.</p>
   <div style="text-align:center;margin-bottom:36px;">
-    <div style="max-width:820px;margin:0 auto 36px;display:grid;grid-template-columns:1fr 1fr;
-gap:2px;">
+    <div style="max-width:820px;margin:0 auto 36px;display:grid;grid-template-columns:1fr 1fr;gap:2px;" class="evo-grid">
   <div style="padding:32px 28px;background:var(--bg);border:1px solid #1e1e1e;text-align:left;">
     <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;
     color:var(--dim);opacity:.75;margin-bottom:14px;">Matter → Plant → Animal</div>
