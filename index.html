@@ -3118,14 +3118,15 @@ function showVoidResponse(type, btn){
   var nav=document.getElementById('siteNav');
   var progressBar=document.getElementById('progressBar');
   var sections=[
-    {id:'home',       el:null},
-    {id:'framework',  el:null},
-    {id:'ego',        el:null},
-    {id:'ledger',     el:null},
-    {id:'ipo',        el:null},
-    {id:'mirror',     el:null},
-    {id:'contract',   el:null},
-    {id:'disclaimer', el:null}
+    {id:'home',        el:null},
+    {id:'framework',   el:null},
+    {id:'ego',         el:null},
+    {id:'ledger',      el:null},
+    {id:'ipo',         el:null},
+    {id:'mirror',      el:null},
+    {id:'contract',    el:null},
+    {id:'faq-section', el:null},
+    {id:'disclaimer',  el:null}
   ];
   sections.forEach(function(s){s.el=document.getElementById(s.id);});
   var navLinks=document.querySelectorAll('.nav-left li a, .nav-right li a');
