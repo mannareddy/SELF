@@ -188,7 +188,8 @@ html{scroll-behavior:smooth;}
 [data-theme="light"] [style*="border:1px solid var(--gold)"]{border-color:rgba(138,106,18,0.55) !important;}
 [data-theme="light"] [style*="border-left:3px solid var(--gold)"]{border-left-color:rgba(138,106,18,0.7) !important;}
 [data-theme="light"] [style*="border:2px solid var(--gold)"]{border-color:rgba(138,106,18,0.55) !important;}
-[data-theme="light"] [style*="border-left:2px solid var(--gold)"]{border-left-color:rgba(138,106,18,0.6) !important;}  
+[data-theme="light"] [style*="border-left:2px solid var(--gold)"]{border-left-color:rgba(138,106,18,0.6) !important;} 
+[data-theme="light"] [style*="border-right:1px solid #1a1a1a"]{border-right-color:rgba(0,0,0,0.1) !important;}
 [data-theme="light"] .section-collapse-wrap .section-collapse-inner{border-color:rgba(0,0,0,0.1) !important;}
 [data-theme="light"] .stage-item{border-color:rgba(0,0,0,0.1) !important;background:#ede6d0 !important;}
 [data-theme="light"] .stage-body-col .s-title{color:#1a1208 !important;}
@@ -339,7 +340,7 @@ section{scroll-margin-top:140px;}
 .nav-icon-item{display:none !important;}
 
 /* ── HERO ─────────────────────────────────────────────────────────────────── */
-.hero{min-height:auto;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:28px 24px 16px;position:relative;background:radial-gradient(ellipse at 50% 35%,rgba(212,175,55,.05) 0%,transparent 68%);}
+.hero{min-height:calc(100vh - var(--nav-h));display:flex;flex-direction:column;justify-content:center;align-items:center;padding:16px 24px 0;position:relative;background:radial-gradient(ellipse at 50% 35%,rgba(212,175,55,.05) 0%,transparent 68%);}
 .hero-question{font-size:clamp(15px,2vw,22px);font-weight:300;font-style:italic;color:var(--gold);line-height:1.45;max-width:620px;margin-bottom:10px;letter-spacing:.3px;text-align:center;}
 .hero-sub{font-size:clamp(15px,2vw,18px);color:var(--mid);font-weight:300;max-width:480px;line-height:1.85;margin-bottom:8px;}
 .expand-label{display:inline-block;font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);border:1px solid rgba(212,175,55,.3);padding:4px 12px;margin-left:12px;transition:border-color .25s;vertical-align:middle;}
@@ -719,13 +720,17 @@ section{scroll-margin-top:140px;}
 [data-theme="light"] .cognition-header-cell{color:#3a2a0a !important;background:#c8bfa0 !important;}
 /* ── MOBILE RESPONSIVE ───────────────────────────────────────────────────── */
 @media(max-width:640px){
-  .hero{padding-top:84px;padding-bottom:60px;}
+  .hero{padding:12px 20px 0;}
   .hero-question{font-size:24px;}
   .hero-sub{font-size:17px;}
   .phil-line{font-size:19px;margin:10px 0;}
   .section,.section-wide,.cosmic-section,.bridge-section{padding-left:20px;padding-right:20px;}
-  .ipo-table-row{grid-template-columns:1fr 1fr;}
-  .ipo-table-row .ipo-cell:nth-child(2),.ipo-table-row.header .ipo-cell:nth-child(2){display:none;}
+  .ipo-section > div{padding:24px 14px !important;}
+  .ipo-table{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .ipo-table-row{min-width:380px;grid-template-columns:1fr 1fr;}
+  .ipo-table-row .ipo-cell:nth-child(2),
+  .ipo-table-row.header .ipo-cell:nth-child(2){display:none;}
+  .ipo-upanishad{padding:22px 18px;}
   .framework-grid,.identity-grid,.why-grid,.pillar-grid,.enn-grid{grid-template-columns:1fr;gap:1px;}
   .paths-grid,.mc-compare{grid-template-columns:1fr;}
   .rasa-row{grid-template-columns:1fr 1fr;}
@@ -1072,9 +1077,8 @@ section h2,
   </div>
   <span style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);font-size:9px;">View full CA ↓</span>
 </a>
+<div class="continue-hint" style="margin-top:auto;">continue</div>
 </section>
-<div style="text-align:center;padding:14px 0 2px;font-family:var(--sans);font-size:10px;color:#444;letter-spacing:4px;text-transform:uppercase;animation:fade 3.5s ease-in-out infinite;user-select:none;pointer-events:none;">CONTINUE &#8595;</div>
-
 <!-- BANNER -->
 <div class="banner-section">
   <img src="./assets/images/Banner.jpg" alt="You don't lose money. You lose control." class="banner-image">
@@ -1405,7 +1409,13 @@ section h2,
 <section class="section-wide" style="padding:90px 24px;background:var(--bg-lift);border-top:1px solid #111;border-bottom:1px solid #111;">
   <span class="label">The Integration Engine</span>
   <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 20px;line-height:1.5;">Neither East nor West alone. Together, they become whole.</h2>
-  <p style="font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:680px;margin:0 auto 52px;line-height:1.9;">Western psychotherapy and Eastern wisdom traditions are not opposites. They are complements. But to integrate them, you must first understand what each got right — and what each missed.</p>
+  <p style="font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:680px;margin:0 auto 36px;line-height:1.9;">Western psychotherapy and Eastern wisdom traditions are not opposites. They are complements. But to integrate them, you must first understand what each got right — and what each missed.</p>
+
+  <div style="text-align:center;margin-bottom:20px;">
+    <button class="collapse-toggle-btn" onclick="sectionCollapse('integration-engine-content',this)">Expand &#9660;</button>
+    <p class="section-collapse-label">Collapsed by default — tap to expand</p>
+  </div>
+  <div id="integration-engine-content" class="section-collapse-wrap collapsed">
 
   <!-- STEP 1: THE PROBLEM — Two Hemispheres -->
   <div style="max-width:980px;margin:0 auto 16px;">
@@ -1475,8 +1485,8 @@ section h2,
       </div>
     </div>
   </div>
-
-  <!-- CLOSING QUOTE -->
+</div><!-- end integration-engine-content -->
+   <!-- CLOSING QUOTE -->
   <div style="max-width:720px;margin:0 auto;padding:36px 32px;border:1px solid #2a2a2a;background:rgba(212,175,55,.04);">
     <p style="font-size:clamp(16px,2.2vw,20px);color:var(--white);line-height:1.9;margin-bottom:16px;">Symptoms are often a healthy response to an unhealthy environment.</p>
     <p style="font-size:clamp(15px,2vw,18px);color:var(--gold);font-style:italic;line-height:1.8;">"It is never about resolution. It is more about spaciousness. How expansive can I become? Become immense."</p>
@@ -1515,11 +1525,7 @@ section h2,
   <div class="tradition-cell">The Earth as the field of spiritual evolution. Spirit involutes into Matter, then evolves back — Ignorance is not an error but a willed descent for the joy of self-discovery</div>
 </div>
   </div>
-    <div style="max-width:820px;margin:28px auto 0;border:1px solid #1e1e1e;overflow:hidden;">
-  <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;
-  color:var(--gold);opacity:.75;padding:14px 20px;background:#0a0a0a;">
-  The Four Theories of Human Existence — Sri Aurobindo</div>
-  <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;border-bottom:1px solid #1a1a1a;
+    <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;border-bottom:1px solid #1a1a1a;
   background:#0a0a0a;">
     <div style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;
     color:var(--dim);padding:12px 18px;">Theory</div>
@@ -1600,6 +1606,56 @@ section h2,
       </div>
     </div>
 </div>
+  </div><!-- end cosmo-block -->
+
+<!-- AUROBINDO FOUR THEORIES — standalone, always visible -->
+<section style="padding:52px 24px;background:var(--bg);border-top:1px solid #111;">
+  <div style="max-width:860px;margin:0 auto;">
+    <span class="label" style="margin-bottom:28px;">The Four Theories of Human Existence</span>
+    <div style="max-width:820px;margin:0 auto;border:1px solid #1e1e1e;overflow-x:auto;-webkit-overflow-scrolling:touch;">
+      <div style="min-width:520px;">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.75;padding:14px 20px;background:#0a0a0a;">
+        The Four Theories of Human Existence — Sri Aurobindo</div>
+        <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;border-bottom:1px solid #1a1a1a;background:#0a0a0a;">
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);padding:12px 18px;border-right:1px solid #1a1a1a;">Theory</div>
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);padding:12px 18px;border-right:1px solid #1a1a1a;">Ultimate Goal</div>
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);padding:12px 18px;border-right:1px solid #1a1a1a;">View of Earth</div>
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);padding:12px 18px;">The Flaw</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;border-bottom:1px solid #1a1a1a;">
+          <div style="font-family:var(--serif);font-size:14.5px;color:var(--grey);padding:16px 18px;border-right:1px solid #1a1a1a;">Supracosmic (Ascetic)</div>
+          <div style="font-family:var(--serif);font-size:14.5px;color:var(--grey);padding:16px 18px;border-right:1px solid #1a1a1a;">Escape into Absolute</div>
+          <div style="font-family:var(--serif);font-size:14.5px;color:var(--grey);padding:16px 18px;border-right:1px solid #1a1a1a;">An illusion</div>
+          <div style="font-family:var(--serif);font-size:14.5px;color:#c0392b;padding:16px 18px;font-style:italic;">Discards the cosmos</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;border-bottom:1px solid #1a1a1a;">
+          <div style="font-family:var(--serif);font-size:14.5px;color:var(--grey);padding:16px 18px;border-right:1px solid #1a1a1a;">Cosmic-Terrestrial (Materialist)</div>
+          <div style="font-family:var(--serif);font-size:14.5px;color:var(--grey);padding:16px 18px;border-right:1px solid #1a1a1a;">Earthly perfection</div>
+          <div style="font-family:var(--serif);font-size:14.5px;color:var(--grey);padding:16px 18px;border-right:1px solid #1a1a1a;">The only reality</div>
+          <div style="font-family:var(--serif);font-size:14.5px;color:#c0392b;padding:16px 18px;font-style:italic;">Ignores the Spirit</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;border-bottom:1px solid #1a1a1a;">
+          <div style="font-family:var(--serif);font-size:14.5px;color:var(--grey);padding:16px 18px;border-right:1px solid #1a1a1a;">Supraterrestrial (Religious)</div>
+          <div style="font-family:var(--serif);font-size:14.5px;color:var(--grey);padding:16px 18px;border-right:1px solid #1a1a1a;">Heavenly afterlife</div>
+          <div style="font-family:var(--serif);font-size:14.5px;color:var(--grey);padding:16px 18px;border-right:1px solid #1a1a1a;">A temporary ordeal</div>
+          <div style="font-family:var(--serif);font-size:14.5px;color:#c0392b;padding:16px 18px;font-style:italic;">Sick ascetic longing</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;background:rgba(212,175,55,.04);border-left:3px solid var(--gold);">
+          <div style="font-family:var(--serif);font-size:14.5px;color:var(--gold);padding:16px 18px;border-right:1px solid #1a1a1a;">Integral (Aurobindonian)</div>
+          <div style="font-family:var(--serif);font-size:14.5px;color:var(--white);padding:16px 18px;font-weight:400;border-right:1px solid #1a1a1a;">Progressive Divine Manifestation</div>
+          <div style="font-family:var(--serif);font-size:14.5px;color:var(--white);padding:16px 18px;font-weight:400;border-right:1px solid #1a1a1a;">Field of spiritual evolution</div>
+          <div style="font-family:var(--serif);font-size:14.5px;color:var(--gold);padding:16px 18px;font-style:italic;">None — synthesizes all</div>
+        </div>
+      </div><!-- end min-width scroll guard -->
+    </div>
+    <div style="max-width:820px;margin:20px auto 0;padding:24px 28px;border-left:3px solid var(--gold);background:var(--bg-lift);">
+      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--mid);line-height:1.85;margin-bottom:10px;">&ldquo;The highest achievement is looking inward to realize our true nature beneath the illusions of the ego.&rdquo;</p>
+      <span style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.75;">&mdash; The unified conclusion of every wisdom tradition in human history</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
 <div class="divider"></div>
 
 <section class="section">
@@ -1788,25 +1844,25 @@ section h2,
       <div class="sl-stage"><span class="sl-num">Stage 6</span><div class="sl-name">Memory Loss</div><p class="sl-desc">You forget your true purpose and spiritual values.</p></div>
       <div class="sl-stage"><span class="sl-num">Stage 7</span><div class="sl-name">Intelligence Loss</div><p class="sl-desc">Intellect bypassed for raw animalistic reactivity.</p></div>
       <div class="sl-stage danger"><span class="sl-num">Stage 8</span><div class="sl-name" style="color:#c0392b;">Destruction</div><p class="sl-desc">Self-destructive behaviour. <em style="color:#c0392b;">The account is blown.</em></p></div>
-    </div>
-     <!-- Historical anchor for the Suffering Loop -->
-   <!-- Historical anchor for the Suffering Loop -->
-    <div style="max-width:820px;margin:24px auto 0;padding:32px 28px;background:var(--bg);border:1px solid #1e1e1e;border-left:3px solid var(--gold);text-align:left;">
-      <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.75;margin-bottom:12px;">The Loop in History &mdash; Alexander the Great, 336&ndash;323 BCE</div>
-      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.85;margin-bottom:16px;">Brilliant invader. No functioning administration. Death at 32 instantly exposed the void. Empire fractured into civil war within months.</p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:16px;">
-        <div style="padding:16px 18px;background:var(--bg-lift);border:1px solid #1e1e1e;">
-          <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.6;margin-bottom:6px;">Stages 1&ndash;5 — Rise &rarr; Delusion</div>
-          <p style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.8;">Conquest, wealth, divine-authority demands. The army alienated. Fundamentals rotting beneath the narrative. The ego became the lens — he could no longer see it.</p>
-        </div>
-        <div style="padding:16px 18px;background:var(--bg-lift);border:1px solid #1e1e1e;border-top:2px solid #c0392b;">
-          <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#c0392b;opacity:.8;margin-bottom:6px;">Stages 6&ndash;8 — Collapse</div>
-          <p style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.8;">Troops mutiny in India, 326 BCE. Forced retreat. Dead in Babylon, 323 BCE. The account blown — exactly as the Gita's loop predicts, written 2000 years prior.</p>
-        </div>
+   </div><!-- end 8-stage grid -->
+  </div><!-- end #suffering-loop collapse -->
+
+  <!-- Loop in History — standalone, always visible -->
+  <div style="max-width:820px;margin:24px auto 0;padding:32px 28px;background:var(--bg);border:1px solid #1e1e1e;border-left:3px solid var(--gold);text-align:left;">
+    <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.75;margin-bottom:12px;">The Loop in History &mdash; Alexander the Great, 336&ndash;323 BCE</div>
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.85;margin-bottom:16px;">Brilliant invader. No functioning administration. Death at 32 instantly exposed the void. Empire fractured into civil war within months.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:16px;">
+      <div style="padding:16px 18px;background:var(--bg-lift);border:1px solid #1e1e1e;">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.6;margin-bottom:6px;">Stages 1&ndash;5 — Rise &rarr; Delusion</div>
+        <p style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.8;">Conquest, wealth, divine-authority demands. The army alienated. Fundamentals rotting beneath the narrative. The ego became the lens — he could no longer see it.</p>
       </div>
-      <p style="font-family:var(--serif);font-size:clamp(14px,1.8vw,16px);color:var(--gold);font-style:italic;">The loop is not a theory. It is a timeline. It runs the same way every time.</p>
+      <div style="padding:16px 18px;background:var(--bg-lift);border:1px solid #1e1e1e;border-top:2px solid #c0392b;">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#c0392b;opacity:.8;margin-bottom:6px;">Stages 6&ndash;8 — Collapse</div>
+        <p style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.8;">Troops mutiny in India, 326 BCE. Forced retreat. Dead in Babylon, 323 BCE. The account blown — exactly as the Gita&rsquo;s loop predicts, written 2000 years prior.</p>
+      </div>
     </div>
-   </div>
+    <p style="font-family:var(--serif);font-size:clamp(14px,1.8vw,16px);color:var(--gold);font-style:italic;">The loop is not a theory. It is a timeline. It runs the same way every time.</p>
+  </div>
 
   <!-- Distortion of Satchitananda -->
   <div class="ego-sub-header">
@@ -2211,6 +2267,59 @@ section h2,
   </div>
 </section>
 <div class="divider"></div>
+
+<!-- IDENTITY LAYER -->
+  <section class="identity-section collapsed">
+  <div style="max-width:980px;margin:0 auto;position:relative;border:1px solid var(--gold);">
+    <div style="position:absolute;top:-1px;left:-1px;width:20px;height:20px;border-top:2px solid var(--gold);border-left:2px solid var(--gold);"></div>
+    <div style="position:absolute;top:-1px;right:-1px;width:20px;height:20px;border-top:2px solid var(--gold);border-right:2px solid var(--gold);"></div>
+    <div style="position:absolute;bottom:-1px;left:-1px;width:20px;height:20px;border-bottom:2px solid var(--gold);border-left:2px solid var(--gold);"></div>
+    <div style="position:absolute;bottom:-1px;right:-1px;width:20px;height:20px;border-bottom:2px solid var(--gold);border-right:2px solid var(--gold);"></div>
+    <div style="padding:60px 40px;"> 
+  <span class="label">The Path of Subtilization</span>
+  <h2>Seven stages. One journey. From body to SELF.</h2>
+  <p class="sub">Every tradition maps the same upward arc &mdash; the 7 Chakras, the 7 Stages of Spiritual Progress, and the 7 Layers of Existence all describe one singular journey.</p>
+  <div style="text-align:center;margin-bottom:36px;">
+    <div style="max-width:820px;margin:0 auto 36px;display:grid;grid-template-columns:1fr 1fr;gap:2px;" class="evo-grid">
+  <div style="padding:32px 28px;background:var(--bg);border:1px solid #1e1e1e;text-align:left;">
+    <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;
+    color:var(--dim);opacity:.75;margin-bottom:14px;">Matter → Plant → Animal</div>
+    <div style="font-family:var(--serif);font-size:20px;color:var(--white);margin-bottom:10px;">
+    Subconscious Evolution</div>
+    <p style="font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;
+    color:var(--dim);margin-bottom:12px;">OUTSIDE IN</p>
+    <p style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.85;">
+    External physical form mutates first, pulling consciousness up with it. Evolution happens 
+    to the being — not from within it.</p>
+  </div>
+  <div style="padding:32px 28px;background:var(--bg-lift);border:1px solid var(--gold);
+  border-left:3px solid var(--gold);text-align:left;">
+    <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;
+    color:var(--gold);opacity:.85;margin-bottom:14px;">Man → Gnostic Being</div>
+    <div style="font-family:var(--serif);font-size:20px;color:var(--gold);margin-bottom:10px;">
+    Conscious Evolution</div>
+    <p style="font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;
+    color:var(--gold);opacity:.7;margin-bottom:12px;">INSIDE OUT</p>
+    <p style="font-family:var(--serif);font-size:14.5px;color:var(--mid);line-height:1.85;">
+    In the human being, consciousness evolves first from within, eventually transforming the 
+    external physical form. You are the first species that chooses its own next stage.</p>
+  </div>
+</div>
+    <button id="identityExpandBtn" class="collapse-toggle-btn">Expand &#9660;</button>
+    <p class="section-collapse-label">Tap to expand &mdash; collapsed by default</p>
+  </div>
+  <div class="identity-grid">
+    <div class="identity-card"><span class="layer-tag">Stage 1 &mdash; Root Chakra &middot; Body</span><h4>Innocence &amp; Material Reality</h4><p>You enter the world in a state of innocence. Life is ruled by basic needs for security and stability. Still connected to the field of the Absolute.</p><p class="practice">Seed Mantra: LAM &middot; Element: Earth &middot; Layer: The Body (Gross Physical)</p></div>
+    <div class="identity-card"><span class="layer-tag">Stage 2 &mdash; Sacral Chakra &middot; Breath</span><h4>Ego Emergence &amp; Fear</h4><p>Pure love is overshadowed by fear. You realize you depend on others. Personality forms.</p><p class="practice">Seed Mantra: VAM &middot; Element: Water &middot; Layer: The Breath (Prana)</p></div>
+    <div class="identity-card"><span class="layer-tag">Stage 3 &mdash; Solar Plexus &middot; Mind</span><h4>Power &amp; Knowledge</h4><p>In your desire to overcome fear, you seek control. The ego is at its peak. <strong style="color:var(--gold);font-weight:400;">First Fork:</strong> continue material consumption, or sense a deeper meaning and ascend.</p><p class="practice">Seed Mantra: RAM &middot; Element: Fire &middot; Layer: The Mind (Subtle)</p></div>
+    <div class="identity-card"><span class="layer-tag">Stage 4 &mdash; Heart Chakra &middot; Intellect</span><h4>Giving &amp; Choice</h4><p>Compassion opens. A shift from &ldquo;I&rdquo; to &ldquo;We&rdquo; breaks the chains of self-centeredness. <strong style="color:var(--gold);font-weight:400;">Second Fork:</strong> ego-driven giving or selfless love.</p><p class="practice">Seed Mantra: YAM &middot; Element: Air &middot; Layer: The Intellect (Buddhi)</p></div>
+    <div class="identity-card"><span class="layer-tag">Stage 5 &mdash; Throat Chakra &middot; Memory</span><h4>The Seeker &amp; Devotion</h4><p>Your spiritual practices become regular. The longing for enlightenment grows. The throat opens as you authentically express the inner qualities of your heart.</p><p class="practice">Seed Mantra: HAM &middot; Element: Ether &middot; Layer: Memory</p></div>
+    <div class="identity-card"><span class="layer-tag">Stage 6 &mdash; Third Eye &middot; Ego Layer</span><h4>Cosmic Consciousness</h4><p>Your mind fully awakens. You become the witness of your actions. The fear of death dissolves. <strong style="color:var(--gold);font-weight:400;">Final Fork:</strong> spiritual pride, or true humility.</p><p class="practice">Seed Mantra: OM &middot; Element: Light/Intuition &middot; Layer: The Ego (Observer)</p></div>
+    <div class="identity-card" style="border-color:#2a2a2a;background:radial-gradient(ellipse at 50% 0%,rgba(212,175,55,.05) 0%,transparent 65%);"><span class="layer-tag" style="opacity:1;">Stage 7 &mdash; Crown Chakra &middot; SELF</span><h4>Perfection &amp; Pure Joy</h4><p>Divine and Unity Consciousness. You still live &ldquo;in the world,&rdquo; but are no longer &ldquo;of the world.&rdquo; Individual identity dissolves into universal consciousness. <em style="color:var(--gold);">At the summit of subtilization, the burden of choice vanishes.</em></p><p class="practice">Seed Mantra: OM &middot; Element: Universal Consciousness &middot; Layer: The SELF (Atman)</p><p style="font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-top:12px;padding-top:12px;border-top:1px solid #1e1e1e;">Atman (Individual SELF) = Brahman (Supreme Reality)</p></div>
+    </div>
+  </div>
+  <div class="divider"></div>
+
 <!-- COSMIC LEDGER -->
   <section class="section" id="ledger">  
     <span class="label">The Cosmic Ledger</span>
@@ -2572,59 +2681,6 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
 </section>
 <div class="divider"></div>
 
-<!-- IDENTITY LAYER -->
-  <section class="identity-section collapsed">
-  <div style="max-width:980px;margin:0 auto;position:relative;border:1px solid var(--gold);">
-    <div style="position:absolute;top:-1px;left:-1px;width:20px;height:20px;border-top:2px solid var(--gold);border-left:2px solid var(--gold);"></div>
-    <div style="position:absolute;top:-1px;right:-1px;width:20px;height:20px;border-top:2px solid var(--gold);border-right:2px solid var(--gold);"></div>
-    <div style="position:absolute;bottom:-1px;left:-1px;width:20px;height:20px;border-bottom:2px solid var(--gold);border-left:2px solid var(--gold);"></div>
-    <div style="position:absolute;bottom:-1px;right:-1px;width:20px;height:20px;border-bottom:2px solid var(--gold);border-right:2px solid var(--gold);"></div>
-    <div style="padding:60px 40px;"> 
-  <span class="label">The Path of Subtilization</span>
-  <h2>Seven stages. One journey. From body to SELF.</h2>
-  <p class="sub">Every tradition maps the same upward arc &mdash; the 7 Chakras, the 7 Stages of Spiritual Progress, and the 7 Layers of Existence all describe one singular journey.</p>
-  <div style="text-align:center;margin-bottom:36px;">
-    <div style="max-width:820px;margin:0 auto 36px;display:grid;grid-template-columns:1fr 1fr;gap:2px;" class="evo-grid">
-  <div style="padding:32px 28px;background:var(--bg);border:1px solid #1e1e1e;text-align:left;">
-    <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;
-    color:var(--dim);opacity:.75;margin-bottom:14px;">Matter → Plant → Animal</div>
-    <div style="font-family:var(--serif);font-size:20px;color:var(--white);margin-bottom:10px;">
-    Subconscious Evolution</div>
-    <p style="font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;
-    color:var(--dim);margin-bottom:12px;">OUTSIDE IN</p>
-    <p style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.85;">
-    External physical form mutates first, pulling consciousness up with it. Evolution happens 
-    to the being — not from within it.</p>
-  </div>
-  <div style="padding:32px 28px;background:var(--bg-lift);border:1px solid var(--gold);
-  border-left:3px solid var(--gold);text-align:left;">
-    <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;
-    color:var(--gold);opacity:.85;margin-bottom:14px;">Man → Gnostic Being</div>
-    <div style="font-family:var(--serif);font-size:20px;color:var(--gold);margin-bottom:10px;">
-    Conscious Evolution</div>
-    <p style="font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;
-    color:var(--gold);opacity:.7;margin-bottom:12px;">INSIDE OUT</p>
-    <p style="font-family:var(--serif);font-size:14.5px;color:var(--mid);line-height:1.85;">
-    In the human being, consciousness evolves first from within, eventually transforming the 
-    external physical form. You are the first species that chooses its own next stage.</p>
-  </div>
-</div>
-    <button id="identityExpandBtn" class="collapse-toggle-btn">Expand &#9660;</button>
-    <p class="section-collapse-label">Tap to expand &mdash; collapsed by default</p>
-  </div>
-  <div class="identity-grid">
-    <div class="identity-card"><span class="layer-tag">Stage 1 &mdash; Root Chakra &middot; Body</span><h4>Innocence &amp; Material Reality</h4><p>You enter the world in a state of innocence. Life is ruled by basic needs for security and stability. Still connected to the field of the Absolute.</p><p class="practice">Seed Mantra: LAM &middot; Element: Earth &middot; Layer: The Body (Gross Physical)</p></div>
-    <div class="identity-card"><span class="layer-tag">Stage 2 &mdash; Sacral Chakra &middot; Breath</span><h4>Ego Emergence &amp; Fear</h4><p>Pure love is overshadowed by fear. You realize you depend on others. Personality forms.</p><p class="practice">Seed Mantra: VAM &middot; Element: Water &middot; Layer: The Breath (Prana)</p></div>
-    <div class="identity-card"><span class="layer-tag">Stage 3 &mdash; Solar Plexus &middot; Mind</span><h4>Power &amp; Knowledge</h4><p>In your desire to overcome fear, you seek control. The ego is at its peak. <strong style="color:var(--gold);font-weight:400;">First Fork:</strong> continue material consumption, or sense a deeper meaning and ascend.</p><p class="practice">Seed Mantra: RAM &middot; Element: Fire &middot; Layer: The Mind (Subtle)</p></div>
-    <div class="identity-card"><span class="layer-tag">Stage 4 &mdash; Heart Chakra &middot; Intellect</span><h4>Giving &amp; Choice</h4><p>Compassion opens. A shift from &ldquo;I&rdquo; to &ldquo;We&rdquo; breaks the chains of self-centeredness. <strong style="color:var(--gold);font-weight:400;">Second Fork:</strong> ego-driven giving or selfless love.</p><p class="practice">Seed Mantra: YAM &middot; Element: Air &middot; Layer: The Intellect (Buddhi)</p></div>
-    <div class="identity-card"><span class="layer-tag">Stage 5 &mdash; Throat Chakra &middot; Memory</span><h4>The Seeker &amp; Devotion</h4><p>Your spiritual practices become regular. The longing for enlightenment grows. The throat opens as you authentically express the inner qualities of your heart.</p><p class="practice">Seed Mantra: HAM &middot; Element: Ether &middot; Layer: Memory</p></div>
-    <div class="identity-card"><span class="layer-tag">Stage 6 &mdash; Third Eye &middot; Ego Layer</span><h4>Cosmic Consciousness</h4><p>Your mind fully awakens. You become the witness of your actions. The fear of death dissolves. <strong style="color:var(--gold);font-weight:400;">Final Fork:</strong> spiritual pride, or true humility.</p><p class="practice">Seed Mantra: OM &middot; Element: Light/Intuition &middot; Layer: The Ego (Observer)</p></div>
-    <div class="identity-card" style="border-color:#2a2a2a;background:radial-gradient(ellipse at 50% 0%,rgba(212,175,55,.05) 0%,transparent 65%);"><span class="layer-tag" style="opacity:1;">Stage 7 &mdash; Crown Chakra &middot; SELF</span><h4>Perfection &amp; Pure Joy</h4><p>Divine and Unity Consciousness. You still live &ldquo;in the world,&rdquo; but are no longer &ldquo;of the world.&rdquo; Individual identity dissolves into universal consciousness. <em style="color:var(--gold);">At the summit of subtilization, the burden of choice vanishes.</em></p><p class="practice">Seed Mantra: OM &middot; Element: Universal Consciousness &middot; Layer: The SELF (Atman)</p><p style="font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-top:12px;padding-top:12px;border-top:1px solid #1e1e1e;">Atman (Individual SELF) = Brahman (Supreme Reality)</p></div>
-    </div>
-  </div>
-</section>
-<div class="divider"></div>
-
 <!-- CONTRACT -->
 <section class="ca-full-section" id="contract">
   <span class="label">Contract</span>
@@ -2667,6 +2723,20 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
   </div>
   <div class="faq-list-wrap" id="faqListWrap">
   <div class="faq-list">
+    <div class="faq-item closed">
+      <button class="faq-q" onclick="faqToggle(this)">
+        <span>What is the Default OS?</span><span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p style="margin-bottom:16px;">The Default OS is the autopilot running underneath every decision, reaction, and trade you make before you consciously choose. It is the sum of your conditioning — patterns absorbed from upbringing, culture, fear, and habit — that fire automatically as stimulus-response loops.</p>
+        <p style="margin-bottom:16px;">In Sanskrit: <em style="color:var(--gold);">Vritti</em> — the constant stream of mental chatter, images, and fleeting concepts. Raw, unfiltered data flowing before meaning is attached. The Default OS is not the enemy. It is the starting point.</p>
+        <div style="padding:20px 22px;border-left:3px solid var(--gold);background:var(--bg-lift);margin:16px 0;">
+          <p style="font-family:var(--serif);font-size:15.5px;color:var(--mid);line-height:1.88;margin-bottom:10px;">The Default OS is also responsible for habituation — why the brain treats constant blessings (air, light, water) as background noise. What is always present becomes invisible. This is not ingratitude. It is the programme running exactly as designed.</p>
+          <p style="font-family:var(--serif);font-size:15.5px;color:var(--mid);line-height:1.88;margin:0;">Most people spend an entire lifetime on autopilot without ever noticing the screen it runs on. The screen is your true SELF.</p>
+        </div>
+        <p style="color:var(--gold);font-style:italic;">The entire *SELF framework begins at this one recognition: the Default OS is running. Once you see the programme, you can choose to respond rather than react. That gap between stimulus and response — that is where the RRRR Protocol lives.</p>
+      </div></div>
+    </div>
 
     <div class="faq-item closed">
       <button class="faq-q" onclick="faqToggle(this)">
