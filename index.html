@@ -163,6 +163,32 @@ html{scroll-behavior:smooth;}
 [data-theme="light"] .sl-name{color:#1a1208 !important;}
 [data-theme="light"] .collapse-toggle-btn{border-color:rgba(138,106,18,0.5) !important;color:#7a5e0e !important;}
 [data-theme="light"] .collapse-toggle-btn:hover{background:rgba(122,94,14,0.1) !important;}
+/* Light theme — border fixes for all bordered boxes */
+[data-theme="light"] .ipo-upanishad{border-color:rgba(0,0,0,0.15) !important;border-left-color:rgba(138,106,18,0.6) !important;background:#ede6d0 !important;}
+[data-theme="light"] .antidote-box{border-color:rgba(138,106,18,0.5) !important;background:rgba(138,106,18,0.04) !important;}
+[data-theme="light"] .antidote-step{background:#faf8f3 !important;border-color:rgba(0,0,0,0.1) !important;}
+[data-theme="light"] .vision-box{border-color:rgba(0,0,0,0.15) !important;background:#ede6d0 !important;}
+[data-theme="light"] .vision-pillar{border-left-color:rgba(138,106,18,0.6) !important;}
+[data-theme="light"] .cosmo-quote{background:#ede6d0 !important;border-color:rgba(0,0,0,0.12) !important;border-left-color:rgba(138,106,18,0.7) !important;}
+[data-theme="light"] .pull-quote{border-left-color:rgba(138,106,18,0.6) !important;}
+[data-theme="light"] .symptoms-block-box{background:#ede6d0 !important;}
+[data-theme="light"] .ipo-table{border-color:rgba(0,0,0,0.2) !important;}
+[data-theme="light"] .ipo-table-row{border-bottom-color:rgba(0,0,0,0.1) !important;}
+[data-theme="light"] .rasa-closing{background:#faf8f3 !important;border-color:rgba(0,0,0,0.12) !important;border-left-color:rgba(138,106,18,0.6) !important;}
+[data-theme="light"] .superordinate-box{background:#ede6d0 !important;border-color:rgba(0,0,0,0.15) !important;}
+[data-theme="light"] .enn-intro-box{background:#faf8f3 !important;border-color:rgba(0,0,0,0.12) !important;}
+[data-theme="light"] .ego-ring-wrap{background:#ede6d0 !important;border-color:rgba(0,0,0,0.15) !important;}
+[data-theme="light"] .ca-full-box{background:#ede6d0 !important;border-color:rgba(0,0,0,0.15) !important;}
+[data-theme="light"] .watch-link{border-color:rgba(0,0,0,0.15) !important;}
+[data-theme="light"] .watch-thumb{border-color:rgba(0,0,0,0.15) !important;}
+[data-theme="light"] .mirror-link{border-color:rgba(0,0,0,0.15) !important;}
+[data-theme="light"] .mirror-link.primary{background:rgba(138,106,18,0.9) !important;color:#faf8f3 !important;border-color:transparent !important;}
+[data-theme="light"] .faq-section{background:#ede6d0 !important;}
+/* Inline bordered boxes with var() references */
+[data-theme="light"] [style*="border:1px solid var(--gold)"]{border-color:rgba(138,106,18,0.55) !important;}
+[data-theme="light"] [style*="border-left:3px solid var(--gold)"]{border-left-color:rgba(138,106,18,0.7) !important;}
+[data-theme="light"] [style*="border:2px solid var(--gold)"]{border-color:rgba(138,106,18,0.55) !important;}
+[data-theme="light"] [style*="border-left:2px solid var(--gold)"]{border-left-color:rgba(138,106,18,0.6) !important;}  
 [data-theme="light"] .section-collapse-wrap .section-collapse-inner{border-color:rgba(0,0,0,0.1) !important;}
 [data-theme="light"] .stage-item{border-color:rgba(0,0,0,0.1) !important;background:#ede6d0 !important;}
 [data-theme="light"] .stage-body-col .s-title{color:#1a1208 !important;}
@@ -741,6 +767,131 @@ section{scroll-margin-top:140px;}
   }
 
 }
+/* ── UNIFIED TYPOGRAPHY SYSTEM ───────────────────────────────────────────── */
+
+/* Section h2 — all major section headings normalized */
+.astrolabe-section h2,
+.two-paths h2,
+.why-section h2,
+.ego-arch-section h2,
+.enn-section h2,
+.descent-section h2,
+.rasa-section h2,
+.mirror-room h2,
+.identity-section h2,
+.vision-section h2 {
+  font-size:clamp(22px,3.5vw,36px);
+  font-weight:300;
+  line-height:1.5;
+  max-width:700px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+/* Inline h2 equivalents (styled with inline style — override for consistency) */
+section h2,
+.section-wide h2 {
+  font-size:clamp(22px,3.5vw,36px) !important;
+  font-weight:300 !important;
+  line-height:1.5 !important;
+}
+
+/* Sub/descriptor text below section headings */
+.astrolabe-section .sub,
+.two-paths .sub,
+.enn-section .sub,
+.descent-section .sub,
+.rasa-section .sub,
+.mirror-room .descriptor,
+.identity-section .sub {
+  font-size:clamp(15px,2vw,19px);
+  font-weight:300;
+  line-height:1.85;
+  color:var(--grey);
+  max-width:580px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+/* Card body text — all card types */
+.framework-card p,
+.pillar-card .p-body,
+.identity-card p,
+.why-card p,
+.path-card p,
+.ego-twin-card p,
+.enneagram-card .ec-val,
+.enneagram-card .ec-synthesis,
+.antidote-step .as-text,
+.sl-desc,
+.ds-text,
+.s-text {
+  font-size:clamp(15px,1.9vw,17px);
+  line-height:1.88;
+  font-weight:300;
+}
+
+/* Card headings — h3, h4 in cards */
+.framework-card h3,
+.identity-card h4,
+.ego-twin-card h4,
+.why-card h4 {
+  font-size:clamp(19px,2.4vw,22px);
+  font-weight:400;
+  line-height:1.35;
+}
+
+/* Pull quote and cosmo quote — unified */
+.pull-quote p,
+.cosmo-quote p {
+  font-size:clamp(18px,2.6vw,26px);
+  font-weight:300;
+  line-height:1.7;
+}
+
+/* Phil lines — unified */
+.phil-line {
+  font-size:clamp(18px,2.6vw,25px);
+  font-weight:300;
+  line-height:1.9;
+}
+.phil-line.dim {
+  font-size:clamp(16px,2vw,21px);
+}
+
+/* FAQ body text */
+.faq-a-inner {
+  font-size:clamp(16px,2vw,18px);
+  line-height:1.95;
+}
+
+/* Table cells — tradition, rasa, ipo */
+.tradition-cell,
+.rasa-cell,
+.ipo-cell {
+  font-size:clamp(14px,1.7vw,16px);
+}
+
+/* Ego sub-header h3 — section mini-headers */
+.ego-sub-header-text h3 {
+  font-size:clamp(19px,2.6vw,26px);
+  font-weight:300;
+}
+
+/* Stairway / descent step titles */
+.ds-title,
+.sl-name,
+.stage-body-col .s-title,
+.as-title {
+  font-size:clamp(17px,2.1vw,20px);
+  font-weight:400;
+}
+
+/* Label (the small uppercase trackers above sections) — already uniform, lock it */
+.label {
+  font-size:11px;
+  letter-spacing:5px;
+}  
 </style>
 </head>
 <body>
@@ -1901,11 +2052,12 @@ section{scroll-margin-top:140px;}
           </div>
         </div>
       </div><!-- end steps flex -->
-      <div style="padding:28px 32px;border:1px solid #1e1e1e;border-left:3px solid var(--gold);background:var(--bg-lift);text-align:left;margin-top:2px;">
-        <p style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.75;margin-bottom:12px;">The Irreversible Law</p>
-        <p style="font-family:var(--serif);font-size:clamp(16px,2.1vw,19px);color:var(--mid);line-height:1.9;margin-bottom:0;">Because Spirit involved itself in Inconscience, the emergence of divine life is a structural inevitability — not a hope. The ignorance is not an error. It is a willed, temporary descent for the joy of evolutionary self-discovery.</p>
-      </div>
-    </div><!-- end stairway-content -->
+      </div><!-- end stairway-content -->
+    <!-- Irreversible Law — standalone, always visible -->
+    <div style="max-width:700px;margin:16px auto 0;padding:28px 32px;border:1px solid #1e1e1e;border-left:3px solid var(--gold);background:var(--bg-lift);text-align:left;">
+      <p style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.75;margin-bottom:12px;">The Irreversible Law</p>
+      <p style="font-family:var(--serif);font-size:clamp(16px,2.1vw,19px);color:var(--mid);line-height:1.9;margin-bottom:0;">Because Spirit involved itself in Inconscience, the emergence of divine life is a structural inevitability — not a hope. The ignorance is not an error. It is a willed, temporary descent for the joy of evolutionary self-discovery.</p>
+    </div>
 
     <!-- Sevenfold — standalone, always visible -->
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;max-width:700px;margin:28px auto 0;">
