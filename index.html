@@ -1026,6 +1026,20 @@ section h2,
   .hero > a[href="#contract"]{margin:0 auto !important;}
   .hero > div[style*="padding:22px 32px"]{padding:14px 18px !important;margin-bottom:0 !important;}
 }
+ /* ── MASTER MATRIX LIGHT THEME ───────────────────────────────────────────── */
+[data-theme="light"] [style*="min-width:700px"] > div[style*="background:#0a0a0a"] {
+  background: #c8bfa0 !important;
+}
+[data-theme="light"] [style*="min-width:700px"] > div > div {
+  color: #1a1208 !important;
+  border-color: rgba(0,0,0,0.1) !important;
+}
+[data-theme="light"] [style*="min-width:700px"] > div > div[style*="color:var(--gold)"] {
+  color: #7a5e0e !important;
+}
+[data-theme="light"] [style*="min-width:700px"] > div[style*="border-left:3px solid var(--gold)"] {
+  background: rgba(122,94,14,0.05) !important;
+} 
 </style>
 </head>
 <body>
@@ -1653,59 +1667,63 @@ section h2,
   <div style="max-width:860px;margin:0 auto;">
     <span class="label" style="margin-bottom:28px;">Three Mechanisms of Cognition</span>
     
- <div style="max-width:760px;margin:28px auto 0;border:1px solid #1e1e1e;overflow-x:auto;-webkit-overflow-scrolling:touch;">
-  <div style="min-width:560px;">
+ <div style="max-width:900px;margin:28px auto 0;border:1px solid #1e1e1e;overflow-x:auto;-webkit-overflow-scrolling:touch;">
+  <div style="min-width:680px;">
 
-       <!-- Header row -->
-<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;border-bottom:1px solid #1a1a1a;background:#0a0a0a;">
-  <div style="font-family:var(--serif);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);padding:14px 18px;border-right:1px solid #1a1a1a;"></div>
-  <div style="font-family:var(--serif);font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:14px 18px;border-right:1px solid #1a1a1a;text-align:center;">
-    <span style="color:var(--white);display:block;margin-bottom:4px;">Indirect Contact</span>
-    <span style="color:var(--dim);font-size:8px;letter-spacing:1.5px;">(Normal Mind)</span>
-  </div>
-  <div style="font-family:var(--serif);font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:14px 18px;border-right:1px solid #1a1a1a;text-align:center;">
-    <span style="color:var(--white);display:block;margin-bottom:4px;">Intimate Contact</span>
-    <span style="color:var(--dim);font-size:8px;letter-spacing:1.5px;">(Subliminal)</span>
-  </div>
-  <div style="font-family:var(--serif);font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:14px 18px;border-right:1px solid #1a1a1a;text-align:center;">
-    <span style="color:var(--white);display:block;margin-bottom:4px;">Direct Contact</span>
-    <span style="color:var(--dim);font-size:8px;letter-spacing:1.5px;">(Subliminal)</span>
-  </div>
-  <div style="font-family:var(--serif);font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:14px 18px;text-align:center;">
-    <span style="color:var(--gold);display:block;margin-bottom:4px;">By Identity</span>
-    <span style="color:var(--gold);font-size:8px;letter-spacing:1.5px;opacity:.6;">(Supermind)</span>
-  </div>
-</div>
+    <!-- Header row: 5 columns -->
+    <div style="display:grid;grid-template-columns:160px repeat(4,1fr);border-bottom:1px solid #1a1a1a;background:#0a0a0a;">
+      <div style="padding:14px 12px;border-right:1px solid #1a1a1a;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:3px;">
+        <span style="font-family:var(--sans);font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);opacity:.9;line-height:1.4;">7 SPIRITUAL LAYERS</span>
+        <span style="color:var(--gold);font-size:16px;line-height:1;opacity:.7;">↓</span>
+        <div style="width:70%;height:1px;background:rgba(212,175,55,0.35);"></div>
+        <span style="font-family:var(--sans);font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);opacity:.9;line-height:1.4;">6 MATERIAL STAGES →</span>
+      </div>
+      <div style="padding:14px 10px;border-right:1px solid #1a1a1a;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;">
+        <span style="font-family:var(--sans);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--white);display:block;">Indirect Contact</span>
+        <span style="font-family:var(--sans);font-size:8px;letter-spacing:1px;color:var(--dim);">(Normal Mind)</span>
+      </div>
+      <div style="padding:14px 10px;border-right:1px solid #1a1a1a;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;">
+        <span style="font-family:var(--sans);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--white);display:block;">Intimate Contact</span>
+        <span style="font-family:var(--sans);font-size:8px;letter-spacing:1px;color:var(--dim);">(Subliminal)</span>
+      </div>
+      <div style="padding:14px 10px;border-right:1px solid #1a1a1a;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;">
+        <span style="font-family:var(--sans);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--white);display:block;">Direct Contact</span>
+        <span style="font-family:var(--sans);font-size:8px;letter-spacing:1px;color:var(--dim);">(Subliminal)</span>
+      </div>
+      <div style="padding:14px 10px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;">
+        <span style="font-family:var(--sans);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);display:block;">By Identity</span>
+        <span style="font-family:var(--sans);font-size:8px;letter-spacing:1px;color:var(--gold);opacity:.65;">(Supermind)</span>
+      </div>
+    </div>
 
     <!-- Row 1: Instrument -->
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;border-bottom:1px solid #1a1a1a;">
-      <div style="font-family:var(--serif);font-size:13.5px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);padding:18px 18px;border-right:1px solid #1a1a1a;display:flex;align-items:center;justify-content:center;text-align:center;">Instrument</div>
-      <div style="font-family:var(--serif);font-size:14.5px;color:var(--grey);padding:18px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Senses &amp; Reason</div>
-       <div style="font-family:var(--serif);font-size:14.5px;color:var(--grey);padding:18px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Inner Awareness</div>
-      <div style="font-family:var(--serif);font-size:14.5px;color:var(--grey);padding:18px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Telepathy &amp; Inner Touch</div>
-      <div style="font-family:var(--serif);font-size:14.5px;color:var(--gold);padding:18px;text-align:center;display:flex;align-items:center;justify-content:center;">Inherent Oneness</div>
+    <div style="display:grid;grid-template-columns:160px repeat(4,1fr);border-bottom:1px solid #1a1a1a;">
+      <div style="font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);padding:18px 12px;border-right:1px solid #1a1a1a;display:flex;align-items:center;justify-content:center;text-align:center;">Instrument</div>
+      <div style="font-family:var(--serif);font-size:14px;color:var(--grey);padding:18px 12px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Senses &amp; Reason</div>
+      <div style="font-family:var(--serif);font-size:14px;color:var(--grey);padding:18px 12px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Inner Awareness</div>
+      <div style="font-family:var(--serif);font-size:14px;color:var(--grey);padding:18px 12px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Telepathy &amp; Inner Touch</div>
+      <div style="font-family:var(--serif);font-size:14px;color:var(--gold);padding:18px 12px;text-align:center;display:flex;align-items:center;justify-content:center;">Inherent Oneness</div>
     </div>
 
     <!-- Row 2: Relation to Object -->
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;border-bottom:1px solid #1a1a1a;">
-      <div style="font-family:var(--serif);font-size:13.5px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);padding:18px;border-right:1px solid #1a1a1a;display:flex;align-items:center;justify-content:center;text-align:center;">Relation to Object</div>
-      <div style="font-family:var(--serif);font-size:14.5px;color:var(--grey);padding:18px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">External &amp; Separative</div>
-      <div style="font-family:var(--serif);font-size:14.5px;color:var(--grey);padding:18px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Unmediated Inner Knowing</div>
-      <div style="font-family:var(--serif);font-size:14.5px;color:var(--grey);padding:18px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Touching but &ldquo;Other&rdquo;</div>
-      <div style="font-family:var(--serif);font-size:14.5px;color:var(--gold);padding:18px;text-align:center;display:flex;align-items:center;justify-content:center;">Being the Object</div>
+    <div style="display:grid;grid-template-columns:160px repeat(4,1fr);border-bottom:1px solid #1a1a1a;">
+      <div style="font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);padding:18px 12px;border-right:1px solid #1a1a1a;display:flex;align-items:center;justify-content:center;text-align:center;">Relation to<br>Object</div>
+      <div style="font-family:var(--serif);font-size:14px;color:var(--grey);padding:18px 12px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">External &amp; Separative</div>
+      <div style="font-family:var(--serif);font-size:14px;color:var(--grey);padding:18px 12px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Unmediated Inner Knowing</div>
+      <div style="font-family:var(--serif);font-size:14px;color:var(--grey);padding:18px 12px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Touching but &ldquo;Other&rdquo;</div>
+      <div style="font-family:var(--serif);font-size:14px;color:var(--gold);padding:18px 12px;text-align:center;display:flex;align-items:center;justify-content:center;">Being the Object</div>
     </div>
 
     <!-- Row 3: Result -->
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;">
-      <div style="font-family:var(--serif);font-size:13.5px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);padding:18px;border-right:1px solid #1a1a1a;display:flex;align-items:center;justify-content:center;text-align:center;">Result</div>
-      <div style="font-family:var(--serif);font-size:14.5px;color:#c0392b;font-style:italic;padding:18px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Error &amp; Falsehood</div>
-      <div style="font-family:var(--serif);font-size:14.5px;color:var(--grey);padding:18px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Personal Truth</div>
-      <div style="font-family:var(--serif);font-size:14.5px;color:var(--grey);padding:18px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Partial Truth</div>
-      <div style="font-family:var(--serif);font-size:14.5px;color:var(--gold);padding:18px;text-align:center;display:flex;align-items:center;justify-content:center;">Complete, Indivisible Truth</div>
+    <div style="display:grid;grid-template-columns:160px repeat(4,1fr);">
+      <div style="font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);padding:18px 12px;border-right:1px solid #1a1a1a;display:flex;align-items:center;justify-content:center;text-align:center;">Result</div>
+      <div style="font-family:var(--serif);font-size:14px;color:#c0392b;font-style:italic;padding:18px 12px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Error &amp; Falsehood</div>
+      <div style="font-family:var(--serif);font-size:14px;color:var(--grey);padding:18px 12px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Personal Truth</div>
+      <div style="font-family:var(--serif);font-size:14px;color:var(--grey);padding:18px 12px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Partial Truth</div>
+      <div style="font-family:var(--serif);font-size:14px;color:var(--gold);padding:18px 12px;text-align:center;display:flex;align-items:center;justify-content:center;">Complete, Indivisible Truth</div>
     </div>
 
   </div>
-</div>
 </div>
 </section>
 <section class="section">
@@ -2589,91 +2607,97 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
     <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;">6 Material Stages × 7 Spiritual Layers = 42</h2>
     <p style="font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:580px;margin:0 auto 36px;font-style:italic;line-height:1.85;text-align:center;">The body undergoes 6 material changes. Consciousness ascends through 7 layers. Their product is the complete map of human existence.</p>
 
-    <div style="max-width:820px;margin:0 auto;overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid #1e1e1e;">
-      <div style="min-width:640px;">
-        <!-- header -->
-        <div style="display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr 1fr 1fr 1fr;background:#0a0a0a;border-bottom:1px solid #1a1a1a;">
-          <div style="font-family:var(--serif);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);padding:12px 14px;border-right:1px solid #1a1a1a;"></div>
-          <div style="font-family:var(--serif);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);padding:12px 10px;border-right:1px solid #1a1a1a;text-align:center;">Birth</div>
-          <div style="font-family:var(--serif);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);padding:12px 10px;border-right:1px solid #1a1a1a;text-align:center;">Growth</div>
-          <div style="font-family:var(--serif);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);padding:12px 10px;border-right:1px solid #1a1a1a;text-align:center;">Sustenance</div>
-          <div style="font-family:var(--serif);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);padding:12px 10px;border-right:1px solid #1a1a1a;text-align:center;">Transformation</div>
-          <div style="font-family:var(--serif);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);padding:12px 10px;border-right:1px solid #1a1a1a;text-align:center;">Deterioration</div>
-          <div style="font-family:var(--serif);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);padding:12px 10px;text-align:center;">Death</div>
+    <div style="max-width:900px;margin:0 auto;overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid #1e1e1e;">
+      <div style="min-width:700px;">
+        <!-- header row -->
+        <div style="display:grid;grid-template-columns:150px repeat(6,1fr);background:#0a0a0a;border-bottom:1px solid #1a1a1a;">
+          <!-- Axis label cell -->
+          <div style="padding:10px 8px;border-right:1px solid #1a1a1a;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:2px;min-height:60px;">
+            <span style="font-family:var(--sans);font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);opacity:.9;line-height:1.5;">7 SPIRITUAL LAYERS</span>
+            <span style="color:var(--gold);font-size:15px;line-height:1;opacity:.65;">↓</span>
+            <div style="width:60%;height:1px;background:rgba(212,175,55,0.35);margin:1px 0;"></div>
+            <span style="color:var(--gold);font-size:15px;line-height:1;opacity:.65;">→</span>
+            <span style="font-family:var(--sans);font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);opacity:.9;line-height:1.5;">6 MATERIAL STAGES</span>
+          </div>
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);padding:10px 8px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Birth</div>
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);padding:10px 8px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Growth</div>
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);padding:10px 8px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Sustenance</div>
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);padding:10px 8px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Transformation</div>
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);padding:10px 8px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Deterioration</div>
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);padding:10px 8px;text-align:center;display:flex;align-items:center;justify-content:center;">Death</div>
         </div>
-        <!-- Body row -->
-        <div style="display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr 1fr 1fr 1fr;border-bottom:1px solid #1a1a1a;">
-          <div style="font-family:var(--serif);font-size:13px;color:var(--mid);padding:14px;border-right:1px solid #1a1a1a;font-style:italic;">1. Body</div>
-          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 10px;border-right:1px solid #1a1a1a;text-align:center;">Womb</div>
-          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 10px;border-right:1px solid #1a1a1a;text-align:center;">Infancy</div>
-          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 10px;border-right:1px solid #1a1a1a;text-align:center;">Health</div>
-          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 10px;border-right:1px solid #1a1a1a;text-align:center;">Aging</div>
-          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 10px;border-right:1px solid #1a1a1a;text-align:center;">Senescence</div>
-          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 10px;text-align:center;">Mortality</div>
+        <!-- Row 1: Body -->
+        <div style="display:grid;grid-template-columns:150px repeat(6,1fr);border-bottom:1px solid #1a1a1a;">
+          <div style="font-family:var(--serif);font-size:13px;color:var(--mid);padding:14px 10px;border-right:1px solid #1a1a1a;font-style:italic;display:flex;align-items:center;justify-content:flex-start;">1. Body</div>
+          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 8px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Womb</div>
+          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 8px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Infancy</div>
+          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 8px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Health</div>
+          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 8px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Aging</div>
+          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 8px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Senescence</div>
+          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 8px;text-align:center;display:flex;align-items:center;justify-content:center;">Mortality</div>
         </div>
-        <!-- Breath -->
-        <div style="display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr 1fr 1fr 1fr;border-bottom:1px solid #1a1a1a;">
-          <div style="font-family:var(--serif);font-size:13px;color:var(--mid);padding:14px;border-right:1px solid #1a1a1a;font-style:italic;">2. Breath</div>
-          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 10px;border-right:1px solid #1a1a1a;text-align:center;">First cry</div>
-          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 10px;border-right:1px solid #1a1a1a;text-align:center;">Deepening</div>
-          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 10px;border-right:1px solid #1a1a1a;text-align:center;">Rhythm</div>
-          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 10px;border-right:1px solid #1a1a1a;text-align:center;">Emotion</div>
-          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 10px;border-right:1px solid #1a1a1a;text-align:center;">Laboured</div>
-          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 10px;text-align:center;">Last breath</div>
+        <!-- Row 2: Breath -->
+        <div style="display:grid;grid-template-columns:150px repeat(6,1fr);border-bottom:1px solid #1a1a1a;">
+          <div style="font-family:var(--serif);font-size:13px;color:var(--mid);padding:14px 10px;border-right:1px solid #1a1a1a;font-style:italic;display:flex;align-items:center;justify-content:flex-start;">2. Breath</div>
+          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 8px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">First cry</div>
+          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 8px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Deepening</div>
+          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 8px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Rhythm</div>
+          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 8px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Emotion</div>
+          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 8px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Laboured</div>
+          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 8px;text-align:center;display:flex;align-items:center;justify-content:center;">Last breath</div>
         </div>
-        <!-- Mind -->
-        <div style="display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr 1fr 1fr 1fr;border-bottom:1px solid #1a1a1a;">
-          <div style="font-family:var(--serif);font-size:13px;color:var(--mid);padding:14px;border-right:1px solid #1a1a1a;font-style:italic;">3. Mind</div>
-          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 10px;border-right:1px solid #1a1a1a;text-align:center;">Sensory</div>
-          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 10px;border-right:1px solid #1a1a1a;text-align:center;">Learning</div>
-          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 10px;border-right:1px solid #1a1a1a;text-align:center;">Perception</div>
-          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 10px;border-right:1px solid #1a1a1a;text-align:center;">Shifting</div>
-          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 10px;border-right:1px solid #1a1a1a;text-align:center;">Fatigue</div>
-          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 10px;text-align:center;">Loss of senses</div>
+        <!-- Row 3: Mind -->
+        <div style="display:grid;grid-template-columns:150px repeat(6,1fr);border-bottom:1px solid #1a1a1a;">
+          <div style="font-family:var(--serif);font-size:13px;color:var(--mid);padding:14px 10px;border-right:1px solid #1a1a1a;font-style:italic;display:flex;align-items:center;justify-content:flex-start;">3. Mind</div>
+          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 8px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Sensory</div>
+          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 8px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Learning</div>
+          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 8px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Perception</div>
+          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 8px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Shifting</div>
+          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 8px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Fatigue</div>
+          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 8px;text-align:center;display:flex;align-items:center;justify-content:center;">Loss of senses</div>
         </div>
-        <!-- Intellect -->
-        <div style="display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr 1fr 1fr 1fr;border-bottom:1px solid #1a1a1a;">
-          <div style="font-family:var(--serif);font-size:13px;color:var(--mid);padding:14px;border-right:1px solid #1a1a1a;font-style:italic;">4. Intellect</div>
-          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 10px;border-right:1px solid #1a1a1a;text-align:center;">Curiosity</div>
-          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 10px;border-right:1px solid #1a1a1a;text-align:center;">Logic</div>
-          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 10px;border-right:1px solid #1a1a1a;text-align:center;">Stability</div>
-          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 10px;border-right:1px solid #1a1a1a;text-align:center;">Shifting beliefs</div>
-          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 10px;border-right:1px solid #1a1a1a;text-align:center;">Decline</div>
-          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 10px;text-align:center;">Loss of judgment</div>
+        <!-- Row 4: Intellect -->
+        <div style="display:grid;grid-template-columns:150px repeat(6,1fr);border-bottom:1px solid #1a1a1a;">
+          <div style="font-family:var(--serif);font-size:13px;color:var(--mid);padding:14px 10px;border-right:1px solid #1a1a1a;font-style:italic;display:flex;align-items:center;justify-content:flex-start;">4. Intellect</div>
+          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 8px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Curiosity</div>
+          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 8px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Logic</div>
+          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 8px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Stability</div>
+          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 8px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Shifting beliefs</div>
+          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 8px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Decline</div>
+          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 8px;text-align:center;display:flex;align-items:center;justify-content:center;">Loss of judgment</div>
         </div>
-        <!-- Memory -->
-        <div style="display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr 1fr 1fr 1fr;border-bottom:1px solid #1a1a1a;">
-          <div style="font-family:var(--serif);font-size:13px;color:var(--mid);padding:14px;border-right:1px solid #1a1a1a;font-style:italic;">5. Memory</div>
-          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 10px;border-right:1px solid #1a1a1a;text-align:center;">First impression</div>
-          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 10px;border-right:1px solid #1a1a1a;text-align:center;">Experience</div>
-          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 10px;border-right:1px solid #1a1a1a;text-align:center;">Storing</div>
-          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 10px;border-right:1px solid #1a1a1a;text-align:center;">Trauma</div>
-          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 10px;border-right:1px solid #1a1a1a;text-align:center;">Forgetfulness</div>
-          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 10px;text-align:center;">Erasure</div>
+        <!-- Row 5: Memory -->
+        <div style="display:grid;grid-template-columns:150px repeat(6,1fr);border-bottom:1px solid #1a1a1a;">
+          <div style="font-family:var(--serif);font-size:13px;color:var(--mid);padding:14px 10px;border-right:1px solid #1a1a1a;font-style:italic;display:flex;align-items:center;justify-content:flex-start;">5. Memory</div>
+          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 8px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">First impression</div>
+          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 8px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Experience</div>
+          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 8px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Storing</div>
+          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 8px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Trauma</div>
+          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 8px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Forgetfulness</div>
+          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 8px;text-align:center;display:flex;align-items:center;justify-content:center;">Erasure</div>
         </div>
-        <!-- Ego -->
-        <div style="display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr 1fr 1fr 1fr;border-bottom:1px solid #1a1a1a;">
-          <div style="font-family:var(--serif);font-size:13px;color:var(--mid);padding:14px;border-right:1px solid #1a1a1a;font-style:italic;">6. Ego</div>
-          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 10px;border-right:1px solid #1a1a1a;text-align:center;">Toddlerhood</div>
-          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 10px;border-right:1px solid #1a1a1a;text-align:center;">Ambition</div>
-          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 10px;border-right:1px solid #1a1a1a;text-align:center;">Persona</div>
-          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 10px;border-right:1px solid #1a1a1a;text-align:center;">Crisis</div>
-          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 10px;border-right:1px solid #1a1a1a;text-align:center;">Rigidity</div>
-          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 10px;text-align:center;">Dissolution</div>
+        <!-- Row 6: Ego -->
+        <div style="display:grid;grid-template-columns:150px repeat(6,1fr);border-bottom:1px solid #1a1a1a;">
+          <div style="font-family:var(--serif);font-size:13px;color:var(--mid);padding:14px 10px;border-right:1px solid #1a1a1a;font-style:italic;display:flex;align-items:center;justify-content:flex-start;">6. Ego</div>
+          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 8px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Toddlerhood</div>
+          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 8px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Ambition</div>
+          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 8px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Persona</div>
+          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 8px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Crisis</div>
+          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 8px;border-right:1px solid #1a1a1a;text-align:center;display:flex;align-items:center;justify-content:center;">Rigidity</div>
+          <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 8px;text-align:center;display:flex;align-items:center;justify-content:center;">Dissolution</div>
         </div>
-        <!-- SELF — highlighted -->
-        <div style="display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr 1fr 1fr 1fr;background:rgba(212,175,55,.04);border-left:3px solid var(--gold);">
-          <div style="font-family:var(--serif);font-size:13px;color:var(--gold);padding:14px;border-right:1px solid #1a1a1a;font-style:italic;">7. Self / Soul</div>
-          <div style="font-family:var(--serif);font-size:12px;color:var(--gold);padding:14px 10px;border-right:1px solid #1a1a1a;text-align:center;font-weight:400;text-transform:uppercase;letter-spacing:1px;">Manifestation</div>
-          <div style="font-family:var(--serif);font-size:12px;color:var(--gold);padding:14px 10px;border-right:1px solid #1a1a1a;text-align:center;font-weight:400;text-transform:uppercase;letter-spacing:1px;">Realization</div>
-          <div style="font-family:var(--serif);font-size:12px;color:var(--gold);padding:14px 10px;border-right:1px solid #1a1a1a;text-align:center;font-weight:400;text-transform:uppercase;letter-spacing:1px;">Eternal Witness</div>
-          <div style="font-family:var(--serif);font-size:12px;color:var(--gold);padding:14px 10px;border-right:1px solid #1a1a1a;text-align:center;font-weight:400;text-transform:uppercase;letter-spacing:1px;">Transcends</div>
-          <div style="font-family:var(--serif);font-size:12px;color:var(--gold);padding:14px 10px;border-right:1px solid #1a1a1a;text-align:center;font-weight:400;text-transform:uppercase;letter-spacing:1px;">Unchanged</div>
-          <div style="font-family:var(--serif);font-size:12px;color:var(--gold);padding:14px 10px;text-align:center;font-weight:400;text-transform:uppercase;letter-spacing:1px;">Unchanged</div>
+        <!-- Row 7: Self / Soul — gold highlighted -->
+        <div style="display:grid;grid-template-columns:150px repeat(6,1fr);background:rgba(212,175,55,.04);border-left:3px solid var(--gold);">
+          <div style="font-family:var(--serif);font-size:13px;color:var(--gold);padding:14px 10px;border-right:1px solid #1a1a1a;font-style:italic;display:flex;align-items:center;justify-content:flex-start;">7. Self / Soul</div>
+          <div style="font-family:var(--sans);font-size:11px;color:var(--gold);padding:14px 8px;border-right:1px solid #1a1a1a;text-align:center;font-weight:400;text-transform:uppercase;letter-spacing:1px;display:flex;align-items:center;justify-content:center;">Manifestation</div>
+          <div style="font-family:var(--sans);font-size:11px;color:var(--gold);padding:14px 8px;border-right:1px solid #1a1a1a;text-align:center;font-weight:400;text-transform:uppercase;letter-spacing:1px;display:flex;align-items:center;justify-content:center;">Realization</div>
+          <div style="font-family:var(--sans);font-size:11px;color:var(--gold);padding:14px 8px;border-right:1px solid #1a1a1a;text-align:center;font-weight:400;text-transform:uppercase;letter-spacing:1px;display:flex;align-items:center;justify-content:center;">Eternal Witness</div>
+          <div style="font-family:var(--sans);font-size:11px;color:var(--gold);padding:14px 8px;border-right:1px solid #1a1a1a;text-align:center;font-weight:400;text-transform:uppercase;letter-spacing:1px;display:flex;align-items:center;justify-content:center;">Transcends</div>
+          <div style="font-family:var(--sans);font-size:11px;color:var(--gold);padding:14px 8px;border-right:1px solid #1a1a1a;text-align:center;font-weight:400;text-transform:uppercase;letter-spacing:1px;display:flex;align-items:center;justify-content:center;">Unchanged</div>
+          <div style="font-family:var(--sans);font-size:11px;color:var(--gold);padding:14px 8px;text-align:center;font-weight:400;text-transform:uppercase;letter-spacing:1px;display:flex;align-items:center;justify-content:center;">Unchanged</div>
         </div>
       </div>
     </div>
-
     <div style="max-width:700px;margin:28px auto 0;padding:28px 32px;border:1px solid var(--gold);background:radial-gradient(ellipse at 50% 0%,rgba(212,175,55,.06) 0%,transparent 65%);text-align:center;">
       <p style="font-family:var(--serif);font-size:clamp(20px,3vw,28px);color:var(--gold);font-weight:300;line-height:1.6;margin-bottom:10px;">6 × 7 = 42</p>
       <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.85;">The 6 material stages the body undergoes. The 7 layers of consciousness that witness them. The SELF alone remains unchanged across all 42 intersections.</p>
