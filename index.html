@@ -171,6 +171,7 @@ body{
     width:calc(100% + 48px);
     border-left:none !important;
     border-right:none !important;
+    touch-action:pan-x pan-y;
   }
   /* Divider — prevent float from horizontal overflow */
   .divider{
@@ -433,8 +434,8 @@ a:hover{opacity:.7;}
 }
 .nav-logo-center img{width:100%;height:100%;object-fit:cover;display:block;}
 @keyframes navLogoGlow{
-  0%,100%{box-shadow:0 0 10px 3px rgba(212,175,55,0.4),0 0 28px 8px rgba(212,175,55,0.15);}
-  50%{box-shadow:0 0 20px 7px rgba(212,175,55,0.7),0 0 40px 14px rgba(212,175,55,0.32);}
+  0%,100%{opacity:0.85;}
+  50%{opacity:1;}
 }
 
 /* Theme button pinned to right edge */
@@ -450,8 +451,7 @@ a:hover{opacity:.7;}
 
 /* Mobile nav */
 @media(max-width:900px){
-  .site-nav{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;white-space:nowrap;}
-  .nav-logo-center{width:40px;height:40px;margin:0 1px;flex-shrink:0;}
+.site-nav{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;white-space:nowrap;touch-action:pan-x pan-y;}  .nav-logo-center{width:40px;height:40px;margin:0 1px;flex-shrink:0;}
   .nav-left{justify-content:flex-start; flex:0 !important;}
   .nav-right{justify-content:flex-start; flex:0 !important; padding-right:0 !important;}
   .nav-left li,.nav-right li{flex:0 !important; width:auto !important;}
@@ -879,7 +879,7 @@ section{scroll-margin-top:56px;}
 .rasa-section{padding:90px 24px;background:var(--bg-lift);border-top:1px solid #111;border-bottom:1px solid #111;}
 .rasa-section h2{font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;}
 .rasa-section .sub{font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:560px;margin:0 auto 52px;font-style:italic;line-height:1.85;}
-.rasa-table{max-width:900px;margin:0 auto;border:1px solid #2a2a2a;overflow:hidden;}
+.rasa-table{max-width:900px;margin:0 auto;border:1px solid #2a2a2a;overflow-x:auto;}
 .rasa-row{display:grid;grid-template-columns:1.2fr 1fr 1fr 1.2fr;border-bottom:1px solid #1a1a1a;}
 .rasa-row:last-child{border-bottom:none;}
 .rasa-row.header{background:#0a0a0a;}
@@ -1219,6 +1219,7 @@ section h2,
     width:calc(100% + 48px);
     border-left:none !important;
     border-right:none !important;
+    touch-action:pan-x pan-y;
   }
   /* Divider — prevent float from horizontal overflow */
   .divider{
@@ -1236,6 +1237,7 @@ section h2,
     width:calc(100% + 48px);
     border-left:none !important;
     border-right:none !important;
+    touch-action:pan-x pan-y;
   }
   /* Divider — prevent float from horizontal overflow */
   .divider{
@@ -1944,12 +1946,11 @@ section h2,
       <p style="font-size:clamp(15px,2vw,19px);color:var(--mid);line-height:1.9;margin-bottom:0;">All Experience is Awareness. The world, your thoughts, your emotions &mdash; these are the film. The screen remains unchanged by whatever plays upon it. You are that unchanging screen.</p>
     </div>
   </div>
+   </section>
   <section style="padding:52px 24px;background:var(--bg);border-top:1px solid #111;overflow:visible;">
   <div style="max-width:860px;margin:0 auto;">
     <span class="label" style="margin-bottom:28px;">Four Mechanisms of Cognition</span>
-    
- 
-<div class="self-table-wrap" style="max-width:900px;margin:28px auto 0;">
+    <div class="self-table-wrap" style="max-width:900px;margin:28px auto 0;">
   <table class="self-table" style="min-width:560px;">
     <thead>
       <tr>
@@ -1985,7 +1986,9 @@ section h2,
     </tbody>
   </table>
 </div>
- </section>
+  </section>
+</section>
+<div class="divider"></div>
 <section class="section">
   <div class="cosmo-quote">
     <p>&ldquo;Who looks outside, dreams; who looks inside, awakes.&rdquo;</p>
