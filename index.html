@@ -50,7 +50,7 @@ body{
   line-height:1.85;
   overflow-x:hidden;
   padding-top:var(--nav-h);
-  overscroll-behavior-y:contain;
+  overscroll-behavior:none;
   -webkit-overflow-scrolling:touch;
 }
 </CSS>
@@ -187,10 +187,7 @@ body{
   }
 }
 </style-snippet>
-body{
-  background:var(--bg);color:var(--white);font-family:var(--serif);text-align:center;line-height:1.85;overflow-x:hidden;padding-top:var(--nav-h);
-  overscroll-behavior-y:none;
-}:root{
+:root{
   --gold:#d4af37;
   --gold-glow:rgba(212,175,55,0.5);
   --gold-dim:rgba(212,175,55,0.12);
@@ -377,9 +374,9 @@ a:hover{opacity:.7;}
   display:flex;align-items:center;
   background:rgba(0,0,0,0.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
   border-bottom:1px solid #1c1c1c;transition:background .3s;
-  overflow:hidden;
-  will-change:transform;                    /* ← ADD */
-  -webkit-backface-visibility:hidden;       /* ← ADD */
+  overflow-x:auto;
+  will-change:transform;
+  -webkit-backface-visibility:hidden;
 }
 .site-nav.scrolled{background:rgba(0,0,0,0.98);}
 .progress-bar{position:absolute;bottom:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,rgba(212,175,55,.4) 0%,var(--gold) 100%);transition:width .1s linear;pointer-events:none;}
@@ -1863,7 +1860,7 @@ section h2,
   </div><!-- end cosmo-block -->
 
 <!-- AUROBINDO FOUR THEORIES — standalone, always visible -->
-<section style="padding:52px 24px;background:var(--bg);border-top:1px solid #111;overflow-x:clip;">
+<section style="padding:52px 24px;background:var(--bg);border-top:1px solid #111;overflow:hidden;">
   <div style="max-width:860px;margin:0 auto;">
     <span class="label" style="margin-bottom:28px;">The Four Theories of Human Existence</span>
 
@@ -1953,7 +1950,7 @@ section h2,
       <p style="font-size:clamp(15px,2vw,19px);color:var(--mid);line-height:1.9;margin-bottom:0;">All Experience is Awareness. The world, your thoughts, your emotions &mdash; these are the film. The screen remains unchanged by whatever plays upon it. You are that unchanging screen.</p>
     </div>
   </div>
-  <section style="padding:52px 24px;background:var(--bg);border-top:1px solid #111;overflow-x:clip;">
+  <section style="padding:52px 24px;background:var(--bg);border-top:1px solid #111;overflow:hidden;">
   <div style="max-width:860px;margin:0 auto;">
     <span class="label" style="margin-bottom:28px;">Four Mechanisms of Cognition</span>
     
@@ -2868,7 +2865,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
 <span class="continue-hint">continue</span>
 <div class="divider"></div>
 <!-- Insert after the 42 Cosmic Blueprint section, before WATCH -->
-<section style="padding:90px 24px;background:var(--bg);border-top:1px solid #111;border-bottom:1px solid #111;overflow-x:clip;">
+<section style="padding:90px 24px;background:var(--bg);border-top:1px solid #111;border-bottom:1px solid #111;overflow:hidden;">
   <div style="max-width:860px;margin:0 auto;">
     <span class="label">The Master Matrix of Existence</span>
     <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;">6 Material Stages × 7 Spiritual Layers = 42</h2>
