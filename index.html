@@ -38,6 +38,7 @@ gtag('config','G-XC5FG6W949');
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{
   overflow-x:hidden;
+  -webkit-overflow-scrolling:touch;  /* ADD THIS */
 }
 body{
   background:var(--bg);
@@ -48,6 +49,7 @@ body{
   overflow-x:hidden;
   padding-top:var(--nav-h);
   overscroll-behavior-x:auto;
+  -webkit-overflow-scrolling:touch;  /* ADD THIS */
 }
  
   /* ── SHARED TABLE STYLES)
@@ -60,8 +62,7 @@ body{
   margin:0 auto;
   position:relative;
   max-width:100%;
-  /* NO touch-action here — it blocks vertical page scroll */
-}
+  touch-action:pan-x pan-y;  /* ADD THIS LINE */}
 .self-table{
   width:100%;
   border-collapse:collapse;
