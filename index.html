@@ -36,8 +36,6 @@ gtag('config','G-XC5FG6W949');
 <link rel="icon" type="image/jpeg" href="./assets/images/SELF_Origin_1000x1000.png">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-<style-snippet>
-<CSS>
 html{
   scroll-behavior:smooth;
   overflow-x:hidden;
@@ -50,13 +48,11 @@ body{
   line-height:1.85;
   overflow-x:hidden;
   padding-top:var(--nav-h);
-  overscroll-behavior:none;
-  -webkit-overflow-scrolling:touch;
+  overscroll-behavior-y:none;
+  overscroll-behavior-x:auto;
 }
-</CSS>
  
- <CSS>
-  * ── SHARED TABLE STYLES ─────────────────────────────────────────────────── */
+  /* ── SHARED TABLE STYLES)
 .self-table-wrap{
   width:100%;
   overflow-x:auto;
@@ -64,11 +60,9 @@ body{
   overscroll-behavior-x:contain;
   border:1px solid #1e1e1e;
   margin:0 auto;
-
-  touch-action:pan-x;
-  isolation:isolate;
   position:relative;
   max-width:100%;
+  /* NO touch-action here — it blocks vertical page scroll */
 }
 .self-table{
   width:100%;
@@ -155,7 +149,6 @@ body{
 [data-theme="light"] .self-table tr.gold-row td.gold-flaw{color:#7a5e0e !important;}
 [data-theme="light"] .self-table-wrap{border-color:rgba(0,0,0,0.15);}
 [data-theme="light"] .axis-cell{background:#c8bfa0 !important;}
-</CSS>
 /* Mobile: stack axis label in 6x7 table */
 @media(max-width:640px){
   .self-table th,
@@ -186,7 +179,6 @@ body{
     overflow:hidden;
   }
 }
-</style-snippet>
 :root{
   --gold:#d4af37;
   --gold-glow:rgba(212,175,55,0.5);
@@ -356,7 +348,6 @@ body{
 [data-theme="light"] .rasa-closing p{color:#2e2008 !important;font-weight:400 !important;}
 [data-theme="light"] .dark-night-card p { color:#2e2008 !important; font-weight:400 !important; }
 [data-theme="light"] .gratitude-card p  { color:#2e2008 !important; font-weight:400 !important; }
-body{background:var(--bg);color:var(--white);font-family:var(--serif);text-align:center;line-height:1.85;overflow-x:hidden;padding-top:var(--nav-h);}
 a{color:var(--gold);text-decoration:none;transition:opacity .25s;}
 a:hover{opacity:.7;}
 /* Default OS tier cards */
@@ -922,8 +913,11 @@ section{scroll-margin-top:140px;}
   .ipo-upanishad{padding:22px 18px;}
   .framework-grid,.identity-grid,.why-grid,.pillar-grid,.enn-grid{grid-template-columns:1fr;gap:1px;}
   .paths-grid,.mc-compare{grid-template-columns:1fr;}
-  .rasa-row{grid-template-columns:1fr 1fr;}
+  .rasa-row{grid-template-columns:1.2fr 1fr 1.2fr;}
   .rasa-row .rasa-cell:nth-child(3){display:none;}
+  .rasa-row.header .rasa-cell:nth-child(3){display:none;}
+  .rasa-table{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .rasa-cell{font-size:12px !important;padding:12px 10px;}
   .ego-twin{grid-template-columns:1fr;}
   .ec-row{grid-template-columns:1fr;}
   .tradition-row{grid-template-columns:1fr;}
@@ -1841,26 +1835,26 @@ section h2,
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2px;margin:28px 0 0;">
     <div style="padding:28px 24px;background:var(--bg);border:1px solid #1e1e1e;text-align:left;">
         <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:12px;">Astrophysics</div>
-        <p style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.85;">Universe expansion rate: <strong style="color:var(--white);">42 mi/s/Mpc</strong>. Black hole max energy efficiency: <strong style="color:var(--white);">42%</strong>.</p>
+        <p style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.85;">Universe expansion rate: <strong style="color:var(--gold);">42 mi/s/Mpc</strong>. Black hole max energy efficiency: <strong style="color:var(--gold);">42%</strong>.</p>
       </div>
       <div style="padding:28px 24px;background:var(--bg);border:1px solid #1e1e1e;text-align:left;">
         <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:12px;">Light &amp; Optics</div>
-        <p style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.85;">The critical angle for a rainbow to appear: <strong style="color:var(--white);">42°</strong>. Orion Nebula: <strong style="color:var(--white);">M42</strong>.</p>
+        <p style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.85;">The critical angle for a rainbow to appear: <strong style="color:var(--gold);">42°</strong>. Orion Nebula: <strong style="color:var(--gold);">M42</strong>.</p>
       </div>
       <div style="padding:28px 24px;background:var(--bg);border:1px solid #1e1e1e;text-align:left;">
         <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:12px;">Mathematics</div>
-        <p style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.85;">2 × 3 × 7 = <strong style="color:var(--white);">42</strong>. Sum of first six even numbers = <strong style="color:var(--white);">42</strong>.</p>
+        <p style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.85;">2 × 3 × 7 = <strong style="color:var(--gold);">42</strong>. Sum of first six even numbers = <strong style="color:var(--gold);">42</strong>.</p>
       </div>
       <div style="padding:28px 24px;background:var(--bg);border:1px solid #1e1e1e;text-align:left;">
         <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:12px;">The Soul&rsquo;s Cycle</div>
-        <p style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.85;">Age <strong style="color:var(--white);">42</strong> — end of the first half of life. The definitive milestone for shedding societal conditioning.</p>
+        <p style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.85;">Age <strong style="color:var(--gold);">42</strong> — end of the first half of life. The definitive milestone for shedding societal conditioning.</p>
       </div>
     </div>
 </div>
   </div><!-- end cosmo-block -->
 
 <!-- AUROBINDO FOUR THEORIES — standalone, always visible -->
-<section style="padding:52px 24px;background:var(--bg);border-top:1px solid #111;overflow:hidden;">
+<section style="padding:52px 24px;background:var(--bg);border-top:1px solid #111;overflow:visible;">
   <div style="max-width:860px;margin:0 auto;">
     <span class="label" style="margin-bottom:28px;">The Four Theories of Human Existence</span>
 
@@ -1918,7 +1912,7 @@ section h2,
 <section style="padding:90px 24px;background:var(--bg-lift);border-top:1px solid #111;border-bottom:1px solid #111;">
   <div style="max-width:760px;margin:0 auto;">
     <span class="label">The Perceptual Chain</span>
-    <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:660px;margin:0 auto 16px;line-height:1.5;">How the universe reaches you</h2>
+    <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--gold);max-width:660px;margin:0 auto 16px;line-height:1.5;">How the universe reaches you</h2>
     <p style="font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:560px;margin:0 auto 52px;font-style:italic;line-height:1.85;">The chain through which all experience arrives &mdash; and the single shift that changes everything.</p>
     <div style="display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap;margin:0 auto 52px;max-width:720px;">
       <div style="padding:22px 20px;background:var(--bg);border:1px solid #2a2a2a;flex:1;min-width:140px;text-align:center;">
@@ -1950,7 +1944,7 @@ section h2,
       <p style="font-size:clamp(15px,2vw,19px);color:var(--mid);line-height:1.9;margin-bottom:0;">All Experience is Awareness. The world, your thoughts, your emotions &mdash; these are the film. The screen remains unchanged by whatever plays upon it. You are that unchanging screen.</p>
     </div>
   </div>
-  <section style="padding:52px 24px;background:var(--bg);border-top:1px solid #111;overflow:hidden;">
+  <section style="padding:52px 24px;background:var(--bg);border-top:1px solid #111;overflow:visible;">
   <div style="max-width:860px;margin:0 auto;">
     <span class="label" style="margin-bottom:28px;">Four Mechanisms of Cognition</span>
     
@@ -2558,7 +2552,7 @@ section h2,
 </section>
 <div class="divider"></div>
 
-<div style="max-width:680px;margin:0 auto;padding:0 24px;position:relative;border:1px solid var(--gold);">
+<div style="max-width:680px;margin:0 auto;padding:0 24px 36px;position:relative;border:1px solid var(--gold);">
   <div style="position:absolute;top:-1px;left:-1px;width:20px;height:20px;border-top:2px solid var(--gold);border-left:2px solid var(--gold);"></div>
   <div style="position:absolute;top:-1px;right:-1px;width:20px;height:20px;border-top:2px solid var(--gold);border-right:2px solid var(--gold);"></div>
   <div style="position:absolute;bottom:-1px;left:-1px;width:20px;height:20px;border-bottom:2px solid var(--gold);border-left:2px solid var(--gold);"></div>
@@ -2865,7 +2859,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
 <span class="continue-hint">continue</span>
 <div class="divider"></div>
 <!-- Insert after the 42 Cosmic Blueprint section, before WATCH -->
-<section style="padding:90px 24px;background:var(--bg);border-top:1px solid #111;border-bottom:1px solid #111;overflow:hidden;">
+<section style="padding:90px 24px;background:var(--bg);border-top:1px solid #111;border-bottom:1px solid #111;overflow:visible;">
   <div style="max-width:860px;margin:0 auto;">
     <span class="label">The Master Matrix of Existence</span>
     <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;">6 Material Stages × 7 Spiritual Layers = 42</h2>
