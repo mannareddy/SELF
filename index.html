@@ -64,6 +64,11 @@ body{
   overscroll-behavior-x:contain;
   border:1px solid #1e1e1e;
   margin:0 auto;
+
+  touch-action:pan-x;
+  isolation:isolate;
+  position:relative;
+  max-width:100%;
 }
 .self-table{
   width:100%;
@@ -256,6 +261,8 @@ body{
 [data-theme="light"] .nav-logo-center{border-color:rgba(138,106,18,0.5) !important;}
 [data-theme="light"] #themeToggleBtn{background:rgba(250,248,243,0.98) !important;border-color:rgba(0,0,0,0.15) !important;color:#5a4a2a !important;}
 [data-theme="light"] .progress-bar{background:linear-gradient(90deg,rgba(138,106,18,0.4),#8a6a12);}
+[data-theme="light"] .nav-icon-item button{color:#5a4a2a !important;border-left-color:rgba(0,0,0,0.1) !important;}
+[data-theme="light"] .nav-icon-item button:hover{color:#8a6a12 !important;}
 
 /* Light: section backgrounds */
 [data-theme="light"] .framework-card,[data-theme="light"] .pillar-card,[data-theme="light"] .identity-card,
@@ -464,6 +471,26 @@ a:hover{opacity:.7;}
   .nav-left li:first-child a{border-left:none;}
   .nav-hide-mobile{display:none !important; visibility:hidden; width:0; overflow:hidden; border:none; margin:0; padding:0;}
   .nav-icon-item{display:list-item !important;}
+  .nav-icon-item button{
+  background:none !important;
+  border:none !important;
+  border-left:1px solid #1a1a1a !important;
+  color:var(--dim) !important;
+  cursor:pointer !important;
+  width:40px !important;
+  height:var(--nav-h) !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  font-size:14px !important;
+  padding:0 !important;
+  transition:color .2s !important;
+  flex-shrink:0 !important;
+}
+
+.nav-icon-item button:hover{
+  color:var(--gold) !important;
+}
   #themeToggleBtn{display:none !important;} 
 }
 @media(max-width:480px){
@@ -1785,7 +1812,7 @@ section h2,
   </div><!-- end cosmo-block -->
 
 <!-- AUROBINDO FOUR THEORIES — standalone, always visible -->
-<section style="padding:52px 24px;background:var(--bg);border-top:1px solid #111;">
+<section style="padding:52px 24px;background:var(--bg);border-top:1px solid #111;overflow-x:clip;">
   <div style="max-width:860px;margin:0 auto;">
     <span class="label" style="margin-bottom:28px;">The Four Theories of Human Existence</span>
 
@@ -1875,7 +1902,7 @@ section h2,
       <p style="font-size:clamp(15px,2vw,19px);color:var(--mid);line-height:1.9;margin-bottom:0;">All Experience is Awareness. The world, your thoughts, your emotions &mdash; these are the film. The screen remains unchanged by whatever plays upon it. You are that unchanging screen.</p>
     </div>
   </div>
-  <section style="padding:52px 24px;background:var(--bg);border-top:1px solid #111;">
+  <section style="padding:52px 24px;background:var(--bg);border-top:1px solid #111;overflow-x:clip;">
   <div style="max-width:860px;margin:0 auto;">
     <span class="label" style="margin-bottom:28px;">Four Mechanisms of Cognition</span>
     
@@ -2069,7 +2096,6 @@ section h2,
   <p class="sub">It is a diagnostic map of who you are NOT. It reveals the 9 specific masks the ego uses to manage the universal engine of desire, fear, and anger.</p>
 
   <div class="enn-intro-box">
-    <p class="highlight">The fundamental problem is not your personality. The problem is the subconscious identification that &ldquo;I am some body.&rdquo;</p>
     <p>Using the Enneagram to justify behaviour (&ldquo;I&rsquo;m a Six, that&rsquo;s why I act this way&rdquo;) is going deeper to sleep. The correct use: uncover the subconscious identification to trigger a jailbreak from the fixation.</p>
     <p class="gold">These are not authentic personalities. They are trance inductions. To break the trance, we must descend.</p>
   </div>
@@ -2791,7 +2817,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
 <span class="continue-hint">continue</span>
 <div class="divider"></div>
 <!-- Insert after the 42 Cosmic Blueprint section, before WATCH -->
-<section style="padding:90px 24px;background:var(--bg);border-top:1px solid #111;border-bottom:1px solid #111;">
+<section style="padding:90px 24px;background:var(--bg);border-top:1px solid #111;border-bottom:1px solid #111;overflow-x:clip;">
   <div style="max-width:860px;margin:0 auto;">
     <span class="label">The Master Matrix of Existence</span>
     <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;">6 Material Stages × 7 Spiritual Layers = 42</h2>
