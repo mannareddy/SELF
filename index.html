@@ -1059,6 +1059,13 @@ section h2,
     grid-template-columns:1fr 1fr 1fr 1fr !important;
   }
 }
+  * {
+  -webkit-tap-highlight-color: transparent;
+}
+.site-nav {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
  /* ── MASTER MATRIX LIGHT THEME ───────────────────────────────────────────── */
 [data-theme="light"] [style*="min-width:700px"] > div[style*="background:#0a0a0a"] {
   background: #c8bfa0 !important;
@@ -1645,7 +1652,7 @@ section h2,
           <div style="font-family:var(--serif);font-size:14.5px;color:#c0392b;padding:16px 18px;font-style:italic;">Sick ascetic longing</div>
         </div>
         <!-- row 4 — Integral highlighted -->
-        <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;background:rgba(212,175,55,.04);border-left:4px solid var(--gold);">
+        <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;background:rgba(212,175,55,.04);border-left:3px solid var(--gold);box-sizing:border-box;width:100%;">
           <div style="font-family:var(--serif);font-size:14.5px;color:var(--gold);padding:16px 18px;border-right:1px solid #1a1a1a;">Integral (Aurobindonian)</div>
           <div style="font-family:var(--serif);font-size:14.5px;color:var(--white);padding:16px 18px;font-weight:400;border-right:1px solid #1a1a1a;">Progressive Divine Manifestation</div>
           <div style="font-family:var(--serif);font-size:14.5px;color:var(--white);padding:16px 18px;font-weight:400;border-right:1px solid #1a1a1a;">Field of spiritual evolution</div>
@@ -1712,19 +1719,19 @@ section h2,
     <div style="display:grid;grid-template-columns:180px repeat(4,1fr);border-bottom:1px solid #1a1a1a;background:#0a0a0a;">
       <div style="padding:14px 12px;border-right:1px solid #1a1a1a;display:flex;align-items:center;justify-content:center;min-height:60px;">
       </div>
-      <div style="padding:14px 10px;border-right:1px solid #1a1a1a;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;">
+      <div style="padding:14px 10px;border-right:1px solid #1a1a1a;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:70px;">
         <span style="font-family:var(--sans);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--white);display:block;">Indirect Contact</span>
         <span style="font-family:var(--sans);font-size:8px;letter-spacing:1px;color:var(--dim);">(Normal Mind)</span>
       </div>
-      <div style="padding:14px 10px;border-right:1px solid #1a1a1a;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;">
+      <div style="padding:14px 10px;border-right:1px solid #1a1a1a;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:70px;">
         <span style="font-family:var(--sans);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--white);display:block;">Intimate Contact</span>
         <span style="font-family:var(--sans);font-size:8px;letter-spacing:1px;color:var(--dim);">(Subliminal)</span>
       </div>
-      <div style="padding:14px 10px;border-right:1px solid #1a1a1a;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;">
+      <div style="padding:14px 10px;border-right:1px solid #1a1a1a;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:70px;">
         <span style="font-family:var(--sans);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--white);display:block;">Direct Contact</span>
         <span style="font-family:var(--sans);font-size:8px;letter-spacing:1px;color:var(--dim);">(Subliminal)</span>
       </div>
-      <div style="padding:14px 10px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;">
+      <div style="padding:14px 10px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:70px;">
         <span style="font-family:var(--sans);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);display:block;">By Identity</span>
         <span style="font-family:var(--sans);font-size:8px;letter-spacing:1px;color:var(--gold);opacity:.65;">(Supermind)</span>
       </div>
@@ -2720,7 +2727,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
           <div style="font-family:var(--serif);font-size:13px;color:var(--grey);padding:14px 8px;text-align:center;display:flex;align-items:center;justify-content:center;">Dissolution</div>
         </div>
         <!-- Row 7: Self / Soul — gold highlighted -->
-        <div style="display:grid;grid-template-columns:120px repeat(6,1fr);background:rgba(212,175,55,.04);border-left:3px solid var(--gold);">
+        <div style="display:grid;grid-template-columns:120px repeat(6,1fr);background:rgba(212,175,55,.04);border-left:3px solid var(--gold);margin-left:0;box-sizing:border-box;width:100%;">
           <div style="font-family:var(--serif);font-size:13px;color:var(--gold);padding:14px 10px;border-right:1px solid #1a1a1a;font-style:italic;display:flex;align-items:center;justify-content:center;text-align:center;">7. Self / Soul</div>
           <div style="font-family:var(--sans);font-size:11px;color:var(--gold);padding:14px 8px;border-right:1px solid #1a1a1a;text-align:center;font-weight:400;text-transform:uppercase;letter-spacing:1px;display:flex;align-items:center;justify-content:center;">Manifestation</div>
           <div style="font-family:var(--sans);font-size:11px;color:var(--gold);padding:14px 8px;border-right:1px solid #1a1a1a;text-align:center;font-weight:400;text-transform:uppercase;letter-spacing:1px;display:flex;align-items:center;justify-content:center;">Realization</div>
