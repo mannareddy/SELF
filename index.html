@@ -1417,34 +1417,19 @@ section h2,
     -webkit-overflow-scrolling:auto !important;
   }
  
-  body{
-    /* Body alone controls horizontal overflow */
-    overflow-x:hidden !important;
-    /* Contain overscroll — eliminates rubber band bounce contributing to jerk */
-    overscroll-behavior-y:none !important;
-    overscroll-behavior-x:none !important;
-    /* Remove webkit scroll from body too — modern iOS doesn't need it */
-    -webkit-overflow-scrolling:auto !important;
+  body {
+    overscroll-behavior: auto !important;
   }
 }
  
-/* ── Nav: remove GPU layer promotion that causes jitter ── */
+/* Force nav to not create a new stacking context on Android */
 @media(max-width:900px){
-  .site-nav{
-    /* Remove will-change — it forces GPU compositing which causes scroll jerk */
-    will-change:auto !important;
-    /* Remove backface visibility hack — not needed and causes layer issues */
-    -webkit-backface-visibility:visible !important;
-    backface-visibility:visible !important;
-    /* Explicitly no backdrop filter on mobile — prevents blur repaints */
-    backdrop-filter:none !important;
-    -webkit-backdrop-filter:none !important;
-    /* Use a solid background instead (already set in mobile @media in doc3) */
-    background:rgba(0,0,0,0.97) !important;
-    /* Remove the transform hint */
-    transform:none !important;
-    -webkit-transform:none !important;
+  .site-nav {
+    transform: none !important;
+    -webkit-transform: none !important;
+    isolation: auto !important;
   }
+}
  
   /* Light theme solid nav on mobile */
   [data-theme="light"] .site-nav{
@@ -1457,13 +1442,11 @@ section h2,
    layout thrashing. We can't fix the JS here, but we can prevent the
    bar from triggering repaints by using transform instead of width.
    This is a CSS hint: contain the progress bar's paint area. */
-.progress-bar{
-  contain:strict !important;
-  will-change:transform !important;
-  transform-origin:left center;
-  transform:scaleX(0);
-  /* Remove width-based animation — use transform:scaleX() instead */
-  transition:none !important;
+.progress-bar {
+  contain: none !important;      /* remove — causes layer conflicts on Android */
+  will-change: auto !important;  /* remove GPU hint — let browser decide */
+  transform: none !important;    /* remove — JS uses width, not transform */
+  transition: none !important;
 }
  @media(max-width:900px){
   .self-table-wrap::-webkit-scrollbar{
@@ -3630,13 +3613,22 @@ function showVoidResponse(type, btn){
   var lastScrollY = 0;
 
   function updateProgress(){
-    rafPending = false;
-    var doc = document.documentElement;
-    var total = doc.scrollHeight - doc.clientHeight;
-    var ratio = total > 0 ? lastScrollY / total : 0;
-    progressBar.style.transform = 'scaleX(' + ratio + ')';
-    nav.classList.toggle('scrolled', lastScrollY > 10);
+  rafPending = false;
+  var doc = document.documentElement;
+  var total = doc.scrollHeight - doc.clientHeight;
+  var ratio = total > 0 ? lastScrollY / total : 0;
+  progressBar.style.width = (ratio * 100) + '%';  // just width, no transform
+}
+  
+// Throttle the nav class toggle separately — only fires when crossing threshold
+var wasScrolled = false;
+function updateNav(){
+  var shouldBeScrolled = lastScrollY > 10;
+  if(shouldBeScrolled !== wasScrolled){
+    wasScrolled = shouldBeScrolled;
+    nav.classList.toggle('scrolled', shouldBeScrolled);
   }
+}
 
   function onScroll(){
     lastScrollY = window.scrollY;
