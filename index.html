@@ -1599,12 +1599,12 @@ section h2,
       <div style="position:absolute;top:-1px;left:-1px;width:16px;height:16px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);"></div>
       <div style="position:absolute;bottom:-1px;right:-1px;width:16px;height:16px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);"></div>
       <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.75;margin-bottom:20px;">Two who stayed in it</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:0;border-top:1px solid rgba(212,175,55,0.2);margin-top:20px;">
-      <div style="padding:24px 24px 24px 0;border-right:1px solid rgba(212,175,55,0.25);">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:0;margin-top:20px;">
+      <div style="padding:32px 28px;background:var(--bg);border:1px solid #1e1e1e;text-align:left;">
           <p style="font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:8px;font-weight:400;">Abraham Lincoln</p>
           <p style="font-family:var(--serif);font-size:15px;color:var(--grey);line-height:1.85;">Years of depression, repeated failure, public humiliation. He did not escape it. He was forged by it. The presidency was the sub-goal. The SELF was the initiation.</p>
         </div>
-        <div style="padding:24px 0 24px 24px;">
+        <div style="padding:32px 28px;background:var(--bg);border:1px solid #1e1e1e;text-align:left;">
           <p style="font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:8px;font-weight:400;">Nelson Mandela</p>
           <p style="font-family:var(--serif);font-size:15px;color:var(--grey);line-height:1.85;">27 years. Not cured. Not escaped. Graduated. What emerged was not the man who entered. The dark night does not consume you &mdash; it refines what was always there.</p>
         </div>
@@ -3663,15 +3663,30 @@ function updateNav(){
     threshold: 0
   });
 
-  // Fallback: scroll-position sweep for sections not caught by observer
-  function sweepActive(){
-    var fromTop = window.scrollY + NAV_OFFSET + 10;
-    var found = '';
+  // Cache section positions once — recalculate only on resize
+  var sectionTops = {};
+  function cacheSectionTops(){
     sectionIds.forEach(function(id){
       var el = document.getElementById(id);
-      if(el && el.getBoundingClientRect().top + window.scrollY <= fromTop) found = id;
+      if(el) sectionTops[id] = el.getBoundingClientRect().top + window.scrollY;
     });
-    if(found) setActive(found);
+  }
+  cacheSectionTops();
+  window.addEventListener('resize', cacheSectionTops, {passive:true});
+
+  var sweepPending = false;
+  function sweepActive(){
+    if(sweepPending) return;
+    sweepPending = true;
+    requestAnimationFrame(function(){
+      sweepPending = false;
+      var fromTop = window.scrollY + NAV_OFFSET + 10;
+      var found = '';
+      sectionIds.forEach(function(id){
+        if(sectionTops[id] !== undefined && sectionTops[id] <= fromTop) found = id;
+      });
+      if(found) setActive(found);
+    });
   }
   window.addEventListener('scroll', sweepActive, {passive:true});
 
