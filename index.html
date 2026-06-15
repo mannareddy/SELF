@@ -37,8 +37,7 @@ gtag('config','G-XC5FG6W949');
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{
-  overflow-x:hidden;
-  -webkit-overflow-scrolling:touch;  /* ADD THIS */
+scroll-behavior:smooth;
 }
 body{
   background:var(--bg);
@@ -48,8 +47,7 @@ body{
   line-height:1.85;
   overflow-x:hidden;
   padding-top:var(--nav-h);
-  overscroll-behavior-x:auto;
-  -webkit-overflow-scrolling:touch;  /* ADD THIS */
+  overscroll-behavior:none
 }
  
   /* ── SHARED TABLE STYLES)
@@ -1301,6 +1299,202 @@ section h2,
     display:none !important;
   }
 }
+   
+/* Override the mobile negative-margin bleed that causes right-side cutoff */
+@media(max-width:640px){
+ 
+  /* REMOVE negative bleed — this is the primary cause of right cutoff */
+  .self-table-wrap{
+    margin-left:0 !important;
+    margin-right:0 !important;
+    width:100% !important;
+    overflow-x:auto !important;
+    -webkit-overflow-scrolling:touch !important;
+    overscroll-behavior-x:contain !important;
+    /* touch-action allows horizontal swipe ONLY inside this element */
+    touch-action:pan-x pan-y !important;
+    /* Keep left/right border since we're not full-bleeding anymore */
+    border-left:1px solid #1e1e1e !important;
+    border-right:1px solid #1e1e1e !important;
+    /* Ensure it fits within the padded section */
+    box-sizing:border-box !important;
+    max-width:100% !important;
+  }
+ 
+  [data-theme="light"] .self-table-wrap{
+    border-left-color:rgba(0,0,0,0.15) !important;
+    border-right-color:rgba(0,0,0,0.15) !important;
+  }
+ 
+  /* The section parents of tables MUST use overflow-x:hidden
+     (not visible, not auto) so they don't become scroll containers
+     themselves, which would interfere with body scroll */
+  section:has(.self-table-wrap){
+    overflow-x:hidden !important;
+  }
+ 
+  /* Fallback for browsers that don't support :has() —
+     the sections with tables already have overflow:visible in doc3,
+     change to hidden for containment */
+  .self-table-wrap + * { clear:both; }
+ 
+}
+ 
+/* Ensure table minimum widths are respected so scroll IS triggered */
+@media(max-width:640px){
+ 
+  /* Four Theories of Human Existence */
+  .self-table[style*="min-width:520px"]{
+    min-width:480px !important;
+  }
+ 
+  /* Four Mechanisms of Cognition */
+  .self-table[style*="min-width:560px"]{
+    min-width:500px !important;
+  }
+ 
+  /* Master Matrix (7×6) — widest table */
+  .self-table[style*="min-width:640px"]{
+    min-width:580px !important;
+  }
+ 
+}
+  
+@media(max-width:640px){
+ 
+  /* Make rasa-table a proper horizontal scroll container */
+  .rasa-table{
+    overflow-x:auto !important;
+    -webkit-overflow-scrolling:touch !important;
+    overscroll-behavior-x:contain !important;
+    touch-action:pan-x pan-y !important;
+    /* Don't let it bleed past the section */
+    max-width:100% !important;
+    width:100% !important;
+    box-sizing:border-box !important;
+  }
+ 
+  /* Give rows a minimum width so the grid actually scrolls */
+  .rasa-row{
+    /* Keep 3-column layout (column 3 hidden) but set min-width
+       so the container becomes wider than the viewport → triggers scroll */
+    min-width:420px !important;
+    /* Restore the 3-col layout properly */
+    grid-template-columns:1.1fr 1fr 1.1fr !important;
+  }
+ 
+  /* Re-hide column 3 (Shadow Rasa) — keep only Type, Core Fear, Essence */
+  .rasa-row .rasa-cell:nth-child(3),
+  .rasa-row.header .rasa-cell:nth-child(3){
+    display:none !important;
+  }
+ 
+  /* Column 4 (Essence) moves into the 3rd visible position */
+  .rasa-row .rasa-cell:nth-child(4){
+    grid-column:3 !important;
+    border-right:none !important;
+  }
+ 
+  /* Slightly smaller text in rasa cells on mobile for readability */
+  .rasa-cell{
+    font-size:11px !important;
+    padding:10px 8px !important;
+    line-height:1.6 !important;
+  }
+ 
+  .rasa-row.header .rasa-cell{
+    font-size:8px !important;
+    padding:10px 8px !important;
+    letter-spacing:1.5px !important;
+  }
+ 
+  /* Light theme border adjustment */
+  [data-theme="light"] .rasa-table{
+    border-color:rgba(0,0,0,0.15) !important;
+  }
+ 
+}
+ /* ── html: do NOT set overflow-x:hidden here on mobile ── */
+/* The existing html{overflow-x:hidden} in doc3 causes iOS scroll jitter */
+/* We override it for mobile — body handles horizontal overflow containment */
+@media(max-width:900px){
+  html{
+    /* Remove overflow-x:hidden from html on mobile — iOS needs html scrollable */
+    overflow-x:visible !important;
+    /* Remove webkit overflow scrolling from html — body handles this */
+    -webkit-overflow-scrolling:auto !important;
+  }
+ 
+  body{
+    /* Body alone controls horizontal overflow */
+    overflow-x:hidden !important;
+    /* Contain overscroll — eliminates rubber band bounce contributing to jerk */
+    overscroll-behavior-y:none !important;
+    overscroll-behavior-x:none !important;
+    /* Remove webkit scroll from body too — modern iOS doesn't need it */
+    -webkit-overflow-scrolling:auto !important;
+  }
+}
+ 
+/* ── Nav: remove GPU layer promotion that causes jitter ── */
+@media(max-width:900px){
+  .site-nav{
+    /* Remove will-change — it forces GPU compositing which causes scroll jerk */
+    will-change:auto !important;
+    /* Remove backface visibility hack — not needed and causes layer issues */
+    -webkit-backface-visibility:visible !important;
+    backface-visibility:visible !important;
+    /* Explicitly no backdrop filter on mobile — prevents blur repaints */
+    backdrop-filter:none !important;
+    -webkit-backdrop-filter:none !important;
+    /* Use a solid background instead (already set in mobile @media in doc3) */
+    background:rgba(0,0,0,0.97) !important;
+    /* Remove the transform hint */
+    transform:none !important;
+    -webkit-transform:none !important;
+  }
+ 
+  /* Light theme solid nav on mobile */
+  [data-theme="light"] .site-nav{
+    background:rgba(250,248,243,0.99) !important;
+  }
+}
+ 
+/* ── Progress bar: requestAnimationFrame is the correct fix for scroll perf ──
+   The progress bar width update via JS .style.width on scroll can cause
+   layout thrashing. We can't fix the JS here, but we can prevent the
+   bar from triggering repaints by using transform instead of width.
+   This is a CSS hint: contain the progress bar's paint area. */
+.progress-bar{
+  contain:strict !important;
+  will-change:width !important; /* only the bar gets GPU promotion, not the nav */
+}
+ @media(max-width:900px){
+  .self-table-wrap::-webkit-scrollbar{
+    height:2px;
+    background:transparent;
+  }
+  .self-table-wrap::-webkit-scrollbar-thumb{
+    background:rgba(212,175,55,0.5);
+    border-radius:1px;
+  }
+  [data-theme="light"] .self-table-wrap::-webkit-scrollbar-thumb{
+    background:rgba(122,94,14,0.5);
+  }
+ 
+  .rasa-table::-webkit-scrollbar{
+    height:2px;
+    background:transparent;
+  }
+  .rasa-table::-webkit-scrollbar-thumb{
+    background:rgba(212,175,55,0.5);
+    border-radius:1px;
+  }
+  [data-theme="light"] .rasa-table::-webkit-scrollbar-thumb{
+    background:rgba(122,94,14,0.5);
+  }
+}
+  
 </style>
 </head>
 <body>
@@ -1835,7 +2029,7 @@ section h2,
   </div><!-- end cosmo-block -->
 
 <!-- AUROBINDO FOUR THEORIES — standalone, always visible -->
-<section style="padding:52px 24px;background:var(--bg);border-top:1px solid #111;overflow:visible;">
+<section style="padding:52px 24px;background:var(--bg);border-top:1px solid #111;overflow-x:hidden;">
   <div style="max-width:860px;margin:0 auto;">
     <span class="label" style="margin-bottom:28px;">The Four Theories of Human Existence</span>
 
@@ -1926,9 +2120,7 @@ section h2,
     </div>
   </div>
    </section>
-  <section style="padding:52px 24px;background:var(--bg);border-top:1px solid #111;overflow:visible;">
-  <div style="max-width:860px;margin:0 auto;">
-    <span class="label" style="margin-bottom:28px;">Four Mechanisms of Cognition</span>
+ <section style="padding:52px 24px;background:var(--bg);border-top:1px solid #111;overflow-x:hidden;">
     <div class="self-table-wrap" style="max-width:900px;margin:28px auto 0;">
   <table class="self-table" style="min-width:560px;">
     <thead>
@@ -2841,7 +3033,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
 <span class="continue-hint">continue</span>
 <div class="divider"></div>
 <!-- Insert after the 42 Cosmic Blueprint section, before WATCH -->
-<section style="padding:90px 24px;background:var(--bg);border-top:1px solid #111;border-bottom:1px solid #111;overflow:visible;">
+<section style="padding:90px 24px;background:var(--bg);border-top:1px solid #111;border-bottom:1px solid #111;overflow-x:hidden;">
   <div style="max-width:860px;margin:0 auto;">
     <span class="label">The Master Matrix of Existence</span>
     <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;">6 Material Stages × 7 Spiritual Layers = 42</h2>
