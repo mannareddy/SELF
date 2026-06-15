@@ -1207,12 +1207,11 @@ section h2,
   .hero > a[href="#contract"]{margin:0 auto !important;}
   .hero > div[style*="padding:22px 32px"]{padding:14px 18px !important;margin-bottom:0 !important;}
 }
-  @media(max-width:640px){
-  /* Master Matrix */
+ @media(max-width:640px){
   [style*="min-width:560px"],
-  [style*="min-width:700px"] {
-    min-width:480px !important;
-    /* Table wrappers — fill edge to edge, no side bleed */
+  [style*="min-width:700px"]{min-width:480px !important;}
+  [style*="grid-template-columns:180px repeat(4,1fr)"]{grid-template-columns:120px repeat(4,1fr) !important;}
+  [style*="grid-template-columns:1.4fr 1fr 1fr 1fr"]{grid-template-columns:1fr 1fr 1fr 1fr !important;}
   .self-table-wrap{
     margin-left:-24px;
     margin-right:-24px;
@@ -1221,34 +1220,7 @@ section h2,
     border-right:none !important;
     touch-action:pan-x pan-y;
   }
-  /* Divider — prevent float from horizontal overflow */
-  .divider{
-    clear:both;
-    overflow:hidden;
-  }
-  }
-  /* Cognition table first column */
-  [style*="grid-template-columns:180px repeat(4,1fr)"] {
-    grid-template-columns:120px repeat(4,1fr) !important;
-    /* Table wrappers — fill edge to edge, no side bleed */
-  .self-table-wrap{
-    margin-left:-24px;
-    margin-right:-24px;
-    width:calc(100% + 48px);
-    border-left:none !important;
-    border-right:none !important;
-    touch-action:pan-x pan-y;
-  }
-  /* Divider — prevent float from horizontal overflow */
-  .divider{
-    clear:both;
-    overflow:hidden;
-  }
-  }
-  /* Human existence first column */
-  [style*="grid-template-columns:1.4fr 1fr 1fr 1fr"] {
-    grid-template-columns:1fr 1fr 1fr 1fr !important;
-  }
+  .divider{clear:both;overflow:hidden;}
 }
   * {
   -webkit-tap-highlight-color: transparent;
@@ -1273,6 +1245,11 @@ section h2,
 } 
   
 @media(max-width:900px){
+  .site-nav{
+    backdrop-filter:none !important;
+    -webkit-backdrop-filter:none !important;
+    background:rgba(0,0,0,0.97) !important;
+  }
   /* Force the li wrapper to show */
   li.nav-icon-item{
     display:flex !important;
