@@ -363,9 +363,10 @@ a:hover{opacity:.7;}
   display:flex;align-items:center;
   background:rgba(0,0,0,0.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
   border-bottom:1px solid #1c1c1c;transition:background .3s;
-  overflow-x:hidden;
-  will-change:transform;
-  -webkit-backface-visibility:hidden;
+  overflow-x:clip;
+  will-change:auto;
+  -webkit-backface-visibility:visible;
+  backface-visibility:visible;
 }
 .site-nav::-webkit-scrollbar{display:none;}
 .site-nav{scrollbar-width:none;}
@@ -911,10 +912,7 @@ section{scroll-margin-top:56px;}
   .ipo-upanishad{padding:22px 18px;}
   .framework-grid,.identity-grid,.why-grid,.pillar-grid,.enn-grid{grid-template-columns:1fr;gap:1px;}
   .paths-grid,.mc-compare{grid-template-columns:1fr;}
-  .rasa-row{grid-template-columns:1.2fr 1fr 1.2fr;}
-  .rasa-row .rasa-cell:nth-child(3){display:none;}
-  .rasa-row.header .rasa-cell:nth-child(3){display:none;}
-  .rasa-row .rasa-cell:nth-child(4){grid-column:3;}
+  .rasa-row{grid-template-columns:1.2fr 1fr 1fr 1.2fr;}
   .rasa-table{overflow-x:auto !important;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y;}
   .rasa-cell{font-size:12px !important;padding:12px 10px;}
   .ego-twin{grid-template-columns:1fr;}
@@ -1224,10 +1222,7 @@ section h2,
   * {
   -webkit-tap-highlight-color: transparent;
 }
-.site-nav {
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
-}
+/* translateZ(0) removed — was causing scroll jerk on mobile by forcing GPU layer on fixed nav */
  /* ── MASTER MATRIX LIGHT THEME ───────────────────────────────────────────── */
 [data-theme="light"] [style*="min-width:700px"] > div[style*="background:#0a0a0a"] {
   background: #c8bfa0 !important;
@@ -1374,24 +1369,21 @@ section h2,
     box-sizing:border-box !important;
   }
  
-  /* Give rows a minimum width so the grid actually scrolls */
+ /* Show ALL 4 columns — table scrolls horizontally */
   .rasa-row{
-    /* Keep 3-column layout (column 3 hidden) but set min-width
-       so the container becomes wider than the viewport → triggers scroll */
-    min-width:420px !important;
-    /* Restore the 3-col layout properly */
-    grid-template-columns:1.1fr 1fr 1.1fr !important;
+    min-width:580px !important;
+    grid-template-columns:1.2fr 1fr 1fr 1.2fr !important;
   }
  
-  /* Re-hide column 3 (Shadow Rasa) — keep only Type, Core Fear, Essence */
+  /* Unhide Shadow Rasa (column 3) — let scroll handle it */
   .rasa-row .rasa-cell:nth-child(3),
   .rasa-row.header .rasa-cell:nth-child(3){
-    display:none !important;
+    display:block !important;
   }
  
-  /* Column 4 (Essence) moves into the 3rd visible position */
+  /* Column 4 back to natural position */
   .rasa-row .rasa-cell:nth-child(4){
-    grid-column:3 !important;
+    grid-column:auto !important;
     border-right:none !important;
   }
  
@@ -3630,11 +3622,17 @@ function showVoidResponse(type, btn){
   var NAV_OFFSET = 52;
 
   /* ── PROGRESS BAR + NAV SHADOW ── */
+  var rafPending = false;
   function onScroll(){
-    var doc = document.documentElement;
-    var total = doc.scrollHeight - doc.clientHeight;
-    progressBar.style.width = (total > 0 ? (window.scrollY / total * 100) : 0) + '%';
-    nav.classList.toggle('scrolled', window.scrollY > 10);
+    if(rafPending) return;
+    rafPending = true;
+    requestAnimationFrame(function(){
+      rafPending = false;
+      var doc = document.documentElement;
+      var total = doc.scrollHeight - doc.clientHeight;
+      progressBar.style.width = (total > 0 ? (window.scrollY / total * 100) : 0) + '%';
+      nav.classList.toggle('scrolled', window.scrollY > 10);
+    });
   }
   window.addEventListener('scroll', onScroll, {passive:true});
   onScroll();
