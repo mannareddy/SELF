@@ -165,14 +165,14 @@ body{
     padding:8px 6px !important;
   }
   /* Table wrappers — fill edge to edge, no side bleed */
-  .self-table-wrap{
-    margin-left:-24px;
-    margin-right:-24px;
-    width:calc(100% + 48px);
-    border-left:none !important;
-    border-right:none !important;
-    touch-action:pan-x pan-y;
-  }
+ .self-table-wrap{
+  width:100%;
+  overflow-x:auto !important;
+  -webkit-overflow-scrolling:touch !important;
+  touch-action:pan-x pan-y;
+  border-left:none !important;
+  border-right:none !important;
+}
   /* Divider — prevent float from horizontal overflow */
   .divider{
     clear:both;
@@ -916,7 +916,8 @@ section{scroll-margin-top:56px;}
   .rasa-row{grid-template-columns:1.2fr 1fr 1.2fr;}
   .rasa-row .rasa-cell:nth-child(3){display:none;}
   .rasa-row.header .rasa-cell:nth-child(3){display:none;}
-  .rasa-table{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .rasa-row .rasa-cell:nth-child(4){grid-column:3;}
+  .rasa-table{overflow-x:auto !important;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y;}
   .rasa-cell{font-size:12px !important;padding:12px 10px;}
   .ego-twin{grid-template-columns:1fr;}
   .ec-row{grid-template-columns:1fr;}
@@ -1245,11 +1246,12 @@ section h2,
 } 
   
 @media(max-width:900px){
-  .site-nav{
-    backdrop-filter:none !important;
-    -webkit-backdrop-filter:none !important;
-    background:rgba(0,0,0,0.97) !important;
-  }
+ .site-nav{
+  backdrop-filter:none !important;
+  -webkit-backdrop-filter:none !important;
+  background:rgba(0,0,0,0.97) !important;
+  will-change:auto !important;
+}
   /* Force the li wrapper to show */
   li.nav-icon-item{
     display:flex !important;
