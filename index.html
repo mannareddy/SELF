@@ -1459,7 +1459,11 @@ section h2,
    This is a CSS hint: contain the progress bar's paint area. */
 .progress-bar{
   contain:strict !important;
-  will-change:width !important; /* only the bar gets GPU promotion, not the nav */
+  will-change:transform !important;
+  transform-origin:left center;
+  transform:scaleX(0);
+  /* Remove width-based animation — use transform:scaleX() instead */
+  transition:none !important;
 }
  @media(max-width:900px){
   .self-table-wrap::-webkit-scrollbar{
@@ -3623,19 +3627,26 @@ function showVoidResponse(type, btn){
 
   /* ── PROGRESS BAR + NAV SHADOW ── */
   var rafPending = false;
+  var lastScrollY = 0;
+
+  function updateProgress(){
+    rafPending = false;
+    var doc = document.documentElement;
+    var total = doc.scrollHeight - doc.clientHeight;
+    var ratio = total > 0 ? lastScrollY / total : 0;
+    progressBar.style.transform = 'scaleX(' + ratio + ')';
+    nav.classList.toggle('scrolled', lastScrollY > 10);
+  }
+
   function onScroll(){
-    if(rafPending) return;
-    rafPending = true;
-    requestAnimationFrame(function(){
-      rafPending = false;
-      var doc = document.documentElement;
-      var total = doc.scrollHeight - doc.clientHeight;
-      progressBar.style.width = (total > 0 ? (window.scrollY / total * 100) : 0) + '%';
-      nav.classList.toggle('scrolled', window.scrollY > 10);
-    });
+    lastScrollY = window.scrollY;
+    if(!rafPending){
+      rafPending = true;
+      requestAnimationFrame(updateProgress);
+    }
   }
   window.addEventListener('scroll', onScroll, {passive:true});
-  onScroll();
+  updateProgress();
 
   /* ── ACTIVE NAV STATE — IntersectionObserver (reliable) ── */
   var navLinks = document.querySelectorAll('.nav-left li a, .nav-right li a');
@@ -3793,22 +3804,24 @@ function toggleTheme(){
   var icon = (next === 'light') ? '&#9790;' : '&#9788;';
   if(btn) btn.innerHTML = icon;
   if(btnM) btnM.innerHTML = icon;
-  // Collapse all expandable sections on theme switch for clean view
-  document.querySelectorAll('.framework-card').forEach(function(c){c.classList.add('collapsed');});
-  document.querySelectorAll('.surrender-section').forEach(function(s){s.classList.add('collapsed');});
-  document.querySelectorAll('.identity-section').forEach(function(s){s.classList.add('collapsed');});
- document.querySelectorAll('.faq-item').forEach(function(f){
-  f.classList.remove('open');
-  f.classList.add('closed');
-  var ic=f.querySelector('.faq-icon');
-  if(ic) ic.innerHTML='+';
-  var fa=f.querySelector('.faq-a');
-  if(fa){ fa.style.maxHeight='0'; }
-});
-var fw=document.getElementById('faqListWrap');
-if(fw){ fw.classList.remove('open'); }
-var fb=document.getElementById('faqExpandAllBtn');
-if(fb) fb.innerHTML='Expand &#9660;';
+// Defer collapse to after theme repaint — prevents bottom-of-screen flicker
+  requestAnimationFrame(function(){
+    document.querySelectorAll('.framework-card').forEach(function(c){c.classList.add('collapsed');});
+    document.querySelectorAll('.surrender-section').forEach(function(s){s.classList.add('collapsed');});
+    document.querySelectorAll('.identity-section').forEach(function(s){s.classList.add('collapsed');});
+    document.querySelectorAll('.faq-item').forEach(function(f){
+      f.classList.remove('open');
+      f.classList.add('closed');
+      var ic=f.querySelector('.faq-icon');
+      if(ic) ic.innerHTML='+';
+      var fa=f.querySelector('.faq-a');
+      if(fa){ fa.style.maxHeight='0'; }
+    });
+    var fw=document.getElementById('faqListWrap');
+    if(fw){ fw.classList.remove('open'); }
+    var fb=document.getElementById('faqExpandAllBtn');
+    if(fb) fb.innerHTML='Expand &#9660;';
+  });
 }
 // Theme already set in <head> — just sync button icons and reveal
 (function(){
