@@ -114,6 +114,16 @@ body{
   white-space:nowrap;
   text-align:center;
 }
+/* Master Matrix only: tighter padding so 8 columns fit at 100% zoom */
+.self-table[style*="font-size:11px"] td,
+.self-table[style*="font-size:11px"] th{
+  padding:10px 7px;
+}
+.self-table[style*="font-size:11px"] td.row-label{
+  white-space:nowrap;
+  font-size:8px;
+  padding:10px 8px;
+}
 .self-table td.gold{color:var(--gold);}
 .self-table td.bright{color:var(--white);font-weight:400;}
 .self-table td.red{color:#c0392b;font-style:italic;}
@@ -1350,9 +1360,15 @@ section h2,
  
   /* Master Matrix (7×6) — widest table */
   .self-table[style*="min-width:640px"]{
-    min-width:580px !important;
+    min-width:560px !important;
   }
- 
+ /* Master Matrix mobile: explicit scroll container */
+  .self-table-wrap:has(.self-table[style*="min-width:640px"]){
+    overflow-x:auto !important;
+    -webkit-overflow-scrolling:touch !important;
+    overscroll-behavior-x:contain !important;
+    touch-action:pan-x pan-y !important;
+  }
 }
   
 @media(max-width:640px){
@@ -2928,8 +2944,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
   <p class="gold">As a mirror with a ledger.</p>
   <p>A teacher can direct you on the path.<br><span style="font-size:17px;color:var(--grey);">But you have to walk through it yourself.</span></p>
   <p class="gold" style="margin-top:28px;">That walk is non-negotiable.</p>
-  <p>The supply is fixed at 1,000,000,042.</p>
-  <p>T + O + B + E = 42. &nbsp;&nbsp; <em style="color:var(--gold);">To Be.</em></p>
+ <p>The supply is fixed at 1,000,000,<strong style="color:var(--gold);">042</strong> &mdash; the alphanumeric sum of <em style="color:var(--gold);">To Be</em>.</p>
 </section>
 <section class="section">
   <div class="cosmo-quote">
@@ -3056,14 +3071,14 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
           <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:10px;">Years — Age of the Universe</div>
           <p style="font-family:var(--serif);font-size:13.5px;color:var(--grey);line-height:1.8;margin:0;">The precise time required for stars to cook heavy elements, making biological life possible. The universe waited 13.8 billion years to produce you.</p>
         </div>
-        <div style="padding:32px 28px;background:var(--bg-lift);border:1px solid var(--gold);text-align:center;position:relative;">
-          <div style="font-family:var(--serif);font-size:clamp(28px,4vw,48px);color:var(--gold);font-weight:300;margin-bottom:10px;">42</div>
-          <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:10px;">Galactic Years Remaining</div>
-          <p style="font-family:var(--serif);font-size:13.5px;color:var(--mid);line-height:1.8;margin:0;">The exact countdown remaining for the Sun-Earth relationship. 42 galactic years = 9.45 billion Earth years — exactly one third of the total cosmic timeline.</p>
+          <div style="padding:32px 28px;background:var(--bg-lift);border:1px solid var(--gold);text-align:center;position:relative;">
+          <div style="font-family:var(--serif);font-size:clamp(28px,4vw,48px);color:var(--gold);font-weight:300;margin-bottom:10px;">22</div>
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:10px;">Galactic Orbits Remaining</div>
+          <p style="font-family:var(--serif);font-size:13.5px;color:var(--mid);line-height:1.8;margin:0;">The Sun has completed ~20 orbits of the Milky Way (one orbit ≈ 225–250 million years). Roughly 22 galactic orbits — ~5 billion years — remain before the Sun expands into a Red Giant, ending the Sun-Earth system.</p>
         </div>
       </div>
       <div style="padding:24px 28px;background:rgba(212,175,55,.04);border:1px solid #2a2a2a;text-align:center;">
-        <p style="font-family:var(--serif);font-size:clamp(15px,2vw,19px);color:var(--white);line-height:1.85;margin:0;">42 Galactic Years represents <strong style="color:var(--gold);font-weight:400;">33.3%</strong> of the total cosmic timeline. The universe encoded your window of opportunity in the very number that answers the question of existence.</p>
+        <p style="font-family:var(--serif);font-size:clamp(15px,2vw,19px);color:var(--white);line-height:1.85;margin:0;">20 orbits complete. 22 orbits remain. The Sun-Earth clock has been running for 4.6 billion years — and has approximately <strong style="color:var(--gold);font-weight:400;">5 billion years</strong> left. The universe encoded your window of opportunity in the very number that answers the question of existence.</p>
       </div>
     </div>
 
@@ -3128,7 +3143,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
     <p style="font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:600px;margin:0 auto 52px;font-style:italic;line-height:1.85;text-align:center;">Ancient Vedic science mapped the exact mechanics of how Supreme Reality becomes matter — and why the human being is the only part of creation that can trace the path in reverse.</p>
 
     <div style="text-align:center;margin-bottom:20px;">
-      <button class="collapse-toggle-btn" onclick="sectionCollapse(\'sacred-mechanics-content\',this)">Explore the Mechanics &#9660;</button>
+      <button class="collapse-toggle-btn" onclick="sectionCollapse('sacred-mechanics-content',this)">Explore the Mechanics &#9660;</button>
       <p class="section-collapse-label">Tap to reveal — the complete creation cascade</p>
     </div>
     <div id="sacred-mechanics-content" class="section-collapse-wrap collapsed">
@@ -3300,7 +3315,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
 
     <!-- THE MATRIX TABLE -->
     <div class="self-table-wrap" style="max-width:900px;margin:0 auto 32px;">
-      <table class="self-table" style="min-width:640px;">
+      <table class="self-table" style="min-width:640px;font-size:11px;">
         <thead>
           <tr>
             <th class="axis-cell" style="width:13%;vertical-align:middle;">
