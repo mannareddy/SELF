@@ -115,27 +115,28 @@ body{
   text-align:center;
 }
 /* Master Matrix only: tighter padding so 8 columns fit at 100% zoom */
-.self-table[style*="font-size:11px"] td,
-.self-table[style*="font-size:11px"] th{
-  padding:10px 7px;
-  font-size:11px !important;
+.self-table[style*="font-size:13px"] td,
+.self-table[style*="font-size:13px"] th{
+  padding:12px 10px;
+  font-size:13px !important;
   white-space:normal;
 }
-.self-table[style*="font-size:11px"] th{
+.self-table[style*="font-size:13px"] th{
   white-space:nowrap;
   font-size:9px !important;
+  padding:14px 10px;
 }
-.self-table[style*="font-size:11px"] th .sub{
+.self-table[style*="font-size:13px"] th .sub{
   font-size:8px !important;
   white-space:normal !important;
   display:block;
   line-height:1.3;
   margin-top:3px;
 }
-.self-table[style*="font-size:11px"] td.row-label{
+.self-table[style*="font-size:13px"] td.row-label{
   white-space:nowrap;
-  font-size:8px !important;
-  padding:10px 8px;
+  font-size:9px !important;
+  padding:12px 10px;
 }
 .self-table td.gold{color:var(--gold);}
 .self-table td.bright{color:var(--white);font-weight:400;}
@@ -1244,6 +1245,12 @@ section h2,
   [style*="min-width:700px"]{min-width:480px !important;}
   [style*="grid-template-columns:180px repeat(4,1fr)"]{grid-template-columns:120px repeat(4,1fr) !important;}
   [style*="grid-template-columns:1.4fr 1fr 1fr 1fr"]{grid-template-columns:1fr 1fr 1fr 1fr !important;}
+   @media(max-width:640px){
+  /* TOBE equation — allow wrap on very small screens */
+  [style*="white-space:nowrap"]{
+    white-space:normal !important;
+  }
+}
   .self-table-wrap{
     margin-left:-24px;
     margin-right:-24px;
@@ -1384,9 +1391,9 @@ section h2,
   }
  
   /* Master Matrix (7×6) — widest table */
-  .self-table[style*="min-width:760px"]{
-    min-width:680px !important;
-  }
+  .self-table[style*="min-width:820px"]{
+  min-width:720px !important;
+}
  /* Master Matrix mobile: explicit scroll container */
 .self-table-wrap{
   width:100%;
@@ -3147,7 +3154,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
       <p style="font-family:var(--sans);font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);opacity:.75;text-align:center;margin-bottom:24px;">The Architecture of 'To Be'</p>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:20px;">
         <div style="padding:36px 32px;background:var(--bg-lift);border:1px solid #1e1e1e;text-align:left;">
-          <p style="font-family:var(--serif);font-size:clamp(22px,3.5vw,36px);color:var(--gold);font-weight:300;line-height:1.3;margin-bottom:16px;">T(20)+O(15)<br>+B(2)+E(5)=<strong style="font-size:1.4em;">42</strong></p>
+          <p style="font-family:var(--serif);font-size:clamp(18px,2.8vw,30px);color:var(--gold);font-weight:300;line-height:1.5;margin-bottom:16px;white-space:nowrap;">T(20) + O(15) + B(2) + E(5) = <strong style="font-size:1.3em;">42</strong></p>
           <p style="font-family:var(--serif);font-size:15px;color:var(--mid);line-height:1.85;margin-bottom:14px;">42 is the exact alphanumeric sum of <em style="color:var(--gold);">'TO BE'</em> &mdash; the fundamental statement of existence itself. Shakespeare asked it as a question. The universe answered it as a number.</p>
           <p style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.85;">Your supply of $SELF is fixed at 1,000,000,<strong style="color:var(--gold);">042</strong>.</p>
         </div>
@@ -3352,7 +3359,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
 
     <!-- THE MATRIX TABLE -->
     <div class="self-table-wrap" style="max-width:900px;margin:0 auto 32px;">
-      <table class="self-table" style="min-width:760px;font-size:11px;">
+      <table class="self-table" style="min-width:820px;font-size:13px;">
         <thead>
           <tr>
             <th class="axis-cell" style="width:13%;vertical-align:middle;">
