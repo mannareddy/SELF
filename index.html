@@ -172,6 +172,18 @@ body{
     font-size:8px !important;
     padding:8px 6px !important;
   }
+  @media (max-width:768px){
+  .self-table{
+    min-width:1100px;
+  }
+
+  .self-table th,
+  .self-table td{
+    white-space:nowrap;
+    font-size:11px;
+    padding:10px 8px;
+  }
+}
   /* Table wrappers — fill edge to edge, no side bleed */
  .self-table-wrap{
   width:100%;
@@ -1363,11 +1375,23 @@ section h2,
     min-width:560px !important;
   }
  /* Master Matrix mobile: explicit scroll container */
-  .self-table-wrap:has(.self-table[style*="min-width:640px"]){
-    overflow-x:auto !important;
-    -webkit-overflow-scrolling:touch !important;
-    overscroll-behavior-x:contain !important;
-    touch-action:pan-x pan-y !important;
+.self-table-wrap{
+  width:100%;
+  max-width:100%;
+  overflow-x:auto;
+  overflow-y:hidden;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:thin;
+}
+
+.master-matrix{
+  min-width:1200px;
+  border-collapse:collapse;
+}
+
+@media(max-width:768px){
+  .master-matrix{
+    min-width:1100px;
   }
 }
   
@@ -2028,7 +2052,7 @@ section h2,
   <div style="max-width:860px;margin:0 auto;">
     <span class="label" style="margin-bottom:28px;">The Four Theories of Human Existence</span>
 <div class="self-table-wrap" style="max-width:820px;margin:0 auto;">
-  <table class="self-table" style="min-width:520px;">
+  <table class="self-table master-matrix" style="min-width:520px;">
     <thead>
       <tr>
         <th style="width:28%;text-align:left;padding-left:16px;">Theory</th>
@@ -2116,7 +2140,7 @@ section h2,
   <div style="max-width:860px;margin:0 auto;">
     <span class="label" style="margin-bottom:28px;">Four Mechanisms of Cognition</span>
     <div class="self-table-wrap" style="max-width:900px;margin:28px auto 0;">
-  <table class="self-table" style="min-width:560px;">
+  <table class="self-table" style="min-width:1200px;">
     <thead>
       <tr>
         <th class="axis-cell" style="width:16%;"></th>
@@ -3287,7 +3311,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
 </section>
 <div class="divider"></div>
 <!-- ══════════════════════════ ENHANCED MASTER MATRIX ══════════════════════ -->
-<section style="padding:90px 24px;background:var(--bg);border-top:1px solid #111;border-bottom:1px solid #111;overflow-x:hidden;">
+<section style="padding:90px 24px;background:var(--bg);border-top:1px solid #111;border-bottom:1px solid #111;">
   <div style="max-width:900px;margin:0 auto;">
     <span class="label">The Master Matrix of Existence</span>
     <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;text-align:center;">6 Material Stages × 7 Spiritual Layers = 42</h2>
@@ -3323,12 +3347,12 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
               <div style="width:50%;height:1px;background:rgba(212,175,55,0.4);margin:4px auto;"></div>
               <span style="color:var(--gold);display:block;font-size:8px;letter-spacing:1px;">→ 6 Stages</span>
             </th>
-            <th style="width:14.5%;">Birth<span class="sub">Inception into form</span></th>
-            <th style="width:14.5%;">Growth<span class="sub">Expansion of capacity</span></th>
-            <th style="width:14.5%;">Sustenance<span class="sub">Plateau of maintenance</span></th>
-            <th style="width:14.5%;">Transformation<span class="sub">Inevitable shift</span></th>
-            <th style="width:14.5%;">Deterioration<span class="sub">Beginning of decay</span></th>
-            <th style="width:14.5%;">Death<span class="sub">Dissolution of form</span></th>
+            <th>Birth<span class="sub">Inception into form</span></th>
+            <th>Growth<span class="sub">Expansion of capacity</span></th>
+            <th>Sustenance<span class="sub">Plateau of maintenance</span></th>
+            <th>Transformation<span class="sub">Inevitable shift</span></th>
+            <th>Deterioration<span class="sub">Beginning of decay</span></th>
+            <th>Death<span class="sub">Dissolution of form</span></th>
           </tr>
         </thead>
         <tbody>
