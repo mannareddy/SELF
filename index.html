@@ -3115,6 +3115,10 @@ section h2,
   <h2>Seven stages. One journey. From body to SELF.</h2>
   <p class="sub">Every tradition maps the same upward arc &mdash; the 7 Chakras, the 7 Stages of Spiritual Progress, and the 7 Layers of Existence all describe one singular journey.</p>
   <div style="text-align:center;margin-bottom:36px;">
+    <button id="identityExpandBtn" class="collapse-toggle-btn">Expand &#9660;</button>
+    <p class="section-collapse-label">Tap to expand &mdash; collapsed by default</p>
+  </div>
+  <div class="identity-grid">
     <div style="max-width:820px;margin:0 auto 36px;display:grid;grid-template-columns:1fr 1fr;gap:2px;" class="evo-grid">
   <div style="padding:32px 28px;background:var(--bg);border:1px solid #1e1e1e;text-align:left;">
     <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;
@@ -3140,10 +3144,6 @@ section h2,
     external physical form. You are the first species that chooses its own next stage.</p>
   </div>
 </div>
-    <button id="identityExpandBtn" class="collapse-toggle-btn">Expand &#9660;</button>
-    <p class="section-collapse-label">Tap to expand &mdash; collapsed by default</p>
-  </div>
-  <div class="identity-grid">
     <div class="identity-card"><span class="layer-tag">Stage 1 &mdash; Root Chakra &middot; Body</span><h4>Innocence &amp; Material Reality</h4><p>You enter the world in a state of innocence. Life is ruled by basic needs for security and stability. Still connected to the field of the Absolute.</p><p class="practice">Seed Mantra: LAM &middot; Element: Earth &middot; Layer: The Body (Gross Physical)</p></div>
     <div class="identity-card"><span class="layer-tag">Stage 2 &mdash; Sacral Chakra &middot; Breath</span><h4>Ego Emergence &amp; Fear</h4><p>Pure love is overshadowed by fear. You realize you depend on others. Personality forms.</p><p class="practice">Seed Mantra: VAM &middot; Element: Water &middot; Layer: The Breath (Prana)</p></div>
     <div class="identity-card"><span class="layer-tag">Stage 3 &mdash; Solar Plexus &middot; Mind</span><h4>Power &amp; Knowledge</h4><p>In your desire to overcome fear, you seek control. The ego is at its peak. <strong style="color:var(--gold);font-weight:400;">First Fork:</strong> continue material consumption, or sense a deeper meaning and ascend.</p><p class="practice">Seed Mantra: RAM &middot; Element: Fire &middot; Layer: The Mind (Subtle)</p></div>
@@ -4132,11 +4132,29 @@ function showVoidResponse(type, btn){
   var rafPending = false;
   var lastScrollY = 0;
 
+  // Cache total scrollable height instead of reading scrollHeight on every
+  // scroll frame (that read forces a synchronous layout — the main cause
+  // of scroll jerk on Android). Recompute only on resize / content-size
+  // changes (collapse/expand toggles), not on every scroll tick.
+  var cachedTotal = 0;
+  function recalcTotal(){
+    var doc = document.documentElement;
+    cachedTotal = doc.scrollHeight - doc.clientHeight;
+  }
+  recalcTotal();
+  window.addEventListener('resize', recalcTotal, {passive:true});
+  // Recalc shortly after any collapse/expand transition finishes (transitions
+  // in this page run .5s or less), so the progress bar stays accurate without
+  // forcing layout on every scroll frame.
+  document.addEventListener('click', function(e){
+    if(e.target.closest && e.target.closest('.collapse-toggle-btn, .stage-expand-label, [onclick], .faq-item, h4')){
+      setTimeout(recalcTotal, 550);
+    }
+  }, {passive:true});
+
   function updateProgress(){
   rafPending = false;
-  var doc = document.documentElement;
-  var total = doc.scrollHeight - doc.clientHeight;
-  var ratio = total > 0 ? lastScrollY / total : 0;
+  var ratio = cachedTotal > 0 ? lastScrollY / cachedTotal : 0;
   progressBar.style.width = (ratio * 100) + '%';  // just width, no transform
 }
   
