@@ -236,7 +236,8 @@ body{
     font-size:8px !important;
     padding:8px 6px !important;
   }
-  @media (max-width:768px){
+}
+@media (max-width:768px){
   .self-table{
     min-width:1100px;
   }
@@ -262,7 +263,6 @@ body{
     clear:both;
     overflow:hidden;
   }
-}
 :root{
   --gold:#d4af37;
   --gold-glow:rgba(212,175,55,0.5);
@@ -1047,8 +1047,6 @@ section{scroll-margin-top:56px;}
     }
 
   }
-
-}
 /* ── UNIFIED TYPOGRAPHY SYSTEM ───────────────────────────────────────────── */
 
 /* Section h2 — all major section headings normalized */
@@ -1296,24 +1294,22 @@ section h2,
 .void-test-question {
   font-size: clamp(18px,2.8vw,28px) !important;
 }  
-  @media(max-width:640px){
+@media(max-width:640px){
   .hero{min-height:auto !important;height:calc(100dvh - var(--nav-h));padding:12px 16px 0 !important;justify-content:space-evenly;}
   .hero .continue-hint{margin-top:0 !important;padding:10px 0 4px !important;}
   .hero-question{font-size:18px !important;margin-bottom:0 !important;}
   .hero > a[href="#contract"]{margin:0 auto !important;}
   .hero > div[style*="padding:22px 32px"]{padding:14px 18px !important;margin-bottom:0 !important;}
 }
- @media(max-width:640px){
+@media(max-width:640px){
   [style*="min-width:560px"],
   [style*="min-width:700px"]{min-width:480px !important;}
   [style*="grid-template-columns:180px repeat(4,1fr)"]{grid-template-columns:120px repeat(4,1fr) !important;}
   [style*="grid-template-columns:1.4fr 1fr 1fr 1fr"]{grid-template-columns:1fr 1fr 1fr 1fr !important;}
-   @media(max-width:640px){
   /* TOBE equation — allow wrap on very small screens */
   [style*="white-space:nowrap"]{
     white-space:normal !important;
   }
-}
   .self-table-wrap{
     margin-left:-24px;
     margin-right:-24px;
@@ -1457,6 +1453,7 @@ section h2,
   .self-table[style*="min-width:820px"]{
   min-width:720px !important;
 }
+}
  /* Master Matrix mobile: explicit scroll container */
 .self-table-wrap{
   width:100%;
@@ -1562,7 +1559,6 @@ section h2,
   [data-theme="light"] .site-nav{
     background:rgba(250,248,243,0.99) !important;
   }
-}
  
 /* ── Progress bar: requestAnimationFrame is the correct fix for scroll perf ──
    The progress bar width update via JS .style.width on scroll can cause
