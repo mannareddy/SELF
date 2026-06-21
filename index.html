@@ -334,8 +334,8 @@ body{
 [data-theme="light"] .nav-logo-center{border-color:rgba(138,106,18,0.5) !important;}
 [data-theme="light"] #themeToggleBtn{background:rgba(250,248,243,0.98) !important;border-color:rgba(0,0,0,0.15) !important;color:#5a4a2a !important;}
 [data-theme="light"] .progress-bar{background:linear-gradient(90deg,rgba(138,106,18,0.4),#8a6a12);}
-[data-theme="light"] .nav-icon-item button{color:#5a4a2a !important;border-left-color:rgba(0,0,0,0.1) !important;}
-[data-theme="light"] .nav-icon-item button:hover{color:#8a6a12 !important;}
+[data-theme="light"] #themeToggleMobile{color:#5a4a2a !important;border-left-color:rgba(0,0,0,0.1) !important;}
+[data-theme="light"] #themeToggleMobile:hover{color:#8a6a12 !important;}
 
 /* Light: section backgrounds */
 [data-theme="light"] .framework-card,[data-theme="light"] .pillar-card,[data-theme="light"] .identity-card,
@@ -541,28 +541,33 @@ a:hover{opacity:.7;}
 @media(max-width:900px){
   .nav-left li a,.nav-right li a{font-size:9px;letter-spacing:1px;padding:0 8px;}
   .nav-hide-mobile{display:none !important; visibility:hidden; width:0; overflow:hidden; border:none; margin:0; padding:0;}
-  .nav-icon-item{display:list-item !important;}
-  .nav-icon-item button{
-  background:none !important;
-  border:none !important;
-  border-left:1px solid #1a1a1a !important;
-  color:var(--dim) !important;
-  cursor:pointer !important;
-  width:40px !important;
-  height:var(--nav-h) !important;
-  display:flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-  font-size:14px !important;
-  padding:0 !important;
-  transition:color .2s !important;
-  flex-shrink:0 !important;
-}
-
-.nav-icon-item button:hover{
-  color:var(--gold) !important;
-}
+  #themeToggleMobile{
+    display:flex !important;
+    position:fixed !important;
+    top:0 !important;
+    right:0 !important;
+    z-index:1000 !important;
+    background:rgba(0,0,0,0.92) !important;
+    border:none !important;
+    border-left:1px solid #1a1a1a !important;
+    color:var(--dim) !important;
+    cursor:pointer !important;
+    width:40px !important;
+    height:var(--nav-h) !important;
+    align-items:center !important;
+    justify-content:center !important;
+    font-size:14px !important;
+    padding:0 !important;
+    transition:color .2s !important;
+    flex-shrink:0 !important;
+  }
+  #themeToggleMobile:hover{
+    color:var(--gold) !important;
+  }
   #themeToggleBtn{display:none !important;} 
+  /* Reserve space at the right edge of the scrollable nav strip so its
+     content never sits underneath the fixed theme button */
+  .nav-right{padding-right:40px;}
 }
 
 /* Below this width, even 6 evenly-distributed items get too cramped to read —
@@ -570,7 +575,7 @@ a:hover{opacity:.7;}
 @media(max-width:520px){
 .site-nav{overflow-x:scroll;scrollbar-width:none;white-space:nowrap;touch-action:pan-x;}
   .nav-left{justify-content:flex-start; flex:0 !important;}
-  .nav-right{justify-content:flex-start; flex:0 !important; padding-right:0 !important;}
+  .nav-right{justify-content:flex-start; flex:0 !important;}
   .nav-left li,.nav-right li{flex:0 !important; width:auto !important;}
   .nav-left li a,.nav-right li a{font-size:8px;letter-spacing:0.5px;padding:0 5px;min-width:auto;width:auto !important;}
   .nav-left li:first-child a{border-left:none;}
@@ -603,8 +608,9 @@ section{scroll-margin-top:56px;}
 .section-collapse-wrap{overflow:hidden;transition:max-height .55s cubic-bezier(0,1,.25,1),opacity .35s ease;opacity:1;}
 .section-collapse-wrap.collapsed{max-height:0 !important;opacity:0;}
 
-/* ── THEME TOGGLE (hidden on mobile, shown by nav-icon-item) ─────────────── */
-.nav-icon-item{display:none !important;}
+/* ── THEME TOGGLE — desktop button shown by default; mobile button (fixed,
+   outside the scrollable nav strip) is hidden until the mobile breakpoint ── */
+#themeToggleMobile{display:none;}
 
 /* ── HERO ─────────────────────────────────────────────────────────────────── */
 .hero{min-height:calc(100vh - var(--nav-h));display:flex;flex-direction:column;justify-content:center;align-items:center;padding:16px 24px 0;position:relative;background:radial-gradient(ellipse at 50% 35%,rgba(212,175,55,.05) 0%,transparent 68%);}
@@ -757,7 +763,7 @@ section{scroll-margin-top:56px;}
 .ipo-upanishad em{color:var(--gold);font-style:italic;font-weight:400;}
 
 /* ── WHY SECTION ─────────────────────────────────────────────────────────── */
-.why-section{padding:90px 24px;background:var(--bg-lift);border-top:1px solid #111;border-bottom:1px solid #111;}
+.why-section{padding:90px 24px;background:var(--bg-lift);border-bottom:1px solid #111;}
 .why-section h2{font-size:clamp(22px,3.5vw,38px);font-weight:300;color:var(--white);max-width:660px;margin:0 auto 52px;line-height:1.55;}
 .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;max-width:960px;margin:0 auto 52px;text-align:left;}
 .why-card{padding:32px 28px;border:1px solid #1e1e1e;background:var(--bg);}
@@ -771,7 +777,7 @@ section{scroll-margin-top:56px;}
 .why-closing{max-width:600px;margin:0 auto;font-size:clamp(18px,2.5vw,24px);font-weight:300;font-style:italic;color:var(--white);line-height:1.8;}
 
 /* ── WATCH ────────────────────────────────────────────────────────────────── */
-.watch-section{padding:80px 24px;background:var(--bg-lift);border-top:1px solid #111;border-bottom:1px solid #111;}
+.watch-section{padding:80px 24px;background:var(--bg-lift);border-bottom:1px solid #111;}
 .watch-links{display:flex;flex-direction:column;align-items:center;gap:32px;margin-top:42px;}
 .watch-link-inner{display:flex;flex-direction:column;align-items:center;width:100%;max-width:440px;}
 .watch-thumb{width:100%;max-width:440px;height:220px;object-fit:cover;display:block;border:1px solid #2a2a2a;filter:brightness(0.85);transition:filter .3s;}
@@ -857,7 +863,7 @@ section{scroll-margin-top:56px;}
 .footer-ca{font-family:var(--sans);font-size:11px;color:var(--dim);letter-spacing:.8px;word-break:break-all;max-width:500px;margin:0 auto;}
 
 /* ── FARTCOIN SECTION ─────────────────────────────────────────────────────── */
-.fartcoin-section{padding:90px 24px;border-top:1px solid #111;border-bottom:1px solid #111;background:var(--bg);}
+.fartcoin-section{padding:90px 24px;border-bottom:1px solid #111;background:var(--bg);}
 .fartcoin-section .confrontation-label{font-family:var(--sans);font-size:9px;letter-spacing:5px;text-transform:uppercase;color:#c0392b;margin-bottom:40px;display:block;opacity:.9;}
 .mc-compare{display:grid;grid-template-columns:1fr 1fr;gap:2px;max-width:680px;margin:0 auto 52px;}
 .mc-card{padding:32px 28px;border:1px solid #1e1e1e;text-align:left;}
@@ -1346,20 +1352,12 @@ section h2,
   background:rgba(0,0,0,0.97) !important;
   will-change:auto !important;
 }
-  /* Force the li wrapper to show */
-  li.nav-icon-item{
-    display:flex !important;
-    align-items:center;
-    flex-shrink:0;
-  }
- 
-  /* Ensure the button inside is fully rendered */
-  li.nav-icon-item button,
-  .nav-icon-item button#themeToggleMobile{
+  /* Mobile theme button — fixed to viewport, always visible regardless of nav scroll */
+  #themeToggleMobile{
     display:flex !important;
     align-items:center !important;
     justify-content:center !important;
-    background:none !important;
+    background:rgba(0,0,0,0.97) !important;
     border:none !important;
     border-left:1px solid #1a1a1a !important;
     color:var(--dim) !important;
@@ -1375,18 +1373,17 @@ section h2,
     transition:color .2s !important;
   }
  
-  li.nav-icon-item button:hover,
-  .nav-icon-item button#themeToggleMobile:hover{
+  #themeToggleMobile:hover{
     color:var(--gold) !important;
   }
  
-  /* Light theme tint for mobile icon button */
-  [data-theme="light"] li.nav-icon-item button,
-  [data-theme="light"] .nav-icon-item button#themeToggleMobile{
+  /* Light theme tint for mobile theme button */
+  [data-theme="light"] #themeToggleMobile{
     color:#5a4a2a !important;
     border-left-color:rgba(0,0,0,0.12) !important;
+    background:rgba(250,248,243,0.97) !important;
   }
-  [data-theme="light"] li.nav-icon-item button:hover{
+  [data-theme="light"] #themeToggleMobile:hover{
     color:#8a6a12 !important;
   }
  
@@ -1617,21 +1614,22 @@ section h2,
   <img src="./assets/images/SELF_Origin_1000x1000.png" alt="*SELF">
 </a>
 
-<!-- Right: Ledger, IPO, Contract, Disclaimer, FAQ + theme icon -->
+<!-- Right: Ledger, IPO, Contract, Disclaimer, FAQ -->
 <ul class="nav-right">
   <li style="border-left:1px solid #1a1a1a;"><a href="#ledger">Ledger</a></li>
   <li><a href="#ipo">IPO</a></li>
   <li><a href="#contract"><span class="desktop-label">CONTRACT</span><span class="mobile-label">CA</span></a></li>
   <li class="nav-hide-mobile"><a href="#disclaimer">Disclaimer</a></li>
   <li><a href="#faq-section">FAQ</a></li>
-  <li class="nav-icon-item" style="border:none;">
-    <button onclick="toggleTheme()" title="Toggle theme" style="background:none;border:none;border-left:1px solid #1a1a1a;color:var(--dim);cursor:pointer;width:36px;height:var(--nav-h);display:flex;align-items:center;justify-content:center;font-size:13px;padding:0;" id="themeToggleMobile">&#9788;</button>
-  </li>
 </ul>
 
   <!-- Desktop theme toggle pinned right -->
   <button id="themeToggleBtn" onclick="toggleTheme()" title="Toggle light/dark theme" aria-label="Toggle theme">&#9788;</button>
 </nav>
+
+<!-- Mobile theme toggle — fixed to viewport, sits outside the scrollable nav strip
+     so it's never clipped or scrolled out of view on narrow phones -->
+<button id="themeToggleMobile" onclick="toggleTheme()" title="Toggle theme" aria-label="Toggle theme">&#9788;</button>
 
 <div class="geo-badge" id="geoBadge"></div>
 
@@ -2200,7 +2198,7 @@ section h2,
     </div>
   </div>
    </section>
-  <section style="padding:52px 24px;background:var(--bg);border-top:1px solid #111;overflow-x:hidden;">
+  <section style="padding:52px 24px;background:var(--bg);overflow-x:hidden;">
   <div style="max-width:960px;margin:0 auto;">
     <span class="label" style="margin-bottom:28px;">Four Mechanisms of Cognition</span>
     <div class="self-table-wrap" style="max-width:960px;margin:28px auto 0;">
@@ -3114,12 +3112,7 @@ section h2,
   <span class="label">The Path of Subtilization</span>
   <h2>Seven stages. One journey. From body to SELF.</h2>
   <p class="sub">Every tradition maps the same upward arc &mdash; the 7 Chakras, the 7 Stages of Spiritual Progress, and the 7 Layers of Existence all describe one singular journey.</p>
-  <div style="text-align:center;margin-bottom:36px;">
-    <button id="identityExpandBtn" class="collapse-toggle-btn">Expand &#9660;</button>
-    <p class="section-collapse-label">Tap to expand &mdash; collapsed by default</p>
-  </div>
-  <div class="identity-grid">
-    <div style="max-width:820px;margin:0 auto 36px;display:grid;grid-template-columns:1fr 1fr;gap:2px;" class="evo-grid">
+  <div style="max-width:820px;margin:0 auto 36px;display:grid;grid-template-columns:1fr 1fr;gap:2px;" class="evo-grid">
   <div style="padding:32px 28px;background:var(--bg);border:1px solid #1e1e1e;text-align:left;">
     <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;
     color:var(--dim);opacity:.75;margin-bottom:14px;">Matter → Plant → Animal</div>
@@ -3144,6 +3137,11 @@ section h2,
     external physical form. You are the first species that chooses its own next stage.</p>
   </div>
 </div>
+  <div style="text-align:center;margin-bottom:36px;">
+    <button id="identityExpandBtn" class="collapse-toggle-btn">Expand &#9660;</button>
+    <p class="section-collapse-label">Tap to expand &mdash; collapsed by default</p>
+  </div>
+  <div class="identity-grid">
     <div class="identity-card"><span class="layer-tag">Stage 1 &mdash; Root Chakra &middot; Body</span><h4>Innocence &amp; Material Reality</h4><p>You enter the world in a state of innocence. Life is ruled by basic needs for security and stability. Still connected to the field of the Absolute.</p><p class="practice">Seed Mantra: LAM &middot; Element: Earth &middot; Layer: The Body (Gross Physical)</p></div>
     <div class="identity-card"><span class="layer-tag">Stage 2 &mdash; Sacral Chakra &middot; Breath</span><h4>Ego Emergence &amp; Fear</h4><p>Pure love is overshadowed by fear. You realize you depend on others. Personality forms.</p><p class="practice">Seed Mantra: VAM &middot; Element: Water &middot; Layer: The Breath (Prana)</p></div>
     <div class="identity-card"><span class="layer-tag">Stage 3 &mdash; Solar Plexus &middot; Mind</span><h4>Power &amp; Knowledge</h4><p>In your desire to overcome fear, you seek control. The ego is at its peak. <strong style="color:var(--gold);font-weight:400;">First Fork:</strong> continue material consumption, or sense a deeper meaning and ascend.</p><p class="practice">Seed Mantra: RAM &middot; Element: Fire &middot; Layer: The Mind (Subtle)</p></div>
@@ -3999,7 +3997,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
 </section>
 
 <!-- DISCLAIMER -->
-<section id="disclaimer" style="scroll-margin-top:56px;padding:80px 24px;background:var(--bg-lift);border-top:1px solid #111;">
+<section id="disclaimer" style="scroll-margin-top:56px;padding:80px 24px;background:var(--bg-lift);">
   <div style="max-width:720px;margin:0 auto;">
     <div style="border:1px solid #2a2a2a;padding:48px 44px;background:var(--bg);position:relative;">
       <div style="position:absolute;top:-1px;left:-1px;width:18px;height:18px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);"></div>
