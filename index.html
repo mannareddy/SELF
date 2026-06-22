@@ -398,6 +398,13 @@ body{
 [data-theme="light"] .ipo-upanishad{border-color:rgba(0,0,0,0.15) !important;border-left-color:rgba(138,106,18,0.6) !important;background:#ede6d0 !important;}
 [data-theme="light"] .antidote-box{border-color:rgba(138,106,18,0.5) !important;background:rgba(138,106,18,0.04) !important;}
 [data-theme="light"] .antidote-step{background:#faf8f3 !important;border-color:rgba(0,0,0,0.1) !important;}
+/* Light theme — border fixes for previously-missed bordered elements */
+[data-theme="light"] .ec-body{border-top-color:rgba(0,0,0,0.12) !important;}
+[data-theme="light"] .rrrr-version{background:#e5ddc5 !important;border-color:rgba(0,0,0,0.1) !important;}
+[data-theme="light"] .stage-expand-label{border-color:rgba(138,106,18,0.5) !important;color:#7a5e0e !important;}
+[data-theme="light"] .stage-num-col{border-right-color:rgba(0,0,0,0.12) !important;}
+[data-theme="light"] .tradition-table{border-color:rgba(0,0,0,0.15) !important;}
+[data-theme="light"] .void-response{background:#ede6d0 !important;border-color:rgba(0,0,0,0.12) !important;}
 [data-theme="light"] .vision-box{border-color:rgba(0,0,0,0.15) !important;background:#ede6d0 !important;}
 [data-theme="light"] .vision-pillar{border-left-color:rgba(138,106,18,0.6) !important;}
 [data-theme="light"] .cosmo-quote{background:#ede6d0 !important;border-color:rgba(0,0,0,0.12) !important;border-left-color:rgba(138,106,18,0.7) !important;}
@@ -1841,7 +1848,7 @@ section h2,
 <!-- THE FRAMEWORK -->
 <section class="section-wide" id="framework">
   <span class="label">The Framework</span>
-  <p class="phil-line bright">The *SELF operating system. Six layers.</p>
+  <p class="phil-line bright">The *SELF operating system. Seven layers.</p>
   <p class="phil-line dim">Most people run on the first one their whole life.</p>
   <div class="cosmo-quote" style="max-width:660px;margin:0 auto 36px;">
     <p>&ldquo;Until you make the unconscious conscious, it will direct your life and you will call it fate.&rdquo;</p>
@@ -1897,6 +1904,12 @@ section h2,
       <h3>Self-Realization</h3><div class="framework-content">
       <p>Not expected to be achieved in one lifetime. That is not a failure &mdash; that is the point. The goal was never arrival. The question is: are you pointed in the right direction?</p>
       <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">In Sanskrit: <em>Moha / Vipallasa</em> &mdash; delusion is the ultimate end of unchecked conditioning. The loop only functions in the dark. Recognition is liberation. The architecture cannot survive awareness.</p>
+    </div></div>
+    <div class="framework-card collapsed">
+      <span class="num">07</span>
+      <h3>Life vs. Life Situation</h3><div class="framework-content">
+      <p>What you casually call &ldquo;my life&rdquo; is usually just your <em>life situation</em> &mdash; a mental narrative built on circumstances, full of problems and resistance, existing only in psychological time. Life itself is different: it exists only in the eternal Now, problem-free, internal, and indestructible.</p>
+      <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">Situations are either accepted or acted upon &mdash; never turned into &ldquo;problems.&rdquo; The moment you say and believe &ldquo;my life,&rdquo; you&rsquo;ve split yourself from life itself. There is no such split. You don&rsquo;t have a life. You <em>are</em> life.</p>
     </div></div>
   </div>
 </section>
@@ -2353,24 +2366,24 @@ section h2,
       <div class="sl-stage"><span class="sl-num">Stage 7</span><div class="sl-name">Intelligence Loss</div><p class="sl-desc">Intellect bypassed for raw animalistic reactivity.</p></div>
       <div class="sl-stage danger"><span class="sl-num">Stage 8</span><div class="sl-name" style="color:#c0392b;">Destruction</div><p class="sl-desc">Self-destructive behaviour. <em style="color:#c0392b;">The account is blown.</em></p></div>
    </div><!-- end 8-stage grid -->
-  </div><!-- end #suffering-loop collapse -->
 
-  <!-- Loop in History — standalone, always visible -->
-  <div style="max-width:820px;margin:24px auto 0;padding:32px 28px;background:var(--bg);border:1px solid #1e1e1e;border-left:3px solid var(--gold);text-align:left;">
-    <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.75;margin-bottom:12px;">The Loop in History &mdash; Alexander the Great, 336&ndash;323 BCE</div>
-    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.85;margin-bottom:16px;">Brilliant invader. No functioning administration. Death at 32 instantly exposed the void. Empire fractured into civil war within months.</p>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:16px;">
-      <div style="padding:16px 18px;background:var(--bg-lift);border:1px solid #1e1e1e;">
-        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.6;margin-bottom:6px;">Stages 1&ndash;5 — Rise &rarr; Delusion</div>
-        <p style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.8;">Conquest, wealth, divine-authority demands. The army alienated. Fundamentals rotting beneath the narrative. The ego became the lens — he could no longer see it.</p>
+    <!-- Loop in History — now inside the collapse -->
+    <div style="max-width:100%;margin:24px auto 0;padding:32px 28px;background:var(--bg);border:1px solid #1e1e1e;border-left:3px solid var(--gold);text-align:left;">
+      <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.75;margin-bottom:12px;">The Loop in History &mdash; Alexander the Great, 336&ndash;323 BCE</div>
+      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.85;margin-bottom:16px;">Brilliant invader. No functioning administration. Death at 32 instantly exposed the void. Empire fractured into civil war within months.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:16px;">
+        <div style="padding:16px 18px;background:var(--bg-lift);border:1px solid #1e1e1e;">
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.6;margin-bottom:6px;">Stages 1&ndash;5 — Rise &rarr; Delusion</div>
+          <p style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.8;">Conquest, wealth, divine-authority demands. The army alienated. Fundamentals rotting beneath the narrative. The ego became the lens — he could no longer see it.</p>
+        </div>
+        <div style="padding:16px 18px;background:var(--bg-lift);border:1px solid #1e1e1e;border-top:2px solid #c0392b;">
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#c0392b;opacity:.8;margin-bottom:6px;">Stages 6&ndash;8 — Collapse</div>
+          <p style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.8;">Troops mutiny in India, 326 BCE. Forced retreat. Dead in Babylon, 323 BCE. The account blown — exactly as the Gita&rsquo;s loop predicts, written 2000 years prior.</p>
+        </div>
       </div>
-      <div style="padding:16px 18px;background:var(--bg-lift);border:1px solid #1e1e1e;border-top:2px solid #c0392b;">
-        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#c0392b;opacity:.8;margin-bottom:6px;">Stages 6&ndash;8 — Collapse</div>
-        <p style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.8;">Troops mutiny in India, 326 BCE. Forced retreat. Dead in Babylon, 323 BCE. The account blown — exactly as the Gita&rsquo;s loop predicts, written 2000 years prior.</p>
-      </div>
+      <p style="font-family:var(--serif);font-size:clamp(14px,1.8vw,16px);color:var(--gold);font-style:italic;">The loop is not a theory. It is a timeline. It runs the same way every time.</p>
     </div>
-    <p style="font-family:var(--serif);font-size:clamp(14px,1.8vw,16px);color:var(--gold);font-style:italic;">The loop is not a theory. It is a timeline. It runs the same way every time.</p>
-  </div>
+  </div><!-- end #suffering-loop collapse -->
 
   <!-- Distortion of Satchitananda -->
   <div class="ego-sub-header">
@@ -2403,6 +2416,49 @@ section h2,
       </div>
     </div>
     <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);margin-top:24px;padding:20px 24px;border:1px solid #2a2a2a;background:var(--bg);">Fixation is just Essence filtered through the illusion of a separate body.</p>
+  </div>
+
+  <!-- The Pain-Body -->
+  <div class="ego-sub-header">
+    <div class="ego-sub-header-text">
+      <h3>The Pain-Body</h3>
+      <p>The emotional residue that feeds on your reactivity</p>
+    </div>
+    <button class="collapse-toggle-btn" onclick="sectionCollapse('pain-body',this)">Expand &#9660;</button>
+  </div>
+  <span class="section-collapse-label" style="max-width:820px;margin:0 auto 16px;display:block;text-align:left;">Collapsed by default — tap to expand</span>
+  <div id="pain-body" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 0;">
+
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.85;margin-bottom:32px;text-align:left;">Unprocessed emotional pain from the past doesn&rsquo;t dissolve &mdash; it leaves a residue. Repeated over years, that residue accumulates into something semi-autonomous: trapped life-energy that has turned in on itself, lodged in mind and body. It is the dark shadow the ego casts.</p>
+
+    <div class="ego-twin">
+      <div class="ego-twin-card attachment">
+        <span class="tc-label">How It Survives</span>
+        <h4>Unconscious Identification</h4>
+        <p>It requires you to mistake its voice for your own. It feeds on experiences that resonate with its frequency &mdash; anger, drama, violence, grief.</p>
+        <div class="tc-end">Pain can only feed on pain. It finds joy quite indigestible.</div>
+      </div>
+      <div class="ego-twin-card aversion">
+        <span class="tc-label">Its Two Modes</span>
+        <h4>Dormant &amp; Active</h4>
+        <p>Dormant: resting in the background, waiting. Active: triggered by a thought, an event, or a relationship that gives it something to feed on.</p>
+        <div class="tc-end">You must catch it before it becomes thought.</div>
+      </div>
+    </div>
+
+    <div style="margin-top:40px;">
+      <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:16px;text-align:left;">The Lifecycle &mdash; Five Stages</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:2px;">
+        <div class="sl-stage"><span class="sl-num">Stage 1</span><div class="sl-name">Dormancy</div><p class="sl-desc">Resting in the background. Waiting.</p></div>
+        <div class="sl-stage"><span class="sl-num">Stage 2</span><div class="sl-name">The Trigger</div><p class="sl-desc">An event, a thought, an innocent remark resonates with old pain.</p></div>
+        <div class="sl-stage danger"><span class="sl-num">Stage 3</span><div class="sl-name" style="color:#c0392b;">Identification</div><p class="sl-desc">The mind aligns with the emotion. You <em>become</em> it.</p></div>
+        <div class="sl-stage danger"><span class="sl-num">Stage 4</span><div class="sl-name" style="color:#c0392b;">Active Feeding</div><p class="sl-desc">Drama, arguments, inner turmoil &mdash; manufactured to consume negative energy.</p></div>
+        <div class="sl-stage"><span class="sl-num">Stage 5</span><div class="sl-name">Return to Dormancy</div><p class="sl-desc">Satiated, it goes back to sleep. Until the next trigger.</p></div>
+      </div>
+    </div>
+
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);margin-top:32px;padding:20px 24px;border:1px solid #2a2a2a;background:var(--bg);text-align:left;">The intervention point sits between Stage 2 and Stage 3 &mdash; the gap where sustained conscious attention can feel the energy directly, without letting it harden into thought. Focus. Accept that it is there. Witness it as &ldquo;the one who observes.&rdquo; Just as wood placed in fire becomes fire, the pain-body exposed to the flame of consciousness is transmuted into presence.</p>
+
   </div>
 </section>
 <span class="continue-hint">continue</span>
