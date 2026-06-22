@@ -236,7 +236,8 @@ body{
     font-size:8px !important;
     padding:8px 6px !important;
   }
-  @media (max-width:768px){
+}
+@media (max-width:768px){
   .self-table{
     min-width:1100px;
   }
@@ -262,7 +263,6 @@ body{
     clear:both;
     overflow:hidden;
   }
-}
 :root{
   --gold:#d4af37;
   --gold-glow:rgba(212,175,55,0.5);
@@ -334,8 +334,8 @@ body{
 [data-theme="light"] .nav-logo-center{border-color:rgba(138,106,18,0.5) !important;}
 [data-theme="light"] #themeToggleBtn{background:rgba(250,248,243,0.98) !important;border-color:rgba(0,0,0,0.15) !important;color:#5a4a2a !important;}
 [data-theme="light"] .progress-bar{background:linear-gradient(90deg,rgba(138,106,18,0.4),#8a6a12);}
-[data-theme="light"] .nav-icon-item button{color:#5a4a2a !important;border-left-color:rgba(0,0,0,0.1) !important;}
-[data-theme="light"] .nav-icon-item button:hover{color:#8a6a12 !important;}
+[data-theme="light"] #themeToggleMobile{color:#5a4a2a !important;border-left-color:rgba(0,0,0,0.1) !important;}
+[data-theme="light"] #themeToggleMobile:hover{color:#8a6a12 !important;}
 
 /* Light: section backgrounds */
 [data-theme="light"] .framework-card,[data-theme="light"] .pillar-card,[data-theme="light"] .identity-card,
@@ -421,6 +421,26 @@ body{
 [data-theme="light"] [style*="border:2px solid var(--gold)"]{border-color:rgba(138,106,18,0.55) !important;}
 [data-theme="light"] [style*="border-left:2px solid var(--gold)"]{border-left-color:rgba(138,106,18,0.6) !important;} 
 [data-theme="light"] [style*="border-right:1px solid #1a1a1a"]{border-right-color:rgba(0,0,0,0.1) !important;}
+/* ── LIGHT THEME: CSS-class border-color fixes (class-defined borders are not
+   caught by the inline [style*=] attribute selectors above) ─────────────── */
+[data-theme="light"] .why-card{border-color:rgba(0,0,0,0.1) !important;}
+[data-theme="light"] .framework-card{border-color:rgba(0,0,0,0.1) !important;}
+[data-theme="light"] .pillar-card{border-color:rgba(0,0,0,0.1) !important;}
+[data-theme="light"] .ipo-cell{border-right-color:rgba(0,0,0,0.1) !important;}
+[data-theme="light"] .ipo-table-row.header .ipo-cell{border-right-color:rgba(0,0,0,0.15) !important;}
+/* IPO outer wrapper box (inline border:1px solid #2a2a2a already covered above,
+   but the inner pull-quote section needs explicit left-border restoration) */
+[data-theme="light"] .ipo-upanishad{border-left-color:rgba(138,106,18,0.6) !important;}
+/* Two Paths — inner quote boxes */
+[data-theme="light"] .paths-convergence{color:#2e2008 !important;}
+/* Why $SELF section inner cards */
+[data-theme="light"] .why-card{border-color:rgba(0,0,0,0.1) !important;}
+/* Path of Subtilization — evo-grid inline boxes */
+[data-theme="light"] .identity-card .practice{border-top-color:rgba(0,0,0,0.1) !important;}
+/* Sacred Mechanics — inline boxes use #1e1e1e covered by attr selector,
+   but the ladder-grid cells use inline border:1px solid #1e1e1e — already covered */
+/* Section-collapse inner border */
+[data-theme="light"] .section-collapse-wrap .section-collapse-inner{border-color:rgba(0,0,0,0.1) !important;}
 [data-theme="light"] .section-collapse-wrap .section-collapse-inner{border-color:rgba(0,0,0,0.1) !important;}
 [data-theme="light"] .stage-item{border-color:rgba(0,0,0,0.1) !important;background:#ede6d0 !important;}
 [data-theme="light"] .stage-body-col .s-title{color:#1a1208 !important;}
@@ -541,28 +561,33 @@ a:hover{opacity:.7;}
 @media(max-width:900px){
   .nav-left li a,.nav-right li a{font-size:9px;letter-spacing:1px;padding:0 8px;}
   .nav-hide-mobile{display:none !important; visibility:hidden; width:0; overflow:hidden; border:none; margin:0; padding:0;}
-  .nav-icon-item{display:list-item !important;}
-  .nav-icon-item button{
-  background:none !important;
-  border:none !important;
-  border-left:1px solid #1a1a1a !important;
-  color:var(--dim) !important;
-  cursor:pointer !important;
-  width:40px !important;
-  height:var(--nav-h) !important;
-  display:flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-  font-size:14px !important;
-  padding:0 !important;
-  transition:color .2s !important;
-  flex-shrink:0 !important;
-}
-
-.nav-icon-item button:hover{
-  color:var(--gold) !important;
-}
+  #themeToggleMobile{
+    display:flex !important;
+    position:fixed !important;
+    top:0 !important;
+    right:0 !important;
+    z-index:1000 !important;
+    background:rgba(0,0,0,0.92) !important;
+    border:none !important;
+    border-left:1px solid #1a1a1a !important;
+    color:var(--dim) !important;
+    cursor:pointer !important;
+    width:40px !important;
+    height:var(--nav-h) !important;
+    align-items:center !important;
+    justify-content:center !important;
+    font-size:14px !important;
+    padding:0 !important;
+    transition:color .2s !important;
+    flex-shrink:0 !important;
+  }
+  #themeToggleMobile:hover{
+    color:var(--gold) !important;
+  }
   #themeToggleBtn{display:none !important;} 
+  /* Reserve space at the right edge of the scrollable nav strip so its
+     content never sits underneath the fixed theme button */
+  .nav-right{padding-right:40px;}
 }
 
 /* Below this width, even 6 evenly-distributed items get too cramped to read —
@@ -570,7 +595,7 @@ a:hover{opacity:.7;}
 @media(max-width:520px){
 .site-nav{overflow-x:scroll;scrollbar-width:none;white-space:nowrap;touch-action:pan-x;}
   .nav-left{justify-content:flex-start; flex:0 !important;}
-  .nav-right{justify-content:flex-start; flex:0 !important; padding-right:0 !important;}
+  .nav-right{justify-content:flex-start; flex:0 !important;}
   .nav-left li,.nav-right li{flex:0 !important; width:auto !important;}
   .nav-left li a,.nav-right li a{font-size:8px;letter-spacing:0.5px;padding:0 5px;min-width:auto;width:auto !important;}
   .nav-left li:first-child a{border-left:none;}
@@ -603,8 +628,9 @@ section{scroll-margin-top:56px;}
 .section-collapse-wrap{overflow:hidden;transition:max-height .55s cubic-bezier(0,1,.25,1),opacity .35s ease;opacity:1;}
 .section-collapse-wrap.collapsed{max-height:0 !important;opacity:0;}
 
-/* ── THEME TOGGLE (hidden on mobile, shown by nav-icon-item) ─────────────── */
-.nav-icon-item{display:none !important;}
+/* ── THEME TOGGLE — desktop button shown by default; mobile button (fixed,
+   outside the scrollable nav strip) is hidden until the mobile breakpoint ── */
+#themeToggleMobile{display:none;}
 
 /* ── HERO ─────────────────────────────────────────────────────────────────── */
 .hero{min-height:calc(100vh - var(--nav-h));display:flex;flex-direction:column;justify-content:center;align-items:center;padding:16px 24px 0;position:relative;background:radial-gradient(ellipse at 50% 35%,rgba(212,175,55,.05) 0%,transparent 68%);}
@@ -650,7 +676,7 @@ section{scroll-margin-top:56px;}
 .symptoms-block .small{font-size:clamp(14px,1.8vw,17px);color:var(--grey);font-style:italic;line-height:1.9;}
 
 /* ── VOID TEST ───────────────────────────────────────────────────────────── */
-.void-test{padding:70px 24px;background:radial-gradient(ellipse at 50% 50%,rgba(212,175,55,.06) 0%,transparent 65%);border-top:1px solid #111;border-bottom:1px solid #111;}
+.void-test{padding:70px 24px;background:radial-gradient(ellipse at 50% 50%,rgba(212,175,55,.06) 0%,transparent 65%);border-bottom:1px solid #111;}
 .void-test-question{font-size:clamp(20px,3.2vw,32px);font-weight:300;color:var(--white);line-height:1.7;max-width:600px;margin:0 auto 36px;}
 .void-test-question em{color:var(--gold);font-style:italic;}
 .void-buttons{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:32px;}
@@ -664,7 +690,7 @@ section{scroll-margin-top:56px;}
 .framework-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:2px;margin:48px auto 0;text-align:left;}
 .framework-card{padding:38px 32px;background:var(--bg-lift);border:1px solid #1e1e1e;transition:border-color .3s;cursor:pointer;position:relative;}
 .framework-card:hover{border-color:#333;}
-.framework-content{overflow:hidden;transition:max-height .4s ease,opacity .3s ease;max-height:1200px;opacity:1;}
+.framework-content{overflow:hidden;transition:max-height .4s ease,opacity .3s ease;opacity:1;}
 .framework-card.collapsed .framework-content{max-height:0;opacity:0;}
 .framework-card .num{font-family:var(--sans);font-size:10px;letter-spacing:3px;color:var(--gold);opacity:.7;margin-bottom:18px;display:block;}
 .framework-card h3{font-family:var(--serif);font-size:22px;font-weight:400;color:var(--white);margin-bottom:12px;line-height:1.4;}
@@ -673,7 +699,7 @@ section{scroll-margin-top:56px;}
 .framework-card.collapsed::after{content:'Expand ▼';}
 
 /* ── 5 PILLARS ───────────────────────────────────────────────────────────── */
-.astrolabe-section{padding:90px 24px;background:radial-gradient(ellipse at 50% 100%,rgba(212,175,55,.06) 0%,transparent 60%);border-top:1px solid #111;border-bottom:1px solid #111;}
+.astrolabe-section{padding:90px 24px;background:radial-gradient(ellipse at 50% 100%,rgba(212,175,55,.06) 0%,transparent 60%);border-bottom:1px solid #111;}
 .astrolabe-section h2{font-size:clamp(22px,3.5vw,38px);font-weight:300;color:var(--white);max-width:660px;margin:0 auto 16px;line-height:1.5;}
 .astrolabe-section .sub{font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:520px;margin:0 auto 52px;font-style:italic;line-height:1.85;}
 .pillar-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2px;max-width:980px;margin:0 auto 44px;text-align:left;}
@@ -688,7 +714,7 @@ section{scroll-margin-top:56px;}
 .astrolabe-cta{font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:500px;margin:0 auto;font-style:italic;line-height:1.85;}
 
 /* ── TWO PATHS ───────────────────────────────────────────────────────────── */
-.two-paths{padding:90px 24px;background:var(--bg-lift);border-top:1px solid #111;border-bottom:1px solid #111;}
+.two-paths{padding:90px 24px;background:var(--bg-lift);border-bottom:1px solid #111;}
 .two-paths h2{font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:620px;margin:0 auto 16px;line-height:1.5;}
 .two-paths .sub{font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:520px;margin:0 auto 52px;line-height:1.85;}
 .paths-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;max-width:800px;margin:0 auto 44px;}
@@ -702,7 +728,7 @@ section{scroll-margin-top:56px;}
 .paths-convergence{font-size:clamp(17px,2.5vw,22px);font-weight:300;font-style:italic;color:var(--mid);max-width:560px;margin:0 auto;line-height:1.8;}
 
 /* ── COSMO BLOCK ─────────────────────────────────────────────────────────── */
-.cosmo-block{padding:90px 24px;background:radial-gradient(ellipse at 50% 50%,rgba(212,175,55,.07) 0%,transparent 65%);border-top:1px solid #111;border-bottom:1px solid #111;}
+.cosmo-block{padding:90px 24px;background:radial-gradient(ellipse at 50% 50%,rgba(212,175,55,.07) 0%,transparent 65%);border-bottom:1px solid #111;}
 .cosmo-block p{font-size:clamp(20px,3.5vw,34px);font-weight:300;font-style:italic;color:var(--gold);line-height:1.7;max-width:680px;margin:0 auto 22px;}
 .cosmo-block .plain{font-style:normal;color:var(--grey);font-size:clamp(15px,2vw,20px);}
 
@@ -717,7 +743,7 @@ section{scroll-margin-top:56px;}
 .tradition-cell.trad{color:var(--gold);font-style:italic;}
 
 /* ── VISION SECTION ──────────────────────────────────────────────────────── */
-.vision-section{padding:90px 24px;background:var(--bg-lift);border-top:1px solid #111;border-bottom:1px solid #111;}
+.vision-section{padding:90px 24px;background:var(--bg-lift);border-bottom:1px solid #111;}
 .vision-box{max-width:720px;margin:0 auto;padding:60px 32px;border:1px solid #2a2a2a;background:radial-gradient(ellipse at 50% 50%,rgba(212,175,55,.05) 0%,transparent 70%);position:relative;}
 .vision-statement{font-size:clamp(20px,3.5vw,32px);font-weight:300;color:var(--gold);line-height:1.8;margin-bottom:0;}
 .vision-pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px;text-align:left;margin-top:44px;}
@@ -732,7 +758,7 @@ section{scroll-margin-top:56px;}
 .cosmic-section p.dim{color:var(--grey);font-size:clamp(14px,1.8vw,18px);}
 
 /* ── IPO SECTION ─────────────────────────────────────────────────────────── */
-.ipo-section{scroll-margin-top:56px;padding:90px 24px;background:radial-gradient(ellipse at 50% 0%,rgba(212,175,55,.07) 0%,transparent 60%);border-top:1px solid #111;border-bottom:1px solid #111;}
+.ipo-section{scroll-margin-top:56px;padding:90px 24px;background:radial-gradient(ellipse at 50% 0%,rgba(212,175,55,.07) 0%,transparent 60%);border-bottom:1px solid #111;}
 .ipo-headline{font-size:clamp(20px,3vw,32px);font-weight:300;color:var(--white);line-height:1.45;max-width:680px;margin:0 auto 16px;}
 .ipo-headline em{font-style:italic;color:var(--gold);}
 .ipo-sub{font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:560px;margin:0 auto 52px;line-height:1.95;}
@@ -757,7 +783,7 @@ section{scroll-margin-top:56px;}
 .ipo-upanishad em{color:var(--gold);font-style:italic;font-weight:400;}
 
 /* ── WHY SECTION ─────────────────────────────────────────────────────────── */
-.why-section{padding:90px 24px;background:var(--bg-lift);border-top:1px solid #111;border-bottom:1px solid #111;}
+.why-section{padding:90px 24px;background:var(--bg-lift);border-bottom:1px solid #111;}
 .why-section h2{font-size:clamp(22px,3.5vw,38px);font-weight:300;color:var(--white);max-width:660px;margin:0 auto 52px;line-height:1.55;}
 .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;max-width:960px;margin:0 auto 52px;text-align:left;}
 .why-card{padding:32px 28px;border:1px solid #1e1e1e;background:var(--bg);}
@@ -771,7 +797,7 @@ section{scroll-margin-top:56px;}
 .why-closing{max-width:600px;margin:0 auto;font-size:clamp(18px,2.5vw,24px);font-weight:300;font-style:italic;color:var(--white);line-height:1.8;}
 
 /* ── WATCH ────────────────────────────────────────────────────────────────── */
-.watch-section{padding:80px 24px;background:var(--bg-lift);border-top:1px solid #111;border-bottom:1px solid #111;}
+.watch-section{padding:80px 24px;background:var(--bg-lift);border-bottom:1px solid #111;}
 .watch-links{display:flex;flex-direction:column;align-items:center;gap:32px;margin-top:42px;}
 .watch-link-inner{display:flex;flex-direction:column;align-items:center;width:100%;max-width:440px;}
 .watch-thumb{width:100%;max-width:440px;height:220px;object-fit:cover;display:block;border:1px solid #2a2a2a;filter:brightness(0.85);transition:filter .3s;}
@@ -791,10 +817,10 @@ section{scroll-margin-top:56px;}
 .mirror-link.primary:hover{opacity:.83;}
 
 /* ── IDENTITY SECTION ────────────────────────────────────────────────────── */
-.identity-section{padding:90px 24px;background:var(--bg-lift);border-top:1px solid #111;border-bottom:1px solid #111;}
+.identity-section{padding:90px 24px;background:var(--bg-lift);border-bottom:1px solid #111;}
 .identity-section h2{font-size:clamp(22px,3.5vw,38px);font-weight:300;color:var(--white);max-width:660px;margin:0 auto 16px;line-height:1.5;}
 .identity-section .sub{font-size:clamp(14px,2vw,19px);color:var(--grey);max-width:520px;margin:0 auto 52px;font-style:italic;line-height:1.85;}
-.identity-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:2px;max-width:980px;margin:0 auto;text-align:left;overflow:hidden;transition:max-height .5s ease,opacity .3s ease;max-height:3000px;opacity:1;}
+.identity-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:2px;max-width:980px;margin:0 auto;text-align:left;overflow:hidden;transition:max-height .5s ease,opacity .3s ease;opacity:1;}
 .identity-section.collapsed .identity-grid{max-height:0;opacity:0;}
 .identity-card{padding:38px 32px;background:var(--bg);border:1px solid #1e1e1e;transition:border-color .3s;}
 .identity-card:hover{border-color:#333;}
@@ -809,7 +835,7 @@ section{scroll-margin-top:56px;}
 .bridge-section p.gold{color:var(--gold);font-style:italic;}
 
 /* ── FAQ ─────────────────────────────────────────────────────────────────── */
-.faq-section{padding:90px 24px;background:var(--bg-lift);border-top:1px solid #111;border-bottom:1px solid #111;}
+.faq-section{padding:90px 24px;background:var(--bg-lift);border-bottom:1px solid #111;}
 .faq-section h2{font-size:clamp(20px,3vw,32px);font-weight:300;color:var(--white);max-width:560px;margin:0 auto 52px;line-height:1.5;}
 .faq-list{max-width:680px;margin:0 auto;text-align:left;}
 .faq-item{border-bottom:1px solid #1a1a1a;}
@@ -819,7 +845,7 @@ section{scroll-margin-top:56px;}
 .faq-icon{width:28px;height:28px;border-radius:50%;border:1px solid rgba(212,175,55,.5);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--gold);font-size:18px;font-weight:300;line-height:1;transition:all .25s;font-family:var(--sans);}
 .faq-item.open .faq-q .faq-icon{background:var(--gold);color:#000;border-color:var(--gold);}
 .faq-a{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(0,1,.25,1);}
-.faq-item.open .faq-a{max-height:900px;}
+.faq-item.open .faq-a{max-height:1400px;}
 .faq-item.closed .faq-a{max-height:0;overflow:hidden;opacity:0;}
 .faq-a-inner{padding:0 4px 28px;font-family:var(--serif);font-size:clamp(16px,2vw,19px);font-weight:300;color:var(--grey);line-height:1.95;}
 .faq-a-inner a{color:var(--gold);}
@@ -857,7 +883,7 @@ section{scroll-margin-top:56px;}
 .footer-ca{font-family:var(--sans);font-size:11px;color:var(--dim);letter-spacing:.8px;word-break:break-all;max-width:500px;margin:0 auto;}
 
 /* ── FARTCOIN SECTION ─────────────────────────────────────────────────────── */
-.fartcoin-section{padding:90px 24px;border-top:1px solid #111;border-bottom:1px solid #111;background:var(--bg);}
+.fartcoin-section{padding:90px 24px;border-bottom:1px solid #111;background:var(--bg);}
 .fartcoin-section .confrontation-label{font-family:var(--sans);font-size:9px;letter-spacing:5px;text-transform:uppercase;color:#c0392b;margin-bottom:40px;display:block;opacity:.9;}
 .mc-compare{display:grid;grid-template-columns:1fr 1fr;gap:2px;max-width:680px;margin:0 auto 52px;}
 .mc-card{padding:32px 28px;border:1px solid #1e1e1e;text-align:left;}
@@ -873,7 +899,11 @@ section{scroll-margin-top:56px;}
 .surrender-section .surrender-sub{font-family:var(--serif);font-size:clamp(13px,1.8vw,16px);color:var(--grey);font-style:italic;text-align:center;margin-bottom:40px;line-height:1.8;}
 .stage-expand-label{font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;padding:4px 10px;border:1px solid #2a2a2a;transition:all .25s;}
 .surrender-section h4:hover .stage-expand-label{border-color:var(--gold);}
-.surrender-content{overflow:hidden;transition:max-height .5s ease,opacity .3s ease;max-height:3000px;opacity:1;}
+.surrender-content{overflow:hidden;transition:max-height .5s ease,opacity .3s ease;opacity:1;}
+.foundation-content{overflow:hidden;transition:max-height .5s ease,opacity .3s ease;opacity:1;}
+.foundation-content.collapsed{max-height:0 !important;opacity:0;}
+.why-content{overflow:hidden;transition:max-height .6s ease,opacity .3s ease;opacity:1;}
+.why-content.collapsed{max-height:0 !important;opacity:0;}
 .surrender-section.collapsed .surrender-content{max-height:0;opacity:0;}
 .stage-item{display:grid;grid-template-columns:52px 1fr;gap:0;margin-bottom:2px;border:1px solid #1e1e1e;background:var(--bg);}
 .stage-num-col{padding:24px 16px;border-right:1px solid #1e1e1e;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:26px;}
@@ -885,7 +915,7 @@ section{scroll-margin-top:56px;}
 .surrender-arrow{text-align:center;padding:8px 0;color:var(--gold);opacity:.3;font-size:18px;display:block;}
 
 /* ── ARCHITECTURE OF EGO ─────────────────────────────────────────────────── */
-.ego-arch-section{padding:90px 24px;background:var(--bg);border-top:1px solid #111;border-bottom:1px solid #111;}
+.ego-arch-section{padding:90px 24px;background:var(--bg);border-bottom:1px solid #111;}
 .ego-arch-section h2{font-size:clamp(22px,3.5vw,38px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;}
 .ego-arch-section .sub{font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:560px;margin:0 auto 52px;font-style:italic;line-height:1.85;}
 .ego-ring-wrap{max-width:700px;margin:0 auto 52px;padding:44px 36px;border:1px solid #2a2a2a;background:radial-gradient(ellipse at 50% 50%,rgba(212,175,55,.04) 0%,transparent 70%);}
@@ -918,7 +948,7 @@ section{scroll-margin-top:56px;}
 .sl-stage.danger .sl-num{color:#c0392b;opacity:.8;}
 
 /* ── ENNEAGRAM SECTION ───────────────────────────────────────────────────── */
-.enn-section{padding:90px 24px;background:var(--bg-lift);border-top:1px solid #111;border-bottom:1px solid #111;}
+.enn-section{padding:90px 24px;background:var(--bg-lift);border-bottom:1px solid #111;}
 .enn-section h2{font-size:clamp(22px,3.5vw,38px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;}
 .enn-section .sub{font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:580px;margin:0 auto 52px;font-style:italic;line-height:1.85;}
 .enn-intro-box{max-width:720px;margin:0 auto 52px;padding:36px 32px;border:1px solid #2a2a2a;background:var(--bg);text-align:left;}
@@ -944,7 +974,7 @@ section{scroll-margin-top:56px;}
 .ec-synthesis{font-family:var(--serif);font-size:14px;color:var(--mid);line-height:1.8;font-style:italic;padding-top:10px;border-top:1px solid #1a1a1a;margin-top:10px;}
 
 /* ── DESCENT SECTION ─────────────────────────────────────────────────────── */
-.descent-section{padding:90px 24px;background:var(--bg);border-top:1px solid #111;border-bottom:1px solid #111;}
+.descent-section{padding:90px 24px;background:var(--bg);border-bottom:1px solid #111;}
 .descent-section h2{font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:680px;margin:0 auto 16px;line-height:1.5;}
 .descent-section .sub{font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:540px;margin:0 auto 52px;font-style:italic;line-height:1.85;}
 .descent-funnel{max-width:600px;margin:0 auto 52px;}
@@ -970,7 +1000,7 @@ section{scroll-margin-top:56px;}
 .as-text{font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.8;}
 
 /* ── RASA SYNTHESIS TABLE ────────────────────────────────────────────────── */
-.rasa-section{padding:90px 24px;background:var(--bg-lift);border-top:1px solid #111;border-bottom:1px solid #111;}
+.rasa-section{padding:90px 24px;background:var(--bg-lift);border-bottom:1px solid #111;}
 .rasa-section h2{font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;}
 .rasa-section .sub{font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:560px;margin:0 auto 52px;font-style:italic;line-height:1.85;}
 .rasa-table{max-width:900px;margin:0 auto;border:1px solid #2a2a2a;overflow-x:auto;}
@@ -1043,8 +1073,6 @@ section{scroll-margin-top:56px;}
     }
 
   }
-
-}
 /* ── UNIFIED TYPOGRAPHY SYSTEM ───────────────────────────────────────────── */
 
 /* Section h2 — all major section headings normalized */
@@ -1292,24 +1320,22 @@ section h2,
 .void-test-question {
   font-size: clamp(18px,2.8vw,28px) !important;
 }  
-  @media(max-width:640px){
+@media(max-width:640px){
   .hero{min-height:auto !important;height:calc(100dvh - var(--nav-h));padding:12px 16px 0 !important;justify-content:space-evenly;}
   .hero .continue-hint{margin-top:0 !important;padding:10px 0 4px !important;}
   .hero-question{font-size:18px !important;margin-bottom:0 !important;}
   .hero > a[href="#contract"]{margin:0 auto !important;}
   .hero > div[style*="padding:22px 32px"]{padding:14px 18px !important;margin-bottom:0 !important;}
 }
- @media(max-width:640px){
+@media(max-width:640px){
   [style*="min-width:560px"],
   [style*="min-width:700px"]{min-width:480px !important;}
   [style*="grid-template-columns:180px repeat(4,1fr)"]{grid-template-columns:120px repeat(4,1fr) !important;}
   [style*="grid-template-columns:1.4fr 1fr 1fr 1fr"]{grid-template-columns:1fr 1fr 1fr 1fr !important;}
-   @media(max-width:640px){
   /* TOBE equation — allow wrap on very small screens */
   [style*="white-space:nowrap"]{
     white-space:normal !important;
   }
-}
   .self-table-wrap{
     margin-left:-24px;
     margin-right:-24px;
@@ -1346,20 +1372,12 @@ section h2,
   background:rgba(0,0,0,0.97) !important;
   will-change:auto !important;
 }
-  /* Force the li wrapper to show */
-  li.nav-icon-item{
-    display:flex !important;
-    align-items:center;
-    flex-shrink:0;
-  }
- 
-  /* Ensure the button inside is fully rendered */
-  li.nav-icon-item button,
-  .nav-icon-item button#themeToggleMobile{
+  /* Mobile theme button — fixed to viewport, always visible regardless of nav scroll */
+  #themeToggleMobile{
     display:flex !important;
     align-items:center !important;
     justify-content:center !important;
-    background:none !important;
+    background:rgba(0,0,0,0.97) !important;
     border:none !important;
     border-left:1px solid #1a1a1a !important;
     color:var(--dim) !important;
@@ -1375,18 +1393,17 @@ section h2,
     transition:color .2s !important;
   }
  
-  li.nav-icon-item button:hover,
-  .nav-icon-item button#themeToggleMobile:hover{
+  #themeToggleMobile:hover{
     color:var(--gold) !important;
   }
  
-  /* Light theme tint for mobile icon button */
-  [data-theme="light"] li.nav-icon-item button,
-  [data-theme="light"] .nav-icon-item button#themeToggleMobile{
+  /* Light theme tint for mobile theme button */
+  [data-theme="light"] #themeToggleMobile{
     color:#5a4a2a !important;
     border-left-color:rgba(0,0,0,0.12) !important;
+    background:rgba(250,248,243,0.97) !important;
   }
-  [data-theme="light"] li.nav-icon-item button:hover{
+  [data-theme="light"] #themeToggleMobile:hover{
     color:#8a6a12 !important;
   }
  
@@ -1452,6 +1469,7 @@ section h2,
   /* Master Matrix (7×6) — widest table */
   .self-table[style*="min-width:820px"]{
   min-width:720px !important;
+}
 }
  /* Master Matrix mobile: explicit scroll container */
 .self-table-wrap{
@@ -1536,6 +1554,10 @@ section h2,
 @media(max-width:900px){
   html{
     -webkit-overflow-scrolling:auto !important;
+    /* scroll-behavior:smooth causes the browser to intercept touch-driven
+       scrolls through the main thread, producing visible jerk on mobile.
+       Disable it on small viewports — anchor nav links still work. */
+    scroll-behavior:auto !important;
   }
  
   body {
@@ -1558,7 +1580,6 @@ section h2,
   [data-theme="light"] .site-nav{
     background:rgba(250,248,243,0.99) !important;
   }
-}
  
 /* ── Progress bar: requestAnimationFrame is the correct fix for scroll perf ──
    The progress bar width update via JS .style.width on scroll can cause
@@ -1617,21 +1638,22 @@ section h2,
   <img src="./assets/images/SELF_Origin_1000x1000.png" alt="*SELF">
 </a>
 
-<!-- Right: Ledger, IPO, Contract, Disclaimer, FAQ + theme icon -->
+<!-- Right: Ledger, IPO, Contract, Disclaimer, FAQ -->
 <ul class="nav-right">
   <li style="border-left:1px solid #1a1a1a;"><a href="#ledger">Ledger</a></li>
   <li><a href="#ipo">IPO</a></li>
   <li><a href="#contract"><span class="desktop-label">CONTRACT</span><span class="mobile-label">CA</span></a></li>
   <li class="nav-hide-mobile"><a href="#disclaimer">Disclaimer</a></li>
   <li><a href="#faq-section">FAQ</a></li>
-  <li class="nav-icon-item" style="border:none;">
-    <button onclick="toggleTheme()" title="Toggle theme" style="background:none;border:none;border-left:1px solid #1a1a1a;color:var(--dim);cursor:pointer;width:36px;height:var(--nav-h);display:flex;align-items:center;justify-content:center;font-size:13px;padding:0;" id="themeToggleMobile">&#9788;</button>
-  </li>
 </ul>
 
   <!-- Desktop theme toggle pinned right -->
   <button id="themeToggleBtn" onclick="toggleTheme()" title="Toggle light/dark theme" aria-label="Toggle theme">&#9788;</button>
 </nav>
+
+<!-- Mobile theme toggle — fixed to viewport, sits outside the scrollable nav strip
+     so it's never clipped or scrolled out of view on narrow phones -->
+<button id="themeToggleMobile" onclick="toggleTheme()" title="Toggle theme" aria-label="Toggle theme">&#9788;</button>
 
 <div class="geo-badge" id="geoBadge"></div>
 
@@ -1701,7 +1723,7 @@ section h2,
   <p class="phil-line dim">Every tradition has a name for what comes next.</p>
 </section>
 <div class="divider"></div>
-  <section style="padding:90px 24px;background:var(--bg-lift);border-top:1px solid #111;border-bottom:1px solid #111;">
+  <section style="padding:90px 24px;background:var(--bg-lift);border-bottom:1px solid #111;">
   <div style="max-width:680px;margin:0 auto;">
     <span class="label">The Dark Night</span>
     <div class="pull-quote" style="margin-bottom:36px;">
@@ -1799,7 +1821,7 @@ section h2,
 <div class="divider"></div>  
 
 <!-- THE MISSION -->
-<section class="section" style="background:var(--bg-lift);border-top:1px solid #111;border-bottom:1px solid #111;padding:90px 24px;">
+<section class="section" style="background:var(--bg-lift);border-bottom:1px solid #111;padding:90px 24px;">
   <span class="label">The Mission</span>
   <div style="max-width:720px;margin:0 auto;text-align:left;">
     <p style="font-size:clamp(17px,2.3vw,22px);color:var(--white);line-height:1.9;margin-bottom:20px;">Human birth is a supreme gift &mdash; a unique opportunity for Self-Realization.</p>
@@ -1988,7 +2010,7 @@ section h2,
 <div class="divider"></div>
 
 <!-- INTEGRATION ENGINE -->
-<section class="section-wide" style="padding:90px 24px;background:var(--bg-lift);border-top:1px solid #111;border-bottom:1px solid #111;">
+<section class="section-wide" style="padding:90px 24px;background:var(--bg-lift);border-bottom:1px solid #111;">
   <span class="label">The Integration Engine</span>
   <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 20px;line-height:1.5;">Neither East nor West alone. Together, they become whole.</h2>
   <p style="font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:680px;margin:0 auto 36px;line-height:1.9;">Western psychotherapy and Eastern wisdom traditions are not opposites. They are complements. But to integrate them, you must first understand what each got right — and what each missed.</p>
@@ -2084,7 +2106,7 @@ section h2,
   <p>Consciousness contains the universe.</p>
   <p class="plain">*SELF is the practice of knowing that from the inside.</p>
   <button id="foundationToggle" onclick="toggleFoundation(this)" style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);background:transparent;border:1px solid #2a2a2a;padding:10px 24px;cursor:pointer;margin:28px auto 0;display:block;transition:border-color .25s;" aria-expanded="false">Show Traditions &#9660;</button>
-  <div id="foundationContent" style="max-height:0;overflow:hidden;transition:max-height .5s ease,opacity .3s ease;opacity:0;">
+  <div id="foundationContent" class="foundation-content collapsed">
   <div class="tradition-table">
     <div class="tradition-row header">
       <div class="tradition-cell">Tradition</div>
@@ -2164,7 +2186,7 @@ section h2,
 <div class="divider"></div>
 
 <!-- PERCEPTUAL CHAIN -->
-<section style="padding:90px 24px;background:var(--bg-lift);border-top:1px solid #111;border-bottom:1px solid #111;">
+<section style="padding:90px 24px;background:var(--bg-lift);border-bottom:1px solid #111;">
   <div style="max-width:760px;margin:0 auto;">
     <span class="label">The Perceptual Chain</span>
     <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--gold);max-width:660px;margin:0 auto 16px;line-height:1.5;">How the universe reaches you</h2>
@@ -2200,7 +2222,7 @@ section h2,
     </div>
   </div>
    </section>
-  <section style="padding:52px 24px;background:var(--bg);border-top:1px solid #111;overflow-x:hidden;">
+  <section style="padding:52px 24px;background:var(--bg);overflow-x:hidden;">
   <div style="max-width:960px;margin:0 auto;">
     <span class="label" style="margin-bottom:28px;">Four Mechanisms of Cognition</span>
     <div class="self-table-wrap" style="max-width:960px;margin:28px auto 0;">
@@ -2657,7 +2679,7 @@ section h2,
 </section>
 <div class="divider"></div>
 <!-- ADD between the rasa-section closing div and the Cosmic Ledger section -->
-<section style="padding:90px 24px;background:var(--bg);border-top:1px solid #111;border-bottom:1px solid #111;">
+<section style="padding:90px 24px;background:var(--bg);border-bottom:1px solid #111;">
   <div style="max-width:820px;margin:0 auto;">
     <span class="label">The Stairway of Ascension</span>
     <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;">Beyond the mind, there is a stairway.</h2>
@@ -2751,28 +2773,29 @@ section h2,
     </div>
   </div>
 </section>
+<span class="continue-hint">continue</span>
 <div class="divider"></div>
 
 <!-- 42 COSMIC BLUEPRINT -->
-<section style="padding:90px 24px;background:var(--bg-lift);border-top:1px solid #111;border-bottom:1px solid #111;">
+<section style="padding:90px 24px;background:var(--bg-lift);border-bottom:1px solid #111;">
   <div style="max-width:860px;margin:0 auto;">
     <span class="label">The Cosmic Blueprint</span>
     <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:660px;margin:0 auto 16px;line-height:1.5;">42 is not decoration. It is a frequency.</h2>
-    <p style="font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:580px;margin:0 auto 52px;font-style:italic;line-height:1.85;">Douglas Adams joked that 42 was the &ldquo;Ultimate Answer.&rdquo; He thought it was a random punchline. The universe disagreed.</p>
+    <p style="font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:580px;margin:0 auto 52px;font-style:italic;line-height:1.85;">Douglas Adams joked that 42 was the &ldquo;Ultimate Answer.&rdquo; He called it a random punchline. We chose it as a symbol anyway &mdash; for what it can mean, not for what it proves.</p>
     <div style="max-width:720px;margin:0 auto;padding:40px 36px;border:1px solid var(--gold);background:radial-gradient(ellipse at 50% 0%,rgba(212,175,55,.07) 0%,transparent 65%);text-align:center;"><p style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:20px;">The Equation of Being</p>
       <p style="font-family:var(--serif);font-size:clamp(18px,2.8vw,26px);color:var(--white);line-height:1.75;margin-bottom:16px;">In computer science, ASCII code 42 translates exactly to the Asterisk (<strong style="color:var(--gold);">*</strong>) &mdash; the universal wildcard for &ldquo;Everything&rdquo; and &ldquo;Anything.&rdquo;</p>
-      <p style="font-family:var(--serif);font-size:clamp(17px,2.4vw,22px);color:var(--gold);font-style:italic;">The universe is built on 42.<br>You are the wildcard. You define the value.</p>
+      <p style="font-family:var(--serif);font-size:clamp(17px,2.4vw,22px);color:var(--gold);font-style:italic;">We build our symbol on 42.<br>You are the wildcard. You define the value.</p>
     </div>
   </div>
 </section>
 <span class="continue-hint">continue</span>
 <div class="divider"></div>
     <!-- ══════════════════════════ 42: THE DEEP ARCHITECTURE ══════════════════════ -->
-<section style="padding:90px 24px;background:var(--bg);border-top:1px solid #111;border-bottom:1px solid #111;overflow-x:hidden;" id="forty-two">
+<section style="padding:90px 24px;background:var(--bg);border-bottom:1px solid #111;overflow-x:hidden;" id="forty-two">
   <div style="max-width:860px;margin:0 auto;">
     <span class="label">Why 42 Is Not a Coincidence</span>
-    <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;text-align:center;">The universe has been trying to tell you something.<br>It encoded the answer before you were born.</h2>
-    <p style="font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:580px;margin:0 auto 52px;font-style:italic;line-height:1.85;text-align:center;">Douglas Adams called 42 a joke. He wrote it as absurdist comedy. The universe did not get the memo.</p>
+    <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;text-align:center;">42 is not a prediction. It is a symbol &mdash; for the infinite possibility inside every human being.</h2>
+    <p style="font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:580px;margin:0 auto 52px;font-style:italic;line-height:1.85;text-align:center;">Douglas Adams called 42 a joke. He wrote it as absurdist comedy. We're not asking you to believe it's anything more &mdash; only to see what it can point toward.</p>
 
     <!-- THE BINARY PULSE -->
     <div style="max-width:760px;margin:0 auto 52px;">
@@ -2782,7 +2805,7 @@ section h2,
         <div style="position:absolute;bottom:-1px;right:-1px;width:16px;height:16px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);"></div>
         <p style="font-family:var(--sans);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:16px;">42 in binary = 101010</p>
         <p style="font-family:var(--serif);font-size:clamp(28px,5vw,52px);color:var(--gold);font-weight:300;letter-spacing:8px;margin-bottom:20px;">1 0 1 0 1 0</p>
-        <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.85;max-width:560px;margin:0 auto;">In digital physics, the universe can be modelled as a quantum computer. The binary representation of 42 dictates the on/off switches of reality across three cosmic phases.</p>
+        <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.85;max-width:560px;margin:0 auto;">Some have modelled the universe itself as a vast binary system &mdash; on, off, on. We use that same code as a symbol: three phases of existence, each one a switch flipping between presence and absence.</p>
       </div>
       <div class="grid-scroll-safe">
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;">
@@ -2822,7 +2845,52 @@ section h2,
         </div>
       </div>
       <div style="padding:24px 28px;background:rgba(212,175,55,.04);border:1px solid #2a2a2a;text-align:center;">
-        <p style="font-family:var(--serif);font-size:clamp(15px,2vw,19px);color:var(--white);line-height:1.85;margin:0;">20 orbits complete. 22 orbits remain. The Sun-Earth clock has been running for 4.6 billion years — and has approximately <strong style="color:var(--gold);font-weight:400;">5 billion years</strong> left. The universe encoded your window of opportunity in the very number that answers the question of existence.</p>
+        <p style="font-family:var(--serif);font-size:clamp(15px,2vw,19px);color:var(--white);line-height:1.85;margin:0;">20 orbits complete. 22 orbits remain. The Sun-Earth clock has been running for 4.6 billion years — and has approximately <strong style="color:var(--gold);font-weight:400;">5 billion years</strong> left. 20 + 22 = 42. We don't claim that's destiny. We just can't stop noticing it.</p>
+      </div>
+    </div>
+
+    <!-- WHY EARTH DIES BEFORE THE SUN -->
+    <div style="max-width:760px;margin:0 auto 52px;">
+      <p style="font-family:var(--sans);font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);opacity:.75;text-align:center;margin-bottom:24px;">Why Earth Dies Before the Sun</p>
+
+      <!-- Timeline -->
+      <div class="grid-scroll-safe">
+      <div style="display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:8px;min-width:560px;margin-bottom:28px;">
+        <div style="padding:18px 14px;background:var(--bg-lift);border:1px solid #1e1e1e;text-align:center;">
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:6px;">Today</div>
+          <p style="font-family:var(--serif);font-size:12.5px;color:var(--grey);line-height:1.6;margin:0;">Stable. Life thrives.</p>
+        </div>
+        <div style="color:var(--gold);opacity:.4;font-size:18px;text-align:center;">&#9654;</div>
+        <div style="padding:18px 14px;background:var(--bg-lift);border:1px solid var(--gold);text-align:center;">
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:6px;">+1 to 1.5B Years</div>
+          <p style="font-family:var(--serif);font-size:12.5px;color:var(--mid);line-height:1.6;margin:0;">Oceans evaporate. Plants &amp; animals die.</p>
+        </div>
+        <div style="color:var(--gold);opacity:.4;font-size:18px;text-align:center;">&#9654;</div>
+        <div style="padding:18px 14px;background:var(--bg-lift);border:1px solid #1e1e1e;text-align:center;">
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:6px;">+5B Years</div>
+          <p style="font-family:var(--serif);font-size:12.5px;color:var(--grey);line-height:1.6;margin:0;">Sun becomes a Red Giant. Earth engulfed.</p>
+        </div>
+      </div>
+      </div>
+
+      <!-- The Two Separate Deadlines -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:20px;">
+        <div style="padding:28px 24px;background:var(--bg-lift);border:1px solid var(--gold);text-align:left;">
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:12px;">Deadline 1 &middot; ~1&ndash;1.5 Billion Years</div>
+          <div style="font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:10px;">The Habitability Deadline</div>
+          <p style="font-family:var(--serif);font-size:13.5px;color:var(--mid);line-height:1.85;margin:0;">The point at which Earth loses its liquid surface water. Complex life &mdash; plants, animals, and humans &mdash; cannot survive without it. Only deep-surface microbes might cling to life a little longer.</p>
+        </div>
+        <div style="padding:28px 24px;background:var(--bg-lift);border:1px solid #1e1e1e;text-align:left;">
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:12px;">Deadline 2 &middot; ~5 Billion Years</div>
+          <div style="font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:10px;">The Physical Destruction Deadline</div>
+          <p style="font-family:var(--serif);font-size:13.5px;color:var(--grey);line-height:1.85;margin:0;">The point at which the Sun exhausts its core hydrogen and swells into a Red Giant &mdash; large enough to swallow Mercury and Venus, and either engulf Earth outright or leave it a scorched, melted rock.</p>
+        </div>
+      </div>
+
+      <!-- The Mechanism -->
+      <div style="padding:24px 28px;border:1px solid #1e1e1e;background:var(--bg);text-align:left;">
+        <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.75;margin-bottom:14px;">How It Happens</p>
+        <p style="font-family:var(--serif);font-size:13.5px;color:var(--grey);line-height:1.95;margin:0;">As the Sun fuses hydrogen into helium, its core slowly compresses and heats &mdash; raising the Sun&rsquo;s output by roughly 10% every billion years. Within 1 to 1.5 billion years, that extra energy pushes Earth&rsquo;s climate past the point of no return: a runaway greenhouse effect. The oceans evaporate, and since water vapor is itself a potent greenhouse gas, the warming accelerates its own loop. High in the atmosphere, solar ultraviolet radiation splits that water vapor into hydrogen and oxygen &mdash; the light hydrogen escapes to space, permanently drying out the planet. Long before the Sun ever becomes a Red Giant, Earth will already be uninhabitable.</p>
       </div>
     </div>
 
@@ -2833,7 +2901,7 @@ section h2,
         <div style="padding:36px 28px;background:var(--bg-lift);border:1px solid #2a2a2a;text-align:center;">
           <div style="font-family:var(--serif);font-size:clamp(48px,8vw,80px);color:var(--grey);font-weight:300;opacity:.5;line-height:1;margin-bottom:14px;">0</div>
           <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:12px;">The Void</div>
-          <p style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.8;margin:0;">Absurdism. Existential nihilism. Humanity searches for meaning and the universe provides zero. Sunyata &mdash; the emptiness from which everything emerges.</p>
+          <p style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.8;margin:0;">An answer without a question holds zero objective value. Camus called this the Absurd: humanity's desperate hunger for meaning, met by a universe that offers nothing back. In Buddhist thought, this same zero is Śūnyatā &mdash; emptiness, the void from which form is said to arise.</p>
         </div>
         <div style="display:flex;align-items:center;justify-content:center;padding:0 12px;">
           <div style="writing-mode:vertical-rl;font-family:var(--sans);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.5;">synthesis</div>
@@ -2841,7 +2909,7 @@ section h2,
         <div style="padding:36px 28px;background:var(--bg-lift);border:1px solid var(--gold);text-align:center;">
           <div style="font-family:var(--serif);font-size:clamp(48px,8vw,80px);color:var(--gold);font-weight:300;line-height:1;margin-bottom:14px;">42</div>
           <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:12px;">To Be</div>
-          <p style="font-family:var(--serif);font-size:14px;color:var(--mid);line-height:1.8;margin:0;">The mathematics of creation. The leap from non-being into being. Form and absolute order. The recognition that existence itself is the answer.</p>
+          <p style="font-family:var(--serif);font-size:14px;color:var(--mid);line-height:1.8;margin:0;">Any positive integer marks the leap from non-being into being &mdash; the mystery of why there is something rather than nothing. 42 carries that leap and answers it: existence itself is the recognition that you are here.</p>
         </div>
       </div>
       <div style="padding:20px 28px;border:1px solid #1e1e1e;background:var(--bg);text-align:center;">
@@ -2855,12 +2923,12 @@ section h2,
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:20px;">
         <div style="padding:36px 32px;background:var(--bg-lift);border:1px solid #1e1e1e;text-align:left;">
           <p style="font-family:var(--serif);font-size:clamp(18px,2.8vw,30px);color:var(--gold);font-weight:300;line-height:1.5;margin-bottom:16px;white-space:nowrap;">T(20) + O(15) + B(2) + E(5) = <strong style="font-size:1.3em;">42</strong></p>
-          <p style="font-family:var(--serif);font-size:15px;color:var(--mid);line-height:1.85;margin-bottom:14px;">42 is the exact alphanumeric sum of <em style="color:var(--gold);">'TO BE'</em> &mdash; the fundamental statement of existence itself. Shakespeare asked it as a question. The universe answered it as a number.</p>
+          <p style="font-family:var(--serif);font-size:15px;color:var(--mid);line-height:1.85;margin-bottom:14px;">42 is the exact alphanumeric sum of <em style="color:var(--gold);">'TO BE'</em> &mdash; the fundamental statement of existence itself. Shakespeare asked it as a question. We like that 42 answers it as a number.</p>
           <p style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.85;">Your supply of $SELF is fixed at 1,000,000,<strong style="color:var(--gold);">042</strong>.</p>
         </div>
         <div style="padding:36px 32px;background:var(--bg);border:1px solid #1e1e1e;text-align:left;">
           <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:14px;">Philosophy Meets Engineering</div>
-          <p style="font-family:var(--serif);font-size:15px;color:var(--mid);line-height:1.85;margin-bottom:14px;">The Starship V4 rocket was deliberately built with exactly <strong style="color:var(--gold);">42 Raptor engines</strong> &mdash; an intentional choice binding human survival and technological capability to this cosmological constant.</p>
+          <p style="font-family:var(--serif);font-size:15px;color:var(--mid);line-height:1.85;margin-bottom:14px;">The Starship V4 rocket was built with exactly <strong style="color:var(--gold);">42 Raptor engines</strong>. We can't say what that means. We can say we noticed.</p>
           <p style="font-family:var(--serif);font-size:13.5px;color:var(--grey);line-height:1.85;font-style:italic;">"Space exploration is not only about technology. It is also about purpose, imagination, and humanity's search for meaning."</p>
         </div>
       </div>
@@ -2905,7 +2973,7 @@ section h2,
 </section>
 <div class="divider"></div>
     <!-- ══════════════════════════ SACRED MECHANICS OF CREATION ══════════════════ -->
-<section style="padding:90px 24px;background:var(--bg-lift);border-top:1px solid #111;border-bottom:1px solid #111;overflow-x:hidden;">
+<section style="padding:90px 24px;background:var(--bg-lift);border-bottom:1px solid #111;overflow-x:hidden;">
   <div style="max-width:860px;margin:0 auto;">
     <span class="label">The Sacred Mechanics of Creation</span>
     <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;text-align:center;">You are not in the universe.<br>The universe is in you.</h2>
@@ -3068,8 +3136,7 @@ section h2,
   <span class="label">The Path of Subtilization</span>
   <h2>Seven stages. One journey. From body to SELF.</h2>
   <p class="sub">Every tradition maps the same upward arc &mdash; the 7 Chakras, the 7 Stages of Spiritual Progress, and the 7 Layers of Existence all describe one singular journey.</p>
-  <div style="text-align:center;margin-bottom:36px;">
-    <div style="max-width:820px;margin:0 auto 36px;display:grid;grid-template-columns:1fr 1fr;gap:2px;" class="evo-grid">
+  <div style="max-width:820px;margin:0 auto 36px;display:grid;grid-template-columns:1fr 1fr;gap:2px;" class="evo-grid">
   <div style="padding:32px 28px;background:var(--bg);border:1px solid #1e1e1e;text-align:left;">
     <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;
     color:var(--dim);opacity:.75;margin-bottom:14px;">Matter → Plant → Animal</div>
@@ -3094,6 +3161,7 @@ section h2,
     external physical form. You are the first species that chooses its own next stage.</p>
   </div>
 </div>
+  <div style="text-align:center;margin-bottom:36px;">
     <button id="identityExpandBtn" class="collapse-toggle-btn">Expand &#9660;</button>
     <p class="section-collapse-label">Tap to expand &mdash; collapsed by default</p>
   </div>
@@ -3107,7 +3175,8 @@ section h2,
     <div class="identity-card" style="border-color:#2a2a2a;background:radial-gradient(ellipse at 50% 0%,rgba(212,175,55,.05) 0%,transparent 65%);"><span class="layer-tag" style="opacity:1;">Stage 7 &mdash; Crown Chakra &middot; SELF</span><h4>Perfection &amp; Pure Joy</h4><p>Divine and Unity Consciousness. You still live &ldquo;in the world,&rdquo; but are no longer &ldquo;of the world.&rdquo; Individual identity dissolves into universal consciousness. <em style="color:var(--gold);">At the summit of subtilization, the burden of choice vanishes.</em></p><p class="practice">Seed Mantra: OM &middot; Element: Universal Consciousness &middot; Layer: The SELF (Atman)</p><p style="font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-top:12px;padding-top:12px;border-top:1px solid #1e1e1e;">Atman (Individual SELF) = Brahman (Supreme Reality)</p></div>
     </div>
   </div>
-  <div class="divider"></div>
+</section>
+<div class="divider"></div>
 
 <!-- COSMIC LEDGER -->
   <section class="section" id="ledger">  
@@ -3145,7 +3214,7 @@ section h2,
 <div class="divider"></div>
 
 <!-- SUPER-ORDINATE GOAL -->
-<section class="section-wide" style="scroll-margin-top:56px;padding:80px 24px;background:var(--bg-lift);border-top:1px solid #111;border-bottom:1px solid #111;">
+<section class="section-wide" style="scroll-margin-top:56px;padding:80px 24px;background:var(--bg-lift);border-bottom:1px solid #111;">
   <div style="max-width:720px;margin:0 auto;">
     <span class="label">The Super-Ordinate Goal</span>
     <div class="superordinate-box" style="margin-top:0;">
@@ -3189,7 +3258,6 @@ section h2,
     </div>
   </div>
 </section>
-<div class="divider"></div>
 
 <!-- FARTCOIN MIRROR -->
 <section class="fartcoin-section" id="mirror-mc">
@@ -3212,20 +3280,20 @@ section h2,
       <p style="font-size:clamp(18px,2.7vw,24px);font-weight:300;color:var(--gold);font-style:italic;line-height:1.85;margin-bottom:12px;">This is a mirror.</p>
       <p style="font-size:clamp(15px,2vw,19px);font-weight:300;color:var(--mid);line-height:1.9;margin-bottom:20px;">What does it tell you about what humanity currently values?<br>What does it tell you about the direction you are pointed in?</p>
     </div>
-    <div style="padding:0 36px 20px;border-top:1px solid #1e1e1e;">
-      <p style="font-size:clamp(15px,2vw,19px);color:var(--mid);line-height:1.9;margin-bottom:12px;margin-top:20px;">Rockets can reach Mars.<br>But you don&rsquo;t need a rocket to reach your SELF.<br><span style="color:var(--gold);font-style:italic;">It has never been separate from you.</span></p>
+    <div style="padding:0 36px 28px;border-top:1px solid #1e1e1e;">
+      <p style="font-size:clamp(15px,2vw,19px);color:var(--mid);line-height:1.9;margin-bottom:0;margin-top:20px;">Rockets can reach Mars.<br>But you don&rsquo;t need a rocket to reach your SELF.<br><span style="color:var(--gold);font-style:italic;">It has never been separate from you.</span></p>
     </div>
-    <div style="padding:20px 36px 28px;border-top:1px solid #1e1e1e;background:rgba(212,175,55,.03);">
-      <p style="font-size:clamp(16px,2.2vw,20px);color:var(--gold);font-style:italic;line-height:1.8;margin-bottom:10px;">The most undervalued asset in human history<br>has never had a ticker symbol.</p>
-    </div>
+  </div>
+  <div style="max-width:560px;margin:0 auto 44px;padding:48px 40px;text-align:center;border:1px solid var(--gold);background:radial-gradient(ellipse at 50% 50%,rgba(212,175,55,.08) 0%,transparent 65%);">
+    <p style="font-family:var(--serif);font-size:clamp(22px,3.5vw,32px);color:var(--gold);font-style:italic;line-height:1.6;margin:0;">The most undervalued asset<br>in human history<br>has never had a ticker symbol.</p>
   </div>
   <div style="max-width:660px;margin:44px auto 0;padding:44px 40px;border:1px solid var(--gold);background:radial-gradient(ellipse at 50% 0%,rgba(212,175,55,.07) 0%,transparent 65%);text-align:center;position:relative;">
     <div style="position:absolute;top:-1px;left:-1px;width:20px;height:20px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);"></div>
     <div style="position:absolute;bottom:-1px;right:-1px;width:20px;height:20px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);"></div>
     <p style="font-family:var(--sans);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:20px;">You have had access to it every day of your life.</p>
     <p style="font-family:var(--serif);font-size:clamp(20px,3vw,30px);font-weight:300;color:var(--white);line-height:1.7;margin-bottom:20px;">Even <em style="color:var(--gold);">today.</em></p>
-    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,19px);color:var(--mid);line-height:1.9;margin-bottom:24px;">Would you rather invest in something that fades faster than it arrived &mdash; or something that holds a digital identity of you, a memorable version that carries your imprint even after you leave this world?</p>
-    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,19px);color:var(--mid);line-height:1.9;margin-bottom:24px;">No copycat can touch it. No pump.fun clone can replicate it. Unlike every token manufactured to disguise itself as you and vanish with your money &mdash; your SELF is the one thing that cannot be forged.</p>
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,19px);color:var(--mid);line-height:1.9;margin-bottom:16px;">Tokens fade faster than they arrive.</p>
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,19px);color:var(--mid);line-height:1.9;margin-bottom:24px;">No pump.fun clone can replicate your SELF. No copycat can touch it.</p>
     <p style="font-family:var(--serif);font-size:clamp(16px,2.2vw,21px);color:var(--gold);font-style:italic;line-height:1.8;margin-bottom:28px;">Or you can wait. And regret it &mdash; on your deathbed &mdash; under the ignorance of your true SELF.</p>
   </div>
   <!-- Legacy anchor — strongest conversion argument -->
@@ -3257,17 +3325,20 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
     margin:0 auto 28px;"></div>
     <p style="font-family:var(--serif);font-size:clamp(15px,2vw,19px);
     color:var(--grey);line-height:1.9;margin-bottom:16px;">True legacy is not 
-    net worth. It is not accumulation. It is not the portfolio at peak. It is 
-    the number of hearts you touched with your contribution to this world.</p>
+    net worth. Not accumulation. Not the portfolio at peak.</p>
     <p style="font-family:var(--serif);font-size:clamp(15px,1.9vw,18px);
     color:var(--mid);line-height:1.9;margin-bottom:0;">Even the names history 
-    remembers fell short of the super-ordinate goal. They met sub-goals. The 
-    greatest sub-goal: how many hearts did you touch? 
+    remembers fell short of the super-ordinate goal. They met sub-goals. 
     <em style="color:var(--gold);">Your SELF is the super-ordinate goal. 
     The only one that cannot be taken.</em></p>
   </div>
 </div>
+  <div style="max-width:560px;margin:44px auto 0;padding:40px 36px;text-align:center;">
+    <p style="font-family:var(--serif);font-size:clamp(17px,2.5vw,22px);color:var(--white);font-weight:300;line-height:1.8;margin-bottom:10px;">What have you optimized your entire life?</p>
+    <p style="font-family:var(--serif);font-size:clamp(17px,2.5vw,22px);color:var(--gold);font-style:italic;font-weight:300;line-height:1.8;margin:0;">And what have you ignored?</p>
+  </div>
  </section>
+<span class="continue-hint">continue</span>
 <div class="divider"></div>
 
 <div style="max-width:560px;margin:0 auto 20px;padding:44px 36px;text-align:center;
@@ -3315,7 +3386,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
       <span class="label">Why $SELF</span>
       <h2 id="why-toggle" onclick="whyToggle()" style="cursor:pointer;user-select:none;position:relative;">Most tokens ask you to believe in the chart.<br>This one asks a different question. <span id="why-expand-label" class="expand-label">Expand &#9660;</span></h2>
       <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:28px;">Tap to expand</p>
-      <div id="why-content" style="max-height:0;overflow:hidden;transition:max-height .6s ease,opacity .3s ease;opacity:0;">
+      <div id="why-content" class="why-content collapsed">
         <div class="why-grid">
           <div class="why-card"><span class="icon">&#x1FA9E;</span><h4>A declaration, not a trade</h4><p>Buying $SELF is a philosophical stake. It says you know the journey matters &mdash; not just the balance sheet everyone else is watching.</p></div>
           <div class="why-card"><span class="icon">&#x1F9ED;</span><h4>The only rug that matters</h4><p>What if the real rug pull isn&rsquo;t the chart? What if it&rsquo;s the moment you stopped noticing yourself? The inner market never crashes.</p></div>
@@ -3353,7 +3424,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
 </section>
 <div class="divider"></div>
 
-<section style="padding:90px 24px;background:var(--bg);border-top:1px solid #111;border-bottom:1px solid #111;">
+<section style="padding:90px 24px;background:var(--bg);border-bottom:1px solid #111;">
   <div style="max-width:680px;margin:0 auto;">
     <span class="label">The Default OS — Recalibrated</span>
     <p class="phil-line bright" style="margin-bottom:8px;">Air is free. Light is free. Water is free.</p>
@@ -3409,7 +3480,6 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
     </div>
   </div>
 </section>
-<div class="divider"></div>
 <!-- ══════════════════════════ ENHANCED MASTER MATRIX ══════════════════════ -->
 <section style="padding:90px 24px;background:var(--bg);border-top:1px solid #111;border-bottom:1px solid #111;overflow-x:hidden;">
   <div style="max-width:900px;margin:0 auto;">
@@ -3529,7 +3599,6 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
     </div>
   </div>
 </section>
-<div class="divider"></div>
 
 <!-- WATCH -->
 <section class="watch-section">
@@ -3562,7 +3631,6 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
 </div>
   </div>
 </section>
-<div class="divider"></div>
 
 <!-- MIRROR ROOM -->
 <section class="mirror-room" id="mirror">
@@ -3594,6 +3662,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
     </div>
   </div>
 </section>
+<span class="continue-hint">continue</span>
 <div class="divider"></div>
 
 <!-- GO DEEPER -->
@@ -3752,12 +3821,23 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
         <span>What is the significance of the number 42 and the * symbol?</span><span class="faq-icon">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner">
-        <p style="margin-bottom:14px;">42 is not decoration. It converges across science, philosophy, and tradition with unusual precision.</p>
+        <p style="margin-bottom:14px;">42 is not decoration. It's the symbol we chose to build around &mdash; and once you start looking, it shows up in some unexpected places.</p>
         <p style="margin-bottom:10px;"><strong style="color:var(--gold);">The Word:</strong> T+O+B+E = 20+15+2+5 = 42. The alphanumerical sum of &ldquo;TO BE.&rdquo; The supply of $SELF is exactly 1,000,000,042.</p>
         <p style="margin-bottom:10px;"><strong style="color:var(--gold);">The Symbol:</strong> In computer science, ASCII code 42 is the asterisk (*) &mdash; the universal wildcard meaning &ldquo;Everything&rdquo; and &ldquo;Anything.&rdquo;</p>
-        <p style="margin-bottom:10px;"><strong style="color:var(--gold);">Astrophysics:</strong> The current expansion rate of the universe is 42 mi/s/Mpc. A black hole&rsquo;s maximum energy efficiency is 42%.</p>
+        <p style="margin-bottom:10px;"><strong style="color:var(--gold);">In the Numbers:</strong> Estimates of the universe's expansion rate (the Hubble constant) cluster in the same range as 42, depending on method. Some black hole spin calculations land near 42% efficiency. We're not claiming these prove anything &mdash; we just find them worth noticing.</p>
         <p style="margin-bottom:10px;"><strong style="color:var(--gold);">Traditions:</strong> Kabbalah: 42-letter name of God. Christianity: 42 generations to Jesus. Ancient Egypt: 42 divine judges. Buddhism: Sutra of 42 Sections. Esoteric traditions: Age 42 marks the end of the first half of life &mdash; the shift from becoming to being.</p>
-        <p style="margin-bottom:0;"><strong style="color:var(--gold);">The Punchline:</strong> Douglas Adams said 42 was the &ldquo;Answer to Everything.&rdquo; He thought it was random. The universe disagreed.</p>
+        <p style="margin-bottom:0;"><strong style="color:var(--gold);">The Punchline:</strong> Douglas Adams said 42 was the &ldquo;Answer to Everything&rdquo; as a joke. We took the joke seriously enough to build a symbol on it.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item closed">
+      <button class="faq-q" onclick="faqToggle(this)">
+        <span>Why does Earth die before the Sun?</span><span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p style="margin-bottom:14px;">Because there are two separate deadlines, not one &mdash; and the first one arrives long before the second.</p>
+        <p style="margin-bottom:10px;"><strong style="color:var(--gold);">The Habitability Deadline (~1 to 1.5 billion years):</strong> As the Sun slowly brightens, Earth&rsquo;s climate eventually tips into a runaway greenhouse effect. The oceans evaporate, water vapor traps even more heat, and ultraviolet radiation strips the resulting vapor apart &mdash; permanently drying the planet out. This is when complex life, plants, animals, and humans, can no longer survive.</p>
+        <p style="margin-bottom:0;"><strong style="color:var(--gold);">The Physical Destruction Deadline (~5 billion years):</strong> Roughly 3.5 billion years later, the Sun finally runs out of core hydrogen and swells into a Red Giant &mdash; large enough to swallow Mercury and Venus, and either engulf Earth or leave it a scorched, melted rock.</p>
       </div></div>
     </div>
 
@@ -3766,6 +3846,16 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
         <span>What is my unique value?</span><span class="faq-icon">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner">That one thing only you can offer the world. Not necessarily a new innovation or technology &mdash; something the world needs that carries your unique mark. Ask yourself: &ldquo;What would I be willing to pay for if I were on the other side of the value exchange?&rdquo; If that is something only you can offer, that drives you, that you&rsquo;re passionate about achieving &mdash; that is your worth. Not in dollars. In purpose. That discovery requires listening to your inner voice. No one else can do it for you.</div></div>
+    </div>
+
+    <div class="faq-item closed">
+      <button class="faq-q" onclick="faqToggle(this)">
+        <span>Why does raising consciousness matter?</span><span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p style="margin-bottom:14px;">Each person can only contribute to this world at the level of their own consciousness. A mind still running on the Default OS &mdash; reacting from fear, ego, and conditioning &mdash; can only output more of the same into the world, however well-intentioned. The contribution is capped by the awareness behind it.</p>
+        <p style="margin:0;">This is why the work is not optional decoration on top of a productive life &mdash; it is the precondition for one. Raising consciousness is not self-improvement for its own sake. It is what allows the value you bring &mdash; your work, your relationships, your decisions &mdash; to come from clarity instead of conditioning. Progress toward discovering SELF is, in this sense, the most practical thing a person can do: it raises the ceiling on everything else they touch.</p>
+      </div></div>
     </div>
 
     <div class="faq-item closed">
@@ -3933,7 +4023,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
 </section>
 
 <!-- DISCLAIMER -->
-<section id="disclaimer" style="scroll-margin-top:56px;padding:80px 24px;background:var(--bg-lift);border-top:1px solid #111;">
+<section id="disclaimer" style="scroll-margin-top:56px;padding:80px 24px;background:var(--bg-lift);">
   <div style="max-width:720px;margin:0 auto;">
     <div style="border:1px solid #2a2a2a;padding:48px 44px;background:var(--bg);position:relative;">
       <div style="position:absolute;top:-1px;left:-1px;width:18px;height:18px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);"></div>
@@ -3980,18 +4070,15 @@ function copyCA(btn){
 /* ── FAQ TOGGLE FUNCTIONS ────────────────────────────────────────────────── */
 function faqToggle(btn){
   var item = btn.parentElement;
-  var faqA = item.querySelector('.faq-a');
   var ic   = btn.querySelector('.faq-icon');
   var isOpen = item.classList.contains('open');
   if(isOpen){
     item.classList.remove('open');
     item.classList.add('closed');
-    if(faqA){ faqA.style.maxHeight='0'; faqA.style.overflow='hidden'; }
     if(ic) ic.innerHTML='+';
   } else {
     item.classList.add('open');
     item.classList.remove('closed');
-    if(faqA){ faqA.style.overflow='hidden'; faqA.style.maxHeight=(faqA.scrollHeight+32)+'px'; }
     if(ic) ic.innerHTML='&minus;';
   }
 }
@@ -4008,8 +4095,6 @@ function toggleFaqAll(){
       item.classList.add('closed');
       var ic=item.querySelector('.faq-icon');
       if(ic) ic.innerHTML='+';
-      var fa=item.querySelector('.faq-a');
-      if(fa){ fa.style.maxHeight='0'; fa.style.overflow='hidden'; }
     });
     if(btn) btn.innerHTML='Expand &#9660;';
   } else {
@@ -4019,8 +4104,6 @@ function toggleFaqAll(){
       item.classList.add('open');
       var ic=item.querySelector('.faq-icon');
       if(ic) ic.innerHTML='&minus;';
-      var fa=item.querySelector('.faq-a');
-      if(fa){ fa.style.overflow='hidden'; fa.style.maxHeight=(fa.scrollHeight+32)+'px'; }
     });
     if(btn) btn.innerHTML='Collapse All &#9650;';
   }
@@ -4066,11 +4149,29 @@ function showVoidResponse(type, btn){
   var rafPending = false;
   var lastScrollY = 0;
 
+  // Cache total scrollable height instead of reading scrollHeight on every
+  // scroll frame (that read forces a synchronous layout — the main cause
+  // of scroll jerk on Android). Recompute only on resize / content-size
+  // changes (collapse/expand toggles), not on every scroll tick.
+  var cachedTotal = 0;
+  function recalcTotal(){
+    var doc = document.documentElement;
+    cachedTotal = doc.scrollHeight - doc.clientHeight;
+  }
+  recalcTotal();
+  window.addEventListener('resize', recalcTotal, {passive:true});
+  // Recalc shortly after any collapse/expand transition finishes (transitions
+  // in this page run .5s or less), so the progress bar stays accurate without
+  // forcing layout on every scroll frame.
+  document.addEventListener('click', function(e){
+    if(e.target.closest && e.target.closest('.collapse-toggle-btn, .stage-expand-label, [onclick], .faq-item, h4')){
+      setTimeout(recalcTotal, 550);
+    }
+  }, {passive:true});
+
   function updateProgress(){
   rafPending = false;
-  var doc = document.documentElement;
-  var total = doc.scrollHeight - doc.clientHeight;
-  var ratio = total > 0 ? lastScrollY / total : 0;
+  var ratio = cachedTotal > 0 ? lastScrollY / cachedTotal : 0;
   progressBar.style.width = (ratio * 100) + '%';  // just width, no transform
 }
   
@@ -4165,15 +4266,13 @@ function updateNav(){
   });
 
   /* ── WHY $SELF TOGGLE ── */
-  var whyOpen = false;
   window.whyToggle = function(){
-    whyOpen = !whyOpen;
     var content = document.getElementById('why-content');
     var lbl = document.getElementById('why-expand-label');
     if(!content) return;
-    content.style.maxHeight = whyOpen ? content.scrollHeight + 'px' : '0';
-    content.style.opacity = whyOpen ? '1' : '0';
-    if(lbl) lbl.innerHTML = whyOpen ? 'Collapse &#9650;' : 'Expand &#9660;';
+    var nowOpen = content.classList.contains('collapsed');
+    content.classList.toggle('collapsed');
+    if(lbl) lbl.innerHTML = nowOpen ? 'Collapse &#9650;' : 'Expand &#9660;';
   };
 
   /* ── FRAMEWORK CARDS: click to toggle ── */
@@ -4240,15 +4339,13 @@ function toggleEnn(btn){
 /* ── FOUNDATION TOGGLE ───────────────────────────────────────────────────── */
 function toggleFoundation(btn){
   var content = document.getElementById('foundationContent');
-  var isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
+  var isOpen = !content.classList.contains('collapsed');
   if(isOpen){
-    content.style.maxHeight = '0px';
-    content.style.opacity = '0';
+    content.classList.add('collapsed');
     btn.innerHTML = 'Show Traditions &#9660;';
     btn.setAttribute('aria-expanded','false');
   } else {
-    content.style.maxHeight = '3000px';
-    content.style.opacity = '1';
+    content.classList.remove('collapsed');
     btn.innerHTML = 'Hide Traditions &#9650;';
     btn.setAttribute('aria-expanded','true');
   }
@@ -4275,8 +4372,6 @@ function toggleTheme(){
       f.classList.add('closed');
       var ic=f.querySelector('.faq-icon');
       if(ic) ic.innerHTML='+';
-      var fa=f.querySelector('.faq-a');
-      if(fa){ fa.style.maxHeight='0'; }
     });
     var fw=document.getElementById('faqListWrap');
     if(fw){ fw.classList.remove('open'); }
