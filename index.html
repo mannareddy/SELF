@@ -289,7 +289,9 @@ body{
 [data-theme="light"] p,[data-theme="light"] li,[data-theme="light"] span:not(.label):not(.ec-type):not(.p-num):not(.num):not(.layer-tag):not(.s-sub):not(.ds-subtitle):not(.rasa-cell):not(.tradition-cell){color:#1a1208 !important;font-weight:400 !important;}
 [data-theme="light"] .phil-line{font-weight:500 !important;color:#1a1208 !important;font-size:clamp(20px,2.9vw,28px) !important;}
 [data-theme="light"] .phil-line.dim{color:#3d2e10 !important;font-size:clamp(18px,2.3vw,24px) !important;}
-[data-theme="light"] .symptoms-block p{color:#1a1208 !important;font-weight:500 !important;font-size:clamp(19px,3vw,30px) !important;}
+[data-theme="light"] .symptoms-block p:not(.small){color:#1a1208 !important;font-weight:500 !important;font-size:clamp(19px,3vw,30px) !important;}
+[data-theme="light"] .symptoms-block p.gold:not(.small){color:#8a6a12 !important;}
+[data-theme="light"] .symptoms-block p.small{color:#3d2e10 !important;font-weight:400 !important;font-size:clamp(14px,1.8vw,17px) !important;}
 [data-theme="light"] .faq-a-inner{color:#1a1208 !important;font-weight:400 !important;font-size:clamp(17px,2.1vw,20px) !important;}
 [data-theme="light"] .framework-card p{color:#2e2008 !important;font-weight:400 !important;font-size:17.5px !important;}
 [data-theme="light"] .pillar-card .p-body{color:#2e2008 !important;font-weight:400 !important;}
@@ -1939,10 +1941,10 @@ section h2,
 <!-- VOID TEST -->
 <section class="void-test">
   <span class="label">The Void Test</span>
-  <p class="void-test-question">You got what you wanted.<br>The money. The milestone. The achievement.<br><br><em>Did the void disappear?</em></p>
-  <div class="void-buttons">
-    <button class="void-btn" onclick="showVoidResponse('yes',this)">Yes, it did</button>
-    <button class="void-btn" onclick="showVoidResponse('no',this)">Not really</button>
+  <p class="void-test-question" id="voidQuestion">You got what you wanted.<br>The money. The milestone. The achievement.<br><br><em>Did the void disappear?</em></p>
+  <div class="void-buttons" id="voidButtons">
+    <button class="void-btn" onclick="voidStep('start','yes',this)">Yes, it did</button>
+    <button class="void-btn" onclick="voidStep('start','no',this)">Not really</button>
   </div>
   <div class="void-response" id="voidResponse"></div>
 </section>
@@ -4396,17 +4398,101 @@ function toggleFaqAll(){
 }
 
 /* ── VOID TEST ───────────────────────────────────────────────────────────── */
-var voidResponses = {
-  yes: '<strong>Then you\'ve found your super-ordinate goal.</strong> Rare. Most people never reach it. The question now is not whether you\'ve arrived &mdash; it\'s whether you can sustain the direction. That\'s what the framework is for.',
-  no: '<strong>That\'s the Arrival Fallacy.</strong> The void is not a flaw. It is a signal. It is pointing you inward &mdash; past the milestone, past the chart, past the external. You are in exactly the right place. Keep reading.'
+var voidNodes = {
+  start: {
+    q: 'You got what you wanted.<br>The money. The milestone. The achievement.<br><br><em>Did the void disappear?</em>',
+    opts: [
+      {label:'Yes, it did', next:'yes_howlong'},
+      {label:'Not really', next:'no_whatdrove'}
+    ]
+  },
+  yes_howlong: {
+    q: '<em>How long did that fulfillment actually last?</em>',
+    opts: [
+      {label:'Longer than I expected', next:'yes_stillhere'},
+      {label:'Not very long, if I\u2019m honest', next:'loop_closer'}
+    ]
+  },
+  yes_stillhere: {
+    q: 'Then look again &mdash;<br><em>is it still here right now, or are you already eyeing the next milestone?</em>',
+    opts: [
+      {label:'It\u2019s still here', next:'honest_exit'},
+      {label:'I\u2019m already looking ahead', next:'loop_closer'}
+    ]
+  },
+  no_whatdrove: {
+    q: '<em>Then what drove you back toward the next one &mdash; knowing the last one already left you empty?</em>',
+    opts: [
+      {label:'Habit. I didn\u2019t really think about it', next:'loop_closer'},
+      {label:'Fear of stopping', next:'loop_closer'},
+      {label:'I didn\u2019t know what else to do', next:'loop_closer'}
+    ]
+  },
+  honest_exit: {
+    q: '<em>Then this one was real.</em>',
+    terminal: '<strong>That\u2019s rare \u2014 hold onto it honestly.</strong> Only you will know if the void ever quietly returns. If it does, even years from now, that\u2019s not a failure. It\u2019s a signal to come back and reassess what you\u2019re actually chasing, and why.',
+    opts: []
+  },
+  loop_closer: {
+    q: '<em>That\u2019s the pattern.</em>',
+    terminal: '<strong>Achievement &rarr; brief relief &rarr; the void returns &rarr; reach for the next achievement.</strong> No chart shows this loop. No milestone closes it. Confusion, ignorance, and the pull of external validation just keep pointing you back outward, on repeat &mdash; and almost everyone runs this loop their whole life without ever quite naming it.<br><br>Nobody outside you can close it. That part is yours alone.',
+    opts: [
+      {label:'Show me that loop again', next:'start', restart:true},
+      {label:'Stop here. Look inward instead.', next:'exit_inward'}
+    ]
+  },
+  exit_inward: {
+    q: '<em>Good. That\u2019s the harder door, and the only one that actually opens.</em>',
+    terminal: 'Everything past this point &mdash; the Framework, the Ego, the Path &mdash; is what looking inward instead of outward actually looks like. Keep reading.',
+    opts: []
+  }
 };
-function showVoidResponse(type, btn){
+
+function voidStep(currentNode, choiceIdx, btn){
+  // choiceIdx may be passed as a label-based lookup for the first call (legacy 'yes'/'no'),
+  // or as a numeric index for subsequent calls. Normalize both.
+  var node = voidNodes[currentNode];
+  var opt;
+  if(choiceIdx === 'yes') opt = node.opts[0];
+  else if(choiceIdx === 'no') opt = node.opts[1];
+  else opt = node.opts[choiceIdx];
+
   document.querySelectorAll('.void-btn').forEach(function(b){b.classList.remove('active');});
-  btn.classList.add('active');
-  var resp = document.getElementById('voidResponse');
-  resp.innerHTML = voidResponses[type];
-  resp.classList.add('visible');
-  if(typeof gtag==='function'){gtag('event','void_test',{choice:type});}
+  if(btn) btn.classList.add('active');
+  if(typeof gtag==='function'){gtag('event','void_test',{node:currentNode, choice:opt.label});}
+
+  renderVoidNode(opt.next, !!opt.restart);
+}
+
+function renderVoidNode(nodeId, isRestart){
+  var node = voidNodes[nodeId];
+  var qEl = document.getElementById('voidQuestion');
+  var btnEl = document.getElementById('voidButtons');
+  var respEl = document.getElementById('voidResponse');
+
+  qEl.innerHTML = node.q;
+
+  if(isRestart){
+    respEl.classList.remove('visible');
+    respEl.innerHTML = '';
+  }
+
+  if(node.terminal){
+    respEl.innerHTML = node.terminal;
+    respEl.classList.add('visible');
+  } else {
+    respEl.classList.remove('visible');
+    respEl.innerHTML = '';
+  }
+
+  btnEl.innerHTML = '';
+  node.opts.forEach(function(opt, i){
+    var b = document.createElement('button');
+    b.className = 'void-btn';
+    b.textContent = opt.label;
+    b.onclick = function(){ voidStep(nodeId, i, b); };
+    btnEl.appendChild(b);
+  });
 }
 
 /* ── GEO BADGE ───────────────────────────────────────────────────────────── */
