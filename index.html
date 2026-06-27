@@ -369,6 +369,7 @@ body{
 [data-theme="light"] .path-card{background:#ede6d0 !important;border-color:rgba(0,0,0,0.1) !important;}
 [data-theme="light"] .void-btn{border-color:rgba(138,106,18,0.4) !important;color:#4a3a1a !important;}
 [data-theme="light"] .void-btn.active{background:#8a6a12 !important;color:#faf8f3 !important;}
+[data-theme="light"] .void-restart-link{color:#7a6a4a !important;}
 [data-theme="light"] .footer{background:#e5ddc5 !important;border-top-color:rgba(0,0,0,0.1) !important;}
 [data-theme="light"] .footer-socials a{color:#5a4a2a !important;}
 [data-theme="light"] .footer-socials a:hover{color:#8a6a12 !important;}
@@ -695,6 +696,8 @@ section{scroll-margin-top:56px;}
 .void-response{max-width:540px;margin:0 auto;font-size:clamp(16px,2.2vw,20px);font-weight:300;color:var(--grey);line-height:1.9;display:none;padding:28px;border:1px solid #1e1e1e;background:var(--bg-lift);}
 .void-response.visible{display:block;}
 .void-response strong{color:var(--gold);font-weight:400;}
+.void-restart-link{display:block;margin:28px auto 0;font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#555;background:transparent;border:none;cursor:pointer;text-align:center;transition:color .25s;}
+.void-restart-link:hover{color:var(--gold);}
 
 /* ── FRAMEWORK GRID ──────────────────────────────────────────────────────── */
 .framework-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:2px;margin:48px auto 0;text-align:left;}
@@ -1947,6 +1950,7 @@ section h2,
     <button class="void-btn" onclick="voidStep('start','no',this)">Not really</button>
   </div>
   <div class="void-response" id="voidResponse"></div>
+  <button class="void-restart-link" id="voidRestart" onclick="renderVoidNode('start', true)" style="display:none;">&#8635; Take the test again</button>
 </section>
 <span class="continue-hint">continue</span>
 <section class="section">
@@ -4429,8 +4433,21 @@ var voidNodes = {
     ]
   },
   honest_exit: {
-    q: '<em>Then this one was real.</em>',
-    terminal: '<strong>That\u2019s rare \u2014 hold onto it honestly.</strong> Only you will know if the void ever quietly returns. If it does, even years from now, that\u2019s not a failure. It\u2019s a signal to come back and reassess what you\u2019re actually chasing, and why.',
+    q: '<em>Then this one was real &mdash; as far as it goes.</em>',
+    terminal: '<strong>That\u2019s rare. It still isn\u2019t the whole answer.</strong> A void that hasn\u2019t returned means this sub-goal happened to serve you well \u2014 not that the super-ordinate goal has been reached. Self-realization isn\u2019t one achievement away from any sub-goal, however well it\u2019s holding up.<br><br>The real question is what you do next. Rule 1: a sub-goal can\u2019t conflict with the super-ordinate goal. Rule 2: it can never become the sole replacement for it. Whatever you chase next, that\u2019s the test \u2014 not whether it feels good walking in.',
+    opts: [
+      {label:'My next goal passes that test', next:'exit_aligned'},
+      {label:'I\u2019m not sure it would', next:'exit_reassess'}
+    ]
+  },
+  exit_aligned: {
+    q: '<em>Then it\u2019s worth pursuing.</em>',
+    terminal: 'Not because it will feel good. Because it doesn\u2019t conflict with the one goal that doesn\u2019t depreciate, and it isn\u2019t standing in for it either. That\u2019s the only clearance a sub-goal needs.',
+    opts: []
+  },
+  exit_reassess: {
+    q: '<em>Then that\u2019s worth sitting with before you chase it.</em>',
+    terminal: 'Life on this earth is the one resource you can\u2019t earn back. A sub-goal that doesn\u2019t serve the super-ordinate goal isn\u2019t neutral \u2014 it\u2019s another lap of the same loop, just with a different name on it. Reassess before you spend years on it.',
     opts: []
   },
   loop_closer: {
@@ -4469,6 +4486,7 @@ function renderVoidNode(nodeId, isRestart){
   var qEl = document.getElementById('voidQuestion');
   var btnEl = document.getElementById('voidButtons');
   var respEl = document.getElementById('voidResponse');
+  var restartEl = document.getElementById('voidRestart');
 
   qEl.innerHTML = node.q;
 
@@ -4493,6 +4511,11 @@ function renderVoidNode(nodeId, isRestart){
     b.onclick = function(){ voidStep(nodeId, i, b); };
     btnEl.appendChild(b);
   });
+
+  // A node with no further options is a true dead end (exit_aligned, exit_reassess,
+  // exit_inward) — without this, the only way back into the test was a manual page
+  // refresh. Show the quiet restart link there; hide it everywhere mid-sequence.
+  restartEl.style.display = (node.opts.length === 0) ? 'block' : 'none';
 }
 
 /* ── GEO BADGE ───────────────────────────────────────────────────────────── */
