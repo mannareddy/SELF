@@ -289,7 +289,9 @@ body{
 [data-theme="light"] p,[data-theme="light"] li,[data-theme="light"] span:not(.label):not(.ec-type):not(.p-num):not(.num):not(.layer-tag):not(.s-sub):not(.ds-subtitle):not(.rasa-cell):not(.tradition-cell){color:#1a1208 !important;font-weight:400 !important;}
 [data-theme="light"] .phil-line{font-weight:500 !important;color:#1a1208 !important;font-size:clamp(20px,2.9vw,28px) !important;}
 [data-theme="light"] .phil-line.dim{color:#3d2e10 !important;font-size:clamp(18px,2.3vw,24px) !important;}
-[data-theme="light"] .symptoms-block p{color:#1a1208 !important;font-weight:500 !important;font-size:clamp(19px,3vw,30px) !important;}
+[data-theme="light"] .symptoms-block p:not(.small){color:#1a1208 !important;font-weight:500 !important;font-size:clamp(19px,3vw,30px) !important;}
+[data-theme="light"] .symptoms-block p.gold:not(.small){color:#8a6a12 !important;}
+[data-theme="light"] .symptoms-block p.small{color:#3d2e10 !important;font-weight:400 !important;font-size:clamp(14px,1.8vw,17px) !important;}
 [data-theme="light"] .faq-a-inner{color:#1a1208 !important;font-weight:400 !important;font-size:clamp(17px,2.1vw,20px) !important;}
 [data-theme="light"] .framework-card p{color:#2e2008 !important;font-weight:400 !important;font-size:17.5px !important;}
 [data-theme="light"] .pillar-card .p-body{color:#2e2008 !important;font-weight:400 !important;}
@@ -367,12 +369,13 @@ body{
 [data-theme="light"] .path-card{background:#ede6d0 !important;border-color:rgba(0,0,0,0.1) !important;}
 [data-theme="light"] .void-btn{border-color:rgba(138,106,18,0.4) !important;color:#4a3a1a !important;}
 [data-theme="light"] .void-btn.active{background:#8a6a12 !important;color:#faf8f3 !important;}
+[data-theme="light"] .void-restart-link{color:#7a6a4a !important;}
 [data-theme="light"] .footer{background:#e5ddc5 !important;border-top-color:rgba(0,0,0,0.1) !important;}
 [data-theme="light"] .footer-socials a{color:#5a4a2a !important;}
 [data-theme="light"] .footer-socials a:hover{color:#8a6a12 !important;}
 [data-theme="light"] .footer-tagline,[data-theme="light"] .footer-ca{color:#5a4a2a !important;}
 [data-theme="light"] .geo-badge{background:rgba(250,248,243,0.95) !important;border-color:rgba(0,0,0,0.15) !important;}
-[data-theme="light"] [style*="background:var(--bg);"]{background:#faf8f3 !important;}
+[data-theme="light"] [style*="background:var(--bg);"]{background:#ede6d0 !important;}
 [data-theme="light"] [style*="background:rgba(0,0,0"]{background:transparent !important;}
 [data-theme="light"] [style*="color:var(--white)"]{color:#1a1208 !important;}
 [data-theme="light"] [style*="color:var(--mid)"]{color:#2e2008 !important;}
@@ -393,11 +396,19 @@ body{
 [data-theme="light"] .sl-stage{background:#e5ddc5 !important;border-color:rgba(0,0,0,0.1) !important;}
 [data-theme="light"] .sl-name{color:#1a1208 !important;}
 [data-theme="light"] .collapse-toggle-btn{border-color:rgba(138,106,18,0.5) !important;color:#7a5e0e !important;}
+[data-theme="light"] .continue-hint{color:#9a8454 !important;}
 [data-theme="light"] .collapse-toggle-btn:hover{background:rgba(122,94,14,0.1) !important;}
 /* Light theme — border fixes for all bordered boxes */
 [data-theme="light"] .ipo-upanishad{border-color:rgba(0,0,0,0.15) !important;border-left-color:rgba(138,106,18,0.6) !important;background:#ede6d0 !important;}
 [data-theme="light"] .antidote-box{border-color:rgba(138,106,18,0.5) !important;background:rgba(138,106,18,0.04) !important;}
 [data-theme="light"] .antidote-step{background:#faf8f3 !important;border-color:rgba(0,0,0,0.1) !important;}
+/* Light theme — border fixes for previously-missed bordered elements */
+[data-theme="light"] .ec-body{border-top-color:rgba(0,0,0,0.12) !important;}
+[data-theme="light"] .rrrr-version{background:#e5ddc5 !important;border-color:rgba(0,0,0,0.1) !important;}
+[data-theme="light"] .stage-expand-label{border-color:rgba(138,106,18,0.5) !important;color:#7a5e0e !important;}
+[data-theme="light"] .stage-num-col{border-right-color:rgba(0,0,0,0.12) !important;}
+[data-theme="light"] .tradition-table{border-color:rgba(0,0,0,0.15) !important;}
+[data-theme="light"] .void-response{background:#ede6d0 !important;border-color:rgba(0,0,0,0.12) !important;}
 [data-theme="light"] .vision-box{border-color:rgba(0,0,0,0.15) !important;background:#ede6d0 !important;}
 [data-theme="light"] .vision-pillar{border-left-color:rgba(138,106,18,0.6) !important;}
 [data-theme="light"] .cosmo-quote{background:#ede6d0 !important;border-color:rgba(0,0,0,0.12) !important;border-left-color:rgba(138,106,18,0.7) !important;}
@@ -421,6 +432,26 @@ body{
 [data-theme="light"] [style*="border:2px solid var(--gold)"]{border-color:rgba(138,106,18,0.55) !important;}
 [data-theme="light"] [style*="border-left:2px solid var(--gold)"]{border-left-color:rgba(138,106,18,0.6) !important;} 
 [data-theme="light"] [style*="border-right:1px solid #1a1a1a"]{border-right-color:rgba(0,0,0,0.1) !important;}
+/* ── LIGHT THEME: CSS-class border-color fixes (class-defined borders are not
+   caught by the inline [style*=] attribute selectors above) ─────────────── */
+[data-theme="light"] .why-card{border-color:rgba(0,0,0,0.1) !important;}
+[data-theme="light"] .framework-card{border-color:rgba(0,0,0,0.1) !important;}
+[data-theme="light"] .pillar-card{border-color:rgba(0,0,0,0.1) !important;}
+[data-theme="light"] .ipo-cell{border-right-color:rgba(0,0,0,0.1) !important;}
+[data-theme="light"] .ipo-table-row.header .ipo-cell{border-right-color:rgba(0,0,0,0.15) !important;}
+/* IPO outer wrapper box (inline border:1px solid #2a2a2a already covered above,
+   but the inner pull-quote section needs explicit left-border restoration) */
+[data-theme="light"] .ipo-upanishad{border-left-color:rgba(138,106,18,0.6) !important;}
+/* Two Paths — inner quote boxes */
+[data-theme="light"] .paths-convergence{color:#2e2008 !important;}
+/* Why $SELF section inner cards */
+[data-theme="light"] .why-card{border-color:rgba(0,0,0,0.1) !important;}
+/* Path of Subtilization — evo-grid inline boxes */
+[data-theme="light"] .identity-card .practice{border-top-color:rgba(0,0,0,0.1) !important;}
+/* Sacred Mechanics — inline boxes use #1e1e1e covered by attr selector,
+   but the ladder-grid cells use inline border:1px solid #1e1e1e — already covered */
+/* Section-collapse inner border */
+[data-theme="light"] .section-collapse-wrap .section-collapse-inner{border-color:rgba(0,0,0,0.1) !important;}
 [data-theme="light"] .section-collapse-wrap .section-collapse-inner{border-color:rgba(0,0,0,0.1) !important;}
 [data-theme="light"] .stage-item{border-color:rgba(0,0,0,0.1) !important;background:#ede6d0 !important;}
 [data-theme="light"] .stage-body-col .s-title{color:#1a1208 !important;}
@@ -628,7 +659,7 @@ section{scroll-margin-top:56px;}
 
 /* ── BANNER ──────────────────────────────────────────────────────────────── */
 .banner-section{max-width:1400px;margin:0 auto;}
-.banner-image{width:100%;height:auto;display:block;border-top:1px solid #111;border-bottom:1px solid #111;}
+.banner-image{width:100%;height:auto;aspect-ratio:16/9;display:block;border-top:1px solid #111;border-bottom:1px solid #111;}
 
 /* ── PHIL LINES ──────────────────────────────────────────────────────────── */
 .phil-line{font-size:clamp(18px,2.8vw,26px);font-weight:300;color:var(--mid);line-height:1.9;margin:14px 0;}
@@ -665,6 +696,8 @@ section{scroll-margin-top:56px;}
 .void-response{max-width:540px;margin:0 auto;font-size:clamp(16px,2.2vw,20px);font-weight:300;color:var(--grey);line-height:1.9;display:none;padding:28px;border:1px solid #1e1e1e;background:var(--bg-lift);}
 .void-response.visible{display:block;}
 .void-response strong{color:var(--gold);font-weight:400;}
+.void-restart-link{display:block;margin:28px auto 0;font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#555;background:transparent;border:none;cursor:pointer;text-align:center;transition:color .25s;}
+.void-restart-link:hover{color:var(--gold);}
 
 /* ── FRAMEWORK GRID ──────────────────────────────────────────────────────── */
 .framework-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:2px;margin:48px auto 0;text-align:left;}
@@ -679,7 +712,7 @@ section{scroll-margin-top:56px;}
 .framework-card.collapsed::after{content:'Expand ▼';}
 
 /* ── 5 PILLARS ───────────────────────────────────────────────────────────── */
-.astrolabe-section{padding:90px 24px;background:radial-gradient(ellipse at 50% 100%,rgba(212,175,55,.06) 0%,transparent 60%);border-bottom:1px solid #111;}
+.astrolabe-section{padding:90px 24px;background:radial-gradient(ellipse at 50% 100%,rgba(212,175,55,.06) 0%,transparent 60%);}
 .astrolabe-section h2{font-size:clamp(22px,3.5vw,38px);font-weight:300;color:var(--white);max-width:660px;margin:0 auto 16px;line-height:1.5;}
 .astrolabe-section .sub{font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:520px;margin:0 auto 52px;font-style:italic;line-height:1.85;}
 .pillar-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2px;max-width:980px;margin:0 auto 44px;text-align:left;}
@@ -694,7 +727,7 @@ section{scroll-margin-top:56px;}
 .astrolabe-cta{font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:500px;margin:0 auto;font-style:italic;line-height:1.85;}
 
 /* ── TWO PATHS ───────────────────────────────────────────────────────────── */
-.two-paths{padding:90px 24px;background:var(--bg-lift);border-bottom:1px solid #111;}
+.two-paths{padding:90px 24px;background:var(--bg-lift);}
 .two-paths h2{font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:620px;margin:0 auto 16px;line-height:1.5;}
 .two-paths .sub{font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:520px;margin:0 auto 52px;line-height:1.85;}
 .paths-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;max-width:800px;margin:0 auto 44px;}
@@ -723,7 +756,7 @@ section{scroll-margin-top:56px;}
 .tradition-cell.trad{color:var(--gold);font-style:italic;}
 
 /* ── VISION SECTION ──────────────────────────────────────────────────────── */
-.vision-section{padding:90px 24px;background:var(--bg-lift);border-bottom:1px solid #111;}
+.vision-section{padding:90px 24px;background:var(--bg-lift);}
 .vision-box{max-width:720px;margin:0 auto;padding:60px 32px;border:1px solid #2a2a2a;background:radial-gradient(ellipse at 50% 50%,rgba(212,175,55,.05) 0%,transparent 70%);position:relative;}
 .vision-statement{font-size:clamp(20px,3.5vw,32px);font-weight:300;color:var(--gold);line-height:1.8;margin-bottom:0;}
 .vision-pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px;text-align:left;margin-top:44px;}
@@ -763,7 +796,7 @@ section{scroll-margin-top:56px;}
 .ipo-upanishad em{color:var(--gold);font-style:italic;font-weight:400;}
 
 /* ── WHY SECTION ─────────────────────────────────────────────────────────── */
-.why-section{padding:90px 24px;background:var(--bg-lift);border-bottom:1px solid #111;}
+.why-section{padding:90px 24px;background:var(--bg-lift);}
 .why-section h2{font-size:clamp(22px,3.5vw,38px);font-weight:300;color:var(--white);max-width:660px;margin:0 auto 52px;line-height:1.55;}
 .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;max-width:960px;margin:0 auto 52px;text-align:left;}
 .why-card{padding:32px 28px;border:1px solid #1e1e1e;background:var(--bg);}
@@ -797,7 +830,7 @@ section{scroll-margin-top:56px;}
 .mirror-link.primary:hover{opacity:.83;}
 
 /* ── IDENTITY SECTION ────────────────────────────────────────────────────── */
-.identity-section{padding:90px 24px;background:var(--bg-lift);border-bottom:1px solid #111;}
+.identity-section{padding:90px 24px;background:var(--bg-lift);}
 .identity-section h2{font-size:clamp(22px,3.5vw,38px);font-weight:300;color:var(--white);max-width:660px;margin:0 auto 16px;line-height:1.5;}
 .identity-section .sub{font-size:clamp(14px,2vw,19px);color:var(--grey);max-width:520px;margin:0 auto 52px;font-style:italic;line-height:1.85;}
 .identity-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:2px;max-width:980px;margin:0 auto;text-align:left;overflow:hidden;transition:max-height .5s ease,opacity .3s ease;opacity:1;}
@@ -863,7 +896,7 @@ section{scroll-margin-top:56px;}
 .footer-ca{font-family:var(--sans);font-size:11px;color:var(--dim);letter-spacing:.8px;word-break:break-all;max-width:500px;margin:0 auto;}
 
 /* ── FARTCOIN SECTION ─────────────────────────────────────────────────────── */
-.fartcoin-section{padding:90px 24px;border-bottom:1px solid #111;background:var(--bg);}
+.fartcoin-section{padding:90px 24px;background:var(--bg);}
 .fartcoin-section .confrontation-label{font-family:var(--sans);font-size:9px;letter-spacing:5px;text-transform:uppercase;color:#c0392b;margin-bottom:40px;display:block;opacity:.9;}
 .mc-compare{display:grid;grid-template-columns:1fr 1fr;gap:2px;max-width:680px;margin:0 auto 52px;}
 .mc-card{padding:32px 28px;border:1px solid #1e1e1e;text-align:left;}
@@ -928,7 +961,7 @@ section{scroll-margin-top:56px;}
 .sl-stage.danger .sl-num{color:#c0392b;opacity:.8;}
 
 /* ── ENNEAGRAM SECTION ───────────────────────────────────────────────────── */
-.enn-section{padding:90px 24px;background:var(--bg-lift);border-bottom:1px solid #111;}
+.enn-section{padding:90px 24px;background:var(--bg-lift);}
 .enn-section h2{font-size:clamp(22px,3.5vw,38px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;}
 .enn-section .sub{font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:580px;margin:0 auto 52px;font-style:italic;line-height:1.85;}
 .enn-intro-box{max-width:720px;margin:0 auto 52px;padding:36px 32px;border:1px solid #2a2a2a;background:var(--bg);text-align:left;}
@@ -980,7 +1013,7 @@ section{scroll-margin-top:56px;}
 .as-text{font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.8;}
 
 /* ── RASA SYNTHESIS TABLE ────────────────────────────────────────────────── */
-.rasa-section{padding:90px 24px;background:var(--bg-lift);border-bottom:1px solid #111;}
+.rasa-section{padding:90px 24px;background:var(--bg-lift);}
 .rasa-section h2{font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;}
 .rasa-section .sub{font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:560px;margin:0 auto 52px;font-style:italic;line-height:1.85;}
 .rasa-table{max-width:900px;margin:0 auto;border:1px solid #2a2a2a;overflow-x:auto;}
@@ -1301,7 +1334,11 @@ section h2,
   font-size: clamp(18px,2.8vw,28px) !important;
 }  
 @media(max-width:640px){
-  .hero{min-height:auto !important;height:calc(100dvh - var(--nav-h));padding:12px 16px 0 !important;justify-content:space-evenly;}
+  /* 100dvh recalculates on every scroll tick on Android as the URL bar
+     shows/hides, forcing continuous layout reflow on the very first
+     section the user touches. Switched to a static 100vh + min-height
+     (computed once, not on every frame) to eliminate the jerk. */
+  .hero{min-height:calc(100vh - var(--nav-h));height:auto;padding:12px 16px 0 !important;justify-content:space-evenly;}
   .hero .continue-hint{margin-top:0 !important;padding:10px 0 4px !important;}
   .hero-question{font-size:18px !important;margin-bottom:0 !important;}
   .hero > a[href="#contract"]{margin:0 auto !important;}
@@ -1534,6 +1571,10 @@ section h2,
 @media(max-width:900px){
   html{
     -webkit-overflow-scrolling:auto !important;
+    /* scroll-behavior:smooth causes the browser to intercept touch-driven
+       scrolls through the main thread, producing visible jerk on mobile.
+       Disable it on small viewports — anchor nav links still work. */
+    scroll-behavior:auto !important;
   }
  
   body {
@@ -1593,7 +1634,111 @@ section h2,
     background:rgba(122,94,14,0.5);
   }
 }
-  
+
+/* ══════════════════════════ SELF-DIAGNOSTIC WIDGET ══════════════════════ */
+.diag-root{
+  max-width:640px;margin:0 auto;padding:64px 24px 90px;
+}
+.diag-progress{
+  display:grid;grid-template-columns:repeat(9,1fr);gap:4px;margin-bottom:48px;
+}
+.diag-progress .seg{height:2px;background:#2a2a2a;transition:background .4s;}
+[data-theme="light"] .diag-progress .seg{background:rgba(0,0,0,.12);}
+.diag-progress .seg.done{background:var(--gold);}
+.diag-progress .seg.current{background:var(--gold);opacity:.4;}
+.diag-eyebrow{
+  font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;
+  color:var(--gold);opacity:.85;text-align:center;margin-bottom:6px;
+}
+.diag-eyebrow .sep{opacity:.5;margin:0 6px;}
+.diag-frame{font-family:var(--serif);font-style:italic;font-size:clamp(14px,1.8vw,16px);color:var(--grey);text-align:center;margin-bottom:18px;}
+.diag-question{
+  font-family:var(--serif);font-weight:300;font-size:clamp(22px,3.2vw,30px);
+  color:var(--white);text-align:center;line-height:1.5;margin-bottom:40px;
+}
+.diag-options{display:flex;flex-direction:column;gap:2px;margin-bottom:8px;}
+.diag-opt{
+  display:flex;align-items:flex-start;gap:16px;text-align:left;width:100%;
+  padding:20px 22px;background:var(--bg-lift);border:1px solid #1e1e1e;
+  color:var(--mid);font-family:var(--serif);cursor:pointer;transition:border-color .25s,background .25s;
+}
+[data-theme="light"] .diag-opt{border-color:rgba(0,0,0,.12);}
+.diag-opt:hover{border-color:var(--gold);}
+.diag-opt.selected{border-color:var(--gold);background:rgba(212,175,55,.06);}
+.diag-opt-mark{
+  flex:0 0 18px;width:18px;height:18px;border:1px solid var(--dim);border-radius:50%;
+  margin-top:3px;position:relative;transition:border-color .25s;
+}
+.diag-opt.selected .diag-opt-mark{border-color:var(--gold);}
+.diag-opt.selected .diag-opt-mark::after{
+  content:'';position:absolute;top:3px;left:3px;width:10px;height:10px;border-radius:50%;background:var(--gold);
+}
+.diag-opt-text{flex:1;}
+.diag-opt-label{font-size:clamp(16px,2vw,18px);color:var(--white);margin-bottom:3px;display:block;}
+.diag-opt.selected .diag-opt-label{color:var(--gold);}
+.diag-opt-sub{font-size:13px;color:var(--dim);font-style:italic;display:block;}
+.diag-nav{display:flex;justify-content:space-between;align-items:center;margin-top:36px;}
+.diag-btn{
+  font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;
+  background:transparent;cursor:pointer;transition:all .25s;padding:12px 26px;
+}
+.diag-btn-back{color:var(--dim);border:1px solid transparent;}
+.diag-btn-back:hover{color:var(--grey);}
+.diag-btn-next{color:var(--gold);border:1px solid var(--gold);opacity:.4;pointer-events:none;}
+.diag-btn-next.active{opacity:1;pointer-events:auto;}
+.diag-btn-next.active:hover{background:rgba(212,175,55,.08);}
+.diag-textarea{
+  width:100%;min-height:110px;background:var(--bg-lift);border:1px solid #2a2a2a;
+  color:var(--white);font-family:var(--serif);font-style:italic;font-size:16px;
+  padding:18px 20px;resize:vertical;line-height:1.7;
+}
+[data-theme="light"] .diag-textarea{border-color:rgba(0,0,0,.18);color:#1a1208;}
+.diag-textarea:focus{outline:none;border-color:var(--gold);}
+.diag-textarea::placeholder{color:var(--dim);opacity:.7;}
+.diag-result-eyebrow{font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.8;text-align:center;margin-bottom:18px;}
+.diag-result-lead{font-family:var(--serif);font-weight:300;font-size:clamp(20px,2.8vw,26px);color:var(--white);text-align:center;line-height:1.7;margin-bottom:20px;}
+.diag-result-body{font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);text-align:center;line-height:1.9;margin-bottom:14px;max-width:560px;margin-left:auto;margin-right:auto;}
+.diag-result-italic{font-family:var(--serif);font-style:italic;font-size:clamp(15px,2vw,18px);color:var(--gold);text-align:center;line-height:1.9;margin:24px auto 0;max-width:560px;}
+.diag-matrix-wrap{
+  width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;
+  border:1px solid #1e1e1e;margin:36px auto;max-width:100%;
+}
+[data-theme="light"] .diag-matrix-wrap{border-color:rgba(0,0,0,.15);}
+.diag-matrix{width:100%;border-collapse:collapse;min-width:600px;font-size:12px;}
+.diag-matrix th{
+  font-family:var(--sans);font-size:8px;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--dim);background:var(--bg-lift);padding:10px 6px;border:1px solid #1a1a1a;text-align:center;
+}
+[data-theme="light"] .diag-matrix th{background:#c8bfa0;color:#3a2a0a;border-color:rgba(0,0,0,.15);}
+.diag-matrix td{
+  padding:10px 6px;border:1px solid #1a1a1a;color:var(--grey);text-align:center;
+  font-family:var(--serif);transition:background .4s,color .4s;
+}
+[data-theme="light"] .diag-matrix td{border-color:rgba(0,0,0,.1);color:#5a4a2a;}
+.diag-matrix td.row-label{
+  font-style:italic;text-align:left;padding-left:10px;color:var(--dim);font-size:11px;
+}
+.diag-matrix td.hit{
+  background:rgba(212,175,55,.14);color:var(--gold);font-weight:500;position:relative;
+}
+.diag-matrix td.hit::after{content:'';position:absolute;inset:0;border:1px solid var(--gold);pointer-events:none;}
+.diag-pillar-card{
+  margin:18px auto;max-width:560px;padding:26px 28px;background:var(--bg-lift);
+  border:1px solid var(--gold);border-left:3px solid var(--gold);text-align:left;
+}
+[data-theme="light"] .diag-pillar-card{background:#ede6d0;}
+.diag-pillar-tag{font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;margin-bottom:10px;display:block;}
+.diag-pillar-q{font-family:var(--serif);font-style:italic;font-size:clamp(16px,2.1vw,19px);color:var(--white);line-height:1.7;}
+[data-theme="light"] .diag-pillar-q{color:#1a1208;}
+.diag-restart{
+  display:block;margin:48px auto 0;font-family:var(--sans);font-size:10px;letter-spacing:3px;
+  text-transform:uppercase;color:var(--dim);background:transparent;border:none;cursor:pointer;text-align:center;
+}
+.diag-restart:hover{color:var(--gold);}
+@media(max-width:640px){
+  .diag-root{padding:40px 16px 70px;}
+}
+
 </style>
 </head>
 <body>
@@ -1658,8 +1803,28 @@ section h2,
 </section>
 <!-- BANNER -->
 <div class="banner-section">
-  <img src="./assets/images/Banner.jpg" alt="You don't lose money. You lose control." class="banner-image">
+  <img src="./assets/images/Banner.jpg" alt="You don't lose money. You lose control." class="banner-image" decoding="async">
 </div>
+<span class="continue-hint">continue</span>
+<div class="divider"></div>
+
+<!-- THE BOUNDARIES OF CONTROL — Epictetus -->
+<section class="section">
+  <span class="label">What Was Never Yours to Lose</span>
+  <p class="phil-line">The chart moves. The price moves. The world moves.</p>
+  <p class="phil-line dim">None of it was ever inside the boundary you actually govern.</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:2px;max-width:760px;margin:36px auto 0;">
+    <div class="sl-stage" style="border-left:2px solid var(--gold);"><span class="sl-num" style="color:var(--gold);">In Your Power</span><div class="sl-name" style="color:var(--gold);">Thoughts</div><p class="sl-desc">The one territory that answers only to you.</p></div>
+    <div class="sl-stage" style="border-left:2px solid var(--gold);"><span class="sl-num" style="color:var(--gold);">In Your Power</span><div class="sl-name" style="color:var(--gold);">Reactions</div><p class="sl-desc">How you meet what happens, not what happens.</p></div>
+    <div class="sl-stage" style="border-left:2px solid var(--gold);"><span class="sl-num" style="color:var(--gold);">In Your Power</span><div class="sl-name" style="color:var(--gold);">Desires &amp; Aversions</div><p class="sl-desc">What you reach for, and what you flinch from.</p></div>
+    <div class="sl-stage danger"><span class="sl-num">Not Yours</span><div class="sl-name" style="color:#c0392b;">Price, Fate, Opinion</div><p class="sl-desc"><em style="color:#c0392b;">Spent trying to govern this, peace leaves with it.</em></p></div>
+  </div>
+  <div class="pull-quote" style="margin-top:48px;">
+    <p>&ldquo;Seek not that the things which happen should happen as you wish; but wish the things which happen to be as they are, and you will have a tranquil flow of life.&rdquo;</p>
+    <cite>&mdash; Epictetus</cite>
+  </div>
+</section>
+<span class="continue-hint">continue</span>
 <div class="divider"></div>
 
 <!-- THE MIRROR -->
@@ -1671,6 +1836,7 @@ section h2,
     <p class="small" style="margin-top:12px;color:var(--dim);">The fix is not to silence the signal. It is to understand what it is pointing at.</p>
   </div></div>
 </section>
+<span class="continue-hint">continue</span>
 <div class="divider"></div>
 
 <section class="section">
@@ -1699,7 +1865,7 @@ section h2,
   <p class="phil-line dim">Every tradition has a name for what comes next.</p>
 </section>
 <div class="divider"></div>
-  <section style="padding:90px 24px;background:var(--bg-lift);border-bottom:1px solid #111;">
+  <section style="padding:90px 24px;background:var(--bg-lift);">
   <div style="max-width:680px;margin:0 auto;">
     <span class="label">The Dark Night</span>
     <div class="pull-quote" style="margin-bottom:36px;">
@@ -1778,12 +1944,13 @@ section h2,
 <!-- VOID TEST -->
 <section class="void-test">
   <span class="label">The Void Test</span>
-  <p class="void-test-question">You got what you wanted.<br>The money. The milestone. The achievement.<br><br><em>Did the void disappear?</em></p>
-  <div class="void-buttons">
-    <button class="void-btn" onclick="showVoidResponse('yes',this)">Yes, it did</button>
-    <button class="void-btn" onclick="showVoidResponse('no',this)">Not really</button>
+  <p class="void-test-question" id="voidQuestion">You got what you wanted.<br>The money. The milestone. The achievement.<br><br><em>Did the void disappear?</em></p>
+  <div class="void-buttons" id="voidButtons">
+    <button class="void-btn" onclick="voidStep('start','yes',this)">Yes, it did</button>
+    <button class="void-btn" onclick="voidStep('start','no',this)">Not really</button>
   </div>
   <div class="void-response" id="voidResponse"></div>
+  <button class="void-restart-link" id="voidRestart" onclick="renderVoidNode('start', true)" style="display:none;">&#8635; Take the test again</button>
 </section>
 <span class="continue-hint">continue</span>
 <section class="section">
@@ -1794,10 +1961,11 @@ section h2,
     <cite>Your portfolio is not the variable. You are.</cite>
   </div>
 </section>
+<span class="continue-hint">continue</span>
 <div class="divider"></div>  
 
 <!-- THE MISSION -->
-<section class="section" style="background:var(--bg-lift);border-bottom:1px solid #111;padding:90px 24px;">
+<section class="section" style="background:var(--bg-lift);padding:90px 24px;">
   <span class="label">The Mission</span>
   <div style="max-width:720px;margin:0 auto;text-align:left;">
     <p style="font-size:clamp(17px,2.3vw,22px);color:var(--white);line-height:1.9;margin-bottom:20px;">Human birth is a supreme gift &mdash; a unique opportunity for Self-Realization.</p>
@@ -1812,12 +1980,13 @@ section h2,
     <cite>&mdash; Carl Jung</cite>
   </div>
 </section>
+<span class="continue-hint">continue</span>
 <div class="divider"></div>
 
 <!-- THE FRAMEWORK -->
 <section class="section-wide" id="framework">
   <span class="label">The Framework</span>
-  <p class="phil-line bright">The *SELF operating system. Six layers.</p>
+  <p class="phil-line bright">The *SELF operating system. Seven layers.</p>
   <p class="phil-line dim">Most people run on the first one their whole life.</p>
   <div class="cosmo-quote" style="max-width:660px;margin:0 auto 36px;">
     <p>&ldquo;Until you make the unconscious conscious, it will direct your life and you will call it fate.&rdquo;</p>
@@ -1874,6 +2043,12 @@ section h2,
       <p>Not expected to be achieved in one lifetime. That is not a failure &mdash; that is the point. The goal was never arrival. The question is: are you pointed in the right direction?</p>
       <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">In Sanskrit: <em>Moha / Vipallasa</em> &mdash; delusion is the ultimate end of unchecked conditioning. The loop only functions in the dark. Recognition is liberation. The architecture cannot survive awareness.</p>
     </div></div>
+    <div class="framework-card collapsed">
+      <span class="num">07</span>
+      <h3>Life vs. Life Situation</h3><div class="framework-content">
+      <p>What you casually call &ldquo;my life&rdquo; is usually just your <em>life situation</em> &mdash; a mental narrative built on circumstances, full of problems and resistance, existing only in psychological time. Life itself is different: it exists only in the eternal Now, problem-free, internal, and indestructible.</p>
+      <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">Situations are either accepted or acted upon &mdash; never turned into &ldquo;problems.&rdquo; The moment you say and believe &ldquo;my life,&rdquo; you&rsquo;ve split yourself from life itself. There is no such split. You don&rsquo;t have a life. You <em>are</em> life.</p>
+    </div></div>
   </div>
 </section>
 <span class="continue-hint">continue</span>
@@ -1913,6 +2088,7 @@ section h2,
   </div>
   <p class="astrolabe-cta">The Mirror Room is where you bring your answers. &mdash; <a href="https://x.com/i/chat/group_join/g2056088351590220124/gAK9fW8Y29" target="_blank" rel="noopener">Enter &rarr;</a></p>
 </section>
+<span class="continue-hint">continue</span>
 <div class="divider"></div>
 
 <!-- TWO PATHS -->
@@ -1986,7 +2162,7 @@ section h2,
 <div class="divider"></div>
 
 <!-- INTEGRATION ENGINE -->
-<section class="section-wide" style="padding:90px 24px;background:var(--bg-lift);border-bottom:1px solid #111;">
+<section class="section-wide" style="padding:90px 24px;background:var(--bg-lift);">
   <span class="label">The Integration Engine</span>
   <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 20px;line-height:1.5;">Neither East nor West alone. Together, they become whole.</h2>
   <p style="font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:680px;margin:0 auto 36px;line-height:1.9;">Western psychotherapy and Eastern wisdom traditions are not opposites. They are complements. But to integrate them, you must first understand what each got right — and what each missed.</p>
@@ -2073,6 +2249,7 @@ section h2,
     <p style="font-family:var(--sans);font-size:11px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-top:12px;opacity:.7;">— James Hillman</p>
   </div>
 </section>
+<span class="continue-hint">continue</span>
 <div class="divider"></div>
 
 <!-- COSMOLOGICAL FOUNDATION -->
@@ -2152,6 +2329,7 @@ section h2,
   </div>
 </div>
  </section>
+<span class="continue-hint">continue</span>
 <div class="divider"></div>
 <section class="section">
   <div class="cosmo-quote">
@@ -2159,6 +2337,7 @@ section h2,
     <cite>&mdash; Francis Weller</cite>
   </div>
 </section>
+<span class="continue-hint">continue</span>
 <div class="divider"></div>
 
 <!-- PERCEPTUAL CHAIN -->
@@ -2238,6 +2417,7 @@ section h2,
   </table>
 </div>
   </section>
+<span class="continue-hint">continue</span>
 <div class="divider"></div>
 <section class="section">
   <div class="cosmo-quote">
@@ -2265,6 +2445,7 @@ section h2,
     </div>
   </div>
 </section>
+<span class="continue-hint">continue</span>
 <div class="divider"></div>
 
 <!-- ARCHITECTURE OF EGO -->
@@ -2309,6 +2490,74 @@ section h2,
     <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--mid);line-height:1.85;margin-top:24px;padding:20px;border:1px solid #1e1e1e;background:var(--bg);">These universal reactions crystalize into specific, repetitive patterns. We call these patterns &lsquo;Personality.&rsquo;</p>
   </div>
 
+  <!-- The Soft Spot — Bodhichitta -->
+  <div class="ego-sub-header">
+    <div class="ego-sub-header-text">
+      <h3>The Soft Spot</h3>
+      <p>What to do at the exact moment Aversion fires</p>
+    </div>
+    <button class="collapse-toggle-btn" onclick="sectionCollapse('bodhichitta',this)">Expand &#9660;</button>
+  </div>
+  <span class="section-collapse-label" style="max-width:820px;margin:0 auto 16px;display:block;text-align:left;">Collapsed by default — tap to expand</span>
+  <div id="bodhichitta" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 52px;">
+    <p style="font-family:var(--serif);font-size:clamp(17px,2.3vw,21px);color:var(--white);line-height:1.9;margin-bottom:20px;text-align:left;">Aversion's instinct is to push fear, anger, and discomfort away &mdash; to defend the fortress. Bodhichitta names the opposite move: when the fortress cracks under that pressure, what leaks through it isn't weakness. It's the opening.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:2px;margin-bottom:24px;">
+      <div class="sl-stage"><span class="sl-num">Pressure</span><div class="sl-name">Fear</div><p class="sl-desc">The ego's instinct: push it away before it pushes through.</p></div>
+      <div class="sl-stage"><span class="sl-num">Pressure</span><div class="sl-name">Anger</div><p class="sl-desc">The fortress wall, tested at its weakest point.</p></div>
+      <div class="sl-stage"><span class="sl-num">Pressure</span><div class="sl-name">Discomfort</div><p class="sl-desc">What Aversion exists to avoid feeling at all.</p></div>
+      <div class="sl-stage" style="border-left:2px solid var(--gold);"><span class="sl-num" style="color:var(--gold);">Through the Crack</span><div class="sl-name" style="color:var(--gold);">Bodhichitta</div><p class="sl-desc">Universal compassion &mdash; available only once the wall has actually given way.</p></div>
+    </div>
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:20px;border:1px solid #1e1e1e;background:var(--bg);">Don&rsquo;t float above the discomfort. Feeling the upheaval isn&rsquo;t a failure of practice &mdash; it&rsquo;s where compassion is learned. Lean into the fear instead of escaping it, and the fortress that Aversion spent so much effort building is exactly where the light gets in.</p>
+  </div>
+
+  <!-- The Hypometabolic State — the physiology behind Attachment/Aversion's reversal -->
+  <div class="ego-sub-header">
+    <div class="ego-sub-header-text">
+      <h3>The Evidence: A Measurable Reversal</h3>
+      <p>Attachment and aversion run on a stress response. Meditation produces its measured opposite.</p>
+    </div>
+    <button class="collapse-toggle-btn" onclick="sectionCollapse('hypometabolic',this)">Expand &#9660;</button>
+  </div>
+  <span class="section-collapse-label" style="max-width:820px;margin:0 auto 16px;display:block;text-align:left;">Collapsed by default — tap to expand</span>
+  <div id="hypometabolic" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 52px;">
+    <p style="font-family:var(--serif);font-size:clamp(17px,2.3vw,21px);color:var(--white);line-height:1.9;margin-bottom:16px;text-align:left;">Fight-or-flight floods the body with competing, urgent signals &mdash; the nervous system bracing for several threats at once. The hypometabolic state, the physiology of deep meditation, is the structural inverse: one coherent signal, sent once, fully received.</p>
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,19px);color:var(--gold);font-style:italic;line-height:1.85;text-align:left;margin-bottom:24px;">The Suffering Loop runs on a body in alarm. Stillness runs on a body that has been told, physiologically, that nothing here needs defending.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2px;margin-bottom:24px;">
+      <div class="sl-stage" style="text-align:left;padding:24px 22px;">
+        <span class="sl-num">Heart &amp; Breath</span>
+        <div class="sl-name" style="margin-bottom:10px;">Metabolism Slows</div>
+        <p class="sl-desc">Oxygen consumption and carbon dioxide production both decrease. Heart rate normalizes and slows &mdash; the body spending less to maintain itself, not more.</p>
+      </div>
+      <div class="sl-stage" style="text-align:left;padding:24px 22px;">
+        <span class="sl-num">Blood Chemistry</span>
+        <div class="sl-name" style="margin-bottom:10px;">Lactate Clears Faster</div>
+        <p class="sl-desc">Blood lactate &mdash; a key marker of anxiety &mdash; drops nearly four times faster than during ordinary rest. The body isn&rsquo;t just calm; it&rsquo;s actively clearing the chemistry of stress.</p>
+      </div>
+      <div class="sl-stage" style="text-align:left;padding:24px 22px;">
+        <span class="sl-num">Brain &amp; Skin</span>
+        <div class="sl-name" style="margin-bottom:10px;">Deep Relaxation Response</div>
+        <p class="sl-desc">Skin resistance to electrical current rises as much as 400%, alongside a shift to slow, stable alpha brain waves (8&ndash;9 Hz) &mdash; the same signature associated with deep relaxation.</p>
+      </div>
+    </div>
+
+    <div class="ego-twin" style="margin-bottom:24px;">
+      <div class="ego-twin-card" style="background:rgba(212,175,55,.03);">
+        <span class="tc-label" style="color:var(--gold);">Outcome 1 &mdash; Inward</span>
+        <h4>A New Reality</h4>
+        <p><strong style="color:var(--mid);font-weight:400;">Mechanism:</strong> Deautomatization of perception &mdash; the mind stops running on autopilot's inherited filters.</p>
+        <p><strong style="color:var(--mid);font-weight:400;">Result:</strong> The felt, not just theoretical, sense that you are intrinsically connected to the field around you rather than a separate, isolated unit.</p>
+      </div>
+      <div class="ego-twin-card" style="background:rgba(212,175,55,.03);">
+        <span class="tc-label" style="color:var(--gold);">Outcome 2 &mdash; Outward</span>
+        <h4>Efficiency &amp; Competence</h4>
+        <p><strong style="color:var(--mid);font-weight:400;">Mechanism:</strong> The mind trained to do exactly one thing at a time, instead of running several competing demands at once.</p>
+        <p><strong style="color:var(--mid);font-weight:400;">Result:</strong> Measurable increases in zest and vitality &mdash; the ability to act without the drag of a fragmented, self-divided mind.</p>
+      </div>
+    </div>
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--mid);line-height:1.85;padding:20px;border:1px solid #1e1e1e;background:var(--bg);">One mechanism, two directions: stillness toward the cosmos, and clarity toward the work in front of you. Neither requires believing anything &mdash; both can be measured in a lab.</p>
+  </div>
+
   <!-- Suffering Loop -->
   <div class="ego-sub-header">
     <div class="ego-sub-header-text">
@@ -2329,23 +2578,68 @@ section h2,
       <div class="sl-stage"><span class="sl-num">Stage 7</span><div class="sl-name">Intelligence Loss</div><p class="sl-desc">Intellect bypassed for raw animalistic reactivity.</p></div>
       <div class="sl-stage danger"><span class="sl-num">Stage 8</span><div class="sl-name" style="color:#c0392b;">Destruction</div><p class="sl-desc">Self-destructive behaviour. <em style="color:#c0392b;">The account is blown.</em></p></div>
    </div><!-- end 8-stage grid -->
+
+    <!-- Loop in History — now inside the collapse -->
+    <div style="max-width:100%;margin:24px auto 0;padding:32px 28px;background:var(--bg);border:1px solid #1e1e1e;border-left:3px solid var(--gold);text-align:left;">
+      <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.75;margin-bottom:12px;">The Loop in History &mdash; Alexander the Great, 336&ndash;323 BCE</div>
+      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.85;margin-bottom:16px;">Brilliant invader. No functioning administration. Death at 32 instantly exposed the void. Empire fractured into civil war within months.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:16px;">
+        <div style="padding:16px 18px;background:var(--bg-lift);border:1px solid #1e1e1e;">
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.6;margin-bottom:6px;">Stages 1&ndash;5 — Rise &rarr; Delusion</div>
+          <p style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.8;">Conquest, wealth, divine-authority demands. The army alienated. Fundamentals rotting beneath the narrative. The ego became the lens — he could no longer see it.</p>
+        </div>
+        <div style="padding:16px 18px;background:var(--bg-lift);border:1px solid #1e1e1e;border-top:2px solid #c0392b;">
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#c0392b;opacity:.8;margin-bottom:6px;">Stages 6&ndash;8 — Collapse</div>
+          <p style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.8;">Troops mutiny in India, 326 BCE. Forced retreat. Dead in Babylon, 323 BCE. The account blown — exactly as the Gita&rsquo;s loop predicts, written 2000 years prior.</p>
+        </div>
+      </div>
+      <p style="font-family:var(--serif);font-size:clamp(14px,1.8vw,16px);color:var(--gold);font-style:italic;">The loop is not a theory. It is a timeline. It runs the same way every time.</p>
+    </div>
   </div><!-- end #suffering-loop collapse -->
 
-  <!-- Loop in History — standalone, always visible -->
-  <div style="max-width:820px;margin:24px auto 0;padding:32px 28px;background:var(--bg);border:1px solid #1e1e1e;border-left:3px solid var(--gold);text-align:left;">
-    <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.75;margin-bottom:12px;">The Loop in History &mdash; Alexander the Great, 336&ndash;323 BCE</div>
-    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.85;margin-bottom:16px;">Brilliant invader. No functioning administration. Death at 32 instantly exposed the void. Empire fractured into civil war within months.</p>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:16px;">
-      <div style="padding:16px 18px;background:var(--bg-lift);border:1px solid #1e1e1e;">
-        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.6;margin-bottom:6px;">Stages 1&ndash;5 — Rise &rarr; Delusion</div>
-        <p style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.8;">Conquest, wealth, divine-authority demands. The army alienated. Fundamentals rotting beneath the narrative. The ego became the lens — he could no longer see it.</p>
-      </div>
-      <div style="padding:16px 18px;background:var(--bg-lift);border:1px solid #1e1e1e;border-top:2px solid #c0392b;">
-        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#c0392b;opacity:.8;margin-bottom:6px;">Stages 6&ndash;8 — Collapse</div>
-        <p style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.8;">Troops mutiny in India, 326 BCE. Forced retreat. Dead in Babylon, 323 BCE. The account blown — exactly as the Gita&rsquo;s loop predicts, written 2000 years prior.</p>
-      </div>
+  <!-- The Closed Loop — clinical/metacognitive mechanics -->
+  <div class="ego-sub-header">
+    <div class="ego-sub-header-text">
+      <h3>The Closed Loop</h3>
+      <p>The same descent, named in clinical terms instead of mythic ones</p>
     </div>
-    <p style="font-family:var(--serif);font-size:clamp(14px,1.8vw,16px);color:var(--gold);font-style:italic;">The loop is not a theory. It is a timeline. It runs the same way every time.</p>
+    <button class="collapse-toggle-btn" onclick="sectionCollapse('closed-loop',this)">Expand &#9660;</button>
+  </div>
+  <span class="section-collapse-label" style="max-width:820px;margin:0 auto 16px;display:block;text-align:left;">Collapsed by default — tap to expand</span>
+  <div id="closed-loop" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 52px;">
+    <p style="font-family:var(--serif);font-size:clamp(17px,2.3vw,21px);color:var(--white);line-height:1.9;margin-bottom:20px;text-align:left;">The Gita names the descent in eight mythic stages. Clinical psychology names the same descent in four mechanical ones &mdash; no scripture required, just a brain that keeps closing the loop on itself.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:2px;margin-bottom:24px;">
+      <div class="sl-stage"><span class="sl-num">Stage 1</span><div class="sl-name">Subjective Perception</div><p class="sl-desc">Information enters, but is immediately colored by historical schemas before you ever consciously register it.</p></div>
+      <div class="sl-stage"><span class="sl-num">Stage 2</span><div class="sl-name">Triggered Core Belief</div><p class="sl-desc">A dormant negative belief activates. The emotion arriving is decades old, displaced onto the present moment.</p></div>
+      <div class="sl-stage"><span class="sl-num">Stage 3</span><div class="sl-name">Metacognitive Blind Spot</div><p class="sl-desc">The brain fails to recognize its own bias, and confabulates a reasonable-sounding story instead.</p></div>
+      <div class="sl-stage danger"><span class="sl-num">Stage 4</span><div class="sl-name" style="color:#c0392b;">Automated Behavior</div><p class="sl-desc">You react from fear or powerlessness, mistaking it for conscious choice &mdash; which feeds Stage 1 again.</p></div>
+    </div>
+
+    <div style="max-width:100%;margin:24px auto 0;padding:32px 28px;background:var(--bg);border:1px solid #1e1e1e;border-left:3px solid var(--gold);text-align:left;">
+      <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.75;margin-bottom:12px;">The Loop in a Lifetime &mdash; Age 15 to Age 32</div>
+      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.85;margin-bottom:16px;">At fifteen, a betrayal by a boyfriend and a best friend writes one sentence into the nervous system: <em style="color:var(--gold);">I don&rsquo;t matter, and I can&rsquo;t trust anyone&rsquo;s love.</em> The mind generalizes it and files it as fact.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:16px;">
+        <div style="padding:16px 18px;background:var(--bg-lift);border:1px solid #1e1e1e;">
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.6;margin-bottom:6px;">Age 15 &mdash; The Belief Is Written</div>
+          <p style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.8;">One painful event becomes a permanent rule. No one is present to challenge the generalization, so it stands unexamined for seventeen years.</p>
+        </div>
+        <div style="padding:16px 18px;background:var(--bg-lift);border:1px solid #1e1e1e;border-top:2px solid var(--gold);">
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:6px;">Age 32 &mdash; The Belief Runs the Show</div>
+          <p style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.8;">Engaged to a loving partner, with zero evidence of betrayal, she still waits for the other shoe to drop. A thirty-two-year-old is letting a traumatized fifteen-year-old run her metacognitive processes.</p>
+        </div>
+      </div>
+      <p style="font-family:var(--serif);font-size:clamp(14px,1.8vw,16px);color:var(--gold);font-style:italic;">The loop does not check the calendar. It only checks the pattern.</p>
+    </div>
+
+    <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin:32px 0 16px;text-align:left;">The Way Out &mdash; Four Steps, Not One Insight</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:2px;">
+      <div class="sl-stage"><span class="sl-num">Step 1</span><div class="sl-name">Track</div><p class="sl-desc">Locate the exact physical sensation and follow it back to the earliest memory of its creation.</p></div>
+      <div class="sl-stage"><span class="sl-num">Step 2</span><div class="sl-name">Own</div><p class="sl-desc">Acknowledge the meaning the younger self assigned &mdash; without arguing it was the only possible reading.</p></div>
+      <div class="sl-stage"><span class="sl-num">Step 3</span><div class="sl-name">Release</div><p class="sl-desc">Hold compassion for the part that was helpless then. Breathe until the somatic charge actually lowers.</p></div>
+      <div class="sl-stage" style="border-left:2px solid var(--gold);"><span class="sl-num" style="color:var(--gold);">Step 4</span><div class="sl-name" style="color:var(--gold);">Reintegrate</div><p class="sl-desc">Let the adult who survived stand next to the memory, instead of being run by it.</p></div>
+    </div>
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--mid);line-height:1.85;margin-top:24px;padding:20px;border:1px solid #1e1e1e;background:var(--bg);">You do not need a single transcendent insight to break the loop. You need to catch it doing the same four-step move it always does &mdash; and choose, once, not to finish Step 4 the old way.</p>
   </div>
 
   <!-- Distortion of Satchitananda -->
@@ -2379,6 +2673,49 @@ section h2,
       </div>
     </div>
     <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);margin-top:24px;padding:20px 24px;border:1px solid #2a2a2a;background:var(--bg);">Fixation is just Essence filtered through the illusion of a separate body.</p>
+  </div>
+
+  <!-- The Pain-Body -->
+  <div class="ego-sub-header">
+    <div class="ego-sub-header-text">
+      <h3>The Pain-Body</h3>
+      <p>The emotional residue that feeds on your reactivity</p>
+    </div>
+    <button class="collapse-toggle-btn" onclick="sectionCollapse('pain-body',this)">Expand &#9660;</button>
+  </div>
+  <span class="section-collapse-label" style="max-width:820px;margin:0 auto 16px;display:block;text-align:left;">Collapsed by default — tap to expand</span>
+  <div id="pain-body" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 0;">
+
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.85;margin-bottom:32px;text-align:left;">Unprocessed emotional pain from the past doesn&rsquo;t dissolve &mdash; it leaves a residue. Repeated over years, that residue accumulates into something semi-autonomous: trapped life-energy that has turned in on itself, lodged in mind and body. It is the dark shadow the ego casts.</p>
+
+    <div class="ego-twin">
+      <div class="ego-twin-card attachment">
+        <span class="tc-label">How It Survives</span>
+        <h4>Unconscious Identification</h4>
+        <p>It requires you to mistake its voice for your own. It feeds on experiences that resonate with its frequency &mdash; anger, drama, violence, grief.</p>
+        <div class="tc-end">Pain can only feed on pain. It finds joy quite indigestible.</div>
+      </div>
+      <div class="ego-twin-card aversion">
+        <span class="tc-label">Its Two Modes</span>
+        <h4>Dormant &amp; Active</h4>
+        <p>Dormant: resting in the background, waiting. Active: triggered by a thought, an event, or a relationship that gives it something to feed on.</p>
+        <div class="tc-end">You must catch it before it becomes thought.</div>
+      </div>
+    </div>
+
+    <div style="margin-top:40px;">
+      <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:16px;text-align:left;">The Lifecycle &mdash; Five Stages</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:2px;">
+        <div class="sl-stage"><span class="sl-num">Stage 1</span><div class="sl-name">Dormancy</div><p class="sl-desc">Resting in the background. Waiting.</p></div>
+        <div class="sl-stage"><span class="sl-num">Stage 2</span><div class="sl-name">The Trigger</div><p class="sl-desc">An event, a thought, an innocent remark resonates with old pain.</p></div>
+        <div class="sl-stage danger"><span class="sl-num">Stage 3</span><div class="sl-name" style="color:#c0392b;">Identification</div><p class="sl-desc">The mind aligns with the emotion. You <em>become</em> it.</p></div>
+        <div class="sl-stage danger"><span class="sl-num">Stage 4</span><div class="sl-name" style="color:#c0392b;">Active Feeding</div><p class="sl-desc">Drama, arguments, inner turmoil &mdash; manufactured to consume negative energy.</p></div>
+        <div class="sl-stage"><span class="sl-num">Stage 5</span><div class="sl-name">Return to Dormancy</div><p class="sl-desc">Satiated, it goes back to sleep. Until the next trigger.</p></div>
+      </div>
+    </div>
+
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);margin-top:32px;padding:20px 24px;border:1px solid #2a2a2a;background:var(--bg);text-align:left;">The intervention point sits between Stage 2 and Stage 3 &mdash; the gap where sustained conscious attention can feel the energy directly, without letting it harden into thought. Focus. Accept that it is there. Witness it as &ldquo;the one who observes.&rdquo; Just as wood placed in fire becomes fire, the pain-body exposed to the flame of consciousness is transmuted into presence.</p>
+
   </div>
 </section>
 <span class="continue-hint">continue</span>
@@ -2653,9 +2990,10 @@ section h2,
     <p class="gold">Discover what cannot be burned. Discover what is left.</p>
   </div>
 </section>
+<span class="continue-hint">continue</span>
 <div class="divider"></div>
 <!-- ADD between the rasa-section closing div and the Cosmic Ledger section -->
-<section style="padding:90px 24px;background:var(--bg);border-bottom:1px solid #111;">
+<section style="padding:90px 24px;background:var(--bg);">
   <div style="max-width:820px;margin:0 auto;">
     <span class="label">The Stairway of Ascension</span>
     <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;">Beyond the mind, there is a stairway.</h2>
@@ -2753,7 +3091,7 @@ section h2,
 <div class="divider"></div>
 
 <!-- 42 COSMIC BLUEPRINT -->
-<section style="padding:90px 24px;background:var(--bg-lift);border-bottom:1px solid #111;">
+<section style="padding:90px 24px;background:var(--bg-lift);">
   <div style="max-width:860px;margin:0 auto;">
     <span class="label">The Cosmic Blueprint</span>
     <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:660px;margin:0 auto 16px;line-height:1.5;">42 is not decoration. It is a frequency.</h2>
@@ -2767,7 +3105,7 @@ section h2,
 <span class="continue-hint">continue</span>
 <div class="divider"></div>
     <!-- ══════════════════════════ 42: THE DEEP ARCHITECTURE ══════════════════════ -->
-<section style="padding:90px 24px;background:var(--bg);border-bottom:1px solid #111;overflow-x:hidden;" id="forty-two">
+<section style="padding:90px 24px;background:var(--bg);overflow-x:hidden;" id="forty-two">
   <div style="max-width:860px;margin:0 auto;">
     <span class="label">Why 42 Is Not a Coincidence</span>
     <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;text-align:center;">42 is not a prediction. It is a symbol &mdash; for the infinite possibility inside every human being.</h2>
@@ -2947,9 +3285,10 @@ section h2,
     </div>
   </div>
 </section>
+<span class="continue-hint">continue</span>
 <div class="divider"></div>
     <!-- ══════════════════════════ SACRED MECHANICS OF CREATION ══════════════════ -->
-<section style="padding:90px 24px;background:var(--bg-lift);border-bottom:1px solid #111;overflow-x:hidden;">
+<section style="padding:90px 24px;background:var(--bg-lift);overflow-x:hidden;">
   <div style="max-width:860px;margin:0 auto;">
     <span class="label">The Sacred Mechanics of Creation</span>
     <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;text-align:center;">You are not in the universe.<br>The universe is in you.</h2>
@@ -3099,13 +3438,14 @@ section h2,
     </div><!-- end sacred-mechanics-content -->
 
     <!-- Always visible closing truth -->
-    <div style="max-width:700px;margin:36px auto 0;padding:32px 28px;border:1px solid #1e1e1e;border-left:3px solid var(--gold);background:var(--bg);text-align:left;">
+    <div style="max-width:700px;margin:36px auto 0;padding:32px 28px;border:1px solid #1e1e1e;border-left:3px solid var(--gold);background:var(--bg-lift);text-align:left;">
       <p style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.75;margin-bottom:12px;">The Irreversible Conclusion</p>
       <p style="font-family:var(--serif);font-size:clamp(16px,2.2vw,20px);color:var(--white);line-height:1.9;margin-bottom:14px;">Every atom in your body was forged in the heart of a star. Every sense you possess was earned over millions of years of evolution. The universe spent 13.8 billion years building the instrument you are right now.</p>
       <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--gold);font-style:italic;line-height:1.85;margin:0;">The only question remaining: are you going to use it?</p>
     </div>
   </div>
 </section>
+<span class="continue-hint">continue</span>
 <div class="divider"></div>
 <!-- IDENTITY LAYER -->
   <section class="identity-section collapsed" id="subtilization" style="scroll-margin-top:56px;">
@@ -3152,6 +3492,40 @@ section h2,
     </div>
   </div>
 </section>
+<span class="continue-hint">continue</span>
+<div class="divider"></div>
+
+<!-- THE CEILING OF CONTRIBUTION -->
+<section class="section-wide" id="contribution" style="scroll-margin-top:56px;">
+  <span class="label">The Ceiling of Contribution</span>
+  <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;">Your awareness is not private. It is the ceiling on everything you give.</h2>
+  <p style="font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:560px;margin:0 auto 40px;font-style:italic;line-height:1.85;">Three tiers. One line of consciousness, becoming three different kinds of impact.</p>
+  <p style="font-family:var(--serif);font-size:clamp(16px,2.1vw,19px);color:var(--mid);line-height:1.9;max-width:680px;margin:0 auto 48px;text-align:left;">Each person can only contribute to this world at the level of their own consciousness. A mind still running on the Default OS &mdash; reacting from fear, ego, and conditioning &mdash; can only output more of the same into the world, however well-intentioned. As that mind widens, what it can offer widens with it. Not more effort. <em style="color:var(--gold);">More ceiling.</em></p>
+
+  <div class="identity-grid" style="margin-bottom:36px;">
+    <div class="identity-card">
+      <span class="layer-tag">Tier 1 &mdash; Default OS</span>
+      <h4>Survival &amp; Self-Interest</h4>
+      <p>Focus stays on basic needs and personal security. The contribution is real, but it travels in one direction &mdash; into your own household, your own ledger, your own next milestone. Not selfishness. Just the floor everyone starts on.</p>
+      <p class="practice">What it gives the world: stability. What it cannot yet give: surplus.</p>
+    </div>
+    <div class="identity-card">
+      <span class="layer-tag">Tier 2 &mdash; The Gap &middot; Witness</span>
+      <h4>Empathy &amp; Community</h4>
+      <p>Awareness widens enough to feel what was already true &mdash; that you were never separate from the people around you. Contribution turns active: mentorship, repair, work organized around someone else&rsquo;s good instead of your own next milestone.</p>
+      <p class="practice">What it gives the world: repair. What it cannot yet give: scale.</p>
+    </div>
+    <div class="identity-card" style="border-color:#2a2a2a;background:radial-gradient(ellipse at 50% 0%,rgba(212,175,55,.05) 0%,transparent 65%);">
+      <span class="layer-tag" style="opacity:1;">Tier 3 &mdash; Self-Realization &middot; SELF</span>
+      <h4>Visionary &amp; Legacy</h4>
+      <p>Contribution stops being a transaction and becomes an overflow. Purpose stops referring back to you &mdash; it bends toward problems that outlive you, felt by people who will never know your name.</p>
+      <p class="practice">What it gives the world: what was not there before you arrived.</p>
+    </div>
+  </div>
+
+  <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:24px 28px;border:1px solid #1e1e1e;background:var(--bg-lift);text-align:left;max-width:820px;margin:0 auto;">Your internal state moves from scarcity to abundance. Your external output moves with it &mdash; from taking, to sustaining, to giving. Raising consciousness was never separate from your contribution to the world. It was always the thing setting its size.</p>
+</section>
+<span class="continue-hint">continue</span>
 <div class="divider"></div>
 
 <!-- COSMIC LEDGER -->
@@ -3190,7 +3564,7 @@ section h2,
 <div class="divider"></div>
 
 <!-- SUPER-ORDINATE GOAL -->
-<section class="section-wide" style="scroll-margin-top:56px;padding:80px 24px;background:var(--bg-lift);border-bottom:1px solid #111;">
+<section class="section-wide" style="scroll-margin-top:56px;padding:80px 24px;background:var(--bg-lift);">
   <div style="max-width:720px;margin:0 auto;">
     <span class="label">The Super-Ordinate Goal</span>
     <div class="superordinate-box" style="margin-top:0;">
@@ -3201,6 +3575,7 @@ section h2,
     </div>
   </div>
 </section>
+<span class="continue-hint">continue</span>
 <div class="divider"></div>
 
 <!-- IPO SECTION -->
@@ -3377,6 +3752,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
     </div>
   </div>
 </section>
+<span class="continue-hint">continue</span>
 <div class="divider"></div>
 
 <!-- BRIDGE -->
@@ -3398,6 +3774,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
     <cite>&mdash; Shannon Alder</cite>
   </div>
 </section>
+<span class="continue-hint">continue</span>
 <div class="divider"></div>
 
 <section style="padding:90px 24px;background:var(--bg);border-bottom:1px solid #111;">
@@ -3462,7 +3839,12 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
     <span class="label">The Master Matrix of Existence</span>
     <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;text-align:center;">6 Material Stages × 7 Spiritual Layers = 42</h2>
     <p style="font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:600px;margin:0 auto 16px;font-style:italic;line-height:1.85;text-align:center;">Every possible human experience can be mapped to a specific coordinate in this grid. You are somewhere on it right now.</p>
-    <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.75;text-align:center;margin-bottom:36px;">The body ages horizontally. Consciousness must ascend vertically. Most people move only left to right — never up.</p>
+    <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.75;text-align:center;margin-bottom:28px;">The body ages horizontally. Consciousness must ascend vertically. Most people move only left to right — never up.</p>
+
+    <div class="cosmo-quote" style="max-width:620px;margin:0 auto 36px;">
+      <p>&ldquo;Your life purpose unfolds through the activities you engage in on the horizontal dimension &mdash; the dimension of doing. But everybody eventually finds that operating only on the horizontal dimension never satisfies them. There is another dimension &mdash; the vertical dimension, the dimension of being. The mastery of life is the dance between the two.&rdquo;</p>
+      <cite>&mdash; Eckhart Tolle</cite>
+    </div>
 
     <!-- WHERE ARE YOU NOW DIAGNOSTIC -->
     <div style="max-width:820px;margin:0 auto 36px;padding:32px 28px;background:var(--bg-lift);border:1px solid #2a2a2a;position:relative;">
@@ -3575,6 +3957,16 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
     </div>
   </div>
 </section>
+<span class="continue-hint">continue</span>
+<div class="divider"></div>
+
+<!-- SELF-DIAGNOSTIC: Where Are You Right Now -->
+<section class="section" id="diagnostic">
+  <span class="label">Place Yourself on the Grid</span>
+  <p class="phil-line bright" style="margin-bottom:8px;">You&rsquo;ve seen the matrix. Now find your six coordinates on it.</p>
+  <p class="phil-line dim" style="margin-bottom:36px;">Nine questions. No right answers &mdash; only honest ones.</p>
+  <div class="diag-root" id="diagRoot"></div>
+</section>
 
 <!-- WATCH -->
 <section class="watch-section">
@@ -3618,6 +4010,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
     <a class="mirror-link" href="https://t.me/+v6py4dWGU6g2MTU9" target="_blank" rel="noopener">&rarr; Telegram</a>
   </div>
 </section>
+<span class="continue-hint">continue</span>
 <div class="divider"></div>
 
 <!-- CONTRACT -->
@@ -3652,6 +4045,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
     <a href="https://github.com/mannareddy/SELF" target="_blank" rel="noopener">GitHub</a>
   </div>
 </section>
+<span class="continue-hint">continue</span>
 <div class="divider"></div>
 <!-- FAQ — all collapsed by default -->
 <section class="faq-section" id="faq-section">
@@ -4086,17 +4480,120 @@ function toggleFaqAll(){
 }
 
 /* ── VOID TEST ───────────────────────────────────────────────────────────── */
-var voidResponses = {
-  yes: '<strong>Then you\'ve found your super-ordinate goal.</strong> Rare. Most people never reach it. The question now is not whether you\'ve arrived &mdash; it\'s whether you can sustain the direction. That\'s what the framework is for.',
-  no: '<strong>That\'s the Arrival Fallacy.</strong> The void is not a flaw. It is a signal. It is pointing you inward &mdash; past the milestone, past the chart, past the external. You are in exactly the right place. Keep reading.'
+var voidNodes = {
+  start: {
+    q: 'You got what you wanted.<br>The money. The milestone. The achievement.<br><br><em>Did the void disappear?</em>',
+    opts: [
+      {label:'Yes, it did', next:'yes_howlong'},
+      {label:'Not really', next:'no_whatdrove'}
+    ]
+  },
+  yes_howlong: {
+    q: '<em>How long did that fulfillment actually last?</em>',
+    opts: [
+      {label:'Longer than I expected', next:'yes_stillhere'},
+      {label:'Not very long, if I\u2019m honest', next:'loop_closer'}
+    ]
+  },
+  yes_stillhere: {
+    q: 'Then look again &mdash;<br><em>is it still here right now, or are you already eyeing the next milestone?</em>',
+    opts: [
+      {label:'It\u2019s still here', next:'honest_exit'},
+      {label:'I\u2019m already looking ahead', next:'loop_closer'}
+    ]
+  },
+  no_whatdrove: {
+    q: '<em>Then what drove you back toward the next one &mdash; knowing the last one already left you empty?</em>',
+    opts: [
+      {label:'Habit. I didn\u2019t really think about it', next:'loop_closer'},
+      {label:'Fear of stopping', next:'loop_closer'},
+      {label:'I didn\u2019t know what else to do', next:'loop_closer'}
+    ]
+  },
+  honest_exit: {
+    q: '<em>Then this one was real &mdash; as far as it goes.</em>',
+    terminal: '<strong>That\u2019s rare. It still isn\u2019t the whole answer.</strong> A void that hasn\u2019t returned means this sub-goal happened to serve you well \u2014 not that the super-ordinate goal has been reached. Self-realization isn\u2019t one achievement away from any sub-goal, however well it\u2019s holding up.<br><br>The real question is what you do next. Rule 1: a sub-goal can\u2019t conflict with the super-ordinate goal. Rule 2: it can never become the sole replacement for it. Whatever you chase next, that\u2019s the test \u2014 not whether it feels good walking in.',
+    opts: [
+      {label:'My next goal passes that test', next:'exit_aligned'},
+      {label:'I\u2019m not sure it would', next:'exit_reassess'}
+    ]
+  },
+  exit_aligned: {
+    q: '<em>Then it\u2019s worth pursuing.</em>',
+    terminal: 'Not because it will feel good. Because it doesn\u2019t conflict with the one goal that doesn\u2019t depreciate, and it isn\u2019t standing in for it either. That\u2019s the only clearance a sub-goal needs.',
+    opts: []
+  },
+  exit_reassess: {
+    q: '<em>Then that\u2019s worth sitting with before you chase it.</em>',
+    terminal: 'Life on this earth is the one resource you can\u2019t earn back. A sub-goal that doesn\u2019t serve the super-ordinate goal isn\u2019t neutral \u2014 it\u2019s another lap of the same loop, just with a different name on it. Reassess before you spend years on it.',
+    opts: []
+  },
+  loop_closer: {
+    q: '<em>That\u2019s the pattern.</em>',
+    terminal: '<strong>Achievement &rarr; brief relief &rarr; the void returns &rarr; reach for the next achievement.</strong> No chart shows this loop. No milestone closes it. Confusion, ignorance, and the pull of external validation just keep pointing you back outward, on repeat &mdash; and almost everyone runs this loop their whole life without ever quite naming it.<br><br>Nobody outside you can close it. That part is yours alone.',
+    opts: [
+      {label:'Show me that loop again', next:'start', restart:true},
+      {label:'Stop here. Look inward instead.', next:'exit_inward'}
+    ]
+  },
+  exit_inward: {
+    q: '<em>Good. That\u2019s the harder door, and the only one that actually opens.</em>',
+    terminal: 'Everything past this point &mdash; the Framework, the Ego, the Path &mdash; is what looking inward instead of outward actually looks like. Keep reading.',
+    opts: []
+  }
 };
-function showVoidResponse(type, btn){
+
+function voidStep(currentNode, choiceIdx, btn){
+  // choiceIdx may be passed as a label-based lookup for the first call (legacy 'yes'/'no'),
+  // or as a numeric index for subsequent calls. Normalize both.
+  var node = voidNodes[currentNode];
+  var opt;
+  if(choiceIdx === 'yes') opt = node.opts[0];
+  else if(choiceIdx === 'no') opt = node.opts[1];
+  else opt = node.opts[choiceIdx];
+
   document.querySelectorAll('.void-btn').forEach(function(b){b.classList.remove('active');});
-  btn.classList.add('active');
-  var resp = document.getElementById('voidResponse');
-  resp.innerHTML = voidResponses[type];
-  resp.classList.add('visible');
-  if(typeof gtag==='function'){gtag('event','void_test',{choice:type});}
+  if(btn) btn.classList.add('active');
+  if(typeof gtag==='function'){gtag('event','void_test',{node:currentNode, choice:opt.label});}
+
+  renderVoidNode(opt.next, !!opt.restart);
+}
+
+function renderVoidNode(nodeId, isRestart){
+  var node = voidNodes[nodeId];
+  var qEl = document.getElementById('voidQuestion');
+  var btnEl = document.getElementById('voidButtons');
+  var respEl = document.getElementById('voidResponse');
+  var restartEl = document.getElementById('voidRestart');
+
+  qEl.innerHTML = node.q;
+
+  if(isRestart){
+    respEl.classList.remove('visible');
+    respEl.innerHTML = '';
+  }
+
+  if(node.terminal){
+    respEl.innerHTML = node.terminal;
+    respEl.classList.add('visible');
+  } else {
+    respEl.classList.remove('visible');
+    respEl.innerHTML = '';
+  }
+
+  btnEl.innerHTML = '';
+  node.opts.forEach(function(opt, i){
+    var b = document.createElement('button');
+    b.className = 'void-btn';
+    b.textContent = opt.label;
+    b.onclick = function(){ voidStep(nodeId, i, b); };
+    btnEl.appendChild(b);
+  });
+
+  // A node with no further options is a true dead end (exit_aligned, exit_reassess,
+  // exit_inward) — without this, the only way back into the test was a manual page
+  // refresh. Show the quiet restart link there; hide it everywhere mid-sequence.
+  restartEl.style.display = (node.opts.length === 0) ? 'block' : 'none';
 }
 
 /* ── GEO BADGE ───────────────────────────────────────────────────────────── */
@@ -4365,6 +4862,605 @@ function toggleTheme(){
     if(bM) bM.innerHTML='&#9790;';
   }
   document.documentElement.style.visibility='';
+})();
+
+/* ══════════════════════════ SELF-DIAGNOSTIC WIDGET ══════════════════════ */
+(function(){
+/* ============================================================
+   DATA MODEL
+   ============================================================ */
+
+const PART_A = [
+  {
+    id:'a1',
+    frame:'On the horizontal dimension — doing — and the vertical — being —',
+    q:'When you describe your life to someone, what fills most of the sentence?',
+    opts:[
+      {label:'What I\u2019m doing', sub:'the projects, the moves, the next thing', score:{h:2,v:0}},
+      {label:'A mix, but doing still leads', sub:'', score:{h:1,v:0}},
+      {label:'Who I\u2019m becoming', sub:'underneath what I do', score:{h:0,v:1}},
+      {label:'I\u2019m not sure those are different anymore', sub:'', score:{h:0,v:2}}
+    ]
+  },
+  {
+    id:'a2',
+    frame:'Stillness arrives — say, last thing at night.',
+    q:'What actually happens?',
+    opts:[
+      {label:'The mind keeps running the day back', sub:'', score:{h:2,v:0}},
+      {label:'It quiets, but only because I\u2019m tired', sub:'', score:{h:1,v:0}},
+      {label:'Something opens that has nothing to do with the day', sub:'', score:{h:0,v:1}},
+      {label:'I stop being able to tell who\u2019s noticing the stillness', sub:'', score:{h:0,v:2}}
+    ]
+  },
+  {
+    id:'a3',
+    frame:'Pick the truer sentence, not the better-sounding one.',
+    q:'Which is most true today?',
+    opts:[
+      {label:'I am my thoughts and feelings', sub:'', score:{h:2,v:0}},
+      {label:'I have thoughts and feelings', sub:'', score:{h:0,v:1}},
+      {label:'Thoughts and feelings are guests now, not residents', sub:'', score:{h:0,v:2}}
+    ]
+  }
+];
+
+const LAYERS = [
+  {
+    id:'body', n:1, name:'Body', chakra:'Root Chakra',
+    frame:'The vehicle, not the passenger.',
+    q:'Where does your body live right now?',
+    opts:[
+      {label:'Sustenance', sub:'Health is background noise, not foreground', stage:'Sustenance', score:1},
+      {label:'Transformation', sub:'Aging has entered the room \u2014 you notice it now', stage:'Transformation', score:2},
+      {label:'Deterioration', sub:'Senescence \u2014 the body is asking for less, not more', stage:'Deterioration', score:3}
+    ]
+  },
+  {
+    id:'breath', n:2, name:'Breath', chakra:'Sacral Chakra',
+    frame:'The thread between body and mind.',
+    q:'What is your breath doing without your permission?',
+    opts:[
+      {label:'Sustenance', sub:'It keeps its own rhythm without your help', stage:'Sustenance', score:1},
+      {label:'Transformation', sub:'Emotion keeps interrupting it', stage:'Transformation', score:2},
+      {label:'Deterioration', sub:'Laboured \u2014 it works harder for less', stage:'Deterioration', score:3}
+    ]
+  },
+  {
+    id:'mind', n:3, name:'Mind', chakra:'Solar Plexus',
+    frame:'What meets the world before judgment does.',
+    q:'How is the world arriving to you lately?',
+    opts:[
+      {label:'Sustenance', sub:'Perception is steady, the world makes sense without effort', stage:'Sustenance', score:1},
+      {label:'Transformation', sub:'Shifting \u2014 the same things look different lately', stage:'Transformation', score:2},
+      {label:'Deterioration', sub:'Fatigue \u2014 input arrives slower, blurrier', stage:'Deterioration', score:3}
+    ]
+  },
+  {
+    id:'intellect', n:4, name:'Intellect', chakra:'Heart Chakra',
+    frame:'What decides, judges, agrees, refuses.',
+    q:'What is your judgment doing lately?',
+    opts:[
+      {label:'Sustenance', sub:'Stability \u2014 your beliefs hold their shape', stage:'Sustenance', score:1},
+      {label:'Transformation', sub:'Shifting beliefs \u2014 something you were sure of, you\u2019re not anymore', stage:'Transformation', score:2},
+      {label:'Deterioration', sub:'Decline \u2014 decisions feel heavier, less trustworthy', stage:'Deterioration', score:3}
+    ]
+  },
+  {
+    id:'memory', n:5, name:'Memory', chakra:'Throat Chakra',
+    frame:'The storehouse. What you carry without choosing to.',
+    q:'What is memory doing to you right now \u2014 not for you, to you?',
+    opts:[
+      {label:'Sustenance', sub:'Storing \u2014 quiet accumulation, nothing urgent', stage:'Sustenance', score:1},
+      {label:'Transformation', sub:'Trauma \u2014 something has lodged itself and won\u2019t move', stage:'Transformation', score:2},
+      {label:'Deterioration', sub:'Forgetfulness \u2014 the storehouse is leaking', stage:'Deterioration', score:3}
+    ]
+  },
+  {
+    id:'ego', n:6, name:'Ego', chakra:'Third Eye',
+    frame:'The one who says "I" \u2014 and divides the world by saying it.',
+    q:'Which word would the "I" in you choose, if it were honest?',
+    opts:[
+      {label:'Persona', sub:'The "I" has a shape it performs comfortably', stage:'Sustenance', score:1},
+      {label:'Crisis', sub:'The "I" no longer fits the shape it built', stage:'Transformation', score:2},
+      {label:'Rigidity', sub:'The "I" is holding on harder as it gets less room', stage:'Deterioration', score:3}
+    ]
+  }
+];
+
+// Five Pillars prompt bank
+const PILLARS = {
+  who:    {tag:'Who am I?', q:'If you stripped away the role that\u2019s currently failing you, what\u2019s left standing underneath it?'},
+  where_from: {tag:'Where am I from?', q:'What is the one piece of your history that keeps explaining your present, whether you look at it or not?'},
+  why:    {tag:'Why am I here?', q:'If there\u2019s one thing you came here to give the world \u2014 not to prove, not to earn, just to give \u2014 what is it?'},
+  what:   {tag:'What can I do?', q:'What is the smallest true action available to you today that your old persona would never have allowed?'},
+  going:  {tag:'Where am I going?', q:'A year from now, what would have to be different for you to say the crisis was worth it?'}
+};
+
+// Micro-practice bank — keyed by lead layer id. User chooses one; the tool
+// never assigns it. Each is small enough to actually do today, not a program.
+const PRACTICES = {
+  body: [
+    'Notice one moment today where you treat the body as a passenger, not the vehicle \u2014 and pause there.',
+    'Give the body ten unhurried minutes today with no input \u2014 no screen, no sound, nothing to process.',
+    'Name, out loud, one thing the body has been asking for that you\u2019ve been overriding.'
+  ],
+  breath: [
+    'Catch your breath mid-reaction once today \u2014 not to fix it, just to notice what it\u2019s doing.',
+    'Take five breaths today slow enough that you can feel where they catch.',
+    'Notice one moment today where breath changes before the feeling has a name yet.'
+  ],
+  mind: [
+    'Notice one moment today where perception shifts and ask what changed \u2014 the world, or the lens.',
+    'Write down one thing that looked different today than it did a year ago, with no explanation attached.',
+    'Sit with one piece of input today \u2014 a message, a headline, a face \u2014 a few seconds longer before reacting.'
+  ],
+  intellect: [
+    'Catch one belief today mid-shift and just name it, without trying to resolve which side is right.',
+    'Write the belief you\u2019re least sure of right now, exactly as it sits \u2014 not the resolved version.',
+    'Notice one decision today that felt heavier than it should have, and ask what it was really weighing.'
+  ],
+  memory: [
+    'Let one memory surface today without immediately reframing it into a lesson.',
+    'Write one sentence about what keeps coming back, with no attempt to resolve it.',
+    'Notice one moment today where a reaction is older than the situation causing it.'
+  ],
+  ego: [
+    'Catch the persona performing once today \u2014 not to stop it, just to see it happen.',
+    'Write the sentence you\u2019re most afraid is true about who you are right now.',
+    'Notice one moment today where "I" insists on being right, and let it pass without defending it.'
+  ]
+};
+
+/* ============================================================
+   STATE
+   ============================================================ */
+let step = 0; // 0..2 = Part A, 3..8 = Layers, then pillar phase driven by pillarStep, then synthesis
+let answersA = [];
+let answersB = [];
+let pillarAnswers = {};
+let routedPillars = [];
+let pillarStep = 0;
+let showSynthesis = false;
+let phase = 'questions'; // questions -> practice -> recheck -> done
+let chosenPractice = null;
+let recheckDays = 7;
+let priorResult = null; // populated from storage on init if a past result exists
+let regressionAnswers = {}; // layer id -> 'integrated' | 'avoided'
+let regressionQueue = [];
+let regressionIdx = 0;
+
+const TOTAL_CORE_STEPS = PART_A.length + LAYERS.length; // 3 + 6 = 9
+
+async function init(){
+  step = 0; answersA = []; answersB = []; pillarAnswers = {}; routedPillars = []; pillarStep = 0; showSynthesis = false;
+  phase = 'questions'; chosenPractice = null; recheckDays = 7; regressionAnswers = {};
+  priorResult = null;
+  try{
+    const stored = await window.storage.get('self-diagnostic:last-result');
+    if(stored && stored.value){ priorResult = JSON.parse(stored.value); }
+  } catch(e){ /* no prior result, or storage unavailable in this context */ }
+  render();
+}
+
+/* ============================================================
+   SCORING + ROUTING LOGIC
+   ============================================================ */
+function computeHV(){
+  let h=0,v=0;
+  answersA.forEach(a=>{ h+=a.score.h; v+=a.score.v; });
+  return {h,v, orientation: v>h ? 'vertical' : (h>v ? 'horizontal' : 'balanced')};
+}
+
+function computeLayerStats(){
+  const scores = answersB.map(a=>a.score);
+  const mean = scores.reduce((s,x)=>s+x,0)/scores.length;
+  const variance = scores.reduce((s,x)=>s+Math.pow(x-mean,2),0)/scores.length;
+  let leadIdx = 0;
+  for(let i=1;i<scores.length;i++){ if(scores[i] > scores[leadIdx]) leadIdx = i; }
+  return { mean, variance, leadLayer: LAYERS[leadIdx], leadScore: scores[leadIdx] };
+}
+
+function routePillars(){
+  const hv = computeHV();
+  const stats = computeLayerStats();
+  const lead = stats.leadLayer.id;
+  const horiz = hv.orientation === 'horizontal';
+  const vert = hv.orientation === 'vertical';
+  let route = [];
+
+  if(stats.variance === 0){
+    // perfectly flat — no layer stands out at all
+    if(stats.mean < 1.6) route = ['what','going'];
+    else route = vert ? ['going'] : ['what','going'];
+  } else if(lead === 'body' || lead === 'breath'){
+    route = ['where_from'];
+  } else if(lead === 'memory'){
+    route = ['where_from','who'];
+  } else if(lead === 'mind' || lead === 'intellect'){
+    route = horiz ? ['who'] : ['what'];
+  } else if(lead === 'ego'){
+    route = horiz ? ['who','why'] : ['why','going'];
+  } else {
+    route = ['who','why'];
+  }
+  return route.slice(0,3);
+}
+
+/* ============================================================
+   RENDER
+   ============================================================ */
+function render(){
+  const root = document.getElementById('diagRoot');
+
+  if(step < PART_A.length){
+    renderQuestion(root, PART_A[step], step, 'Part A', 'Doing / Being', step+1);
+  } else if(step < TOTAL_CORE_STEPS){
+    const li = step - PART_A.length;
+    const layer = LAYERS[li];
+    renderQuestion(root, layer, step, `Layer ${layer.n}`, `${layer.name} \u00b7 ${layer.chakra}`, step+1, layer);
+  } else if(!showSynthesis){
+    if(routedPillars.length === 0) routedPillars = routePillars();
+    renderPillarPrompt(root);
+  } else if(phase === 'regression'){
+    renderRegressionCheck(root);
+  } else {
+    // phase 'questions' — synthesis screen, which now also hosts the inline
+    // practice picker and a silent recheck-date default (commitPractice() below)
+    renderSynthesis(root);
+  }
+}
+
+function progressBar(activeIdx){
+  const total = TOTAL_CORE_STEPS;
+  let html = '<div class="diag-progress">';
+  for(let i=0;i<total;i++){
+    let cls='seg';
+    if(i<activeIdx) cls+=' done';
+    else if(i===activeIdx) cls+=' current';
+    html += `<div class="${cls}"></div>`;
+  }
+  html += '</div>';
+  return html;
+}
+
+function renderQuestion(root, item, idx, eyebrowLeft, eyebrowRight, num, layerData){
+  const isLayer = !!layerData;
+  const existingAnswer = isLayer ? answersB[idx-PART_A.length] : answersA[idx];
+
+  let optsHtml = item.opts.map((o,i)=>{
+    const selected = existingAnswer && existingAnswer.label === o.label;
+    return `<button class="diag-opt${selected?' selected':''}" data-idx="${i}" onclick="selectOption(${idx},${i})">
+      <span class="diag-opt-mark"></span>
+      <span class="diag-opt-text">
+        <span class="diag-opt-label">${o.label}</span>
+        <span class="diag-opt-sub">${o.sub}</span>
+      </span>
+    </button>`;
+  }).join('');
+
+  root.innerHTML = `
+    ${progressBar(idx)}
+    <div class="diag-eyebrow">${eyebrowLeft}<span class="sep">\u00b7</span>${eyebrowRight}</div>
+    <div class="diag-frame">${item.frame}</div>
+    <div class="diag-question">${item.q}</div>
+    <div class="diag-options" id="diagOptions">${optsHtml}</div>
+    <div class="diag-nav">
+      <button class="diag-btn diag-btn-back" onclick="goBack()" style="${idx===0?'visibility:hidden':''}">\u2190 Back</button>
+      <button class="diag-btn diag-btn-next${existingAnswer?' active':''}" id="nextBtn" onclick="goNext()">Continue \u2192</button>
+    </div>
+  `;
+}
+
+function selectOption(idx, optIdx){
+  if(idx < PART_A.length){
+    answersA[idx] = PART_A[idx].opts[optIdx];
+  } else {
+    const li = idx - PART_A.length;
+    answersB[li] = LAYERS[li].opts[optIdx];
+  }
+  // Update DOM in place instead of re-rendering — a full innerHTML rebuild
+  // mid-touch-gesture is what was breaking the "Continue" tap on mobile:
+  // the element under the user's finger gets replaced before the browser
+  // finishes the tap, so the synthetic click can land on nothing.
+  const optionsWrap = document.getElementById('diagOptions');
+  if(optionsWrap){
+    optionsWrap.querySelectorAll('.diag-opt').forEach((btn,i)=>{
+      btn.classList.toggle('selected', i===optIdx);
+    });
+  }
+  const nextBtn = document.getElementById('nextBtn');
+  if(nextBtn) nextBtn.classList.add('active');
+}
+
+function goBack(){
+  if(showSynthesis){
+    showSynthesis = false;
+    pillarStep = routedPillars.length - 1;
+  } else if(step >= TOTAL_CORE_STEPS){
+    if(pillarStep > 0){ pillarStep--; }
+    else { step = TOTAL_CORE_STEPS - 1; }
+  } else if(step > 0){
+    step--;
+  }
+  render();
+}
+
+function goNext(){
+  step++;
+  render();
+}
+
+function renderPillarPrompt(root){
+  const key = routedPillars[pillarStep];
+  const pillar = PILLARS[key];
+  const isLast = pillarStep === routedPillars.length - 1;
+  const existing = pillarAnswers[key] || '';
+
+  root.innerHTML = `
+    ${progressBar(TOTAL_CORE_STEPS)}
+    <div class="diag-eyebrow">Five Pillars<span class="sep">\u00b7</span>${pillarStep+1} of ${routedPillars.length}</div>
+    <div class="diag-frame">This question was chosen for where you landed above. Sit with it before you answer.</div>
+    <div class="diag-question">${pillar.tag}</div>
+    <p style="font-family:var(--serif);font-style:italic;color:var(--mid);text-align:center;font-size:clamp(15px,2vw,18px);line-height:1.8;margin-bottom:28px;">${pillar.q}</p>
+    <textarea class="diag-textarea" id="pillarInput" placeholder="Write whatever comes \u2014 this is for you, not for anyone else.">${existing}</textarea>
+    <div class="diag-nav">
+      <button class="diag-btn diag-btn-back" onclick="goBack()">\u2190 Back</button>
+      <button class="diag-btn diag-btn-next active" onclick="submitPillar('${key}', ${isLast})">${isLast?'See your mirror \u2192':'Continue \u2192'}</button>
+    </div>
+  `;
+}
+
+function submitPillar(key, isLast){
+  const val = document.getElementById('pillarInput').value;
+  pillarAnswers[key] = val;
+  if(isLast){
+    showSynthesis = true;
+    const regressed = detectRegressions();
+    if(regressed.length > 0){
+      phase = 'regression';
+      regressionQueue = regressed;
+      regressionIdx = 0;
+    } else {
+      phase = 'questions';
+    }
+  } else {
+    pillarStep++;
+  }
+  render();
+}
+
+function detectRegressions(){
+  // A "regression" is a same-layer move toward an EARLIER stage than last time
+  // (e.g. Ego was Crisis(2), now reports Persona(1)) — NOT simply "lower score
+  // is bad": stepping out of Crisis can be genuine integration. That's exactly
+  // why this only flags the layer and asks the person which one it was,
+  // rather than the tool deciding for them.
+  if(!priorResult || !priorResult.layerScores) return [];
+  const regressed = [];
+  LAYERS.forEach((layer,i)=>{
+    const prev = priorResult.layerScores[i];
+    const now = answersB[i] ? answersB[i].score : null;
+    if(prev != null && now != null && now < prev){
+      regressed.push(layer);
+    }
+  });
+  return regressed;
+}
+
+function renderRegressionCheck(root){
+  const layer = regressionQueue[regressionIdx];
+  const prevScore = priorResult.layerScores[LAYERS.indexOf(layer)];
+  const prevLabel = ['','Sustenance','Transformation','Deterioration'][prevScore];
+  const nowScore = answersB[LAYERS.indexOf(layer)].score;
+  const nowLabel = ['','Sustenance','Transformation','Deterioration'][nowScore];
+
+  root.innerHTML = `
+    <div class="diag-eyebrow">Since last time<span class="sep">\u00b7</span>${layer.name}</div>
+    <div class="diag-frame">Last time, ${layer.name.toLowerCase()} landed in ${prevLabel}. This time, it landed in ${nowLabel}.</div>
+    <div class="diag-question">Did that resolve \u2014 or did you step back from it?</div>
+    <div class="diag-options" id="diagOptions">
+      <button class="diag-opt" data-key="integrated" onclick="answerRegression('${layer.id}','integrated')">
+        <span class="diag-opt-mark"></span>
+        <span class="diag-opt-text">
+          <span class="diag-opt-label">It resolved</span>
+          <span class="diag-opt-sub">Whatever was moving through ${layer.name.toLowerCase()} actually settled \u2014 this is calmer, not avoided.</span>
+        </span>
+      </button>
+      <button class="diag-opt" data-key="avoided" onclick="answerRegression('${layer.id}','avoided')">
+        <span class="diag-opt-mark"></span>
+        <span class="diag-opt-text">
+          <span class="diag-opt-label">I stepped back from it</span>
+          <span class="diag-opt-sub">The old shape was easier to return to than to finish moving through.</span>
+        </span>
+      </button>
+    </div>
+  `;
+}
+
+function answerRegression(layerId, answer){
+  regressionAnswers[layerId] = answer;
+  if(regressionIdx < regressionQueue.length - 1){
+    regressionIdx++;
+  } else {
+    phase = 'questions';
+  }
+  render();
+}
+
+const MATRIX_DATA = [
+  {label:'Body', chakra:'Root Chakra', cells:['Womb','Infancy','Health','Aging','Senescence','Mortality']},
+  {label:'Breath', chakra:'Sacral Chakra', cells:['First cry','Deepening','Rhythm','Emotion','Laboured','Last breath']},
+  {label:'Mind', chakra:'Solar Plexus', cells:['Sensory','Learning','Perception','Shifting','Fatigue','Loss of senses']},
+  {label:'Intellect', chakra:'Heart Chakra', cells:['Curiosity','Logic','Stability','Shifting beliefs','Decline','Loss of judgment']},
+  {label:'Memory', chakra:'Throat Chakra', cells:['First impression','Experience','Storing','Trauma','Forgetfulness','Erasure']},
+  {label:'Ego', chakra:'Third Eye', cells:['Toddlerhood','Ambition','Persona','Crisis','Rigidity','Dissolution \u2726']}
+];
+const STAGE_COLS = ['Birth','Growth','Sustenance','Transformation','Deterioration','Death'];
+// our 3 live options map to columns index 2,3,4 (Sustenance, Transformation, Deterioration)
+const STAGE_TO_COL = {1:2, 2:3, 3:4};
+
+function renderSynthesis(root){
+  const hv = computeHV();
+  const stats = computeLayerStats();
+  const lead = stats.leadLayer;
+
+  let matrixHtml = `<table class="diag-matrix"><thead><tr><th>7 Layers / 6 Stages</th>`;
+  STAGE_COLS.forEach(c=> matrixHtml += `<th>${c}</th>`);
+  matrixHtml += `</tr></thead><tbody>`;
+  MATRIX_DATA.forEach((row,ri)=>{
+    const userScore = answersB[ri] ? answersB[ri].score : null;
+    const hitCol = userScore ? STAGE_TO_COL[userScore] : -1;
+    matrixHtml += `<tr><td class="row-label">${row.label}</td>`;
+    row.cells.forEach((cell,ci)=>{
+      const isHit = ci === hitCol;
+      matrixHtml += `<td class="${isHit?'hit':''}">${cell}</td>`;
+    });
+    matrixHtml += `</tr>`;
+  });
+  matrixHtml += `<tr><td class="row-label" style="color:var(--gold);">Self / Soul</td>
+    <td style="color:var(--gold);font-family:var(--sans);font-size:8px;text-transform:uppercase;letter-spacing:1px;">Manifestation</td>
+    <td style="color:var(--gold);font-family:var(--sans);font-size:8px;text-transform:uppercase;letter-spacing:1px;">Realization</td>
+    <td style="color:var(--gold);font-family:var(--sans);font-size:8px;text-transform:uppercase;letter-spacing:1px;">Eternal Witness</td>
+    <td style="color:var(--gold);font-family:var(--sans);font-size:8px;text-transform:uppercase;letter-spacing:1px;">Transcends</td>
+    <td style="color:var(--gold);font-family:var(--sans);font-size:8px;text-transform:uppercase;letter-spacing:1px;">Unchanged</td>
+    <td style="color:var(--gold);font-family:var(--sans);font-size:8px;text-transform:uppercase;letter-spacing:1px;">Unchanged</td></tr>`;
+  matrixHtml += `</tbody></table>`;
+
+  const leadStageLabel = ['','Sustenance','Transformation','Deterioration'][stats.leadScore];
+
+  let pillarsHtml = routedPillars.map(key=>{
+    const p = PILLARS[key];
+    const ans = pillarAnswers[key] || '';
+    return `<div class="diag-pillar-card">
+      <span class="diag-pillar-tag">${p.tag}</span>
+      <p class="diag-pillar-q" style="font-style:normal;color:var(--gold);opacity:.85;font-size:14px;margin-bottom:8px;">${p.q}</p>
+      <p class="diag-pillar-q">${ans ? ans.replace(/</g,'&lt;') : '<span style="color:var(--dim);font-style:italic;">(left unanswered \u2014 sit with it when ready)</span>'}</p>
+    </div>`;
+  }).join('');
+
+  const orientationLine = hv.orientation === 'horizontal'
+    ? 'Most of what you described was doing \u2014 the moves, the projects, the next thing. That\u2019s not wrong. It just means the layer below is being lived, not yet witnessed.'
+    : hv.orientation === 'vertical'
+    ? 'Most of what you described was being \u2014 something underneath the doing. That gives you a wider lens on what follows.'
+    : 'You\u2019re moving between doing and being, not settled in either. That in-between is its own honest place to stand.';
+
+  let leadCopy = '';
+  if(lead.id === 'ego' && stats.leadScore >= 2){
+    leadCopy = `Body and breath are landing in steadier territory. The &ldquo;I&rdquo; is landing in ${leadStageLabel.toLowerCase()}. What does it mean that the steadiest parts of you are physical, and the part in upheaval is the one that says &ldquo;I&rdquo;?`;
+  } else if(lead.id === 'memory' && stats.leadScore >= 2){
+    leadCopy = `Memory is carrying more weight than the rest of you right now. What would it cost you to actually feel what's stored there, instead of working around it?`;
+  } else if(stats.variance === 0 && stats.mean < 1.6){
+    leadCopy = `All six layers landed in roughly the same place, early in their arc. If nothing here is asking for urgent attention \u2014 what are you actually building toward?`;
+  } else if(stats.variance === 0){
+    leadCopy = `All six layers landed in roughly the same place, further along their arc. What does it mean that so little here is fragmented right now?`;
+  } else {
+    leadCopy = `${lead.name} is carrying more than the rest of you right now. What has ${lead.name.toLowerCase()} been holding on behalf of everything else?`;
+  }
+
+  let compareHtml = '';
+  if(priorResult && priorResult.layerScores){
+    const rows = LAYERS.map((layer,i)=>{
+      const prev = priorResult.layerScores[i];
+      const now = answersB[i] ? answersB[i].score : null;
+      const prevLabel = ['','Sustenance','Transformation','Deterioration'][prev] || '\u2014';
+      const nowLabel = ['','Sustenance','Transformation','Deterioration'][now] || '\u2014';
+      const moved = prev != null && now != null && now !== prev;
+      const noteKey = regressionAnswers[layer.id];
+      let note = '';
+      if(noteKey === 'avoided') note = `<span style="color:#c0392b;font-style:italic;">stepped back</span>`;
+      else if(noteKey === 'integrated') note = `<span style="color:var(--gold);font-style:italic;">resolved</span>`;
+      else if(moved && now > prev) note = `<span style="color:var(--dim);font-style:italic;">moved forward</span>`;
+      return `<tr>
+        <td class="row-label">${layer.name}</td>
+        <td style="color:var(--dim);">${prevLabel}</td>
+        <td style="${moved?'color:var(--gold);':'color:var(--grey);'}">${nowLabel}</td>
+        <td style="font-family:var(--sans);font-size:10px;">${note}</td>
+      </tr>`;
+    }).join('');
+    compareHtml = `
+      <div style="margin-bottom:40px;">
+        <div class="diag-result-eyebrow" style="margin-bottom:14px;">Since ${priorResult.date ? new Date(priorResult.date).toLocaleDateString() : 'last time'}</div>
+        <div class="diag-matrix-wrap"><table class="diag-matrix">
+          <thead><tr><th>Layer</th><th>Then</th><th>Now</th><th></th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table></div>
+      </div>
+    `;
+  }
+
+  // Practice options render inline, already visible — no extra screen, no extra tap
+  // to "go choose one." Picking an option is the only action left in the whole flow.
+  const practiceOptions = PRACTICES[lead.id] || PRACTICES.body;
+  const practiceHtml = practiceOptions.map((text,i)=>
+    `<button class="diag-opt" id="practiceOpt${i}" onclick="commitPractice(${i})">
+      <span class="diag-opt-mark"></span>
+      <span class="diag-opt-text"><span class="diag-opt-label" style="font-size:16px;">${text}</span></span>
+    </button>`
+  ).join('');
+
+  root.innerHTML = `
+    <div class="diag-result-eyebrow">Your coordinates on the matrix</div>
+    ${compareHtml}
+    <div class="diag-result-lead">${leadCopy}</div>
+    <p class="diag-result-body">${orientationLine}</p>
+    <div class="diag-matrix-wrap">${matrixHtml}</div>
+    <p class="diag-result-italic">Six layers, six coordinates. What in you was watching all six \u2014 the one thing none of these answers were actually about?</p>
+    <div style="margin-top:44px;">
+      <div class="diag-result-eyebrow" style="margin-bottom:18px;">Questions waiting for you, not as homework \u2014 as a place to start</div>
+      ${pillarsHtml}
+    </div>
+    <div style="margin-top:44px;" id="practiceSection">
+      <div class="diag-result-eyebrow" style="margin-bottom:8px;">One small thing, before you go</div>
+      <p class="diag-result-body" style="margin-bottom:22px;">Not a program. Pick the one you\u2019ll actually do today \u2014 the mirror will ask again in a week.</p>
+      <div class="diag-options" id="diagOptions">${practiceHtml}</div>
+    </div>
+    <button class="diag-restart" onclick="initSelfDiagnostic()">\u21bb Start over</button>
+  `;
+}
+
+async function commitPractice(idx){
+  const stats = computeLayerStats();
+  const lead = stats.leadLayer;
+  const options = PRACTICES[lead.id] || PRACTICES.body;
+  chosenPractice = options[idx];
+
+  const result = {
+    date: Date.now(),
+    layerScores: answersB.map(a=>a.score),
+    leadLayerId: lead.id,
+    practice: chosenPractice,
+    recheckDate: Date.now() + recheckDays*24*60*60*1000
+  };
+  try{
+    await window.storage.set('self-diagnostic:last-result', JSON.stringify(result));
+  } catch(e){ /* storage unavailable in this preview context — proceed anyway */ }
+
+  // swap just the practice section in place — no screen transition
+  const section = document.getElementById('practiceSection');
+  if(section){
+    const recheckDate = new Date(Date.now() + recheckDays*24*60*60*1000);
+    section.innerHTML = `
+      <div class="diag-result-eyebrow" style="margin-bottom:8px;">Set</div>
+      <div class="diag-result-lead" style="font-size:clamp(18px,2.4vw,22px);">${chosenPractice}</div>
+      <p class="diag-result-body">The mirror will ask again on ${recheckDate.toLocaleDateString()}. Nothing else is required until then.</p>
+    `;
+  }
+}
+
+// Expose only the entry points referenced by inline onclick="" attributes in the
+// HTML this script generates. Everything else (state, helpers, render functions)
+// stays inside this IIFE's closure, isolated from the rest of the site's script.
+window.selectOption = selectOption;
+window.goNext = goNext;
+window.goBack = goBack;
+window.submitPillar = submitPillar;
+window.answerRegression = answerRegression;
+window.commitPractice = commitPractice;
+window.initSelfDiagnostic = init;
+
+init();
+
 })();
 
 </script>
