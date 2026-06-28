@@ -841,6 +841,14 @@ section{scroll-margin-top:56px;}
 .identity-section h2{font-size:clamp(22px,3.5vw,38px);font-weight:300;color:var(--white);max-width:660px;margin:0 auto 16px;line-height:1.5;}
 .identity-section .sub{font-size:clamp(14px,2vw,19px);color:var(--grey);max-width:520px;margin:0 auto 52px;font-style:italic;line-height:1.85;}
 .identity-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:2px;max-width:980px;margin:0 auto;text-align:left;overflow:hidden;transition:max-height .5s ease,opacity .3s ease;opacity:1;}
+.masters-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;max-width:980px;margin:0 auto;text-align:left;}
+.masters-grid .identity-card{padding:30px 22px;}
+@media(max-width:860px){
+  .masters-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:480px){
+  .masters-grid{grid-template-columns:1fr;}
+}
 .identity-section.collapsed .identity-grid{max-height:0;opacity:0;}
 .identity-card{padding:38px 32px;background:var(--bg);border:1px solid #1e1e1e;transition:border-color .3s;}
 .identity-card:hover{border-color:#333;}
@@ -3719,16 +3727,16 @@ section h2,
 <div class="divider"></div>
 
 <!-- THE MASTERS — East and West, converging on the same destination -->
-<section class="section" id="masters" style="scroll-margin-top:56px;">
+<section class="section-wide" id="masters" style="scroll-margin-top:56px;">
   <span class="label">The Masters at a Glance</span>
   <h2>Six teachers. Two hemispheres. One destination.</h2>
   <p class="sub">The path of subtilization was never the property of one tradition. East and West independently arrived at the same map &mdash; just holding different lanterns.</p>
 
   <p style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.7;text-align:left;max-width:980px;margin:40px auto 16px;">The Eastern Lineage</p>
-  <div class="identity-grid">
+  <div class="masters-grid">
     <div class="identity-card">
       <span class="layer-tag">Bhakti Yoga &middot; Krishna Consciousness</span>
-      <h4>A.C. Bhaktivedanta Swami Prabhupada</h4>
+      <h4>Srila Prabhupada</h4>
       <p>Taught through authoritative intellect and devotional service &mdash; treating the science of the soul with the same rigor as any verifiable discipline, not as private feeling.</p>
       <p class="practice">Metaphor: The physics of the soul. Knowledge as verifiable science.</p>
     </div>
@@ -3739,15 +3747,15 @@ section h2,
       <p class="practice">Metaphor: The expanding space. Localized ego dissolving into the room it was always inside of.</p>
     </div>
     <div class="identity-card">
-      <span class="layer-tag">Bhakti Yoga &middot; Compassionate Action</span>
-      <h4>Radhanath Swami</h4>
-      <p>Taught through compassionate action and community &mdash; the divine located not in withdrawal from the world, but in the heart, and in the people standing in front of you.</p>
-      <p class="practice">Metaphor: The journey within. Finding the sacred in others before claiming to have found it in yourself.</p>
+      <span class="layer-tag">Buddhism &middot; The Middle Way</span>
+      <h4>The Buddha</h4>
+      <p>Taught through direct observation of suffering itself &mdash; not a revealed doctrine handed down, but a method anyone could verify by examining their own mind closely enough.</p>
+      <p class="practice">Metaphor: The raft. A teaching built to be used and then set down, not worshipped as the destination.</p>
     </div>
   </div>
 
   <p style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.7;text-align:left;max-width:980px;margin:40px auto 16px;">The Western Lineage</p>
-  <div class="identity-grid">
+  <div class="masters-grid">
     <div class="identity-card">
       <span class="layer-tag">Classical Greek &middot; The Examined Life</span>
       <h4>Socrates</h4>
