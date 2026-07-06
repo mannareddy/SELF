@@ -975,6 +975,14 @@ section{scroll-margin-top:56px;}
 .sl-stage.danger{border-color:#3a1010;}
 .sl-stage.danger .sl-num{color:#c0392b;opacity:.8;}
 
+/* ── FEEDBACK LOOP CHECKLIST ─────────────────────────────────────────────── */
+.fl-item{display:flex;align-items:flex-start;gap:14px;padding:16px 14px;border-bottom:1px solid #1e1e1e;cursor:pointer;font-family:var(--serif);font-size:clamp(15px,1.9vw,17px);color:var(--mid);line-height:1.6;transition:color .2s;}
+.fl-item:last-child{border-bottom:none;}
+.fl-item:hover{color:var(--white);}
+.fl-item .fl-check{margin-top:4px;width:16px;height:16px;accent-color:var(--gold);flex-shrink:0;cursor:pointer;}
+.fl-item input:checked ~ span{color:var(--white);}
+[data-theme="light"] .fl-item{border-bottom-color:rgba(0,0,0,0.1);}
+
 /* ── ENNEAGRAM SECTION ───────────────────────────────────────────────────── */
 .enn-section{padding:90px 24px;background:var(--bg-lift);}
 .enn-section h2{font-size:clamp(22px,3.5vw,38px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;}
@@ -4435,6 +4443,39 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
   <p class="phil-line dim" style="margin-bottom:36px;">Nine questions. No right answers &mdash; only honest ones.</p>
   <div class="diag-root" id="diagRoot"></div>
 </section>
+<span class="continue-hint">continue</span>
+<div class="divider"></div>
+
+<!-- THE FEEDBACK LOOP — recurring self-enquiry practice, not a one-time diagnostic -->
+<section class="section" id="feedback-loop">
+  <span class="label">The Feedback Loop</span>
+  <p class="phil-line bright" style="margin-bottom:8px;">Suffering runs on autopilot. This one runs on your input.</p>
+  <p class="phil-line dim" style="margin-bottom:36px;">The grid above is a snapshot. This is the practice. Come back to it &mdash; daily, weekly, whenever you notice the Default OS running &mdash; and let your own answers be the feedback.</p>
+
+  <div style="max-width:640px;margin:0 auto;text-align:left;">
+    <div id="feedbackLoopList" style="display:flex;flex-direction:column;gap:2px;">
+      <label class="fl-item"><input type="checkbox" class="fl-check"><span>What did I react to today &mdash; the situation, or the story I told about it?</span></label>
+      <label class="fl-item"><input type="checkbox" class="fl-check"><span>Who am I when no one is praising or criticizing me right now?</span></label>
+      <label class="fl-item"><input type="checkbox" class="fl-check"><span>What am I currently identified with &mdash; a role, a possession, an opinion?</span></label>
+      <label class="fl-item"><input type="checkbox" class="fl-check"><span>Did I mistake a passing feeling for a permanent fact today?</span></label>
+      <label class="fl-item"><input type="checkbox" class="fl-check"><span>Where did I try to control something that was never mine to control?</span></label>
+      <label class="fl-item"><input type="checkbox" class="fl-check"><span>What would I stop doing right now if I truly believed &ldquo;this too shall pass&rdquo;?</span></label>
+    </div>
+
+    <div style="margin-top:28px;text-align:center;">
+      <button class="collapse-toggle-btn" id="fl-log-btn" onclick="logFeedbackLoop()">Log This Check-In</button>
+      <p style="font-family:var(--sans);font-size:11px;letter-spacing:1px;color:var(--dim,#777);margin-top:14px;" id="fl-status">No check-ins yet &mdash; there&rsquo;s no score, just a mirror you can return to.</p>
+    </div>
+  </div>
+
+  <div style="max-width:640px;margin:56px auto 0;padding:32px 28px;border:1px solid rgba(212,175,55,0.3);background:rgba(212,175,55,.04);text-align:center;">
+    <p style="font-family:var(--serif);font-size:clamp(16px,2vw,19px);color:var(--white);line-height:1.85;margin-bottom:18px;">This page holds six questions. The workbook holds forty-seven pages built the same way &mdash; one phase at a time, with room to actually write your answers down instead of just thinking them.</p>
+    <a class="btn-gold" href="https://ammara01.gumroad.com/l/dyyole" target="_blank" rel="noopener" style="margin-top:4px;">Get The Ultimate Journey of Life &rarr;</a>
+    <p style="font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--grey);margin-top:16px;">$9.99 &middot; 47 pages &middot; 30-day money-back guarantee</p>
+  </div>
+</section>
+<span class="continue-hint">continue</span>
+<div class="divider"></div>
 
 <!-- WATCH -->
 <section class="watch-section">
@@ -4905,6 +4946,39 @@ function copyCA(btn){
     setTimeout(function(){btn.innerText=orig;btn.disabled=false;},2000);
   });
 }
+/* ── FEEDBACK LOOP CHECK-IN ──────────────────────────────────────────────── */
+(function(){
+  var KEY='selfFeedbackLoop';
+  function readState(){
+    try{ return JSON.parse(localStorage.getItem(KEY)) || {count:0,last:null}; }
+    catch(e){ return {count:0,last:null}; }
+  }
+  function renderStatus(){
+    var el=document.getElementById('fl-status');
+    if(!el) return;
+    var s=readState();
+    if(s.count>0){
+      var d=new Date(s.last);
+      var when=d.toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'});
+      el.textContent='Checked in '+s.count+(s.count===1?' time':' times')+' \u2014 last on '+when+'.';
+    }
+  }
+  window.logFeedbackLoop=function(){
+    var s=readState();
+    s.count=(s.count||0)+1;
+    s.last=new Date().toISOString();
+    try{ localStorage.setItem(KEY, JSON.stringify(s)); }catch(e){}
+    document.querySelectorAll('#feedbackLoopList .fl-check').forEach(function(cb){cb.checked=false;});
+    renderStatus();
+    var btn=document.getElementById('fl-log-btn');
+    if(btn){
+      var orig=btn.innerText;
+      btn.innerText='Logged \u2713';
+      setTimeout(function(){btn.innerText=orig;},1600);
+    }
+  };
+  document.addEventListener('DOMContentLoaded', renderStatus);
+})();
 /* ── FAQ TOGGLE FUNCTIONS ────────────────────────────────────────────────── */
 function faqToggle(btn){
   var item = btn.parentElement;
