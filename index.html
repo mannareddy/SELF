@@ -732,12 +732,12 @@ a:hover{opacity:.7;}
     filter:drop-shadow(0 0 8px rgba(212,175,55,0.55)) drop-shadow(0 0 20px rgba(212,175,55,0.25));
     animation:navLogoGlowMobile 3s ease-in-out infinite;
   }
+  .nav-logo-center picture{display:block;width:28px;height:28px;line-height:0;}
   @keyframes navLogoGlowMobile{
     0%,100%{filter:drop-shadow(0 0 6px rgba(212,175,55,0.45)) drop-shadow(0 0 16px rgba(212,175,55,0.2));}
     50%{filter:drop-shadow(0 0 10px rgba(212,175,55,0.7)) drop-shadow(0 0 24px rgba(212,175,55,0.35));}
   }
   .nav-logo-center img{
-    content:url('./assets/images/SELF_FooterSeal.png');
     width:28px !important;
     height:28px !important;
     filter:invert(1);
@@ -1948,9 +1948,12 @@ section h2,
     </li>
   </ul>
 
-  <!-- Center: Glowing Logo -->
+  <!-- Center: Glowing Logo — FooterSeal on mobile, Origin on desktop -->
   <a href="https://42self.xyz" class="nav-logo-center" title="*SELF">
-    <img src="./assets/images/SELF_Origin_1000x1000.png" alt="*SELF">
+    <picture>
+      <source media="(max-width:900px)" srcset="./assets/images/SELF_FooterSeal.png">
+      <img src="./assets/images/SELF_Origin_1000x1000.png" alt="*SELF">
+    </picture>
   </a>
 
   <!-- Right: Ecosystem▾ · New▾ · FAQ · Feedback -->
