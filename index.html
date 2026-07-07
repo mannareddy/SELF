@@ -624,7 +624,7 @@ a:hover{opacity:.7;}
   .nav-dropdown-wrap{position:relative;}
   .nav-dropdown-panel{
     display:flex;flex-direction:column;
-    position:absolute;top:100%;left:50%;transform:translateX(-50%);
+    position:absolute;top:100%;left:0;transform:none;
     min-width:230px;background:rgba(0,0,0,0.98);border:1px solid rgba(212,175,55,0.4);
     box-shadow:0 14px 28px rgba(0,0,0,0.5);
     opacity:0;visibility:hidden;pointer-events:none;
@@ -633,7 +633,7 @@ a:hover{opacity:.7;}
   }
   .nav-dropdown-wrap:hover .nav-dropdown-panel,
   .nav-dropdown-wrap:focus-within .nav-dropdown-panel{
-    opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(2px);
+    opacity:1;visibility:visible;pointer-events:auto;transform:translateY(2px);
   }
   .nav-dropdown-panel a{
     border-right:none !important;justify-content:flex-start !important;
