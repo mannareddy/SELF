@@ -616,7 +616,7 @@ a:hover{opacity:.7;}
 .mnav-panel{display:none;}
 
 .nav-caret{font-size:8px;margin-left:4px;opacity:.7;position:relative;top:-1px;}
-.mnav-caret{font-size:9px;margin-left:6px;opacity:.7;transition:transform .25s ease;display:inline-block;}
+.mnav-caret{font-size:16px;margin-left:8px;opacity:.75;transition:transform .25s ease;display:inline-block;line-height:1;}
 .mnav-new-badge{color:var(--gold);font-size:8px;margin-left:3px;}
 
 /* ── DESKTOP (>900px): hover / focus dropdown panels ── */
@@ -665,7 +665,7 @@ a:hover{opacity:.7;}
     display:flex !important;
     position:static !important;
     flex-shrink:0 !important;
-    width:44px !important;
+    width:48px !important;
     height:var(--nav-h) !important;
     background:transparent !important;
     border:none !important;
@@ -674,11 +674,11 @@ a:hover{opacity:.7;}
     flex-direction:column !important;
     align-items:center !important;
     justify-content:center !important;
-    gap:4px !important;
+    gap:5px !important;
     padding:0 !important;
-    z-index:2 !important;
+    z-index:10 !important;
   }
-  .mnav-toggle span{display:block;width:18px;height:1px;background:var(--dim);transition:transform .25s ease,opacity .25s ease;}
+  .mnav-toggle span{display:block;width:20px;height:1.5px;background:var(--dim);transition:transform .25s ease,opacity .25s ease;}
   .mnav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(5px) rotate(45deg);}
   .mnav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0;}
   .mnav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-5px) rotate(-45deg);}
@@ -726,7 +726,7 @@ a:hover{opacity:.7;}
     position:static !important;
     display:flex !important;
     flex-shrink:0 !important;
-    width:44px !important;
+    width:48px !important;
     height:var(--nav-h) !important;
     background:transparent !important;
     border:none !important;
@@ -735,11 +735,20 @@ a:hover{opacity:.7;}
     cursor:pointer !important;
     align-items:center !important;
     justify-content:center !important;
-    font-size:14px !important;
+    font-size:16px !important;
     padding:0 !important;
-    z-index:2 !important;
+    z-index:10 !important;
+    visibility:visible !important;
+    opacity:1 !important;
+    overflow:visible !important;
   }
   #themeToggleBtn:hover{color:var(--gold) !important;}
+
+  /* Ensure site-nav doesn't clip the theme button */
+  .site-nav{
+    overflow:visible !important;
+    overflow-x:visible !important;
+  }
 
   /* No extra padding needed — theme btn is now in-flow */
   .nav-right{padding-right:0 !important;}
@@ -761,7 +770,7 @@ a:hover{opacity:.7;}
     display:flex;align-items:center;justify-content:space-between;width:100%;
     font-family:var(--sans);font-size:12px;letter-spacing:2px;text-transform:uppercase;
     color:var(--mid);background:none;border:none;text-align:left;cursor:pointer;
-    padding:18px 22px;
+    padding:20px 22px;
   }
   .mnav-group-toggle[aria-expanded="true"] .mnav-caret{transform:rotate(180deg);}
   .mnav-group-panel{max-height:0;overflow:hidden;transition:max-height .35s ease;background:rgba(255,255,255,0.02);}
@@ -807,7 +816,8 @@ section{scroll-margin-top:56px;}
 .label{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--gold);opacity:.85;margin-bottom:42px;display:block;}
 
 /* ── COLLAPSE TOGGLE BUTTON ──────────────────────────────────────────────── */
-.collapse-toggle-btn{font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);background:transparent;border:1px solid rgba(212,175,55,0.5);padding:10px 28px;cursor:pointer;transition:all .3s;opacity:.85;display:inline-block;margin-bottom:8px;}
+.collapse-toggle-btn{font-family:var(--sans);font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);background:transparent;border:1px solid rgba(212,175,55,0.5);padding:12px 32px;cursor:pointer;transition:all .3s;opacity:.85;display:inline-block;margin-bottom:8px;}
+@media(max-width:640px){.collapse-toggle-btn{font-size:13px;padding:13px 28px;letter-spacing:2px;}}
 .collapse-toggle-btn:hover{opacity:1;border-color:var(--gold);background:rgba(212,175,55,0.06);}
 .section-collapse-label{font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#555;margin-top:8px;margin-bottom:0;display:block;}
 .section-collapse-wrap{overflow:hidden;transition:max-height .55s cubic-bezier(0,1,.25,1),opacity .35s ease;opacity:1;}
