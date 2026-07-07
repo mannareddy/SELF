@@ -586,44 +586,13 @@ a:hover{opacity:.7;}
 @media(max-width:900px){
   .nav-left li a,.nav-right li a{font-size:9px;letter-spacing:1px;padding:0 8px;}
   .nav-hide-mobile{display:none !important; visibility:hidden; width:0; overflow:hidden; border:none; margin:0; padding:0;}
-  #themeToggleMobile{
-    display:flex !important;
-    position:fixed !important;
-    top:0 !important;
-    right:0 !important;
-    z-index:1000 !important;
-    background:rgba(0,0,0,0.92) !important;
-    border:none !important;
-    border-left:1px solid #1a1a1a !important;
-    color:var(--dim) !important;
-    cursor:pointer !important;
-    width:40px !important;
-    height:var(--nav-h) !important;
-    align-items:center !important;
-    justify-content:center !important;
-    font-size:14px !important;
-    padding:0 !important;
-    transition:color .2s !important;
-    flex-shrink:0 !important;
-  }
-  #themeToggleMobile:hover{
-    color:var(--gold) !important;
-  }
-  #themeToggleBtn{display:none !important;} 
-  /* Reserve space at the right edge of the scrollable nav strip so its
-     content never sits underneath the fixed theme button */
-  .nav-right{padding-right:40px;}
+  /* themeToggleMobile: not used — #themeToggleBtn is now in-flow in the flex nav */
+  #themeToggleMobile{display:none !important;}
 }
 
-/* Below this width, even 6 evenly-distributed items get too cramped to read —
-   switch to a compact, left-packed, horizontally-scrollable tab strip instead. */
+/* Below 520px — 3-column flex nav still works fine, no horizontal scroll needed */
 @media(max-width:520px){
-.site-nav{overflow-x:scroll;scrollbar-width:none;white-space:nowrap;touch-action:pan-x;}
-  .nav-left{justify-content:flex-start; flex:0 !important;}
-  .nav-right{justify-content:flex-start; flex:0 !important;}
-  .nav-left li,.nav-right li{flex:0 !important; width:auto !important;}
-  .nav-left li a,.nav-right li a{font-size:8px;letter-spacing:0.5px;padding:0 5px;min-width:auto;width:auto !important;}
-  .nav-left li:first-child a{border-left:none;}
+  .site-nav{overflow-x:visible !important;white-space:normal !important;touch-action:auto !important;}
 }
 @media(max-width:480px){
 .nav-left li a,.nav-right li a{
@@ -674,22 +643,108 @@ a:hover{opacity:.7;}
   .nav-dropdown-panel a:hover{color:var(--gold) !important;background:rgba(212,175,55,0.06);}
 }
 
-/* ── MOBILE (≤900px): hide old flat lists, show hamburger + slide-down accordion panel ── */
+/* ── MOBILE (≤900px): 3-column flex nav [hamburger | logo | theme] ── */
 @media(max-width:900px){
-  .nav-left,.nav-right{display:none !important;}
-  .nav-logo-center{margin:0 auto !important;}
 
+  /* Hide desktop nav lists */
+  .nav-left,.nav-right{display:none !important;}
+
+  /* Nav becomes a horizontal flex row, children stretch to full height */
+  .site-nav{
+    display:flex !important;
+    flex-direction:row !important;
+    align-items:stretch !important;
+    overflow:visible !important;
+    white-space:normal !important;
+    touch-action:auto !important;
+    padding:0 !important;
+  }
+
+  /* LEFT: hamburger — in-flow (not fixed), left column */
   .mnav-toggle{
-    display:flex !important;position:fixed;top:0;left:0;z-index:1000;
-    width:40px;height:var(--nav-h);background:rgba(0,0,0,0.92);
-    border:none;border-right:1px solid #1a1a1a;cursor:pointer;
-    flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:0;
+    display:flex !important;
+    position:static !important;
+    flex-shrink:0 !important;
+    width:44px !important;
+    height:var(--nav-h) !important;
+    background:transparent !important;
+    border:none !important;
+    border-right:1px solid #1a1a1a !important;
+    cursor:pointer !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:4px !important;
+    padding:0 !important;
+    z-index:2 !important;
   }
   .mnav-toggle span{display:block;width:18px;height:1px;background:var(--dim);transition:transform .25s ease,opacity .25s ease;}
   .mnav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(5px) rotate(45deg);}
   .mnav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0;}
   .mnav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-5px) rotate(-45deg);}
 
+  /* CENTER: logo — flex:1 fills remaining space, gold side borders as dividers */
+  .nav-logo-center{
+    flex:1 !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    width:auto !important;
+    height:var(--nav-h) !important;
+    margin:0 !important;
+    border-left:1px solid rgba(212,175,55,0.3) !important;
+    border-right:1px solid rgba(212,175,55,0.3) !important;
+    border-radius:0 !important;
+    overflow:visible !important;
+    background:transparent !important;
+    box-shadow:none !important;
+    outline:none !important;
+    filter:drop-shadow(0 0 8px rgba(212,175,55,0.55)) drop-shadow(0 0 20px rgba(212,175,55,0.25));
+    animation:navLogoGlowMobile 3s ease-in-out infinite;
+  }
+  .nav-logo-center picture{display:flex;align-items:center;justify-content:center;width:100%;height:var(--nav-h);line-height:0;}
+  @keyframes navLogoGlowMobile{
+    0%,100%{filter:drop-shadow(0 0 6px rgba(212,175,55,0.45)) drop-shadow(0 0 16px rgba(212,175,55,0.2));}
+    50%{filter:drop-shadow(0 0 10px rgba(212,175,55,0.7)) drop-shadow(0 0 24px rgba(212,175,55,0.35));}
+  }
+  .nav-logo-center img{
+    width:auto !important;
+    height:calc(var(--nav-h) - 10px) !important;
+    max-height:34px !important;
+    filter:invert(1);
+    mix-blend-mode:screen;
+    object-fit:contain;
+    display:block;
+  }
+  [data-theme="light"] .nav-logo-center img{
+    filter:none;
+    mix-blend-mode:multiply;
+  }
+
+  /* RIGHT: theme toggle — in-flow (not absolute), right column */
+  #themeToggleBtn{
+    position:static !important;
+    display:flex !important;
+    flex-shrink:0 !important;
+    width:44px !important;
+    height:var(--nav-h) !important;
+    background:transparent !important;
+    border:none !important;
+    border-left:1px solid #1a1a1a !important;
+    color:var(--dim) !important;
+    cursor:pointer !important;
+    align-items:center !important;
+    justify-content:center !important;
+    font-size:14px !important;
+    padding:0 !important;
+    z-index:2 !important;
+  }
+  #themeToggleBtn:hover{color:var(--gold) !important;}
+
+  /* No extra padding needed — theme btn is now in-flow */
+  .nav-right{padding-right:0 !important;}
+
+  /* Accordion panel — unchanged */
   .mnav-panel{
     display:block;position:fixed;top:var(--nav-h);left:0;right:0;bottom:0;
     background:rgba(0,0,0,0.97);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
@@ -718,37 +773,6 @@ a:hover{opacity:.7;}
   .mnav-group-panel a:hover,.mnav-group-panel a:active{color:var(--gold);}
   .mnav-list a.active{color:var(--gold);}
   body.mnav-open{overflow:hidden;}
-
-  /* ── MOBILE LOGO: FooterSeal image, no box, glow preserved ── */
-  .nav-logo-center{
-    width:28px !important;
-    height:28px !important;
-    border:none !important;
-    border-radius:0 !important;
-    overflow:visible !important;
-    background:transparent !important;
-    box-shadow:none !important;
-    outline:none !important;
-    filter:drop-shadow(0 0 8px rgba(212,175,55,0.55)) drop-shadow(0 0 20px rgba(212,175,55,0.25));
-    animation:navLogoGlowMobile 3s ease-in-out infinite;
-  }
-  .nav-logo-center picture{display:block;width:28px;height:28px;line-height:0;}
-  @keyframes navLogoGlowMobile{
-    0%,100%{filter:drop-shadow(0 0 6px rgba(212,175,55,0.45)) drop-shadow(0 0 16px rgba(212,175,55,0.2));}
-    50%{filter:drop-shadow(0 0 10px rgba(212,175,55,0.7)) drop-shadow(0 0 24px rgba(212,175,55,0.35));}
-  }
-  .nav-logo-center img{
-    width:28px !important;
-    height:28px !important;
-    filter:invert(1);
-    mix-blend-mode:screen;
-    object-fit:contain;
-    display:block;
-  }
-  [data-theme="light"] .nav-logo-center img{
-    filter:none;
-    mix-blend-mode:multiply;
-  }
 }
 
 /* ── GEO BADGE ───────────────────────────────────────────────────────────── */
@@ -1560,44 +1584,16 @@ section h2,
   background:rgba(0,0,0,0.97) !important;
   will-change:auto !important;
 }
-  /* Mobile theme button — fixed to viewport, always visible regardless of nav scroll */
-  #themeToggleMobile{
-    display:flex !important;
-    align-items:center !important;
-    justify-content:center !important;
-    background:rgba(0,0,0,0.97) !important;
-    border:none !important;
-    border-left:1px solid #1a1a1a !important;
-    color:var(--dim) !important;
-    cursor:pointer !important;
-    width:40px !important;
-    min-width:40px !important;
-    height:var(--nav-h) !important;
-    font-size:14px !important;
-    padding:0 !important;
-    flex-shrink:0 !important;
-    visibility:visible !important;
-    opacity:1 !important;
-    transition:color .2s !important;
-  }
- 
-  #themeToggleMobile:hover{
-    color:var(--gold) !important;
-  }
- 
-  /* Light theme tint for mobile theme button */
-  [data-theme="light"] #themeToggleMobile{
+  /* themeToggleMobile: not used — #themeToggleBtn is in-flow in flex nav */
+  #themeToggleMobile{display:none !important;}
+
+  /* Light theme tint for in-flow theme button */
+  [data-theme="light"] #themeToggleBtn{
     color:#5a4a2a !important;
     border-left-color:rgba(0,0,0,0.12) !important;
-    background:rgba(250,248,243,0.97) !important;
   }
-  [data-theme="light"] #themeToggleMobile:hover{
+  [data-theme="light"] #themeToggleBtn:hover{
     color:#8a6a12 !important;
-  }
- 
-  /* Desktop button stays hidden on mobile */
-  #themeToggleBtn{
-    display:none !important;
   }
 }
    
@@ -1918,6 +1914,11 @@ section h2,
 <nav class="site-nav" id="siteNav" aria-label="Site navigation">
   <div class="progress-bar" id="progressBar"></div>
 
+  <!-- Mobile hamburger (hidden on desktop) -->
+  <button class="mnav-toggle" id="mnavToggle" aria-expanded="false" aria-label="Open navigation">
+    <span></span><span></span><span></span>
+  </button>
+
   <!-- Left: Home · Framework▾ · Ego & Practice▾ -->
   <ul class="nav-left">
     <li><a href="#home" id="nav-home">Home</a></li>
@@ -1982,14 +1983,9 @@ section h2,
     <li><a href="#feedback">Feedback</a></li>
   </ul>
 
-  <!-- Desktop theme toggle pinned right -->
+  <!-- Theme toggle — used on both desktop and mobile -->
   <button id="themeToggleBtn" onclick="toggleTheme()" title="Toggle light/dark theme" aria-label="Toggle theme">&#9788;</button>
 </nav>
-
-<!-- ── MOBILE HAMBURGER TOGGLE (fixed top-left, visible ≤900px only) ── -->
-<button class="mnav-toggle" id="mnavToggle" aria-expanded="false" aria-label="Open navigation">
-  <span></span><span></span><span></span>
-</button>
 
 <!-- ── MOBILE FULL-SCREEN ACCORDION PANEL ── -->
 <div class="mnav-panel" id="mnavPanel" role="dialog" aria-label="Site navigation">
@@ -2053,9 +2049,6 @@ section h2,
     <li><a href="#feedback">Feedback</a></li>
   </ul>
 </div>
-
-<!-- Mobile theme toggle — fixed to viewport, outside the nav strip -->
-<button id="themeToggleMobile" onclick="toggleTheme()" title="Toggle theme" aria-label="Toggle theme">&#9788;</button>
 
 <div class="geo-badge" id="geoBadge"></div>
 
