@@ -721,12 +721,14 @@ a:hover{opacity:.7;}
 
   /* ── MOBILE LOGO: FooterSeal image, no box, glow preserved ── */
   .nav-logo-center{
+    width:28px !important;
+    height:28px !important;
     border:none !important;
     border-radius:0 !important;
     overflow:visible !important;
     background:transparent !important;
     box-shadow:none !important;
-    /* Rebuild glow as a drop-shadow filter so it works without the border box */
+    outline:none !important;
     filter:drop-shadow(0 0 8px rgba(212,175,55,0.55)) drop-shadow(0 0 20px rgba(212,175,55,0.25));
     animation:navLogoGlowMobile 3s ease-in-out infinite;
   }
@@ -734,15 +736,15 @@ a:hover{opacity:.7;}
     0%,100%{filter:drop-shadow(0 0 6px rgba(212,175,55,0.45)) drop-shadow(0 0 16px rgba(212,175,55,0.2));}
     50%{filter:drop-shadow(0 0 10px rgba(212,175,55,0.7)) drop-shadow(0 0 24px rgba(212,175,55,0.35));}
   }
-  /* Swap image to FooterSeal via CSS content — transparent-bg treatment per theme */
   .nav-logo-center img{
     content:url('./assets/images/SELF_FooterSeal.png');
-    /* Dark mode default: invert dark marks to white, screen-blend blacks away */
+    width:28px !important;
+    height:28px !important;
     filter:invert(1);
     mix-blend-mode:screen;
     object-fit:contain;
+    display:block;
   }
-  /* Light mode: no invert — dark mark on cream nav blends naturally */
   [data-theme="light"] .nav-logo-center img{
     filter:none;
     mix-blend-mode:multiply;
