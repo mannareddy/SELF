@@ -617,7 +617,7 @@ a:hover{opacity:.7;}
 
 .nav-caret{font-size:12px;margin-left:5px;opacity:.75;position:relative;top:-1px;}
 .mnav-caret{font-size:16px;margin-left:8px;opacity:.8;transition:transform .25s ease;display:inline-block;line-height:1;}
-.mnav-new-badge{color:var(--gold);font-size:8px;margin-left:3px;}
+.mnav-new-badge{   display:inline-block;   font-family:var(--sans);   font-size:7px;   font-weight:600;   letter-spacing:1px;   text-transform:uppercase;   color:#000;   background:var(--gold);   border-radius:3px;   padding:1px 4px;   margin-left:5px;   vertical-align:middle;   line-height:1.4; }
 
 /* ── DESKTOP (>900px): hover / focus dropdown panels ── */
 @media(min-width:901px){
@@ -643,110 +643,99 @@ a:hover{opacity:.7;}
   .nav-dropdown-panel a:hover{color:var(--gold) !important;background:rgba(212,175,55,0.06);}
 }
 
-/* ── MOBILE (≤900px): 3-column flex nav [hamburger | logo | theme] ── */
+/* ── MOBILE (≤900px): 3-column flex nav ≡ | *SELF | ☀ ── */
 @media(max-width:900px){
-
-  /* Hide desktop nav lists */
   .nav-left,.nav-right{display:none !important;}
 
-  /* Nav becomes a horizontal flex row, children stretch to full height */
+  /* Nav bar becomes a flex row — 3 equal divisions */
   .site-nav{
     display:flex !important;
     flex-direction:row !important;
     align-items:stretch !important;
     overflow:visible !important;
-    overflow-x:visible !important;
     white-space:normal !important;
-    touch-action:auto !important;
     padding:0 !important;
-    justify-content:space-between !important;
   }
 
-  /* LEFT: hamburger — in-flow (not fixed), left column */
+  /* Left division: hamburger in-flow (not fixed) */
   .mnav-toggle{
     display:flex !important;
     position:static !important;
-    flex-shrink:0 !important;
-    width:60px !important;
-    height:var(--nav-h) !important;
-    background:transparent !important;
+    flex:0 0 52px;
+    align-self:stretch;
     border:none !important;
-    border-right:1px solid rgba(212,175,55,0.45) !important;
-    cursor:pointer !important;
-    flex-direction:column !important;
-    align-items:center !important;
-    justify-content:center !important;
-    gap:5px !important;
-    padding:0 !important;
-    z-index:10 !important;
+    border-right:1px solid rgba(212,175,55,0.18) !important;
+    background:transparent !important;
+    cursor:pointer;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:5px;
+    padding:0;
+    z-index:auto !important;
   }
-  .mnav-toggle span{display:block;width:22px;height:1.5px;background:var(--mid);transition:transform .25s ease,opacity .25s ease;}
-  .mnav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(5px) rotate(45deg);}
+  .mnav-toggle span{display:block;width:18px;height:1.5px;background:var(--mid);transition:transform .25s ease,opacity .25s ease;}
+  .mnav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
   .mnav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0;}
-  .mnav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-5px) rotate(-45deg);}
+  .mnav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
 
-  /* CENTER: logo — flex:1 fills remaining space, gold side borders as dividers */
+  /* Center division: logo fills full nav height */
   .nav-logo-center{
     flex:1 !important;
+    align-self:stretch !important;
     display:flex !important;
     align-items:center !important;
     justify-content:center !important;
     width:auto !important;
-    height:var(--nav-h) !important;
+    height:auto !important;
+    min-height:0 !important;
     margin:0 !important;
-    border-left:1px solid rgba(212,175,55,0.5) !important;
-    border-right:1px solid rgba(212,175,55,0.5) !important;
+    border:none !important;
     border-radius:0 !important;
-    overflow:visible !important;
-    background:transparent !important;
     box-shadow:none !important;
+    background:transparent !important;
+    overflow:visible !important;
     outline:none !important;
-    filter:drop-shadow(0 0 8px rgba(212,175,55,0.55)) drop-shadow(0 0 20px rgba(212,175,55,0.25));
-    animation:navLogoGlowMobile 3s ease-in-out infinite;
+    /* Glow via drop-shadow so it traces the mark, not a box */
+    filter:drop-shadow(0 0 7px rgba(212,175,55,0.5)) drop-shadow(0 0 18px rgba(212,175,55,0.22));
+    animation:mnavLogoGlow 3s ease-in-out infinite;
   }
-  .nav-logo-center picture{display:flex;align-items:center;justify-content:center;width:100%;height:var(--nav-h);line-height:0;}
-  @keyframes navLogoGlowMobile{
-    0%,100%{filter:drop-shadow(0 0 6px rgba(212,175,55,0.45)) drop-shadow(0 0 16px rgba(212,175,55,0.2));}
-    50%{filter:drop-shadow(0 0 10px rgba(212,175,55,0.7)) drop-shadow(0 0 24px rgba(212,175,55,0.35));}
+  @keyframes mnavLogoGlow{
+    0%,100%{filter:drop-shadow(0 0 5px rgba(212,175,55,0.4)) drop-shadow(0 0 14px rgba(212,175,55,0.18));}
+    50%{filter:drop-shadow(0 0 10px rgba(212,175,55,0.65)) drop-shadow(0 0 22px rgba(212,175,55,0.32));}
   }
+  .nav-logo-center picture{
+    display:flex;align-items:center;justify-content:center;
+  }
+  /* Dark mode: invert dark marks → white, screen-blend black bg away */
   .nav-logo-center img{
-    width:auto !important;
-    height:calc(var(--nav-h) - 10px) !important;
-    max-height:34px !important;
+    width:36px !important;height:36px !important;
+    object-fit:contain;display:block;
     filter:invert(1);
     mix-blend-mode:screen;
-    object-fit:contain;
-    display:block;
   }
+  /* Light mode: multiply dissolves the white bg into the cream nav */
   [data-theme="light"] .nav-logo-center img{
     filter:none;
     mix-blend-mode:multiply;
   }
 
-  /* RIGHT: theme toggle — in-flow (not absolute), right column */
+  /* Right division: theme toggle in-flow */
   #themeToggleBtn{
     position:static !important;
+    flex:0 0 52px !important;
+    align-self:stretch !important;
     display:flex !important;
-    flex-shrink:0 !important;
-    width:60px !important;
-    height:var(--nav-h) !important;
-    background:transparent !important;
-    border:none !important;
-    border-left:1px solid rgba(212,175,55,0.45) !important;
-    color:var(--mid) !important;
-    cursor:pointer !important;
     align-items:center !important;
     justify-content:center !important;
-    font-size:18px !important;
-    padding:0 !important;
-    z-index:10 !important;
-    visibility:visible !important;
-    overflow:visible !important;
+    width:52px !important;
+    height:auto !important;
+    right:auto !important;
+    top:auto !important;
+    border:none !important;
+    border-left:1px solid rgba(212,175,55,0.18) !important;
+    background:transparent !important;
   }
-  #themeToggleBtn:hover{color:var(--gold) !important;}
-
-  /* No extra padding needed — theme btn is now in-flow */
-  .nav-right{padding-right:0 !important;}
 
   /* Accordion panel — unchanged */
   .mnav-panel{
@@ -1986,7 +1975,10 @@ section h2,
     <li><a href="#faq-section">FAQ</a></li>
     <li><a href="#feedback">Feedback</a></li>
   </ul>
-
+  <!-- FROM -->
+<a href="#masters" data-group="new-section">New<span class="nav-caret">▾</span><span class="mnav-new-badge">✦</span></a>
+<!-- TO -->
+<a href="#masters" data-group="new-section">New<span class="nav-caret">▾</span><span class="mnav-new-badge">NEW</span></a>
   <!-- Theme toggle — used on both desktop and mobile -->
   <button id="themeToggleBtn" onclick="toggleTheme()" title="Toggle light/dark theme" aria-label="Toggle theme">&#9788;</button>
 </nav>
@@ -2048,7 +2040,10 @@ section h2,
         <a href="https://ammara01.gumroad.com/l/dyyole" target="_blank" rel="noopener">Get the Workbook ↗</a>
       </div>
     </li>
-
+    <!-- FROM -->
+    New <span class="mnav-new-badge">✦</span> <span class="mnav-caret">▾</span>
+    <!-- TO -->
+    New <span class="mnav-new-badge">NEW</span> <span class="mnav-caret">▾</span>
     <li><a href="#faq-section">FAQ</a></li>
     <li><a href="#feedback">Feedback</a></li>
   </ul>
