@@ -609,7 +609,7 @@ a:hover{opacity:.7;}
   #themeToggleMobile:hover{
     color:var(--gold) !important;
   }
-  #themeToggleBtn{display:none !important;} 
+  #themeToggleBtn{display:none;} /* overridden by additive block below for mobile flex row */
   /* Reserve space at the right edge of the scrollable nav strip so its
      content never sits underneath the fixed theme button */
   .nav-right{padding-right:40px;}
@@ -740,23 +740,31 @@ a:hover{opacity:.7;}
     height:auto !important;
     min-height:0 !important;
     margin:0 !important;
-    border:none !important;
-    border-left:1px solid rgba(212,175,55,0.3) !important;
-    border-right:1px solid rgba(212,175,55,0.3) !important;
+    border-top:none !important;
+    border-bottom:none !important;
+    border-left:1px solid rgba(212,175,55,0.45) !important;
+    border-right:1px solid rgba(212,175,55,0.45) !important;
     border-radius:0 !important;
-    box-shadow:none !important;
-    background:transparent !important;
     overflow:visible !important;
     outline:none !important;
-    /* Dark mode: gold drop-shadow glow traces the mark through the black bg */
-    filter:drop-shadow(0 0 7px rgba(212,175,55,0.5)) drop-shadow(0 0 18px rgba(212,175,55,0.22));
+    background:transparent !important;
+    mix-blend-mode:normal !important;
+    filter:none !important;
+    /* Gold glow on border — works regardless of image background */
+    box-shadow:0 0 8px rgba(212,175,55,0.4), 0 0 22px rgba(212,175,55,0.18) !important;
     animation:mnavLogoGlow 3s ease-in-out infinite;
   }
-  /* Light mode: multiply dissolves white bg of FooterSeal into cream nav */
+  @keyframes mnavLogoGlow{
+    0%,100%{box-shadow:0 0 6px rgba(212,175,55,0.35),0 0 16px rgba(212,175,55,0.14);}
+    50%{box-shadow:0 0 13px rgba(212,175,55,0.65),0 0 28px rgba(212,175,55,0.3);}
+  }
+  /* Light mode: dissolve FooterSeal white bg into cream nav, no glow needed */
   [data-theme="light"] .nav-logo-center{
-    mix-blend-mode:multiply;
-    filter:none;
-    animation:none;
+    mix-blend-mode:multiply !important;
+    box-shadow:none !important;
+    animation:none !important;
+    border-left:1px solid rgba(138,106,18,0.3) !important;
+    border-right:1px solid rgba(138,106,18,0.3) !important;
   }
   @keyframes mnavLogoGlow{
     0%,100%{filter:drop-shadow(0 0 5px rgba(212,175,55,0.4)) drop-shadow(0 0 14px rgba(212,175,55,0.18));}
