@@ -342,7 +342,7 @@ body{
 [data-theme="light"] .nav-dropdown-panel{background:rgba(250,248,243,0.98) !important;border-color:rgba(138,106,18,0.35) !important;}
 [data-theme="light"] .nav-dropdown-panel a{color:#4a3a1a !important;}
 [data-theme="light"] .nav-dropdown-panel a:hover{color:#8a6a12 !important;background:rgba(138,106,18,0.06) !important;}
-[data-theme="light"] .mnav-toggle{background:transparent !important;border-right-color:rgba(138,106,18,0.45) !important;}
+[data-theme="light"] .mnav-toggle{background:rgba(250,248,243,0.98) !important;border-color:rgba(0,0,0,0.15) !important;}
 [data-theme="light"] .mnav-toggle span{background:#4a3a1a !important;}
 [data-theme="light"] .mnav-panel{background:rgba(250,248,243,0.97) !important;}
 [data-theme="light"] .mnav-list>li{border-color:rgba(0,0,0,0.1) !important;}
@@ -586,13 +586,44 @@ a:hover{opacity:.7;}
 @media(max-width:900px){
   .nav-left li a,.nav-right li a{font-size:9px;letter-spacing:1px;padding:0 8px;}
   .nav-hide-mobile{display:none !important; visibility:hidden; width:0; overflow:hidden; border:none; margin:0; padding:0;}
-  /* themeToggleMobile: not used — #themeToggleBtn is now in-flow in the flex nav */
-  #themeToggleMobile{display:none !important;}
+  #themeToggleMobile{
+    display:flex !important;
+    position:fixed !important;
+    top:0 !important;
+    right:0 !important;
+    z-index:1000 !important;
+    background:rgba(0,0,0,0.92) !important;
+    border:none !important;
+    border-left:1px solid #1a1a1a !important;
+    color:var(--dim) !important;
+    cursor:pointer !important;
+    width:40px !important;
+    height:var(--nav-h) !important;
+    align-items:center !important;
+    justify-content:center !important;
+    font-size:14px !important;
+    padding:0 !important;
+    transition:color .2s !important;
+    flex-shrink:0 !important;
+  }
+  #themeToggleMobile:hover{
+    color:var(--gold) !important;
+  }
+  #themeToggleBtn{display:none !important;} 
+  /* Reserve space at the right edge of the scrollable nav strip so its
+     content never sits underneath the fixed theme button */
+  .nav-right{padding-right:40px;}
 }
 
-/* Below 520px — 3-column flex nav still works fine, no horizontal scroll needed */
+/* Below this width, even 6 evenly-distributed items get too cramped to read —
+   switch to a compact, left-packed, horizontally-scrollable tab strip instead. */
 @media(max-width:520px){
-  .site-nav{overflow-x:visible !important;white-space:normal !important;touch-action:auto !important;}
+.site-nav{overflow-x:scroll;scrollbar-width:none;white-space:nowrap;touch-action:pan-x;}
+  .nav-left{justify-content:flex-start; flex:0 !important;}
+  .nav-right{justify-content:flex-start; flex:0 !important;}
+  .nav-left li,.nav-right li{flex:0 !important; width:auto !important;}
+  .nav-left li a,.nav-right li a{font-size:8px;letter-spacing:0.5px;padding:0 5px;min-width:auto;width:auto !important;}
+  .nav-left li:first-child a{border-left:none;}
 }
 @media(max-width:480px){
 .nav-left li a,.nav-right li a{
@@ -615,25 +646,44 @@ a:hover{opacity:.7;}
 .mnav-toggle{display:none;}
 .mnav-panel{display:none;}
 
-.nav-caret{font-size:12px;margin-left:5px;opacity:.75;position:relative;top:-1px;}
-.mnav-caret{font-size:16px;margin-left:8px;opacity:.8;transition:transform .25s ease;display:inline-block;line-height:1;}
+.nav-caret{font-size:8px;margin-left:4px;opacity:.7;position:relative;top:-1px;}
+.mnav-caret{font-size:9px;margin-left:6px;opacity:.7;transition:transform .25s ease;display:inline-block;}
 .mnav-new-badge{color:var(--gold);font-size:8px;margin-left:3px;}
+.nav-new-dot{
+  display:inline-block;width:5px;height:5px;border-radius:50%;
+  background:var(--gold);margin-left:5px;vertical-align:middle;
+  animation:newDotPulse 2.2s ease-in-out infinite;
+}
+@keyframes newDotPulse{
+  0%,100%{opacity:1;transform:scale(1);}
+  50%{opacity:0.4;transform:scale(0.65);}
+}
 
 /* ── DESKTOP (>900px): hover / focus dropdown panels ── */
 @media(min-width:901px){
   .nav-dropdown-wrap{position:relative;}
+
+  /* Invisible bridge fills the gap between trigger and panel so diagonal mouse moves don't close it */
+  .nav-dropdown-wrap::after{
+    content:'';position:absolute;top:100%;left:-20px;right:-20px;height:12px;
+    background:transparent;pointer-events:auto;z-index:999;
+    display:none;
+  }
+  .nav-dropdown-wrap:hover::after{display:block;}
+
   .nav-dropdown-panel{
     display:flex;flex-direction:column;
-    position:absolute;top:100%;left:0;transform:none;
+    position:absolute;top:calc(100% + 2px);left:0;
     min-width:230px;background:rgba(0,0,0,0.98);border:1px solid rgba(212,175,55,0.4);
     box-shadow:0 14px 28px rgba(0,0,0,0.5);
     opacity:0;visibility:hidden;pointer-events:none;
-    transition:opacity .18s ease,transform .18s ease;
+    transition:opacity .15s ease, visibility 0s ease .18s, transform .15s ease;
     padding:6px 0;z-index:1000;
   }
   .nav-dropdown-wrap:hover .nav-dropdown-panel,
   .nav-dropdown-wrap:focus-within .nav-dropdown-panel{
     opacity:1;visibility:visible;pointer-events:auto;transform:translateY(2px);
+    transition:opacity .15s ease, visibility 0s ease 0s, transform .15s ease;
   }
   .nav-dropdown-panel a{
     border-right:none !important;justify-content:flex-start !important;
@@ -643,112 +693,98 @@ a:hover{opacity:.7;}
   .nav-dropdown-panel a:hover{color:var(--gold) !important;background:rgba(212,175,55,0.06);}
 }
 
-/* ── MOBILE (≤900px): 3-column flex nav [hamburger | logo | theme] ── */
+/* ── MOBILE (≤900px): 3-column flex nav ≡ | *SELF | ☀ ── */
 @media(max-width:900px){
-
-  /* Hide desktop nav lists */
   .nav-left,.nav-right{display:none !important;}
 
-  /* Nav becomes a horizontal flex row, children stretch to full height */
+  /* Nav bar becomes a flex row — 3 equal divisions */
   .site-nav{
     display:flex !important;
     flex-direction:row !important;
     align-items:stretch !important;
     overflow:visible !important;
-    overflow-x:visible !important;
     white-space:normal !important;
-    touch-action:auto !important;
     padding:0 !important;
-    justify-content:space-between !important;
   }
 
-  /* LEFT: hamburger — in-flow (not fixed), left column */
+  /* Left division: hamburger in-flow (not fixed) */
   .mnav-toggle{
     display:flex !important;
     position:static !important;
-    flex-shrink:0 !important;
-    width:60px !important;
-    height:var(--nav-h) !important;
-    background:transparent !important;
+    flex:0 0 52px;
+    align-self:stretch;
     border:none !important;
-    border-right:1px solid rgba(212,175,55,0.45) !important;
-    cursor:pointer !important;
-    flex-direction:column !important;
-    align-items:center !important;
-    justify-content:center !important;
-    gap:5px !important;
-    padding:0 !important;
-    z-index:10 !important;
+    border-right:1px solid rgba(212,175,55,0.18) !important;
+    background:transparent !important;
+    cursor:pointer;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:5px;
+    padding:0;
+    z-index:auto !important;
   }
-  .mnav-toggle span{display:block;width:22px;height:1.5px;background:var(--mid);transition:transform .25s ease,opacity .25s ease;}
-  .mnav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(5px) rotate(45deg);}
+  .mnav-toggle span{display:block;width:18px;height:1.5px;background:var(--mid);transition:transform .25s ease,opacity .25s ease;}
+  .mnav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
   .mnav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0;}
-  .mnav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-5px) rotate(-45deg);}
+  .mnav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
 
-  /* CENTER: logo — flex:1 fills remaining space, gold side borders as dividers */
+  /* Center division: logo fills full nav height */
   .nav-logo-center{
     flex:1 !important;
+    align-self:stretch !important;
     display:flex !important;
     align-items:center !important;
     justify-content:center !important;
     width:auto !important;
-    height:var(--nav-h) !important;
+    height:auto !important;
+    min-height:0 !important;
     margin:0 !important;
-    border-left:1px solid rgba(212,175,55,0.5) !important;
-    border-right:1px solid rgba(212,175,55,0.5) !important;
+    border:none !important;
     border-radius:0 !important;
-    overflow:visible !important;
-    background:transparent !important;
     box-shadow:none !important;
+    background:transparent !important;
+    overflow:visible !important;
     outline:none !important;
-    filter:drop-shadow(0 0 8px rgba(212,175,55,0.55)) drop-shadow(0 0 20px rgba(212,175,55,0.25));
-    animation:navLogoGlowMobile 3s ease-in-out infinite;
-  }
-  .nav-logo-center picture{display:flex;align-items:center;justify-content:center;width:100%;height:var(--nav-h);line-height:0;}
-  @keyframes navLogoGlowMobile{
-    0%,100%{filter:drop-shadow(0 0 6px rgba(212,175,55,0.45)) drop-shadow(0 0 16px rgba(212,175,55,0.2));}
-    50%{filter:drop-shadow(0 0 10px rgba(212,175,55,0.7)) drop-shadow(0 0 24px rgba(212,175,55,0.35));}
-  }
-  .nav-logo-center img{
-    width:auto !important;
-    height:calc(var(--nav-h) - 10px) !important;
-    max-height:34px !important;
-    filter:invert(1);
+    /* Screen blend: black bg of Origin image disappears against dark nav */
     mix-blend-mode:screen;
-    object-fit:contain;
-    display:block;
+    filter:drop-shadow(0 0 7px rgba(212,175,55,0.5)) drop-shadow(0 0 18px rgba(212,175,55,0.22));
+    animation:mnavLogoGlow 3s ease-in-out infinite;
   }
-  [data-theme="light"] .nav-logo-center img{
-    filter:none;
+  /* Light mode: multiply dissolves white bg of FooterSeal into cream nav */
+  [data-theme="light"] .nav-logo-center{
     mix-blend-mode:multiply;
   }
+  @keyframes mnavLogoGlow{
+    0%,100%{filter:drop-shadow(0 0 5px rgba(212,175,55,0.4)) drop-shadow(0 0 14px rgba(212,175,55,0.18));}
+    50%{filter:drop-shadow(0 0 10px rgba(212,175,55,0.65)) drop-shadow(0 0 22px rgba(212,175,55,0.32));}
+  }
+  .nav-logo-center picture{
+    display:flex;align-items:center;justify-content:center;
+  }
+  .nav-logo-center img{
+    width:36px !important;height:36px !important;
+    object-fit:contain;display:block;
+  }
 
-  /* RIGHT: theme toggle — in-flow (not absolute), right column */
+  /* Right division: theme toggle in-flow */
   #themeToggleBtn{
     position:static !important;
+    flex:0 0 52px !important;
+    align-self:stretch !important;
     display:flex !important;
-    flex-shrink:0 !important;
-    width:60px !important;
-    height:var(--nav-h) !important;
-    background:transparent !important;
-    border:none !important;
-    border-left:1px solid rgba(212,175,55,0.45) !important;
-    color:var(--mid) !important;
-    cursor:pointer !important;
     align-items:center !important;
     justify-content:center !important;
-    font-size:18px !important;
-    padding:0 !important;
-    z-index:10 !important;
-    visibility:visible !important;
-    overflow:visible !important;
+    width:52px !important;
+    height:auto !important;
+    right:auto !important;
+    top:auto !important;
+    border:none !important;
+    border-left:1px solid rgba(212,175,55,0.18) !important;
+    background:transparent !important;
   }
-  #themeToggleBtn:hover{color:var(--gold) !important;}
 
-  /* No extra padding needed — theme btn is now in-flow */
-  .nav-right{padding-right:0 !important;}
-
-  /* Accordion panel — unchanged */
+  /* Accordion panel — slides down from nav bar */
   .mnav-panel{
     display:block;position:fixed;top:var(--nav-h);left:0;right:0;bottom:0;
     background:rgba(0,0,0,0.97);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
@@ -757,9 +793,11 @@ a:hover{opacity:.7;}
     transition:opacity .22s ease,transform .22s ease;
   }
   .mnav-panel.open{opacity:1;transform:translateY(0);pointer-events:auto;}
+  [data-theme="light"] .mnav-panel{background:rgba(250,248,243,0.97);}
 
   .mnav-list{list-style:none;margin:0;padding:8px 0 48px;}
   .mnav-list>li{border-bottom:1px solid #1a1a1a;}
+  [data-theme="light"] .mnav-list>li{border-bottom-color:rgba(0,0,0,0.08);}
   .mnav-list>li>a,
   .mnav-group-toggle{
     display:flex;align-items:center;justify-content:space-between;width:100%;
@@ -1588,16 +1626,44 @@ section h2,
   background:rgba(0,0,0,0.97) !important;
   will-change:auto !important;
 }
-  /* themeToggleMobile: not used — #themeToggleBtn is in-flow in flex nav */
-  #themeToggleMobile{display:none !important;}
-
-  /* Light theme tint for in-flow theme button */
-  [data-theme="light"] #themeToggleBtn{
-    color:#5a4a2a !important;
-    border-left-color:rgba(138,106,18,0.45) !important;
+  /* Mobile theme button — fixed to viewport, always visible regardless of nav scroll */
+  #themeToggleMobile{
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    background:rgba(0,0,0,0.97) !important;
+    border:none !important;
+    border-left:1px solid #1a1a1a !important;
+    color:var(--dim) !important;
+    cursor:pointer !important;
+    width:40px !important;
+    min-width:40px !important;
+    height:var(--nav-h) !important;
+    font-size:14px !important;
+    padding:0 !important;
+    flex-shrink:0 !important;
+    visibility:visible !important;
+    opacity:1 !important;
+    transition:color .2s !important;
   }
-  [data-theme="light"] #themeToggleBtn:hover{
+ 
+  #themeToggleMobile:hover{
+    color:var(--gold) !important;
+  }
+ 
+  /* Light theme tint for mobile theme button */
+  [data-theme="light"] #themeToggleMobile{
+    color:#5a4a2a !important;
+    border-left-color:rgba(0,0,0,0.12) !important;
+    background:rgba(250,248,243,0.97) !important;
+  }
+  [data-theme="light"] #themeToggleMobile:hover{
     color:#8a6a12 !important;
+  }
+ 
+  /* Desktop button stays hidden on mobile */
+  #themeToggleBtn{
+    display:none !important;
   }
 }
    
@@ -1968,14 +2034,14 @@ section h2,
       <div class="nav-dropdown-panel">
         <a href="#ledger" data-group="ecosystem">The Ledger</a>
         <a href="#ipo" data-group="ecosystem">IPO</a>
-        <a href="#mirror-mc" data-group="ecosystem">Mirror Room</a>
+        <a href="#mirror" data-group="ecosystem">Mirror Room</a>
         <a href="#contract" data-group="ecosystem">Contract (CA)</a>
         <a href="#contribution" data-group="ecosystem">Contribution</a>
       </div>
     </li>
 
     <li class="nav-dropdown-wrap">
-      <a href="#masters" data-group="new-section">New<span class="nav-caret">▾</span><span class="mnav-new-badge">✦</span></a>
+      <a href="#masters" data-group="new-section">New<span class="nav-caret">▾</span><span class="nav-new-dot"></span></a>
       <div class="nav-dropdown-panel">
         <a href="#masters" data-group="new-section">Masters at a Glance</a>
         <a href="#feedback-loop" data-group="new-section">Feedback Loop Check-In</a>
@@ -2032,7 +2098,7 @@ section h2,
       <div class="mnav-group-panel">
         <a href="#ledger">The Ledger</a>
         <a href="#ipo">IPO</a>
-        <a href="#mirror-mc">Mirror Room</a>
+        <a href="#mirror">Mirror Room</a>
         <a href="#contract">Contract (CA)</a>
         <a href="#contribution">Contribution</a>
       </div>
@@ -2040,7 +2106,7 @@ section h2,
 
     <li class="mnav-group">
       <button class="mnav-group-toggle" aria-expanded="false">
-        New <span class="mnav-new-badge">✦</span> <span class="mnav-caret">▾</span>
+        New <span class="nav-new-dot"></span> <span class="mnav-caret">▾</span>
       </button>
       <div class="mnav-group-panel">
         <a href="#masters">Masters at a Glance</a>
@@ -2936,7 +3002,7 @@ section h2,
     <button class="collapse-toggle-btn" onclick="sectionCollapse('bodhichitta',this)">Expand &#9660;</button>
   </div>
   <span class="section-collapse-label" style="max-width:700px;margin:0 auto 16px;display:block;text-align:left;">Collapsed by default — tap to expand</span>
-  <div id="bodhichitta" class="section-collapse-wrap collapsed" style="max-width:700px;margin:0 auto 52px;">
+  <div id="bodhichitta" class="section-collapse-wrap collapsed" style="max-width:700px;margin:0 auto 52px;scroll-margin-top:56px;">
     <p style="font-family:var(--serif);font-size:clamp(17px,2.3vw,21px);color:var(--white);line-height:1.9;margin-bottom:20px;text-align:left;">Aversion's instinct is to push fear, anger, and discomfort away &mdash; to defend the fortress. Bodhichitta names the opposite move: when the fortress cracks under that pressure, what leaks through it isn't weakness. It's the opening.</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:2px;margin-bottom:24px;">
       <div class="sl-stage"><span class="sl-num">Pressure</span><div class="sl-name">Fear</div><p class="sl-desc">The ego's instinct: push it away before it pushes through.</p></div>
@@ -3278,7 +3344,7 @@ section h2,
     <button class="collapse-toggle-btn" onclick="sectionCollapse('pain-body',this)">Expand &#9660;</button>
   </div>
   <span class="section-collapse-label" style="max-width:700px;margin:0 auto 16px;display:block;text-align:left;">Collapsed by default — tap to expand</span>
-  <div id="pain-body" class="section-collapse-wrap collapsed" style="max-width:700px;margin:0 auto 52px;">
+  <div id="pain-body" class="section-collapse-wrap collapsed" style="max-width:700px;margin:0 auto 52px;scroll-margin-top:56px;">
 
     <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.85;margin-bottom:32px;text-align:left;">Unprocessed emotional pain from the past doesn&rsquo;t dissolve &mdash; it leaves a residue. Repeated over years, that residue accumulates into something semi-autonomous: trapped life-energy that has turned in on itself, lodged in mind and body. It is the dark shadow the ego casts.</p>
 
@@ -5706,9 +5772,21 @@ function updateNav(){
       e.preventDefault();
       var target = document.getElementById(href.slice(1));
       if(!target) return;
-      var top = target.getBoundingClientRect().top + window.scrollY - NAV_OFFSET;
-      window.scrollTo({top: top, behavior: 'smooth'});
-      setActive(href.slice(1));
+
+      // Auto-expand if the target is a collapsed section-collapse-wrap
+      var didExpand = false;
+      if(target.classList.contains('section-collapse-wrap') && target.classList.contains('collapsed')){
+        sectionCollapse(target.id);
+        didExpand = true;
+      }
+
+      // Delay scroll slightly if we just expanded so max-height transition registers
+      var delay = didExpand ? 60 : 0;
+      setTimeout(function(){
+        var top = target.getBoundingClientRect().top + window.scrollY - NAV_OFFSET;
+        window.scrollTo({top: top, behavior: 'smooth'});
+        setActive(href.slice(1));
+      }, delay);
     });
   });
 
