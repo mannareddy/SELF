@@ -586,33 +586,9 @@ a:hover{opacity:.7;}
 @media(max-width:900px){
   .nav-left li a,.nav-right li a{font-size:9px;letter-spacing:1px;padding:0 8px;}
   .nav-hide-mobile{display:none !important; visibility:hidden; width:0; overflow:hidden; border:none; margin:0; padding:0;}
-  #themeToggleMobile{
-    display:flex !important;
-    position:fixed !important;
-    top:0 !important;
-    right:0 !important;
-    z-index:1000 !important;
-    background:rgba(0,0,0,0.92) !important;
-    border:none !important;
-    border-left:1px solid #1a1a1a !important;
-    color:var(--dim) !important;
-    cursor:pointer !important;
-    width:40px !important;
-    height:var(--nav-h) !important;
-    align-items:center !important;
-    justify-content:center !important;
-    font-size:14px !important;
-    padding:0 !important;
-    transition:color .2s !important;
-    flex-shrink:0 !important;
-  }
-  #themeToggleMobile:hover{
-    color:var(--gold) !important;
-  }
-  #themeToggleBtn{display:none;} /* overridden by additive block below for mobile flex row */
-  /* Reserve space at the right edge of the scrollable nav strip so its
-     content never sits underneath the fixed theme button */
-  .nav-right{padding-right:40px;}
+  /* #themeToggleMobile (old fixed pinned button) removed — the mega-menu
+     additive layer below now provides the single in-flow theme toggle
+     in the 3-column mobile row. Having both caused overlapping buttons. */
 }
 
 /* Below this width, even 6 evenly-distributed items get too cramped to read —
@@ -765,10 +741,6 @@ a:hover{opacity:.7;}
     animation:none !important;
     border-left:1px solid rgba(138,106,18,0.3) !important;
     border-right:1px solid rgba(138,106,18,0.3) !important;
-  }
-  @keyframes mnavLogoGlow{
-    0%,100%{filter:drop-shadow(0 0 5px rgba(212,175,55,0.4)) drop-shadow(0 0 14px rgba(212,175,55,0.18));}
-    50%{filter:drop-shadow(0 0 10px rgba(212,175,55,0.65)) drop-shadow(0 0 22px rgba(212,175,55,0.32));}
   }
   .nav-logo-center picture{
     display:flex;align-items:center;justify-content:center;
@@ -1639,45 +1611,10 @@ section h2,
   background:rgba(0,0,0,0.97) !important;
   will-change:auto !important;
 }
-  /* Mobile theme button — fixed to viewport, always visible regardless of nav scroll */
-  #themeToggleMobile{
-    display:flex !important;
-    align-items:center !important;
-    justify-content:center !important;
-    background:rgba(0,0,0,0.97) !important;
-    border:none !important;
-    border-left:1px solid #1a1a1a !important;
-    color:var(--dim) !important;
-    cursor:pointer !important;
-    width:40px !important;
-    min-width:40px !important;
-    height:var(--nav-h) !important;
-    font-size:14px !important;
-    padding:0 !important;
-    flex-shrink:0 !important;
-    visibility:visible !important;
-    opacity:1 !important;
-    transition:color .2s !important;
-  }
- 
-  #themeToggleMobile:hover{
-    color:var(--gold) !important;
-  }
- 
-  /* Light theme tint for mobile theme button */
-  [data-theme="light"] #themeToggleMobile{
-    color:#5a4a2a !important;
-    border-left-color:rgba(0,0,0,0.12) !important;
-    background:rgba(250,248,243,0.97) !important;
-  }
-  [data-theme="light"] #themeToggleMobile:hover{
-    color:#8a6a12 !important;
-  }
- 
-  /* Desktop button stays hidden on mobile */
-  #themeToggleBtn{
-    display:none !important;
-  }
+  /* #themeToggleMobile fixed button + the #themeToggleBtn display:none
+     override removed from here — they duplicated/fought the single
+     in-flow theme button already handled by the mega-menu 3-column
+     layer above. */
 }
    
 /* Override the mobile negative-margin bleed that causes right-side cutoff */
