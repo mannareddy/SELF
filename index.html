@@ -662,6 +662,12 @@ a:hover{opacity:.7;}
     opacity:1;visibility:visible;pointer-events:auto;transform:translateY(2px);
     transition:opacity .15s ease, visibility 0s ease 0s, transform .15s ease;
   }
+  /* Forces the panel shut right after a link inside it is clicked, even if
+     the cursor hasn't moved off the item yet (hover would otherwise keep
+     it open until the mouse physically leaves the area) */
+  .nav-dropdown-wrap.force-close .nav-dropdown-panel{
+    opacity:0 !important;visibility:hidden !important;pointer-events:none !important;
+  }
   .nav-dropdown-panel a{
     border-right:none !important;justify-content:flex-start !important;
     padding:11px 22px !important;font-size:10.5px !important;letter-spacing:1.5px !important;
@@ -5661,6 +5667,23 @@ function updateNav(){
   var navLinks = document.querySelectorAll(
     '.nav-left li a, .nav-right li a, .nav-dropdown-panel a, .mnav-list a'
   );
+
+  /* Close a desktop dropdown panel the moment a link inside it is clicked,
+     instead of waiting for the mouse to physically leave the area. */
+  document.querySelectorAll('.nav-dropdown-panel a').forEach(function(a){
+    a.addEventListener('click', function(){
+      var wrap = a.closest('.nav-dropdown-wrap');
+      if(!wrap) return;
+      wrap.classList.add('force-close');
+      a.blur();
+    });
+  });
+  document.querySelectorAll('.nav-dropdown-wrap').forEach(function(wrap){
+    wrap.addEventListener('mouseleave', function(){
+      wrap.classList.remove('force-close');
+    });
+  });
+
   var sectionIds = [
     'home','framework','dimension','consciousness','forty-two','masters','patanjali','go-deeper',
     'ego','bodhichitta','pain-body','ego-checklist','diagnostic','feedback-loop',
