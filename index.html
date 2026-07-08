@@ -749,11 +749,16 @@ a:hover{opacity:.7;}
     0%,100%{box-shadow:0 0 6px rgba(212,175,55,0.35),0 0 16px rgba(212,175,55,0.14);}
     50%{box-shadow:0 0 13px rgba(212,175,55,0.65),0 0 28px rgba(212,175,55,0.3);}
   }
-  /* Light mode: dissolve FooterSeal white bg into cream nav via multiply,
-     no glow needed since the seal already blends into the cream bar */
+  /* Light mode: same floating glow, but in the darker amber tone already
+     used for gold accents on the cream background (pale gold would barely
+     show against cream) */
   [data-theme="light"] .nav-logo-center picture{
-    box-shadow:none;
-    animation:none;
+    box-shadow:0 0 8px rgba(138,106,18,0.35), 0 0 20px rgba(138,106,18,0.16);
+    animation:mnavLogoGlowLight 3s ease-in-out infinite;
+  }
+  @keyframes mnavLogoGlowLight{
+    0%,100%{box-shadow:0 0 6px rgba(138,106,18,0.3),0 0 14px rgba(138,106,18,0.12);}
+    50%{box-shadow:0 0 12px rgba(138,106,18,0.5),0 0 24px rgba(138,106,18,0.25);}
   }
   .nav-logo-center img{
     width:36px !important;height:36px !important;
