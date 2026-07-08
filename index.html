@@ -647,7 +647,7 @@ a:hover{opacity:.7;}
 .mnav-panel{display:none;}
 
 .nav-caret{font-size:8px;margin-left:4px;opacity:.7;position:relative;top:-1px;}
-.mnav-caret{font-size:9px;margin-left:6px;opacity:.7;transition:transform .25s ease;display:inline-block;}
+.mnav-caret{font-size:14px;margin-left:6px;opacity:.8;transition:transform .25s ease;display:inline-block;}
 .mnav-new-badge{color:var(--gold);font-size:8px;margin-left:3px;}
 .nav-new-dot{
   display:inline-block;width:5px;height:5px;border-radius:50%;
@@ -714,7 +714,7 @@ a:hover{opacity:.7;}
     flex:0 0 52px;
     align-self:stretch;
     border:none !important;
-    border-right:1px solid rgba(212,175,55,0.18) !important;
+    border-right:1px solid rgba(212,175,55,0.3) !important;
     background:transparent !important;
     cursor:pointer;
     flex-direction:column;
@@ -724,7 +724,7 @@ a:hover{opacity:.7;}
     padding:0;
     z-index:auto !important;
   }
-  .mnav-toggle span{display:block;width:18px;height:1.5px;background:var(--mid);transition:transform .25s ease,opacity .25s ease;}
+  .mnav-toggle span{display:block;width:18px;height:1.5px;background:var(--gold);opacity:.7;transition:transform .25s ease,opacity .25s ease;}
   .mnav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
   .mnav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0;}
   .mnav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
@@ -741,19 +741,22 @@ a:hover{opacity:.7;}
     min-height:0 !important;
     margin:0 !important;
     border:none !important;
+    border-left:1px solid rgba(212,175,55,0.3) !important;
+    border-right:1px solid rgba(212,175,55,0.3) !important;
     border-radius:0 !important;
     box-shadow:none !important;
     background:transparent !important;
     overflow:visible !important;
     outline:none !important;
-    /* Screen blend: black bg of Origin image disappears against dark nav */
-    mix-blend-mode:screen;
+    /* Dark mode: gold drop-shadow glow traces the mark through the black bg */
     filter:drop-shadow(0 0 7px rgba(212,175,55,0.5)) drop-shadow(0 0 18px rgba(212,175,55,0.22));
     animation:mnavLogoGlow 3s ease-in-out infinite;
   }
   /* Light mode: multiply dissolves white bg of FooterSeal into cream nav */
   [data-theme="light"] .nav-logo-center{
     mix-blend-mode:multiply;
+    filter:none;
+    animation:none;
   }
   @keyframes mnavLogoGlow{
     0%,100%{filter:drop-shadow(0 0 5px rgba(212,175,55,0.4)) drop-shadow(0 0 14px rgba(212,175,55,0.18));}
@@ -780,8 +783,10 @@ a:hover{opacity:.7;}
     right:auto !important;
     top:auto !important;
     border:none !important;
-    border-left:1px solid rgba(212,175,55,0.18) !important;
+    border-left:1px solid rgba(212,175,55,0.3) !important;
     background:transparent !important;
+    color:var(--gold) !important;
+    font-size:16px !important;
   }
 
   /* Accordion panel — slides down from nav bar */
