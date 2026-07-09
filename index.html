@@ -4966,7 +4966,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
       <button class="mode-btn" data-mode-btn="lived" onclick="setMatrixMode('lived')">Lived Reality</button>
       <button class="mode-btn" data-mode-btn="ascension" onclick="setMatrixMode('ascension')">Ascension Path</button>
     </div>
-    <p id="matrixModeHint" style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#555;text-align:center;margin:10px 0 18px;max-width:640px;margin-left:auto;margin-right:auto;">Each mode swaps the columns &mdash; nothing repeats. Tap a row&rsquo;s <span style="color:var(--gold);">+</span> for Mastery &amp; the Vertical Leap, the two dimensions with no column of their own.</p>
+    <p id="matrixModeHint" style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#555;text-align:center;margin:10px 0 18px;max-width:640px;margin-left:auto;margin-right:auto;">Each mode swaps the columns &mdash; nothing repeats. Tap a row&rsquo;s <span style="color:var(--gold);">+</span> for Mastery, the one dimension with no column of its own.</p>
 
     <div class="self-table-wrap" id="masterMatrixWrap" data-mode="grid" style="max-width:900px;margin:0 auto 32px;">
       <table class="self-table" id="masterMatrixTable" style="min-width:1200px;font-size:13px;">
@@ -6169,6 +6169,13 @@ function updateNav(){
       toggle.setAttribute('aria-expanded','false');
       panel.classList.remove('open');
       document.body.classList.remove('mnav-open');
+      // Collapse any open accordion group so re-opening the panel always
+      // starts fresh, matching the desktop mega-menu's non-persistent state.
+      panel.querySelectorAll('.mnav-group.open').forEach(function(g){
+        g.classList.remove('open');
+        var t = g.querySelector('.mnav-group-toggle');
+        if(t) t.setAttribute('aria-expanded','false');
+      });
     }
 
     toggle.addEventListener('click', function(e){
@@ -6939,26 +6946,26 @@ init();
 <script>
 (function(){
 
-  // Only Mastery and the Vertical Leap have no dedicated column in any mode —
-  // Daily/Shockwave live in the "Lived Reality" columns, Action/Realization live
-  // in the "Ascension Path" columns. This keeps every one of the six Excel
-  // dimensions visible exactly once, never duplicated.
+  // Only Mastery has no dedicated column in any mode — Daily/Shockwave live in
+  // the "Lived Reality" columns, Action/Realization live in the "Ascension Path"
+  // columns, and the Vertical Leap prose already lives in the Ascent of Self
+  // section above, so it isn't repeated here.
   var MATRIX_LEAP_DATA = [
     null, // 1-indexed
-    { mastery:'Establish physical vitality and cellular presence.', leap:'Somatic Grounding — anchor fully without resisting limits.' },
-    { mastery:'Process emotional currents without storing or suppressing them.', leap:'Breath Mastery — use respiration as an energy regulator.' },
-    { mastery:'Build cognitive power, sensory discipline, and focus.', leap:'Mindful Observation — transition from being thoughts to watching them.' },
-    { mastery:'Bridge raw intellectual logic with deep, heartfelt wisdom.', leap:'Intellectual Surrender — allow dry concepts to dissolve into intuition.' },
-    { mastery:'Process life experiences as learning data, not personal wounds.', leap:'Alchemical Refinement — strip away stories attached to your history.' },
-    { mastery:'Build a powerful persona for worldly duty, but prepare it to break.', leap:'Dissolving the Observer — merge the gap between watcher and watched.' },
-    { mastery:'Live as the unconditioned, eternal witness inside a physical body.', leap:'Final Realization — rest permanently in the unshakeable &ldquo;I Am&rdquo;.' }
+    { mastery:'Establish physical vitality and cellular presence.' },
+    { mastery:'Process emotional currents without storing or suppressing them.' },
+    { mastery:'Build cognitive power, sensory discipline, and focus.' },
+    { mastery:'Bridge raw intellectual logic with deep, heartfelt wisdom.' },
+    { mastery:'Process life experiences as learning data, not personal wounds.' },
+    { mastery:'Build a powerful persona for worldly duty, but prepare it to break.' },
+    { mastery:'Live as the unconditioned, eternal witness inside a physical body.' }
   ];
 
   /* ---------- MODE TOGGLE: swaps which columns are visible on the one table ---------- */
   var MODE_LABELS = {
-    grid: 'Tap a row&rsquo;s <span style="color:var(--gold);">+</span> for Mastery &amp; the Vertical Leap &mdash; the only two dimensions without their own column.',
-    lived: 'Daily Experience &amp; Shockwave Manifestation per layer &mdash; tap + for Mastery &amp; the Vertical Leap.',
-    ascension: 'Action Plan &amp; Realization per layer &mdash; tap + for Mastery &amp; the Vertical Leap.'
+    grid: 'Tap a row&rsquo;s <span style="color:var(--gold);">+</span> for Mastery &mdash; the only dimension without its own column.',
+    lived: 'Daily Experience &amp; Shockwave Manifestation per layer &mdash; tap + for Mastery.',
+    ascension: 'Action Plan &amp; Realization per layer &mdash; tap + for Mastery.'
   };
   window.setMatrixMode = function(mode){
     var wrap = document.getElementById('masterMatrixWrap');
@@ -6988,7 +6995,6 @@ init();
       detail.querySelector('td').innerHTML =
         '<div class="matrix-detail-grid">' +
           '<div class="matrix-detail-item"><span class="mdi-label">Mastery</span><p>' + d.mastery + '</p></div>' +
-          '<div class="matrix-detail-item"><span class="mdi-label">The Vertical Leap</span><p>' + d.leap + '</p></div>' +
         '</div>';
       detail.dataset.built = '1';
     }
