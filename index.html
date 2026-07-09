@@ -1779,6 +1779,60 @@ section h2,
 #masterMatrixWrap[data-mode="ascension"] .col-ascension{
   display:table-cell;
 }
+
+/* Lived Reality / Ascension Path only render 3 columns (row-label + 2 data
+   columns), so the 7-column grid's min-width stretches each cell far too
+   wide with mostly empty space. !important overrides the inline min-width
+   set by setMatrixMode() in JS, whatever format the browser serializes it in. */
+#masterMatrixWrap[data-mode="lived"] #masterMatrixTable,
+#masterMatrixWrap[data-mode="ascension"] #masterMatrixTable{
+  min-width:700px !important;
+}
+@media(max-width:768px){
+  /* table-layout:fixed + hidden <td> cells for the *other* mode's columns
+     confused column indexing between thead/tbody, causing Lived Reality and
+     Ascension Path cells to render on top of each other. Simpler, reliable
+     fix: actually remove the secondary meta columns (Brainwave, Alchemy,
+     Stage, Existence Layer) from the layout on mobile for these two modes —
+     full reference data stays available in the 7×6 Grid mode and on desktop
+     — leaving just row-label + the two relevant data columns to size. */
+  #masterMatrixWrap[data-mode="lived"] #masterMatrixTable .col-meta,
+  #masterMatrixWrap[data-mode="ascension"] #masterMatrixTable .col-meta{
+    display:none !important;
+  }
+  #masterMatrixWrap[data-mode="lived"] #masterMatrixTable,
+  #masterMatrixWrap[data-mode="ascension"] #masterMatrixTable{
+    min-width:0 !important;
+    width:100% !important;
+  }
+  #masterMatrixWrap[data-mode="lived"] #masterMatrixTable .axis-cell,
+  #masterMatrixWrap[data-mode="ascension"] #masterMatrixTable .axis-cell{
+    width:22%;
+  }
+  #masterMatrixWrap[data-mode="lived"] #masterMatrixTable .col-lived,
+  #masterMatrixWrap[data-mode="ascension"] #masterMatrixTable .col-ascension{
+    width:39%;
+    word-break:normal;
+    overflow-wrap:break-word;
+  }
+  /* Headers were centered by default while their body cells were already
+     left-aligned — matching them left removes the wasted centered gap that
+     was pushing the column past the viewport and needing an extra scroll. */
+  #masterMatrixWrap[data-mode="lived"] #masterMatrixTable th.col-lived,
+  #masterMatrixWrap[data-mode="ascension"] #masterMatrixTable th.col-ascension{
+    text-align:left;
+    padding-left:8px;
+  }
+  #masterMatrixWrap[data-mode="lived"] #masterMatrixTable th.col-lived .sub,
+  #masterMatrixWrap[data-mode="ascension"] #masterMatrixTable th.col-ascension .sub{
+    text-align:left;
+  }
+  /* Trim cell padding slightly to reclaim a little more room on narrow screens */
+  #masterMatrixWrap[data-mode="lived"] #masterMatrixTable td.col-lived,
+  #masterMatrixWrap[data-mode="ascension"] #masterMatrixTable td.col-ascension{
+    padding:12px 8px !important;
+  }
+}
 .row-expand-btn{
   display:inline-flex;
   align-items:center;
