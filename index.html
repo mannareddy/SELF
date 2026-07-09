@@ -1727,8 +1727,214 @@ section h2,
     min-width:1100px;
   }
 }
-  
+
+/* ── INTERACTIVE MASTER MATRIX: mode toggle, expandable rows, quiz ─────── */
+.matrix-mode-toggle{
+  display:flex;
+  justify-content:center;
+  gap:2px;
+  flex-wrap:wrap;
+  max-width:620px;
+  margin:0 auto;
+}
+.matrix-mode-toggle .mode-btn{
+  font-family:var(--sans);
+  font-size:10px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--grey);
+  background:var(--bg-lift);
+  border:1px solid #2a2a2a;
+  padding:12px 18px;
+  cursor:pointer;
+  flex:1 1 auto;
+  transition:all .2s ease;
+}
+.matrix-mode-toggle .mode-btn:hover{
+  color:var(--gold);
+  border-color:var(--gold);
+}
+.matrix-mode-toggle .mode-btn.active{
+  color:var(--bg);
+  background:var(--gold);
+  border-color:var(--gold);
+}
+
+/* Single-table mode switching: each mode shows its own columns only, nothing repeats */
+#masterMatrixWrap .col-lived,
+#masterMatrixWrap .col-ascension{
+  display:none;
+}
+#masterMatrixWrap[data-mode="lived"] .col-grid,
+#masterMatrixWrap[data-mode="lived"] .col-ascension{
+  display:none;
+}
+#masterMatrixWrap[data-mode="lived"] .col-lived{
+  display:table-cell;
+}
+#masterMatrixWrap[data-mode="ascension"] .col-grid,
+#masterMatrixWrap[data-mode="ascension"] .col-lived{
+  display:none;
+}
+#masterMatrixWrap[data-mode="ascension"] .col-ascension{
+  display:table-cell;
+}
+.row-expand-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:18px;
+  height:18px;
+  margin-right:8px;
+  font-family:var(--sans);
+  font-size:12px;
+  line-height:1;
+  color:var(--gold);
+  background:transparent;
+  border:1px solid var(--gold);
+  border-radius:50%;
+  cursor:pointer;
+  vertical-align:middle;
+  padding:0;
+}
+.row-expand-btn:hover{
+  background:var(--gold);
+  color:var(--bg);
+}
+tr.row-detail{
+  display:none;
+}
+tr.row-detail td{
+  background:var(--bg-lift);
+  padding:18px 22px !important;
+  text-align:left;
+}
+.matrix-detail-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:14px;
+}
+.matrix-detail-item{
+  border-left:2px solid var(--gold);
+  padding-left:12px;
+}
+.matrix-detail-item .mdi-label{
+  font-family:var(--sans);
+  font-size:9px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--gold);
+  opacity:.85;
+  margin-bottom:6px;
+  display:block;
+}
+.matrix-detail-item p{
+  font-family:var(--serif);
+  font-size:13.5px;
+  color:var(--mid);
+  line-height:1.75;
+  margin:0;
+}
+tr.matrix-dim{
+  opacity:.32;
+  filter:grayscale(.4);
+}
+tr.matrix-highlight td.row-label{
+  box-shadow:inset 3px 0 0 var(--gold);
+}
+tr.matrix-highlight{
+  background:rgba(212,175,55,.05);
+}
+
+/* Maturity quick-quiz */
+.mq-question{
+  margin-bottom:22px;
+}
+.mq-qlabel{
+  font-family:var(--sans);
+  font-size:9px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--gold);
+  opacity:.85;
+  margin-bottom:10px;
+  display:block;
+  text-align:center;
+}
+.mq-options{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:2px;
+}
 @media(max-width:640px){
+  .mq-options{ grid-template-columns:1fr; }
+}
+.mq-opt{
+  font-family:var(--serif);
+  font-size:13px;
+  color:var(--grey);
+  background:var(--bg);
+  border:1px solid #2a2a2a;
+  padding:14px 12px;
+  text-align:left;
+  line-height:1.6;
+  cursor:pointer;
+  transition:all .2s ease;
+}
+.mq-opt:hover{
+  border-color:var(--gold);
+  color:var(--mid);
+}
+.mq-opt.selected{
+  border-color:var(--gold);
+  background:rgba(212,175,55,.08);
+  color:var(--white);
+}
+.mq-result{
+  margin-top:8px;
+  padding:26px 24px;
+  border:1px solid var(--gold);
+  background:rgba(212,175,55,.05);
+  text-align:center;
+}
+.mq-result .mq-anchor{
+  font-family:var(--serif);
+  font-size:clamp(18px,2.5vw,24px);
+  color:var(--gold);
+  font-style:italic;
+  margin-bottom:10px;
+}
+.mq-result p{
+  font-family:var(--serif);
+  font-size:14px;
+  color:var(--mid);
+  line-height:1.85;
+  margin:0 0 8px;
+}
+.mq-retake{
+  margin-top:14px;
+  font-family:var(--sans);
+  font-size:10px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--dim,#777);
+  background:transparent;
+  border:1px solid #2a2a2a;
+  padding:8px 16px;
+  cursor:pointer;
+}
+.mq-retake:hover{ color:var(--gold); border-color:var(--gold); }
+.mq-progress{
+  text-align:center;
+  font-family:var(--sans);
+  font-size:9px;
+  letter-spacing:2px;
+  color:var(--dim,#777);
+  margin-bottom:14px;
+}
+
+@media(max-width:640px){
+
  
   /* Make rasa-table a proper horizontal scroll container */
   .rasa-table{
@@ -1982,6 +2188,8 @@ section h2,
         <a href="#dimension" data-group="framework">Matter as Dimension</a>
         <a href="#consciousness" data-group="framework">Consciousness vs Awareness</a>
         <a href="#forty-two" data-group="framework">42 — The Symbol</a>
+        <a href="#spectrum" data-group="framework">Ascent of Self</a>
+        <a href="#master-matrix" data-group="framework">Master Matrix</a>
         <a href="#masters" data-group="framework">Masters at a Glance</a>
         <a href="#patanjali" data-group="framework">Patanjali's Experiment</a>
         <a href="#go-deeper" data-group="framework">Go Deeper</a>
@@ -2023,9 +2231,10 @@ section h2,
     </li>
 
     <li class="nav-dropdown-wrap">
-      <a href="#masters" data-group="new-section">New<span class="nav-caret">▾</span><span class="nav-new-dot"></span></a>
+      <a href="#master-matrix" data-group="new-section">New<span class="nav-caret">▾</span><span class="nav-new-dot"></span></a>
       <div class="nav-dropdown-panel">
-        <a href="#masters" data-group="new-section">Masters at a Glance</a>
+        <a href="#spectrum" data-group="new-section">Ascent of Self</a>
+        <a href="#master-matrix" data-group="new-section">Interactive Master Matrix</a>
         <a href="#feedback-loop" data-group="new-section">Feedback Loop Check-In</a>
         <a href="https://ammara01.gumroad.com/l/dyyole" target="_blank" rel="noopener" data-group="new-section">Get the Workbook ↗</a>
       </div>
@@ -2053,6 +2262,8 @@ section h2,
         <a href="#dimension">Matter as Dimension</a>
         <a href="#consciousness">Consciousness vs Awareness</a>
         <a href="#forty-two">42 — The Symbol</a>
+        <a href="#spectrum">Ascent of Self</a>
+        <a href="#master-matrix">Master Matrix</a>
         <a href="#masters">Masters at a Glance</a>
         <a href="#patanjali">Patanjali's Experiment</a>
         <a href="#go-deeper">Go Deeper</a>
@@ -2091,7 +2302,8 @@ section h2,
         New <span class="nav-new-dot"></span> <span class="mnav-caret">▾</span>
       </button>
       <div class="mnav-group-panel">
-        <a href="#masters">Masters at a Glance</a>
+        <a href="#spectrum">Ascent of Self</a>
+        <a href="#master-matrix">Interactive Master Matrix</a>
         <a href="#feedback-loop">Feedback Loop Check-In</a>
         <a href="https://ammara01.gumroad.com/l/dyyole" target="_blank" rel="noopener">Get the Workbook ↗</a>
       </div>
@@ -4725,7 +4937,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
   </div>
 </section>
 <!-- ══════════════════════════ ENHANCED MASTER MATRIX ══════════════════════ -->
-<section style="padding:90px 24px;background:var(--bg);border-top:1px solid #111;border-bottom:1px solid #111;overflow-x:hidden;">
+<section id="master-matrix" style="padding:90px 24px;background:var(--bg);border-top:1px solid #111;border-bottom:1px solid #111;overflow-x:hidden;">
   <div style="max-width:900px;margin:0 auto;">
     <span class="label">The Master Matrix of Existence</span>
     <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;text-align:center;">6 Material Stages × 7 Spiritual Layers = 42</h2>
@@ -4737,28 +4949,27 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
       <cite>&mdash; Eckhart Tolle</cite>
     </div>
 
-    <!-- WHERE ARE YOU NOW DIAGNOSTIC -->
+    <!-- PSYCHOLOGICAL MATURITY QUICK-ANCHOR (Sheet 2 of the Master Matrix) -->
     <div style="max-width:820px;margin:0 auto 36px;padding:32px 28px;background:var(--bg-lift);border:1px solid #2a2a2a;position:relative;">
       <div style="position:absolute;top:-1px;left:-1px;width:16px;height:16px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);"></div>
       <div style="position:absolute;bottom:-1px;right:-1px;width:16px;height:16px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);"></div>
       <p style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:16px;text-align:center;">Where Are You Right Now?</p>
-      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin-bottom:20px;text-align:center;">Most people spend their entire lives moving horizontally — from birth to death at Layer 1 (Body), Layer 3 (Mind), or Layer 6 (Ego). The vertical ascent through the layers is entirely optional. Almost no one chooses it.</p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:16px;">
-        <div style="padding:22px 20px;background:rgba(192,57,43,.06);border:1px solid #3a1010;text-align:left;">
-          <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#c0392b;opacity:.85;margin-bottom:10px;">The Horizontal Trap</div>
-          <p style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.85;margin:0;">Birth → Growth → Work → Aging → Death. Repeated across every layer the person happens to inhabit. No vertical progress. The Default OS runs the entire programme.</p>
-        </div>
-        <div style="padding:22px 20px;background:rgba(212,175,55,.04);border:1px solid var(--gold);border-left:3px solid var(--gold);text-align:left;">
-          <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;margin-bottom:10px;">The Vertical Ascent</div>
-          <p style="font-family:var(--serif);font-size:14px;color:var(--mid);line-height:1.85;margin:0;">Moving upward through the 7 layers while still living the horizontal life. This is the path. Not withdrawal from the world — but depth within it.</p>
-        </div>
-      </div>
-      <p style="font-family:var(--serif);font-size:clamp(14px,1.9vw,17px);color:var(--gold);font-style:italic;text-align:center;line-height:1.85;margin:0;">The grid below is a mirror. Find yourself in it — then look up.</p>
+      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin-bottom:8px;text-align:center;">Four questions, cross-referencing your real-time state of mind against your chronological age &mdash; not to score you, but to anchor you on the grid below.</p>
+      <p style="font-family:var(--sans);font-size:10px;letter-spacing:1px;color:var(--dim,#777);text-align:center;margin-bottom:24px;">This is a 60-second anchor, not the full diagnostic. For the complete nine-question, six-coordinate reading, see <a href="#diagnostic" style="color:var(--gold);">Place Yourself on the Grid</a> further down.</p>
+
+      <div id="maturityQuiz"></div>
     </div>
 
-    <!-- THE MATRIX TABLE -->
-    <div class="self-table-wrap" style="max-width:900px;margin:0 auto 32px;">
-      <table class="self-table" style="min-width:1200px;font-size:13px;">
+    <!-- THE MATRIX TABLE — one table, mode toggles which columns are visible -->
+    <div class="matrix-mode-toggle" role="tablist">
+      <button class="mode-btn active" data-mode-btn="grid" onclick="setMatrixMode('grid')">The 7×6 Grid</button>
+      <button class="mode-btn" data-mode-btn="lived" onclick="setMatrixMode('lived')">Lived Reality</button>
+      <button class="mode-btn" data-mode-btn="ascension" onclick="setMatrixMode('ascension')">Ascension Path</button>
+    </div>
+    <p id="matrixModeHint" style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#555;text-align:center;margin:10px 0 18px;max-width:640px;margin-left:auto;margin-right:auto;">Each mode swaps the columns &mdash; nothing repeats. Tap a row&rsquo;s <span style="color:var(--gold);">+</span> for Mastery &amp; the Vertical Leap, the two dimensions with no column of their own.</p>
+
+    <div class="self-table-wrap" id="masterMatrixWrap" data-mode="grid" style="max-width:900px;margin:0 auto 32px;">
+      <table class="self-table" id="masterMatrixTable" style="min-width:1200px;font-size:13px;">
         <thead>
           <tr>
             <th class="axis-cell" style="width:13%;vertical-align:middle;">
@@ -4766,80 +4977,125 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
               <div style="width:50%;height:1px;background:rgba(212,175,55,0.4);margin:4px auto;"></div>
               <span style="color:var(--gold);display:block;font-size:8px;letter-spacing:1px;">→ 6 Stages</span>
             </th>
-            <th>Birth<span class="sub">Inception into form</span></th>
-            <th>Growth<span class="sub">Expansion of capacity</span></th>
-            <th>Sustenance<span class="sub">Plateau of maintenance</span></th>
-            <th>Transformation<span class="sub">Inevitable shift</span></th>
-            <th>Deterioration<span class="sub">Beginning of decay</span></th>
-            <th>Death<span class="sub">Dissolution of form</span></th>
-            <th style="border-left:2px solid rgba(212,175,55,0.3);">Brainwave<span class="sub">Consciousness state</span></th>
-            <th>Alchemy<span class="sub">Alchemical stage</span></th>
-            <th>Stage<span class="sub">Inner work</span></th>
-            <th>Existence Layer<span class="sub">Sanskrit / Kosha</span></th>
+            <th class="col-grid">Birth<span class="sub">Inception into form</span></th>
+            <th class="col-grid">Growth<span class="sub">Expansion of capacity</span></th>
+            <th class="col-grid">Sustenance<span class="sub">Plateau of maintenance</span></th>
+            <th class="col-grid">Transformation<span class="sub">Inevitable shift</span></th>
+            <th class="col-grid">Deterioration<span class="sub">Beginning of decay</span></th>
+            <th class="col-grid">Death<span class="sub">Dissolution of form</span></th>
+            <th class="col-lived">Daily Experience<span class="sub">What it feels like</span></th>
+            <th class="col-lived">Shockwave<span class="sub">Under crisis</span></th>
+            <th class="col-ascension">Action Plan<span class="sub">The practice</span></th>
+            <th class="col-ascension">Realization<span class="sub">The felt shift</span></th>
+            <th class="col-meta" style="border-left:2px solid rgba(212,175,55,0.3);">Brainwave<span class="sub">Consciousness state</span></th>
+            <th class="col-meta">Alchemy<span class="sub">Alchemical stage</span></th>
+            <th class="col-meta">Stage<span class="sub">Inner work</span></th>
+            <th class="col-meta">Existence Layer<span class="sub">Sanskrit / Kosha</span></th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><span style="color:var(--dim);font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 1</span>Body<span style="display:block;font-size:9px;color:var(--dim);font-style:normal;letter-spacing:0;margin-top:2px;">Root Chakra</span></td>
-            <td>Womb</td><td>Infancy</td><td>Health</td><td>Aging</td><td>Senescence</td><td>Mortality</td>
-            <td style="border-left:2px solid rgba(212,175,55,0.3);color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:1px;">Delta</td>
-            <td style="font-size:12px;">Lead <span style="color:var(--dim);font-size:10px;">(Base)</span></td>
-            <td style="font-size:12px;">Exist</td>
-            <td style="font-size:12px;color:var(--grey);">Annamaya</td>
+          <tr id="matrix-row-1" data-layer="1">
+            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-1" onclick="toggleMatrixRow(1)" aria-label="Expand Layer 1 detail">+</button><span style="color:var(--dim);font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 1</span>Body<span style="display:block;font-size:9px;color:var(--dim);font-style:normal;letter-spacing:0;margin-top:2px;">Root Chakra</span></td>
+            <td class="col-grid">Womb</td><td class="col-grid">Infancy</td><td class="col-grid">Health</td><td class="col-grid">Aging</td><td class="col-grid">Senescence</td><td class="col-grid">Mortality</td>
+            <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Hunger, exhaustion, illness, and raw biological baselines.</td>
+            <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Takes a literal physical toll (Aging).</td>
+            <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">Ground the Vessel: eat cleanly, move optimally, and anchor your physical frame to build a resilient survival baseline free of ambient panic.</td>
+            <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">&ldquo;I am here, safely grounded in physical form.&rdquo;</td>
+            <td class="col-meta" style="border-left:2px solid rgba(212,175,55,0.3);color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:1px;">Delta</td>
+            <td class="col-meta" style="font-size:12px;">Lead <span style="color:var(--dim);font-size:10px;">(Base)</span></td>
+            <td class="col-meta" style="font-size:12px;">Exist</td>
+            <td class="col-meta" style="font-size:12px;color:var(--grey);">Annamaya</td>
           </tr>
-          <tr>
-            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><span style="color:var(--dim);font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 2</span>Breath<span style="display:block;font-size:9px;color:var(--dim);font-style:normal;letter-spacing:0;margin-top:2px;">Sacral Chakra</span></td>
-            <td>First cry</td><td>Deepening</td><td>Rhythm</td><td>Emotion</td><td>Laboured</td><td>Last breath</td>
-            <td style="border-left:2px solid rgba(212,175,55,0.3);color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:1px;">Theta</td>
-            <td style="font-size:12px;">Copper <span style="color:var(--dim);font-size:10px;">(Purify)</span></td>
-            <td style="font-size:12px;">Feel</td>
-            <td style="font-size:12px;color:var(--grey);">Pranamaya</td>
+          <tr class="row-detail" id="matrix-detail-1"><td colspan="15"></td></tr>
+
+          <tr id="matrix-row-2" data-layer="2">
+            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-2" onclick="toggleMatrixRow(2)" aria-label="Expand Layer 2 detail">+</button><span style="color:var(--dim);font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 2</span>Breath<span style="display:block;font-size:9px;color:var(--dim);font-style:normal;letter-spacing:0;margin-top:2px;">Sacral Chakra</span></td>
+            <td class="col-grid">First cry</td><td class="col-grid">Deepening</td><td class="col-grid">Rhythm</td><td class="col-grid">Emotion</td><td class="col-grid">Laboured</td><td class="col-grid">Last breath</td>
+            <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Fluctuations between deep belly sighs and erratic breathing.</td>
+            <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Locks panic or grief into the nervous system (Emotion).</td>
+            <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">Cleanse the Energy: when an emotional wave hits, use conscious, rhythmic breathing to clear the charge rather than burying it in your tissue.</td>
+            <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">&ldquo;I feel the moving currents of vital energy.&rdquo;</td>
+            <td class="col-meta" style="border-left:2px solid rgba(212,175,55,0.3);color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:1px;">Theta</td>
+            <td class="col-meta" style="font-size:12px;">Copper <span style="color:var(--dim);font-size:10px;">(Purify)</span></td>
+            <td class="col-meta" style="font-size:12px;">Feel</td>
+            <td class="col-meta" style="font-size:12px;color:var(--grey);">Pranamaya</td>
           </tr>
-          <tr>
-            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><span style="color:var(--dim);font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 3</span>Mind<span style="display:block;font-size:9px;color:var(--dim);font-style:normal;letter-spacing:0;margin-top:2px;">Solar Plexus</span></td>
-            <td>Sensory</td><td>Learning</td><td>Perception</td><td>Shifting</td><td>Fatigue</td><td>Loss of senses</td>
-            <td style="border-left:2px solid rgba(212,175,55,0.3);color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:1px;">Alpha</td>
-            <td style="font-size:12px;">Iron <span style="color:var(--dim);font-size:10px;">(Strength)</span></td>
-            <td style="font-size:12px;">Think</td>
-            <td style="font-size:12px;color:var(--grey);">Manomaya</td>
+          <tr class="row-detail" id="matrix-detail-2"><td colspan="15"></td></tr>
+
+          <tr id="matrix-row-3" data-layer="3">
+            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-3" onclick="toggleMatrixRow(3)" aria-label="Expand Layer 3 detail">+</button><span style="color:var(--dim);font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 3</span>Mind<span style="display:block;font-size:9px;color:var(--dim);font-style:normal;letter-spacing:0;margin-top:2px;">Solar Plexus</span></td>
+            <td class="col-grid">Sensory</td><td class="col-grid">Learning</td><td class="col-grid">Perception</td><td class="col-grid">Shifting</td><td class="col-grid">Fatigue</td><td class="col-grid">Loss of senses</td>
+            <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Daily to-do lists, routine patterns, and automatic mental chatter.</td>
+            <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Shatters routines, forcing focus to spin out (Shifting).</td>
+            <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">Decondition the Mind: actively audit automatic loops and scripts. Train awareness to step back into the seat of the neutral observer.</td>
+            <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">&ldquo;I observe my thoughts without becoming them.&rdquo;</td>
+            <td class="col-meta" style="border-left:2px solid rgba(212,175,55,0.3);color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:1px;">Alpha</td>
+            <td class="col-meta" style="font-size:12px;">Iron <span style="color:var(--dim);font-size:10px;">(Strength)</span></td>
+            <td class="col-meta" style="font-size:12px;">Think</td>
+            <td class="col-meta" style="font-size:12px;color:var(--grey);">Manomaya</td>
           </tr>
-          <tr>
-            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><span style="color:var(--dim);font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 4</span>Intellect<span style="display:block;font-size:9px;color:var(--dim);font-style:normal;letter-spacing:0;margin-top:2px;">Heart Chakra</span></td>
-            <td>Curiosity</td><td>Logic</td><td>Stability</td><td class="bright">Shifting beliefs</td><td>Decline</td><td>Loss of judgment</td>
-            <td style="border-left:2px solid rgba(212,175,55,0.3);color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:1px;">Mu</td>
-            <td style="font-size:12px;">Silver <span style="color:var(--dim);font-size:10px;">(Refine)</span></td>
-            <td style="font-size:12px;">Connect</td>
-            <td style="font-size:12px;color:var(--grey);">Vijnanamaya</td>
+          <tr class="row-detail" id="matrix-detail-3"><td colspan="15"></td></tr>
+
+          <tr id="matrix-row-4" data-layer="4">
+            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-4" onclick="toggleMatrixRow(4)" aria-label="Expand Layer 4 detail">+</button><span style="color:var(--dim);font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 4</span>Intellect<span style="display:block;font-size:9px;color:var(--dim);font-style:normal;letter-spacing:0;margin-top:2px;">Heart Chakra</span></td>
+            <td class="col-grid">Curiosity</td><td class="col-grid">Logic</td><td class="col-grid">Stability</td><td class="col-grid bright">Shifting beliefs</td><td class="col-grid">Decline</td><td class="col-grid">Loss of judgment</td>
+            <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Discerning right vs. wrong; building a structured logic framework.</td>
+            <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Old worldviews fail over time, forcing a pivot (Shifting Beliefs).</td>
+            <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">Bridge to Heart Wisdom: when core beliefs are tested by life, do not double down on rigid logic. Let old frameworks break to allow intuitive knowing.</td>
+            <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">&ldquo;I choose core wisdom over rigid mental logic.&rdquo;</td>
+            <td class="col-meta" style="border-left:2px solid rgba(212,175,55,0.3);color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:1px;">Mu</td>
+            <td class="col-meta" style="font-size:12px;">Silver <span style="color:var(--dim);font-size:10px;">(Refine)</span></td>
+            <td class="col-meta" style="font-size:12px;">Connect</td>
+            <td class="col-meta" style="font-size:12px;color:var(--grey);">Vijnanamaya</td>
           </tr>
-          <tr>
-            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><span style="color:var(--dim);font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 5</span>Memory<span style="display:block;font-size:9px;color:var(--dim);font-style:normal;letter-spacing:0;margin-top:2px;">Throat Chakra</span></td>
-            <td>First impression</td><td>Experience</td><td>Storing</td><td class="bright">Trauma</td><td>Forgetfulness</td><td>Erasure</td>
-            <td style="border-left:2px solid rgba(212,175,55,0.3);color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:1px;">Beta</td>
-            <td style="font-size:12px;">Gold <span style="color:var(--dim);font-size:10px;">(Illuminate)</span></td>
-            <td style="font-size:12px;">Understand</td>
-            <td style="font-size:12px;color:var(--grey);">Chitta</td>
+          <tr class="row-detail" id="matrix-detail-4"><td colspan="15"></td></tr>
+
+          <tr id="matrix-row-5" data-layer="5">
+            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-5" onclick="toggleMatrixRow(5)" aria-label="Expand Layer 5 detail">+</button><span style="color:var(--dim);font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 5</span>Memory<span style="display:block;font-size:9px;color:var(--dim);font-style:normal;letter-spacing:0;margin-top:2px;">Throat Chakra</span></td>
+            <td class="col-grid">First impression</td><td class="col-grid">Experience</td><td class="col-grid">Storing</td><td class="col-grid bright">Trauma</td><td class="col-grid">Forgetfulness</td><td class="col-grid">Erasure</td>
+            <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Nostalgia, flashbacks, triggers, and automated habit loops.</td>
+            <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Triggers deeply buried ghosts, wounds, or past failures (Trauma).</td>
+            <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">Decondition the Memory: consciously unpack early conditioning. Reframe your past as purely educational database data rather than your definition.</td>
+            <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">&ldquo;My past is educational data, not my definition.&rdquo;</td>
+            <td class="col-meta" style="border-left:2px solid rgba(212,175,55,0.3);color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:1px;">Beta</td>
+            <td class="col-meta" style="font-size:12px;">Gold <span style="color:var(--dim);font-size:10px;">(Illuminate)</span></td>
+            <td class="col-meta" style="font-size:12px;">Understand</td>
+            <td class="col-meta" style="font-size:12px;color:var(--grey);">Chitta</td>
           </tr>
-          <tr>
-            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><span style="color:var(--dim);font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 6</span>Ego<span style="display:block;font-size:9px;color:var(--dim);font-style:normal;letter-spacing:0;margin-top:2px;">Third Eye</span></td>
-            <td>Toddlerhood</td><td>Ambition</td><td>Persona</td><td class="red">Crisis</td><td class="red">Rigidity</td><td style="color:var(--gold);font-style:italic;">Dissolution ✦</td>
-            <td style="border-left:2px solid rgba(212,175,55,0.3);color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:1px;">Gamma</td>
-            <td style="font-size:12px;">Quintessence</td>
-            <td style="font-size:12px;">Transcend</td>
-            <td style="font-size:12px;color:var(--grey);">Ahankara</td>
+          <tr class="row-detail" id="matrix-detail-5"><td colspan="15"></td></tr>
+
+          <tr id="matrix-row-6" data-layer="6">
+            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-6" onclick="toggleMatrixRow(6)" aria-label="Expand Layer 6 detail">+</button><span style="color:var(--dim);font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 6</span>Ego<span style="display:block;font-size:9px;color:var(--dim);font-style:normal;letter-spacing:0;margin-top:2px;">Third Eye</span></td>
+            <td class="col-grid">Toddlerhood</td><td class="col-grid">Ambition</td><td class="col-grid">Persona</td><td class="col-grid red">Crisis</td><td class="col-grid red">Rigidity</td><td class="col-grid" style="color:var(--gold);font-style:italic;">Dissolution ✦</td>
+            <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Feeling proud, defensive, or protective of &ldquo;who you think you are&rdquo;.</td>
+            <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Causes your curated persona to completely shatter (Crisis).</td>
+            <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">Dissolve the Persona: when an existential crisis hits your career or relationships, do not fight to save the mask. Use it to shatter false identity.</td>
+            <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">&ldquo;I am not the mask; I am the one watching it.&rdquo;</td>
+            <td class="col-meta" style="border-left:2px solid rgba(212,175,55,0.3);color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:1px;">Gamma</td>
+            <td class="col-meta" style="font-size:12px;">Quintessence</td>
+            <td class="col-meta" style="font-size:12px;">Transcend</td>
+            <td class="col-meta" style="font-size:12px;color:var(--grey);">Ahankara</td>
           </tr>
-          <tr class="gold-row">
-            <td class="row-label" style="font-style:italic;color:var(--gold);text-align:left;padding-left:10px;"><span style="font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;color:var(--gold);">Layer 7</span>Self / Soul<span style="display:block;font-size:9px;color:var(--gold);font-style:normal;letter-spacing:0;margin-top:2px;opacity:.7;">Crown Chakra</span></td>
-            <td style="font-family:var(--sans);font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--gold);">Manifestation</td>
-            <td style="font-family:var(--sans);font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--gold);">Realization</td>
-            <td style="font-family:var(--sans);font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--gold);">Eternal Witness</td>
-            <td style="font-family:var(--sans);font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--gold);">Transcends</td>
-            <td style="font-family:var(--sans);font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--gold);">Unchanged</td>
-            <td style="font-family:var(--sans);font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--gold);">Unchanged</td>
-            <td style="border-left:2px solid rgba(212,175,55,0.3);color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:1px;">Lambda</td>
-            <td style="font-size:12px;color:var(--gold);">Philosopher&rsquo;s Stone</td>
-            <td style="font-size:12px;color:var(--gold);">I Am</td>
-            <td style="font-size:12px;color:var(--gold);">Atman</td>
+          <tr class="row-detail" id="matrix-detail-6"><td colspan="15"></td></tr>
+
+          <tr class="gold-row" id="matrix-row-7" data-layer="7">
+            <td class="row-label" style="font-style:italic;color:var(--gold);text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-7" onclick="toggleMatrixRow(7)" aria-label="Expand Layer 7 detail">+</button><span style="font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;color:var(--gold);">Layer 7</span>Self / Soul<span style="display:block;font-size:9px;color:var(--gold);font-style:normal;letter-spacing:0;margin-top:2px;opacity:.7;">Crown Chakra</span></td>
+            <td class="col-grid" style="font-family:var(--sans);font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--gold);">Manifestation</td>
+            <td class="col-grid" style="font-family:var(--sans);font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--gold);">Realization</td>
+            <td class="col-grid" style="font-family:var(--sans);font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--gold);">Eternal Witness</td>
+            <td class="col-grid" style="font-family:var(--sans);font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--gold);">Transcends</td>
+            <td class="col-grid" style="font-family:var(--sans);font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--gold);">Unchanged</td>
+            <td class="col-grid" style="font-family:var(--sans);font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--gold);">Unchanged</td>
+            <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;color:var(--mid);">Operating from a quiet, peaceful space of non-judgmental observation.</td>
+            <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;color:var(--mid);">Complete immunity; remains entirely untouched (Transcends).</td>
+            <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;color:var(--mid);">Rest as the Witness: stop identifying with things that decay. When death arrives, view it as the effortless dropping of a mastered instrument.</td>
+            <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;color:var(--mid);">&ldquo;I Am That I Am. The Unchanging Source.&rdquo;</td>
+            <td class="col-meta" style="border-left:2px solid rgba(212,175,55,0.3);color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:1px;">Lambda</td>
+            <td class="col-meta" style="font-size:12px;color:var(--gold);">Philosopher&rsquo;s Stone</td>
+            <td class="col-meta" style="font-size:12px;color:var(--gold);">I Am</td>
+            <td class="col-meta" style="font-size:12px;color:var(--gold);">Atman</td>
           </tr>
+          <tr class="row-detail" id="matrix-detail-7"><td colspan="15"></td></tr>
         </tbody>
       </table>
     </div>
@@ -6677,6 +6933,204 @@ init();
 
 })();
 
+</script>
+
+<!-- ══════════════════ INTERACTIVE MASTER MATRIX: modes, expand, quiz ══════════════════ -->
+<script>
+(function(){
+
+  // Only Mastery and the Vertical Leap have no dedicated column in any mode —
+  // Daily/Shockwave live in the "Lived Reality" columns, Action/Realization live
+  // in the "Ascension Path" columns. This keeps every one of the six Excel
+  // dimensions visible exactly once, never duplicated.
+  var MATRIX_LEAP_DATA = [
+    null, // 1-indexed
+    { mastery:'Establish physical vitality and cellular presence.', leap:'Somatic Grounding — anchor fully without resisting limits.' },
+    { mastery:'Process emotional currents without storing or suppressing them.', leap:'Breath Mastery — use respiration as an energy regulator.' },
+    { mastery:'Build cognitive power, sensory discipline, and focus.', leap:'Mindful Observation — transition from being thoughts to watching them.' },
+    { mastery:'Bridge raw intellectual logic with deep, heartfelt wisdom.', leap:'Intellectual Surrender — allow dry concepts to dissolve into intuition.' },
+    { mastery:'Process life experiences as learning data, not personal wounds.', leap:'Alchemical Refinement — strip away stories attached to your history.' },
+    { mastery:'Build a powerful persona for worldly duty, but prepare it to break.', leap:'Dissolving the Observer — merge the gap between watcher and watched.' },
+    { mastery:'Live as the unconditioned, eternal witness inside a physical body.', leap:'Final Realization — rest permanently in the unshakeable &ldquo;I Am&rdquo;.' }
+  ];
+
+  /* ---------- MODE TOGGLE: swaps which columns are visible on the one table ---------- */
+  var MODE_LABELS = {
+    grid: 'Tap a row&rsquo;s <span style="color:var(--gold);">+</span> for Mastery &amp; the Vertical Leap &mdash; the only two dimensions without their own column.',
+    lived: 'Daily Experience &amp; Shockwave Manifestation per layer &mdash; tap + for Mastery &amp; the Vertical Leap.',
+    ascension: 'Action Plan &amp; Realization per layer &mdash; tap + for Mastery &amp; the Vertical Leap.'
+  };
+  window.setMatrixMode = function(mode){
+    var wrap = document.getElementById('masterMatrixWrap');
+    if(wrap) wrap.setAttribute('data-mode', mode);
+    var table = document.getElementById('masterMatrixTable');
+    if(table) table.style.minWidth = (mode === 'grid') ? '1200px' : '980px';
+    document.querySelectorAll('.matrix-mode-toggle .mode-btn').forEach(function(b){
+      b.classList.toggle('active', b.getAttribute('data-mode-btn') === mode);
+    });
+    var hint = document.getElementById('matrixModeHint');
+    if(hint) hint.innerHTML = MODE_LABELS[mode];
+  };
+
+  /* ---------- ROW EXPAND: only the two fields with no column of their own ---------- */
+  window.toggleMatrixRow = function(n){
+    var detail = document.getElementById('matrix-detail-' + n);
+    var btn = document.getElementById('matrix-toggle-' + n);
+    if(!detail) return;
+    var open = detail.style.display === 'table-row';
+    if(open){
+      detail.style.display = 'none';
+      if(btn) btn.textContent = '+';
+      return;
+    }
+    if(!detail.dataset.built){
+      var d = MATRIX_LEAP_DATA[n];
+      detail.querySelector('td').innerHTML =
+        '<div class="matrix-detail-grid">' +
+          '<div class="matrix-detail-item"><span class="mdi-label">Mastery</span><p>' + d.mastery + '</p></div>' +
+          '<div class="matrix-detail-item"><span class="mdi-label">The Vertical Leap</span><p>' + d.leap + '</p></div>' +
+        '</div>';
+      detail.dataset.built = '1';
+    }
+    detail.style.display = 'table-row';
+    if(btn) btn.textContent = '\u2212';
+  };
+
+  /* ---------- PSYCHOLOGICAL MATURITY QUICK-ANCHOR (Sheet 2) ---------- */
+  var MQ_QUESTIONS = [
+    {
+      key:'ego',
+      label:'Your relationship with "the mask" (ego) right now',
+      options:[
+        { tier:'low',  text:'Driven mostly by instinct, immediate comfort, or intense emotional validation — I feel controlled by whatever is happening around me.' },
+        { tier:'mid',  text:'My identity is tied to my title, status, reputation, or the scripts I inherited — I am socialized and self-authoring, but protective of it.' },
+        { tier:'high', text:'My roles and personality are instruments I use — my sense of self stays in the seat of the observer, watching the mask rather than being it.' }
+      ]
+    },
+    {
+      key:'shockwave',
+      label:'How you recover from a shockwave (crisis, loss, upheaval)',
+      options:[
+        { tier:'low',  text:'I react with intense emotional outbursts or physical symptoms, or pin it entirely on old childhood wounds.' },
+        { tier:'mid',  text:'I try to reason my way through it, but spin into worry loops or disorientation when it breaks my worldview.' },
+        { tier:'high', text:'I feel it fully, process the charge through breath or presence, and reframe the event as data rather than a wound.' }
+      ]
+    },
+    {
+      key:'cognition',
+      label:'Your cognitive complexity / state of mind, most days',
+      options:[
+        { tier:'low',  text:'Life reads mostly in binaries — safe vs. unsafe, right vs. wrong, ally vs. enemy.' },
+        { tier:'mid',  text:'I can run complex systems and pursue big ambitions, but stay protective of my own ideological positions.' },
+        { tier:'high', text:'I can hold conflicting worldviews at once without needing to resolve them, from a fairly neutral, non-judgmental awareness.' }
+      ]
+    },
+    {
+      key:'age',
+      label:'How this compares with your chronological age',
+      options:[
+        { tier:'low',  text:'This feels regressed for my age — more like a much younger operating system running the show.' },
+        { tier:'mid',  text:'This is roughly typical — the baseline functioning of managing a career, family, and identity in modern life.' },
+        { tier:'high', text:'This feels ahead of schedule, or natural to where I am later in life — either way, it is a conscious acceleration.' }
+      ]
+    }
+  ];
+
+  var MQ_RESULTS = {
+    low:{
+      anchor:'Low Maturity Anchor',
+      layers:'Primary Center: Layers 1–2 (Body, Breath)',
+      body:'Unconscious or absent relationship with the mask — driven by instinct and immediate comfort. Shockwaves land as regressive defaults: outbursts, somatic illness, or pinning today\'s responsibilities on old wounds. Life reads in survival dualities. Normal for ages 0–7; if this is where you are landing as an adult, it is worth noticing without judgment — the vertical layers above are simply unclaimed territory, not unreachable ones.'
+    },
+    mid:{
+      anchor:'Mid Maturity Anchor',
+      layers:'Primary Center: Layers 3–5 (Mind, Intellect, Memory)',
+      body:'Subject to the mask — identity is bound to title, status, and inherited scripts. Shockwaves trigger a stabilizing attempt: logical analysis that can spin into worry loops when an old worldview collapses. Conformist or self-authoring, capable of complex systems, but still protective of ideological bias. This is the baseline of most modern adult life, ages roughly 8–50.'
+    },
+    high:{
+      anchor:'High Maturity Anchor',
+      layers:'Primary Center: Layers 6–7 (Ego, Soul)',
+      body:'An objective view of the mask — social titles and personality are functional instruments, identity rests in the observer. Shockwaves undergo alchemical transformation: felt fully, processed quickly, reframed as data rather than victimhood. Autonomous, capable of holding conflicting worldviews without rage. Natural for elderhood, and a marker of real conscious work if reached earlier.'
+    }
+  };
+
+  var mqAnswers = {};
+
+  function mqRender(){
+    var root = document.getElementById('maturityQuiz');
+    if(!root) return;
+    var answeredCount = Object.keys(mqAnswers).length;
+
+    if(answeredCount === MQ_QUESTIONS.length){
+      mqRenderResult(root);
+      return;
+    }
+
+    var html = '<div class="mq-progress">' + answeredCount + ' of ' + MQ_QUESTIONS.length + ' answered</div>';
+    MQ_QUESTIONS.forEach(function(q){
+      html += '<div class="mq-question">' +
+        '<span class="mq-qlabel">' + q.label + '</span>' +
+        '<div class="mq-options">';
+      q.options.forEach(function(opt, idx){
+        var selected = mqAnswers[q.key] === opt.tier;
+        html += '<button type="button" class="mq-opt' + (selected ? ' selected' : '') + '" onclick="window.__mqAnswer(\'' + q.key + '\',\'' + opt.tier + '\')">' + opt.text + '</button>';
+      });
+      html += '</div></div>';
+    });
+    root.innerHTML = html;
+  }
+
+  function mqRenderResult(root){
+    var tally = { low:0, mid:0, high:0 };
+    Object.keys(mqAnswers).forEach(function(k){ tally[mqAnswers[k]]++; });
+    var winner = 'mid';
+    if(tally.low >= tally.mid && tally.low >= tally.high) winner = 'low';
+    else if(tally.high >= tally.mid && tally.high >= tally.low) winner = 'high';
+    var r = MQ_RESULTS[winner];
+
+    root.innerHTML =
+      '<div class="mq-result">' +
+        '<div class="mq-anchor">' + r.anchor + '</div>' +
+        '<p style="color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;">' + r.layers + '</p>' +
+        '<p>' + r.body + '</p>' +
+        '<button class="mq-retake" onclick="window.__mqReset()">Retake</button>' +
+      '</div>';
+
+    highlightMatrixLayers(winner);
+  }
+
+  window.__mqAnswer = function(key, tier){
+    mqAnswers[key] = tier;
+    mqRender();
+  };
+  window.__mqReset = function(){
+    mqAnswers = {};
+    clearMatrixHighlight();
+    mqRender();
+  };
+
+  function highlightMatrixLayers(tier){
+    var ranges = { low:[1,2], mid:[3,5], high:[6,7] };
+    var range = ranges[tier];
+    for(var i=1;i<=7;i++){
+      var row = document.getElementById('matrix-row-' + i);
+      if(!row) continue;
+      var inRange = i >= range[0] && i <= range[1];
+      row.classList.toggle('matrix-highlight', inRange);
+      row.classList.toggle('matrix-dim', !inRange);
+    }
+  }
+  function clearMatrixHighlight(){
+    for(var i=1;i<=7;i++){
+      var row = document.getElementById('matrix-row-' + i);
+      if(!row) continue;
+      row.classList.remove('matrix-highlight','matrix-dim');
+    }
+  }
+
+  mqRender();
+
+})();
 </script>
 </body>
 </html>
