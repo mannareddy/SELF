@@ -875,6 +875,13 @@ section{scroll-margin-top:56px;}
 .collapse-toggle-btn:disabled{opacity:.5;cursor:default;}
 .fl-btn-shake{animation:fl-shake .4s ease;border-color:#c0392b !important;}
 @keyframes fl-shake{0%,100%{transform:translateX(0);}20%{transform:translateX(-4px);}40%{transform:translateX(4px);}60%{transform:translateX(-3px);}80%{transform:translateX(3px);}}
+.fl-io-btn{font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--mid);background:transparent;border:1px solid #333;padding:8px 18px;cursor:pointer;transition:all .25s;opacity:.85;}
+.fl-io-btn:hover{opacity:1;border-color:var(--gold);color:var(--gold);}
+.fl-history-entry{border:1px solid #1e1e1e;background:var(--bg-lift);padding:12px 16px;margin-bottom:2px;}
+.fl-history-entry .fl-history-date{font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:6px;display:block;}
+.fl-history-entry .fl-history-item{font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.6;margin:0 0 2px;}
+[data-theme="light"] .fl-io-btn{border-color:rgba(0,0,0,0.2) !important;}
+[data-theme="light"] .fl-history-entry{background:#ede6d0 !important;border-color:rgba(0,0,0,0.1) !important;}
 .section-collapse-label{font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#555;margin-top:8px;margin-bottom:0;display:block;}
 .section-collapse-wrap{overflow:hidden;transition:max-height .55s cubic-bezier(0,1,.25,1),opacity .35s ease;opacity:1;}
 .section-collapse-wrap.collapsed{max-height:0 !important;opacity:0;}
@@ -2391,7 +2398,7 @@ tr.matrix-highlight{
     <p style="font-family:var(--serif);font-size:clamp(12px,1.5vw,15px);color:var(--dim);line-height:1.85;margin-bottom:10px;">Not in dollars. Not in status. Not in the next milestone.<br>In the only currency that cannot be taken from you.</p>
     <div style="border-top:1px solid #1e1e1e;padding-top:10px;margin-top:2px;">
       <p style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:8px;">A thought experiment, not a prediction</p>
-      <p style="font-family:var(--serif);font-size:clamp(13px,1.7vw,17px);color:var(--mid);font-style:italic;line-height:1.7;margin-bottom:0;">No one knows which day that will be &mdash; that&rsquo;s the point.<br>So just imagine, for one moment, that it&rsquo;s today.<br>Would you still see your SELF the way you do right now?</p>
+      <p style="font-family:var(--serif);font-size:clamp(13px,1.7vw,17px);color:var(--mid);font-style:italic;line-height:1.7;margin-bottom:0;">No one knows which day will be their last &mdash; that&rsquo;s the point.<br>So just imagine, for one moment, that today is that day.<br>Would you still see your SELF the way you do right now?</p>
     </div>
   </div>
   <a href="#contract" style="display:inline-flex;flex-direction:column;align-items:center;gap:8px;margin:10px auto 0;text-decoration:none;opacity:.9;transition:opacity .25s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.9'">
@@ -2553,6 +2560,7 @@ tr.matrix-highlight{
   </div>
   <div class="void-response" id="voidResponse"></div>
   <button class="void-restart-link" id="voidRestart" onclick="renderVoidNode('start', true)" style="display:none;">&#8635; Take the test again</button>
+  <div id="voidLastNote" style="max-width:520px;margin:0 auto;text-align:center;"></div>
 </section>
 <span class="continue-hint">continue</span>
 <section class="section">
@@ -5022,6 +5030,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
       <p style="font-family:var(--sans);font-size:10px;letter-spacing:1px;color:var(--dim,#777);text-align:center;margin-bottom:24px;">This is a 60-second anchor, not the full diagnostic. For the complete nine-question, six-coordinate reading, see <a href="#diagnostic" style="color:var(--gold);">Place Yourself on the Grid</a> further down.</p>
 
       <div id="maturityQuiz"></div>
+      <div id="mqLastNote" style="text-align:center;"></div>
     </div>
 
     <!-- THE MATRIX TABLE — one table, mode toggles which columns are visible -->
@@ -5233,6 +5242,16 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
   <p class="phil-line bright" style="margin-bottom:8px;">You&rsquo;ve seen the matrix. Now find your six coordinates on it.</p>
   <p class="phil-line dim" style="margin-bottom:36px;">Nine questions. No right answers &mdash; only honest ones.</p>
   <div class="diag-root" id="diagRoot"></div>
+  <div id="diag-io-wrap" style="max-width:640px;margin:20px auto 0;text-align:center;display:none;">
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+      <button class="fl-io-btn" onclick="exportDiagnosticResult()">Export My Result</button>
+      <button class="fl-io-btn" onclick="downloadDiagnosticResultText()">Download Readable Copy</button>
+      <button class="fl-io-btn" onclick="document.getElementById('diag-import-input').click()">Import</button>
+      <input type="file" id="diag-import-input" accept="application/json,.json" style="display:none;" onchange="importDiagnosticResult(event)">
+    </div>
+    <p style="font-family:var(--sans);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:#555;margin-top:10px;">&ldquo;Export&rdquo; saves a .json file you can re-import later, to carry the &ldquo;since last time&rdquo; comparison to another device. &ldquo;Readable Copy&rdquo; saves a plain .txt file, just to read.</p>
+    <p id="diag-io-status" style="font-family:var(--sans);font-size:11px;color:var(--dim,#777);margin-top:8px;min-height:14px;"></p>
+  </div>
 </section>
 <span class="continue-hint">continue</span>
 <div class="divider"></div>
@@ -5256,6 +5275,17 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
     <div style="margin-top:28px;text-align:center;">
       <button class="collapse-toggle-btn" id="fl-log-btn" onclick="logFeedbackLoop()">Log This Check-In</button>
       <p style="font-family:var(--sans);font-size:11px;letter-spacing:1px;color:var(--dim,#777);margin-top:14px;" id="fl-status">No check-ins yet &mdash; there&rsquo;s no score, just a mirror you can return to.</p>
+
+      <div style="margin-top:22px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+        <button class="fl-io-btn" onclick="exportFeedbackLoop()">Export My Check-Ins</button>
+        <button class="fl-io-btn" onclick="downloadFeedbackLoopText()">Download Readable Copy</button>
+        <button class="fl-io-btn" onclick="document.getElementById('fl-import-input').click()">Import</button>
+        <input type="file" id="fl-import-input" accept="application/json,.json" style="display:none;" onchange="importFeedbackLoop(event)">
+      </div>
+      <p style="font-family:var(--sans);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:#555;margin-top:10px;">&ldquo;Export&rdquo; saves a .json file you can re-import later &mdash; a preview of what the Web Companion will carry automatically. &ldquo;Readable Copy&rdquo; saves a plain .txt file, just to read.</p>
+      <p id="fl-io-status" style="font-family:var(--sans);font-size:11px;color:var(--dim,#777);margin-top:8px;min-height:14px;"></p>
+
+      <div id="fl-history" style="margin-top:8px;text-align:left;"></div>
     </div>
   </div>
 
@@ -5845,9 +5875,22 @@ function copyCA(btn){
 /* ── FEEDBACK LOOP CHECK-IN ──────────────────────────────────────────────── */
 (function(){
   var KEY='selfFeedbackLoop';
+  var MAX_ENTRIES=200;
+
   function readState(){
-    try{ return JSON.parse(localStorage.getItem(KEY)) || {count:0,last:null}; }
-    catch(e){ return {count:0,last:null}; }
+    var fallback={entries:[],count:0,last:null};
+    try{
+      var raw=JSON.parse(localStorage.getItem(KEY));
+      if(!raw) return fallback;
+      // Migrate legacy {count,last} records (no entries array) into the new shape.
+      if(!Array.isArray(raw.entries)) raw.entries=[];
+      raw.count=raw.entries.length;
+      raw.last=raw.entries.length ? raw.entries[0].date : null;
+      return raw;
+    }catch(e){ return fallback; }
+  }
+  function writeState(s){
+    try{ localStorage.setItem(KEY, JSON.stringify(s)); }catch(e){}
   }
   function renderStatus(){
     var el=document.getElementById('fl-status');
@@ -5860,12 +5903,33 @@ function copyCA(btn){
     } else {
       el.textContent='No check-ins yet \u2014 there\u2019s no score, just a mirror you can return to.';
     }
+    renderHistory(s);
+  }
+  function renderHistory(s){
+    var wrap=document.getElementById('fl-history');
+    if(!wrap) return;
+    if(!s.entries || !s.entries.length){ wrap.innerHTML=''; return; }
+    var recent=s.entries.slice(0,3);
+    var html='<p style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin:24px 0 10px;text-align:center;">Recent check-ins</p>';
+    recent.forEach(function(entry){
+      var d=new Date(entry.date);
+      var when=d.toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'})+' \u00b7 '+d.toLocaleTimeString(undefined,{hour:'numeric',minute:'2-digit'});
+      html+='<div class="fl-history-entry"><span class="fl-history-date">'+when+'</span>';
+      (entry.items||[]).forEach(function(item){
+        html+='<p class="fl-history-item">&mdash; '+String(item).replace(/</g,'&lt;')+'</p>';
+      });
+      html+='</div>';
+    });
+    if(s.entries.length>3){
+      html+='<p style="font-family:var(--sans);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:#555;text-align:center;margin-top:10px;">+'+(s.entries.length-3)+' more in your export file</p>';
+    }
+    wrap.innerHTML=html;
   }
   window.logFeedbackLoop=function(){
-    var checkedCount = document.querySelectorAll('#feedbackLoopList .fl-check:checked').length;
+    var checkedBoxes = document.querySelectorAll('#feedbackLoopList .fl-check:checked');
     var btn=document.getElementById('fl-log-btn');
     var el=document.getElementById('fl-status');
-    if(checkedCount===0){
+    if(checkedBoxes.length===0){
       if(el){ el.textContent='Check at least one question above before logging.'; }
       if(btn){
         btn.classList.add('fl-btn-shake');
@@ -5875,10 +5939,17 @@ function copyCA(btn){
       return;
     }
     if(btn) btn.disabled = true;
+    var items=[];
+    checkedBoxes.forEach(function(cb){
+      var span=cb.parentElement.querySelector('span');
+      if(span) items.push(span.textContent.trim());
+    });
     var s=readState();
-    s.count=(s.count||0)+1;
-    s.last=new Date().toISOString();
-    try{ localStorage.setItem(KEY, JSON.stringify(s)); }catch(e){}
+    s.entries.unshift({date:new Date().toISOString(), items:items});
+    if(s.entries.length>MAX_ENTRIES) s.entries.length=MAX_ENTRIES;
+    s.count=s.entries.length;
+    s.last=s.entries[0].date;
+    writeState(s);
     document.querySelectorAll('#feedbackLoopList .fl-check').forEach(function(cb){cb.checked=false;});
     renderStatus();
     if(btn){
@@ -5887,6 +5958,127 @@ function copyCA(btn){
       setTimeout(function(){btn.innerText=orig; btn.disabled=false;},1600);
     }
   };
+
+  window.exportFeedbackLoop=function(){
+    var io=document.getElementById('fl-io-status');
+    var s=readState();
+    if(!s.entries.length){
+      if(io) io.textContent='Nothing to export yet \u2014 log a check-in first.';
+      setTimeout(function(){ if(io) io.textContent=''; },2500);
+      return;
+    }
+    var readableHistory = s.entries.map(function(e){
+      var d=new Date(e.date);
+      var when=d.toLocaleDateString(undefined,{month:'long',day:'numeric',year:'numeric'})+' at '+d.toLocaleTimeString(undefined,{hour:'numeric',minute:'2-digit'});
+      return { checkedInOn: when, questionsReflectedOn: e.items||[] };
+    });
+    var payload={
+      type:'self-feedback-loop-export',
+      version:1,
+      exportedAt:new Date().toISOString(),
+      summary:'Your *SELF Feedback Loop check-in history \u2014 '+s.entries.length+' entr'+(s.entries.length===1?'y':'ies')+'. This file can be re-imported on 42self.xyz to restore your history on another device.',
+      readableHistory: readableHistory,
+      entries:s.entries
+    };
+    var blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});
+    var url=URL.createObjectURL(blob);
+    var a=document.createElement('a');
+    a.href=url;
+    a.download='self-feedback-loop-'+new Date().toISOString().slice(0,10)+'.json';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    if(io){ io.textContent='Exported '+s.entries.length+' check-in'+(s.entries.length===1?'':'s')+'.'; }
+    setTimeout(function(){ if(io) io.textContent=''; },2800);
+  };
+
+  window.downloadFeedbackLoopText=function(){
+    var io=document.getElementById('fl-io-status');
+    var s=readState();
+    if(!s.entries.length){
+      if(io) io.textContent='Nothing to download yet \u2014 log a check-in first.';
+      setTimeout(function(){ if(io) io.textContent=''; },2500);
+      return;
+    }
+    var lines=[];
+    lines.push('*SELF \u2014 FEEDBACK LOOP CHECK-IN HISTORY');
+    lines.push('Downloaded '+new Date().toLocaleDateString(undefined,{month:'long',day:'numeric',year:'numeric'}));
+    lines.push(s.entries.length+' check-in'+(s.entries.length===1?'':'s')+' total');
+    lines.push('');
+    lines.push('----------------------------------------');
+    lines.push('');
+    s.entries.forEach(function(e){
+      var d=new Date(e.date);
+      var when=d.toLocaleDateString(undefined,{month:'long',day:'numeric',year:'numeric'})+' at '+d.toLocaleTimeString(undefined,{hour:'numeric',minute:'2-digit'});
+      lines.push(when);
+      (e.items||[]).forEach(function(item){ lines.push('  - '+item); });
+      lines.push('');
+    });
+    lines.push('----------------------------------------');
+    lines.push('This is a plain-text copy for reading only. To back up and restore your');
+    lines.push('history on another device, use "Export My Check-Ins" instead \u2014 that .json');
+    lines.push('file is the one the Import button understands.');
+    var blob=new Blob([lines.join('\n')],{type:'text/plain'});
+    var url=URL.createObjectURL(blob);
+    var a=document.createElement('a');
+    a.href=url;
+    a.download='self-feedback-loop-'+new Date().toISOString().slice(0,10)+'.txt';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    if(io){ io.textContent='Downloaded a readable copy \u2014 open it in Notes, Notepad, or any text app.'; }
+    setTimeout(function(){ if(io) io.textContent=''; },3400);
+  };
+
+  window.importFeedbackLoop=function(evt){
+    var io=document.getElementById('fl-io-status');
+    var file=evt.target.files && evt.target.files[0];
+    if(!file) return;
+    var reader=new FileReader();
+    reader.onload=function(){
+      try{
+        var payload=JSON.parse(reader.result);
+        var incoming=Array.isArray(payload) ? payload : payload.entries;
+        if(!Array.isArray(incoming)) throw new Error('no entries array');
+        var s=readState();
+        var seen={};
+        s.entries.forEach(function(e){ seen[e.date]=true; });
+        var added=0;
+        incoming.forEach(function(e){
+          if(e && e.date && !seen[e.date]){
+            s.entries.push({date:e.date, items:Array.isArray(e.items)?e.items:[]});
+            seen[e.date]=true;
+            added++;
+          }
+        });
+        s.entries.sort(function(a,b){ return new Date(b.date)-new Date(a.date); });
+        if(s.entries.length>MAX_ENTRIES) s.entries.length=MAX_ENTRIES;
+        s.count=s.entries.length;
+        s.last=s.entries.length ? s.entries[0].date : null;
+        writeState(s);
+        renderStatus();
+        if(io){
+          if(incoming.length===0){
+            io.textContent='That file has no check-ins in it.';
+          } else if(added===0){
+            io.textContent='Already up to date \u2014 every check-in in that file is already saved on this device.';
+          } else if(added<incoming.length){
+            io.textContent=added+' new check-in'+(added===1?'':'s')+' imported ('+(incoming.length-added)+' already saved here).';
+          } else {
+            io.textContent=added+' check-in'+(added===1?'':'s')+' imported.';
+          }
+        }
+      }catch(e){
+        if(io){ io.textContent="That file doesn't look like a *SELF check-in export."; }
+      }
+      evt.target.value='';
+      setTimeout(function(){ if(io) io.textContent=''; },4200);
+    };
+    reader.readAsText(file);
+  };
+
   document.addEventListener('DOMContentLoaded', renderStatus);
 })();
 
@@ -6091,8 +6283,32 @@ function voidStep(currentNode, choiceIdx, btn){
   document.querySelectorAll('.void-btn').forEach(function(b){b.classList.remove('active');});
   if(btn) btn.classList.add('active');
   if(typeof gtag==='function'){gtag('event','void_test',{node:currentNode, choice:opt.label});}
+  if(!opt.restart) voidPath.push(opt.label);
 
   renderVoidNode(opt.next, !!opt.restart);
+}
+
+/* Lightweight local response capture — a preview of "your own responses" on this
+   device only, not a synced history. The fuller version lives in the Web Companion. */
+var VOID_STORAGE_KEY = 'selfVoidTest:last';
+var voidPath = [];
+
+function voidSaveResult(nodeId, node){
+  try{
+    var plain = node.q.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
+    localStorage.setItem(VOID_STORAGE_KEY, JSON.stringify({date:Date.now(), endingId:nodeId, endingLine:plain, path:voidPath.slice()}));
+  }catch(e){}
+  voidRenderLastNote();
+}
+
+function voidRenderLastNote(){
+  var note = document.getElementById('voidLastNote');
+  if(!note) return;
+  var stored;
+  try{ stored = JSON.parse(localStorage.getItem(VOID_STORAGE_KEY)); }catch(e){ stored = null; }
+  if(!stored || !stored.endingId){ note.innerHTML=''; return; }
+  var when = new Date(stored.date).toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'});
+  note.innerHTML = '<p style="font-family:var(--sans);font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#555;margin-top:12px;line-height:1.7;">Last time (' + when + '): &ldquo;' + stored.endingLine + '&rdquo;<br>A local preview of your own answers, saved to this device &mdash; your fuller journey history lives in the Web Companion, coming soon.</p>';
 }
 
 function renderVoidNode(nodeId, isRestart){
@@ -6101,6 +6317,8 @@ function renderVoidNode(nodeId, isRestart){
   var btnEl = document.getElementById('voidButtons');
   var respEl = document.getElementById('voidResponse');
   var restartEl = document.getElementById('voidRestart');
+
+  if(isRestart) voidPath = [];
 
   qEl.innerHTML = node.q;
 
@@ -6130,7 +6348,10 @@ function renderVoidNode(nodeId, isRestart){
   // exit_inward) — without this, the only way back into the test was a manual page
   // refresh. Show the quiet restart link there; hide it everywhere mid-sequence.
   restartEl.style.display = (node.opts.length === 0) ? 'block' : 'none';
+  if(node.opts.length === 0) voidSaveResult(nodeId, node);
 }
+
+voidRenderLastNote();
 
 /* ── GEO BADGE ───────────────────────────────────────────────────────────── */
 (function(){
@@ -6691,9 +6912,11 @@ async function init(){
   phase = 'questions'; chosenPractice = null; recheckDays = 7; regressionAnswers = {};
   priorResult = null;
   try{
-    const stored = await window.storage.get('self-diagnostic:last-result');
-    if(stored && stored.value){ priorResult = JSON.parse(stored.value); }
+    const stored = localStorage.getItem('self-diagnostic:last-result');
+    if(stored){ priorResult = JSON.parse(stored); }
   } catch(e){ /* no prior result, or storage unavailable in this context */ }
+  const ioWrap = document.getElementById('diag-io-wrap');
+  if(ioWrap) ioWrap.style.display = priorResult ? 'block' : 'none';
   render();
 }
 
@@ -7087,8 +7310,10 @@ async function commitPractice(idx){
     recheckDate: Date.now() + recheckDays*24*60*60*1000
   };
   try{
-    await window.storage.set('self-diagnostic:last-result', JSON.stringify(result));
-  } catch(e){ /* storage unavailable in this preview context — proceed anyway */ }
+    localStorage.setItem('self-diagnostic:last-result', JSON.stringify(result));
+  } catch(e){ /* storage unavailable in this browser context — proceed anyway */ }
+  var diagIoWrap = document.getElementById('diag-io-wrap');
+  if(diagIoWrap) diagIoWrap.style.display = 'block';
 
   // swap just the practice section in place — no screen transition
   const section = document.getElementById('practiceSection');
@@ -7101,6 +7326,121 @@ async function commitPractice(idx){
     `;
   }
 }
+
+function buildDiagnosticReadable(result){
+  var leadLayer = LAYERS.filter(function(l){ return l.id === result.leadLayerId; })[0];
+  var takenOn = new Date(result.date).toLocaleDateString(undefined,{month:'long',day:'numeric',year:'numeric'});
+  var recheckOn = result.recheckDate ? new Date(result.recheckDate).toLocaleDateString(undefined,{month:'long',day:'numeric',year:'numeric'}) : null;
+  var coordinates = LAYERS.map(function(layer,i){
+    var score = (result.layerScores && result.layerScores[i]!=null) ? result.layerScores[i] : null;
+    var stageName = score===1?'Sustenance':score===2?'Transformation':score===3?'Deterioration':'\u2014';
+    return layer.name + ': ' + stageName;
+  });
+  var lines = [
+    'Taken on: ' + takenOn,
+    'Layer carrying the most weight: ' + (leadLayer ? leadLayer.name : result.leadLayerId),
+    'Practice you chose: ' + (result.practice || '\u2014'),
+    recheckOn ? ('Mirror asks again on: ' + recheckOn) : null,
+    'Your six coordinates:',
+  ].concat(coordinates.map(function(c){ return '  \u2014 ' + c; })).filter(Boolean);
+  return { lines: lines, takenOn: takenOn };
+}
+
+function getStoredDiagnosticResult(){
+  var stored;
+  try{ stored = localStorage.getItem('self-diagnostic:last-result'); }catch(e){ stored = null; }
+  if(!stored) return null;
+  try{ return JSON.parse(stored); }catch(e){ return null; }
+}
+
+window.exportDiagnosticResult = function(){
+  var io = document.getElementById('diag-io-status');
+  var result = getStoredDiagnosticResult();
+  if(!result){
+    if(io) io.textContent = 'Nothing to export yet \u2014 finish the diagnostic first.';
+    setTimeout(function(){ if(io) io.textContent=''; }, 2500);
+    return;
+  }
+  var built = buildDiagnosticReadable(result);
+  var payload = {
+    type: 'self-diagnostic-export',
+    version: 1,
+    exportedAt: new Date().toISOString(),
+    summary: 'Your *SELF Master Matrix diagnostic result, in plain terms. This file can be re-imported on 42self.xyz to restore your "since last time" comparison.',
+    readableSummary: built.lines,
+    result: result
+  };
+  var blob = new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url;
+  a.download = 'self-diagnostic-'+new Date().toISOString().slice(0,10)+'.json';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  if(io) io.textContent = 'Exported \u2014 taken on ' + built.takenOn + '.';
+  setTimeout(function(){ if(io) io.textContent=''; }, 2800);
+};
+
+window.downloadDiagnosticResultText = function(){
+  var io = document.getElementById('diag-io-status');
+  var result = getStoredDiagnosticResult();
+  if(!result){
+    if(io) io.textContent = 'Nothing to download yet \u2014 finish the diagnostic first.';
+    setTimeout(function(){ if(io) io.textContent=''; }, 2500);
+    return;
+  }
+  var built = buildDiagnosticReadable(result);
+  var lines = [
+    '*SELF \u2014 MASTER MATRIX DIAGNOSTIC RESULT',
+    'Downloaded ' + new Date().toLocaleDateString(undefined,{month:'long',day:'numeric',year:'numeric'}),
+    '',
+    '----------------------------------------',
+    ''
+  ].concat(built.lines).concat([
+    '',
+    '----------------------------------------',
+    'This is a plain-text copy for reading only. To carry the "since last time"',
+    'comparison to another device, use "Export My Result" instead \u2014 that .json',
+    'file is the one the Import button understands.'
+  ]);
+  var blob = new Blob([lines.join('\n')],{type:'text/plain'});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url;
+  a.download = 'self-diagnostic-'+new Date().toISOString().slice(0,10)+'.txt';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  if(io) io.textContent = 'Downloaded a readable copy \u2014 open it in Notes, Notepad, or any text app.';
+  setTimeout(function(){ if(io) io.textContent=''; }, 3400);
+};
+
+window.importDiagnosticResult = function(evt){
+  var io = document.getElementById('diag-io-status');
+  var file = evt.target.files && evt.target.files[0];
+  if(!file) return;
+  var reader = new FileReader();
+  reader.onload = function(){
+    try{
+      var payload = JSON.parse(reader.result);
+      var incoming = (payload && payload.result) ? payload.result : payload;
+      if(!incoming || !Array.isArray(incoming.layerScores)) throw new Error('not a *SELF diagnostic export');
+      localStorage.setItem('self-diagnostic:last-result', JSON.stringify(incoming));
+      var dateLabel = incoming.date ? new Date(incoming.date).toLocaleDateString(undefined,{month:'long',day:'numeric',year:'numeric'}) : 'a past visit';
+      if(io) io.textContent = 'Imported your result from ' + dateLabel + '. Retake the diagnostic to see the comparison.';
+      var wrap = document.getElementById('diag-io-wrap');
+      if(wrap) wrap.style.display = 'block';
+    }catch(e){
+      if(io) io.textContent = "That file doesn't look like a *SELF diagnostic export.";
+    }
+    evt.target.value = '';
+    setTimeout(function(){ if(io) io.textContent=''; }, 4200);
+  };
+  reader.readAsText(file);
+};
 
 // Expose only the entry points referenced by inline onclick="" attributes in the
 // HTML this script generates. Everything else (state, helpers, render functions)
@@ -7239,6 +7579,28 @@ init();
 
   var mqAnswers = {};
 
+  /* Lightweight local response capture — a preview of "your own responses" on this
+     device only, not a synced history. The fuller version lives in the Web Companion. */
+  var MQ_STORAGE_KEY = 'selfMaturityQuiz:last';
+
+  function mqSaveResult(tier){
+    try{
+      localStorage.setItem(MQ_STORAGE_KEY, JSON.stringify({date:Date.now(), tier:tier, answers:mqAnswers}));
+    }catch(e){}
+    mqRenderLastNote();
+  }
+
+  function mqRenderLastNote(){
+    var note = document.getElementById('mqLastNote');
+    if(!note) return;
+    var stored;
+    try{ stored = JSON.parse(localStorage.getItem(MQ_STORAGE_KEY)); }catch(e){ stored = null; }
+    if(!stored || !stored.tier){ note.innerHTML=''; return; }
+    var when = new Date(stored.date).toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'});
+    var anchorName = (MQ_RESULTS[stored.tier]||{}).anchor || stored.tier;
+    note.innerHTML = '<p style="font-family:var(--sans);font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#555;margin-top:14px;line-height:1.7;">Last check-in on this device: ' + when + ' &mdash; ' + anchorName + '.<br>A local preview of your own answers &mdash; the fuller check-in history lives in the Web Companion, coming soon.</p>';
+  }
+
   function mqRender(){
     var root = document.getElementById('maturityQuiz');
     if(!root) return;
@@ -7270,6 +7632,7 @@ init();
     if(tally.low >= tally.mid && tally.low >= tally.high) winner = 'low';
     else if(tally.high >= tally.mid && tally.high >= tally.low) winner = 'high';
     var r = MQ_RESULTS[winner];
+    mqSaveResult(winner);
 
     root.innerHTML =
       '<div class="mq-result">' +
@@ -7311,6 +7674,7 @@ init();
     }
   }
 
+  mqRenderLastNote();
   mqRender();
 
 })();
