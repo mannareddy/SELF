@@ -6295,10 +6295,15 @@ var voidPath = [];
 
 function voidSaveResult(nodeId, node){
   try{
-    var plain = node.q.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
+    var plain = node.terminal.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
+    if(plain.length>160) plain = plain.slice(0,157).replace(/\s+\S*$/,'') + '\u2026';
     localStorage.setItem(VOID_STORAGE_KEY, JSON.stringify({date:Date.now(), endingId:nodeId, endingLine:plain, path:voidPath.slice()}));
   }catch(e){}
-  voidRenderLastNote();
+  // Intentionally NOT calling voidRenderLastNote() here. The note is meant to greet
+  // someone on a *later* visit, not echo the result they're already looking at. It's
+  // rendered once on page load (see call at bottom of file) from whatever was stored
+  // *before* this session, and stays put through any retakes in this same sitting —
+  // it'll pick up this result the next time the page loads.
 }
 
 function voidRenderLastNote(){
@@ -6307,7 +6312,8 @@ function voidRenderLastNote(){
   var stored;
   try{ stored = JSON.parse(localStorage.getItem(VOID_STORAGE_KEY)); }catch(e){ stored = null; }
   if(!stored || !stored.endingId){ note.innerHTML=''; return; }
-  var when = new Date(stored.date).toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'});
+  var when = new Date(stored.date).toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'}) +
+    ' at ' + new Date(stored.date).toLocaleTimeString(undefined,{hour:'numeric',minute:'2-digit'});
   note.innerHTML = '<p style="font-family:var(--sans);font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#555;margin-top:12px;line-height:1.7;">Last time (' + when + '): &ldquo;' + stored.endingLine + '&rdquo;<br>A local preview of your own answers, saved to this device &mdash; your fuller journey history lives in the Web Companion, coming soon.</p>';
 }
 
@@ -6348,7 +6354,13 @@ function renderVoidNode(nodeId, isRestart){
   // exit_inward) — without this, the only way back into the test was a manual page
   // refresh. Show the quiet restart link there; hide it everywhere mid-sequence.
   restartEl.style.display = (node.opts.length === 0) ? 'block' : 'none';
-  if(node.opts.length === 0) voidSaveResult(nodeId, node);
+
+  // Capture on every screen that actually reads as a result (has terminal text) —
+  // not just the literal dead-ends. loop_closer and honest_exit both show a full,
+  // conclusive-feeling message even though they offer further buttons, and most
+  // paths through this tree land on loop_closer, so limiting capture to opts.length===0
+  // meant the note never updated for the majority of visits.
+  if(node.terminal) voidSaveResult(nodeId, node);
 }
 
 voidRenderLastNote();
