@@ -886,6 +886,31 @@ section{scroll-margin-top:56px;}
 .section-collapse-wrap{overflow:hidden;transition:max-height .55s cubic-bezier(0,1,.25,1),opacity .35s ease;opacity:1;}
 .section-collapse-wrap.collapsed{max-height:0 !important;opacity:0;}
 
+/* ── HERO — height-aware compaction ──────────────────────────────────────
+   At 100% browser zoom, common laptop/desktop viewport heights (900px and
+   below, after browser chrome) run this content past the fold, forcing a
+   scroll to reach the continue-hint. Zooming out to ~90% effectively grows
+   the CSS viewport and hides that. These breakpoints do the same
+   compaction based on actual viewport height, not on the person having to
+   zoom out manually. Desktop-only (min-width guards it off the existing
+   mobile hero rules above). ── */
+@media(min-width:641px) and (max-height:980px){
+  .hero{padding-top:10px;}
+  .hero-question{margin-bottom:14px !important;font-size:clamp(14px,1.8vw,19px) !important;line-height:1.35 !important;}
+  .hero > div[style*="padding:22px 32px"]{padding:16px 28px 14px !important;margin-bottom:10px !important;}
+  .hero > div[style*="padding:22px 32px"] > p{margin-bottom:8px !important;}
+  .hero > div[style*="padding:22px 32px"] > div[style*="border-top"]{padding-top:8px !important;}
+  .hero > a[href="#contract"]{margin-top:8px !important;}
+  .hero .continue-hint{margin-top:14px !important;}
+}
+@media(min-width:641px) and (max-height:820px){
+  .hero-question{font-size:clamp(13px,1.6vw,16px) !important;margin-bottom:10px !important;}
+  .hero > div[style*="padding:22px 32px"]{padding:12px 24px 10px !important;}
+  .hero > div[style*="padding:22px 32px"] p{line-height:1.55 !important;}
+  .hero > div[style*="padding:22px 32px"] > div[style*="border-top"] p{font-size:clamp(11px,1.4vw,14px) !important;}
+  .hero > a[href="#contract"] > div{padding:8px 20px !important;}
+}
+
 /* ── THEME TOGGLE — desktop button shown by default; mobile button (fixed,
    outside the scrollable nav strip) is hidden until the mobile breakpoint ── */
 #themeToggleMobile{display:none;}
@@ -3220,6 +3245,30 @@ tr.matrix-highlight{
         <p style="font-family:var(--serif);font-size:14.5px;color:var(--mid);line-height:1.9;">Same irritation. This time you catch it &mdash; &ldquo;I&rsquo;m drained, and I&rsquo;m about to take it out on someone who doesn&rsquo;t deserve it.&rdquo; That one sentence is the entire practice. Everything downstream changes.</p>
       </div>
     </div>
+
+    <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin:48px 0 16px;text-align:left;max-width:820px;margin-left:auto;margin-right:auto;">Zooming Out &mdash; The Same Question, Asked of Everything</p>
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--grey);line-height:1.9;max-width:820px;margin:0 auto 24px;text-align:left;">The gap above isn&rsquo;t only personal. Widen it out and the same distinction &mdash; how much of the field a thing actually notices, versus how much it merely sits inside &mdash; runs as a graded continuum through every scale of existence, not a switch that&rsquo;s simply on or off. A crystal responds to pressure. A plant orients toward light. A human, on a good day, notices itself noticing. Same underlying capacity, five very different altitudes.</p>
+
+    <div class="self-table-wrap" style="max-width:780px;margin:0 auto 28px;">
+      <table class="self-table" style="min-width:560px;font-size:13px;">
+        <thead>
+          <tr>
+            <th style="width:12%;text-align:left;padding-left:16px;">Altitude</th>
+            <th style="width:22%;">What&rsquo;s There</th>
+            <th style="width:66%;">What It Actually Notices</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="row-label" style="text-align:left;padding-left:16px;">1</td><td>Rock, crystal</td><td style="text-align:left;">Responds to pressure and temperature. Nothing that could be called a self is watching it happen.</td></tr>
+          <tr><td class="row-label" style="text-align:left;padding-left:16px;">2</td><td>Plant</td><td style="text-align:left;">Orients toward light and gravity &mdash; a functional pull toward what sustains it, with no reflection behind the pull.</td></tr>
+          <tr><td class="row-label" style="text-align:left;padding-left:16px;">3</td><td>Insect</td><td style="text-align:left;">A self, and its surroundings, held apart for the first time &mdash; enough to act with intent: defend, flee, feed.</td></tr>
+          <tr><td class="row-label" style="text-align:left;padding-left:16px;">4</td><td>Animal</td><td style="text-align:left;">Reads <em>other</em> selves well enough to anticipate them &mdash; a predator modeling what its prey will do next.</td></tr>
+          <tr class="gold-row"><td class="row-label gold" style="text-align:left;padding-left:16px;">5</td><td class="gold">Human</td><td class="bright" style="text-align:left;">Can fold back on all four altitudes at once &mdash; notice the noticing itself. The only known point on this ladder capable of watching itself climb.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--grey);line-height:1.9;max-width:780px;margin:0 auto 40px;text-align:left;">Altitude five is a capacity, not a permanent address. Most of most days, most people still run on altitude one or two &mdash; reacting, orienting, no one home watching it happen. The practice was never becoming capable of more. That capacity was never in question. <span style="color:var(--gold);font-style:italic;">It&rsquo;s noticing which altitude you&rsquo;re actually standing on, right now.</span></p>
 
     <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:24px 28px;border:1px solid #1e1e1e;background:var(--bg-lift);text-align:left;max-width:820px;margin:0 auto;">Humanity does not have a consciousness shortage. It has an awareness shortage. The field has always been on. What is missing, most of the day, is anyone standing at the window watching what moves across it.</p>
 
