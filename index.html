@@ -369,6 +369,10 @@ body{
 [data-theme="light"] .faq-q{color:#1a1208 !important;font-weight:600 !important;}
 [data-theme="light"] .faq-icon{color:#8a6a12 !important;border-color:rgba(138,106,18,0.4) !important;}
 [data-theme="light"] .faq-item{border-bottom-color:rgba(0,0,0,0.1) !important;}
+[data-theme="light"] #faqCatMenu{background:#ede6d0 !important;border-color:rgba(0,0,0,0.15) !important;}
+[data-theme="light"] .faq-cat-btn{border-color:rgba(0,0,0,0.2) !important;}
+[data-theme="light"] #faqCatMenuBtn{border-color:rgba(0,0,0,0.2) !important;color:#1a1208 !important;}
+[data-theme="light"] #faqCatMenuBtn span span{background:#1a1208 !important;}
 [data-theme="light"] .mc-card{background:#ede6d0 !important;border-color:rgba(0,0,0,0.1) !important;}
 [data-theme="light"] .mc-name{color:#5a4a2a !important;}
 [data-theme="light"] .tradition-row td{color:#4a3a1a !important;border-color:rgba(0,0,0,0.1) !important;}
@@ -868,6 +872,9 @@ section{scroll-margin-top:56px;}
 /* ── COLLAPSE TOGGLE BUTTON ──────────────────────────────────────────────── */
 .collapse-toggle-btn{font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);background:transparent;border:1px solid rgba(212,175,55,0.5);padding:10px 28px;cursor:pointer;transition:all .3s;opacity:.85;display:inline-block;margin-bottom:8px;}
 .collapse-toggle-btn:hover{opacity:1;border-color:var(--gold);background:rgba(212,175,55,0.06);}
+.collapse-toggle-btn:disabled{opacity:.5;cursor:default;}
+.fl-btn-shake{animation:fl-shake .4s ease;border-color:#c0392b !important;}
+@keyframes fl-shake{0%,100%{transform:translateX(0);}20%{transform:translateX(-4px);}40%{transform:translateX(4px);}60%{transform:translateX(-3px);}80%{transform:translateX(3px);}}
 .section-collapse-label{font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#555;margin-top:8px;margin-bottom:0;display:block;}
 .section-collapse-wrap{overflow:hidden;transition:max-height .55s cubic-bezier(0,1,.25,1),opacity .35s ease;opacity:1;}
 .section-collapse-wrap.collapsed{max-height:0 !important;opacity:0;}
@@ -2290,7 +2297,8 @@ tr.matrix-highlight{
         <a href="#spectrum" data-group="new-section">Ascent of Self</a>
         <a href="#master-matrix" data-group="new-section">Interactive Master Matrix</a>
         <a href="#feedback-loop" data-group="new-section">Feedback Loop Check-In</a>
-        <a href="https://ammara01.gumroad.com/l/dyyole" target="_blank" rel="noopener" data-group="new-section">Get the Workbook ↗</a>
+        <a href="#faq-workbook" data-group="new-section" onclick="openFaqEntry('faq-workbook')">Get the Workbook ↗</a>
+        <a href="#faq-web-companion" data-group="new-section" onclick="openFaqEntry('faq-web-companion')" style="display:flex;align-items:center;gap:8px;opacity:.9;">Web Companion <span style="font-family:var(--sans);font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:2px 6px;">Coming Soon</span></a>
       </div>
     </li>
 
@@ -2359,7 +2367,8 @@ tr.matrix-highlight{
         <a href="#spectrum">Ascent of Self</a>
         <a href="#master-matrix">Interactive Master Matrix</a>
         <a href="#feedback-loop">Feedback Loop Check-In</a>
-        <a href="https://ammara01.gumroad.com/l/dyyole" target="_blank" rel="noopener">Get the Workbook ↗</a>
+        <a href="#faq-workbook" onclick="openFaqEntry('faq-workbook')">Get the Workbook ↗</a>
+        <a href="#faq-web-companion" onclick="openFaqEntry('faq-web-companion')" style="display:flex;align-items:center;gap:8px;opacity:.9;">Web Companion <span style="font-family:var(--sans);font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:2px 6px;">Coming Soon</span></a>
       </div>
     </li>
 
@@ -2381,7 +2390,8 @@ tr.matrix-highlight{
     <p style="font-family:var(--serif);font-size:clamp(20px,3vw,30px);font-weight:400;color:var(--gold);line-height:1.35;margin-bottom:12px;">What is your own SELF worth?</p>
     <p style="font-family:var(--serif);font-size:clamp(12px,1.5vw,15px);color:var(--dim);line-height:1.85;margin-bottom:10px;">Not in dollars. Not in status. Not in the next milestone.<br>In the only currency that cannot be taken from you.</p>
     <div style="border-top:1px solid #1e1e1e;padding-top:10px;margin-top:2px;">
-      <p style="font-family:var(--serif);font-size:clamp(13px,1.7vw,17px);color:var(--mid);font-style:italic;line-height:1.7;margin-bottom:0;">If today were the last day of your life &mdash;<br>how would you see your SELF differently?</p>
+      <p style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:8px;">A thought experiment, not a prediction</p>
+      <p style="font-family:var(--serif);font-size:clamp(13px,1.7vw,17px);color:var(--mid);font-style:italic;line-height:1.7;margin-bottom:0;">No one knows which day that will be &mdash; that&rsquo;s the point.<br>So just imagine, for one moment, that it&rsquo;s today.<br>Would you still see your SELF the way you do right now?</p>
     </div>
   </div>
   <a href="#contract" style="display:inline-flex;flex-direction:column;align-items:center;gap:8px;margin:10px auto 0;text-decoration:none;opacity:.9;transition:opacity .25s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.9'">
@@ -4777,9 +4787,9 @@ tr.matrix-highlight{
       <p class="mc-desc">A token named after flatulence. No framework. No philosophy. No purpose. $2.6 billion at peak.</p>
     </div>
     <div class="mc-card" style="background:var(--bg-lift);border-color:#252525;">
-      <span class="mc-name">$SELF &mdash; Highest Market Cap Ever Reached</span>
-      <div class="mc-val self">$4,450</div>
-      <p class="mc-desc">The practice of knowing your true SELF. 5,000 years of wisdom behind it. $4,450 at peak.</p>
+      <span class="mc-name">$SELF &mdash; A Practice, Not a Peak</span>
+      <div class="mc-val self" style="font-size:clamp(20px,3.5vw,30px);">5,000 Years of Wisdom</div>
+      <p class="mc-desc">The practice of knowing your true SELF. No peak market cap can measure it &mdash; and whatever number the chart shows today, that was never the point. <a href="https://birdeye.so/token/7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump?chain=solana" target="_blank" rel="noopener" style="color:var(--gold);">Check the live chart ↗</a></p>
     </div>
   </div>
   <div style="max-width:660px;margin:0 auto 44px;border:1px solid #252525;background:var(--bg-lift);">
@@ -5341,13 +5351,30 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
 <section class="faq-section" id="faq-section">
   <span class="label">Common Questions</span>
   <h2>The questions people ask when they start noticing.</h2>
-  <div style="text-align:center;margin-bottom:36px;">
+  <div style="text-align:center;margin-bottom:28px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+    <button id="faqCatMenuBtn" onclick="toggleFaqCatMenu()" aria-expanded="false" aria-label="Browse FAQ by category" style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--white);background:transparent;border:1px solid #333;padding:10px 20px;cursor:pointer;transition:all .3s;opacity:.85;display:inline-flex;align-items:center;gap:10px;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.85'">
+      <span style="display:inline-flex;flex-direction:column;gap:3px;">
+        <span style="width:14px;height:1px;background:var(--white);"></span>
+        <span style="width:14px;height:1px;background:var(--white);"></span>
+        <span style="width:14px;height:1px;background:var(--white);"></span>
+      </span>
+      Browse by Topic
+    </button>
     <button id="faqExpandAllBtn" onclick="toggleFaqAll()" style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);background:transparent;border:1px solid var(--gold);padding:10px 28px;cursor:pointer;transition:all .3s;opacity:.85;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.85'">Expand &#9660;</button>
-    <p style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#555;margin-top:10px;margin-bottom:0;">Collapsed by default &mdash; tap to expand all questions</p>
   </div>
+  <div id="faqCatMenu" style="display:none;max-width:680px;margin:0 auto 32px;border:1px solid #1e1e1e;background:var(--bg-lift);padding:18px;">
+    <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">
+      <button class="faq-cat-btn active" data-cat="all" onclick="faqCategoryFilter('all')" style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#000;background:var(--gold);border:1px solid var(--gold);padding:8px 16px;cursor:pointer;">All Questions</button>
+      <button class="faq-cat-btn" data-cat="framework" onclick="faqCategoryFilter('framework')" style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--mid);background:transparent;border:1px solid #333;padding:8px 16px;cursor:pointer;">Framework &amp; Practices</button>
+      <button class="faq-cat-btn" data-cat="self" onclick="faqCategoryFilter('self')" style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--mid);background:transparent;border:1px solid #333;padding:8px 16px;cursor:pointer;">Psychology &amp; Self</button>
+      <button class="faq-cat-btn" data-cat="philosophy" onclick="faqCategoryFilter('philosophy')" style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--mid);background:transparent;border:1px solid #333;padding:8px 16px;cursor:pointer;">Philosophy &amp; Meaning</button>
+      <button class="faq-cat-btn" data-cat="token" onclick="faqCategoryFilter('token')" style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--mid);background:transparent;border:1px solid #333;padding:8px 16px;cursor:pointer;">Token, Ecosystem &amp; Numbers</button>
+    </div>
+  </div>
+  <p style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#555;margin-top:-14px;margin-bottom:36px;text-align:center;">Collapsed by default &mdash; tap a question to expand, or Expand All</p>
   <div class="faq-list-wrap" id="faqListWrap">
   <div class="faq-list">
-    <div class="faq-item closed">
+    <div class="faq-item closed" data-cat="framework">
       <button class="faq-q" onclick="faqToggle(this)">
         <span>What is the Default OS?</span><span class="faq-icon">+</span>
       </button>
@@ -5362,7 +5389,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
       </div></div>
     </div>
 
-    <div class="faq-item closed">
+    <div class="faq-item closed" data-cat="framework">
       <button class="faq-q" onclick="faqToggle(this)">
         <span>What is the RRRR Protocol?</span><span class="faq-icon">+</span>
       </button>
@@ -5373,7 +5400,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
       </div></div>
     </div>
 
-    <div class="faq-item closed">
+    <div class="faq-item closed" data-cat="framework">
       <button class="faq-q" onclick="faqToggle(this)">
         <span>What is the 3-Step Circuit Breaker?</span><span class="faq-icon">+</span>
       </button>
@@ -5398,7 +5425,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
       </div></div>
     </div>
 
-    <div class="faq-item closed">
+    <div class="faq-item closed" data-cat="self">
       <button class="faq-q" onclick="faqToggle(this)">
         <span>What is the Enneagram in the context of *SELF?</span><span class="faq-icon">+</span>
       </button>
@@ -5409,7 +5436,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
       </div></div>
     </div>
 
-    <div class="faq-item closed">
+    <div class="faq-item closed" data-cat="self">
       <button class="faq-q" onclick="faqToggle(this)">
         <span>What are the Nine Rasas?</span><span class="faq-icon">+</span>
       </button>
@@ -5420,63 +5447,63 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
       </div></div>
     </div>
 
-    <div class="faq-item closed">
+    <div class="faq-item closed" data-cat="philosophy">
       <button class="faq-q" onclick="faqToggle(this)">
         <span>Is this a token or a philosophy?</span><span class="faq-icon">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner">Both. Most tokens ask you to believe in the chart. $SELF asks you to believe in the framework. Buying the token is not an investment decision &mdash; it&rsquo;s a philosophical stake. You&rsquo;re saying: I see the map. I&rsquo;m walking it. And I&rsquo;m doing it publicly on an immutable ledger.</div></div>
     </div>
 
-    <div class="faq-item closed">
+    <div class="faq-item closed" data-cat="philosophy">
       <button class="faq-q" onclick="faqToggle(this)">
         <span>What is the Arrival Fallacy?</span><span class="faq-icon">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner">The false belief that the next milestone &mdash; more money, more status, more achievement &mdash; will finally bring peace. It won&rsquo;t. Hedonic adaptation resets your baseline every time. You get the promotion, and six months later you&rsquo;re back to baseline discontent. The void returns. That&rsquo;s not a problem to fix externally &mdash; it&rsquo;s a signal pointing inward.</div></div>
     </div>
 
-    <div class="faq-item closed">
+    <div class="faq-item closed" data-cat="philosophy">
       <button class="faq-q" onclick="faqToggle(this)">
         <span>What makes this different from other spiritual projects?</span><span class="faq-icon">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner">Two things. First: we don&rsquo;t ask you to believe. We ask you to notice. The framework is testable in real-time &mdash; in your reactions, your trades, your relationships. Second: we put skin in the game. You hold $SELF, the chart moves, and suddenly philosophy becomes immediate. That friction is the whole point.</div></div>
     </div>
 
-    <div class="faq-item closed">
+    <div class="faq-item closed" data-cat="philosophy">
       <button class="faq-q" onclick="faqToggle(this)">
         <span>What is the Integration Engine?</span><span class="faq-icon">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner">The Integration Engine is the idea that Western psychotherapy and Eastern wisdom traditions are not opposites &mdash; they are complements that together produce something neither achieves alone. Western therapy gives us the map: the vocabulary to name our suffering, understand our patterns, and build cognitive insight. Eastern traditions give us the resilience: the ability to hold suffering with spaciousness rather than trying to eliminate it. The Western Blueprint resolves the symptom through cognitive insight. The Eastern Breath expands the container through radical acceptance. Together: True Wholeness. Alan Watts said it best: if you look deeply into Buddhism, Taoism, Vedanta, and Yoga, you find something resembling psychotherapy. The *SELF framework is that integration made practical.</div></div>
     </div>
 
-    <div class="faq-item closed">
+    <div class="faq-item closed" data-cat="philosophy">
       <button class="faq-q" onclick="faqToggle(this)">
         <span>Isn&rsquo;t this just Eastern spirituality?</span><span class="faq-icon">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner">No &mdash; it&rsquo;s every tradition. Indian philosophy calls it Moksha. Western mysticism calls it Divinization. Ancient Greeks called it Know Thyself. Modern psychology calls it Self-Actualization. Every wisdom tradition in human history has arrived at the same conclusion: the highest achievement is looking inward to realize your true nature beneath the illusions of the ego. *SELF is not picking a tradition. It&rsquo;s pointing at what they all found.</div></div>
     </div>
 
-    <div class="faq-item closed">
+    <div class="faq-item closed" data-cat="philosophy">
       <button class="faq-q" onclick="faqToggle(this)">
         <span>Is there actually a &ldquo;cosmic ledger&rdquo;?</span><span class="faq-icon">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner">Depends on what you believe. But here&rsquo;s what&rsquo;s certain: every deed, every reaction, every moment you spend in awareness or autopilot builds a balance sheet inside you. Whether that&rsquo;s literal reincarnation, Karma, or just the neurology of habit formation &mdash; the math is the same. You are becoming what you practice.</div></div>
     </div>
 
-    <div class="faq-item closed">
+    <div class="faq-item closed" data-cat="philosophy">
       <button class="faq-q" onclick="faqToggle(this)">
         <span>How do I know if I&rsquo;m in the right direction?</span><span class="faq-icon">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner">Self-realization is not a destination you arrive at in one lifetime. That&rsquo;s the feature, not the bug. The question isn&rsquo;t &ldquo;Am I there yet?&rdquo; It&rsquo;s &ldquo;Am I pointed right?&rdquo; Are you noticing more? Are you reacting less? Are you choosing from awareness instead of fear? If yes &mdash; you&rsquo;re walking the path.</div></div>
     </div>
 
-    <div class="faq-item closed">
+    <div class="faq-item closed" data-cat="token">
       <button class="faq-q" onclick="faqToggle(this)">
         <span>Why Solana and not another chain?</span><span class="faq-icon">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner">Speed and transparency. Solana&rsquo;s high throughput means the ledger records without friction. No waiting. The supply is fixed forever (1,000,000,042 tokens), all authorities revoked. No dilution. No rug-pull risk. The mechanism itself becomes part of the message: this is immutable, this is yours, this is the cosmic ledger made visible.</div></div>
     </div>
 
-    <div class="faq-item closed">
+    <div class="faq-item closed" data-cat="token">
       <button class="faq-q" onclick="faqToggle(this)">
         <span>What is the significance of the number 42 and the * symbol?</span><span class="faq-icon">+</span>
       </button>
@@ -5490,7 +5517,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
       </div></div>
     </div>
 
-    <div class="faq-item closed">
+    <div class="faq-item closed" data-cat="token">
       <button class="faq-q" onclick="faqToggle(this)">
         <span>Why does Earth die before the Sun?</span><span class="faq-icon">+</span>
       </button>
@@ -5501,14 +5528,14 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
       </div></div>
     </div>
 
-    <div class="faq-item closed">
+    <div class="faq-item closed" data-cat="self">
       <button class="faq-q" onclick="faqToggle(this)">
         <span>What is my unique value?</span><span class="faq-icon">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner">That one thing only you can offer the world. Not necessarily a new innovation or technology &mdash; something the world needs that carries your unique mark. Ask yourself: &ldquo;What would I be willing to pay for if I were on the other side of the value exchange?&rdquo; If that is something only you can offer, that drives you, that you&rsquo;re passionate about achieving &mdash; that is your worth. Not in dollars. In purpose. That discovery requires listening to your inner voice. No one else can do it for you.</div></div>
     </div>
 
-    <div class="faq-item closed">
+    <div class="faq-item closed" data-cat="self">
       <button class="faq-q" onclick="faqToggle(this)">
         <span>Why does raising consciousness matter?</span><span class="faq-icon">+</span>
       </button>
@@ -5518,7 +5545,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
       </div></div>
     </div>
 
-    <div class="faq-item closed">
+    <div class="faq-item closed" data-cat="self">
       <button class="faq-q" onclick="faqToggle(this)">
         <span>Do I know my own worth?</span><span class="faq-icon">+</span>
       </button>
@@ -5533,7 +5560,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
       </div></div>
     </div>
 
-    <div class="faq-item closed">
+    <div class="faq-item closed" data-cat="framework">
       <button class="faq-q" onclick="faqToggle(this)">
         <span>What are the 4 Rules of Daily Guidance?</span><span class="faq-icon">+</span>
       </button>
@@ -5564,7 +5591,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
       </div></div>
     </div>
 
-    <div class="faq-item closed">
+    <div class="faq-item closed" data-cat="framework">
       <button class="faq-q" onclick="faqToggle(this)">
         <span>What are the Logotherapy Tools for finding meaning?</span><span class="faq-icon">+</span>
       </button>
@@ -5585,14 +5612,60 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
       </div></div>
     </div>
 
-    <div class="faq-item closed">
+    <div class="faq-item closed" data-cat="token">
       <button class="faq-q" onclick="faqToggle(this)">
         <span>What is the Mirror Room?</span><span class="faq-icon">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner">Not a hype chat. Not a trading group. A space for people who noticed the gap and couldn&rsquo;t unsee it. You post what you noticed &mdash; in the market, in yourself, in the framework. No price talk. No memes. Just noticing. The mirror doesn&rsquo;t chase you to buy more. It reflects what you&rsquo;re already seeing. <a href="https://x.com/i/chat/group_join/g2056088351590220124/gAK9fW8Y29" target="_blank" rel="noopener">Enter the Mirror Room &rarr;</a></div></div>
     </div>
 
-    <div class="faq-item closed">
+    <div class="faq-item closed" data-cat="token" id="faq-workbook">
+      <button class="faq-q" onclick="faqToggle(this)">
+        <span>What is &ldquo;The Ultimate Journey of Life&rdquo; workbook, and what&rsquo;s actually in it?</span><span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p style="margin-bottom:16px;">Forty-seven pages, five phases, built around real exercises rather than passive reading &mdash; the same spirit as the Feedback Loop above, just with room to actually write your answers down. Comes as a digital PDF in both dark and light theme.</p>
+        <div style="border:1px solid #1e1e1e;overflow:hidden;background:var(--bg-lift);margin:16px 0;">
+          <div style="padding:16px 20px;border-bottom:1px solid #1a1a1a;">
+            <p style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:4px;">Phase 1 &mdash; Where Are You Now</p>
+            <p style="font-size:14.5px;color:var(--grey);line-height:1.8;margin:0;">Catching the Default OS &mdash; the autopilot &mdash; running in real time, in your own life, not just in theory.</p>
+          </div>
+          <div style="padding:16px 20px;border-bottom:1px solid #1a1a1a;">
+            <p style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:4px;">Phase 2 &mdash; The Inner Turn</p>
+            <p style="font-size:14.5px;color:var(--grey);line-height:1.8;margin:0;">The Arrival Fallacy, and turning attention inward instead of toward the next milestone.</p>
+          </div>
+          <div style="padding:16px 20px;border-bottom:1px solid #1a1a1a;">
+            <p style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:4px;">Phase 3 &mdash; The Diverse Paths</p>
+            <p style="font-size:14.5px;color:var(--grey);line-height:1.8;margin:0;">Self-enquiry through three of five pillars &mdash; Who Am I, Where Am I From, What Can I Do &mdash; the longest phase, by design.</p>
+          </div>
+          <div style="padding:16px 20px;border-bottom:1px solid #1a1a1a;">
+            <p style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:4px;">Phase 4 &mdash; Savoring the Footsteps</p>
+            <p style="font-size:14.5px;color:var(--grey);line-height:1.8;margin:0;">Walking through difficulty on purpose &mdash; RRRR, the 3-Step Circuit Breaker, and tools for the days the framework gets tested.</p>
+          </div>
+          <div style="padding:16px 20px;">
+            <p style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:4px;">Phase 5 &mdash; The Final Destination</p>
+            <p style="font-size:14.5px;color:var(--grey);line-height:1.8;margin:0;">The remaining two pillars &mdash; Why Am I Here, Where Am I Going &mdash; plus a daily and weekly check-in loop to carry past the last page.</p>
+          </div>
+        </div>
+        <p style="margin-bottom:16px;">It exists because reading about a framework and sitting with your own answers to it are two different things. This site points at the map. The workbook is where you stop reading it and start walking it, one honest page at a time &mdash; with a baseline self-rating on page one you revisit after Phase 5, so the shift is something you can actually see in your own handwriting, not just something you're told happened.</p>
+        <div style="border-left:3px solid var(--gold);padding:16px 20px;background:var(--bg-lift);margin:16px 0;">
+          <p style="font-size:15px;color:var(--mid);line-height:1.85;margin-bottom:0;">It doesn&rsquo;t hand you answers &mdash; *SELF doesn&rsquo;t work that way. It hands you better questions, in an order designed to build on each other, phase by phase. And it says so plainly: finishing it won&rsquo;t make you a finished, fully realized person. Nobody finishes this kind of work in one lifetime &mdash; that&rsquo;s the actual shape of it, not a flaw.</p>
+        </div>
+        <p style="margin-bottom:0;"><a href="https://ammara01.gumroad.com/l/dyyole" target="_blank" rel="noopener" style="color:var(--gold);">Get the workbook ↗</a> <span style="color:var(--dim);">&mdash; $9.99 &middot; 47 pages &middot; five companion pieces (three videos, one audio, one visual deck) included &middot; 30-day money-back guarantee.</span></p>
+      </div></div>
+    </div>
+
+    <div class="faq-item closed" data-cat="token" id="faq-web-companion">
+      <button class="faq-q" onclick="faqToggle(this)">
+        <span>What is the Web Companion &mdash; and when is it coming?</span><span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p style="margin-bottom:16px;">The Web Companion is a private, ongoing space for the anchor questions across all seven stages of the framework &mdash; the kind you see in the Feedback Loop Check-In, extended into a full journey you can return to over time.</p>
+        <p style="margin-bottom:0;">It is currently in active development &mdash; not yet live. This page will be updated the moment it opens. Until then, the Feedback Loop Check-In and the digital workbook carry the same spirit in a form you can use today.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item closed" data-cat="self">
       <button class="faq-q" onclick="faqToggle(this)">
         <span>What is the Dark Night of the Soul?</span><span class="faq-icon">+</span>
       </button>
@@ -5614,7 +5687,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
       </div></div>
     </div>
 
-    <div class="faq-item closed">
+    <div class="faq-item closed" data-cat="framework">
       <button class="faq-q" onclick="faqToggle(this)">
         <span>What is the Perceptual Chain?</span><span class="faq-icon">+</span>
       </button>
@@ -5626,7 +5699,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
         </div></div>
     </div>
 
-    <div class="faq-item closed">
+    <div class="faq-item closed" data-cat="framework">
       <button class="faq-q" onclick="faqToggle(this)">
         <span>What is Sat-Chit-Ananda?</span><span class="faq-icon">+</span>
       </button>
@@ -5650,7 +5723,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
       </div></div>
     </div>
 
-    <div class="faq-item closed">
+    <div class="faq-item closed" data-cat="framework">
       <button class="faq-q" onclick="faqToggle(this)">
         <span>What is the Gratitude Recalibration and why does the Default OS hide it?</span><span class="faq-icon">+</span>
       </button>
@@ -5664,7 +5737,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
       </div></div>
     </div>
 
-    <div class="faq-item closed">
+    <div class="faq-item closed" data-cat="philosophy">
       <button class="faq-q" onclick="faqToggle(this)">
         <span>What does *SELF mean by &ldquo;true legacy&rdquo;?</span><span class="faq-icon">+</span>
       </button>
@@ -5784,20 +5857,34 @@ function copyCA(btn){
       var d=new Date(s.last);
       var when=d.toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'});
       el.textContent='Checked in '+s.count+(s.count===1?' time':' times')+' \u2014 last on '+when+'.';
+    } else {
+      el.textContent='No check-ins yet \u2014 there\u2019s no score, just a mirror you can return to.';
     }
   }
   window.logFeedbackLoop=function(){
+    var checkedCount = document.querySelectorAll('#feedbackLoopList .fl-check:checked').length;
+    var btn=document.getElementById('fl-log-btn');
+    var el=document.getElementById('fl-status');
+    if(checkedCount===0){
+      if(el){ el.textContent='Check at least one question above before logging.'; }
+      if(btn){
+        btn.classList.add('fl-btn-shake');
+        setTimeout(function(){ btn.classList.remove('fl-btn-shake'); },500);
+      }
+      setTimeout(renderStatus, 2400);
+      return;
+    }
+    if(btn) btn.disabled = true;
     var s=readState();
     s.count=(s.count||0)+1;
     s.last=new Date().toISOString();
     try{ localStorage.setItem(KEY, JSON.stringify(s)); }catch(e){}
     document.querySelectorAll('#feedbackLoopList .fl-check').forEach(function(cb){cb.checked=false;});
     renderStatus();
-    var btn=document.getElementById('fl-log-btn');
     if(btn){
       var orig=btn.innerText;
       btn.innerText='Logged \u2713';
-      setTimeout(function(){btn.innerText=orig;},1600);
+      setTimeout(function(){btn.innerText=orig; btn.disabled=false;},1600);
     }
   };
   document.addEventListener('DOMContentLoaded', renderStatus);
@@ -5864,6 +5951,42 @@ function faqToggle(btn){
     item.classList.remove('closed');
     if(ic) ic.innerHTML='&minus;';
   }
+}
+
+function openFaqEntry(id){
+  faqCategoryFilter('all');
+  var item = document.getElementById(id);
+  if(item){
+    item.classList.remove('closed');
+    item.classList.add('open');
+    var icon = item.querySelector('.faq-icon');
+    if(icon) icon.innerHTML='&minus;';
+  }
+}
+
+function toggleFaqCatMenu(){
+  var menu = document.getElementById('faqCatMenu');
+  var btn = document.getElementById('faqCatMenuBtn');
+  if(!menu) return;
+  var isOpen = menu.style.display !== 'none';
+  menu.style.display = isOpen ? 'none' : 'block';
+  if(btn) btn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+}
+
+function faqCategoryFilter(cat){
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    var show = (cat === 'all' || item.getAttribute('data-cat') === cat);
+    item.style.display = show ? '' : 'none';
+  });
+  document.querySelectorAll('.faq-cat-btn').forEach(function(btn){
+    var active = btn.getAttribute('data-cat') === cat;
+    btn.classList.toggle('active', active);
+    btn.style.background = active ? 'var(--gold)' : 'transparent';
+    btn.style.color = active ? '#000' : 'var(--mid)';
+    btn.style.borderColor = active ? 'var(--gold)' : '#333';
+  });
+  var wrap = document.getElementById('faqListWrap');
+  if(wrap) wrap.scrollIntoView({behavior:'smooth', block:'start'});
 }
 
 function toggleFaqAll(){
