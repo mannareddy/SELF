@@ -3247,6 +3247,30 @@ tr.matrix-highlight{
       </div>
     </div>
 
+    <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin:48px 0 16px;text-align:left;max-width:820px;margin-left:auto;margin-right:auto;">The Field Named in Four Movements &mdash; Mandukya Upanishad</p>
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--grey);line-height:1.9;max-width:820px;margin:0 auto 24px;text-align:left;">AUM is not treated as a word here. Each sound is mapped to a state you already move through daily &mdash; and what's left when the sound stops is mapped too. Not a claim to take on faith. A structure you can check against your own last twenty-four hours.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;max-width:820px;margin:0 auto 4px;text-align:left;">
+      <div style="padding:22px 24px;background:var(--bg);border:1px solid #1e1e1e;">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:10px;">Jagrat &middot; &ldquo;A&rdquo; of AUM</div>
+        <p style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.85;">Waking. Consciousness turned outward, running on the senses. Objects, other people, the material world &mdash; all felt as separate from the one perceiving them.</p>
+      </div>
+      <div style="padding:22px 24px;background:var(--bg);border:1px solid #1e1e1e;">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:10px;">Svapna &middot; &ldquo;U&rdquo; of AUM</div>
+        <p style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.85;">Dream. Consciousness turned inward, with no external object left to check itself against. The mind keeps building &mdash; unfinished wants, unresolved fears &mdash; and runs them without a body to act them out.</p>
+      </div>
+      <div style="padding:22px 24px;background:var(--bg);border:1px solid #1e1e1e;">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:10px;">Prajna &middot; &ldquo;M&rdquo; of AUM</div>
+        <p style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.85;">Deep sleep. No object, inward or outward &mdash; consciousness collapsed into itself. Undifferentiated, and on waking recalled only as &ldquo;I slept well,&rdquo; never as a gap in existing.</p>
+      </div>
+      <div style="padding:22px 24px;background:var(--bg);border:1px solid #1e1e1e;border-left:2px solid var(--gold);">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;margin-bottom:10px;">Turiya &middot; The Silence After AUM</div>
+        <p style="font-family:var(--serif);font-size:14.5px;color:var(--mid);line-height:1.85;">Never turned outward, never turned inward, never collapsed. Present through waking, dream, and sleep alike &mdash; identical with none of them. The one watching all three states arrive and pass, itself never arriving or passing.</p>
+      </div>
+    </div>
+
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:24px 28px;border:1px solid #1e1e1e;background:var(--bg-lift);text-align:left;max-width:820px;margin:24px auto 0;">Three states change. One doesn't. Ask which of the four you're reading this sentence from.</p>
+
     <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin:48px 0 16px;text-align:left;max-width:820px;margin-left:auto;margin-right:auto;">Zooming Out &mdash; The Same Question, Asked of Everything</p>
     <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--grey);line-height:1.9;max-width:820px;margin:0 auto 24px;text-align:left;">The gap above isn&rsquo;t only personal. Widen it out and the same distinction &mdash; how much of the field a thing actually notices, versus how much it merely sits inside &mdash; runs as a graded continuum through every scale of existence, not a switch that&rsquo;s simply on or off. A crystal responds to pressure. A plant orients toward light. A human, on a good day, notices itself noticing. Same underlying capacity, five very different altitudes.</p>
 
@@ -7198,7 +7222,7 @@ function renderRegressionCheck(root){
     <div class="diag-eyebrow">Since last time<span class="sep">\u00b7</span>${layer.name}</div>
     <div class="diag-frame">Last time, ${layer.name.toLowerCase()} landed in ${prevLabel}. This time, it landed in ${nowLabel}.</div>
     <div class="diag-question">Did that resolve \u2014 or did you step back from it?</div>
-    <div class="diag-options" id="diagOptions">
+    <div class="diag-options" id="diagOptionsRegression">
       <button class="diag-opt" data-key="integrated" onclick="answerRegression('${layer.id}','integrated')">
         <span class="diag-opt-mark"></span>
         <span class="diag-opt-text">
@@ -7352,7 +7376,7 @@ function renderSynthesis(root){
     <div style="margin-top:44px;" id="practiceSection">
       <div class="diag-result-eyebrow" style="margin-bottom:8px;">One small thing, before you go</div>
       <p class="diag-result-body" style="margin-bottom:22px;">Not a program. Pick the one you\u2019ll actually do today \u2014 the mirror will ask again in a week.</p>
-      <div class="diag-options" id="diagOptions">${practiceHtml}</div>
+      <div class="diag-options" id="diagOptionsPractice">${practiceHtml}</div>
     </div>
     <button class="diag-restart" onclick="initSelfDiagnostic()">\u21bb Start over</button>
   `;
