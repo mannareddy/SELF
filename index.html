@@ -2259,6 +2259,77 @@ tr.matrix-highlight{
   .diag-root{padding:40px 16px 70px;}
 }
 
+/* ============================================================
+   INLINE GLOSSARY COMPONENT — reusable "+" expand pattern for
+   difficult words anywhere on the site (Sanskrit terms, alchemy
+   vocabulary, clinical words, Hermetic principles, etc).
+   Pairs with the full #glossary reference section below.
+   ============================================================ */
+.gloss{
+  position:relative;
+  display:inline-block;
+  border-bottom:1px dotted var(--gold);
+  cursor:default;
+}
+.gloss-btn{
+  display:inline-block;
+  margin-left:1px;
+  padding:0 3px;
+  border:none;
+  background:none;
+  color:var(--gold);
+  font-family:var(--sans);
+  font-size:9px;
+  line-height:1;
+  cursor:pointer;
+  vertical-align:super;
+  opacity:.85;
+}
+.gloss-btn:hover{ opacity:1; }
+.gloss-pop{
+  display:none;
+  position:absolute;
+  left:50%;
+  bottom:calc(100% + 10px);
+  transform:translateX(-50%);
+  width:230px;
+  max-width:min(230px, 70vw);
+  background:var(--bg-lift);
+  border:1px solid var(--gold);
+  padding:14px 16px;
+  font-family:var(--serif);
+  font-size:12.5px;
+  line-height:1.65;
+  color:var(--mid);
+  text-align:left;
+  white-space:normal;
+  z-index:60;
+  box-shadow:0 8px 24px rgba(0,0,0,.45);
+}
+.gloss-pop.show{ display:block; }
+.gloss-pop::after{
+  content:'';
+  position:absolute;
+  top:100%;
+  left:50%;
+  transform:translateX(-50%);
+  border:6px solid transparent;
+  border-top-color:var(--gold);
+}
+/* Flip below the word instead of above, when a term sits near the
+   top of the viewport. Add class "gloss-below" to the outer .gloss
+   span to use this variant. */
+.gloss.gloss-below .gloss-pop{
+  bottom:auto;
+  top:calc(100% + 10px);
+}
+.gloss.gloss-below .gloss-pop::after{
+  top:auto;
+  bottom:100%;
+  border-top-color:transparent;
+  border-bottom-color:var(--gold);
+}
+
 </style>
 </head>
 <body>
@@ -2336,6 +2407,7 @@ tr.matrix-highlight{
       </div>
     </li>
 
+    <li><a href="#glossary">Glossary</a></li>
     <li><a href="#faq-section">FAQ</a></li>
     <li><a href="#feedback">Feedback</a></li>
   </ul>
@@ -2405,6 +2477,7 @@ tr.matrix-highlight{
         <a href="https://self-webapp-journey.netlify.app" target="_blank" rel="noopener" style="opacity:.9;">Web Companion <span style="font-family:var(--sans);font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:2px 6px;margin-left:8px;">Live</span></a>      </div>
     </li>
 
+    <li><a href="#glossary">Glossary</a></li>
     <li><a href="#faq-section">FAQ</a></li>
     <li><a href="#feedback">Feedback</a></li>
   </ul>
@@ -2652,8 +2725,8 @@ tr.matrix-highlight{
       <h3>The True &ldquo;I&rdquo;</h3><div class="framework-content">
       <p>Your pure, underlying conscious awareness. The silent observer behind every thought. The screen, not the movie &mdash; unchanged by whatever plays on it. Every tradition that found truth arrived at the same address.</p>
       <p style="margin-top:14px;font-size:15px;color:var(--gold);font-style:italic;">SAT-CHIT-ANAND.<br><span style="font-size:14px;font-style:normal;">Existence. Consciousness. Bliss.</span></p>
-      <p style="margin-top:10px;font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;border-top:1px solid #1e1e1e;padding-top:12px;">Atman (Individual SELF) = Brahman (Supreme Reality)</p>
-      <p style="margin-top:10px;font-size:14px;color:var(--gold);font-style:italic;">In Sanskrit: <em>Maya / Avidya</em> &mdash; the lens of separation &mdash; is dissolved when you recognize you are not the projection, but the screen. That is who you actually are.</p>
+      <p style="margin-top:10px;font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;border-top:1px solid #1e1e1e;padding-top:12px;"><span class="gloss">Atman<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Atman">+</button><span class="gloss-pop">The individual self, in Vedanta &mdash; held as identical to, not separate from, universal consciousness.</span></span> (Individual SELF) = <span class="gloss">Brahman<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Brahman">+</button><span class="gloss-pop">The ground of all reality in Vedanta &mdash; not a deity to petition, but the substrate everything, including you, is made of.</span></span> (Supreme Reality)</p>
+      <p style="margin-top:10px;font-size:14px;color:var(--gold);font-style:italic;">In Sanskrit: <em><span class="gloss">Maya<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Maya">+</button><span class="gloss-pop">Usually translated &ldquo;illusion,&rdquo; though &ldquo;the measuring-out&rdquo; is closer &mdash; the way one undivided reality appears to us as separate things, separate selves, and passing time.</span></span> / Avidya</em> &mdash; the lens of separation &mdash; is dissolved when you recognize you are not the projection, but the screen. That is who you actually are.</p>
     </div></div>
     <div class="framework-card collapsed">
       <span class="num">05</span>
@@ -2704,7 +2777,7 @@ tr.matrix-highlight{
       <span class="num">L1 &mdash; Red</span>
       <h3>Survival — &ldquo;I Exist&rdquo;</h3><div class="framework-content">
       <p>Consciousness fully embedded in matter. You do not operate reality; reality operates on you. Dense, chaotic, and entirely focused on reacting to physical constraints just to maintain baseline existence.</p>
-      <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">Alchemy: Lead (Base Matter) &middot; Brainwave: Delta &middot; Root Chakra / DO &middot; Saturn / Earth &middot; Hermetic Principle: Mentalism</p>
+      <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">Alchemy: Lead (Base Matter) &middot; Brainwave: Delta &middot; Root Chakra / DO &middot; Saturn / Earth &middot; Hermetic Principle: <span class="gloss">Mentalism<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Mentalism">+</button><span class="gloss-pop">&ldquo;The All is Mind.&rdquo; The principle that the universe is fundamentally mental in nature &mdash; matter as a mode of mind, not the other way around.</span></span></p>
       <p style="margin-top:10px;font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;border-top:1px solid #1e1e1e;padding-top:12px;">Life Stage: Womb &amp; Infancy</p>
       <p style="margin-top:6px;font-size:14px;color:var(--grey);">The Vertical Leap &mdash; <em style="color:var(--gold);font-style:italic;">Somatic Grounding:</em> anchor completely in the physical form without resisting limits or survival demands.</p>
     </div></div>
@@ -2712,7 +2785,7 @@ tr.matrix-highlight{
       <span class="num">L2 &mdash; Orange</span>
       <h3>Emotion — &ldquo;I Feel&rdquo;</h3><div class="framework-content">
       <p>Raw physical experience is no longer just endured — it generates an internal, subjective, volatile charge. These emotional spikes create the very first echoes of a subjective self, distinct from the world pushing against it.</p>
-      <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">Alchemy: Copper (Purification) &middot; Brainwave: Theta &middot; Sacral Chakra / RE &middot; Jupiter / Water &middot; Hermetic Principle: Correspondence</p>
+      <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">Alchemy: Copper (Purification) &middot; Brainwave: Theta &middot; Sacral Chakra / RE &middot; Jupiter / Water &middot; Hermetic Principle: <span class="gloss">Correspondence<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Correspondence">+</button><span class="gloss-pop">&ldquo;As above, so below.&rdquo; The principle that the same patterns repeat at every scale &mdash; a single moment of reaction contains the same structure as a lifetime's conditioning.</span></span></p>
       <p style="margin-top:10px;font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;border-top:1px solid #1e1e1e;padding-top:12px;">Life Stage: Childhood &mdash; First Cry / Play</p>
       <p style="margin-top:6px;font-size:14px;color:var(--grey);">The Vertical Leap &mdash; <em style="color:var(--gold);font-style:italic;">Breath Mastery:</em> use the breath as a conscious regulator to wash away reactionary emotional spikes.</p>
     </div></div>
@@ -2720,7 +2793,7 @@ tr.matrix-highlight{
       <span class="num">L3 &mdash; Yellow</span>
       <h3>Thought — &ldquo;I Think&rdquo;</h3><div class="framework-content">
       <p>To survive the chaos of raw emotion, the mind begins to categorize and predict. Reactions calcify into predictable, automated patterns — a rigid architecture built around the initial spark of consciousness to keep it safe.</p>
-      <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">Alchemy: Iron (Strength) &middot; Brainwave: Alpha &middot; Solar Plexus / MI &middot; Mars / Fire &middot; Hermetic Principle: Vibration</p>
+      <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">Alchemy: Iron (Strength) &middot; Brainwave: Alpha &middot; Solar Plexus / MI &middot; Mars / Fire &middot; Hermetic Principle: <span class="gloss">Vibration<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Vibration">+</button><span class="gloss-pop">&ldquo;Nothing rests; everything moves.&rdquo; The principle that all matter, energy, thought, and spirit are in constant motion &mdash; stillness is always relative, never absolute.</span></span></p>
       <p style="margin-top:10px;font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;border-top:1px solid #1e1e1e;padding-top:12px;">Life Stage: Early Youth &mdash; Sensory / School</p>
       <p style="margin-top:6px;font-size:14px;color:var(--grey);">The Vertical Leap &mdash; <em style="color:var(--gold);font-style:italic;">Mindful Observation:</em> step back from the mental chatter; shift from being the thoughts to watching them.</p>
     </div></div>
@@ -2728,7 +2801,7 @@ tr.matrix-highlight{
       <span class="num">L4 &mdash; Green</span>
       <h3>Love — &ldquo;I Connect&rdquo;</h3><div class="framework-content">
       <p>Identity is not who you truly are — it is the refined construct built from every layer of prior conditioning. It acts as a filter and a fulcrum, bridging the mechanical responses of your past with the expansive awareness of your future. The heart is the bridge from density to divinity.</p>
-      <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">Alchemy: Silver (Refinement) &middot; Brainwave: Mu &middot; Heart Chakra / FA &middot; Sun / Air &middot; Hermetic Principle: Polarity</p>
+      <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">Alchemy: Silver (Refinement) &middot; Brainwave: Mu &middot; Heart Chakra / FA &middot; Sun / Air &middot; Hermetic Principle: <span class="gloss">Polarity<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Polarity">+</button><span class="gloss-pop">&ldquo;Everything is dual; opposites are identical in nature, differing only in degree.&rdquo; Hot and cold are the same phenomenon at different points &mdash; not two separate things.</span></span></p>
       <p style="margin-top:10px;font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;border-top:1px solid #1e1e1e;padding-top:12px;">Life Stage: Late Youth &mdash; Curiosity / Higher Learning</p>
       <p style="margin-top:6px;font-size:14px;color:var(--grey);">The Vertical Leap &mdash; <em style="color:var(--gold);font-style:italic;">Intellectual Surrender:</em> recognize the limits of dry logic and let concepts dissolve into intuitive knowing.</p>
     </div></div>
@@ -2736,7 +2809,7 @@ tr.matrix-highlight{
       <span class="num">L5 &mdash; Blue</span>
       <h3>Wisdom — &ldquo;I Understand&rdquo;</h3><div class="framework-content">
       <p>Consciousness dis-identifies from its own patterns. You realize you are not your thoughts, emotions, or history — you are the silent entity observing identity itself. This separation is the true alchemical gold: the dawn of objective self-awareness.</p>
-      <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">Alchemy: Gold (Illumination) &middot; Brainwave: Beta &middot; Throat Chakra / SOL &middot; Venus / Aether &middot; Hermetic Principle: Rhythm</p>
+      <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">Alchemy: Gold (Illumination) &middot; Brainwave: Beta &middot; Throat Chakra / SOL &middot; Venus / Aether &middot; Hermetic Principle: <span class="gloss">Rhythm<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Rhythm">+</button><span class="gloss-pop">&ldquo;Everything flows, out and in; everything has its tides.&rdquo; The principle that all things swing between poles in a measurable rhythm &mdash; including moods, motivation, and insight.</span></span></p>
       <p style="margin-top:10px;font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;border-top:1px solid #1e1e1e;padding-top:12px;">Life Stage: Young Adulthood &mdash; First Impressions / Career</p>
       <p style="margin-top:6px;font-size:14px;color:var(--grey);">The Vertical Leap &mdash; <em style="color:var(--gold);font-style:italic;">Alchemical Refinement:</em> strip away the personal stories attached to your past; hold your history as educational data.</p>
     </div></div>
@@ -2744,7 +2817,7 @@ tr.matrix-highlight{
       <span class="num">L6 &mdash; Indigo</span>
       <h3>Bliss — &ldquo;I Transcend&rdquo;</h3><div class="framework-content">
       <p>As awareness heightens, the dualistic gap between the observer and reality collapses. The psychological friction of separation ceases, distilling consciousness into pure integration and unmediated bliss.</p>
-      <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">Alchemy: Quintessence (Spirit/Essence) &middot; Brainwave: Gamma &middot; Third Eye / LA &middot; Mercury / Mind &middot; Hermetic Principle: Cause &amp; Effect</p>
+      <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">Alchemy: Quintessence (Spirit/Essence) &middot; Brainwave: Gamma &middot; Third Eye / LA &middot; Mercury / Mind &middot; Hermetic Principle: <span class="gloss">Cause &amp; Effect<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Cause &amp; Effect">+</button><span class="gloss-pop">&ldquo;Every cause has its effect; every effect has its cause.&rdquo; Nothing happens by pure chance &mdash; what looks random is usually a cause operating on a plane you haven't traced yet.</span></span></p>
       <p style="margin-top:10px;font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;border-top:1px solid #1e1e1e;padding-top:12px;">Life Stage: Mature Adulthood &mdash; Ambition / Leadership</p>
       <p style="margin-top:6px;font-size:14px;color:var(--grey);">The Vertical Leap &mdash; <em style="color:var(--gold);font-style:italic;">Dissolving the Observer:</em> merge the gap between watcher and watched; step out of individual self-importance.</p>
     </div></div>
@@ -2752,7 +2825,7 @@ tr.matrix-highlight{
       <span class="num">L7 &mdash; Violet</span>
       <h3>Oneness — &ldquo;I Am&rdquo;</h3><div class="framework-content">
       <p>Beyond patterns, beyond identity, beyond even the observer. You are no longer experiencing reality — you realize you are the ultimate reality experiencing itself. Complete ontological transmutation. The absolute &ldquo;I am&rdquo; phase.</p>
-      <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">Alchemy: Philosopher&rsquo;s Stone (Completion) &middot; Brainwave: Lambda &middot; Crown Chakra / TI &middot; Moon / Spirit &middot; Hermetic Principle: Gender</p>
+      <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">Alchemy: Philosopher&rsquo;s Stone (Completion) &middot; Brainwave: Lambda &middot; Crown Chakra / TI &middot; Moon / Spirit &middot; Hermetic Principle: <span class="gloss">Gender<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Gender">+</button><span class="gloss-pop">&ldquo;Gender is in everything.&rdquo; Not biological sex &mdash; a generative/receptive polarity present in all creation, thought, and action.</span></span></p>
       <p style="margin-top:10px;font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;border-top:1px solid #1e1e1e;padding-top:12px;">Life Stage: Elderhood &amp; Beyond &mdash; Manifestation / Realization</p>
       <p style="margin-top:6px;font-size:14px;color:var(--grey);">The Vertical Leap &mdash; <em style="color:var(--gold);font-style:italic;">Final Realization:</em> rest permanently in the unshakeable &ldquo;I Am,&rdquo; free from the illusions of time, change, and decay.</p>
     </div></div>
@@ -3263,19 +3336,19 @@ tr.matrix-highlight{
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;max-width:820px;margin:0 auto 4px;text-align:left;">
       <div style="padding:22px 24px;background:var(--bg);border:1px solid #1e1e1e;">
-        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:10px;">Jagrat &middot; &ldquo;A&rdquo; of AUM</div>
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:10px;"><span class="gloss">Jagrat<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Jagrat">+</button><span class="gloss-pop">The ordinary waking state &mdash; consciousness engaged with the external, physical world through the senses.</span></span> &middot; &ldquo;A&rdquo; of AUM</div>
         <p style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.85;">Waking. Consciousness turned outward, running on the senses. Objects, other people, the material world &mdash; all felt as separate from the one perceiving them.</p>
       </div>
       <div style="padding:22px 24px;background:var(--bg);border:1px solid #1e1e1e;">
-        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:10px;">Svapna &middot; &ldquo;U&rdquo; of AUM</div>
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:10px;"><span class="gloss">Svapna<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Svapna">+</button><span class="gloss-pop">The dream state &mdash; consciousness turned inward, generating its own world out of memory and imagination while the body rests.</span></span> &middot; &ldquo;U&rdquo; of AUM</div>
         <p style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.85;">Dream. Consciousness turned inward, with no external object left to check itself against. The mind keeps building &mdash; unfinished wants, unresolved fears &mdash; and runs them without a body to act them out.</p>
       </div>
       <div style="padding:22px 24px;background:var(--bg);border:1px solid #1e1e1e;">
-        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:10px;">Prajna &middot; &ldquo;M&rdquo; of AUM</div>
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:10px;"><span class="gloss">Prajna<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Prajna">+</button><span class="gloss-pop">Deep, dreamless sleep &mdash; no object of any kind, yet not nothing: you wake up and know you slept well, which means something was present to know it.</span></span> &middot; &ldquo;M&rdquo; of AUM</div>
         <p style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.85;">Deep sleep. No object, inward or outward &mdash; consciousness collapsed into itself. Undifferentiated, and on waking recalled only as &ldquo;I slept well,&rdquo; never as a gap in existing.</p>
       </div>
       <div style="padding:22px 24px;background:var(--bg);border:1px solid #1e1e1e;border-left:2px solid var(--gold);">
-        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;margin-bottom:10px;">Turiya &middot; The Silence After AUM</div>
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;margin-bottom:10px;"><span class="gloss">Turiya<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Turiya">+</button><span class="gloss-pop">The &ldquo;fourth&rdquo; state &mdash; not another state alongside waking, dreaming, and deep sleep, but the constant awareness present underneath all three.</span></span> &middot; The Silence After AUM</div>
         <p style="font-family:var(--serif);font-size:14.5px;color:var(--mid);line-height:1.85;">Never turned outward, never turned inward, never collapsed. Present through waking, dream, and sleep alike &mdash; identical with none of them. The one watching all three states arrive and pass, itself never arriving or passing.</p>
       </div>
     </div>
@@ -3331,7 +3404,7 @@ tr.matrix-highlight{
       <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:16px;">What the Research Found</div>
       <div style="display:grid;grid-template-columns:100px 1fr;gap:16px 20px;align-items:start;">
         <div style="font-family:var(--sans);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);text-align:left;padding-top:2px;">Method</div>
-        <div style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.7;text-align:left;">EEG recorded across conscious and anesthetized states, measuring information integration rather than raw activity.</div>
+        <div style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.7;text-align:left;">EEG recorded across conscious and anesthetized states, measuring <span class="gloss">information integration<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define information integration">+</button><span class="gloss-pop">A measure of how much different regions of the brain are combining what they're processing into one unified picture, rather than just being separately active.</span></span> rather than raw activity.</div>
         <div style="font-family:var(--sans);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);text-align:left;padding-top:2px;">Finding</div>
         <div style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.7;text-align:left;">Integration capacity in the gamma band drops sharply under anesthesia; synchronized firing alone does not reliably track the same change.</div>
         <div style="font-family:var(--sans);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);text-align:left;padding-top:2px;">Reads as</div>
@@ -5221,16 +5294,16 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
         <tbody>
           <tr id="matrix-row-1" data-layer="1">
             <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-1" onclick="toggleMatrixRow(1)" aria-label="Expand Layer 1 detail">+</button><span style="color:var(--dim);font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 1</span>Body<span style="display:block;font-size:9px;color:var(--dim);font-style:normal;letter-spacing:0;margin-top:2px;">Root Chakra</span></td>
-            <td class="col-grid">Womb</td><td class="col-grid">Infancy</td><td class="col-grid">Health</td><td class="col-grid">Aging</td><td class="col-grid">Senescence</td><td class="col-grid">Mortality</td>
+            <td class="col-grid">Womb</td><td class="col-grid">Infancy</td><td class="col-grid">Health</td><td class="col-grid">Aging</td><td class="col-grid"><span class="gloss">Senescence<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Senescence">+</button><span class="gloss-pop">The point where cells stop dividing and repairing themselves as efficiently &mdash; the biological beginning of decline, before outright breakdown. <a href="#gloss-senescence" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">Full entry &rarr;</a></span></span></td><td class="col-grid">Mortality</td>
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Hunger, exhaustion, illness, and raw biological baselines.</td>
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Takes a literal physical toll (Aging).</td>
             <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">Ground the Vessel: eat cleanly, move optimally, and anchor your physical frame to build a resilient survival baseline free of ambient panic.</td>
             <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">&ldquo;I am here, safely grounded in physical form.&rdquo;</td>
-            <td class="col-meta" style="border-left:2px solid rgba(212,175,55,0.3);color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:1px;">Delta</td>
+            <td class="col-meta" style="border-left:2px solid rgba(212,175,55,0.3);color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:1px;"><span class="gloss">Delta<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Delta">+</button><span class="gloss-pop">The slowest brainwave band, dominant in deep, dreamless sleep &mdash; the conscious mind is fully offline while the body repairs itself.</span></span></td>
             <td class="col-meta" style="font-size:12px;">Unconscious <span style="color:var(--dim);font-size:10px;">(Deep Sleep)</span></td>
             <td class="col-meta" style="font-size:12px;">Exist</td>
-            <td class="col-meta" style="font-size:12px;">Lead <span style="color:var(--dim);font-size:10px;">(Base)</span></td>
-            <td class="col-meta" style="font-size:12px;color:var(--grey);">Annamaya</td>
+            <td class="col-meta" style="font-size:12px;"><span class="gloss">Lead<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Lead">+</button><span class="gloss-pop">The heaviest, most inert starting material in alchemy &mdash; the raw, unrefined condition everything else in the sequence works on.</span></span> <span style="color:var(--dim);font-size:10px;">(Base)</span></td>
+            <td class="col-meta" style="font-size:12px;color:var(--grey);"><span class="gloss">Annamaya<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Annamaya">+</button><span class="gloss-pop">The &ldquo;food sheath&rdquo; &mdash; the physical body itself, the most outer and dense of the five koshas said to wrap the true Self.</span></span></td>
           </tr>
           <tr class="row-detail" id="matrix-detail-1"><td colspan="16"></td></tr>
 
@@ -5241,11 +5314,11 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Locks panic or grief into the nervous system (Emotion).</td>
             <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">Cleanse the Energy: when an emotional wave hits, use conscious, rhythmic breathing to clear the charge rather than burying it in your tissue.</td>
             <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">&ldquo;I feel the moving currents of vital energy.&rdquo;</td>
-            <td class="col-meta" style="border-left:2px solid rgba(212,175,55,0.3);color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:1px;">Theta</td>
+            <td class="col-meta" style="border-left:2px solid rgba(212,175,55,0.3);color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:1px;"><span class="gloss">Theta<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Theta">+</button><span class="gloss-pop">Active during the twilight zone between waking and sleep, or deep meditation &mdash; attention turns inward toward imagery, intuition, and dreams.</span></span></td>
             <td class="col-meta" style="font-size:12px;">Subconscious <span style="color:var(--dim);font-size:10px;">(Twilight)</span></td>
             <td class="col-meta" style="font-size:12px;">Feel</td>
-            <td class="col-meta" style="font-size:12px;">Copper <span style="color:var(--dim);font-size:10px;">(Purify)</span></td>
-            <td class="col-meta" style="font-size:12px;color:var(--grey);">Pranamaya</td>
+            <td class="col-meta" style="font-size:12px;"><span class="gloss">Copper<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Copper">+</button><span class="gloss-pop">An early refining stage &mdash; impurities in the base material start burning off, but the result is still volatile and unstable.</span></span> <span style="color:var(--dim);font-size:10px;">(Purify)</span></td>
+            <td class="col-meta" style="font-size:12px;color:var(--grey);"><span class="gloss">Pranamaya<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Pranamaya">+</button><span class="gloss-pop">The &ldquo;breath/vital-energy sheath&rdquo; &mdash; one layer in from the physical body: the life-force and breath that animates it.</span></span></td>
           </tr>
           <tr class="row-detail" id="matrix-detail-2"><td colspan="16"></td></tr>
 
@@ -5256,11 +5329,11 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Shatters routines, forcing focus to spin out (Shifting).</td>
             <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">Decondition the Mind: actively audit automatic loops and scripts. Train awareness to step back into the seat of the neutral observer.</td>
             <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">&ldquo;I observe my thoughts without becoming them.&rdquo;</td>
-            <td class="col-meta" style="border-left:2px solid rgba(212,175,55,0.3);color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:1px;">Alpha</td>
+            <td class="col-meta" style="border-left:2px solid rgba(212,175,55,0.3);color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:1px;"><span class="gloss">Alpha<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Alpha">+</button><span class="gloss-pop">The state of calm, relaxed wakefulness &mdash; an &ldquo;idling&rdquo; visual system, often peaking when the eyes close and the mind drifts.</span></span></td>
             <td class="col-meta" style="font-size:12px;">Relaxed Waking <span style="color:var(--dim);font-size:10px;">(Visual Rest)</span></td>
             <td class="col-meta" style="font-size:12px;">Think</td>
-            <td class="col-meta" style="font-size:12px;">Iron <span style="color:var(--dim);font-size:10px;">(Strength)</span></td>
-            <td class="col-meta" style="font-size:12px;color:var(--grey);">Manomaya</td>
+            <td class="col-meta" style="font-size:12px;"><span class="gloss">Iron<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Iron">+</button><span class="gloss-pop">A hardening stage &mdash; the volatility of the previous stage sets into something rigid and load-bearing, for better and worse.</span></span> <span style="color:var(--dim);font-size:10px;">(Strength)</span></td>
+            <td class="col-meta" style="font-size:12px;color:var(--grey);"><span class="gloss">Manomaya<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Manomaya">+</button><span class="gloss-pop">The &ldquo;mind sheath&rdquo; &mdash; the layer of thought, emotion, and sensory processing; where most people spend nearly all their time without noticing it.</span></span></td>
           </tr>
           <tr class="row-detail" id="matrix-detail-3"><td colspan="16"></td></tr>
 
@@ -5271,11 +5344,11 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Old worldviews fail over time, forcing a pivot (Shifting Beliefs).</td>
             <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">Bridge to Heart Wisdom: when core beliefs are tested by life, do not double down on rigid logic. Let old frameworks break to allow intuitive knowing.</td>
             <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">&ldquo;I choose core wisdom over rigid mental logic.&rdquo;</td>
-            <td class="col-meta" style="border-left:2px solid rgba(212,175,55,0.3);color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:1px;">Mu</td>
+            <td class="col-meta" style="border-left:2px solid rgba(212,175,55,0.3);color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:1px;"><span class="gloss">Mu<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Mu">+</button><span class="gloss-pop">Shares Alpha's frequency but sits over the motor cortex &mdash; the body idling in neutral, present during physical stillness and vanishing the instant you move, or even intend to.</span></span></td>
             <td class="col-meta" style="font-size:12px;">Stillness <span style="color:var(--dim);font-size:10px;">(Motor Ready)</span></td>
             <td class="col-meta" style="font-size:12px;">Connect</td>
-            <td class="col-meta" style="font-size:12px;">Silver <span style="color:var(--dim);font-size:10px;">(Refine)</span></td>
-            <td class="col-meta" style="font-size:12px;color:var(--grey);">Vijnanamaya</td>
+            <td class="col-meta" style="font-size:12px;"><span class="gloss">Silver<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Silver">+</button><span class="gloss-pop">A polishing stage &mdash; the rigid material of the last stage gets refined into something more responsive and reflective, without yet reaching gold's stability.</span></span> <span style="color:var(--dim);font-size:10px;">(Refine)</span></td>
+            <td class="col-meta" style="font-size:12px;color:var(--grey);"><span class="gloss">Vijnanamaya<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Vijnanamaya">+</button><span class="gloss-pop">The &ldquo;wisdom/intellect sheath&rdquo; &mdash; the layer of discernment, one step subtler than ordinary thought: the part that can notice the mind sheath working.</span></span></td>
           </tr>
           <tr class="row-detail" id="matrix-detail-4"><td colspan="16"></td></tr>
 
@@ -5286,11 +5359,11 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Triggers deeply buried ghosts, wounds, or past failures (Trauma).</td>
             <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">Decondition the Memory: consciously unpack early conditioning. Reframe your past as purely educational database data rather than your definition.</td>
             <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">&ldquo;My past is educational data, not my definition.&rdquo;</td>
-            <td class="col-meta" style="border-left:2px solid rgba(212,175,55,0.3);color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:1px;">Beta</td>
+            <td class="col-meta" style="border-left:2px solid rgba(212,175,55,0.3);color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:1px;"><span class="gloss">Beta<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Beta">+</button><span class="gloss-pop">The everyday waking state &mdash; dominant when attention is directed outward: solving problems, conversing, making decisions.</span></span></td>
             <td class="col-meta" style="font-size:12px;">Active <span style="color:var(--dim);font-size:10px;">(Alert Focus)</span></td>
             <td class="col-meta" style="font-size:12px;">Understand</td>
-            <td class="col-meta" style="font-size:12px;">Gold <span style="color:var(--dim);font-size:10px;">(Illuminate)</span></td>
-            <td class="col-meta" style="font-size:12px;color:var(--grey);">Chitta</td>
+            <td class="col-meta" style="font-size:12px;"><span class="gloss">Gold<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Gold">+</button><span class="gloss-pop">The classical alchemical goal-material &mdash; incorruptible, stable, &ldquo;illuminated.&rdquo; What the earlier, cruder stages were always in service of becoming.</span></span> <span style="color:var(--dim);font-size:10px;">(Illuminate)</span></td>
+            <td class="col-meta" style="font-size:12px;color:var(--grey);"><span class="gloss">Chitta<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Chitta">+</button><span class="gloss-pop">The mind-stuff, or memory-store &mdash; the layer that holds impressions, conditioning, and habitual patterns built up over time.</span></span></td>
           </tr>
           <tr class="row-detail" id="matrix-detail-5"><td colspan="16"></td></tr>
 
@@ -5301,11 +5374,11 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Causes your curated persona to completely shatter (Crisis).</td>
             <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">Dissolve the Persona: when an existential crisis hits your career or relationships, do not fight to save the mask. Use it to shatter false identity.</td>
             <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">&ldquo;I am not the mask; I am the one watching it.&rdquo;</td>
-            <td class="col-meta" style="border-left:2px solid rgba(212,175,55,0.3);color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:1px;">Gamma</td>
+            <td class="col-meta" style="border-left:2px solid rgba(212,175,55,0.3);color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:1px;"><span class="gloss">Gamma<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Gamma">+</button><span class="gloss-pop">The fastest standard brainwave band, associated with binding information across brain regions into one coherent experience &mdash; present during peak focus and sudden insight.</span></span></td>
             <td class="col-meta" style="font-size:12px;">Superconsciousness <span style="color:var(--dim);font-size:10px;">(Hyper-Focus)</span></td>
             <td class="col-meta" style="font-size:12px;">Transcend</td>
-            <td class="col-meta" style="font-size:12px;">Quintessence</td>
-            <td class="col-meta" style="font-size:12px;color:var(--grey);">Ahankara</td>
+            <td class="col-meta" style="font-size:12px;"><span class="gloss">Quintessence<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Quintessence">+</button><span class="gloss-pop">Literally the &ldquo;fifth essence&rdquo; &mdash; beyond the four classical elements, the pure spirit or vital essence said to underlie and animate all of them.</span></span></td>
+            <td class="col-meta" style="font-size:12px;color:var(--grey);"><span class="gloss">Ahankara<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Ahankara">+</button><span class="gloss-pop">Literally &ldquo;the I-maker&rdquo; &mdash; the function of mind that stamps &ldquo;me&rdquo; onto raw experience, manufacturing a sense of separate identity.</span></span></td>
           </tr>
           <tr class="row-detail" id="matrix-detail-6"><td colspan="16"></td></tr>
 
@@ -5321,11 +5394,11 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;color:var(--mid);">Complete immunity; remains entirely untouched (Transcends).</td>
             <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;color:var(--mid);">Rest as the Witness: stop identifying with things that decay. When death arrives, view it as the effortless dropping of a mastered instrument.</td>
             <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;color:var(--mid);">&ldquo;I Am That I Am. The Unchanging Source.&rdquo;</td>
-            <td class="col-meta" style="border-left:2px solid rgba(212,175,55,0.3);color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:1px;">Lambda</td>
+            <td class="col-meta" style="border-left:2px solid rgba(212,175,55,0.3);color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:1px;"><span class="gloss">Lambda<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Lambda">+</button><span class="gloss-pop">A rarely-observed, very high frequency band associated with profound meditative or altered states &mdash; deep stillness paired with rapid, high-coherence processing.</span></span></td>
             <td class="col-meta" style="font-size:12px;color:var(--gold);">Transcendence <span style="opacity:.7;font-size:10px;">(Altered States)</span></td>
             <td class="col-meta" style="font-size:12px;color:var(--gold);">I Am</td>
-            <td class="col-meta" style="font-size:12px;color:var(--gold);">Philosopher&rsquo;s Stone</td>
-            <td class="col-meta" style="font-size:12px;color:var(--gold);">Atman</td>
+            <td class="col-meta" style="font-size:12px;color:var(--gold);"><span class="gloss">Philosopher&rsquo;s Stone<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Philosopher&rsquo;s Stone">+</button><span class="gloss-pop">The legendary end-goal of alchemy &mdash; not a literal object but a completed transformation, capable of &ldquo;turning lead into gold&rdquo;: here, base conditioning fully transmuted into realized SELF.</span></span></td>
+            <td class="col-meta" style="font-size:12px;color:var(--gold);"><span class="gloss">Atman<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Atman">+</button><span class="gloss-pop">The individual self, in Vedanta &mdash; held as identical to, not separate from, universal consciousness. Closer to the awareness doing the possessing than a possession itself.</span></span></td>
           </tr>
           <tr class="row-detail" id="matrix-detail-7"><td colspan="16"></td></tr>
         </tbody>
@@ -6004,6 +6077,262 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
   </div>
 </section>
 
+<div class="divider"></div>
+
+<!-- GLOSSARY -->
+<section class="section-wide" id="glossary" style="padding:90px 24px;background:var(--bg);border-top:1px solid #111;">
+  <span class="label" style="color:var(--dim);">Reference</span>
+  <h2 style="font-size:clamp(22px,3.4vw,32px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 14px;line-height:1.4;">Glossary</h2>
+  <p style="font-family:var(--serif);font-style:italic;font-size:clamp(14px,1.8vw,16px);color:var(--grey);max-width:600px;margin:0 auto 36px;line-height:1.8;">This site borrows words from a few different traditions &mdash; Sanskrit psychology, alchemy, Hermetic philosophy, neuroscience. None of them are assumed knowledge. Look anything up here, or tap the <span style="color:var(--gold);">+</span> next to a word wherever you find it.</p>
+
+  <div style="max-width:480px;margin:0 auto 48px;">
+    <input type="text" id="glossSearch" placeholder="Search a term&hellip;"
+      style="width:100%;background:var(--bg-lift);border:1px solid #2a2a2a;color:var(--white);font-family:var(--serif);font-size:15px;padding:12px 16px;outline:none;"
+      oninput="filterGlossary(this.value)">
+  </div>
+
+  <div id="glossaryBody" style="max-width:760px;margin:0 auto;text-align:left;">
+
+    <!-- ============ CATEGORY: Sanskrit / Yogic Psychology ============ -->
+    <div class="gloss-category" data-cat="sanskrit">
+      <div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;margin:36px 0 16px;">Sanskrit &amp; Yogic Psychology</div>
+
+      <div class="gloss-entry" id="gloss-atman">
+        <h4 style="font-family:var(--serif);font-size:17px;color:var(--white);margin:0 0 4px;">Atman</h4>
+        <p style="font-family:var(--serif);font-size:14px;color:var(--mid);line-height:1.75;margin:0 0 4px;">The individual self, in Vedanta &mdash; but held as identical to, not separate from, universal consciousness. Not "a soul" in the sense of a separate possession; closer to the awareness doing the possessing.</p>
+      </div>
+
+      <div class="gloss-entry" id="gloss-brahman">
+        <h4 style="font-family:var(--serif);font-size:17px;color:var(--white);margin:0 0 4px;">Brahman</h4>
+        <p style="font-family:var(--serif);font-size:14px;color:var(--mid);line-height:1.75;margin:0 0 4px;">The ground of all reality in Vedanta &mdash; not a deity to petition, but the substrate everything, including you, is made of and never actually separate from.</p>
+      </div>
+
+      <div class="gloss-entry" id="gloss-maya">
+        <h4 style="font-family:var(--serif);font-size:17px;color:var(--white);margin:0 0 4px;">Maya</h4>
+        <p style="font-family:var(--serif);font-size:14px;color:var(--mid);line-height:1.75;margin:0 0 4px;">Usually translated "illusion," though "the measuring-out" is closer &mdash; the way one undivided reality appears to us as separate things, separate selves, and passing time.</p>
+      </div>
+
+      <div class="gloss-entry" id="gloss-chitta">
+        <h4 style="font-family:var(--serif);font-size:17px;color:var(--white);margin:0 0 4px;">Chitta</h4>
+        <p style="font-family:var(--serif);font-size:14px;color:var(--mid);line-height:1.75;margin:0 0 4px;">The mind-stuff, or memory-store &mdash; the layer that holds impressions, conditioning, and habitual patterns built up over time. Not thought itself, but the substrate thought leaves marks on.</p>
+      </div>
+
+      <div class="gloss-entry" id="gloss-ahankara">
+        <h4 style="font-family:var(--serif);font-size:17px;color:var(--white);margin:0 0 4px;">Ahankara</h4>
+        <p style="font-family:var(--serif);font-size:14px;color:var(--mid);line-height:1.75;margin:0 0 4px;">Literally "the I-maker" &mdash; the function of mind that takes raw experience and stamps "me" onto it, manufacturing a sense of separate identity out of what's actually happening.</p>
+      </div>
+
+      <div class="gloss-entry" id="gloss-annamaya">
+        <h4 style="font-family:var(--serif);font-size:17px;color:var(--white);margin:0 0 4px;">Annamaya (Kosha)</h4>
+        <p style="font-family:var(--serif);font-size:14px;color:var(--mid);line-height:1.75;margin:0 0 4px;">The "food sheath" &mdash; the physical body itself, the most outer and dense of the traditional five layers (koshas) said to wrap the true Self.</p>
+      </div>
+
+      <div class="gloss-entry" id="gloss-pranamaya">
+        <h4 style="font-family:var(--serif);font-size:17px;color:var(--white);margin:0 0 4px;">Pranamaya (Kosha)</h4>
+        <p style="font-family:var(--serif);font-size:14px;color:var(--mid);line-height:1.75;margin:0 0 4px;">The "breath/vital-energy sheath" &mdash; one layer in from the physical body: the layer of life-force, circulation, and breath that animates it.</p>
+      </div>
+
+      <div class="gloss-entry" id="gloss-manomaya">
+        <h4 style="font-family:var(--serif);font-size:17px;color:var(--white);margin:0 0 4px;">Manomaya (Kosha)</h4>
+        <p style="font-family:var(--serif);font-size:14px;color:var(--mid);line-height:1.75;margin:0 0 4px;">The "mind sheath" &mdash; the layer of thought, emotion, and sensory processing; where most people spend nearly all their time without noticing it's a layer at all.</p>
+      </div>
+
+      <div class="gloss-entry" id="gloss-vijnanamaya">
+        <h4 style="font-family:var(--serif);font-size:17px;color:var(--white);margin:0 0 4px;">Vijnanamaya (Kosha)</h4>
+        <p style="font-family:var(--serif);font-size:14px;color:var(--mid);line-height:1.75;margin:0 0 4px;">The "wisdom/intellect sheath" &mdash; the layer of discernment and insight, one step subtler than ordinary thought: the part that can actually notice the mind sheath working.</p>
+      </div>
+    </div>
+
+    <!-- ============ CATEGORY: The Four States of Consciousness ============ -->
+    <div class="gloss-category" data-cat="aum">
+      <div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;margin:36px 0 16px;">The Four States (AUM)</div>
+
+      <div class="gloss-entry" id="gloss-jagrat">
+        <h4 style="font-family:var(--serif);font-size:17px;color:var(--white);margin:0 0 4px;">Jagrat</h4>
+        <p style="font-family:var(--serif);font-size:14px;color:var(--mid);line-height:1.75;margin:0 0 4px;">The ordinary waking state &mdash; consciousness engaged with the external, physical world through the senses.</p>
+      </div>
+
+      <div class="gloss-entry" id="gloss-svapna">
+        <h4 style="font-family:var(--serif);font-size:17px;color:var(--white);margin:0 0 4px;">Svapna</h4>
+        <p style="font-family:var(--serif);font-size:14px;color:var(--mid);line-height:1.75;margin:0 0 4px;">The dream state &mdash; consciousness turned inward, generating its own world out of memory and imagination while the body rests.</p>
+      </div>
+
+      <div class="gloss-entry" id="gloss-prajna">
+        <h4 style="font-family:var(--serif);font-size:17px;color:var(--white);margin:0 0 4px;">Prajna</h4>
+        <p style="font-family:var(--serif);font-size:14px;color:var(--mid);line-height:1.75;margin:0 0 4px;">Deep, dreamless sleep &mdash; no object of any kind, waking or dream, yet not nothing: you wake up and know you slept well, which means something was present to know it.</p>
+      </div>
+
+      <div class="gloss-entry" id="gloss-turiya">
+        <h4 style="font-family:var(--serif);font-size:17px;color:var(--white);margin:0 0 4px;">Turiya</h4>
+        <p style="font-family:var(--serif);font-size:14px;color:var(--mid);line-height:1.75;margin:0 0 4px;">The "fourth" state &mdash; not another state alongside waking, dreaming, and deep sleep, but the constant awareness present underneath all three, witnessing each without changing when they change.</p>
+      </div>
+    </div>
+
+    <!-- ============ CATEGORY: Alchemical Stages ============ -->
+    <div class="gloss-category" data-cat="alchemy">
+      <div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;margin:36px 0 16px;">Alchemical Stages</div>
+
+      <div class="gloss-entry" id="gloss-lead">
+        <h4 style="font-family:var(--serif);font-size:17px;color:var(--white);margin:0 0 4px;">Lead (Base Matter)</h4>
+        <p style="font-family:var(--serif);font-size:14px;color:var(--mid);line-height:1.75;margin:0 0 4px;">The heaviest, most inert starting material in alchemy &mdash; the raw, unrefined condition everything else in the sequence works on.</p>
+      </div>
+
+      <div class="gloss-entry" id="gloss-copper">
+        <h4 style="font-family:var(--serif);font-size:17px;color:var(--white);margin:0 0 4px;">Copper (Purification)</h4>
+        <p style="font-family:var(--serif);font-size:14px;color:var(--mid);line-height:1.75;margin:0 0 4px;">An early refining stage &mdash; impurities in the base material start burning off, but the result is still volatile and unstable.</p>
+      </div>
+
+      <div class="gloss-entry" id="gloss-iron">
+        <h4 style="font-family:var(--serif);font-size:17px;color:var(--white);margin:0 0 4px;">Iron (Strength)</h4>
+        <p style="font-family:var(--serif);font-size:14px;color:var(--mid);line-height:1.75;margin:0 0 4px;">A hardening stage &mdash; the volatility of the previous stage sets into something rigid and load-bearing, for better and worse.</p>
+      </div>
+
+      <div class="gloss-entry" id="gloss-silver">
+        <h4 style="font-family:var(--serif);font-size:17px;color:var(--white);margin:0 0 4px;">Silver (Refinement)</h4>
+        <p style="font-family:var(--serif);font-size:14px;color:var(--mid);line-height:1.75;margin:0 0 4px;">A polishing stage &mdash; the rigid material of the last stage gets refined into something more responsive and reflective, without yet reaching gold's stability.</p>
+      </div>
+
+      <div class="gloss-entry" id="gloss-gold">
+        <h4 style="font-family:var(--serif);font-size:17px;color:var(--white);margin:0 0 4px;">Gold (Illumination)</h4>
+        <p style="font-family:var(--serif);font-size:14px;color:var(--mid);line-height:1.75;margin:0 0 4px;">The classical alchemical goal-material &mdash; incorruptible, stable, "illuminated." What the earlier, cruder stages were always in service of becoming.</p>
+      </div>
+
+      <div class="gloss-entry" id="gloss-quintessence">
+        <h4 style="font-family:var(--serif);font-size:17px;color:var(--white);margin:0 0 4px;">Quintessence</h4>
+        <p style="font-family:var(--serif);font-size:14px;color:var(--mid);line-height:1.75;margin:0 0 4px;">Literally the "fifth essence" &mdash; beyond the four classical elements (earth, water, air, fire), the pure spirit or vital essence said to underlie and animate all of them.</p>
+      </div>
+
+      <div class="gloss-entry" id="gloss-philosophers-stone">
+        <h4 style="font-family:var(--serif);font-size:17px;color:var(--white);margin:0 0 4px;">Philosopher&rsquo;s Stone</h4>
+        <p style="font-family:var(--serif);font-size:14px;color:var(--mid);line-height:1.75;margin:0 0 4px;">The legendary end-goal of alchemy &mdash; not a literal object but a completed transformation, capable of "turning lead into gold": in this framework, base conditioning fully transmuted into realized SELF.</p>
+      </div>
+    </div>
+
+    <!-- ============ CATEGORY: The Seven Hermetic Principles ============ -->
+    <div class="gloss-category" data-cat="hermetic">
+      <div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;margin:36px 0 16px;">The Seven Hermetic Principles</div>
+
+      <div class="gloss-entry" id="gloss-mentalism">
+        <h4 style="font-family:var(--serif);font-size:17px;color:var(--white);margin:0 0 4px;">Mentalism</h4>
+        <p style="font-family:var(--serif);font-size:14px;color:var(--mid);line-height:1.75;margin:0 0 4px;">"The All is Mind." The principle that the universe is fundamentally mental in nature &mdash; matter as a mode of mind, not the other way around.</p>
+      </div>
+
+      <div class="gloss-entry" id="gloss-correspondence">
+        <h4 style="font-family:var(--serif);font-size:17px;color:var(--white);margin:0 0 4px;">Correspondence</h4>
+        <p style="font-family:var(--serif);font-size:14px;color:var(--mid);line-height:1.75;margin:0 0 4px;">"As above, so below." The principle that the same patterns repeat at every scale &mdash; a single moment of reaction contains the same structure as a lifetime's conditioning.</p>
+      </div>
+
+      <div class="gloss-entry" id="gloss-vibration">
+        <h4 style="font-family:var(--serif);font-size:17px;color:var(--white);margin:0 0 4px;">Vibration</h4>
+        <p style="font-family:var(--serif);font-size:14px;color:var(--mid);line-height:1.75;margin:0 0 4px;">"Nothing rests; everything moves." The principle that all matter, energy, thought, and spirit are in constant motion &mdash; stillness is always relative, never absolute.</p>
+      </div>
+
+      <div class="gloss-entry" id="gloss-polarity">
+        <h4 style="font-family:var(--serif);font-size:17px;color:var(--white);margin:0 0 4px;">Polarity</h4>
+        <p style="font-family:var(--serif);font-size:14px;color:var(--mid);line-height:1.75;margin:0 0 4px;">"Everything is dual; opposites are identical in nature, differing only in degree." Hot and cold are the same phenomenon, temperature, at different points &mdash; not two separate things.</p>
+      </div>
+
+      <div class="gloss-entry" id="gloss-rhythm">
+        <h4 style="font-family:var(--serif);font-size:17px;color:var(--white);margin:0 0 4px;">Rhythm</h4>
+        <p style="font-family:var(--serif);font-size:14px;color:var(--mid);line-height:1.75;margin:0 0 4px;">"Everything flows, out and in; everything has its tides." The principle that all things swing between poles in a measurable rhythm &mdash; including moods, motivation, and insight.</p>
+      </div>
+
+      <div class="gloss-entry" id="gloss-cause-effect">
+        <h4 style="font-family:var(--serif);font-size:17px;color:var(--white);margin:0 0 4px;">Cause &amp; Effect</h4>
+        <p style="font-family:var(--serif);font-size:14px;color:var(--mid);line-height:1.75;margin:0 0 4px;">"Every cause has its effect; every effect has its cause." Nothing happens by pure chance &mdash; what looks random is usually a cause operating on a plane you haven't traced yet.</p>
+      </div>
+
+      <div class="gloss-entry" id="gloss-gender">
+        <h4 style="font-family:var(--serif);font-size:17px;color:var(--white);margin:0 0 4px;">Gender</h4>
+        <p style="font-family:var(--serif);font-size:14px;color:var(--mid);line-height:1.75;margin:0 0 4px;">"Gender is in everything." Not biological sex &mdash; a generative/receptive polarity present in all creation, thought, and action, the interplay that produces anything new.</p>
+      </div>
+    </div>
+
+    <!-- ============ CATEGORY: Brainwave & Awareness States ============ -->
+    <div class="gloss-category" data-cat="brainwave">
+      <div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;margin:36px 0 16px;">Brainwave &amp; Awareness States</div>
+
+      <div class="gloss-entry" id="gloss-delta">
+        <h4 style="font-family:var(--serif);font-size:17px;color:var(--white);margin:0 0 4px;">Delta (0.5&ndash;4 Hz)</h4>
+        <p style="font-family:var(--serif);font-size:14px;color:var(--mid);line-height:1.75;margin:0 0 4px;">The slowest brainwave band, dominant in deep, dreamless sleep &mdash; the conscious mind is fully offline while the body repairs itself.</p>
+      </div>
+
+      <div class="gloss-entry" id="gloss-theta">
+        <h4 style="font-family:var(--serif);font-size:17px;color:var(--white);margin:0 0 4px;">Theta (4&ndash;8 Hz)</h4>
+        <p style="font-family:var(--serif);font-size:14px;color:var(--mid);line-height:1.75;margin:0 0 4px;">Active during the twilight zone between waking and sleep, or deep meditation &mdash; attention turns inward toward imagery, intuition, and dreams.</p>
+      </div>
+
+      <div class="gloss-entry" id="gloss-alpha">
+        <h4 style="font-family:var(--serif);font-size:17px;color:var(--white);margin:0 0 4px;">Alpha (8&ndash;12 Hz)</h4>
+        <p style="font-family:var(--serif);font-size:14px;color:var(--mid);line-height:1.75;margin:0 0 4px;">The state of calm, relaxed wakefulness &mdash; an "idling" visual system, often peaking when the eyes close and the mind drifts.</p>
+      </div>
+
+      <div class="gloss-entry" id="gloss-mu">
+        <h4 style="font-family:var(--serif);font-size:17px;color:var(--white);margin:0 0 4px;">Mu (8&ndash;13 Hz)</h4>
+        <p style="font-family:var(--serif);font-size:14px;color:var(--mid);line-height:1.75;margin:0 0 4px;">Shares Alpha's frequency but sits over the motor cortex &mdash; the body idling in neutral, present during physical stillness and vanishing the instant you move, or even intend to.</p>
+      </div>
+
+      <div class="gloss-entry" id="gloss-beta">
+        <h4 style="font-family:var(--serif);font-size:17px;color:var(--white);margin:0 0 4px;">Beta (12&ndash;30 Hz)</h4>
+        <p style="font-family:var(--serif);font-size:14px;color:var(--mid);line-height:1.75;margin:0 0 4px;">The everyday waking state &mdash; dominant when attention is directed outward: solving problems, conversing, making decisions.</p>
+      </div>
+
+      <div class="gloss-entry" id="gloss-gamma-wave">
+        <h4 style="font-family:var(--serif);font-size:17px;color:var(--white);margin:0 0 4px;">Gamma (30&ndash;100 Hz)</h4>
+        <p style="font-family:var(--serif);font-size:14px;color:var(--mid);line-height:1.75;margin:0 0 4px;">The fastest standard brainwave band, associated with binding information across brain regions into one coherent experience &mdash; present during peak focus and sudden insight. <a href="#physical-correlate" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">See the research note &rarr;</a></p>
+      </div>
+
+      <div class="gloss-entry" id="gloss-lambda">
+        <h4 style="font-family:var(--serif);font-size:17px;color:var(--white);margin:0 0 4px;">Lambda (100+ Hz)</h4>
+        <p style="font-family:var(--serif);font-size:14px;color:var(--mid);line-height:1.75;margin:0 0 4px;">A rarely-observed, very high frequency band associated with profound meditative or altered states &mdash; deep stillness paired with rapid, high-coherence processing.</p>
+      </div>
+    </div>
+
+    <!-- ============ CATEGORY: Clinical / Scientific ============ -->
+    <div class="gloss-category" data-cat="clinical">
+      <div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;margin:36px 0 16px;">Clinical &amp; Scientific</div>
+
+      <div class="gloss-entry" id="gloss-senescence">
+        <h4 style="font-family:var(--serif);font-size:17px;color:var(--white);margin:0 0 4px;">Senescence</h4>
+        <p style="font-family:var(--serif);font-size:14px;color:var(--mid);line-height:1.75;margin:0 0 4px;">The point where cells stop dividing and repairing themselves as efficiently &mdash; the biological beginning of decline, before outright breakdown.</p>
+      </div>
+
+      <div class="gloss-entry" id="gloss-information-integration">
+        <h4 style="font-family:var(--serif);font-size:17px;color:var(--white);margin:0 0 4px;">Information Integration</h4>
+        <p style="font-family:var(--serif);font-size:14px;color:var(--mid);line-height:1.75;margin:0 0 4px;">A measure of how much different regions of the brain are combining what they're processing into one unified picture, rather than just being separately active. <a href="#physical-correlate" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">See the research note &rarr;</a></p>
+      </div>
+    </div>
+
+    <p id="glossEmpty" style="display:none;text-align:center;color:var(--dim);font-family:var(--serif);font-style:italic;padding:40px 0;">No terms match that search.</p>
+
+  </div>
+</section>
+
+<script>
+function filterGlossary(q){
+  q = q.trim().toLowerCase();
+  var entries = document.querySelectorAll('#glossaryBody .gloss-entry');
+  var anyVisible = false;
+  entries.forEach(function(entry){
+    var term = entry.querySelector('h4').textContent.toLowerCase();
+    var body = entry.querySelector('p').textContent.toLowerCase();
+    var match = term.indexOf(q) !== -1 || body.indexOf(q) !== -1;
+    entry.style.display = match ? '' : 'none';
+    if (match) anyVisible = true;
+  });
+  // hide category headers with no visible entries left
+  document.querySelectorAll('#glossaryBody .gloss-category').forEach(function(cat){
+    var visibleInCat = Array.prototype.some.call(
+      cat.querySelectorAll('.gloss-entry'),
+      function(e){ return e.style.display !== 'none'; }
+    );
+    cat.style.display = visibleInCat ? '' : 'none';
+  });
+  document.getElementById('glossEmpty').style.display = anyVisible ? 'none' : 'block';
+}
+</script>
+
+
 <!-- FOOTER -->
 <footer class="footer">
   <div class="footer-logo-wrap">
@@ -6302,6 +6631,18 @@ function faqToggle(btn){
     if(ic) ic.innerHTML='&minus;';
   }
 }
+
+/* Inline glossary "+" popover — see .gloss / .gloss-btn / .gloss-pop in <style>. */
+function toggleGloss(btn){
+  event.stopPropagation();
+  var pop = btn.nextElementSibling;
+  var wasOpen = pop.classList.contains('show');
+  document.querySelectorAll('.gloss-pop.show').forEach(function(p){ p.classList.remove('show'); });
+  if(!wasOpen) pop.classList.add('show');
+}
+document.addEventListener('click', function(){
+  document.querySelectorAll('.gloss-pop.show').forEach(function(p){ p.classList.remove('show'); });
+});
 
 function openFaqEntry(id){
   faqCategoryFilter('all');
