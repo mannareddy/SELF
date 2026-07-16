@@ -287,13 +287,13 @@ body{
 
 /* Light: boost body text weight/brightness across all text elements */
 [data-theme="light"] p,[data-theme="light"] li,[data-theme="light"] span:not(.label):not(.ec-type):not(.p-num):not(.num):not(.layer-tag):not(.s-sub):not(.ds-subtitle):not(.rasa-cell):not(.tradition-cell){color:#1a1208 !important;font-weight:400 !important;}
-[data-theme="light"] .phil-line{font-weight:500 !important;color:#1a1208 !important;font-size:clamp(17px,2.2vw,22px) !important;}
-[data-theme="light"] .phil-line.dim{color:#3d2e10 !important;font-size:clamp(15px,1.9vw,19px) !important;}
-[data-theme="light"] .symptoms-block p:not(.small){color:#1a1208 !important;font-weight:500 !important;font-size:clamp(19px,3vw,30px) !important;}
+[data-theme="light"] .phil-line{font-weight:500 !important;color:#1a1208 !important;}
+[data-theme="light"] .phil-line.dim{color:#3d2e10 !important;}
+[data-theme="light"] .symptoms-block p:not(.small){color:#1a1208 !important;font-weight:500 !important;}
 [data-theme="light"] .symptoms-block p.gold:not(.small){color:#8a6a12 !important;}
-[data-theme="light"] .symptoms-block p.small{color:#3d2e10 !important;font-weight:400 !important;font-size:clamp(14px,1.8vw,17px) !important;}
-[data-theme="light"] .faq-a-inner{color:#1a1208 !important;font-weight:400 !important;font-size:15.5px !important;}
-[data-theme="light"] .framework-card p{color:#2e2008 !important;font-weight:400 !important;font-size:17.5px !important;}
+[data-theme="light"] .symptoms-block p.small{color:#3d2e10 !important;font-weight:400 !important;}
+[data-theme="light"] .faq-a-inner{color:#1a1208 !important;font-weight:400 !important;}
+[data-theme="light"] .framework-card p{color:#2e2008 !important;font-weight:400 !important;}
 [data-theme="light"] .pillar-card .p-body{color:#2e2008 !important;font-weight:400 !important;}
 [data-theme="light"] .path-card p{color:#2e2008 !important;font-weight:400 !important;}
 [data-theme="light"] .why-card p{color:#2e2008 !important;font-weight:400 !important;}
@@ -308,8 +308,8 @@ body{
 [data-theme="light"] .ego-twin-card p{color:#1a1208 !important;font-weight:400 !important;}
 [data-theme="light"] .tradition-cell{color:#1a1208 !important;font-weight:400 !important;}
 [data-theme="light"] .mc-desc{color:#1a1208 !important;font-weight:400 !important;}
-[data-theme="light"] .pull-quote p{color:#1a1208 !important;font-weight:400 !important;font-size:clamp(17px,2vw,21px) !important;}
-[data-theme="light"] .cosmo-quote p{color:#1a1208 !important;font-weight:400 !important;font-size:clamp(17px,2vw,21px) !important;}
+[data-theme="light"] .pull-quote p{color:#1a1208 !important;font-weight:400 !important;}
+[data-theme="light"] .cosmo-quote p{color:#1a1208 !important;font-weight:400 !important;}
 [data-theme="light"] .superordinate-box p{color:#2e2008 !important;font-weight:400 !important;}
 [data-theme="light"] .enn-intro-box p{color:#2e2008 !important;font-weight:400 !important;}
 [data-theme="light"] .cosmic-section p{color:#2e2008 !important;font-weight:400 !important;}
@@ -990,7 +990,7 @@ section{scroll-margin-top:56px;}
 
 /* ── 5 PILLARS ───────────────────────────────────────────────────────────── */
 .astrolabe-section{padding:90px 24px;background:radial-gradient(ellipse at 50% 100%,rgba(212,175,55,.06) 0%,transparent 60%);}
-.astrolabe-section h2{font-size:clamp(22px,3.5vw,38px);font-weight:300;color:var(--white);max-width:660px;margin:0 auto 16px;line-height:1.5;}
+.astrolabe-section h2{color:var(--white);max-width:660px;margin:0 auto 16px;}
 .astrolabe-section .sub{font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:520px;margin:0 auto 52px;font-style:italic;line-height:1.85;}
 .pillar-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2px;max-width:980px;margin:0 auto 44px;text-align:left;}
 .pillar-card{padding:32px 28px;background:var(--bg-lift);border:1px solid #1e1e1e;cursor:pointer;transition:border-color .3s;}
@@ -1005,7 +1005,7 @@ section{scroll-margin-top:56px;}
 
 /* ── TWO PATHS ───────────────────────────────────────────────────────────── */
 .two-paths{padding:90px 24px;background:var(--bg-lift);}
-.two-paths h2{font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:620px;margin:0 auto 16px;line-height:1.5;}
+.two-paths h2{color:var(--white);max-width:620px;margin:0 auto 16px;}
 .two-paths .sub{font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:520px;margin:0 auto 52px;line-height:1.85;}
 .paths-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;max-width:800px;margin:0 auto 44px;}
 .path-card{padding:44px 36px;border:1px solid #1e1e1e;text-align:left;position:relative;}
@@ -1076,7 +1076,7 @@ section{scroll-margin-top:56px;}
 
 /* ── WHY SECTION ─────────────────────────────────────────────────────────── */
 .why-section{padding:90px 24px;background:var(--bg-lift);}
-.why-section h2{font-size:clamp(22px,3.5vw,38px);font-weight:300;color:var(--white);max-width:660px;margin:0 auto 52px;line-height:1.55;}
+.why-section h2{color:var(--white);max-width:660px;margin:0 auto 52px;}
 .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;max-width:960px;margin:0 auto 52px;text-align:left;}
 .why-card{padding:32px 28px;border:1px solid #1e1e1e;background:var(--bg);}
 .why-card .icon{font-size:26px;margin-bottom:16px;display:block;}
@@ -1100,7 +1100,7 @@ section{scroll-margin-top:56px;}
 
 /* ── MIRROR ROOM ─────────────────────────────────────────────────────────── */
 .mirror-room{scroll-margin-top:56px;padding:90px 24px;border-top:1px solid #111;}
-.mirror-room h2{font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:560px;margin:0 auto 20px;line-height:1.5;}
+.mirror-room h2{color:var(--white);max-width:560px;margin:0 auto 20px;}
 .mirror-room .descriptor{font-size:clamp(14px,2vw,19px);font-weight:300;color:var(--grey);max-width:520px;margin:0 auto 52px;line-height:1.92;}
 .mirror-links{display:flex;flex-direction:column;align-items:center;gap:14px;}
 .mirror-link{display:block;font-family:var(--sans);font-size:11.5px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);border:1px solid #2a2a2a;padding:15px 40px;transition:all .3s;text-decoration:none;width:100%;max-width:380px;}
@@ -1110,7 +1110,7 @@ section{scroll-margin-top:56px;}
 
 /* ── IDENTITY SECTION ────────────────────────────────────────────────────── */
 .identity-section{padding:90px 24px;background:var(--bg-lift);}
-.identity-section h2{font-size:clamp(22px,3.5vw,38px);font-weight:300;color:var(--white);max-width:660px;margin:0 auto 16px;line-height:1.5;}
+.identity-section h2{color:var(--white);max-width:660px;margin:0 auto 16px;}
 .identity-section .sub{font-size:clamp(14px,2vw,19px);color:var(--grey);max-width:520px;margin:0 auto 52px;font-style:italic;line-height:1.85;}
 .identity-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:2px;max-width:980px;margin:0 auto;text-align:left;overflow:hidden;transition:max-height .5s ease,opacity .3s ease;opacity:1;}
 .masters-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;max-width:980px;margin:0 auto;text-align:left;}
@@ -1136,7 +1136,7 @@ section{scroll-margin-top:56px;}
 
 /* ── FAQ ─────────────────────────────────────────────────────────────────── */
 .faq-section{padding:90px 24px;background:var(--bg-lift);border-bottom:1px solid #111;}
-.faq-section h2{font-size:clamp(20px,3vw,32px);font-weight:300;color:var(--white);max-width:560px;margin:0 auto 52px;line-height:1.5;}
+.faq-section h2{color:var(--white);max-width:560px;margin:0 auto 52px;}
 .faq-list{max-width:680px;margin:0 auto;text-align:left;}
 .faq-item{border-bottom:1px solid #1a1a1a;}
 .faq-item:first-child{border-top:1px solid #1a1a1a;}
@@ -1216,7 +1216,7 @@ section{scroll-margin-top:56px;}
 
 /* ── ARCHITECTURE OF EGO ─────────────────────────────────────────────────── */
 .ego-arch-section{padding:90px 24px;background:var(--bg);border-bottom:1px solid #111;}
-.ego-arch-section h2{font-size:clamp(22px,3.5vw,38px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;}
+.ego-arch-section h2{color:var(--white);max-width:700px;margin:0 auto 16px;}
 .ego-arch-section .sub{font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:560px;margin:0 auto 52px;font-style:italic;line-height:1.85;}
 .ego-ring-wrap{max-width:700px;margin:0 auto 52px;padding:44px 36px;border:1px solid #2a2a2a;background:radial-gradient(ellipse at 50% 50%,rgba(212,175,55,.04) 0%,transparent 70%);}
 .ego-ring-title{font-family:var(--sans);font-size:9px;letter-spacing:5px;text-transform:uppercase;color:#c0392b;opacity:.85;margin-bottom:24px;display:block;}
@@ -1257,7 +1257,7 @@ section{scroll-margin-top:56px;}
 
 /* ── ENNEAGRAM SECTION ───────────────────────────────────────────────────── */
 .enn-section{padding:90px 24px;background:var(--bg-lift);}
-.enn-section h2{font-size:clamp(22px,3.5vw,38px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;}
+.enn-section h2{color:var(--white);max-width:700px;margin:0 auto 16px;}
 .enn-section .sub{font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:580px;margin:0 auto 52px;font-style:italic;line-height:1.85;}
 .enn-intro-box{max-width:720px;margin:0 auto 52px;padding:36px 32px;border:1px solid #2a2a2a;background:var(--bg);text-align:left;}
 .enn-intro-box p{font-family:var(--serif);font-size:clamp(16px,2.1vw,19px);color:var(--grey);line-height:1.9;margin-bottom:14px;}
@@ -1283,7 +1283,7 @@ section{scroll-margin-top:56px;}
 
 /* ── DESCENT SECTION ─────────────────────────────────────────────────────── */
 .descent-section{padding:90px 24px;background:var(--bg);border-bottom:1px solid #111;}
-.descent-section h2{font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:680px;margin:0 auto 16px;line-height:1.5;}
+.descent-section h2{color:var(--white);max-width:680px;margin:0 auto 16px;}
 .descent-section .sub{font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:540px;margin:0 auto 52px;font-style:italic;line-height:1.85;}
 .descent-funnel{max-width:600px;margin:0 auto 52px;}
 .descent-step{padding:22px 28px;border:1px solid #1e1e1e;background:var(--bg-lift);margin-bottom:2px;display:grid;grid-template-columns:52px 1fr;gap:0;text-align:left;transition:border-color .3s;}
@@ -1309,7 +1309,7 @@ section{scroll-margin-top:56px;}
 
 /* ── RASA SYNTHESIS TABLE ────────────────────────────────────────────────── */
 .rasa-section{padding:90px 24px;background:var(--bg-lift);}
-.rasa-section h2{font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;}
+.rasa-section h2{color:var(--white);max-width:700px;margin:0 auto 16px;}
 .rasa-section .sub{font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:560px;margin:0 auto 52px;font-style:italic;line-height:1.85;}
 .rasa-table{max-width:900px;margin:0 auto;border:1px solid #2a2a2a;overflow-x:auto;}
 .rasa-row{display:grid;grid-template-columns:1.2fr 1fr 1fr 1.2fr;border-bottom:1px solid #1a1a1a;}
@@ -1402,7 +1402,10 @@ section{scroll-margin-top:56px;}
   margin-right:auto;
 }
 
-/* Inline h2 equivalents (styled with inline style — override for consistency) */
+/* SINGLE SOURCE OF TRUTH for h2 font-size/weight/line-height, site-wide, both themes.
+   Every section-specific h2 rule below (.astrolabe-section h2, .why-section h2, etc.)
+   intentionally omits these three properties — they only set color/max-width/margin.
+   To change heading size anywhere on the site, change it here only. */
 section h2,
 .section-wide h2 {
   font-size:clamp(22px,3.5vw,36px) !important;
