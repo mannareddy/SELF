@@ -2267,7 +2267,20 @@ tr.matrix-highlight{
    difficult words anywhere on the site (Sanskrit terms, alchemy
    vocabulary, clinical words, Hermetic principles, etc).
    Pairs with the full #glossary reference section below.
-   ============================================================ */
+
+   The definition text lives in .gloss-pop (kept in the DOM as
+   the data source, but never rendered in place — see below).
+   The visible tooltip is a single shared "portal" element
+   (#glossPortal) appended once to <body>. Rendering it there
+   instead of inline avoids two compounding bugs:
+   1) any ancestor with overflow:hidden (every collapsible card/
+      section uses this for its expand animation) would visually
+      clip a same-context tooltip that pops above its anchor.
+   2) inline caption styles (uppercase, letter-spacing, small
+      sans-serif labels) would cascade into an in-place tooltip
+      and corrupt its typography, since only some properties
+      were being reset.
+   A portal parented directly to <body> inherits neither. ============================================================ */
 .gloss{
   position:relative;
   display:inline-block;
@@ -2289,49 +2302,45 @@ tr.matrix-highlight{
   opacity:.85;
 }
 .gloss-btn:hover{ opacity:1; }
-.gloss-pop{
+/* Data source only — never rendered in place */
+.gloss-pop{ display:none !important; }
+
+/* The shared portal tooltip — single instance, body-level */
+.gloss-portal{
   display:none;
-  position:absolute;
-  left:50%;
-  bottom:calc(100% + 10px);
-  transform:translateX(-50%);
-  width:230px;
-  max-width:min(230px, 70vw);
+  position:fixed;
+  width:260px;
+  max-width:min(260px, 82vw);
   background:var(--bg-lift);
   border:1px solid var(--gold);
   padding:14px 16px;
-  font-family:var(--serif);
-  font-size:12.5px;
-  line-height:1.65;
-  color:var(--mid);
+  font-family:var(--serif) !important;
+  font-size:12.5px !important;
+  font-weight:300 !important;
+  font-style:normal !important;
+  letter-spacing:normal !important;
+  text-transform:none !important;
+  line-height:1.65 !important;
+  color:var(--mid) !important;
   text-align:left;
   white-space:normal;
-  z-index:60;
+  z-index:9999;
   box-shadow:0 8px 24px rgba(0,0,0,.45);
 }
-.gloss-pop.show{ display:block; }
-.gloss-pop::after{
+.gloss-portal a{ color:var(--gold) !important; text-decoration:none; border-bottom:1px dotted var(--gold); font-family:var(--serif) !important; font-size:12.5px !important; text-transform:none !important; letter-spacing:normal !important; }
+.gloss-portal.show{ display:block; }
+.gloss-portal::after{
   content:'';
   position:absolute;
-  top:100%;
-  left:50%;
-  transform:translateX(-50%);
   border:6px solid transparent;
-  border-top-color:var(--gold);
 }
-/* Flip below the word instead of above, when a term sits near the
-   top of the viewport. Add class "gloss-below" to the outer .gloss
-   span to use this variant. */
-.gloss.gloss-below .gloss-pop{
-  bottom:auto;
-  top:calc(100% + 10px);
-}
-.gloss.gloss-below .gloss-pop::after{
-  top:auto;
-  bottom:100%;
-  border-top-color:transparent;
-  border-bottom-color:var(--gold);
-}
+.gloss-portal.arrow-top::after{ top:100%; left:var(--arrow-x, 50%); transform:translateX(-50%); border-top-color:var(--gold); }
+.gloss-portal.arrow-bottom::after{ bottom:100%; left:var(--arrow-x, 50%); transform:translateX(-50%); border-bottom-color:var(--gold); }
+
+/* Glossary section: :target highlight + safe scroll landing so a
+   "Full entry →" link visibly lands on the right item among 49+ entries */
+.gloss-entry{ scroll-margin-top:80px; border-left:2px solid transparent; padding-left:12px; margin-left:-14px; transition:border-color .4s ease, background-color .4s ease; }
+.gloss-entry:target{ border-left-color:var(--gold); background:rgba(212,175,55,.08); }
 
 </style>
 </head>
@@ -6364,7 +6373,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
 
       <div class="gloss-entry" id="gloss-senescence">
         <h4 style="font-family:var(--serif);font-size:17px;color:var(--white);margin:0 0 4px;">Senescence</h4>
-        <p style="font-family:var(--serif);font-size:14px;color:var(--mid);line-height:1.75;margin:0 0 4px;">The point where cells stop dividing and repairing themselves as efficiently &mdash; the biological beginning of decline, before outright breakdown.</p>
+        <p style="font-family:var(--serif);font-size:14px;color:var(--mid);line-height:1.75;margin:0 0 4px;">The point where cells stop dividing and repairing themselves as efficiently &mdash; the biological beginning of decline, before outright breakdown. It's distinct from disease: a senescent cell isn't sick, it has simply stopped renewing, and the tissue around it starts running on a shrinking maintenance budget. On the Master Matrix, this is the stage between Aging and Mortality for every layer above the body, too &mdash; the Mind's Fatigue, the Ego's Rigidity, all name the same pattern of declining renewal at a different altitude.</p>
       </div>
 
       <div class="gloss-entry" id="gloss-information-integration">
@@ -6703,17 +6712,68 @@ function faqToggle(btn){
   }
 }
 
-/* Inline glossary "+" popover — see .gloss / .gloss-btn / .gloss-pop in <style>. */
+/* Inline glossary "+" popover — see .gloss / .gloss-btn / .gloss-pop / .gloss-portal in <style>.
+   The .gloss-pop span next to each button is the data source (never shown in place);
+   this renders it into the single shared #glossPortal, positioned from the button's
+   actual screen coordinates so it can never be clipped by a collapsible ancestor's
+   overflow:hidden, and never inherits a caption's uppercase/letter-spacing styling. */
+function closeGlossPortal(){
+  var portal = document.getElementById('glossPortal');
+  if(portal){ portal.classList.remove('show'); portal.removeAttribute('data-open-for'); }
+}
 function toggleGloss(btn){
   event.stopPropagation();
+  var portal = document.getElementById('glossPortal');
+  if(!portal) return;
+  var key = btn.getAttribute('aria-label') || btn.outerHTML;
+  if(portal.classList.contains('show') && portal.getAttribute('data-open-for') === key){
+    closeGlossPortal();
+    return;
+  }
   var pop = btn.nextElementSibling;
-  var wasOpen = pop.classList.contains('show');
-  document.querySelectorAll('.gloss-pop.show').forEach(function(p){ p.classList.remove('show'); });
-  if(!wasOpen) pop.classList.add('show');
+  portal.innerHTML = pop.innerHTML;
+  portal.setAttribute('data-open-for', key);
+  portal.classList.add('show');
+  portal.classList.remove('arrow-top','arrow-bottom');
+
+  var rect = btn.getBoundingClientRect();
+  var margin = 12;
+  var portalWidth = Math.min(260, window.innerWidth * 0.82);
+  portal.style.width = portalWidth + 'px';
+
+  // Horizontal: center on the button, clamped so it never overflows either edge
+  var left = rect.left + rect.width/2 - portalWidth/2;
+  left = Math.max(margin, Math.min(left, window.innerWidth - portalWidth - margin));
+  var arrowX = (rect.left + rect.width/2 - left);
+  arrowX = Math.max(14, Math.min(arrowX, portalWidth - 14));
+  portal.style.setProperty('--arrow-x', arrowX + 'px');
+
+  // Vertical: prefer above the term; flip below if not enough room above
+  var portalHeightEstimate = portal.offsetHeight || 120;
+  var spaceAbove = rect.top;
+  if(spaceAbove > portalHeightEstimate + 24){
+    portal.style.top = (rect.top - portalHeightEstimate - 10) + 'px';
+    portal.classList.add('arrow-top');
+  } else {
+    portal.style.top = (rect.bottom + 10) + 'px';
+    portal.classList.add('arrow-bottom');
+  }
+  portal.style.left = left + 'px';
+
+  // Re-measure now that content is rendered, in case estimate was off
+  requestAnimationFrame(function(){
+    var h = portal.offsetHeight;
+    if(portal.classList.contains('arrow-top')){
+      portal.style.top = (rect.top - h - 10) + 'px';
+    }
+  });
 }
-document.addEventListener('click', function(){
-  document.querySelectorAll('.gloss-pop.show').forEach(function(p){ p.classList.remove('show'); });
+document.addEventListener('click', function(e){
+  var portal = document.getElementById('glossPortal');
+  if(portal && !portal.contains(e.target)) closeGlossPortal();
 });
+document.addEventListener('scroll', closeGlossPortal, true);
+window.addEventListener('resize', closeGlossPortal);
 
 function openFaqEntry(id){
   faqCategoryFilter('all');
@@ -8261,5 +8321,6 @@ init();
 
 })();
 </script>
+<div id="glossPortal" class="gloss-portal" role="tooltip"></div>
 </body>
 </html>
