@@ -22,3 +22,24 @@ Allow: /
 
 User-agent: Bytespider
 Allow: /
+
+# Retrieval / citation bots — fetched live when someone asks an AI
+# assistant a question; distinct from the training bots above
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+# Additional AI crawlers — broader coverage
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
