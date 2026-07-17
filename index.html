@@ -2434,7 +2434,7 @@ tr.matrix-highlight{
         <a href="#master-matrix" data-group="new-section">Interactive Master Matrix</a>
         <a href="#glossary" data-group="new-section">Glossary &amp; Inline Definitions</a>
         <a href="#faq-workbook" data-group="new-section" onclick="openFaqEntry('faq-workbook')">Get the Workbook ↗</a>
-        <a href="https://self-webapp-journey.netlify.app" target="_blank" rel="noopener" style="opacity:.9;">Web Companion <span style="font-family:var(--sans);font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:2px 6px;margin-left:8px;">Live</span></a>
+        <a href="https://companion.42self.xyz" target="_blank" rel="noopener" style="opacity:.9;">Web Companion <span style="font-family:var(--sans);font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:2px 6px;margin-left:8px;">Live</span></a>
       </div>
     </li>
 
@@ -2505,7 +2505,7 @@ tr.matrix-highlight{
         <a href="#master-matrix">Interactive Master Matrix</a>
         <a href="#glossary">Glossary &amp; Inline Definitions</a>
         <a href="#faq-workbook" onclick="openFaqEntry('faq-workbook')">Get the Workbook ↗</a>
-        <a href="https://self-webapp-journey.netlify.app" target="_blank" rel="noopener" style="opacity:.9;">Web Companion <span style="font-family:var(--sans);font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:2px 6px;margin-left:8px;">Live</span></a>      </div>
+        <a href="https://companion.42self.xyz" target="_blank" rel="noopener" style="opacity:.9;">Web Companion <span style="font-family:var(--sans);font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:2px 6px;margin-left:8px;">Live</span></a>      </div>
     </li>
 
     <li><a href="#glossary">Glossary</a></li>
@@ -5944,7 +5944,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
       </button>
       <div class="faq-a"><div class="faq-a-inner">
         <p style="margin-bottom:16px;">The Web Companion is a private, ongoing space for the anchor questions across all seven stages of the framework &mdash; the kind you see in the Feedback Loop Check-In, extended into a full journey you can return to over time.</p>
-        <p style="margin-bottom:16px;">It's live now &mdash; free to use. <a href="https://self-webapp-journey.netlify.app" target="_blank" rel="noopener" style="color:var(--gold);">Start here ↗</a>. The Feedback Loop Check-In and the digital workbook still work the same way if you'd rather stay on this page for now.</p>      </div></div>
+        <p style="margin-bottom:16px;">It's live now &mdash; free to use. <a href="https://companion.42self.xyz" target="_blank" rel="noopener" style="color:var(--gold);">Start here ↗</a>. The Feedback Loop Check-In and the digital workbook still work the same way if you'd rather stay on this page for now.</p>      </div></div>
     </div>
 
     <div class="faq-item closed" data-cat="self">
@@ -6964,7 +6964,7 @@ function voidRenderLastNote(){
   if(!stored || !stored.endingId){ note.innerHTML=''; return; }
   var when = new Date(stored.date).toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'}) +
     ' at ' + new Date(stored.date).toLocaleTimeString(undefined,{hour:'numeric',minute:'2-digit'});
-  note.innerHTML = '<p style="font-family:var(--sans);font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#555;margin-top:12px;line-height:1.7;">Last time (' + when + '): &ldquo;' + stored.endingLine + '&rdquo;<br>A local preview of your own answers, saved to this device &mdash; your fuller journey history now lives in the <a href="https://self-webapp-journey.netlify.app" target="_blank" rel="noopener" style="color:var(--gold);">Web Companion</a>.</p>';
+  note.innerHTML = '<p style="font-family:var(--sans);font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#555;margin-top:12px;line-height:1.7;">Last time (' + when + '): &ldquo;' + stored.endingLine + '&rdquo;<br>A local preview of your own answers, saved to this device &mdash; your fuller journey history now lives in the <a href="https://companion.42self.xyz" target="_blank" rel="noopener" style="color:var(--gold);">Web Companion</a>.</p>';
 }
 
 function renderVoidNode(nodeId, isRestart){
@@ -8269,7 +8269,7 @@ init();
     if(!stored || !stored.tier){ note.innerHTML=''; return; }
     var when = new Date(stored.date).toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'});
     var anchorName = (MQ_RESULTS[stored.tier]||{}).anchor || stored.tier;
-    note.innerHTML = '<p style="font-family:var(--sans);font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#555;margin-top:14px;line-height:1.7;">Last check-in on this device: ' + when + ' &mdash; ' + anchorName + '.<br>A local preview of your own answers &mdash; the fuller check-in history now lives in the <a href="https://self-webapp-journey.netlify.app" target="_blank" rel="noopener" style="color:var(--gold);">Web Companion</a>.</p>';
+    note.innerHTML = '<p style="font-family:var(--sans);font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#555;margin-top:14px;line-height:1.7;">Last check-in on this device: ' + when + ' &mdash; ' + anchorName + '.<br>A local preview of your own answers &mdash; the fuller check-in history now lives in the <a href="https://companion.42self.xyz" target="_blank" rel="noopener" style="color:var(--gold);">Web Companion</a>.</p>';
   }
 
   function mqRender(){
