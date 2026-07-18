@@ -627,8 +627,8 @@ a:hover{opacity:.7;}
 .mnav-toggle{display:none;}
 .mnav-panel{display:none;}
 
-.nav-caret{font-size:13px;margin-left:5px;opacity:.9;position:relative;top:-1px;}
-.mnav-caret{font-size:14px;margin-left:6px;opacity:.8;transition:transform .25s ease;display:inline-block;}
+.nav-caret{font-size:17px;margin-left:6px;opacity:.9;position:relative;top:-1px;}
+.mnav-caret{font-size:19px;margin-left:7px;opacity:.9;transition:transform .25s ease;display:inline-block;}
 .mnav-new-badge{color:var(--gold);font-size:8px;margin-left:3px;}
 .nav-new-dot{
   display:inline-block;width:5px;height:5px;border-radius:50%;
@@ -639,7 +639,18 @@ a:hover{opacity:.7;}
   0%,100%{opacity:1;transform:scale(1);}
   50%{opacity:0.4;transform:scale(0.65);}
 }
-
+/* ── "DESKTOP SITE" ON MOBILE (901–1023px): widen the hero column ──
+   Phones running the browser's "Request Desktop Site" toggle typically
+   simulate a viewport around 980px — just below the site's own real-desktop
+   breakpoint at 1024px (see .section/.section-wide rules above). Without
+   this, the hero box stays capped at its base 540px in that narrow window,
+   leaving a lot of unused width. This widens it only in that band; at
+   1024px and up the original values apply exactly as before. */
+@media(min-width:901px) and (max-width:1023px){
+  .hero-question{max-width:780px !important;}
+  .hero-sub{max-width:620px !important;}
+  .hero > div[style*="max-width:540px"]{max-width:760px !important;}
+}
 /* ── DESKTOP (>900px): hover / focus dropdown panels ── */
 @media(min-width:901px){
   .nav-dropdown-wrap{position:relative;}
