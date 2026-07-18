@@ -428,7 +428,10 @@ body{
 [data-theme="light"] .collapse-toggle-btn{border-color:rgba(138,106,18,0.5) !important;color:#7a5e0e !important;}
 [data-theme="light"] .continue-hint{color:#9a8454 !important;}
 [data-theme="light"] .collapse-toggle-btn:hover{background:rgba(122,94,14,0.1) !important;}
-/* Light theme — border fixes for all bordered boxes */
+/* IPO inner wrapper: remove outer box in both themes */
+.ipo-section > div[style*="border:1px solid #2a2a2a"]{border-color:transparent !important;}
+.ipo-section > div > div[style*="border-top:1px solid var(--gold)"],
+.ipo-section > div > div[style*="border-bottom:1px solid var(--gold)"]{display:none !important;}
 [data-theme="light"] .ipo-upanishad{border-color:rgba(0,0,0,0.15) !important;border-left-color:rgba(138,106,18,0.6) !important;background:#e8e0cc !important;}
 [data-theme="light"] .antidote-box{border-color:rgba(138,106,18,0.5) !important;background:rgba(138,106,18,0.04) !important;}
 [data-theme="light"] .antidote-step{background:#f5f1e8 !important;border-color:rgba(0,0,0,0.1) !important;}
