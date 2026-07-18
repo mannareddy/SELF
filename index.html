@@ -370,6 +370,8 @@ body{
 [data-theme="light"] .symptoms-block-box{border-color:rgba(0,0,0,0.15) !important;background:#ede6d0 !important;}
 [data-theme="light"] .framework-card h3{color:#1a1208 !important;}
 [data-theme="light"] .framework-card .num{color:#8a6a12 !important;}
+[data-theme="light"] .pillar-card .p-title{color:#1a1208 !important;}
+[data-theme="light"] .why-card h4{color:#8a6a12 !important;}
 [data-theme="light"] .faq-q{color:#1a1208 !important;font-weight:600 !important;}
 [data-theme="light"] .faq-icon{color:#8a6a12 !important;border-color:rgba(138,106,18,0.4) !important;}
 [data-theme="light"] .faq-item{border-bottom-color:rgba(0,0,0,0.1) !important;}
@@ -1014,7 +1016,7 @@ section{scroll-margin-top:56px;}
 .pillar-card:hover{border-color:#444;}
 .pillar-card.open{border-color:var(--gold);}
 .pillar-card .p-num{font-family:var(--sans);font-size:10px;letter-spacing:3px;color:var(--gold);opacity:.65;margin-bottom:10px;display:block;}
-.pillar-card .p-title{font-family:var(--serif);font-size:21px;font-weight:400;color:var(--white);margin-bottom:0;line-height:1.35;}
+.pillar-card .p-title{font-family:var(--serif);font-size:clamp(19px,2vw,24px);font-weight:400;color:var(--white);margin-bottom:0;line-height:1.35;}
 .pillar-card .p-expand{font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-top:8px;display:block;}
 .pillar-card .p-body{font-family:var(--serif);font-size:15.5px;font-weight:300;color:var(--grey);line-height:1.88;margin-top:16px;display:none;border-top:1px solid #1e1e1e;padding-top:16px;}
 .pillar-card.open .p-body{display:block;}
@@ -1502,9 +1504,23 @@ h4 {
   font-weight:300;
 }
 
-/* Card headings — h3, h4 in cards: sizing now comes from the global
-   h3 {} / h4 {} single-source-of-truth rules; this block intentionally
-   left empty of font-size so nothing here can silently drift out of sync. */
+/* ── CARD TITLE UNIFICATION ───────────────────────────────────────────────
+   All front-facing card titles (framework-card h3, pillar-card .p-title,
+   identity-card h4) must render at the same responsive scale.
+   The global h3 rule (clamp 22–30px) is correct for section headings but
+   too large for card contexts — override it here with a scoped rule.
+   Target: clamp(19px, 2vw, 24px) → 19px mobile · ~22px tablet · 24px desktop */
+.framework-card h3 {
+  font-size: clamp(19px, 2vw, 24px) !important;
+  line-height: 1.35 !important;
+}
+/* h4 card titles (identity-card, why-card) align at 21px from the global
+   h4 rule — within the same clamp band; apply the clamp for responsiveness */
+.identity-card h4,
+.why-card h4 {
+  font-size: clamp(19px, 2vw, 24px) !important;
+  line-height: 1.35 !important;
+}
 
 /* Pull quote and cosmo quote — unified */
 .pull-quote p,
@@ -1700,6 +1716,11 @@ h4 {
   .hero-question{font-size:18px !important;margin-bottom:0 !important;}
   .hero > a[href="#contract"]{margin:0 auto !important;}
   .hero > div[style*="padding:22px 32px"]{padding:14px 18px !important;margin-bottom:0 !important;}
+  /* Card titles — lock all three card types to same mobile size */
+  .framework-card h3,
+  .identity-card h4,
+  .why-card h4 { font-size: 19px !important; }
+  .pillar-card .p-title { font-size: 19px !important; }
 }
 @media(max-width:640px){
   [style*="min-width:560px"],
