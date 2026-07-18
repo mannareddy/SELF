@@ -100,7 +100,7 @@ body{
   .ladder-scroll-wrap::-webkit-scrollbar-thumb{background:rgba(212,175,55,0.5);border-radius:1px;}
 }
 
-  /* ── SHARED TABLE STYLES)
+  /* ── SHARED TABLE STYLES ── */
 .self-table-wrap{
   width:100%;
   overflow-x:auto;
@@ -249,14 +249,18 @@ body{
     padding:10px 8px;
   }
 }
-  /* Table wrappers — fill edge to edge, no side bleed */
+  /* Table wrappers — full frame border */
  .self-table-wrap{
   width:100%;
   overflow-x:auto !important;
   -webkit-overflow-scrolling:touch !important;
   touch-action:pan-x pan-y;
-  border-left:none !important;
-  border-right:none !important;
+  border-left:2px solid #4d4d4d !important;
+  border-right:2px solid #4d4d4d !important;
+}
+[data-theme="light"] .self-table-wrap{
+  border-left-color:rgba(0,0,0,0.4) !important;
+  border-right-color:rgba(0,0,0,0.4) !important;
 }
   /* Divider — prevent float from horizontal overflow */
   .divider{
@@ -1602,6 +1606,15 @@ h4 {
   letter-spacing: 2px;
   text-transform: uppercase;
   line-height: 1.6;
+}
+
+/* Framework cards and Identity/Ascent-of-Self cards were rendering at
+   15.5px — noticeably larger than the site's table cell text (.self-table
+   td, 14px). Matched here so card prose and table prose read as one
+   consistent scale across the site. */
+.framework-card p:not(.equation-label),
+.identity-card p:not(.equation-label) {
+  font-size: 14px !important;
 }
 
 /* Phil lines — one scale */
@@ -7358,6 +7371,9 @@ function updateNav(){
 function sectionCollapse(id,btn){
   var wrap=document.getElementById(id);
   if(!wrap)return;
+  if(!btn){
+    btn=document.querySelector('[onclick*="sectionCollapse(\'' + id + '\'"]');
+  }
   var isCollapsed=wrap.classList.contains('collapsed');
   if(isCollapsed){
     wrap.classList.remove('collapsed');
