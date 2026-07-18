@@ -1580,7 +1580,19 @@ h4 {
   line-height: 1.88;
   color: var(--grey);
 }
-
+/* Equation-label lines (e.g. "ATMAN (Individual SELF) = BRAHMAN (Supreme
+   Reality)") are small uppercase sans-serif captions, not body prose — the
+   global body-text normalization above (.framework-card p, .identity-card p)
+   was forcing them up to 15.5px serif along with everything else. Higher
+   specificity here (class + parent class) wins over that !important rule. */
+.framework-card p.equation-label,
+.identity-card p.equation-label {
+  font-family: var(--sans) !important;
+  font-size: 10px !important;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  line-height: 1.6;
+}
 /* Inline-styled paragraphs inside bordered boxes — override clamp bloat */
 .cosmo-quote p,
 .pull-quote p {
@@ -2319,17 +2331,18 @@ tr.matrix-highlight{
 }
 .gloss-btn{
   display:inline-block;
-  margin-left:1px;
-  padding:0 3px;
+  margin-left:2px;
+  padding:0 4px;
   border:none;
   background:none;
   color:var(--gold);
   font-family:var(--sans);
-  font-size:9px;
+  font-size:14px;
+  font-weight:700;
   line-height:1;
   cursor:pointer;
   vertical-align:super;
-  opacity:.85;
+  opacity:.95;
 }
 .gloss-btn:hover{ opacity:1; }
 /* Data source only — never rendered in place */
@@ -2787,7 +2800,7 @@ tr.matrix-highlight{
       <h3>The True &ldquo;I&rdquo;</h3><div class="framework-content">
       <p>Your pure, underlying conscious awareness. The silent observer behind every thought. The screen, not the movie &mdash; unchanged by whatever plays on it. Every tradition that found truth arrived at the same address.</p>
       <p style="margin-top:14px;font-size:15px;color:var(--gold);font-style:italic;">SAT-CHIT-ANAND.<br><span style="font-size:14px;font-style:normal;">Existence. Consciousness. Bliss.</span></p>
-      <p style="margin-top:10px;font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;border-top:1px solid #1e1e1e;padding-top:12px;"><span class="gloss">Atman<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Atman">+</button><span class="gloss-pop">The individual self, in Vedanta &mdash; held as identical to, not separate from, universal consciousness.</span></span> (Individual SELF) = <span class="gloss">Brahman<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Brahman">+</button><span class="gloss-pop">The ground of all reality in Vedanta &mdash; not a deity to petition, but the substrate everything, including you, is made of.</span></span> (Supreme Reality)</p>
+      <p class="equation-label" style="margin-top:10px;font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;border-top:1px solid #1e1e1e;padding-top:12px;"><span class="gloss">Atman<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Atman">+</button><span class="gloss-pop">The individual self, in Vedanta &mdash; held as identical to, not separate from, universal consciousness.</span></span> (Individual SELF) = <span class="gloss">Brahman<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Brahman">+</button><span class="gloss-pop">The ground of all reality in Vedanta &mdash; not a deity to petition, but the substrate everything, including you, is made of.</span></span> (Supreme Reality)</p>
       <p style="margin-top:10px;font-size:14px;color:var(--gold);font-style:italic;">In Sanskrit: <em><span class="gloss">Maya<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Maya">+</button><span class="gloss-pop">Usually translated &ldquo;illusion,&rdquo; though &ldquo;the measuring-out&rdquo; is closer &mdash; the way one undivided reality appears to us as separate things, separate selves, and passing time.</span></span> / <span class="gloss">Avidya<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Avidya">+</button><span class="gloss-pop">Literally &ldquo;not-seeing&rdquo; &mdash; the root ignorance that mistakes the temporary, changing self for the true, unchanging one.</span></span></em> &mdash; the lens of separation &mdash; is dissolved when you recognize you are not the projection, but the screen. That is who you actually are.</p>
     </div></div>
     <div class="framework-card collapsed">
@@ -2840,7 +2853,7 @@ tr.matrix-highlight{
       <h3>Survival — &ldquo;I Exist&rdquo;</h3><div class="framework-content">
       <p>Consciousness fully embedded in matter. You do not operate reality; reality operates on you. Dense, chaotic, and entirely focused on reacting to physical constraints just to maintain baseline existence.</p>
       <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">Alchemy: Lead (Base Matter) &middot; Brainwave: Delta &middot; Root Chakra / DO &middot; Saturn / Earth &middot; Hermetic Principle: <span class="gloss">Mentalism<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Mentalism">+</button><span class="gloss-pop">&ldquo;The All is Mind.&rdquo; The principle that the universe is fundamentally mental in nature &mdash; matter as a mode of mind, not the other way around.</span></span></p>
-      <p style="margin-top:10px;font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;border-top:1px solid #1e1e1e;padding-top:12px;">Life Stage: Womb &amp; Infancy</p>
+      <p class="equation-label" style="margin-top:10px;font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;border-top:1px solid #1e1e1e;padding-top:12px;">Life Stage: Womb &amp; Infancy</p>
       <p style="margin-top:6px;font-size:14px;color:var(--grey);">The Vertical Leap &mdash; <em style="color:var(--gold);font-style:italic;">Somatic Grounding:</em> anchor completely in the physical form without resisting limits or survival demands.</p>
     </div></div>
     <div class="framework-card collapsed">
@@ -4748,7 +4761,7 @@ tr.matrix-highlight{
     <div class="identity-card"><span class="layer-tag">Stage 4 &mdash; Heart Chakra &middot; Intellect</span><h4>Giving &amp; Choice</h4><p>Compassion opens. A shift from &ldquo;I&rdquo; to &ldquo;We&rdquo; breaks the chains of self-centeredness. <strong style="color:var(--gold);font-weight:400;">Second Fork:</strong> ego-driven giving or selfless love.</p><p class="practice">Seed Mantra: YAM &middot; Element: Air &middot; Layer: The Intellect (Buddhi)</p></div>
     <div class="identity-card"><span class="layer-tag">Stage 5 &mdash; Throat Chakra &middot; Memory</span><h4>The Seeker &amp; Devotion</h4><p>Your spiritual practices become regular. The longing for enlightenment grows. The throat opens as you authentically express the inner qualities of your heart.</p><p class="practice">Seed Mantra: HAM &middot; Element: Ether &middot; Layer: Memory</p></div>
     <div class="identity-card"><span class="layer-tag">Stage 6 &mdash; Third Eye &middot; Ego Layer</span><h4>Cosmic Consciousness</h4><p>Your mind fully awakens. You become the witness of your actions. The fear of death dissolves. <strong style="color:var(--gold);font-weight:400;">Final Fork:</strong> spiritual pride, or true humility.</p><p class="practice">Seed Mantra: OM &middot; Element: Light/Intuition &middot; Layer: The Ego (Observer)</p></div>
-    <div class="identity-card" style="border-color:#2a2a2a;background:radial-gradient(ellipse at 50% 0%,rgba(212,175,55,.05) 0%,transparent 65%);"><span class="layer-tag" style="opacity:1;">Stage 7 &mdash; Crown Chakra &middot; SELF</span><h4>Perfection &amp; Pure Joy</h4><p>Divine and Unity Consciousness. You still live &ldquo;in the world,&rdquo; but are no longer &ldquo;of the world.&rdquo; Individual identity dissolves into universal consciousness. <em style="color:var(--gold);">At the summit of subtilization, the burden of choice vanishes.</em></p><p class="practice">Seed Mantra: OM &middot; Element: Universal Consciousness &middot; Layer: The SELF (<span class="gloss">Atman<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Atman">+</button><span class="gloss-pop">The individual self, in Vedanta &mdash; held as identical to, not separate from, universal consciousness.</span></span>)</p><p style="font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-top:12px;padding-top:12px;border-top:1px solid #1e1e1e;"><span class="gloss">Atman<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Atman">+</button><span class="gloss-pop">The individual self, in Vedanta &mdash; held as identical to, not separate from, universal consciousness.</span></span> (Individual SELF) = <span class="gloss">Brahman<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Brahman">+</button><span class="gloss-pop">The ground of all reality in Vedanta &mdash; not a deity to petition, but the substrate everything, including you, is made of.</span></span> (Supreme Reality)</p></div>
+    <div class="identity-card" style="border-color:#2a2a2a;background:radial-gradient(ellipse at 50% 0%,rgba(212,175,55,.05) 0%,transparent 65%);"><span class="layer-tag" style="opacity:1;">Stage 7 &mdash; Crown Chakra &middot; SELF</span><h4>Perfection &amp; Pure Joy</h4><p>Divine and Unity Consciousness. You still live &ldquo;in the world,&rdquo; but are no longer &ldquo;of the world.&rdquo; Individual identity dissolves into universal consciousness. <em style="color:var(--gold);">At the summit of subtilization, the burden of choice vanishes.</em></p><p class="practice">Seed Mantra: OM &middot; Element: Universal Consciousness &middot; Layer: The SELF (<span class="gloss">Atman<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Atman">+</button><span class="gloss-pop">The individual self, in Vedanta &mdash; held as identical to, not separate from, universal consciousness.</span></span>)</p><p class="equation-label" style="font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-top:12px;padding-top:12px;border-top:1px solid #1e1e1e;"><span class="gloss">Atman<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Atman">+</button><span class="gloss-pop">The individual self, in Vedanta &mdash; held as identical to, not separate from, universal consciousness.</span></span> (Individual SELF) = <span class="gloss">Brahman<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Brahman">+</button><span class="gloss-pop">The ground of all reality in Vedanta &mdash; not a deity to petition, but the substrate everything, including you, is made of.</span></span> (Supreme Reality)</p></div>
     </div>
   </div>
   <p style="text-align:center;font-family:var(--serif);font-style:italic;font-size:14px;color:var(--dim);max-width:620px;margin:36px auto 0;line-height:1.8;">
