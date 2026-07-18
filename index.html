@@ -5340,7 +5340,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
       <button class="mode-btn" data-mode-btn="lived" onclick="setMatrixMode('lived')">Lived Reality</button>
       <button class="mode-btn" data-mode-btn="ascension" onclick="setMatrixMode('ascension')">Ascension Path</button>
     </div>
-    <p id="matrixModeHint" style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#555;text-align:center;margin:10px 0 18px;max-width:640px;margin-left:auto;margin-right:auto;">Each mode swaps the columns &mdash; nothing repeats. Tap a row&rsquo;s <span style="color:var(--gold);">+</span> for Mastery, the one dimension with no column of its own. The smaller <span style="color:var(--gold);">+</span> beside a term in the Brainwave, Alchemy, or Existence Layer columns is different &mdash; that one's a quick definition, not a row expand.</p>
+    <p id="matrixModeHint" style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#555;text-align:center;margin:10px 0 18px;max-width:640px;margin-left:auto;margin-right:auto;">Each mode swaps the columns &mdash; nothing repeats. Tap a row&rsquo;s <span style="display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border:1px solid var(--gold);border-radius:50%;color:var(--gold);font-size:10px;line-height:1;vertical-align:middle;margin:0 2px;">+</span> for Mastery, the one dimension with no column of its own. The smaller <span style="color:var(--gold);">+</span> beside a term in the Brainwave, Alchemy, or Existence Layer columns is different &mdash; that one's a quick definition, not a row expand.</p>
 
     <div style="max-width:640px;margin:0 auto 28px;padding:20px 24px;border-left:2px solid var(--gold);background:var(--bg-lift);text-align:left;">
       <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:10px;">Read These Three Columns as One Arc</p>
@@ -5376,7 +5376,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
         <tbody>
           <tr id="matrix-row-1" data-layer="1">
             <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-1" onclick="toggleMatrixRow(1)" aria-label="Expand Layer 1 detail">+</button><span style="color:var(--dim);font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 1</span>Body<span style="display:block;font-size:9px;color:var(--dim);font-style:normal;letter-spacing:0;margin-top:2px;">Root Chakra</span></td>
-            <td class="col-grid">Womb</td><td class="col-grid">Infancy</td><td class="col-grid">Health</td><td class="col-grid">Aging</td><td class="col-grid"><span class="gloss">Senescence<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Senescence">+</button><span class="gloss-pop">The point where cells stop dividing and repairing themselves as efficiently &mdash; the biological beginning of decline, before outright breakdown. <a href="#gloss-senescence" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">Full entry &rarr;</a></span></span></td><td class="col-grid">Mortality</td>
+            <td class="col-grid">Womb</td><td class="col-grid">Infancy</td><td class="col-grid">Health</td><td class="col-grid">Aging</td><td class="col-grid"><span class="gloss">Senescence<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Senescence">+</button><span class="gloss-pop">The point where cells stop dividing and repairing themselves as efficiently &mdash; the biological beginning of decline, before outright breakdown.</span></span></td><td class="col-grid">Mortality</td>
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Hunger, exhaustion, illness, and raw biological baselines.</td>
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Takes a literal physical toll (Aging).</td>
             <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">Ground the Vessel: eat cleanly, move optimally, and anchor your physical frame to build a resilient survival baseline free of ambient panic.</td>
@@ -8260,9 +8260,9 @@ init();
 
   /* ---------- MODE TOGGLE: swaps which columns are visible on the one table ---------- */
   var MODE_LABELS = {
-    grid: 'Tap a row&rsquo;s <span style="color:var(--gold);">+</span> for Mastery &mdash; the only dimension without its own column. The smaller <span style="color:var(--gold);">+</span> beside a term (Brainwave, Alchemy, Existence Layer) is a quick definition instead.',
-    lived: 'Daily Experience &amp; Shockwave Manifestation per layer &mdash; tap + for Mastery.',
-    ascension: 'Action Plan &amp; Realization per layer &mdash; tap + for Mastery.'
+    grid: 'Tap a row&rsquo;s <span style="display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border:1px solid var(--gold);border-radius:50%;color:var(--gold);font-size:10px;line-height:1;vertical-align:middle;margin:0 2px;">+</span> for Mastery &mdash; the only dimension without its own column. The smaller <span style="color:var(--gold);">+</span> beside a term (Brainwave, Alchemy, Existence Layer) is a quick definition instead.',
+    lived: 'Daily Experience &amp; Shockwave Manifestation per layer &mdash; tap <span style="display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border:1px solid var(--gold);border-radius:50%;color:var(--gold);font-size:10px;line-height:1;vertical-align:middle;margin:0 2px;">+</span> for Mastery.',
+    ascension: 'Action Plan &amp; Realization per layer &mdash; tap <span style="display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border:1px solid var(--gold);border-radius:50%;color:var(--gold);font-size:10px;line-height:1;vertical-align:middle;margin:0 2px;">+</span> for Mastery.'
   };
   window.setMatrixMode = function(mode){
     var wrap = document.getElementById('masterMatrixWrap');
