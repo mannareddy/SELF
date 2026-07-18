@@ -6799,7 +6799,30 @@ function faqToggle(btn){
    this renders it into the single shared #glossPortal, positioned from the button's
    actual screen coordinates so it can never be clipped by a collapsible ancestor's
    overflow:hidden, and never inherits a caption's uppercase/letter-spacing styling. */
+/* ── GLOSS PORTAL — close-on-mouseleave (desktop) ────────────────────────
+   On desktop the portal stays open until clicked elsewhere. On mobile,
+   touch-away already closes it. This adds the same "move away → close"
+   feel to desktop/laptop: a 300ms grace period lets the pointer travel
+   from the source word to the popup without accidentally dismissing it. */
+var _glossLeaveTimer = null;
+var _activeGlossSpan = null;
+
+function _scheduleGlossClose(){
+  clearTimeout(_glossLeaveTimer);
+  _glossLeaveTimer = setTimeout(closeGlossPortal, 300);
+}
+function _cancelGlossClose(){
+  clearTimeout(_glossLeaveTimer);
+}
+
 function closeGlossPortal(){
+  clearTimeout(_glossLeaveTimer);
+  // Detach hover listeners from the gloss span that triggered the last open
+  if(_activeGlossSpan){
+    _activeGlossSpan.removeEventListener('mouseleave', _scheduleGlossClose);
+    _activeGlossSpan.removeEventListener('mouseenter', _cancelGlossClose);
+    _activeGlossSpan = null;
+  }
   var portal = document.getElementById('glossPortal');
   if(portal){ portal.classList.remove('show'); portal.removeAttribute('data-open-for'); }
 }
@@ -6849,6 +6872,18 @@ function toggleGloss(btn){
       portal.style.top = (rect.top - h - 10) + 'px';
     }
   });
+
+  // Desktop hover-to-close: wire mouseleave/mouseenter on the source .gloss span.
+  // Cleanup any previous span first to avoid stacking listeners.
+  if(_activeGlossSpan){
+    _activeGlossSpan.removeEventListener('mouseleave', _scheduleGlossClose);
+    _activeGlossSpan.removeEventListener('mouseenter', _cancelGlossClose);
+  }
+  _activeGlossSpan = btn.closest('.gloss') || btn.parentElement;
+  if(_activeGlossSpan){
+    _activeGlossSpan.addEventListener('mouseleave', _scheduleGlossClose);
+    _activeGlossSpan.addEventListener('mouseenter', _cancelGlossClose);
+  }
 }
 document.addEventListener('click', function(e){
   var portal = document.getElementById('glossPortal');
@@ -6856,6 +6891,15 @@ document.addEventListener('click', function(e){
 });
 document.addEventListener('scroll', closeGlossPortal, true);
 window.addEventListener('resize', closeGlossPortal);
+
+// Wire the shared portal element for hover-to-close (done once, at page load).
+// The grace period between span and portal means the pointer can travel freely.
+(function(){
+  var portal = document.getElementById('glossPortal');
+  if(!portal) return;
+  portal.addEventListener('mouseleave', _scheduleGlossClose);
+  portal.addEventListener('mouseenter', _cancelGlossClose);
+})();
 
 function openFaqEntry(id){
   faqCategoryFilter('all');
