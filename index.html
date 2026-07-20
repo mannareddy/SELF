@@ -655,6 +655,11 @@ a:hover{opacity:.7;}
   background:var(--gold);margin-left:5px;vertical-align:middle;
   animation:newDotPulse 2.2s ease-in-out infinite;
 }
+.inline-new-badge{
+  display:inline-block;font-family:var(--sans);font-size:8px;letter-spacing:2px;
+  text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);
+  padding:2px 7px;margin-left:10px;vertical-align:middle;border-radius:2px;
+}
 @keyframes newDotPulse{
   0%,100%{opacity:1;transform:scale(1);}
   50%{opacity:0.4;transform:scale(0.65);}
@@ -2455,29 +2460,29 @@ tr.matrix-highlight{
     <li><a href="#home" id="nav-home">Home</a></li>
 
     <li class="nav-dropdown-wrap">
-      <a href="#framework" data-group="framework">Framework<span class="nav-caret">▾</span></a>
+      <a href="#framework" data-group="traditions">Traditions<span class="nav-caret">▾</span></a>
       <div class="nav-dropdown-panel">
-        <a href="#framework" data-group="framework">Seven Stages</a>
-        <a href="#dimension" data-group="framework">Matter as Dimension</a>
-        <a href="#consciousness" data-group="framework">Consciousness vs Awareness</a>
-        <a href="#forty-two" data-group="framework">42 — The Symbol</a>
-        <a href="#spectrum" data-group="framework">Ascent of Self</a>
-        <a href="#master-matrix" data-group="framework">Master Matrix</a>
-        <a href="#masters" data-group="framework">Masters at a Glance</a>
-        <a href="#patanjali" data-group="framework">Patanjali's Experiment</a>
-        <a href="#go-deeper" data-group="framework">Go Deeper</a>
+        <a href="#framework" data-group="traditions">Seven Stages</a>
+        <a href="#dimension" data-group="traditions">Matter as Dimension</a>
+        <a href="#consciousness" data-group="traditions">Consciousness vs Awareness</a>
+        <a href="#forty-two" data-group="traditions">42 — The Symbol</a>
+        <a href="#spectrum" data-group="traditions">Ascent of Self</a>
+        <a href="#master-matrix" data-group="traditions">Master Matrix</a>
+        <a href="#masters" data-group="traditions">Masters at a Glance</a>
+        <a href="#patanjali" data-group="traditions">Patanjali's Experiment</a>
+        <a href="#ego" data-group="traditions">Ego Architecture</a>
+        <a href="#bodhichitta" data-group="traditions">Bodhichitta</a>
+        <a href="#pain-body" data-group="traditions">Pain-Body</a>
+        <a href="#go-deeper" data-group="traditions">Go Deeper</a>
       </div>
     </li>
 
     <li class="nav-dropdown-wrap">
-      <a href="#ego" data-group="ego">Ego &amp; Practice<span class="nav-caret">▾</span></a>
+      <a href="#ego-checklist" data-group="practice">Daily Practice<span class="nav-caret">▾</span></a>
       <div class="nav-dropdown-panel">
-        <a href="#ego" data-group="ego">Ego Architecture</a>
-        <a href="#bodhichitta" data-group="ego">Bodhichitta</a>
-        <a href="#pain-body" data-group="ego">Pain-Body</a>
-        <a href="#ego-checklist" data-group="ego">Ego Checklist</a>
-        <a href="#diagnostic" data-group="ego">Self-Diagnostic</a>
-        <a href="#feedback-loop" data-group="ego">Feedback Loop</a>
+        <a href="#ego-checklist" data-group="practice">Ego Checklist</a>
+        <a href="#diagnostic" data-group="practice">Self-Diagnostic</a>
+        <a href="#feedback-loop" data-group="practice">Feedback Loop</a>
       </div>
     </li>
   </ul>
@@ -2493,24 +2498,15 @@ tr.matrix-highlight{
   <!-- Right: Ecosystem▾ · New▾ · FAQ · Feedback -->
   <ul class="nav-right">
     <li class="nav-dropdown-wrap" style="border-left:1px solid #1a1a1a;">
-      <a href="#ledger" data-group="ecosystem">Ecosystem<span class="nav-caret">▾</span></a>
+      <a href="#mirror" data-group="shop-circle">Shop / Circle<span class="nav-caret">▾</span></a>
       <div class="nav-dropdown-panel">
-        <a href="#ledger" data-group="ecosystem">The Ledger</a>
-        <a href="#ipo" data-group="ecosystem">IPO</a>
-        <a href="#mirror" data-group="ecosystem">Mirror Room</a>
-        <a href="#contract" data-group="ecosystem">Contract (CA)</a>
-        <a href="#contribution" data-group="ecosystem">Contribution</a>
-      </div>
-    </li>
-
-    <li class="nav-dropdown-wrap">
-      <a href="#master-matrix" data-group="new-section">New<span class="nav-caret">▾</span><span class="nav-new-dot"></span></a>
-      <div class="nav-dropdown-panel">
-        <a href="#spectrum" data-group="new-section">Ascent of Self</a>
-        <a href="#master-matrix" data-group="new-section">Interactive Master Matrix</a>
-        <a href="#glossary" data-group="new-section">Glossary &amp; Inline Definitions</a>
-        <a href="#faq-workbook" data-group="new-section" onclick="openFaqEntry('faq-workbook')">Get the Workbook ↗</a>
-        <a href="https://companion.42self.xyz" target="_blank" rel="noopener" style="opacity:.9;">Web Companion <span style="font-family:var(--sans);font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:2px 6px;margin-left:8px;">Live</span></a>
+        <a href="#faq-workbook" data-group="shop-circle" onclick="openFaqEntry('faq-workbook')">Get the Workbook ↗</a>
+        <a href="https://companion.42self.xyz" target="_blank" rel="noopener" style="opacity:.9;" data-group="shop-circle">Web Companion <span style="font-family:var(--sans);font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:2px 6px;margin-left:8px;">Live</span></a>
+        <a href="#mirror" data-group="shop-circle">Mirror Room</a>
+        <a href="#ledger" data-group="shop-circle">The Ledger</a>
+        <a href="#ipo" data-group="shop-circle">IPO</a>
+        <a href="#contract" data-group="shop-circle">Contract (CA)</a>
+        <a href="#contribution" data-group="shop-circle">Contribution</a>
       </div>
     </li>
 
@@ -2530,7 +2526,7 @@ tr.matrix-highlight{
 
     <li class="mnav-group">
       <button class="mnav-group-toggle" aria-expanded="false">
-        Framework <span class="mnav-caret">▾</span>
+        Traditions <span class="mnav-caret">▾</span>
       </button>
       <div class="mnav-group-panel">
         <a href="#framework">Seven Stages</a>
@@ -2541,18 +2537,18 @@ tr.matrix-highlight{
         <a href="#master-matrix">Master Matrix</a>
         <a href="#masters">Masters at a Glance</a>
         <a href="#patanjali">Patanjali's Experiment</a>
+        <a href="#ego">Ego Architecture</a>
+        <a href="#bodhichitta">Bodhichitta</a>
+        <a href="#pain-body">Pain-Body</a>
         <a href="#go-deeper">Go Deeper</a>
       </div>
     </li>
 
     <li class="mnav-group">
       <button class="mnav-group-toggle" aria-expanded="false">
-        Ego &amp; Practice <span class="mnav-caret">▾</span>
+        Daily Practice <span class="mnav-caret">▾</span>
       </button>
       <div class="mnav-group-panel">
-        <a href="#ego">Ego Architecture</a>
-        <a href="#bodhichitta">Bodhichitta</a>
-        <a href="#pain-body">Pain-Body</a>
         <a href="#ego-checklist">Ego Checklist</a>
         <a href="#diagnostic">Self-Diagnostic</a>
         <a href="#feedback-loop">Feedback Loop</a>
@@ -2561,27 +2557,17 @@ tr.matrix-highlight{
 
     <li class="mnav-group">
       <button class="mnav-group-toggle" aria-expanded="false">
-        Ecosystem <span class="mnav-caret">▾</span>
+        Shop / Circle <span class="mnav-caret">▾</span>
       </button>
       <div class="mnav-group-panel">
+        <a href="#faq-workbook" onclick="openFaqEntry('faq-workbook')">Get the Workbook ↗</a>
+        <a href="https://companion.42self.xyz" target="_blank" rel="noopener" style="opacity:.9;">Web Companion <span style="font-family:var(--sans);font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:2px 6px;margin-left:8px;">Live</span></a>
+        <a href="#mirror">Mirror Room</a>
         <a href="#ledger">The Ledger</a>
         <a href="#ipo">IPO</a>
-        <a href="#mirror">Mirror Room</a>
         <a href="#contract">Contract (CA)</a>
         <a href="#contribution">Contribution</a>
       </div>
-    </li>
-
-    <li class="mnav-group">
-      <button class="mnav-group-toggle" aria-expanded="false">
-        New <span class="nav-new-dot"></span> <span class="mnav-caret">▾</span>
-      </button>
-      <div class="mnav-group-panel">
-        <a href="#spectrum">Ascent of Self</a>
-        <a href="#master-matrix">Interactive Master Matrix</a>
-        <a href="#glossary">Glossary &amp; Inline Definitions</a>
-        <a href="#faq-workbook" onclick="openFaqEntry('faq-workbook')">Get the Workbook ↗</a>
-        <a href="https://companion.42self.xyz" target="_blank" rel="noopener" style="opacity:.9;">Web Companion <span style="font-family:var(--sans);font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:2px 6px;margin-left:8px;">Live</span></a>      </div>
     </li>
 
     <li><a href="#glossary">Glossary</a></li>
@@ -7296,22 +7282,92 @@ function updateNav(){
     });
   });
 
+  /* ── AUTO "NEW" FLAGGING — self-expiring, no manual cleanup ──
+     To flag something as new when you add it: put data-added="YYYY-MM-DD"
+     on its nav link (desktop .nav-dropdown-panel a AND the matching mobile
+     .mnav-group-panel a — tag both so it shows in both menus), and
+     optionally on the section/heading itself if you want an inline badge
+     there too. This script checks that date against today on every page
+     load — within NEW_WINDOW_DAYS it shows a dot/badge, past that window
+     it silently stops. Nothing to remove by hand, ever. */
+  (function(){
+    var NEW_WINDOW_DAYS = 14;
+    function daysSince(dateStr){
+      var added = new Date(dateStr + 'T00:00:00');
+      var now = new Date();
+      return (now - added) / 86400000;
+    }
+    document.querySelectorAll('[data-added]').forEach(function(el){
+      var raw = el.getAttribute('data-added');
+      if(!raw) return;
+      var age = daysSince(raw);
+      if(age < 0 || age > NEW_WINDOW_DAYS) return; // expired or future-dated — skip silently
+
+      var isMobileNav = !!el.closest('.mnav-group-panel, .mnav-list');
+      var isNavLink = el.matches('.nav-dropdown-panel a, .nav-left > li > a, .nav-right > li > a, .mnav-list a');
+
+      if(isNavLink){
+        if(!el.querySelector('.nav-new-dot, .mnav-new-badge')){
+          var badge = document.createElement('span');
+          if(isMobileNav){
+            badge.className = 'mnav-new-badge';
+            badge.textContent = 'NEW';
+          } else {
+            badge.className = 'nav-new-dot';
+          }
+          el.appendChild(badge);
+        }
+        // Bubble a flag up to the parent dropdown trigger / accordion toggle
+        // so it's visible before the menu is even opened.
+        var dWrap = el.closest('.nav-dropdown-wrap');
+        if(dWrap){
+          var trigger = dWrap.querySelector(':scope > a');
+          if(trigger && !trigger.querySelector('.nav-new-dot')){
+            var gdot = document.createElement('span');
+            gdot.className = 'nav-new-dot';
+            trigger.appendChild(gdot);
+          }
+        }
+        var mGroup = el.closest('.mnav-group');
+        if(mGroup){
+          var mToggle = mGroup.querySelector('.mnav-group-toggle');
+          if(mToggle && !mToggle.querySelector('.mnav-new-badge')){
+            var mBadge = document.createElement('span');
+            mBadge.className = 'mnav-new-badge';
+            mBadge.textContent = 'NEW';
+            var caret = mToggle.querySelector('.mnav-caret');
+            if(caret) mToggle.insertBefore(mBadge, caret);
+            else mToggle.appendChild(mBadge);
+          }
+        }
+      } else {
+        // Inline badge on a section heading or other on-page element
+        if(!el.querySelector('.inline-new-badge')){
+          var inlineBadge = document.createElement('span');
+          inlineBadge.className = 'inline-new-badge';
+          inlineBadge.textContent = 'New';
+          el.appendChild(inlineBadge);
+        }
+      }
+    });
+  })();
+
   var sectionIds = [
     'home','framework','dimension','consciousness','forty-two','masters','patanjali','go-deeper',
     'ego','bodhichitta','pain-body','ego-checklist','diagnostic','feedback-loop',
-    'ledger','ipo','mirror-mc','contract','contribution',
+    'ledger','ipo','mirror-mc','mirror','contract','contribution',
     'faq-section','feedback','disclaimer'
   ];
   var currentActive = '';
 
   // Map each section ID to which desktop group trigger should highlight
   var groupMap = {
-    'framework':'framework','dimension':'framework','consciousness':'framework',
-    'forty-two':'framework','masters':'framework','patanjali':'framework','go-deeper':'framework',
-    'ego':'ego','bodhichitta':'ego','pain-body':'ego',
-    'ego-checklist':'ego','diagnostic':'ego','feedback-loop':'ego',
-    'ledger':'ecosystem','ipo':'ecosystem','mirror-mc':'ecosystem',
-    'contract':'ecosystem','contribution':'ecosystem'
+    'framework':'traditions','dimension':'traditions','consciousness':'traditions',
+    'forty-two':'traditions','masters':'traditions','patanjali':'traditions','go-deeper':'traditions',
+    'ego':'traditions','bodhichitta':'traditions','pain-body':'traditions',
+    'ego-checklist':'practice','diagnostic':'practice','feedback-loop':'practice',
+    'ledger':'shop-circle','ipo':'shop-circle','mirror-mc':'shop-circle','mirror':'shop-circle',
+    'contract':'shop-circle','contribution':'shop-circle'
   };
 
   function setActive(id){
