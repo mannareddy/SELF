@@ -284,10 +284,10 @@ body{
 
 /* ── LIGHT THEME ─────────────────────────────────────────────────────────── */
 [data-theme="light"]{
-  --bg:#faf8f3;--bg-lift:#ede6d0;--white:#0f0a02;--gold:#7a5e0e;--mid:#2e2008;--grey:#3d2e10;--dim:#5a4a2a;
+  --bg:#f5f1e8;--bg-lift:#f5f1e8;--white:#0f0a02;--gold:#7a5e0e;--mid:#2e2008;--grey:#3d2e10;--dim:#5a4a2a;
   --gold-glow:rgba(122,94,14,0.3);--gold-dim:rgba(122,94,14,0.1);
 }
-[data-theme="light"] body{background:#faf8f3 !important;color:#1a1208 !important;font-weight:400;}
+[data-theme="light"] body{background:#f5f1e8 !important;color:#1a1208 !important;font-weight:400;}
 
 /* Light: boost body text weight/brightness across all text elements */
 [data-theme="light"] p,[data-theme="light"] li,[data-theme="light"] span:not(.label):not(.ec-type):not(.p-num):not(.num):not(.layer-tag):not(.s-sub):not(.ds-subtitle):not(.rasa-cell):not(.tradition-cell){color:#1a1208 !important;font-weight:400 !important;}
@@ -314,10 +314,15 @@ body{
 [data-theme="light"] .mc-desc{color:#1a1208 !important;font-weight:400 !important;}
 [data-theme="light"] .pull-quote p{color:#1a1208 !important;font-weight:400 !important;}
 [data-theme="light"] .cosmo-quote p{color:#1a1208 !important;font-weight:400 !important;}
+/* Superordinate section — light theme: plain page bg, gold only on the box */
+[data-theme="light"] .superordinate-section{background:#f5f1e8 !important;border-top-color:rgba(0,0,0,0.06) !important;border-bottom-color:rgba(0,0,0,0.06) !important;}
 [data-theme="light"] .superordinate-box p{color:#2e2008 !important;font-weight:400 !important;}
+/* Light theme — p.gold inside superordinate box */
+[data-theme="light"] .superordinate-box p.gold{color:#7a5e0e !important;}
 [data-theme="light"] .enn-intro-box p{color:#2e2008 !important;font-weight:400 !important;}
 [data-theme="light"] .cosmic-section p{color:#2e2008 !important;font-weight:400 !important;}
 [data-theme="light"] .rrrr-desc{color:#2e2008 !important;font-weight:400 !important;}
+[data-theme="light"] .rrrr-steps{color:#1a1208 !important;font-weight:500 !important;}
 
 /* Light: tradition table header */
 [data-theme="light"] .tradition-row.header{background:#c8bfa0 !important;}
@@ -332,24 +337,24 @@ body{
   background: #c8bfa0 !important;
 }
 /* Light: nav */
-[data-theme="light"] .site-nav{background:rgba(250,248,243,0.98) !important;border-bottom:2px solid rgba(0,0,0,0.15) !important;}
-[data-theme="light"] .site-nav.scrolled{background:rgba(250,248,243,1) !important;}
+[data-theme="light"] .site-nav{background:rgba(245,241,232,0.98) !important;border-bottom:2px solid rgba(0,0,0,0.15) !important;}
+[data-theme="light"] .site-nav.scrolled{background:rgba(245,241,232,1) !important;}
 [data-theme="light"] .nav-left li a,[data-theme="light"] .nav-right li a{color:#4a3a1a !important;border-right-color:rgba(0,0,0,0.1) !important;}
 [data-theme="light"] .nav-left li:first-child a{border-left-color:rgba(0,0,0,0.1) !important;}
 [data-theme="light"] .nav-left li a.active,[data-theme="light"] .nav-right li a.active{color:#8a6a12 !important;}
 [data-theme="light"] .nav-left li a:hover,[data-theme="light"] .nav-right li a:hover{color:#8a6a12 !important;}
 [data-theme="light"] .nav-logo-center{border-color:rgba(138,106,18,0.5) !important;}
-[data-theme="light"] #themeToggleBtn{background:rgba(250,248,243,0.98) !important;border-color:rgba(0,0,0,0.15) !important;color:#5a4a2a !important;}
+[data-theme="light"] #themeToggleBtn{background:rgba(245,241,232,0.98) !important;border-color:rgba(0,0,0,0.15) !important;color:#5a4a2a !important;}
 [data-theme="light"] .progress-bar{background:linear-gradient(90deg,rgba(138,106,18,0.4),#8a6a12);}
 [data-theme="light"] #themeToggleMobile{color:#5a4a2a !important;border-left-color:rgba(0,0,0,0.1) !important;}
 [data-theme="light"] #themeToggleMobile:hover{color:#8a6a12 !important;}
 /* Light: mega-menu dropdown (desktop) + hamburger/accordion (mobile) — additive, see nav CSS block below */
-[data-theme="light"] .nav-dropdown-panel{background:rgba(250,248,243,0.98) !important;border-color:rgba(138,106,18,0.35) !important;}
+[data-theme="light"] .nav-dropdown-panel{background:rgba(245,241,232,0.98) !important;border-color:rgba(138,106,18,0.35) !important;}
 [data-theme="light"] .nav-dropdown-panel a{color:#4a3a1a !important;}
 [data-theme="light"] .nav-dropdown-panel a:hover{color:#8a6a12 !important;background:rgba(138,106,18,0.06) !important;}
-[data-theme="light"] .mnav-toggle{background:rgba(250,248,243,0.98) !important;border-color:rgba(0,0,0,0.15) !important;}
+[data-theme="light"] .mnav-toggle{background:rgba(245,241,232,0.98) !important;border-color:rgba(0,0,0,0.15) !important;}
 [data-theme="light"] .mnav-toggle span{background:#4a3a1a !important;}
-[data-theme="light"] .mnav-panel{background:rgba(250,248,243,0.97) !important;}
+[data-theme="light"] .mnav-panel{background:rgba(245,241,232,0.97) !important;}
 [data-theme="light"] .mnav-list>li{border-color:rgba(0,0,0,0.1) !important;}
 [data-theme="light"] .mnav-list>li>a,[data-theme="light"] .mnav-group-toggle{color:#4a3a1a !important;}
 [data-theme="light"] .mnav-group-panel a{color:#4a3a1a !important;border-color:rgba(0,0,0,0.08) !important;}
@@ -358,38 +363,43 @@ body{
 
 /* Light: section backgrounds */
 [data-theme="light"] .framework-card,[data-theme="light"] .pillar-card,[data-theme="light"] .identity-card,
-[data-theme="light"] .why-card,[data-theme="light"] .faq-item,[data-theme="light"] .surrender-section{background:#ede6d0 !important;}
+[data-theme="light"] .surrender-section{background:#f5f1e8 !important;}
+[data-theme="light"] .why-card{background:#d8d0b8 !important;}
+[data-theme="light"] .faq-item{background:transparent !important;}
+[data-theme="light"] .faq-a-inner{background:#f5f1e8;padding:20px 16px 28px;margin:0 0 4px;}
 [data-theme="light"] .bg-lift,[data-theme="light"] .ipo-section,[data-theme="light"] .mirror-room,[data-theme="light"] .fartcoin-section,
-[data-theme="light"] .faq-section,[data-theme="light"] .ca-full-section,[data-theme="light"] .bridge-section{background:#ede6d0 !important;}
+[data-theme="light"] .ca-full-section,[data-theme="light"] .bridge-section{background:#f5f1e8 !important;}
+[data-theme="light"] .faq-section{background:#e8e0cc !important;}
 [data-theme="light"] .divider{background:rgba(0,0,0,0.08);}
 [data-theme="light"] .hero-question{color:#8a6a12 !important;}
 [data-theme="light"] .label{color:#8a6a12 !important;}
 [data-theme="light"] .gold-line{background:#8a6a12 !important;}
 [data-theme="light"] .pull-quote cite{color:#8a6a12 !important;}
 [data-theme="light"] .cosmo-quote cite{color:#8a6a12 !important;}
-[data-theme="light"] .symptoms-block-box{border-color:rgba(0,0,0,0.15) !important;background:#ede6d0 !important;}
+[data-theme="light"] .symptoms-block-box{border-color:rgba(0,0,0,0.15) !important;background:#e8e0cc !important;}
 [data-theme="light"] .framework-card h3{color:#1a1208 !important;}
 [data-theme="light"] .framework-card .num{color:#8a6a12 !important;}
 [data-theme="light"] .pillar-card .p-title{color:#1a1208 !important;}
 [data-theme="light"] .why-card h4{color:#8a6a12 !important;}
 [data-theme="light"] .faq-q{color:#1a1208 !important;font-weight:600 !important;}
 [data-theme="light"] .faq-icon{color:#8a6a12 !important;border-color:rgba(138,106,18,0.4) !important;}
-[data-theme="light"] .faq-item{border-bottom-color:rgba(0,0,0,0.1) !important;}
-[data-theme="light"] #faqCatMenu{background:#ede6d0 !important;border-color:rgba(0,0,0,0.15) !important;}
+[data-theme="light"] .faq-item{border-bottom-color:rgba(0,0,0,0.14) !important;}
+[data-theme="light"] .faq-item:first-child{border-top-color:rgba(0,0,0,0.14) !important;}
+[data-theme="light"] #faqCatMenu{background:#e8e0cc !important;border-color:rgba(0,0,0,0.15) !important;}
 [data-theme="light"] .faq-cat-btn{border-color:rgba(0,0,0,0.2) !important;}
 [data-theme="light"] #faqCatMenuBtn{border-color:rgba(0,0,0,0.2) !important;color:#1a1208 !important;}
 [data-theme="light"] #faqCatMenuBtn span span{background:#1a1208 !important;}
-[data-theme="light"] .mc-card{background:#ede6d0 !important;border-color:rgba(0,0,0,0.1) !important;}
+[data-theme="light"] .mc-card{background:#e8e0cc !important;border-color:rgba(0,0,0,0.1) !important;}
 [data-theme="light"] .mc-name{color:#5a4a2a !important;}
 [data-theme="light"] .tradition-row td{color:#4a3a1a !important;border-color:rgba(0,0,0,0.1) !important;}
 [data-theme="light"] .tradition-row th{color:#8a6a12 !important;background:#e5ddc5 !important;}
 [data-theme="light"] .ipo-table{border:2px solid rgba(0,0,0,0.4) !important;}
 [data-theme="light"] .ipo-table-row{border-bottom-color:rgba(0,0,0,0.25) !important;}
-[data-theme="light"] .ca-full-box{background:#ede6d0 !important;border-color:rgba(0,0,0,0.15) !important;}
+[data-theme="light"] .ca-full-box{background:#e8e0cc !important;border-color:rgba(0,0,0,0.15) !important;}
 [data-theme="light"] .surrender-stage{background:#e5ddc5 !important;border-color:rgba(0,0,0,0.1) !important;}
-[data-theme="light"] .identity-card{background:#ede6d0 !important;border-color:rgba(0,0,0,0.1) !important;}
+[data-theme="light"] .identity-card{background:#e8e0cc !important;border-color:rgba(0,0,0,0.1) !important;}
 [data-theme="light"] .identity-card h4{color:#1a1208 !important;}
-[data-theme="light"] .path-card{background:#ede6d0 !important;border-color:rgba(0,0,0,0.1) !important;}
+[data-theme="light"] .path-card{background:#e8e0cc !important;border-color:rgba(0,0,0,0.1) !important;}
 [data-theme="light"] .void-btn{border-color:rgba(138,106,18,0.4) !important;color:#4a3a1a !important;}
 [data-theme="light"] .void-btn.active{background:#8a6a12 !important;color:#faf8f3 !important;}
 [data-theme="light"] .void-restart-link{color:#7a6a4a !important;}
@@ -397,8 +407,8 @@ body{
 [data-theme="light"] .footer-socials a{color:#5a4a2a !important;}
 [data-theme="light"] .footer-socials a:hover{color:#8a6a12 !important;}
 [data-theme="light"] .footer-tagline,[data-theme="light"] .footer-ca{color:#5a4a2a !important;}
-[data-theme="light"] .geo-badge{background:rgba(250,248,243,0.95) !important;border-color:rgba(0,0,0,0.15) !important;}
-[data-theme="light"] [style*="background:var(--bg);"]{background:#ede6d0 !important;}
+[data-theme="light"] .geo-badge{background:rgba(245,241,232,0.95) !important;border-color:rgba(0,0,0,0.15) !important;}
+[data-theme="light"] [style*="background:var(--bg);"]{background:#f5f1e8 !important;}
 [data-theme="light"] [style*="background:rgba(0,0,0"]{background:transparent !important;}
 [data-theme="light"] [style*="color:var(--white)"]{color:#1a1208 !important;}
 [data-theme="light"] [style*="color:var(--mid)"]{color:#2e2008 !important;}
@@ -406,7 +416,7 @@ body{
 [data-theme="light"] [style*="color:var(--dim)"]{color:#5a4a2a !important;}
 [data-theme="light"] [style*="border:1px solid #2a2a2a"]{border-color:rgba(0,0,0,0.15) !important;}
 [data-theme="light"] [style*="border:1px solid #1e1e1e"]{border-color:rgba(0,0,0,0.1) !important;}
-[data-theme="light"] [style*="background:var(--bg-lift)"]{background:#ede6d0 !important;}
+[data-theme="light"] [style*="background:var(--bg-lift)"]{background:#f5f1e8 !important;}
 [data-theme="light"] .phil-line.gold{color:#8a6a12 !important;font-weight:600;}
 [data-theme="light"] h2{color:#1a1208 !important;font-weight:500;}
 [data-theme="light"] h3{color:#2a2008 !important;font-weight:500;}
@@ -423,34 +433,38 @@ body{
 [data-theme="light"] .collapse-toggle-btn{border-color:rgba(138,106,18,0.5) !important;color:#7a5e0e !important;}
 [data-theme="light"] .continue-hint{color:#9a8454 !important;}
 [data-theme="light"] .collapse-toggle-btn:hover{background:rgba(122,94,14,0.1) !important;}
-/* Light theme — border fixes for all bordered boxes */
-[data-theme="light"] .ipo-upanishad{border-color:rgba(0,0,0,0.15) !important;border-left-color:rgba(138,106,18,0.6) !important;background:#ede6d0 !important;}
+/* IPO inner wrapper: remove outer box in both themes */
+.ipo-section > div[style*="border:1px solid #2a2a2a"]{border-color:transparent !important;}
+.ipo-section > div > div[style*="border-top:1px solid var(--gold)"],
+.ipo-section > div > div[style*="border-bottom:1px solid var(--gold)"]{display:none !important;}
+[data-theme="light"] .ipo-upanishad{border-color:rgba(0,0,0,0.15) !important;border-left-color:rgba(138,106,18,0.6) !important;background:#e8e0cc !important;}
 [data-theme="light"] .antidote-box{border-color:rgba(138,106,18,0.5) !important;background:rgba(138,106,18,0.04) !important;}
-[data-theme="light"] .antidote-step{background:#faf8f3 !important;border-color:rgba(0,0,0,0.1) !important;}
+[data-theme="light"] .antidote-step{background:#f5f1e8 !important;border-color:rgba(0,0,0,0.1) !important;}
 /* Light theme — border fixes for previously-missed bordered elements */
 [data-theme="light"] .ec-body{border-top-color:rgba(0,0,0,0.12) !important;}
-[data-theme="light"] .rrrr-version{background:#e5ddc5 !important;border-color:rgba(0,0,0,0.1) !important;}
+[data-theme="light"] .rrrr-version{background:#ddd5b8 !important;border-color:rgba(0,0,0,0.08) !important;border-width:0 !important;border-left:3px solid rgba(138,106,18,0.35) !important;}
+[data-theme="light"] .faq-a-inner > div[style*="bg-lift"]{background:#ddd5b8 !important;border-color:rgba(0,0,0,0.08) !important;}
 [data-theme="light"] .stage-expand-label{border-color:rgba(138,106,18,0.5) !important;color:#7a5e0e !important;}
 [data-theme="light"] .stage-num-col{border-right-color:rgba(0,0,0,0.12) !important;}
 [data-theme="light"] .tradition-table{border:2px solid rgba(0,0,0,0.4) !important;}
-[data-theme="light"] .void-response{background:#ede6d0 !important;border-color:rgba(0,0,0,0.15) !important;}
-[data-theme="light"] .vision-box{border-color:rgba(0,0,0,0.15) !important;background:#ede6d0 !important;}
+[data-theme="light"] .void-response{background:#e8e0cc !important;border-color:rgba(0,0,0,0.15) !important;}
+[data-theme="light"] .vision-box{border-color:rgba(0,0,0,0.15) !important;background:#e8e0cc !important;}
 [data-theme="light"] .vision-pillar{border-left-color:rgba(138,106,18,0.6) !important;}
-[data-theme="light"] .cosmo-quote{background:#ede6d0 !important;border-color:rgba(0,0,0,0.15) !important;border-left-color:rgba(138,106,18,0.7) !important;}
+[data-theme="light"] .cosmo-quote{background:#e8e0cc !important;border-color:rgba(0,0,0,0.15) !important;border-left-color:rgba(138,106,18,0.7) !important;}
 [data-theme="light"] .pull-quote{border-left-color:rgba(138,106,18,0.6) !important;}
-[data-theme="light"] .symptoms-block-box{background:#ede6d0 !important;}
+[data-theme="light"] .symptoms-block-box{background:#e8e0cc !important;}
 [data-theme="light"] .ipo-table{border:2px solid rgba(0,0,0,0.4) !important;}
 [data-theme="light"] .ipo-table-row{border-bottom-color:rgba(0,0,0,0.25) !important;}
-[data-theme="light"] .rasa-closing{background:#faf8f3 !important;border-color:rgba(0,0,0,0.12) !important;border-left-color:rgba(138,106,18,0.6) !important;}
-[data-theme="light"] .superordinate-box{background:#ede6d0 !important;border-color:rgba(0,0,0,0.15) !important;}
-[data-theme="light"] .enn-intro-box{background:#faf8f3 !important;border-color:rgba(0,0,0,0.12) !important;}
-[data-theme="light"] .ego-ring-wrap{background:#ede6d0 !important;border-color:rgba(0,0,0,0.15) !important;}
-[data-theme="light"] .ca-full-box{background:#ede6d0 !important;border-color:rgba(0,0,0,0.15) !important;}
+[data-theme="light"] .rasa-closing{background:#f5f1e8 !important;border-color:rgba(0,0,0,0.12) !important;border-left-color:rgba(138,106,18,0.6) !important;}
+[data-theme="light"] .superordinate-box{background:rgba(138,106,18,0.08) !important;border-color:rgba(138,106,18,0.45) !important;border-left-color:rgba(138,106,18,0.9) !important;box-shadow:0 0 32px rgba(138,106,18,0.10) !important;}
+[data-theme="light"] .enn-intro-box{background:#f5f1e8 !important;border-color:rgba(0,0,0,0.12) !important;}
+[data-theme="light"] .ego-ring-wrap{background:#e8e0cc !important;border-color:rgba(0,0,0,0.15) !important;}
+[data-theme="light"] .ca-full-box{background:#e8e0cc !important;border-color:rgba(0,0,0,0.15) !important;}
 [data-theme="light"] .watch-link{border-color:rgba(0,0,0,0.15) !important;}
 [data-theme="light"] .watch-thumb{border-color:rgba(0,0,0,0.15) !important;}
 [data-theme="light"] .mirror-link{border-color:rgba(0,0,0,0.15) !important;}
 [data-theme="light"] .mirror-link.primary{background:rgba(138,106,18,0.9) !important;color:#faf8f3 !important;border-color:transparent !important;}
-[data-theme="light"] .faq-section{background:#ede6d0 !important;}
+/* faq-section bg already set above to #f5f1e8 */
 /* Inline bordered boxes with var() references */
 [data-theme="light"] [style*="border:1px solid var(--gold)"]{border-color:rgba(138,106,18,0.55) !important;}
 [data-theme="light"] [style*="border-left:3px solid var(--gold)"]{border-left-color:rgba(138,106,18,0.7) !important;}
@@ -478,12 +492,12 @@ body{
 /* Section-collapse inner border */
 [data-theme="light"] .section-collapse-wrap .section-collapse-inner{border-color:rgba(0,0,0,0.1) !important;}
 [data-theme="light"] .section-collapse-wrap .section-collapse-inner{border-color:rgba(0,0,0,0.1) !important;}
-[data-theme="light"] .stage-item{border-color:rgba(0,0,0,0.1) !important;background:#ede6d0 !important;}
+[data-theme="light"] .stage-item{border-color:rgba(0,0,0,0.1) !important;background:#e8e0cc !important;}
 [data-theme="light"] .stage-body-col .s-title{color:#1a1208 !important;}
 [data-theme="light"] .stage-body-col .s-text{color:#2e2008 !important;font-weight:400 !important;}
-[data-theme="light"] .ego-arch-section{background:#faf8f3 !important;}
-[data-theme="light"] .descent-section{background:#faf8f3 !important;}
-[data-theme="light"] .antidote-step{background:#ede6d0 !important;border-color:rgba(0,0,0,0.12) !important;}
+[data-theme="light"] .ego-arch-section{background:#f5f1e8 !important;}
+[data-theme="light"] .descent-section{background:#f5f1e8 !important;}
+[data-theme="light"] .antidote-step{background:#e8e0cc !important;border-color:rgba(0,0,0,0.12) !important;}
 [data-theme="light"] .as-title{color:#1a1208 !important;}
 [data-theme="light"] .rasa-closing p{color:#2e2008 !important;font-weight:400 !important;}
 [data-theme="light"] .dark-night-card p { color:#2e2008 !important; font-weight:400 !important; }
@@ -640,6 +654,11 @@ a:hover{opacity:.7;}
   display:inline-block;width:5px;height:5px;border-radius:50%;
   background:var(--gold);margin-left:5px;vertical-align:middle;
   animation:newDotPulse 2.2s ease-in-out infinite;
+}
+.inline-new-badge{
+  display:inline-block;font-family:var(--sans);font-size:8px;letter-spacing:2px;
+  text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);
+  padding:2px 7px;margin-left:10px;vertical-align:middle;border-radius:2px;
 }
 @keyframes newDotPulse{
   0%,100%{opacity:1;transform:scale(1);}
@@ -833,7 +852,7 @@ a:hover{opacity:.7;}
     transition:opacity .22s ease,transform .22s ease;
   }
   .mnav-panel.open{opacity:1;transform:translateY(0);pointer-events:auto;}
-  [data-theme="light"] .mnav-panel{background:rgba(250,248,243,0.97);}
+  [data-theme="light"] .mnav-panel{background:rgba(245,241,232,0.97);}
 
   .mnav-list{list-style:none;margin:0;padding:8px 0 48px;}
   .mnav-list>li{border-bottom:1px solid #1a1a1a;}
@@ -900,7 +919,7 @@ section{scroll-margin-top:56px;}
 .fl-history-entry .fl-history-date{font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:6px;display:block;}
 .fl-history-entry .fl-history-item{font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.6;margin:0 0 2px;}
 [data-theme="light"] .fl-io-btn{border-color:rgba(0,0,0,0.2) !important;}
-[data-theme="light"] .fl-history-entry{background:#ede6d0 !important;border-color:rgba(0,0,0,0.1) !important;}
+[data-theme="light"] .fl-history-entry{background:#e8e0cc !important;border-color:rgba(0,0,0,0.1) !important;}
 .section-collapse-label{font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#555;margin-top:8px;margin-bottom:0;display:block;}
 .section-collapse-wrap{overflow:hidden;transition:max-height .55s cubic-bezier(0,1,.25,1),opacity .35s ease;opacity:1;}
 .section-collapse-wrap.collapsed{max-height:0 !important;opacity:0;}
@@ -1101,10 +1120,10 @@ section{scroll-margin-top:56px;}
 .why-card .icon{font-size:26px;margin-bottom:16px;display:block;}
 .why-card h4{color:var(--gold);margin-bottom:10px;}
 .why-card p{font-family:var(--serif);font-size:16px;font-weight:300;color:var(--grey);line-height:1.88;}
-.superordinate-box{max-width:680px;margin:0 auto 52px;padding:44px 36px;border:1px solid #2a2a2a;background:radial-gradient(ellipse at 50% 0%,rgba(212,175,55,.06) 0%,transparent 60%);text-align:left;}
-.superordinate-box .so-label{font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.65;margin-bottom:20px;display:block;}
+.superordinate-box{max-width:680px;margin:0 auto 52px;padding:44px 36px;border:1px solid rgba(212,175,55,0.55);border-left:4px solid var(--gold);background:radial-gradient(ellipse at 50% 0%,rgba(212,175,55,.13) 0%,rgba(212,175,55,.04) 55%,transparent 100%);text-align:left;box-shadow:0 0 48px rgba(212,175,55,0.07),inset 0 0 0 0 transparent;}
+.superordinate-box .so-label{font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.85;margin-bottom:20px;display:block;}
 .superordinate-box p{font-family:var(--serif);font-size:clamp(16px,2.2vw,20px);font-weight:300;color:var(--grey);line-height:1.9;margin-bottom:16px;}
-.superordinate-box p.gold{color:var(--gold);font-style:italic;margin-bottom:0;}
+.superordinate-box p.gold{color:var(--gold);font-style:italic;margin-bottom:0;font-weight:400;font-size:clamp(17px,2.4vw,21px);}
 .why-closing{max-width:600px;margin:0 auto;font-size:clamp(18px,2.5vw,24px);font-weight:300;font-style:italic;color:var(--white);line-height:1.8;}
 
 /* ── WATCH ────────────────────────────────────────────────────────────────── */
@@ -1192,14 +1211,14 @@ section{scroll-margin-top:56px;}
 .explore-links a:hover{color:var(--gold);opacity:1;}
 
 /* ── FOOTER ───────────────────────────────────────────────────────────────── */
-.footer{padding:64px 24px 52px;border-top:1px solid #1a1a1a;}
-.footer-logo-wrap{width:80px;height:80px;margin:0 auto 28px;border-radius:6px;overflow:hidden;box-shadow:0 0 16px 3px rgba(212,175,55,.25);background:#000;}
+.footer{padding:64px 24px 52px;border-top:1px solid #1a1a1a;text-align:center;}
+.footer-logo-wrap{width:42px;height:42px;margin:0 auto 28px;border-radius:5px;overflow:hidden;border:1px solid rgba(212,175,55,0.5);box-shadow:0 0 12px 4px rgba(212,175,55,0.45),0 0 28px 8px rgba(212,175,55,0.2);background:#000;animation:navLogoGlow 3s ease-in-out infinite;display:block;}
 .footer-logo-wrap img{width:100%;height:100%;object-fit:cover;display:block;}
 .footer-socials{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-bottom:28px;}
 .footer-socials a{font-family:var(--sans);font-size:11px;color:var(--mid);letter-spacing:3px;text-transform:uppercase;text-decoration:none;transition:color .25s;}
 .footer-socials a:hover{color:var(--gold);opacity:1;}
-.footer-tagline{font-family:var(--sans);font-size:11px;color:var(--grey);letter-spacing:5px;text-transform:uppercase;margin-bottom:22px;}
-.footer-ca{font-family:var(--sans);font-size:11px;color:var(--dim);letter-spacing:.8px;word-break:break-all;max-width:500px;margin:0 auto;}
+.footer-tagline{font-family:var(--sans);font-size:11px;color:var(--grey);letter-spacing:5px;text-transform:uppercase;margin-bottom:22px;text-align:center;}
+.footer-ca{font-family:var(--sans);font-size:11px;color:var(--dim);letter-spacing:.8px;word-break:break-all;max-width:500px;margin:0 auto;text-align:center;}
 
 /* ── FARTCOIN SECTION ─────────────────────────────────────────────────────── */
 .fartcoin-section{padding:90px 24px;background:var(--bg);}
@@ -2198,7 +2217,7 @@ tr.matrix-highlight{
  
   /* Light theme solid nav on mobile */
   [data-theme="light"] .site-nav{
-    background:rgba(250,248,243,0.99) !important;
+    background:rgba(245,241,232,0.99) !important;
   }
  
 /* ── Progress bar: requestAnimationFrame is the correct fix for scroll perf ──
@@ -2329,7 +2348,7 @@ tr.matrix-highlight{
   margin:18px auto;max-width:560px;padding:26px 28px;background:var(--bg-lift);
   border:1px solid var(--gold);border-left:3px solid var(--gold);text-align:left;
 }
-[data-theme="light"] .diag-pillar-card{background:#ede6d0;}
+[data-theme="light"] .diag-pillar-card{background:#e8e0cc;}
 .diag-pillar-tag{font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;margin-bottom:10px;display:block;}
 .diag-pillar-q{font-family:var(--serif);font-style:italic;font-size:clamp(16px,2.1vw,19px);color:var(--white);line-height:1.7;}
 [data-theme="light"] .diag-pillar-q{color:#1a1208;}
@@ -2441,29 +2460,28 @@ tr.matrix-highlight{
     <li><a href="#home" id="nav-home">Home</a></li>
 
     <li class="nav-dropdown-wrap">
-      <a href="#framework" data-group="framework">Framework<span class="nav-caret">▾</span></a>
+      <a href="#framework" data-group="traditions">Traditions<span class="nav-caret">▾</span></a>
       <div class="nav-dropdown-panel">
-        <a href="#framework" data-group="framework">Seven Stages</a>
-        <a href="#dimension" data-group="framework">Matter as Dimension</a>
-        <a href="#consciousness" data-group="framework">Consciousness vs Awareness</a>
-        <a href="#forty-two" data-group="framework">42 — The Symbol</a>
-        <a href="#spectrum" data-group="framework">Ascent of Self</a>
-        <a href="#master-matrix" data-group="framework">Master Matrix</a>
-        <a href="#masters" data-group="framework">Masters at a Glance</a>
-        <a href="#patanjali" data-group="framework">Patanjali's Experiment</a>
-        <a href="#go-deeper" data-group="framework">Go Deeper</a>
+        <a href="#super-ordinate-goal" data-group="traditions">The Super-Ordinate Goal</a>
+        <a href="#framework" data-group="traditions">Framework</a>
+        <a href="#dimension" data-group="traditions">Matter as Dimension</a>
+        <a href="#consciousness" data-group="traditions">Consciousness vs Awareness</a>
+        <a href="#forty-two" data-group="traditions">42 — The Symbol</a>
+        <a href="#spectrum" data-group="traditions">Ascent of Self</a>
+        <a href="#master-matrix" data-group="traditions">Master Matrix</a>
+        <a href="#patanjali" data-group="traditions">Patanjali's Experiment</a>
+        <a href="#contribution" data-group="traditions">Ceiling of Contribution</a>
+        <a href="#ego" data-group="traditions">Ego Architecture</a>
+        <a href="#go-deeper" data-group="traditions">Go Deeper</a>
       </div>
     </li>
 
     <li class="nav-dropdown-wrap">
-      <a href="#ego" data-group="ego">Ego &amp; Practice<span class="nav-caret">▾</span></a>
+      <a href="#ego-checklist" data-group="practice">Daily Practice<span class="nav-caret">▾</span></a>
       <div class="nav-dropdown-panel">
-        <a href="#ego" data-group="ego">Ego Architecture</a>
-        <a href="#bodhichitta" data-group="ego">Bodhichitta</a>
-        <a href="#pain-body" data-group="ego">Pain-Body</a>
-        <a href="#ego-checklist" data-group="ego">Ego Checklist</a>
-        <a href="#diagnostic" data-group="ego">Self-Diagnostic</a>
-        <a href="#feedback-loop" data-group="ego">Feedback Loop</a>
+        <a href="#ego-checklist" data-group="practice">Ego Checklist</a>
+        <a href="#diagnostic" data-group="practice">Self-Diagnostic</a>
+        <a href="#feedback-loop" data-group="practice">Feedback Loop</a>
       </div>
     </li>
   </ul>
@@ -2479,24 +2497,14 @@ tr.matrix-highlight{
   <!-- Right: Ecosystem▾ · New▾ · FAQ · Feedback -->
   <ul class="nav-right">
     <li class="nav-dropdown-wrap" style="border-left:1px solid #1a1a1a;">
-      <a href="#ledger" data-group="ecosystem">Ecosystem<span class="nav-caret">▾</span></a>
+      <a href="#mirror" data-group="shop-circle">Shop / Circle<span class="nav-caret">▾</span></a>
       <div class="nav-dropdown-panel">
-        <a href="#ledger" data-group="ecosystem">The Ledger</a>
-        <a href="#ipo" data-group="ecosystem">IPO</a>
-        <a href="#mirror" data-group="ecosystem">Mirror Room</a>
-        <a href="#contract" data-group="ecosystem">Contract (CA)</a>
-        <a href="#contribution" data-group="ecosystem">Contribution</a>
-      </div>
-    </li>
-
-    <li class="nav-dropdown-wrap">
-      <a href="#master-matrix" data-group="new-section">New<span class="nav-caret">▾</span><span class="nav-new-dot"></span></a>
-      <div class="nav-dropdown-panel">
-        <a href="#spectrum" data-group="new-section">Ascent of Self</a>
-        <a href="#master-matrix" data-group="new-section">Interactive Master Matrix</a>
-        <a href="#glossary" data-group="new-section">Glossary &amp; Inline Definitions</a>
-        <a href="#faq-workbook" data-group="new-section" onclick="openFaqEntry('faq-workbook')">Get the Workbook ↗</a>
-        <a href="https://companion.42self.xyz" target="_blank" rel="noopener" style="opacity:.9;">Web Companion <span style="font-family:var(--sans);font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:2px 6px;margin-left:8px;">Live</span></a>
+        <a href="#faq-workbook" data-group="shop-circle" onclick="openFaqEntry('faq-workbook')">Get the Workbook ↗</a>
+        <a href="https://companion.42self.xyz" target="_blank" rel="noopener" style="opacity:.9;" data-group="shop-circle">Web Companion <span style="font-family:var(--sans);font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:2px 6px;margin-left:8px;">Live</span></a>
+        <a href="#mirror" data-group="shop-circle">Mirror Room</a>
+        <a href="#ledger" data-group="shop-circle">The Ledger</a>
+        <a href="#ipo" data-group="shop-circle">IPO</a>
+        <a href="#contract" data-group="shop-circle">Contract (CA)</a>
       </div>
     </li>
 
@@ -2516,29 +2524,28 @@ tr.matrix-highlight{
 
     <li class="mnav-group">
       <button class="mnav-group-toggle" aria-expanded="false">
-        Framework <span class="mnav-caret">▾</span>
+        Traditions <span class="mnav-caret">▾</span>
       </button>
       <div class="mnav-group-panel">
-        <a href="#framework">Seven Stages</a>
+        <a href="#super-ordinate-goal">The Super-Ordinate Goal</a>
+        <a href="#framework">Framework</a>
         <a href="#dimension">Matter as Dimension</a>
         <a href="#consciousness">Consciousness vs Awareness</a>
         <a href="#forty-two">42 — The Symbol</a>
         <a href="#spectrum">Ascent of Self</a>
         <a href="#master-matrix">Master Matrix</a>
-        <a href="#masters">Masters at a Glance</a>
         <a href="#patanjali">Patanjali's Experiment</a>
+        <a href="#contribution">Ceiling of Contribution</a>
+        <a href="#ego">Ego Architecture</a>
         <a href="#go-deeper">Go Deeper</a>
       </div>
     </li>
 
     <li class="mnav-group">
       <button class="mnav-group-toggle" aria-expanded="false">
-        Ego &amp; Practice <span class="mnav-caret">▾</span>
+        Daily Practice <span class="mnav-caret">▾</span>
       </button>
       <div class="mnav-group-panel">
-        <a href="#ego">Ego Architecture</a>
-        <a href="#bodhichitta">Bodhichitta</a>
-        <a href="#pain-body">Pain-Body</a>
         <a href="#ego-checklist">Ego Checklist</a>
         <a href="#diagnostic">Self-Diagnostic</a>
         <a href="#feedback-loop">Feedback Loop</a>
@@ -2547,27 +2554,16 @@ tr.matrix-highlight{
 
     <li class="mnav-group">
       <button class="mnav-group-toggle" aria-expanded="false">
-        Ecosystem <span class="mnav-caret">▾</span>
+        Shop / Circle <span class="mnav-caret">▾</span>
       </button>
       <div class="mnav-group-panel">
+        <a href="#faq-workbook" onclick="openFaqEntry('faq-workbook')">Get the Workbook ↗</a>
+        <a href="https://companion.42self.xyz" target="_blank" rel="noopener" style="opacity:.9;">Web Companion <span style="font-family:var(--sans);font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:2px 6px;margin-left:8px;">Live</span></a>
+        <a href="#mirror">Mirror Room</a>
         <a href="#ledger">The Ledger</a>
         <a href="#ipo">IPO</a>
-        <a href="#mirror">Mirror Room</a>
         <a href="#contract">Contract (CA)</a>
-        <a href="#contribution">Contribution</a>
       </div>
-    </li>
-
-    <li class="mnav-group">
-      <button class="mnav-group-toggle" aria-expanded="false">
-        New <span class="nav-new-dot"></span> <span class="mnav-caret">▾</span>
-      </button>
-      <div class="mnav-group-panel">
-        <a href="#spectrum">Ascent of Self</a>
-        <a href="#master-matrix">Interactive Master Matrix</a>
-        <a href="#glossary">Glossary &amp; Inline Definitions</a>
-        <a href="#faq-workbook" onclick="openFaqEntry('faq-workbook')">Get the Workbook ↗</a>
-        <a href="https://companion.42self.xyz" target="_blank" rel="noopener" style="opacity:.9;">Web Companion <span style="font-family:var(--sans);font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:2px 6px;margin-left:8px;">Live</span></a>      </div>
     </li>
 
     <li><a href="#glossary">Glossary</a></li>
@@ -2804,6 +2800,21 @@ tr.matrix-highlight{
 <span class="continue-hint">continue</span>
 <div class="divider"></div>
 
+<!-- SUPER-ORDINATE GOAL -->
+<section class="section-wide superordinate-section" id="super-ordinate-goal" style="scroll-margin-top:56px;padding:80px 24px;">
+  <div style="max-width:720px;margin:0 auto;">
+    <span class="label">The Super-Ordinate Goal</span>
+    <div class="superordinate-box" style="margin-top:0;">
+      <p>An Olympic athlete doesn&rsquo;t stop eating to win gold. Eating becomes a calculated sub-goal designed to serve the ultimate victory. Every daily action is optimised so it does not conflict with the super-ordinate goal.</p>
+      <p>Accumulate assets. Build your career. Raise your family well. Pursue every ambition you carry.<br><span style="color:var(--gold);font-style:italic;">These are valid sub-goals.</span></p>
+      <p>Rule 1: Sub-goals cannot conflict with the super-ordinate goal. Rule 2: A sub-goal can never become the sole replacement for it.</p>
+      <p class="gold">The super-ordinate goal &mdash; the Olympic Gold of life &mdash; is knowing your SELF.<br>The only gold that never depreciates.</p>
+    </div>
+  </div>
+</section>
+<span class="continue-hint">continue</span>
+<div class="divider"></div>
+
 <!-- THE FRAMEWORK -->
 <section class="section-wide" id="framework">
   <span class="label">The Framework</span>
@@ -2954,7 +2965,9 @@ tr.matrix-highlight{
 <p style="text-align:center;font-family:var(--serif);font-style:italic;font-size:14px;color:var(--dim);max-width:640px;margin:36px auto 0;line-height:1.8;">
   This is the map &mdash; seven coordinates, seen from above. For what it actually feels like to climb through them, fork by fork,
   <a href="#subtilization" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">the Path of Subtilization</a>
-  walks the same seven layers as one continuous psychological journey with the choice points named; and once you've sat with Consciousness/Awareness, Ego, and the sections ahead,
+  walks the same seven layers as one continuous psychological journey with the choice points named; for proof this map was never one tradition's alone,
+  <a href="#masters" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">the Masters at a Glance</a>
+  shows six teachers across two hemispheres arriving at it independently; and once you've sat with Consciousness/Awareness, Ego, and the sections ahead,
   <a href="#master-matrix" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">the Master Matrix</a>
   holds the full expanded reference for each layer &mdash; Awareness state, daily experience, your action plan, and what mastery looks like.
 </p>
@@ -3627,7 +3640,7 @@ tr.matrix-highlight{
         <div class="tc-end">End State: Isolation and systemic defense.</div>
       </div>
     </div>
-    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--mid);line-height:1.85;margin-top:24px;padding:20px;border:1px solid #1e1e1e;background:var(--bg);">These universal reactions crystalize into specific, repetitive patterns. We call these patterns &lsquo;Personality.&rsquo;</p>
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;margin-top:24px;padding:20px;border:1px solid #1e1e1e;background:var(--bg);">These universal reactions crystalize into specific, repetitive patterns. We call these patterns &lsquo;Personality.&rsquo;</p>
   </div>
 
   <!-- The Soft Spot — Bodhichitta -->
@@ -3695,7 +3708,7 @@ tr.matrix-highlight{
         <p><strong style="color:var(--mid);font-weight:400;">Result:</strong> Measurable increases in zest and vitality &mdash; the ability to act without the drag of a fragmented, self-divided mind.</p>
       </div>
     </div>
-    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--mid);line-height:1.85;padding:20px;border:1px solid #1e1e1e;background:var(--bg);">One mechanism, two directions: stillness toward the cosmos, and clarity toward the work in front of you. Neither requires believing anything &mdash; both can be measured in a lab.</p>
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:20px;border:1px solid #1e1e1e;background:var(--bg);">One mechanism, two directions: stillness toward the cosmos, and clarity toward the work in front of you. Neither requires believing anything &mdash; both can be measured in a lab.</p>
   </div>
 
   <!-- Suffering Loop -->
@@ -3764,7 +3777,14 @@ tr.matrix-highlight{
       <div class="sl-stage"><span class="sl-num">Step 3</span><div class="sl-name">Release</div><p class="sl-desc">Hold compassion for the part that was helpless then. Breathe until the somatic charge actually lowers.</p></div>
       <div class="sl-stage" style="border-left:2px solid var(--gold);"><span class="sl-num" style="color:var(--gold);">Step 4</span><div class="sl-name" style="color:var(--gold);">Reintegrate</div><p class="sl-desc">Let the adult who survived stand next to the memory, instead of being run by it.</p></div>
     </div>
-    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--mid);line-height:1.85;margin-top:24px;padding:20px;border:1px solid #1e1e1e;background:var(--bg);">You do not need a single transcendent insight to break the loop. You need to catch it doing the same four-step move it always does &mdash; and choose, once, not to finish Step 4 the old way.</p>
+
+    <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin:28px 0 14px;text-align:left;">Why Step 1 Needs All Three, Not Just One</p>
+    <p style="font-family:var(--serif);font-size:15px;color:var(--grey);line-height:1.9;margin-bottom:20px;text-align:left;">Tracking is not just finding the sensation. The old belief only actually unlocks when three things converge at once &mdash; the specific negative belief (&ldquo;I am unwanted&rdquo;), the raw feeling attached to it (shame, fear, sadness), and the exact place in the body holding the tension (throat, chest, gut). Remembering the event intellectually, without the other two, leaves the vault shut.</p>
+
+    <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.75;margin-bottom:14px;text-align:left;">Why Release Actually Works</p>
+    <p style="font-family:var(--serif);font-size:15px;color:var(--grey);line-height:1.9;margin-bottom:8px;text-align:left;">Memories are not fixed photographs. Every time one is accessed, it briefly unlocks and gets rebuilt &mdash; a process called reconsolidation. Step 3 is what makes use of that window: hold the memory open while feeding it something the terrified original moment didn't have &mdash; an adult's compassion, an adult's safety &mdash; and the memory saves back over itself. The facts of what happened stay. The emotional charge and the belief it planted do not have to.</p>
+
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;margin-top:24px;padding:20px;border:1px solid #1e1e1e;background:var(--bg);">You do not need a single transcendent insight to break the loop. You need to catch it doing the same four-step move it always does &mdash; and choose, once, not to finish Step 4 the old way.</p>
   </div>
 
   <!-- The Hardware Beneath the Loop — brain anatomy specificity -->
@@ -3876,7 +3896,7 @@ tr.matrix-highlight{
       </div>
     </div>
 
-    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--mid);line-height:1.85;margin-top:24px;padding:20px;border:1px solid #1e1e1e;background:var(--bg);">True power was never external &mdash; status, control, or forcing the world to align with the ego. It is the capacity to observe the mind, disarm the body's threat response, and respond to what's actually here instead of what the old programming assumes is here.</p>
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;margin-top:24px;padding:20px;border:1px solid #1e1e1e;background:var(--bg);">True power was never external &mdash; status, control, or forcing the world to align with the ego. It is the capacity to observe the mind, disarm the body's threat response, and respond to what's actually here instead of what the old programming assumes is here.</p>
   </div>
 
   <!-- The Open Loop — Neville Goddard / Law of Assumption -->
@@ -3898,7 +3918,64 @@ tr.matrix-highlight{
       <div class="sl-stage" style="border-left:2px solid var(--gold);"><span class="sl-num" style="color:var(--gold);">3</span><div class="sl-name" style="color:var(--gold);">Course Correction</div><p class="sl-desc">When the old belief fires anyway, it gets noticed, processed, and released &mdash; not obeyed on reflex like before.</p></div>
       <div class="sl-stage" style="border-left:2px solid var(--gold);"><span class="sl-num" style="color:var(--gold);">4</span><div class="sl-name" style="color:var(--gold);">Creation of New Reality</div><p class="sl-desc">The outside world starts conforming to the sustained assumption. Higher self-efficacy is not the reward. It is the mechanical consequence.</p></div>
     </div>
-    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:20px;border:1px solid #1e1e1e;background:var(--bg);">The mirror was never the problem, so arguing with the reflection never worked. Change what is doing the reflecting, and the mirror runs out of choices.</p>
+
+    <!-- The I AM Prism -->
+    <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin:32px 0 16px;text-align:left;">The I AM Prism &mdash; One Light, Many Readings</p>
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin-bottom:20px;text-align:left;">&lsquo;I AM&rsquo; cannot be divided. It is the raw, unconditioned fact of awareness &mdash; before any story gets attached to it. What you call your concept of self is the prism that light passes through. The light never changes. Only the arrangement of the prism decides what comes out the other side.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:2px;margin-bottom:8px;">
+      <div class="sl-stage"><span class="sl-num">I AM</span><div class="sl-name">+ &ldquo;rich&rdquo;</div><p class="sl-desc">Same light, arranged toward abundance. The outside world starts reflecting it back.</p></div>
+      <div class="sl-stage danger"><span class="sl-num" style="color:#c0392b;">I AM</span><div class="sl-name" style="color:#c0392b;">+ &ldquo;unwell&rdquo;</div><p class="sl-desc">Same light, arranged toward deficit. The body starts reflecting it back.</p></div>
+      <div class="sl-stage danger"><span class="sl-num" style="color:#c0392b;">I AM</span><div class="sl-name" style="color:#c0392b;">+ &ldquo;a slave&rdquo;</div><p class="sl-desc">Same light, arranged toward powerlessness. The circumstances start reflecting it back.</p></div>
+    </div>
+    <p style="font-family:var(--serif);font-size:14px;color:var(--dim);line-height:1.8;margin-top:8px;text-align:left;">You are not choosing between different sources of light. You are choosing the arrangement of the one prism you already are.</p>
+
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:20px;border:1px solid #1e1e1e;background:var(--bg);margin-top:32px;">The mirror was never the problem, so arguing with the reflection never worked. Change what is doing the reflecting, and the mirror runs out of choices.</p>
+  </div>
+
+  <!-- The Blueprint of Awareness — applied practice, sibling to Open Loop -->
+  <div class="ego-sub-header">
+    <div class="ego-sub-header-text">
+      <h3>The Blueprint of Awareness</h3>
+      <p>Where the Open Loop above actually gets worked, in practice</p>
+    </div>
+    <button class="collapse-toggle-btn" onclick="sectionCollapse('blueprint-awareness',this)">Expand &#9660;</button>
+  </div>
+  <span class="section-collapse-label" style="max-width:700px;margin:0 auto 16px;display:block;text-align:left;">Collapsed by default — tap to expand</span>
+  <div id="blueprint-awareness" class="section-collapse-wrap collapsed" style="max-width:700px;margin:0 auto 52px;">
+
+    <!-- Case Study — the projection loop, made concrete -->
+    <div style="max-width:100%;margin:0 auto;padding:32px 28px;background:var(--bg);border:1px solid #1e1e1e;border-left:3px solid var(--gold);text-align:left;">
+      <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.75;margin-bottom:12px;">Case Study &mdash; The Costume Designer</div>
+      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.85;margin-bottom:16px;">A costume designer believed her producer was inherently rude. What she never noticed: every morning, on the drive to work, she ran intense mental arguments with him &mdash; rehearsing criticism, bracing for conflict before he had said a word.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:16px;">
+        <div style="padding:16px 18px;background:var(--bg-lift);border:1px solid #1e1e1e;">
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.6;margin-bottom:6px;">Internal Cause &mdash; Before the Meeting</div>
+          <p style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.8;">Rehearsed criticism. Braced posture. Defensive script running on repeat, unnoticed as a cause.</p>
+        </div>
+        <div style="padding:16px 18px;background:var(--bg-lift);border:1px solid #1e1e1e;border-top:2px solid #c0392b;">
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#c0392b;opacity:.8;margin-bottom:6px;">External Effect &mdash; What Showed Up</div>
+          <p style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.8;">The producer, deliberately or not, echoed exactly what she had already rehearsed &mdash; and confirmed the assumption she never checked.</p>
+        </div>
+      </div>
+      <p style="font-family:var(--serif);font-size:clamp(14px,1.8vw,16px);color:var(--gold);font-style:italic;">Others only echo what you whisper to them in secret. Change the private rehearsal &mdash; imagine the working relationship going well instead &mdash; and the mirror runs out of the old script to reflect.</p>
+    </div>
+
+    <!-- The Blueprint funnel -->
+    <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin:32px 0 16px;text-align:left;">From Raw Light to Prepared Place</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:2px;margin-bottom:8px;">
+      <div class="sl-stage"><span class="sl-num">1</span><div class="sl-name">I AM</div><p class="sl-desc">The raw, unconditioned fact of awareness. Before any story.</p></div>
+      <div class="sl-stage"><span class="sl-num">2</span><div class="sl-name">Desire</div><p class="sl-desc">The intense, honest intent to be transformed. The starting point, not a distraction from it.</p></div>
+      <div class="sl-stage"><span class="sl-num">3</span><div class="sl-name">Attention</div><p class="sl-desc">Narrowing focus. Ignoring the distractions and the past failures that argue against the desire.</p></div>
+      <div class="sl-stage"><span class="sl-num">4</span><div class="sl-name">Assumption</div><p class="sl-desc">Thinking from the end, not of it. Surrendering to the feeling of the wish already fulfilled.</p></div>
+      <div class="sl-stage" style="border-left:2px solid var(--gold);"><span class="sl-num" style="color:var(--gold);">5</span><div class="sl-name" style="color:var(--gold);">The Prepared Place</div><p class="sl-desc">The outside world moving with motiveless necessity to echo the inner state.</p></div>
+    </div>
+    <p style="font-family:var(--serif);font-size:14px;color:var(--dim);line-height:1.8;margin-top:8px;text-align:left;">Every stage upstream of &ldquo;The Prepared Place&rdquo; is internal. Skip Attention or Assumption, and Desire stays a wish instead of becoming a fact.</p>
+
+    <!-- The Reverse-Memory Exercise -->
+    <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.75;margin:32px 0 16px;text-align:left;">A Practice &mdash; The Reverse-Memory Exercise</p>
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin-bottom:16px;text-align:left;">The power of your attention is the exact measure of your inner force. An imagination left to drift on idle moods stays stranded. This is how you train it, deliberately, one night at a time.</p>
+    <p style="font-family:var(--serif);font-size:15px;color:var(--grey);line-height:1.9;margin-bottom:8px;text-align:left;">Before sleep, run today backward &mdash; getting into bed, dinner, the commute, the morning, all the way to waking up &mdash; strictly in reverse order. Not summarizing. Reliving each moment, in reverse, in detail.</p>
+    <p style="font-family:var(--serif);font-size:clamp(14px,1.8vw,16px);font-style:italic;color:var(--gold);line-height:1.85;padding:20px;border:1px solid #1e1e1e;background:var(--bg);margin-top:16px;">This is not a memory test. It is resistance training for the one muscle every assumption depends on &mdash; the ability to hold attention exactly where you put it, instead of where habit drags it.</p>
   </div>
 
   <!-- Distortion of Satchitananda -->
@@ -4815,7 +4892,7 @@ tr.matrix-highlight{
 <section class="section-wide" id="masters" style="scroll-margin-top:56px;">
   <span class="label">The Masters at a Glance</span>
   <h2>Six teachers. Two hemispheres. One destination.</h2>
-  <p class="sub">The path of subtilization was never the property of one tradition. East and West independently arrived at the same map &mdash;By holding different lanterns.</p>
+  <p class="sub">The <a href="#subtilization" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">path of subtilization</a> was never the property of one tradition. East and West independently arrived at the same <a href="#spectrum" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">map</a> &mdash;By holding different lanterns.</p>
   <div style="text-align:center;margin-top:36px;margin-bottom:8px;">
     <button class="collapse-toggle-btn" onclick="sectionCollapse('masters-full-content',this)">Expand Section &#9660;</button>
     <p class="section-collapse-label">Section collapsed by default — tap to expand all six masters</p>
@@ -5017,22 +5094,11 @@ tr.matrix-highlight{
     <p class="gold">The cosmic ledger doesn&rsquo;t have a gas fee.</p>
     <p class="dim">It doesn&rsquo;t need one.</p>
   </section>
+  <p style="text-align:center;font-family:var(--serif);font-style:italic;font-size:14px;color:var(--dim);max-width:600px;margin:32px auto 0;line-height:1.8;">
+    Every entry in this ledger is measured against one thing:
+    <a href="#super-ordinate-goal" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">the Super-Ordinate Goal</a>.
+  </p>
 </div>
-<span class="continue-hint">continue</span>
-<div class="divider"></div>
-
-<!-- SUPER-ORDINATE GOAL -->
-<section class="section-wide" style="scroll-margin-top:56px;padding:80px 24px;background:var(--bg-lift);">
-  <div style="max-width:720px;margin:0 auto;">
-    <span class="label">The Super-Ordinate Goal</span>
-    <div class="superordinate-box" style="margin-top:0;">
-      <p>An Olympic athlete doesn&rsquo;t stop eating to win gold. Eating becomes a calculated sub-goal designed to serve the ultimate victory. Every daily action is optimised so it does not conflict with the super-ordinate goal.</p>
-      <p>Accumulate assets. Build your career. Raise your family well. Pursue every ambition you carry.<br><span style="color:var(--gold);font-style:italic;">These are valid sub-goals.</span></p>
-      <p>Rule 1: Sub-goals cannot conflict with the super-ordinate goal. Rule 2: A sub-goal can never become the sole replacement for it.</p>
-      <p class="gold">The super-ordinate goal &mdash; the Olympic Gold of life &mdash; is knowing your SELF.<br>The only gold that never depreciates.</p>
-    </div>
-  </div>
-</section>
 <span class="continue-hint">continue</span>
 <div class="divider"></div>
 
@@ -5329,9 +5395,10 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
      ============================================================ -->
 <p style="text-align:center;font-family:var(--serif);font-style:italic;font-size:14px;color:var(--dim);max-width:640px;margin:0 auto 28px;line-height:1.8;">
   This table expands directly on
-  <a href="#spectrum" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">The Ascent of Self</a>
+  <a href="#spectrum" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">The Ascent of Self</a>,
+  <a href="#subtilization" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">the Path of Subtilization</a>,
   and
-  <a href="#subtilization" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">the Path of Subtilization</a>
+  <a href="#masters" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">the Masters at a Glance</a>
   &mdash; same seven layers, now with the full reference for each.
 </p>
     <!-- THE MATRIX TABLE — one table, mode toggles which columns are visible -->
@@ -5606,8 +5673,9 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
 
   <div style="max-width:640px;margin:56px auto 0;padding:32px 28px;border:1px solid rgba(212,175,55,0.3);background:rgba(212,175,55,.04);text-align:center;">
     <p style="font-family:var(--serif);font-size:clamp(16px,2vw,19px);color:var(--white);line-height:1.85;margin-bottom:18px;">This page holds six questions. The workbook holds forty-seven pages built the same way &mdash; one phase at a time, with room to actually write your answers down instead of just thinking them.</p>
-    <a class="btn-gold" href="https://ammara01.gumroad.com/l/dyyole" target="_blank" rel="noopener" style="margin-top:4px;">Get The Ultimate Journey of Life &rarr;</a>
-    <p style="font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--grey);margin-top:16px;">$9.99 &middot; 47 pages &middot; 30-day money-back guarantee</p>
+    <a class="btn-gold" href="https://www.amazon.com/dp/B0H9HRM59K" target="_blank" rel="noopener" style="margin-top:4px;">Get The Paperback Workbook &rarr;</a>
+    <p style="font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--grey);margin-top:16px;">47 pages &middot; write-in workbook &middot; ships via Amazon</p>
+    <p style="font-family:var(--sans);font-size:11px;letter-spacing:.5px;color:var(--dim,#777);margin-top:18px;">Prefer digital? Get it on <a href="https://ammara01.gumroad.com/l/dyyole" target="_blank" rel="noopener" style="color:var(--gold);">Gumroad &nearr;</a> &mdash; and the <a href="https://companion.42self.xyz" target="_blank" rel="noopener" style="color:var(--gold);">Web Companion</a> is free to use alongside either format.</p>
   </div>
 </section>
 <span class="continue-hint">continue</span>
@@ -5996,7 +6064,9 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
         <div style="border-left:3px solid var(--gold);padding:16px 20px;background:var(--bg-lift);margin:16px 0;">
           <p style="font-size:15px;color:var(--mid);line-height:1.85;margin-bottom:0;">It doesn&rsquo;t hand you answers &mdash; *SELF doesn&rsquo;t work that way. It hands you better questions, in an order designed to build on each other, phase by phase. And it says so plainly: finishing it won&rsquo;t make you a finished, fully realized person. Nobody finishes this kind of work in one lifetime &mdash; that&rsquo;s the actual shape of it, not a flaw.</p>
         </div>
-        <p style="margin-bottom:0;"><a href="https://ammara01.gumroad.com/l/dyyole" target="_blank" rel="noopener" style="color:var(--gold);">Get the workbook ↗</a> <span style="color:var(--dim);">&mdash; $9.99 &middot; 47 pages &middot; five companion pieces (three videos, one audio, one visual deck) included &middot; 30-day money-back guarantee.</span></p>
+        <p style="margin-bottom:0;"><a href="https://www.amazon.com/dp/B0H9HRM59K" target="_blank" rel="noopener" style="color:var(--gold);">Get the Paperback ↗</a> <span style="color:var(--dim);">&mdash; the workbook, meant to be written in by hand. 47 pages.</span></p>
+        <p style="margin-top:8px;margin-bottom:0;"><a href="https://ammara01.gumroad.com/l/dyyole" target="_blank" rel="noopener" style="color:var(--gold);">Prefer digital? Get it on Gumroad ↗</a> <span style="color:var(--dim);">&mdash; $9.99 &middot; five companion pieces (three videos, one audio, one visual deck) included &middot; 30-day money-back guarantee.</span></p>
+        <p style="margin-top:8px;margin-bottom:0;"><span style="color:var(--dim);">The <a href="https://companion.42self.xyz" target="_blank" rel="noopener" style="color:var(--gold);">Web Companion ↗</a> is free to use alongside either format.</span></p>
       </div></div>
     </div>
 
@@ -7215,22 +7285,92 @@ function updateNav(){
     });
   });
 
+  /* ── AUTO "NEW" FLAGGING — self-expiring, no manual cleanup ──
+     To flag something as new when you add it: put data-added="YYYY-MM-DD"
+     on its nav link (desktop .nav-dropdown-panel a AND the matching mobile
+     .mnav-group-panel a — tag both so it shows in both menus), and
+     optionally on the section/heading itself if you want an inline badge
+     there too. This script checks that date against today on every page
+     load — within NEW_WINDOW_DAYS it shows a dot/badge, past that window
+     it silently stops. Nothing to remove by hand, ever. */
+  (function(){
+    var NEW_WINDOW_DAYS = 14;
+    function daysSince(dateStr){
+      var added = new Date(dateStr + 'T00:00:00');
+      var now = new Date();
+      return (now - added) / 86400000;
+    }
+    document.querySelectorAll('[data-added]').forEach(function(el){
+      var raw = el.getAttribute('data-added');
+      if(!raw) return;
+      var age = daysSince(raw);
+      if(age < 0 || age > NEW_WINDOW_DAYS) return; // expired or future-dated — skip silently
+
+      var isMobileNav = !!el.closest('.mnav-group-panel, .mnav-list');
+      var isNavLink = el.matches('.nav-dropdown-panel a, .nav-left > li > a, .nav-right > li > a, .mnav-list a');
+
+      if(isNavLink){
+        if(!el.querySelector('.nav-new-dot, .mnav-new-badge')){
+          var badge = document.createElement('span');
+          if(isMobileNav){
+            badge.className = 'mnav-new-badge';
+            badge.textContent = 'NEW';
+          } else {
+            badge.className = 'nav-new-dot';
+          }
+          el.appendChild(badge);
+        }
+        // Bubble a flag up to the parent dropdown trigger / accordion toggle
+        // so it's visible before the menu is even opened.
+        var dWrap = el.closest('.nav-dropdown-wrap');
+        if(dWrap){
+          var trigger = dWrap.querySelector(':scope > a');
+          if(trigger && !trigger.querySelector('.nav-new-dot')){
+            var gdot = document.createElement('span');
+            gdot.className = 'nav-new-dot';
+            trigger.appendChild(gdot);
+          }
+        }
+        var mGroup = el.closest('.mnav-group');
+        if(mGroup){
+          var mToggle = mGroup.querySelector('.mnav-group-toggle');
+          if(mToggle && !mToggle.querySelector('.mnav-new-badge')){
+            var mBadge = document.createElement('span');
+            mBadge.className = 'mnav-new-badge';
+            mBadge.textContent = 'NEW';
+            var caret = mToggle.querySelector('.mnav-caret');
+            if(caret) mToggle.insertBefore(mBadge, caret);
+            else mToggle.appendChild(mBadge);
+          }
+        }
+      } else {
+        // Inline badge on a section heading or other on-page element
+        if(!el.querySelector('.inline-new-badge')){
+          var inlineBadge = document.createElement('span');
+          inlineBadge.className = 'inline-new-badge';
+          inlineBadge.textContent = 'New';
+          el.appendChild(inlineBadge);
+        }
+      }
+    });
+  })();
+
   var sectionIds = [
-    'home','framework','dimension','consciousness','forty-two','masters','patanjali','go-deeper',
+    'home','super-ordinate-goal','framework','dimension','consciousness','forty-two','masters','patanjali','go-deeper',
     'ego','bodhichitta','pain-body','ego-checklist','diagnostic','feedback-loop',
-    'ledger','ipo','mirror-mc','contract','contribution',
+    'ledger','ipo','mirror-mc','mirror','contract','contribution',
     'faq-section','feedback','disclaimer'
   ];
   var currentActive = '';
 
   // Map each section ID to which desktop group trigger should highlight
   var groupMap = {
-    'framework':'framework','dimension':'framework','consciousness':'framework',
-    'forty-two':'framework','masters':'framework','patanjali':'framework','go-deeper':'framework',
-    'ego':'ego','bodhichitta':'ego','pain-body':'ego',
-    'ego-checklist':'ego','diagnostic':'ego','feedback-loop':'ego',
-    'ledger':'ecosystem','ipo':'ecosystem','mirror-mc':'ecosystem',
-    'contract':'ecosystem','contribution':'ecosystem'
+    'framework':'traditions','super-ordinate-goal':'traditions','dimension':'traditions','consciousness':'traditions',
+    'forty-two':'traditions','masters':'traditions','patanjali':'traditions','go-deeper':'traditions',
+    'ego':'traditions','bodhichitta':'traditions','pain-body':'traditions','contribution':'traditions',
+    'ego-checklist':'practice','diagnostic':'practice','feedback-loop':'practice',
+    'ledger':'shop-circle','ipo':'shop-circle','mirror-mc':'shop-circle','mirror':'shop-circle',
+    'contract':'shop-circle'
   };
 
   function setActive(id){
