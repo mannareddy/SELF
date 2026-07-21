@@ -39,6 +39,12 @@ gtag('config','G-XC5FG6W949');
 html{
 scroll-behavior:smooth;
 }
+/* Freeze all transitions for the one frame where data-theme actually swaps,
+   so hundreds of independently-timed color transitions don't fire out of
+   sync and read as a flash. Removed on the next paint via double rAF. */
+.theme-swap, .theme-swap *, .theme-swap *::before, .theme-swap *::after{
+  transition:none !important;
+}
 body{
   background:var(--bg);
   color:var(--white);
@@ -7687,6 +7693,10 @@ function toggleFoundation(btn){
 /* ── THEME TOGGLE ─────────────────────────────────────────────────────────── */
 function toggleTheme(){
   var html = document.documentElement;
+  // Freeze all transitions before the swap so the hundreds of independently
+  // timed color transitions on this page don't fire out of sync and read
+  // as a flash/flicker.
+  html.classList.add('theme-swap');
   var current = html.getAttribute('data-theme');
   var next = (current === 'light') ? 'dark' : 'light';
   html.setAttribute('data-theme', next === 'dark' ? '' : 'light');
@@ -7696,21 +7706,19 @@ function toggleTheme(){
   var icon = (next === 'light') ? '&#9790;' : '&#9788;';
   if(btn) btn.innerHTML = icon;
   if(btnM) btnM.innerHTML = icon;
-// Defer collapse to after theme repaint — prevents bottom-of-screen flicker
+  // Note: theme toggling intentionally no longer force-collapses expanded
+  // framework cards, surrender/identity sections, or open FAQ items — a
+  // reader mid-section shouldn't have their content snap shut just because
+  // they switched themes. Collapse only happens from explicit user action
+  // or on initial (collapsed-by-default) page load.
+  // Double rAF: the first runs after the browser commits the data-theme
+  // change to a frame; the nested second runs after that frame paints,
+  // which is the safe moment to remove .theme-swap without the removal
+  // itself triggering a visible re-transition.
   requestAnimationFrame(function(){
-    document.querySelectorAll('.framework-card').forEach(function(c){c.classList.add('collapsed');});
-    document.querySelectorAll('.surrender-section').forEach(function(s){s.classList.add('collapsed');});
-    document.querySelectorAll('.identity-section').forEach(function(s){s.classList.add('collapsed');});
-    document.querySelectorAll('.faq-item').forEach(function(f){
-      f.classList.remove('open');
-      f.classList.add('closed');
-      var ic=f.querySelector('.faq-icon');
-      if(ic) ic.innerHTML='+';
+    requestAnimationFrame(function(){
+      html.classList.remove('theme-swap');
     });
-    var fw=document.getElementById('faqListWrap');
-    if(fw){ fw.classList.remove('open'); }
-    var fb=document.getElementById('faqExpandAllBtn');
-    if(fb) fb.innerHTML='Expand &#9660;';
   });
 }
 // Theme already set in <head> — just sync button icons and reveal
