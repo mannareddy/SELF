@@ -2449,20 +2449,22 @@ tr.matrix-highlight{
 .gloss-entry:target{ border-left-color:var(--gold); background:rgba(212,175,55,.08); }
 
 /* ── Glossary Table Layout ── */
-.gloss-table{width:100%;border-collapse:collapse;margin:0 0 32px;font-family:var(--serif);}
+.gloss-table{width:100%;table-layout:fixed;border-collapse:collapse;margin:0 0 32px;font-family:var(--serif);outline:1px solid #2a2a2a;outline-offset:-1px;}
 .gloss-table thead tr{background:rgba(212,175,55,.10);}
 .gloss-table th{font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:400;padding:10px 14px;border:1px solid #2a2a2a;text-align:left;}
-.gloss-table td{padding:13px 14px;border:1px solid #2a2a2a;vertical-align:top;font-size:13.5px;color:var(--mid);line-height:1.78;}
-.gloss-table td:first-child{color:var(--white);font-size:14px;font-weight:400;white-space:nowrap;min-width:130px;}
+.gloss-table th:first-child{width:190px;}
+.gloss-table td{padding:13px 14px;border:1px solid #2a2a2a;vertical-align:top;font-size:13.5px;color:var(--mid);line-height:1.78;word-wrap:break-word;}
+.gloss-table td:first-child{color:var(--white);font-size:14px;font-weight:400;width:190px;white-space:normal;}
 .gloss-table td.gloss-card{font-size:12.5px;color:var(--grey);font-style:italic;}
 .gloss-table tr:hover td{background:rgba(212,175,55,.03);}
 .gloss-table tr:target td{background:rgba(212,175,55,.08);border-color:rgba(212,175,55,.35);}
+[data-theme="light"] .gloss-table{outline-color:rgba(0,0,0,0.22) !important;}
 [data-theme="light"] .gloss-table th{background:rgba(180,140,30,.15) !important;color:#7a5e0e !important;border-color:rgba(0,0,0,0.22) !important;}
 [data-theme="light"] .gloss-table td{border-color:rgba(0,0,0,0.18) !important;color:#1a1208 !important;}
 [data-theme="light"] .gloss-table td:first-child{color:#3a2a0a !important;}
 [data-theme="light"] .gloss-table td.gloss-card{color:#5a4a2a !important;}
 @media(max-width:640px){
-  .gloss-table td:first-child{white-space:normal;min-width:0;width:34%;}
+  .gloss-table th:first-child,.gloss-table td:first-child{white-space:normal;width:34%;}
   .gloss-table th,.gloss-table td{padding:10px 8px;font-size:12.5px;line-height:1.6;}
 }
 
@@ -2535,12 +2537,7 @@ tr.matrix-highlight{
       </div>
     </li>
 
-    <li><a href="#glossary">Glossary</a></li>
-    <li><a href="#faq-section">FAQ</a></li>
-    <li><a href="#feedback">Feedback</a></li>
-  </ul>
-
-  <!-- Theme toggle — used on both desktop and mobile -->
+    <li><a href="#glossary" data-added="2026-07-22">Glossary</a></li>
   <button id="themeToggleBtn" onclick="toggleTheme()" title="Toggle light/dark theme" aria-label="Toggle theme">&#9788;</button>
 </nav>
 
@@ -2596,9 +2593,7 @@ tr.matrix-highlight{
       </div>
     </li>
 
-    <li><a href="#glossary">Glossary</a></li>
-    <li><a href="#faq-section">FAQ</a></li>
-    <li><a href="#feedback">Feedback</a></li>
+    <li><a href="#glossary" data-added="2026-07-22">Glossary</a></li>
   </ul>
 </div>
 
@@ -2866,13 +2861,13 @@ tr.matrix-highlight{
       <span class="num">02</span>
       <h3>The Arrival Fallacy</h3><div class="framework-content">
       <p>The false belief that the next milestone will finally bring peace. The brain is wired for the chase, not the catch. Dopamine rewards effort and progress &mdash; when the goal is achieved, production drops, leaving an acute emptiness.</p>
-      <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">In Sanskrit: <em>Bhava</em> &mdash; the somatic and energetic weight attached to thoughts. Nostalgia for the past. Anxiety about the future. Feeling lost after an achievement is not failure.<br><span style="color:var(--grey);font-style:normal;">It is a symptom of an identity built on outcomes rather than essence.</span></p>
+      <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">In Sanskrit: <em><span class="gloss">Bhava<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Bhava">+</button><span class="gloss-pop">The felt, energetic weight a thought or state carries &mdash; not the thought itself, but the charge riding on it.</span></span></em> &mdash; the somatic and energetic weight attached to thoughts. Nostalgia for the past. Anxiety about the future. Feeling lost after an achievement is not failure.<br><span style="color:var(--grey);font-style:normal;">It is a symptom of an identity built on outcomes rather than essence.</span></p>
     </div></div>
     <div class="framework-card collapsed">
       <span class="num">03</span>
       <h3>The Ego</h3><div class="framework-content">
       <p>The mask the &ldquo;I&rdquo; wears. Your name, status, achievements, wounds, the story you tell about yourself. The false self that keeps seeking outside. Prerequisite to knowing your true SELF: see through it.</p>
-      <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">In Sanskrit: <em>Kama &rarr; Ahamkara</em> &mdash; desire collects into a constructed identity that claims ownership: &ldquo;I want this, I feel that.&rdquo; The I-Maker claiming all experience as its own.</p>
+      <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">In Sanskrit: <em>Kama &rarr; <span class="gloss">Ahamkara<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Ahamkara">+</button><span class="gloss-pop">Literally &ldquo;the I-maker&rdquo; &mdash; the function of mind that stamps &ldquo;me&rdquo; onto raw experience, manufacturing a sense of separate identity.</span></span></em> &mdash; desire collects into a constructed identity that claims ownership: &ldquo;I want this, I feel that.&rdquo; The I-Maker claiming all experience as its own.</p>
     </div></div>
     <div class="framework-card collapsed">
       <span class="num">04</span>
@@ -2903,7 +2898,7 @@ tr.matrix-highlight{
       <span class="num">06</span>
       <h3>Self-Realization</h3><div class="framework-content">
       <p>Not expected to be achieved in one lifetime. That is not a failure &mdash; that is the point. The goal was never arrival. The question is: are you pointed in the right direction?</p>
-      <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">In Sanskrit: <em>Moha / Vipallasa</em> &mdash; delusion is the ultimate end of unchecked conditioning. The loop only functions in the dark. Recognition is liberation. The architecture cannot survive awareness.</p>
+      <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">In Sanskrit: <em><span class="gloss">Moha<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Moha">+</button><span class="gloss-pop">Delusion &mdash; the basic clouding of judgment that mistakes the false for the real.</span></span> / <span class="gloss">Vipallasa<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Vipallasa">+</button><span class="gloss-pop">A perceptual distortion, in Buddhist psychology &mdash; seeing the impermanent as permanent, the impure as pure.</span></span></em> &mdash; delusion is the ultimate end of unchecked conditioning. The loop only functions in the dark. Recognition is liberation. The architecture cannot survive awareness.</p>
     </div></div>
     <div class="framework-card collapsed">
       <span class="num">07</span>
@@ -2931,7 +2926,7 @@ tr.matrix-highlight{
       <span class="num">L1 &mdash; Red</span>
       <h3>Survival — &ldquo;I Exist&rdquo;</h3><div class="framework-content">
       <p>Consciousness fully embedded in matter. You do not operate reality; reality operates on you. Dense, chaotic, and entirely focused on reacting to physical constraints just to maintain baseline existence.</p>
-      <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">Alchemy: Lead (Base Matter) &middot; Brainwave: Delta &middot; Root Chakra / DO &middot; Saturn / Earth &middot; Hermetic Principle: <span class="gloss">Mentalism<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Mentalism">+</button><span class="gloss-pop">&ldquo;The All is Mind.&rdquo; The principle that the universe is fundamentally mental in nature &mdash; matter as a mode of mind, not the other way around.</span></span></p>
+      <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">Alchemy: Lead (Base Matter) &middot; Brainwave: Delta &middot; Hermetic Principle: <span class="gloss">Mentalism<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Mentalism">+</button><span class="gloss-pop">&ldquo;The All is Mind.&rdquo; The principle that the universe is fundamentally mental in nature &mdash; matter as a mode of mind, not the other way around.</span></span></p>
       <p style="margin-top:10px;font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;border-top:1px solid #1e1e1e;padding-top:12px;">Life Stage: Womb &amp; Infancy</p>
       <p style="margin-top:6px;font-size:14px;color:var(--grey);">The Vertical Leap &mdash; <em style="color:var(--gold);font-style:italic;">Somatic Grounding:</em> anchor completely in the physical form without resisting limits or survival demands.</p>
     </div></div>
@@ -2939,7 +2934,7 @@ tr.matrix-highlight{
       <span class="num">L2 &mdash; Orange</span>
       <h3>Emotion — &ldquo;I Feel&rdquo;</h3><div class="framework-content">
       <p>Raw physical experience is no longer just endured — it generates an internal, subjective, volatile charge. These emotional spikes create the very first echoes of a subjective self, distinct from the world pushing against it.</p>
-      <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">Alchemy: Copper (Purification) &middot; Brainwave: Theta &middot; Sacral Chakra / RE &middot; Jupiter / Water &middot; Hermetic Principle: <span class="gloss">Correspondence<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Correspondence">+</button><span class="gloss-pop">&ldquo;As above, so below.&rdquo; The principle that the same patterns repeat at every scale &mdash; a single moment of reaction contains the same structure as a lifetime's conditioning.</span></span></p>
+      <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">Alchemy: Copper (Purification) &middot; Brainwave: Theta &middot; Hermetic Principle: <span class="gloss">Correspondence<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Correspondence">+</button><span class="gloss-pop">&ldquo;As above, so below.&rdquo; The principle that the same patterns repeat at every scale &mdash; a single moment of reaction contains the same structure as a lifetime's conditioning.</span></span></p>
       <p style="margin-top:10px;font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;border-top:1px solid #1e1e1e;padding-top:12px;">Life Stage: Childhood &mdash; First Cry / Play</p>
       <p style="margin-top:6px;font-size:14px;color:var(--grey);">The Vertical Leap &mdash; <em style="color:var(--gold);font-style:italic;">Breath Mastery:</em> use the breath as a conscious regulator to wash away reactionary emotional spikes.</p>
     </div></div>
@@ -2947,7 +2942,7 @@ tr.matrix-highlight{
       <span class="num">L3 &mdash; Yellow</span>
       <h3>Thought — &ldquo;I Think&rdquo;</h3><div class="framework-content">
       <p>To survive the chaos of raw emotion, the mind begins to categorize and predict. Reactions calcify into predictable, automated patterns — a rigid architecture built around the initial spark of consciousness to keep it safe.</p>
-      <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">Alchemy: Iron (Strength) &middot; Brainwave: Alpha &middot; Solar Plexus / MI &middot; Mars / Fire &middot; Hermetic Principle: <span class="gloss">Vibration<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Vibration">+</button><span class="gloss-pop">&ldquo;Nothing rests; everything moves.&rdquo; The principle that all matter, energy, thought, and spirit are in constant motion &mdash; stillness is always relative, never absolute.</span></span></p>
+      <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">Alchemy: Iron (Strength) &middot; Brainwave: Alpha &middot; Hermetic Principle: <span class="gloss">Vibration<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Vibration">+</button><span class="gloss-pop">&ldquo;Nothing rests; everything moves.&rdquo; The principle that all matter, energy, thought, and spirit are in constant motion &mdash; stillness is always relative, never absolute.</span></span></p>
       <p style="margin-top:10px;font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;border-top:1px solid #1e1e1e;padding-top:12px;">Life Stage: Early Youth &mdash; Sensory / School</p>
       <p style="margin-top:6px;font-size:14px;color:var(--grey);">The Vertical Leap &mdash; <em style="color:var(--gold);font-style:italic;">Mindful Observation:</em> step back from the mental chatter; shift from being the thoughts to watching them.</p>
     </div></div>
@@ -2955,7 +2950,7 @@ tr.matrix-highlight{
       <span class="num">L4 &mdash; Green</span>
       <h3>Love — &ldquo;I Connect&rdquo;</h3><div class="framework-content">
       <p>Identity is not who you truly are — it is the refined construct built from every layer of prior conditioning. It acts as a filter and a fulcrum, bridging the mechanical responses of your past with the expansive awareness of your future. The heart is the bridge from density to divinity.</p>
-      <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">Alchemy: Silver (Refinement) &middot; Brainwave: Mu &middot; Heart Chakra / FA &middot; Sun / Air &middot; Hermetic Principle: <span class="gloss">Polarity<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Polarity">+</button><span class="gloss-pop">&ldquo;Everything is dual; opposites are identical in nature, differing only in degree.&rdquo; Hot and cold are the same phenomenon at different points &mdash; not two separate things.</span></span></p>
+      <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">Alchemy: Silver (Refinement) &middot; Brainwave: Mu &middot; Hermetic Principle: <span class="gloss">Polarity<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Polarity">+</button><span class="gloss-pop">&ldquo;Everything is dual; opposites are identical in nature, differing only in degree.&rdquo; Hot and cold are the same phenomenon at different points &mdash; not two separate things.</span></span></p>
       <p style="margin-top:10px;font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;border-top:1px solid #1e1e1e;padding-top:12px;">Life Stage: Late Youth &mdash; Curiosity / Higher Learning</p>
       <p style="margin-top:6px;font-size:14px;color:var(--grey);">The Vertical Leap &mdash; <em style="color:var(--gold);font-style:italic;">Intellectual Surrender:</em> recognize the limits of dry logic and let concepts dissolve into intuitive knowing.</p>
     </div></div>
@@ -2963,7 +2958,7 @@ tr.matrix-highlight{
       <span class="num">L5 &mdash; Blue</span>
       <h3>Wisdom — &ldquo;I Understand&rdquo;</h3><div class="framework-content">
       <p>Consciousness dis-identifies from its own patterns. You realize you are not your thoughts, emotions, or history — you are the silent entity observing identity itself. This separation is the true alchemical gold: the dawn of objective self-awareness.</p>
-      <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">Alchemy: Gold (Illumination) &middot; Brainwave: Beta &middot; Throat Chakra / SOL &middot; Venus / Aether &middot; Hermetic Principle: <span class="gloss">Rhythm<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Rhythm">+</button><span class="gloss-pop">&ldquo;Everything flows, out and in; everything has its tides.&rdquo; The principle that all things swing between poles in a measurable rhythm &mdash; including moods, motivation, and insight.</span></span></p>
+      <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">Alchemy: Gold (Illumination) &middot; Brainwave: Beta &middot; Hermetic Principle: <span class="gloss">Rhythm<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Rhythm">+</button><span class="gloss-pop">&ldquo;Everything flows, out and in; everything has its tides.&rdquo; The principle that all things swing between poles in a measurable rhythm &mdash; including moods, motivation, and insight.</span></span></p>
       <p style="margin-top:10px;font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;border-top:1px solid #1e1e1e;padding-top:12px;">Life Stage: Young Adulthood &mdash; First Impressions / Career</p>
       <p style="margin-top:6px;font-size:14px;color:var(--grey);">The Vertical Leap &mdash; <em style="color:var(--gold);font-style:italic;">Alchemical Refinement:</em> strip away the personal stories attached to your past; hold your history as educational data.</p>
     </div></div>
@@ -2971,7 +2966,7 @@ tr.matrix-highlight{
       <span class="num">L6 &mdash; Indigo</span>
       <h3>Bliss — &ldquo;I Transcend&rdquo;</h3><div class="framework-content">
       <p>As awareness heightens, the dualistic gap between the observer and reality collapses. The psychological friction of separation ceases, distilling consciousness into pure integration and unmediated bliss.</p>
-      <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">Alchemy: Quintessence (Spirit/Essence) &middot; Brainwave: Gamma &middot; Third Eye / LA &middot; Mercury / Mind &middot; Hermetic Principle: <span class="gloss">Cause &amp; Effect<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Cause &amp; Effect">+</button><span class="gloss-pop">&ldquo;Every cause has its effect; every effect has its cause.&rdquo; Nothing happens by pure chance &mdash; what looks random is usually a cause operating on a plane you haven't traced yet.</span></span></p>
+      <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">Alchemy: Quintessence (Spirit/Essence) &middot; Brainwave: Gamma &middot; Hermetic Principle: <span class="gloss">Cause &amp; Effect<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Cause &amp; Effect">+</button><span class="gloss-pop">&ldquo;Every cause has its effect; every effect has its cause.&rdquo; Nothing happens by pure chance &mdash; what looks random is usually a cause operating on a plane you haven't traced yet.</span></span></p>
       <p style="margin-top:10px;font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;border-top:1px solid #1e1e1e;padding-top:12px;">Life Stage: Mature Adulthood &mdash; Ambition / Leadership</p>
       <p style="margin-top:6px;font-size:14px;color:var(--grey);">The Vertical Leap &mdash; <em style="color:var(--gold);font-style:italic;">Dissolving the Observer:</em> merge the gap between watcher and watched; step out of individual self-importance.</p>
     </div></div>
@@ -2979,7 +2974,7 @@ tr.matrix-highlight{
       <span class="num">L7 &mdash; Violet</span>
       <h3>Oneness — &ldquo;I Am&rdquo;</h3><div class="framework-content">
       <p>Beyond patterns, beyond identity, beyond even the observer. You are no longer experiencing reality — you realize you are the ultimate reality experiencing itself. Complete ontological transmutation. The absolute &ldquo;I am&rdquo; phase.</p>
-      <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">Alchemy: Philosopher&rsquo;s Stone (Completion) &middot; Brainwave: Lambda &middot; Crown Chakra / TI &middot; Moon / Spirit &middot; Hermetic Principle: <span class="gloss">Gender<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Gender">+</button><span class="gloss-pop">&ldquo;Gender is in everything.&rdquo; Not biological sex &mdash; a generative/receptive polarity present in all creation, thought, and action.</span></span></p>
+      <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">Alchemy: Philosopher&rsquo;s Stone (Completion) &middot; Brainwave: Lambda &middot; Hermetic Principle: <span class="gloss">Gender<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Gender">+</button><span class="gloss-pop">&ldquo;Gender is in everything.&rdquo; Not biological sex &mdash; a generative/receptive polarity present in all creation, thought, and action.</span></span></p>
       <p style="margin-top:10px;font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;border-top:1px solid #1e1e1e;padding-top:12px;">Life Stage: Elderhood &amp; Beyond &mdash; Manifestation / Realization</p>
       <p style="margin-top:6px;font-size:14px;color:var(--grey);">The Vertical Leap &mdash; <em style="color:var(--gold);font-style:italic;">Final Realization:</em> rest permanently in the unshakeable &ldquo;I Am,&rdquo; free from the illusions of time, change, and decay.</p>
     </div></div>
@@ -3464,7 +3459,7 @@ tr.matrix-highlight{
     </div>
 
     <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin:48px 0 16px;text-align:left;max-width:820px;margin-left:auto;margin-right:auto;">The Field Named in Four Movements &mdash; Mandukya Upanishad</p>
-    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--grey);line-height:1.9;max-width:820px;margin:0 auto 24px;text-align:left;">AUM is not treated as a word here. Each sound is mapped to a state you already move through daily &mdash; and what's left when the sound stops is mapped too. Not a claim to take on faith. A structure you can check against your own last twenty-four hours.</p>
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--grey);line-height:1.9;max-width:820px;margin:0 auto 24px;text-align:left;"><span class="gloss">AUM<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define AUM">+</button><span class="gloss-pop">The primal sound-symbol of Vedanta &mdash; A, U, and M map to waking, dreaming, and deep sleep, and the silence after the sound is Turiya, the awareness underneath all three.</span></span> is not treated as a word here. Each sound is mapped to a state you already move through daily &mdash; and what's left when the sound stops is mapped too. Not a claim to take on faith. A structure you can check against your own last twenty-four hours.</p>
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;max-width:820px;margin:0 auto 4px;text-align:left;">
       <div style="padding:22px 24px;background:var(--bg);border:1px solid #1e1e1e;">
@@ -5479,7 +5474,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
         </thead>
         <tbody>
           <tr id="matrix-row-1" data-layer="1">
-            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-1" onclick="toggleMatrixRow(1)" aria-label="Expand Layer 1 detail">+</button><span style="color:var(--dim);font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 1</span>Body<span style="display:block;font-size:9px;color:var(--dim);font-style:normal;letter-spacing:0;margin-top:2px;"><span class="gloss">Root Chakra<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Root Chakra">+</button><span class="gloss-pop">Operating on the consciousness of physical survival, material form, and biology &mdash; governs Layer 1: Body.</span></span></span></td>
+            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-1" onclick="toggleMatrixRow(1)" aria-label="Expand Layer 1 detail">+</button><span style="color:var(--dim);font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 1</span>Body<span style="display:block;font-size:9px;color:var(--dim);font-style:normal;letter-spacing:0;margin-top:2px;">Root Chakra</span></td>
             <td class="col-grid">Womb</td><td class="col-grid">Infancy</td><td class="col-grid">Health</td><td class="col-grid">Aging</td><td class="col-grid"><span class="gloss">Senescence<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Senescence">+</button><span class="gloss-pop">The point where cells stop dividing and repairing themselves as efficiently &mdash; the biological beginning of decline, before outright breakdown.</span></span></td><td class="col-grid">Mortality</td>
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Hunger, exhaustion, illness, and raw biological baselines.</td>
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Takes a literal physical toll (Aging).</td>
@@ -5494,7 +5489,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
           <tr class="row-detail" id="matrix-detail-1"><td colspan="16"></td></tr>
 
           <tr id="matrix-row-2" data-layer="2">
-            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-2" onclick="toggleMatrixRow(2)" aria-label="Expand Layer 2 detail">+</button><span style="color:var(--dim);font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 2</span>Breath<span style="display:block;font-size:9px;color:var(--dim);font-style:normal;letter-spacing:0;margin-top:2px;"><span class="gloss">Sacral Chakra<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Sacral Chakra">+</button><span class="gloss-pop">Operating on the consciousness of life-force, emotional baseline, and vital rhythm &mdash; governs Layer 2: Breath.</span></span></span></td>
+            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-2" onclick="toggleMatrixRow(2)" aria-label="Expand Layer 2 detail">+</button><span style="color:var(--dim);font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 2</span>Breath<span style="display:block;font-size:9px;color:var(--dim);font-style:normal;letter-spacing:0;margin-top:2px;">Sacral Chakra</span></td>
             <td class="col-grid">First cry</td><td class="col-grid">Deepening</td><td class="col-grid">Rhythm</td><td class="col-grid">Emotion</td><td class="col-grid">Laboured</td><td class="col-grid">Last breath</td>
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Fluctuations between deep belly sighs and erratic breathing.</td>
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Locks panic or grief into the nervous system (Emotion).</td>
@@ -5509,7 +5504,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
           <tr class="row-detail" id="matrix-detail-2"><td colspan="16"></td></tr>
 
           <tr id="matrix-row-3" data-layer="3">
-            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-3" onclick="toggleMatrixRow(3)" aria-label="Expand Layer 3 detail">+</button><span style="color:var(--dim);font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 3</span>Mind<span style="display:block;font-size:9px;color:var(--dim);font-style:normal;letter-spacing:0;margin-top:2px;"><span class="gloss">Solar Plexus<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Solar Plexus">+</button><span class="gloss-pop">Operating on the consciousness of linear logic, everyday perception, and sensory processing &mdash; governs Layer 3: Mind.</span></span></span></td>
+            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-3" onclick="toggleMatrixRow(3)" aria-label="Expand Layer 3 detail">+</button><span style="color:var(--dim);font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 3</span>Mind<span style="display:block;font-size:9px;color:var(--dim);font-style:normal;letter-spacing:0;margin-top:2px;">Solar Plexus</span></td>
             <td class="col-grid">Sensory</td><td class="col-grid">Learning</td><td class="col-grid">Perception</td><td class="col-grid">Shifting</td><td class="col-grid">Fatigue</td><td class="col-grid">Loss of senses</td>
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Daily to-do lists, routine patterns, and automatic mental chatter.</td>
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Shatters routines, forcing focus to spin out (Shifting).</td>
@@ -5524,7 +5519,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
           <tr class="row-detail" id="matrix-detail-3"><td colspan="16"></td></tr>
 
           <tr id="matrix-row-4" data-layer="4">
-            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-4" onclick="toggleMatrixRow(4)" aria-label="Expand Layer 4 detail">+</button><span style="color:var(--dim);font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 4</span>Intellect<span style="display:block;font-size:9px;color:var(--dim);font-style:normal;letter-spacing:0;margin-top:2px;"><span class="gloss">Heart Chakra<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Heart Chakra">+</button><span class="gloss-pop">Operating on the consciousness of structural truth, objective logic, and core beliefs &mdash; governs Layer 4: Intellect.</span></span></span></td>
+            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-4" onclick="toggleMatrixRow(4)" aria-label="Expand Layer 4 detail">+</button><span style="color:var(--dim);font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 4</span>Intellect<span style="display:block;font-size:9px;color:var(--dim);font-style:normal;letter-spacing:0;margin-top:2px;">Heart Chakra</span></td>
             <td class="col-grid">Curiosity</td><td class="col-grid">Logic</td><td class="col-grid">Stability</td><td class="col-grid bright">Shifting beliefs</td><td class="col-grid">Decline</td><td class="col-grid">Loss of judgment</td>
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Discerning right vs. wrong; building a structured logic framework.</td>
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Old worldviews fail over time, forcing a pivot (Shifting Beliefs).</td>
@@ -5539,7 +5534,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
           <tr class="row-detail" id="matrix-detail-4"><td colspan="16"></td></tr>
 
           <tr id="matrix-row-5" data-layer="5">
-            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-5" onclick="toggleMatrixRow(5)" aria-label="Expand Layer 5 detail">+</button><span style="color:var(--dim);font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 5</span>Memory<span style="display:block;font-size:9px;color:var(--dim);font-style:normal;letter-spacing:0;margin-top:2px;"><span class="gloss">Throat Chakra<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Throat Chakra">+</button><span class="gloss-pop">Operating on the consciousness of systemic patterns, karma, and personal history &mdash; governs Layer 5: Memory.</span></span></span></td>
+            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-5" onclick="toggleMatrixRow(5)" aria-label="Expand Layer 5 detail">+</button><span style="color:var(--dim);font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 5</span>Memory<span style="display:block;font-size:9px;color:var(--dim);font-style:normal;letter-spacing:0;margin-top:2px;">Throat Chakra</span></td>
             <td class="col-grid">First impression</td><td class="col-grid">Experience</td><td class="col-grid">Storing</td><td class="col-grid bright">Trauma</td><td class="col-grid">Forgetfulness</td><td class="col-grid">Erasure</td>
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Nostalgia, flashbacks, triggers, and automated habit loops.</td>
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Triggers deeply buried ghosts, wounds, or past failures (Trauma).</td>
@@ -5554,7 +5549,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
           <tr class="row-detail" id="matrix-detail-5"><td colspan="16"></td></tr>
 
           <tr id="matrix-row-6" data-layer="6">
-            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-6" onclick="toggleMatrixRow(6)" aria-label="Expand Layer 6 detail">+</button><span style="color:var(--dim);font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 6</span>Ego<span style="display:block;font-size:9px;color:var(--dim);font-style:normal;letter-spacing:0;margin-top:2px;"><span class="gloss">Third Eye<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Third Eye">+</button><span class="gloss-pop">Operating on the consciousness of individual identity, self-will, and personal archetype &mdash; governs Layer 6: Ego.</span></span></span></td>
+            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-6" onclick="toggleMatrixRow(6)" aria-label="Expand Layer 6 detail">+</button><span style="color:var(--dim);font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 6</span>Ego<span style="display:block;font-size:9px;color:var(--dim);font-style:normal;letter-spacing:0;margin-top:2px;">Third Eye</span></td>
             <td class="col-grid">Toddlerhood</td><td class="col-grid">Ambition</td><td class="col-grid">Persona</td><td class="col-grid red">Crisis</td><td class="col-grid red">Rigidity</td><td class="col-grid" style="color:var(--gold);font-style:italic;">Dissolution ✦</td>
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Feeling proud, defensive, or protective of &ldquo;who you think you are&rdquo;.</td>
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Causes your curated persona to completely shatter (Crisis).</td>
@@ -5569,7 +5564,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
           <tr class="row-detail" id="matrix-detail-6"><td colspan="16"></td></tr>
 
           <tr class="gold-row" id="matrix-row-7" data-layer="7">
-            <td class="row-label" style="font-style:italic;color:var(--gold);text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-7" onclick="toggleMatrixRow(7)" aria-label="Expand Layer 7 detail">+</button><span style="font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;color:var(--gold);">Layer 7</span>Self / Soul<span style="display:block;font-size:9px;color:var(--gold);font-style:normal;letter-spacing:0;margin-top:2px;opacity:.7;"><span class="gloss">Crown Chakra<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Crown Chakra">+</button><span class="gloss-pop">The summit of the ladder &mdash; operating on the highest consciousness of the Eternal Witness, unity, and absolute transcendence. Governs Layer 7: Self / Soul.</span></span></span></td>
+            <td class="row-label" style="font-style:italic;color:var(--gold);text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-7" onclick="toggleMatrixRow(7)" aria-label="Expand Layer 7 detail">+</button><span style="font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;color:var(--gold);">Layer 7</span>Self / Soul<span style="display:block;font-size:9px;color:var(--gold);font-style:normal;letter-spacing:0;margin-top:2px;opacity:.7;">Crown Chakra</span></td>
             <td class="col-grid" style="font-family:var(--sans);font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--gold);">Manifestation</td>
             <td class="col-grid" style="font-family:var(--sans);font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--gold);">Realization</td>
             <td class="col-grid" style="font-family:var(--sans);font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--gold);">Eternal Witness</td>
@@ -5613,7 +5608,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
     <div style="max-width:820px;margin:0 auto;">
       <div style="padding:28px 28px;background:var(--bg-lift);border:1px solid var(--gold);border-left:3px solid var(--gold);text-align:center;margin-bottom:0;">
         <p style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:14px;">How Consciousness Ascends</p>
-        <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin-bottom:18px;">Each of the 7 layers in the grid above corresponds to one of the 7 stages on the Path of Subtilization — from the <span class="gloss">Root Chakra<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Root Chakra">+</button><span class="gloss-pop">Operating on the consciousness of physical survival, material form, and biology &mdash; governs Layer 1: Body.</span></span>'s Innocence to the <span class="gloss">Crown Chakra<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Crown Chakra">+</button><span class="gloss-pop">The summit of the ladder &mdash; operating on the highest consciousness of the Eternal Witness, unity, and absolute transcendence. Governs Layer 7: Self / Soul.</span></span>'s Liberation. Same ladder, two views: one as a matrix coordinate, one as a lived stage.</p>
+        <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin-bottom:18px;">Each of the 7 layers in the grid above corresponds to one of the 7 stages on the Path of Subtilization — from the Root Chakra's Innocence to the Crown Chakra's Liberation. Same ladder, two views: one as a matrix coordinate, one as a lived stage.</p>
         <a href="#subtilization" style="display:inline-block;font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:10px 22px;text-decoration:none;">Revisit the Path of Subtilization &rarr;</a>
       </div>
     </div>
@@ -6404,6 +6399,10 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
             <td>Vritti</td>
             <td>A fluctuation or wave of the mind-stuff (Chitta) &mdash; the constant stream of mental chatter, images, and fleeting concepts stirred up by the senses, rippling across an otherwise still lake of awareness.</td>
           </tr>
+          <tr class="gloss-entry" id="gloss-bhava">
+            <td>Bhava</td>
+            <td>The felt, energetic weight a thought or state carries &mdash; nostalgia clinging to a memory, anxiety clinging to the future. Not the thought itself, but the charge riding on it.</td>
+          </tr>
           <tr class="gloss-entry" id="gloss-purusha">
             <td>Purusha</td>
             <td>Pure consciousness, in Samkhya and Yoga philosophy &mdash; unmoving, unchanging, the witness that never itself becomes an object. Not a mixture with Prakriti, but what watches Prakriti happen.</td>
@@ -6420,17 +6419,25 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
             <td>Gunas</td>
             <td>The three fundamental qualities that make up all of Prakriti (nature) &mdash; Sattva, Rajas, and Tamas. Every object, thought, mood, and meal is some shifting mixture of the three; not moral categories, but the raw material personality and matter are both built from.</td>
           </tr>
+          <tr class="gloss-entry" id="gloss-moha">
+            <td>Moha</td>
+            <td>Delusion &mdash; the basic clouding of judgment that mistakes the false for the real. The functional end-state of unchecked conditioning left to run in the dark.</td>
+          </tr>
+          <tr class="gloss-entry" id="gloss-vipallasa">
+            <td>Vipallasa</td>
+            <td>A perceptual distortion, in Buddhist psychology &mdash; seeing the impermanent as permanent, the impure as pure, the painful as pleasurable, the not-self as self.</td>
+          </tr>
           <tr class="gloss-entry" id="gloss-sattva">
             <td>Sattva</td>
-            <td>One of the three Gunas (Trigunas) &mdash; the quality of lightness, clarity, and spiritual luminosity in Prakriti. The sattvic state is happiness, calm, kindness, and genuine concern for others; it is where self-knowledge becomes possible because the mind is no longer distorting what it receives. Unlike Rajas, Sattva does not impose craving onto perception; unlike Tamas, it does not blur or deny what is actually there. In deep meditation, when self-love and joy arise spontaneously, that is Sattva manifesting. Good health &mdash; physical and psychological &mdash; is its outward signature. The sattvic person differentiates clearly between what is truly desirable and what is merely attractive in the moment. To move toward Sattva from a Rajas-dominant state: meditation, study, non-profit work, and the practice of the Yamas (ethical restraints) help balance the excessive energy and allow clarity to emerge.</td>
+            <td>One of the three Gunas &mdash; the quality of lightness, clarity, and spiritual luminosity in Prakriti. The mind is calm enough here to see what's actually there, undistorted by craving (Rajas) or dulled by inertia (Tamas) &mdash; the condition under which self-knowledge becomes possible.</td>
           </tr>
           <tr class="gloss-entry" id="gloss-rajas">
             <td>Rajas</td>
-            <td>One of the three Gunas (Trigunas) &mdash; the quality of energy, passion, and ceaseless movement. Rajas is the activity principle: the movement of blood through the body is Rajas at work; the mind's wild swing from thought to thought is Rajas in the mental field. In balance it produces the dedicated achiever &mdash; motivated, creative, deeply engaged, and capable of sustained effort. It is the indispensable bridge between Tamas and Sattva: without Rajas, nothing moves. The rajasic person in balance is enthusiastic, ambitious, and oriented toward right action. Out of balance, Rajas tips into anxiety, anger, and agitation &mdash; the person becomes self-centred, driven by desire and attachment, sometimes unable to distinguish right action from merely effective action. Rajas creates motivation and creativity when calibrated, but becomes the source of restlessness and aggression when dominant without restraint. To refine excess Rajas toward Sattva: meditation, reading, selfless service, and the Yamas help channel the energy without suppressing it.</td>
+            <td>One of the three Gunas &mdash; the quality of energy, passion, and ceaseless movement. In balance: motivation, creativity, sustained effort. Out of balance: restlessness, anxiety, and desire-driven action. The indispensable bridge between Tamas and Sattva &mdash; without Rajas, nothing moves.</td>
           </tr>
           <tr class="gloss-entry" id="gloss-tamas">
             <td>Tamas</td>
-            <td>One of the three Gunas (Trigunas) &mdash; the quality of heaviness, inertia, and darkness. Tamas is the underactive principle: the lowest energy state, clouded by illusion, dullness, and resistance to change. When the mind swings wildly and then freezes rather than stilling itself through awareness, that is Tamas at work. In balance, it provides necessary rest: timely sleep, a grounded diet, appreciation of nature, and quiet concern for others. Out of balance, it manifests as possessiveness, confusion, laziness, short-lived pleasures built on illusion, and &mdash; in extremes &mdash; a desire to harm. The tamasic person is veiled by ignorance and attachment, resistant to growth. The path out begins with the body: physical asana, mixing with positive people, traveling, and eating lighter food lift the energy from Tamas into Rajas, from where the ascent to Sattva becomes possible. The Trigunas operate in seven classical combinations &mdash; dominant Sattva, dominant Rajas, dominant Tamas, Sattva-Rajas, Sattva-Tamas, Rajas-Tamas, and the rare balance of all three &mdash; and the dominant guna at any moment, shaped by physical, psychological, and social influences, is what determines how the five senses process the world and express it as personality.</td>
+            <td>One of the three Gunas &mdash; the quality of heaviness, inertia, and darkness. In balance: necessary rest, grounding, timely sleep. Out of balance: dullness, confusion, and resistance to change. The heaviest of the three &mdash; and the starting point every ascent toward Sattva begins from.</td>
           </tr>
           <tr class="gloss-entry" id="gloss-samskara">
             <td>Samskara</td>
@@ -6520,6 +6527,10 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
       <table class="gloss-table">
         <thead><tr><th>Term</th><th>Definition</th></tr></thead>
         <tbody>
+          <tr class="gloss-entry" id="gloss-aum">
+            <td>AUM</td>
+            <td>The primal sound-symbol of Vedanta, mapped here to the four states of consciousness: A is Jagrat (waking), U is Svapna (dreaming), M is Prajna (deep sleep) &mdash; and the silence after the sound stops is Turiya, the awareness underneath all three.</td>
+          </tr>
           <tr class="gloss-entry" id="gloss-jagrat">
             <td>Jagrat</td>
             <td>The ordinary waking state &mdash; consciousness engaged with the external, physical world through the senses.</td>
@@ -7798,6 +7809,53 @@ function toggleTheme(){
     if(bM) bM.innerHTML='&#9790;';
   }
   document.documentElement.style.visibility='';
+})();
+
+/* ── ANCHOR LINKS INTO COLLAPSED SECTIONS ─────────────────────────────────
+   Several cross-reference links (e.g. "Layer 5 — Memory" pointing at
+   #matrix-row-5 inside the collapsed Master Matrix) target an id that
+   lives inside a .section-collapse-wrap.collapsed container. Followed
+   as a plain anchor, the browser lands on that zero-height collapsed
+   spot instead of the actual row, which reads as a broken link. Expand
+   every collapsed ancestor first, then scroll to the real target. Only
+   links whose target is actually hidden this way are touched — every
+   other in-page link keeps its normal behavior untouched. */
+(function(){
+  function expandAncestors(el){
+    var wrap = el.closest('.section-collapse-wrap.collapsed');
+    var any = false;
+    while(wrap){
+      sectionCollapse(wrap.id);
+      any = true;
+      wrap = wrap.parentElement ? wrap.parentElement.closest('.section-collapse-wrap.collapsed') : null;
+    }
+    return any;
+  }
+  function goTo(id){
+    var target = document.getElementById(id);
+    if(!target) return;
+    var didExpand = expandAncestors(target);
+    var run = function(){ target.scrollIntoView({behavior:'smooth', block:'start'}); };
+    if(didExpand){ setTimeout(run, 300); } else { run(); }
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    var id = a.getAttribute('href').slice(1);
+    var target = id && document.getElementById(id);
+    if(!target || !target.closest('.section-collapse-wrap.collapsed')) return;
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      history.pushState ? history.pushState(null,'','#'+id) : (location.hash = id);
+      goTo(id);
+    });
+  });
+  // Direct load with a hash pointing at hidden content (shared/bookmarked link)
+  if(location.hash.length > 1){
+    var initialId = location.hash.slice(1);
+    var initialTarget = document.getElementById(initialId);
+    if(initialTarget && initialTarget.closest('.section-collapse-wrap.collapsed')){
+      setTimeout(function(){ goTo(initialId); }, 50);
+    }
+  }
 })();
 
 /* ══════════════════════════ SELF-DIAGNOSTIC WIDGET ══════════════════════ */
