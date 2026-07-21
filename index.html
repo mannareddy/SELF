@@ -5401,11 +5401,29 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
       <button class="mode-btn" data-mode-btn="lived" onclick="setMatrixMode('lived')">Lived Reality</button>
       <button class="mode-btn" data-mode-btn="ascension" onclick="setMatrixMode('ascension')">Ascension Path</button>
     </div>
-    <p id="matrixModeHint" style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#555;text-align:center;margin:10px 0 18px;max-width:640px;margin-left:auto;margin-right:auto;">Each mode swaps the columns &mdash; nothing repeats. Tap a row&rsquo;s <span style="display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border:1px solid var(--gold);border-radius:50%;color:var(--gold);font-size:10px;line-height:1;vertical-align:middle;margin:0 2px;">+</span> for Mastery, the one dimension with no column of its own. The smaller <span style="color:var(--gold);">+</span> beside a term in the Brainwave, Alchemy, or Existence Layer columns is different &mdash; that one's a quick definition, not a row expand.</p>
+    <p id="matrixModeHint" style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#555;text-align:center;margin:10px 0 18px;max-width:640px;margin-left:auto;margin-right:auto;">Each mode swaps the columns &mdash; nothing repeats. Tap a row&rsquo;s <span style="display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border:1px solid var(--gold);border-radius:50%;color:var(--gold);font-size:10px;line-height:1;vertical-align:middle;margin:0 2px;">+</span> for Mastery, the one dimension with no column of its own.</p>
 
-    <div style="max-width:640px;margin:0 auto 28px;padding:20px 24px;border-left:2px solid var(--gold);background:var(--bg-lift);text-align:left;">
-      <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:10px;">Read These Three Columns as One Arc</p>
-      <p style="font-family:var(--serif);font-size:14.5px;color:var(--mid);line-height:1.85;margin:0;">Brainwave, Awareness, and Stage aren&rsquo;t three separate facts about a layer &mdash; they&rsquo;re one journey, read left to right. <span style="color:var(--gold);">Brainwave</span> is the measurable state your brain is actually in. <span style="color:var(--gold);">Awareness</span> is what that state feels like from inside, in the moment you&rsquo;re living it. <span style="color:var(--gold);">Stage</span> is the inner work that particular combination is asking of you right now. Alchemy and Existence Layer, to their right, are correspondence &mdash; older maps drawing the same line in a different language.</p>
+    <div id="matrixReadHowBox" style="max-width:640px;margin:0 auto 28px;padding:20px 24px;border-left:2px solid var(--gold);background:var(--bg-lift);text-align:left;">
+      <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:10px;">How To Read This Table</p>
+      <p style="font-family:var(--serif);font-size:14.5px;color:var(--mid);line-height:1.85;margin:0 0 12px;">
+        Read it two ways at once. Down the left, <strong style="color:var(--gold);font-weight:400;">7 layers</strong> &mdash; Body, Breath, Mind, Intellect, Memory, Ego, Self / Soul &mdash; run from the densest part of you to the subtlest, each one living out the exact same journey below in its own vocabulary. Across the top, that journey unfolds in <strong style="color:var(--gold);font-weight:400;">6 stages</strong>, and they aren&rsquo;t arbitrary labels &mdash; a five-part motion drives every one of them, at every layer, just wearing different clothes each time &mdash; and each has a home sense in the body, tap the icon to see how:
+      </p>
+      <p style="font-family:var(--serif);font-size:14.5px;color:var(--mid);line-height:1.85;margin:0 0 12px;">
+        <span class="gloss">Silence<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Silence">+</button><span class="gloss-pop">Not the absence of noise &mdash; the primal state where the ego's commentary dissolves and existence becomes something you can actually encounter.</span></span> opens <strong style="color:var(--gold);font-weight:400;">Space</strong> (Birth) <span class="gloss" style="font-size:12px;">&#128066; Hearing<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Hearing and Silence to Space">+</button><span class="gloss-pop">Sound needs physical space and air to travel &mdash; deep silence is what makes you suddenly feel the size of the room, or the emptiness, around you.</span></span>,
+        <span class="gloss">Light<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Light">+</button><span class="gloss-pop">Not just illumination &mdash; the medium through which meaning is bestowed, carving comprehensible form out of raw chaos.</span></span> brings <strong style="color:var(--gold);font-weight:400;">Meaning</strong> (Growth) <span class="gloss" style="font-size:12px;">&#128064; Sight<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Sight and Light to Meaning">+</button><span class="gloss-pop">Vision is how humans gather most of their data &mdash; the eye turns raw light waves into recognizable shape and meaning almost instantly.</span></span>,
+        <span class="gloss">Chaos<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Chaos">+</button><span class="gloss-pop">Not disorder to be defeated &mdash; the field of pure potentiality every genuine act of creation actually comes from.</span></span> supplies <strong style="color:var(--gold);font-weight:400;">Energy</strong> (Sustenance) <span class="gloss" style="font-size:12px;">&#128069; Taste<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Taste and Chaos to Energy">+</button><span class="gloss-pop">Taste is a chemical gatekeeper screening fuel for the body &mdash; eating breaks molecular chaos down into a direct burst of physical energy.</span></span>,
+        <span class="gloss">Beauty<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Beauty">+</button><span class="gloss-pop">Not an ornament &mdash; a mode of cognition, a way of knowing reality that concept and reason alone can't reach.</span></span> offers <strong style="color:var(--gold);font-weight:400;">Cognition</strong> (Transformation) <span class="gloss" style="font-size:12px;">&#128067; Smell<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Smell and Beauty to Cognition">+</button><span class="gloss-pop">Smell bypasses logic and goes straight to the brain's emotion and memory centers &mdash; an ancient, instant form of cognition, judging beauty or warning before you've thought at all.</span></span>, and
+        <span class="gloss">Art<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Art">+</button><span class="gloss-pop">Not a finished product &mdash; the ongoing relationship through which a person participates in existence, bridging self and world.</span></span> establishes <strong style="color:var(--gold);font-weight:400;">Connection</strong> (Deterioration &amp; Death, together) <span class="gloss" style="font-size:12px;">&#9995; Touch<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Touch and Art to Connection">+</button><span class="gloss-pop">The most intimate sense, requiring physical proximity &mdash; shaping material into art bridges the internal self with the external world.</span></span>. Watch for these five names again in gold under each Stage header just below.
+      </p>
+      <p style="font-family:var(--serif);font-size:14.5px;color:var(--mid);line-height:1.85;margin:0;">
+        Reading further right: <span class="gloss" style="color:var(--gold);">Brainwave<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Brainwave column">+</button><span class="gloss-pop">The measurable state your brain is actually in at this layer.</span></span>,
+        <span class="gloss" style="color:var(--gold);">Awareness<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Awareness column">+</button><span class="gloss-pop">What that brainwave state feels like from inside, in the moment you're living it.</span></span>, and
+        <span class="gloss" style="color:var(--gold);">Stage<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Stage column">+</button><span class="gloss-pop">The inner work that particular combination is asking of you right now.</span></span>
+        read as one arc, not three separate facts.
+        <span class="gloss" style="color:var(--gold);">Alchemy<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Alchemy column">+</button><span class="gloss-pop">The corresponding stage in the old alchemical Great Work &mdash; base matter refined, step by step, toward gold.</span></span> and
+        <span class="gloss" style="color:var(--gold);">Existence Layer<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Existence Layer column">+</button><span class="gloss-pop">The matching Sanskrit kosha, or sheath, from the older Vedantic map of the self.</span></span>
+        are correspondence &mdash; older maps drawing the same line in a different language.
+      </p>
     </div>
 
     <div class="self-table-wrap" id="masterMatrixWrap" data-mode="grid" style="max-width:900px;margin:0 auto 32px;">
@@ -5417,12 +5435,12 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
               <div style="width:50%;height:1px;background:rgba(212,175,55,0.4);margin:4px auto;"></div>
               <span style="color:var(--gold);display:block;font-size:8px;letter-spacing:1px;">→ 6 Stages</span>
             </th>
-            <th class="col-grid">Birth<span class="sub">Inception into form</span></th>
-            <th class="col-grid">Growth<span class="sub">Expansion of capacity</span></th>
-            <th class="col-grid">Sustenance<span class="sub">Plateau of maintenance</span></th>
-            <th class="col-grid">Transformation<span class="sub">Inevitable shift</span></th>
-            <th class="col-grid">Deterioration<span class="sub">Beginning of decay</span></th>
-            <th class="col-grid">Death<span class="sub">Dissolution of form</span></th>
+            <th class="col-grid">Birth<span class="sub">Inception into form</span><span class="sub" style="color:var(--gold);opacity:.85;">Silence &rarr; Space</span></th>
+            <th class="col-grid">Growth<span class="sub">Expansion of capacity</span><span class="sub" style="color:var(--gold);opacity:.85;">Light &rarr; Meaning</span></th>
+            <th class="col-grid">Sustenance<span class="sub">Plateau of maintenance</span><span class="sub" style="color:var(--gold);opacity:.85;">Chaos &rarr; Energy</span></th>
+            <th class="col-grid">Transformation<span class="sub">Inevitable shift</span><span class="sub" style="color:var(--gold);opacity:.85;">Beauty &rarr; Cognition</span></th>
+            <th class="col-grid">Deterioration<span class="sub">Beginning of decay</span><span class="sub" style="color:var(--gold);opacity:.85;">Art &rarr; Connection begins</span></th>
+            <th class="col-grid">Death<span class="sub">Dissolution of form</span><span class="sub" style="color:var(--gold);opacity:.85;">Art &rarr; Connection completes</span></th>
             <th class="col-lived">Daily Experience<span class="sub">What it feels like</span></th>
             <th class="col-lived">Shockwave<span class="sub">Under crisis</span></th>
             <th class="col-ascension">Action Plan<span class="sub">The practice</span></th>
@@ -5585,6 +5603,58 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
       </div>
     </div>
     </div>
+  </div>
+</section>
+<span class="continue-hint">continue</span>
+<div class="divider"></div>
+
+<!-- ============================================================
+     STANDALONE ASIDE — "Memory is not a simple storage unit…"
+     Source: Insight_July_21.docx, placement decided in
+     five_pillars_master_matrix_reference.md §5 (Option 1: standalone
+     aside, adjacent to Layer 5). Same pattern as "A Note for the
+     Skeptics" — own section, collapsed by default, cross-references
+     #matrix-row-5 rather than being folded into the row itself, so
+     Layer 5's entry in the main grid stays the same length as the
+     other 6.
+     ============================================================ -->
+<section class="section-wide" id="memory-architect" style="scroll-margin-top:56px;">
+  <span class="label" style="color:var(--dim);">A Closer Look — Memory</span>
+  <h2 style="font-size:clamp(20px,3vw,30px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;">You&rsquo;re not living your past. You&rsquo;re living memory&rsquo;s latest cut of it.</h2>
+  <p style="font-size:clamp(14px,1.8vw,17px);color:var(--grey);max-width:620px;margin:0 auto 32px;font-style:italic;line-height:1.85;">A closer look at <a href="#matrix-row-5" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">Layer 5 &mdash; Memory</a> in the Master Matrix, for anyone who wants to sit with this layer a while longer than a table row allows.</p>
+
+  <div style="text-align:center;margin-bottom:16px;">
+    <button class="collapse-toggle-btn" onclick="sectionCollapse('memory-architect-detail',this)">Expand &#9660;</button>
+    <p class="section-collapse-label">Collapsed by default — tap to expand</p>
+  </div>
+  <div id="memory-architect-detail" class="section-collapse-wrap collapsed">
+
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;max-width:700px;margin:0 auto 24px;text-align:left;">Layer 5 doesn&rsquo;t hold a recording of your life. It holds an edit. Every time a memory surfaces, it is quietly rebuilt &mdash; a little re-lit, a little re-cut &mdash; and it&rsquo;s that rebuilt version, not the original moment, that goes on to inform who you think you are.</p>
+
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;max-width:700px;margin:0 auto 24px;text-align:left;">This is why two people can live through the same room and walk away with different histories. The event was shared; the editing wasn&rsquo;t. Most of what you call &ldquo;myself&rdquo; was assembled this way &mdash; not in the moment things happened, but afterward, in the cutting room, one replay at a time.</p>
+
+    <div style="max-width:780px;margin:0 auto 28px;padding:28px 26px;background:var(--bg-lift);border:1px solid #1e1e1e;text-align:left;">
+      <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:16px;">Four Things <span class="gloss" style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);">Chitta<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Chitta">+</button><span class="gloss-pop">The mind-stuff, or memory-store &mdash; the layer that holds impressions, conditioning, and habitual patterns built up over time.</span></span> Is Doing Right Now</div>
+      <div style="display:grid;grid-template-columns:140px 1fr;gap:14px 20px;align-items:start;">
+        <div style="font-family:var(--sans);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);text-align:left;padding-top:2px;">Cutting</div>
+        <div style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.7;text-align:left;">Most of any given day is discarded on arrival; only a fraction is kept for the reel.</div>
+        <div style="font-family:var(--sans);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);text-align:left;padding-top:2px;">Grading</div>
+        <div style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.7;text-align:left;">What survives the cut gets re-toned every time it&rsquo;s replayed &mdash; harsher some years, softer others.</div>
+        <div style="font-family:var(--sans);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);text-align:left;padding-top:2px;">Splicing</div>
+        <div style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.7;text-align:left;">Unrelated frames from different years get spliced together into a single, tidy scene that never actually happened in that order.</div>
+        <div style="font-family:var(--sans);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);text-align:left;padding-top:2px;">Narrating</div>
+        <div style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.7;text-align:left;">The finished cut is played back with a voiceover that insists it&rsquo;s simply &ldquo;what happened&rdquo; &mdash; the edit hides itself.</div>
+      </div>
+    </div>
+
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;max-width:700px;margin:0 auto 24px;text-align:left;">The person who never opens the editing room stays governed by whatever cut got locked in early, usually under duress. The person who does &mdash; without flinching, without rushing to defend the footage &mdash; finds something underneath it: a viewer who was never actually identical to the film being watched.</p>
+
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:24px 28px;border:1px solid #1e1e1e;background:var(--bg-lift);text-align:left;max-width:780px;margin:0 auto 28px;">The footage isn&rsquo;t the enemy. It&rsquo;s the raw stock the rest of your life gets shot on. Re-cut it consciously, on purpose, with your eyes open, and it stops directing you from behind the curtain &mdash; and starts working for the cut you&rsquo;re making now.</p>
+
+    <!-- Cross-reference to the live Master Matrix table (#master-matrix, row #matrix-row-5,
+         "Layer 5 — Memory / Throat Chakra": Existence Layer=Chitta, Stage=Understand.) -->
+    <p style="font-family:var(--serif);font-size:14px;color:var(--dim);line-height:1.8;max-width:780px;margin:0 auto 0;text-align:left;font-style:italic;">This is what <a href="#matrix-row-5" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">Layer 5 &mdash; Memory</a> is actually doing, underneath its own row in the grid: not archiving your life, but editing it, take after take. The Art &rarr; Connection movement at this layer &mdash; Forgetfulness distilling into Erasure &mdash; is the same idea from the far end: the raw footage itself is eventually let go, once the finished cut no longer needs the original reels to stand on its own.</p>
+
   </div>
 </section>
 <span class="continue-hint">continue</span>
@@ -8394,10 +8464,22 @@ init();
 
   /* ---------- MODE TOGGLE: swaps which columns are visible on the one table ---------- */
   var MODE_LABELS = {
-    grid: 'Tap a row&rsquo;s <span style="display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border:1px solid var(--gold);border-radius:50%;color:var(--gold);font-size:10px;line-height:1;vertical-align:middle;margin:0 2px;">+</span> for Mastery &mdash; the only dimension without its own column. The smaller <span style="color:var(--gold);">+</span> beside a term (Brainwave, Alchemy, Existence Layer) is a quick definition instead.',
+    grid: 'Tap a row&rsquo;s <span style="display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border:1px solid var(--gold);border-radius:50%;color:var(--gold);font-size:10px;line-height:1;vertical-align:middle;margin:0 2px;">+</span> for Mastery &mdash; the only dimension without its own column.',
     lived: 'Daily Experience &amp; Shockwave Manifestation per layer &mdash; tap <span style="display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border:1px solid var(--gold);border-radius:50%;color:var(--gold);font-size:10px;line-height:1;vertical-align:middle;margin:0 2px;">+</span> for Mastery.',
     ascension: 'Action Plan &amp; Realization per layer &mdash; tap <span style="display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border:1px solid var(--gold);border-radius:50%;color:var(--gold);font-size:10px;line-height:1;vertical-align:middle;margin:0 2px;">+</span> for Mastery.'
   };
+  function updateMatrixReadHowBox(mode){
+    var box = document.getElementById('matrixReadHowBox');
+    if(!box) return;
+    /* On narrow screens, Lived Reality / Ascension Path drop the Brainwave,
+       Awareness, Stage, Alchemy, and Existence Layer columns entirely (see
+       the mobile media query above) — so the box explaining how to read
+       those columns has nothing left on-screen to point at. Hide it there;
+       it stays visible in Grid mode, and on desktop where those columns
+       remain visible in every mode. */
+    var hideIt = (mode !== 'grid') && window.matchMedia('(max-width:768px)').matches;
+    box.style.display = hideIt ? 'none' : '';
+  }
   window.setMatrixMode = function(mode){
     var wrap = document.getElementById('masterMatrixWrap');
     if(wrap) wrap.setAttribute('data-mode', mode);
@@ -8408,7 +8490,13 @@ init();
     });
     var hint = document.getElementById('matrixModeHint');
     if(hint) hint.innerHTML = MODE_LABELS[mode];
+    updateMatrixReadHowBox(mode);
   };
+  window.addEventListener('resize', function(){
+    var wrap = document.getElementById('masterMatrixWrap');
+    var mode = wrap ? wrap.getAttribute('data-mode') : 'grid';
+    updateMatrixReadHowBox(mode || 'grid');
+  });
 
   /* ---------- ROW EXPAND: only the two fields with no column of their own ---------- */
   window.toggleMatrixRow = function(n){
