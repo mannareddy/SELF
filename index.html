@@ -2928,7 +2928,7 @@ tr.matrix-highlight{
       <span class="num">03</span>
       <h3>The Ego</h3><div class="framework-content">
       <p>The mask the &ldquo;I&rdquo; wears. Your name, status, achievements, wounds, the story you tell about yourself. The false self that keeps seeking outside. Prerequisite to knowing your true SELF: see through it.</p>
-      <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">In Sanskrit: <em>Kama &rarr; <span class="gloss">Ahamkara<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Ahamkara">+</button><span class="gloss-pop">Literally &ldquo;the I-maker&rdquo; &mdash; the function of mind that stamps &ldquo;me&rdquo; onto raw experience, manufacturing a sense of separate identity.</span></span></em> &mdash; desire collects into a constructed identity that claims ownership: &ldquo;I want this, I feel that.&rdquo; The I-Maker claiming all experience as its own.</p>
+      <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">In Sanskrit: <em><span class="gloss">Kama<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Kama">+</button><span class="gloss-pop">Desire &mdash; wish, longing, or sensory pleasure; one of the four traditional aims of life alongside duty, prosperity, and liberation. Here, the raw craving that hardens into the next column.</span></span> &rarr; <span class="gloss">Ahamkara<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Ahamkara">+</button><span class="gloss-pop">Literally &ldquo;the I-maker&rdquo; &mdash; the function of mind that stamps &ldquo;me&rdquo; onto raw experience, manufacturing a sense of separate identity.</span></span></em> &mdash; desire collects into a constructed identity that claims ownership: &ldquo;I want this, I feel that.&rdquo; The I-Maker claiming all experience as its own.</p>
     </div></div>
     <div class="framework-card collapsed">
       <span class="num">04</span>
@@ -5484,7 +5484,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
     </div>
     <p id="matrixModeHint" style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#555;text-align:center;margin:10px 0 18px;max-width:640px;margin-left:auto;margin-right:auto;">Each mode swaps the columns &mdash; nothing repeats. Tap a row&rsquo;s <span style="display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border:1px solid var(--gold);border-radius:50%;color:var(--gold);font-size:10px;line-height:1;vertical-align:middle;margin:0 2px;">+</span> for Mastery, the one dimension with no column of its own.</p>
 
-    <div style="text-align:center;margin:0 0 20px;">
+    <div id="matrixReadHowToggleWrap" style="text-align:center;margin:0 0 20px;">
       <button class="collapse-toggle-btn" onclick="sectionCollapse('matrixReadHowWrap',this)">How To Read This Table &#9660;</button>
       <p class="section-collapse-label">Collapsed by default &mdash; tap to expand the reading guide</p>
     </div>
@@ -8625,17 +8625,71 @@ init();
     lived: 'Daily Experience &amp; Shockwave Manifestation per layer &mdash; tap <span style="display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border:1px solid var(--gold);border-radius:50%;color:var(--gold);font-size:10px;line-height:1;vertical-align:middle;margin:0 2px;">+</span> for Mastery.',
     ascension: 'Action Plan &amp; Realization per layer &mdash; tap <span style="display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border:1px solid var(--gold);border-radius:50%;color:var(--gold);font-size:10px;line-height:1;vertical-align:middle;margin:0 2px;">+</span> for Mastery.'
   };
+  // The closing paragraph (Brainwave / Awareness / Stage / Alchemy / Existence
+  // Layer) describes the five "meta" columns, which stay visible on desktop
+  // in every mode — so it's reused as-is for Lived Reality and Ascension Path.
+  var HOW_META_HTML =
+    '<p style="font-family:var(--serif);font-size:14.5px;color:var(--mid);line-height:1.85;margin:0;">' +
+      'Reading further right: <span class="gloss" style="color:var(--gold);">Brainwave<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Brainwave column">+</button><span class="gloss-pop">The measurable state your brain is actually in at this layer.</span></span>, ' +
+      '<span class="gloss" style="color:var(--gold);">Awareness<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Awareness column">+</button><span class="gloss-pop">What that brainwave state feels like from inside, in the moment you\'re living it.</span></span>, and ' +
+      '<span class="gloss" style="color:var(--gold);">Stage<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Stage column">+</button><span class="gloss-pop">The inner work that particular combination is asking of you right now.</span></span> ' +
+      'read as one arc, not three separate facts. ' +
+      '<span class="gloss" style="color:var(--gold);">Alchemy<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Alchemy column">+</button><span class="gloss-pop">The corresponding stage in the old alchemical Great Work &mdash; base matter refined, step by step, toward gold.</span></span> and ' +
+      '<span class="gloss" style="color:var(--gold);">Existence Layer<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Existence Layer column">+</button><span class="gloss-pop">The matching Sanskrit kosha, or sheath, from the older Vedantic map of the self.</span></span> ' +
+      'are correspondence &mdash; older maps drawing the same line in a different language.' +
+    '</p>';
+
+  var HOW_LIVED_INTRO =
+    '<p style="font-family:var(--serif);font-size:14.5px;color:var(--mid);line-height:1.85;margin:0 0 16px;">' +
+      'Down the left, the same <strong style="color:var(--gold);font-weight:400;">7 layers</strong> &mdash; Body, Breath, Mind, Intellect, Memory, Ego, Self / Soul &mdash; run from the densest part of you to the subtlest. This mode swaps the six life-stage columns for two per layer: ' +
+      '<span class="gloss" style="color:var(--gold);">Daily Experience<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Daily Experience column">+</button><span class="gloss-pop">What that layer feels like on an ordinary day, before anything tests it.</span></span> and ' +
+      '<span class="gloss" style="color:var(--gold);">Shockwave<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Shockwave column">+</button><span class="gloss-pop">What that same layer does under real pressure &mdash; a crisis, a loss, a shock to the system.</span></span>.' +
+    '</p>';
+
+  var HOW_ASCENSION_INTRO =
+    '<p style="font-family:var(--serif);font-size:14.5px;color:var(--mid);line-height:1.85;margin:0 0 16px;">' +
+      'Down the left, the same <strong style="color:var(--gold);font-weight:400;">7 layers</strong> &mdash; Body, Breath, Mind, Intellect, Memory, Ego, Self / Soul &mdash; run from the densest part of you to the subtlest. This mode swaps the six life-stage columns for two per layer: ' +
+      '<span class="gloss" style="color:var(--gold);">Action Plan<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Action Plan column">+</button><span class="gloss-pop">The actual practice that layer is asking for &mdash; the work, not just the idea of it.</span></span> and ' +
+      '<span class="gloss" style="color:var(--gold);">Realization<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Realization column">+</button><span class="gloss-pop">The felt shift in perspective once that practice actually lands.</span></span>.' +
+    '</p>';
+
+  var HOW_GRID_HTML = null; // captured from the page on first run, so the original copy isn't duplicated here
+
   function updateMatrixReadHowBox(mode){
     var box = document.getElementById('matrixReadHowBox');
-    if(!box) return;
+    var toggleWrap = document.getElementById('matrixReadHowToggleWrap');
+    var wrap = document.getElementById('matrixReadHowWrap');
+    if(!box || !toggleWrap) return;
+    if(HOW_GRID_HTML === null) HOW_GRID_HTML = box.innerHTML;
+
     /* On narrow screens, Lived Reality / Ascension Path drop the Brainwave,
        Awareness, Stage, Alchemy, and Existence Layer columns entirely (see
-       the mobile media query above) — so the box explaining how to read
-       those columns has nothing left on-screen to point at. Hide it there;
-       it stays visible in Grid mode, and on desktop where those columns
-       remain visible in every mode. */
+       the mobile media query above), on top of the 6 life-stage columns
+       already being hidden in these modes at every width — so on mobile
+       there's nothing left on-screen for this guide to explain (just
+       row-label + 2 self-explanatory data columns). Hide the whole toggle
+       there, not just its content, and collapse it if it was left open. */
     var hideIt = (mode !== 'grid') && window.matchMedia('(max-width:768px)').matches;
-    box.style.display = hideIt ? 'none' : '';
+    if(hideIt){
+      toggleWrap.style.display = 'none';
+      if(wrap && !wrap.classList.contains('collapsed')){
+        wrap.classList.add('collapsed');
+        var btn = toggleWrap.querySelector('.collapse-toggle-btn');
+        if(btn) btn.innerHTML = btn.innerHTML.replace('&#9650;','&#9660;').replace('▲','▼');
+      }
+      return;
+    }
+    toggleWrap.style.display = '';
+
+    // Desktop (any mode) or mobile Grid mode: show the guide, matched to what
+    // the table is actually displaying in the current mode.
+    if(mode === 'lived'){
+      box.innerHTML = HOW_LIVED_INTRO + HOW_META_HTML;
+    } else if(mode === 'ascension'){
+      box.innerHTML = HOW_ASCENSION_INTRO + HOW_META_HTML;
+    } else {
+      box.innerHTML = HOW_GRID_HTML;
+    }
   }
   window.setMatrixMode = function(mode){
     var wrap = document.getElementById('masterMatrixWrap');
