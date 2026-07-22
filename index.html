@@ -725,6 +725,11 @@ a:hover{opacity:.7;}
     height:auto !important;line-height:1.4 !important;white-space:nowrap;color:var(--dim);
   }
   .nav-dropdown-panel a:hover{color:var(--gold) !important;background:rgba(212,175,55,0.06);}
+  .nav-dropdown-panel .new-menu-soon{
+    display:block;border-right:none !important;justify-content:flex-start !important;
+    padding:11px 22px !important;font-size:10.5px !important;letter-spacing:1.5px !important;
+    line-height:1.4 !important;white-space:normal;color:#555;font-style:italic;cursor:default;
+  }
 }
 
 /* ── MOBILE (≤900px): 3-column flex nav ≡ | *SELF | ☀ ── */
@@ -881,6 +886,10 @@ a:hover{opacity:.7;}
     color:var(--dim);padding:13px 22px 13px 34px;border-top:1px solid #1a1a1a;
   }
   .mnav-group-panel a:hover,.mnav-group-panel a:active{color:var(--gold);}
+  .mnav-group-panel .new-menu-soon{
+    display:block;font-family:var(--sans);font-size:11px;letter-spacing:1px;text-transform:none;
+    color:#555;padding:13px 22px 13px 34px;border-top:1px solid #1a1a1a;font-style:italic;
+  }
   .mnav-list a.active{color:var(--gold);}
   body.mnav-open{overflow:hidden;}
 }
@@ -2530,7 +2539,7 @@ tr.matrix-highlight{
     </picture>
   </a>
 
-  <!-- Right: Ecosystem▾ · New▾ · FAQ · Feedback -->
+  <!-- Right: Ecosystem▾ · New▾ · Glossary · FAQ · Feedback -->
   <ul class="nav-right">
     <li class="nav-dropdown-wrap" style="border-left:1px solid #1a1a1a;">
       <a href="#mirror" data-group="shop-circle">Shop / Circle<span class="nav-caret">▾</span></a>
@@ -2544,7 +2553,30 @@ tr.matrix-highlight{
       </div>
     </li>
 
-    <li><a href="#glossary" data-added="2026-07-22">Glossary</a></li>
+    <!-- ── "NEW" MENU — hand-curated, no auto-detection ──────────────────
+         To flag something as new: add one <a> line inside #newMenuPanel
+         below (and the matching line inside #newMenuPanelMobile further
+         down for the mobile accordion) with a short label saying WHAT
+         changed, pointing at the relevant section. Remove the line once
+         it's no longer worth calling out (there's no expiry — it stays
+         until you take it out). For something not live yet, use a
+         <span class="new-menu-soon">Label — Coming Soon</span> instead
+         of an <a> — it renders muted and unclickable, so this same menu
+         can double as a heads-up for features still in progress. The
+         gold dot on the "New" trigger itself (and the mobile "New"
+         accordion toggle) only shows while these panels actually have
+         entries — empty both out and the dot hides itself. -->
+    <li class="nav-dropdown-wrap">
+      <a href="#glossary" data-group="new">New<span class="nav-new-dot"></span><span class="nav-caret">▾</span></a>
+      <div class="nav-dropdown-panel" id="newMenuPanel">
+        <a href="#glossary" data-group="new">Glossary — New Terms Added</a>
+        <a href="#master-matrix" data-group="new">Master Matrix — Reading Guide</a>
+      </div>
+    </li>
+
+    <li><a href="#glossary">Glossary</a></li>
+    <li><a href="#faq-section">FAQ</a></li>
+    <li><a href="#feedback">Feedback</a></li>
   </ul>
   <button id="themeToggleBtn" onclick="toggleTheme()" title="Toggle light/dark theme" aria-label="Toggle theme">&#9788;</button>
 </nav>
@@ -2601,7 +2633,19 @@ tr.matrix-highlight{
       </div>
     </li>
 
-    <li><a href="#glossary" data-added="2026-07-22">Glossary</a></li>
+    <li class="mnav-group">
+      <button class="mnav-group-toggle" aria-expanded="false">
+        New <span class="nav-new-dot"></span><span class="mnav-caret">▾</span>
+      </button>
+      <div class="mnav-group-panel" id="newMenuPanelMobile">
+        <a href="#glossary">Glossary — New Terms Added</a>
+        <a href="#master-matrix">Master Matrix — Reading Guide</a>
+      </div>
+    </li>
+
+    <li><a href="#glossary">Glossary</a></li>
+    <li><a href="#faq-section">FAQ</a></li>
+    <li><a href="#feedback">Feedback</a></li>
   </ul>
 </div>
 
@@ -5431,18 +5475,37 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
     </div>
     <p id="matrixModeHint" style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#555;text-align:center;margin:10px 0 18px;max-width:640px;margin-left:auto;margin-right:auto;">Each mode swaps the columns &mdash; nothing repeats. Tap a row&rsquo;s <span style="display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border:1px solid var(--gold);border-radius:50%;color:var(--gold);font-size:10px;line-height:1;vertical-align:middle;margin:0 2px;">+</span> for Mastery, the one dimension with no column of its own.</p>
 
+    <div style="text-align:center;margin:0 0 20px;">
+      <button class="collapse-toggle-btn" onclick="sectionCollapse('matrixReadHowWrap',this)">How To Read This Table &#9660;</button>
+      <p class="section-collapse-label">Collapsed by default &mdash; tap to expand the reading guide</p>
+    </div>
+    <div id="matrixReadHowWrap" class="section-collapse-wrap collapsed">
     <div id="matrixReadHowBox" style="max-width:640px;margin:0 auto 28px;padding:20px 24px;border-left:2px solid var(--gold);background:var(--bg-lift);text-align:left;">
-      <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:10px;">How To Read This Table</p>
-      <p style="font-family:var(--serif);font-size:14.5px;color:var(--mid);line-height:1.85;margin:0 0 12px;">
-        Read it two ways at once. Down the left, <strong style="color:var(--gold);font-weight:400;">7 layers</strong> &mdash; Body, Breath, Mind, Intellect, Memory, Ego, Self / Soul &mdash; run from the densest part of you to the subtlest, each one living out the exact same journey below in its own vocabulary. Across the top, that journey unfolds in <strong style="color:var(--gold);font-weight:400;">6 stages</strong>, and they aren&rsquo;t arbitrary labels &mdash; a five-part motion drives every one of them, at every layer, just wearing different clothes each time &mdash; and each has a home sense in the body, tap the icon to see how:
+      <p style="font-family:var(--serif);font-size:14.5px;color:var(--mid);line-height:1.85;margin:0 0 16px;">
+        Read it two ways at once. Down the left, <strong style="color:var(--gold);font-weight:400;">7 layers</strong> &mdash; Body, Breath, Mind, Intellect, Memory, Ego, Self / Soul &mdash; run from the densest part of you to the subtlest, each one living out the exact same journey below in its own vocabulary. Across the top, that journey unfolds in <strong style="color:var(--gold);font-weight:400;">6 stages</strong>, and they aren&rsquo;t arbitrary labels but five human sensory organs driving every one of them, at every layer, just wearing different clothes each time &mdash; tap the icon to see how:
       </p>
-      <p style="font-family:var(--serif);font-size:14.5px;color:var(--mid);line-height:1.85;margin:0 0 12px;">
-        <span class="gloss">Silence<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Silence">+</button><span class="gloss-pop">Not the absence of noise &mdash; the primal state where the ego's commentary dissolves and existence becomes something you can actually encounter.</span></span> opens <strong style="color:var(--gold);font-weight:400;">Space</strong> (Birth) <span class="gloss" style="font-size:12px;">&#128066; Hearing<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Hearing and Silence to Space">+</button><span class="gloss-pop">Sound needs physical space and air to travel &mdash; deep silence is what makes you suddenly feel the size of the room, or the emptiness, around you.</span></span>,
-        <span class="gloss">Light<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Light">+</button><span class="gloss-pop">Not just illumination &mdash; the medium through which meaning is bestowed, carving comprehensible form out of raw chaos.</span></span> brings <strong style="color:var(--gold);font-weight:400;">Meaning</strong> (Growth) <span class="gloss" style="font-size:12px;">&#128064; Sight<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Sight and Light to Meaning">+</button><span class="gloss-pop">Vision is how humans gather most of their data &mdash; the eye turns raw light waves into recognizable shape and meaning almost instantly.</span></span>,
-        <span class="gloss">Chaos<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Chaos">+</button><span class="gloss-pop">Not disorder to be defeated &mdash; the field of pure potentiality every genuine act of creation actually comes from.</span></span> supplies <strong style="color:var(--gold);font-weight:400;">Energy</strong> (Sustenance) <span class="gloss" style="font-size:12px;">&#128069; Taste<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Taste and Chaos to Energy">+</button><span class="gloss-pop">Taste is a chemical gatekeeper screening fuel for the body &mdash; eating breaks molecular chaos down into a direct burst of physical energy.</span></span>,
-        <span class="gloss">Beauty<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Beauty">+</button><span class="gloss-pop">Not an ornament &mdash; a mode of cognition, a way of knowing reality that concept and reason alone can't reach.</span></span> offers <strong style="color:var(--gold);font-weight:400;">Cognition</strong> (Transformation) <span class="gloss" style="font-size:12px;">&#128067; Smell<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Smell and Beauty to Cognition">+</button><span class="gloss-pop">Smell bypasses logic and goes straight to the brain's emotion and memory centers &mdash; an ancient, instant form of cognition, judging beauty or warning before you've thought at all.</span></span>, and
-        <span class="gloss">Art<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Art">+</button><span class="gloss-pop">Not a finished product &mdash; the ongoing relationship through which a person participates in existence, bridging self and world.</span></span> establishes <strong style="color:var(--gold);font-weight:400;">Connection</strong> (Deterioration &amp; Death, together) <span class="gloss" style="font-size:12px;">&#9995; Touch<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Touch and Art to Connection">+</button><span class="gloss-pop">The most intimate sense, requiring physical proximity &mdash; shaping material into art bridges the internal self with the external world.</span></span>. Watch for these five names again in gold under each Stage header just below.
-      </p>
+      <div style="margin:0 0 16px;display:flex;flex-direction:column;gap:10px;">
+        <div style="display:flex;flex-wrap:wrap;gap:2px 8px;">
+          <span style="font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.85;min-width:150px;">Birth</span>
+          <span style="font-family:var(--serif);font-size:14.5px;color:var(--mid);line-height:1.75;flex:1;min-width:220px;"><span class="gloss">Silence<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Silence">+</button><span class="gloss-pop">Not the absence of noise &mdash; the primal state where the ego's commentary dissolves and existence becomes something you can actually encounter.</span></span> opens <strong style="color:var(--gold);font-weight:400;">Space</strong> through <span class="gloss" style="font-size:12px;">&#128066; Hearing<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Hearing and Silence to Space">+</button><span class="gloss-pop">Sound needs physical space and air to travel &mdash; deep silence is what makes you suddenly feel the size of the room, or the emptiness, around you.</span></span></span>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:2px 8px;">
+          <span style="font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.85;min-width:150px;">Growth</span>
+          <span style="font-family:var(--serif);font-size:14.5px;color:var(--mid);line-height:1.75;flex:1;min-width:220px;"><span class="gloss">Light<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Light">+</button><span class="gloss-pop">Not just illumination &mdash; the medium through which meaning is bestowed, carving comprehensible form out of raw chaos.</span></span> brings <strong style="color:var(--gold);font-weight:400;">Meaning</strong> through <span class="gloss" style="font-size:12px;">&#128064; Sight<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Sight and Light to Meaning">+</button><span class="gloss-pop">Vision is how humans gather most of their data &mdash; the eye turns raw light waves into recognizable shape and meaning almost instantly.</span></span></span>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:2px 8px;">
+          <span style="font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.85;min-width:150px;">Sustenance</span>
+          <span style="font-family:var(--serif);font-size:14.5px;color:var(--mid);line-height:1.75;flex:1;min-width:220px;"><span class="gloss">Chaos<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Chaos">+</button><span class="gloss-pop">Not disorder to be defeated &mdash; the field of pure potentiality every genuine act of creation actually comes from.</span></span> supplies <strong style="color:var(--gold);font-weight:400;">Energy</strong> through <span class="gloss" style="font-size:12px;">&#128069; Taste<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Taste and Chaos to Energy">+</button><span class="gloss-pop">Taste is a chemical gatekeeper screening fuel for the body &mdash; eating breaks molecular chaos down into a direct burst of physical energy.</span></span></span>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:2px 8px;">
+          <span style="font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.85;min-width:150px;">Transformation</span>
+          <span style="font-family:var(--serif);font-size:14.5px;color:var(--mid);line-height:1.75;flex:1;min-width:220px;"><span class="gloss">Beauty<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Beauty">+</button><span class="gloss-pop">Not an ornament &mdash; a mode of cognition, a way of knowing reality that concept and reason alone can't reach.</span></span> offers <strong style="color:var(--gold);font-weight:400;">Cognition</strong> through <span class="gloss" style="font-size:12px;">&#128067; Smell<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Smell and Beauty to Cognition">+</button><span class="gloss-pop">Smell bypasses logic and goes straight to the brain's emotion and memory centers &mdash; an ancient, instant form of cognition, judging beauty or warning before you've thought at all.</span></span></span>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:2px 8px;">
+          <span style="font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.85;min-width:150px;">Deterioration &amp; Death</span>
+          <span style="font-family:var(--serif);font-size:14.5px;color:var(--mid);line-height:1.75;flex:1;min-width:220px;"><span class="gloss">Art<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Art">+</button><span class="gloss-pop">Not a finished product &mdash; the ongoing relationship through which a person participates in existence, bridging self and world.</span></span> establishes <strong style="color:var(--gold);font-weight:400;">Connection</strong> through <span class="gloss" style="font-size:12px;">&#9995; Touch<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Touch and Art to Connection">+</button><span class="gloss-pop">The most intimate sense, requiring physical proximity &mdash; shaping material into art bridges the internal self with the external world.</span></span></span>
+        </div>
+      </div>
       <p style="font-family:var(--serif);font-size:14.5px;color:var(--mid);line-height:1.85;margin:0;">
         Reading further right: <span class="gloss" style="color:var(--gold);">Brainwave<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Brainwave column">+</button><span class="gloss-pop">The measurable state your brain is actually in at this layer.</span></span>,
         <span class="gloss" style="color:var(--gold);">Awareness<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Awareness column">+</button><span class="gloss-pop">What that brainwave state feels like from inside, in the moment you're living it.</span></span>, and
@@ -5452,6 +5515,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
         <span class="gloss" style="color:var(--gold);">Existence Layer<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Existence Layer column">+</button><span class="gloss-pop">The matching Sanskrit kosha, or sheath, from the older Vedantic map of the self.</span></span>
         are correspondence &mdash; older maps drawing the same line in a different language.
       </p>
+    </div>
     </div>
 
     <div class="self-table-wrap" id="masterMatrixWrap" data-mode="grid" style="max-width:900px;margin:0 auto 32px;">
@@ -7443,74 +7507,15 @@ function updateNav(){
     });
   });
 
-  /* ── AUTO "NEW" FLAGGING — self-expiring, no manual cleanup ──
-     To flag something as new when you add it: put data-added="YYYY-MM-DD"
-     on its nav link (desktop .nav-dropdown-panel a AND the matching mobile
-     .mnav-group-panel a — tag both so it shows in both menus), and
-     optionally on the section/heading itself if you want an inline badge
-     there too. This script checks that date against today on every page
-     load — within NEW_WINDOW_DAYS it shows a dot/badge, past that window
-     it silently stops. Nothing to remove by hand, ever. */
+  // The "New" dot only shows while #newMenuPanel actually has entries —
+  // empty it out (see comment above the nav markup) and the dot hides itself.
   (function(){
-    var NEW_WINDOW_DAYS = 14;
-    function daysSince(dateStr){
-      var added = new Date(dateStr + 'T00:00:00');
-      var now = new Date();
-      return (now - added) / 86400000;
+    var panel = document.getElementById('newMenuPanel');
+    var mPanel = document.getElementById('newMenuPanelMobile');
+    var hasEntries = (panel && panel.querySelector('a')) || (mPanel && mPanel.querySelector('a'));
+    if(!hasEntries){
+      document.querySelectorAll('.nav-new-dot').forEach(function(d){ d.style.display = 'none'; });
     }
-    document.querySelectorAll('[data-added]').forEach(function(el){
-      var raw = el.getAttribute('data-added');
-      if(!raw) return;
-      var age = daysSince(raw);
-      if(age < 0 || age > NEW_WINDOW_DAYS) return; // expired or future-dated — skip silently
-
-      var isMobileNav = !!el.closest('.mnav-group-panel, .mnav-list');
-      var isNavLink = el.matches('.nav-dropdown-panel a, .nav-left > li > a, .nav-right > li > a, .mnav-list a');
-
-      if(isNavLink){
-        if(!el.querySelector('.nav-new-dot, .mnav-new-badge')){
-          var badge = document.createElement('span');
-          if(isMobileNav){
-            badge.className = 'mnav-new-badge';
-            badge.textContent = 'NEW';
-          } else {
-            badge.className = 'nav-new-dot';
-          }
-          el.appendChild(badge);
-        }
-        // Bubble a flag up to the parent dropdown trigger / accordion toggle
-        // so it's visible before the menu is even opened.
-        var dWrap = el.closest('.nav-dropdown-wrap');
-        if(dWrap){
-          var trigger = dWrap.querySelector(':scope > a');
-          if(trigger && !trigger.querySelector('.nav-new-dot')){
-            var gdot = document.createElement('span');
-            gdot.className = 'nav-new-dot';
-            trigger.appendChild(gdot);
-          }
-        }
-        var mGroup = el.closest('.mnav-group');
-        if(mGroup){
-          var mToggle = mGroup.querySelector('.mnav-group-toggle');
-          if(mToggle && !mToggle.querySelector('.mnav-new-badge')){
-            var mBadge = document.createElement('span');
-            mBadge.className = 'mnav-new-badge';
-            mBadge.textContent = 'NEW';
-            var caret = mToggle.querySelector('.mnav-caret');
-            if(caret) mToggle.insertBefore(mBadge, caret);
-            else mToggle.appendChild(mBadge);
-          }
-        }
-      } else {
-        // Inline badge on a section heading or other on-page element
-        if(!el.querySelector('.inline-new-badge')){
-          var inlineBadge = document.createElement('span');
-          inlineBadge.className = 'inline-new-badge';
-          inlineBadge.textContent = 'New';
-          el.appendChild(inlineBadge);
-        }
-      }
-    });
   })();
 
   var sectionIds = [
