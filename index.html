@@ -944,6 +944,8 @@ section{scroll-margin-top:56px;}
 [data-theme="light"] .fl-history-entry{background:#e8e0cc !important;border-color:rgba(0,0,0,0.1) !important;}
 .section-collapse-label{font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#555;margin-top:8px;margin-bottom:0;display:block;}
 .section-collapse-wrap{overflow:hidden;transition:max-height .55s cubic-bezier(0,1,.25,1),opacity .35s ease;opacity:1;}
+.section-collapse-wrap > *:first-child{margin-top:14px;}
+.pull-quote cite,.cosmo-quote cite{margin-bottom:4px;}
 .section-collapse-wrap.collapsed{max-height:0 !important;opacity:0;}
 
 /* ── HERO — height-aware compaction ──────────────────────────────────────
@@ -2712,7 +2714,6 @@ tr.matrix-highlight{
       <p style="font-family:var(--serif);font-size:clamp(13px,1.7vw,17px);color:var(--mid);font-style:italic;line-height:1.7;margin-bottom:0;">Imagine, for one moment, that today is your last day &mdash; would you still see your SELF the way you do right now?</p>
     </div>
   </div>
-  <span class="continue-hint" style="padding-top:8px;">continue</span>
 </section>
 <!-- BANNER -->
 <div class="banner-section">
@@ -2759,7 +2760,7 @@ tr.matrix-highlight{
 <section class="section">
   <span class="label">What Was Never Yours to Lose</span>
   <p class="phil-line">The chart moves. The price moves. The world moves.</p>
-  <p class="phil-line dim">None of it was ever inside the boundary you actually govern.</p>
+  <p class="phil-line dim">None of it was ever yours to govern.</p>
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:2px;max-width:760px;margin:36px auto 0;">
     <div class="sl-stage" style="border-left:2px solid var(--gold);"><span class="sl-num" style="color:var(--gold);">In Your Power</span><div class="sl-name" style="color:var(--gold);">Thoughts</div><p class="sl-desc">The one territory that answers only to you.</p></div>
     <div class="sl-stage" style="border-left:2px solid var(--gold);"><span class="sl-num" style="color:var(--gold);">In Your Power</span><div class="sl-name" style="color:var(--gold);">Reactions</div><p class="sl-desc">How you meet what happens, not what happens.</p></div>
@@ -2779,7 +2780,7 @@ tr.matrix-highlight{
   <div class="symptoms-block-box"><div class="symptoms-block">
     <p>Most people treat anxiety as a malfunction.</p>
     <p class="gold">Many Eastern traditions treat it as a message.</p>
-    <p class="small">It is a valid signal &mdash; pointing at a misalignment, not a flaw. The fix is not to silence it. It is to understand what it is pointing at.</p>
+    <p class="small">It can be a valid signal &mdash; pointing at a misalignment, not a flaw. The fix is not to silence it, but to understand what it is pointing at.</p>
   </div></div>
 </section>
 <span class="continue-hint">continue</span>
@@ -2796,7 +2797,7 @@ tr.matrix-highlight{
 
 <section class="section">
   <p class="phil-line">You knew something was off.</p>
-  <p class="phil-line">You just couldn't point to it.</p>
+  <p class="phil-line">You just couldn&rsquo;t name it.</p>
 </section>
 <div class="divider"></div>
 <section class="section">
@@ -2825,7 +2826,7 @@ tr.matrix-highlight{
       </div>
       <div style="padding:32px 28px;background:var(--bg);border:1px solid rgba(212,175,55,0.3);border-left:3px solid var(--gold);text-align:left;">
         <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:14px;">The Truth</div>
-        <p style="font-family:var(--serif);font-size:16px;color:var(--grey);line-height:1.88;">It is initiation &mdash; the forge in which a deeper life is made possible. It does not end. It graduates.</p>
+        <p style="font-family:var(--serif);font-size:16px;color:var(--grey);line-height:1.88;">It is initiation &mdash; the forge in which a deeper life becomes possible. It does not end. It graduates.</p>
       </div>
     </div>
     <div style="max-width:500px;margin:0 auto;text-align:left;">
@@ -2927,13 +2928,13 @@ tr.matrix-highlight{
     <div class="framework-card collapsed">
       <span class="num">03</span>
       <h3>The Ego</h3><div class="framework-content">
-      <p>The mask the &ldquo;I&rdquo; wears. Your name, status, achievements, wounds, the story you tell about yourself. The false self that keeps seeking outside. Prerequisite to knowing your true SELF: see through it.</p>
+      <p>The mask the &ldquo;I&rdquo; wears. Your name, status, achievements, wounds, the story you tell about yourself. The false self that keeps seeking outside. To know your true SELF, you first have to see through it.</p>
       <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">In Sanskrit: <em><span class="gloss">Kama<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Kama">+</button><span class="gloss-pop">Desire &mdash; wish, longing, or sensory pleasure; one of the four traditional aims of life alongside duty, prosperity, and liberation. Here, the raw craving that hardens into the next column.</span></span> &rarr; <span class="gloss">Ahamkara<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Ahamkara">+</button><span class="gloss-pop">Literally &ldquo;the I-maker&rdquo; &mdash; the function of mind that stamps &ldquo;me&rdquo; onto raw experience, manufacturing a sense of separate identity.</span></span></em> &mdash; desire collects into a constructed identity that claims ownership: &ldquo;I want this, I feel that.&rdquo; The I-Maker claiming all experience as its own.</p>
     </div></div>
     <div class="framework-card collapsed">
       <span class="num">04</span>
       <h3>The True &ldquo;I&rdquo;</h3><div class="framework-content">
-      <p>Your pure, underlying conscious awareness. The silent observer behind every thought. The screen, not the movie &mdash; unchanged by whatever plays on it. Every tradition that found truth arrived at the same address.</p>
+      <p>Your pure, underlying conscious awareness. The silent observer behind every thought. The screen, not the movie &mdash; unchanged by whatever plays on it. Many traditions point to the same address.</p>
       <p style="margin-top:14px;font-size:15px;color:var(--gold);font-style:italic;">SAT-CHIT-ANAND.<br><span style="font-size:14px;font-style:normal;">Existence. Consciousness. Bliss.</span></p>
       <p class="equation-label" style="margin-top:10px;font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;border-top:1px solid rgba(212,175,55,0.28);padding-top:12px;"><span class="gloss">Atman<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Atman">+</button><span class="gloss-pop">The individual self, in Vedanta &mdash; held as identical to, not separate from, universal consciousness.</span></span> (Individual SELF) = <span class="gloss">Brahman<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Brahman">+</button><span class="gloss-pop">The ground of all reality in Vedanta &mdash; not a deity to petition, but the substrate everything, including you, is made of.</span></span> (Supreme Reality)</p>
       <p style="margin-top:10px;font-size:14px;color:var(--gold);font-style:italic;">In Sanskrit: <em><span class="gloss">Maya<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Maya">+</button><span class="gloss-pop">Usually translated &ldquo;illusion,&rdquo; though &ldquo;the measuring-out&rdquo; is closer &mdash; the way one undivided reality appears to us as separate things, separate selves, and passing time.</span></span> / <span class="gloss">Avidya<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Avidya">+</button><span class="gloss-pop">Literally &ldquo;not-seeing&rdquo; &mdash; the root ignorance that mistakes the temporary, changing self for the true, unchanging one.</span></span></em> &mdash; the lens of separation &mdash; is dissolved when you recognize you are not the projection, but the screen. That is who you actually are.</p>
@@ -2976,7 +2977,7 @@ tr.matrix-highlight{
 <section class="section-wide" id="spectrum">
   <span class="label">The Ascent of Self</span>
   <p class="phil-line bright">Seven layers. Seven stages of a single life. One universal pattern.</p>
-  <p class="phil-line dim">Nature, consciousness, cosmic architecture, and your own chronological arc from womb to elderhood all move through the identical sequence — from the density of raw survival to the divinity of pure being.</p>
+  <p class="phil-line dim">Nature, consciousness, and human life all move through the same sequence — from the density of raw survival to the clarity of pure being.</p>
   <div class="cosmo-quote" style="max-width:660px;margin:0 auto 36px;">
     <p>&ldquo;As above, so below.&rdquo;</p>
     <cite>&mdash; The Hermetic Principle of Correspondence</cite>
@@ -3040,7 +3041,7 @@ tr.matrix-highlight{
     </div></div>
   </div>
   <div class="cosmo-quote" style="max-width:660px;margin:36px auto 0;">
-    <p>Different expressions. One eternal pattern. From the heaviest base lead of physical survival to the absolute illumination of the Philosopher&rsquo;s Stone, there is only one map — and you are the one ascending through all of it.</p>
+    <p>Different expressions. One enduring pattern. From physical survival to final realization, there is one map — and you are the one moving through it.</p>
   </div>
 <p style="text-align:center;font-family:var(--serif);font-style:italic;font-size:14px;color:var(--dim);max-width:640px;margin:36px auto 0;line-height:1.8;">
   Explore deeper: <a href="#subtilization" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">the Path of Subtilization</a> walks these seven layers as a lived journey &mdash; <a href="#master-matrix" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">the Master Matrix</a> holds the full reference for each.
@@ -3053,7 +3054,7 @@ tr.matrix-highlight{
 <section class="astrolabe-section" id="self-enquiry" style="scroll-margin-top:56px;">
   <span class="label">Where Are You on the Map?</span>
   <h2>The 5 Pillars of Self-Enquiry</h2>
-  <p class="sub">Tap each pillar to expand or collapse. Answer honestly.</p>
+  <p class="sub">Answer honestly.</p>
   <div class="pillar-grid">
     <div class="pillar-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.p-expand');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Tap to collapse &#9660;':'Tap to expand &#9654;';}">
       <span class="p-num">Pillar 01</span><p class="p-title">Who am I?</p>
@@ -3082,7 +3083,7 @@ tr.matrix-highlight{
     </div>
   </div>
   <p class="astrolabe-cta">The Mirror Room is where you bring your answers. &mdash; <a href="https://x.com/i/chat/group_join/g2056088351590220124/gAK9fW8Y29" target="_blank" rel="noopener">Enter &rarr;</a></p>
-  <p style="text-align:center;font-family:var(--serif);font-style:italic;font-size:clamp(14px,2vw,16px);color:var(--dim);max-width:640px;margin:24px auto 0;line-height:1.85;">Write them down. For a guided version built to be written in, there&rsquo;s <a href="https://www.amazon.com/dp/B0H9HRM59K" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">the workbook</a> &mdash; or the <a href="https://companion.42self.xyz" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">Web Companion</a>, free to return to anytime.</p>
+  <p style="text-align:center;font-family:var(--serif);font-style:italic;font-size:clamp(14px,2vw,16px);color:var(--dim);max-width:640px;margin:24px auto 0;line-height:1.85;">Write them down in <a href="https://www.amazon.com/dp/B0H9HRM59K" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">the workbook</a>, or return to them anytime in the <a href="https://companion.42self.xyz" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">Web Companion</a>.</p>
 </section>
 <span class="continue-hint">continue</span>
 <div class="divider"></div>
@@ -3145,7 +3146,7 @@ tr.matrix-highlight{
     <div style="position:absolute;bottom:-1px;right:-1px;width:16px;height:16px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);"></div>
     <p style="font-size:clamp(17px,2.4vw,23px);font-weight:300;color:var(--mid);line-height:1.9;margin-bottom:18px;">You do not need a saviour to walk this path.</p>
     <p style="font-size:clamp(16px,2.2vw,21px);color:var(--gold);font-style:italic;line-height:1.8;margin-bottom:16px;">The path does not begin when someone rescues you.<br>It begins the moment you stop waiting for rescue.</p>
-    <p style="font-size:clamp(14px,1.9vw,18px);color:var(--grey);line-height:1.9;">Every tradition, every sage, every teacher has said the same thing in different words: the inner voice has always known the way.</p>
+    <p style="font-size:clamp(14px,1.9vw,18px);color:var(--grey);line-height:1.9;">Across traditions, the instruction is similar: the inner voice has always known the way.</p>
   </div>
 
   <div style="max-width:660px;margin:20px auto 0;padding:36px;border:1px solid rgba(212,175,55,0.3);background:var(--bg-lift);text-align:left;">
@@ -3177,7 +3178,7 @@ tr.matrix-highlight{
         <div style="font-size:36px;color:var(--gold);margin-bottom:16px;opacity:.5;">①</div>
         <h3 style="color:var(--gold);margin-bottom:10px;">The Western Paradigm</h3>
         <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:14px;">The Head</p>
-        <p style="font-family:var(--serif);font-size:16px;color:var(--grey);line-height:1.9;margin-bottom:14px;">Extroverted and materially developed. Gives us vocabulary to name our suffering, understand our patterns, and build cognitive insight. Maps the cause. The blueprint is the map.</p>
+        <p style="font-family:var(--serif);font-size:16px;color:var(--grey);line-height:1.9;margin-bottom:14px;">Extroverted and materially developed. Gives us vocabulary to name our suffering, understand our patterns, and build cognitive insight. Maps the cause.</p>
         <p style="font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);">Strength: Psychology · Clarity<br>Gap: Ignores the Spirit</p>
       </div>
       <div style="padding:36px 32px;border:1.5px solid rgba(212,175,55,0.45);background:var(--bg);text-align:left;">
@@ -3217,7 +3218,7 @@ tr.matrix-highlight{
     <div style="max-width:720px;margin:0 auto;padding:44px 36px;border:1px solid var(--gold);background:radial-gradient(ellipse at 50% 0%,rgba(212,175,55,.06) 0%,transparent 65%);text-align:center;position:relative;">
       <div style="position:absolute;top:-1px;left:-1px;width:18px;height:18px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);"></div>
       <div style="position:absolute;bottom:-1px;right:-1px;width:18px;height:18px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);"></div>
-      <p style="font-family:var(--serif);font-size:clamp(19px,2.8vw,26px);font-weight:300;color:var(--white);line-height:1.75;margin-bottom:28px;">East and West cannot simply extend<br>and meet in the middle.<br>The gap of duality cannot be crossed<br>on the level of mind alone.</p>
+      <p style="font-family:var(--serif);font-size:clamp(19px,2.8vw,26px);font-weight:300;color:var(--white);line-height:1.75;margin-bottom:28px;">East and West cannot simply meet in the middle.<br>The gap cannot be crossed on the level of mind alone.</p>
       <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:center;margin-bottom:24px;">
         <div style="padding:20px 16px;border:1.5px solid rgba(212,175,55,0.45);background:var(--bg);text-align:center;">
           <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:8px;">Body · The West</div>
@@ -3377,7 +3378,7 @@ tr.matrix-highlight{
     </div>
     <div style="max-width:680px;margin:0 auto;padding:40px 36px;border:1.5px solid rgba(212,175,55,0.55);background:radial-gradient(ellipse at 50% 0%,rgba(212,175,55,.06) 0%,transparent 65%);text-align:left;">
       <p style="font-size:clamp(17px,2.3vw,22px);color:var(--white);line-height:1.85;margin-bottom:18px;">Realization is the process of recognizing that <em style="color:var(--gold);">you are the Screen</em> &mdash; not the movie being projected upon it.</p>
-      <p style="font-size:clamp(15px,2vw,19px);color:var(--mid);line-height:1.9;margin-bottom:0;">All Experience is Awareness. The world, your thoughts, your emotions &mdash; these are the film. The screen remains unchanged by whatever plays upon it. You are that unchanging screen.</p>
+      <p style="font-size:clamp(15px,2vw,19px);color:var(--mid);line-height:1.9;margin-bottom:0;">The world, your thoughts, and your emotions are the film. The screen remains unchanged by whatever plays upon it. You are that unchanging screen.</p>
     </div>
   </div>
    </section>
@@ -3437,7 +3438,7 @@ tr.matrix-highlight{
   <span class="label">The Dimension Beneath</span>
   <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:720px;margin:0 auto 16px;line-height:1.5;">Matter is not stuff. It is a dimension &mdash; and dimensions can hold spirit just fine.</h2>
   <p style="font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:580px;margin:0 auto 40px;font-style:italic;line-height:1.85;">Neuroscience was never the enemy of the soul. It only ever described the stage. It was never in a position to describe the play.</p>
-  <p style="font-family:var(--serif);font-size:clamp(16px,2.1vw,19px);color:var(--mid);line-height:1.9;max-width:680px;margin:0 auto 36px;text-align:left;">General relativity already treats matter this way &mdash; not as a pile of objects sitting inside space, but as an active dimension that bends space and time around it. <span style="color:var(--gold);font-style:italic;">&ldquo;Everything that is above matter is situated; matter itself is situated.&rdquo;</span> Matter is not the opposite of spirit. It is the shell spirit happens inside of.</p>
+  <p style="font-family:var(--serif);font-size:clamp(16px,2.1vw,19px);color:var(--mid);line-height:1.9;max-width:680px;margin:0 auto 36px;text-align:left;">Matter need not be the opposite of spirit. It can be the dimension spirit appears through.</p>
 
   <div style="text-align:center;margin-bottom:16px;">
     <button class="collapse-toggle-btn" onclick="sectionCollapse('dimension-detail',this)">Expand &#9660;</button>
@@ -3543,7 +3544,7 @@ tr.matrix-highlight{
     <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:24px 28px;border:1.5px solid rgba(212,175,55,0.45);background:var(--bg-lift);text-align:left;max-width:820px;margin:24px auto 0;">Three states change. One doesn't. Ask which of the four you're reading this sentence from.</p>
 
     <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin:48px 0 16px;text-align:left;max-width:820px;margin-left:auto;margin-right:auto;">Zooming Out &mdash; The Same Question, Asked of Everything</p>
-    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--grey);line-height:1.9;max-width:820px;margin:0 auto 24px;text-align:left;">The gap above isn&rsquo;t only personal. Widen it out and the same distinction &mdash; how much of the field a thing actually notices, versus how much it merely sits inside &mdash; runs as a graded continuum through every scale of existence, not a switch that&rsquo;s simply on or off. A crystal responds to pressure. A plant orients toward light. A human, on a good day, notices itself noticing. Same underlying capacity, five very different altitudes.</p>
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--grey);line-height:1.9;max-width:820px;margin:0 auto 24px;text-align:left;">This distinction is not only personal. Across life, different forms can respond, orient, intend, or reflect. Humans can notice the noticing itself.</p>
 
     <div class="self-table-wrap" style="max-width:780px;margin:0 auto 28px;">
       <table class="self-table compact" style="min-width:560px;">
@@ -3610,7 +3611,7 @@ tr.matrix-highlight{
 <section class="ego-arch-section" id="ego">
   <span class="label">The Architecture of Ego</span>
   <h2>Suffering is not random.<br>It is a highly structured feedback loop.</h2>
-  <p class="sub">Designed to protect the illusion of separation. The ego creates an arbitrary boundary between &ldquo;me&rdquo; and the rest of the world &mdash; and suffering is its maintenance system.</p>
+  <p class="sub">The ego creates an arbitrary boundary between &ldquo;me&rdquo; and the rest of the world &mdash; and suffering is its maintenance system.</p>
 
   <!-- System Specifications — Default OS vs Manual Override, at-a-glance orientation table -->
   <p style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.75;text-align:center;margin-bottom:14px;">System Specifications &mdash; The Two Drivers</p>
@@ -3663,7 +3664,7 @@ tr.matrix-highlight{
   </div>
 
   <div style="text-align:center;margin-bottom:8px;">
-    <button class="collapse-toggle-btn" onclick="sectionCollapse('ego-full-content',this)">Expand Section &#9660;</button>
+    <button class="collapse-toggle-btn" onclick="sectionCollapse('ego-full-content',this)">Expand &#9660;</button>
   </div>
   <div id="ego-full-content" class="section-collapse-wrap collapsed">
 
@@ -3684,7 +3685,7 @@ tr.matrix-highlight{
       <div class="sl-stage danger"><span class="sl-num">05</span><div class="sl-name" style="color:#c0392b;">The Loss of Connection</div><p class="sl-desc">Insecurity defends itself by withdrawing &mdash; the very thing that could have dissolved it is shut out instead.</p></div>
     </div>
     <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:20px;border:1.5px solid rgba(212,175,55,0.45);background:var(--bg);">Our suffering is not a personal failing. It is a mechanical chain reaction. A borrowed identity demands comparison, which shatters against unfairness, breeding chronic insecurity &mdash; which ultimately isolates us from the world.</p>
-    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.85;margin-top:20px;text-align:left;">This is the shape of the problem in plain terms. What follows is the machinery underneath it &mdash; the same descent, named in the language of scripture, clinical psychology, and neuroscience.</p>
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.85;margin-top:20px;text-align:left;">This is the shape of the problem in plain terms.</p>
   </div>
 
   <!-- Twin Reactions -->
