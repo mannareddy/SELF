@@ -964,6 +964,7 @@ section{scroll-margin-top:56px;}
   .hero > div[style*="padding:22px 32px"] > div[style*="border-top"]{padding-top:8px !important;}
   .hero > a[href="#contract"]{margin-top:8px !important;}
   .hero-ca-arrow{padding-top:4px !important;}
+  .hero-continue-mobile{padding-top:32px !important;}
 }
 @media(min-width:641px) and (max-height:820px){
   .hero-question{font-size:clamp(13px,1.6vw,16px) !important;margin-bottom:32px !important;}
@@ -971,6 +972,7 @@ section{scroll-margin-top:56px;}
   .hero > div[style*="padding:22px 32px"] p{line-height:1.55 !important;}
   .hero > div[style*="padding:22px 32px"] > div[style*="border-top"] p{font-size:clamp(11px,1.4vw,14px) !important;}
   .hero > a[href="#contract"] > div{padding:8px 20px !important;}
+  .hero-continue-mobile{padding-top:20px !important;}
 }
 
 /* ── THEME TOGGLE — desktop button shown by default; mobile button (fixed,
@@ -993,6 +995,9 @@ section{scroll-margin-top:56px;}
 .hero-ca-arrow{display:block;font-size:15px;color:var(--gold);opacity:.55;padding-top:6px;animation:fade 3.5s ease-in-out infinite;}
 .hero-ca-link:hover .hero-ca-arrow{opacity:.9;}
 .hero-continue-mobile{display:block;padding:24px 0 0 !important;}
+@media(min-width:641px){
+  .hero-continue-mobile{padding-top:64px !important;}
+}
 
 /* ── BANNER ──────────────────────────────────────────────────────────────── */
 .banner-section{max-width:1400px;margin:0 auto;}
@@ -1746,13 +1751,23 @@ h4 {
 }
 
 /* Exception — keep larger size for hero/mission statements specifically */
-.hero-question,
 .ipo-headline,
 .vision-statement,
 .cosmo-block p,
 .void-test-question {
   font-size: clamp(16px,2.8vw,28px) !important;
-}  
+}
+
+/* Hero intro line ("There is a question...") should read as a quiet lead-in,
+   not compete with the boxed question below it — smaller and slightly
+   dimmer than the boxed headline on desktop widths. */
+@media(min-width:641px){
+  .hero-question{
+    font-size: clamp(14px,1.6vw,18px) !important;
+    font-weight: 300 !important;
+    opacity: .82;
+  }
+}
 @media(max-width:640px){
   /* 100dvh recalculates on every scroll tick on Android as the URL bar
      shows/hides, forcing continuous layout reflow on the very first
