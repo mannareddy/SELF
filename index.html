@@ -996,7 +996,7 @@ section{scroll-margin-top:56px;}
 .hero-ca-link:hover .hero-ca-arrow{opacity:.9;}
 .hero-continue-mobile{display:block;padding:24px 0 0 !important;}
 @media(min-width:641px){
-  .hero-continue-mobile{padding-top:64px !important;}
+  .hero-continue-mobile{padding-top:48px !important;}
 }
 
 /* ── BANNER ──────────────────────────────────────────────────────────────── */
@@ -1759,13 +1759,16 @@ h4 {
 }
 
 /* Hero intro line ("There is a question...") should read as a quiet lead-in,
-   not compete with the boxed question below it — smaller and slightly
-   dimmer than the boxed headline on desktop widths. */
+   not compete with the boxed question below it — kept close to its
+   original size (not shrunk down) but a touch lighter/dimmer so the
+   boxed headline still reads as the focal point. */
 @media(min-width:641px){
   .hero-question{
-    font-size: clamp(14px,1.6vw,18px) !important;
+    font-size: clamp(16px,2vw,22px) !important;
     font-weight: 300 !important;
-    opacity: .82;
+    letter-spacing: .3px !important;
+    word-spacing: normal !important;
+    opacity: .85;
   }
 }
 @media(max-width:640px){
