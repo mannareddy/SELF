@@ -2496,6 +2496,24 @@ tr.matrix-highlight{
   .gloss-table th,.gloss-table td{padding:10px 8px;font-size:12.5px;line-height:1.6;}
 }
 
+/* ── SOURCE-ATTRIBUTION BADGES ──────────────────────────────────────────────
+   Distinguishes three kinds of claim, per reader feedback: content drawn
+   directly from a named tradition/text, content citing modern research,
+   and content that is 42SELF's own interpretive synthesis across traditions.
+   A labeling convention only — doesn't change layout or existing styles. */
+.src-key{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin:0 auto 28px;max-width:700px;}
+.src-tag{display:inline-flex;align-items:center;gap:6px;font-family:var(--sans);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:5px 11px;border:1px solid;white-space:nowrap;margin-bottom:4px;}
+.src-tag::before{content:'';width:6px;height:6px;border-radius:50%;display:inline-block;}
+.src-trad{color:#c9a84c;border-color:rgba(201,168,76,0.5);}
+.src-trad::before{background:#c9a84c;}
+.src-research{color:#6fa8dc;border-color:rgba(111,168,220,0.5);}
+.src-research::before{background:#6fa8dc;}
+.src-synth{color:var(--grey);border-color:#333;}
+.src-synth::before{background:var(--grey);}
+[data-theme="light"] .src-trad{color:#8a6a12;border-color:rgba(138,106,18,0.5);}
+[data-theme="light"] .src-research{color:#2a5a8a;border-color:rgba(42,90,138,0.5);}
+[data-theme="light"] .src-synth{color:#3d2e10;border-color:rgba(0,0,0,0.25);}
+
 </style>
 </head>
 <body>
@@ -2551,7 +2569,7 @@ tr.matrix-highlight{
     </picture>
   </a>
 
-  <!-- Right: Ecosystem▾ · New▾ · Glossary · FAQ · Feedback -->
+  <!-- Right: Ecosystem▾ · New▾ · Resources▾ -->
   <ul class="nav-right">
     <li class="nav-dropdown-wrap" style="border-left:1px solid #1a1a1a;">
       <a href="#mirror" data-group="shop-circle">Shop / Circle<span class="nav-caret">▾</span></a>
@@ -2583,12 +2601,19 @@ tr.matrix-highlight{
       <div class="nav-dropdown-panel" id="newMenuPanel">
         <a href="#glossary" data-group="new">Glossary — New Terms Added</a>
         <a href="#master-matrix" data-group="new">Master Matrix — Reading Guide</a>
+        <a href="#disclaimer" data-group="new">Disclaimer — Expanded Care Guidance</a>
       </div>
     </li>
 
-    <li><a href="#glossary">Glossary</a></li>
-    <li><a href="#faq-section">FAQ</a></li>
-    <li><a href="#feedback">Feedback</a></li>
+    <li class="nav-dropdown-wrap">
+      <a href="#glossary" data-group="resources">Resources<span class="nav-caret">▾</span></a>
+      <div class="nav-dropdown-panel">
+        <a href="#glossary" data-group="resources">Glossary</a>
+        <a href="#faq-section" data-group="resources">FAQ</a>
+        <a href="#feedback" data-group="resources">Feedback</a>
+        <a href="#disclaimer" data-group="resources">Disclaimer</a>
+      </div>
+    </li>
   </ul>
   <button id="themeToggleBtn" onclick="toggleTheme()" title="Toggle light/dark theme" aria-label="Toggle theme">&#9788;</button>
 </nav>
@@ -2652,12 +2677,21 @@ tr.matrix-highlight{
       <div class="mnav-group-panel" id="newMenuPanelMobile">
         <a href="#glossary">Glossary — New Terms Added</a>
         <a href="#master-matrix">Master Matrix — Reading Guide</a>
+        <a href="#disclaimer">Disclaimer — Expanded Care Guidance</a>
       </div>
     </li>
 
-    <li><a href="#glossary">Glossary</a></li>
-    <li><a href="#faq-section">FAQ</a></li>
-    <li><a href="#feedback">Feedback</a></li>
+    <li class="mnav-group">
+      <button class="mnav-group-toggle" aria-expanded="false">
+        Resources <span class="mnav-caret">▾</span>
+      </button>
+      <div class="mnav-group-panel">
+        <a href="#glossary">Glossary</a>
+        <a href="#faq-section">FAQ</a>
+        <a href="#feedback">Feedback</a>
+        <a href="#disclaimer">Disclaimer</a>
+      </div>
+    </li>
   </ul>
 </div>
 
@@ -2690,6 +2724,40 @@ tr.matrix-highlight{
 <div class="banner-section">
   <img src="./assets/images/Banner.jpg" alt="You don't lose money. You lose control." class="banner-image" decoding="async">
 </div>
+<span class="continue-hint">continue</span>
+<div class="divider"></div>
+
+<!-- START HERE — orientation for first-time visitors: what this is, who it's for,
+     and how the philosophy / workbook / app / community / token relate to each other.
+     Added in response to reader feedback that the site assumes high motivation and
+     tolerance for abstraction before saying plainly what it is. -->
+<section class="section-wide" id="start-here" style="scroll-margin-top:56px;padding:70px 24px 80px;">
+  <span class="label">Start Here</span>
+  <p style="font-family:var(--serif);font-size:clamp(16px,2.2vw,20px);color:var(--mid);line-height:1.9;max-width:700px;margin:0 auto 40px;text-align:left;">In one paragraph: <strong style="color:var(--white);font-weight:400;">*SELF is a self-inquiry framework</strong> &mdash; a synthesis of Vedanta, Stoicism, Jungian psychology, and modern neuroscience, built around the practice of noticing the gap between a trigger and your reaction to it. It exists as a free website, a paid write-in workbook, a free web companion, a public community, and &mdash; separately &mdash; a token on Solana that funds and stress-tests it in public. Those five things are related but not the same, and you don&rsquo;t need all five to use any one of them.</p>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2px;max-width:980px;margin:0 auto 40px;">
+    <div class="why-card" style="text-align:left;">
+      <h4 style="margin-bottom:10px;">Just curious</h4>
+      <p style="margin-bottom:16px;">You want to understand the model before deciding anything. No commitment, no signup.</p>
+      <a href="#framework" style="font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);">Read the Framework &rarr;</a>
+    </div>
+    <div class="why-card" style="text-align:left;">
+      <h4 style="margin-bottom:10px;">Ready to practice</h4>
+      <p style="margin-bottom:16px;">You want something to actually do today &mdash; not more theory.</p>
+      <a href="#ego-checklist" style="font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);">Go to Daily Practice &rarr;</a>
+    </div>
+    <div class="why-card" style="text-align:left;">
+      <h4 style="margin-bottom:10px;">Here about the token</h4>
+      <p style="margin-bottom:16px;">You want the contract, the supply, and what holding it actually means.</p>
+      <a href="#ipo" style="font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);">Go to the IPO &amp; Contract &rarr;</a>
+    </div>
+  </div>
+
+  <div style="max-width:700px;margin:0 auto;padding:28px 26px;border:1px solid #1e1e1e;border-left:3px solid var(--gold);background:var(--bg-lift);text-align:left;">
+    <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:12px;">Who this isn&rsquo;t for, right now</p>
+    <p style="font-family:var(--serif);font-size:14.5px;color:var(--mid);line-height:1.85;margin-bottom:0;">If you&rsquo;re in acute emotional crisis, this site is not the right first stop &mdash; talk to a mental health professional or a crisis line first. This framework is a lens for reflection, not treatment. More on that distinction in the <a href="#disclaimer" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">full disclaimer</a>.</p>
+  </div>
+</section>
 <span class="continue-hint">continue</span>
 <div class="divider"></div>
 
@@ -2753,6 +2821,7 @@ tr.matrix-highlight{
   <section style="padding:90px 24px;background:var(--bg-lift);">
   <div style="max-width:680px;margin:0 auto;">
     <span class="label">The Dark Night</span>
+    <p style="font-family:var(--sans);font-size:11px;letter-spacing:.5px;color:var(--dim);max-width:600px;margin:0 auto 28px;text-align:center;line-height:1.8;">This section speaks to existential ache, not diagnosable illness. If what you&rsquo;re carrying includes persistent depression, trauma, or thoughts of harming yourself, please treat that clinically first &mdash; see the <a href="#disclaimer" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">full note on care</a>.</p>
     <div class="pull-quote" style="margin-bottom:36px;border:1px solid rgba(212,175,55,0.45);border-left:3px solid var(--gold);padding:36px 40px;">
       <p>&ldquo;It is not a breakdown. It is a breakthrough wearing a disguise.&rdquo;</p>
       <cite>The universal initiation no tradition calls optional</cite>
@@ -2760,7 +2829,7 @@ tr.matrix-highlight{
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;max-width:660px;margin:0 auto 36px;">
       <div style="padding:32px 28px;background:var(--bg);border:1px solid rgba(212,175,55,0.3);text-align:left;">
         <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:14px;">The Mistake</div>
-        <p style="font-family:var(--serif);font-size:16px;color:var(--grey);line-height:1.88;">Treating it as a depression to be cured. Medicating the signal. Waiting for it to pass. Every exit ramp leads back to the same entrance.</p>
+        <p style="font-family:var(--serif);font-size:16px;color:var(--grey);line-height:1.88;">Treating a genuine call for deeper meaning as nothing but noise to silence &mdash; chasing the next distraction and hoping it passes on its own. Every exit ramp like that leads back to the same entrance. (This is separate from clinical treatment, which is often exactly the right support alongside this work &mdash; not instead of it.)</p>
       </div>
       <div style="padding:32px 28px;background:var(--bg);border:1px solid rgba(212,175,55,0.3);border-left:3px solid var(--gold);text-align:left;">
         <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:14px;">The Truth</div>
@@ -3172,6 +3241,7 @@ tr.matrix-highlight{
 <!-- INTEGRATION ENGINE -->
 <section class="section-wide" style="padding:90px 24px;background:var(--bg-lift);">
   <span class="label">The Integration Engine</span>
+  <p style="text-align:center;margin-bottom:14px;"><span class="src-tag src-synth">42SELF Interpretation</span> &mdash; our own synthesis of Western psychotherapy and Eastern practice, not a claim either field makes on its own.</p>
   <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 20px;line-height:1.5;">Neither East nor West alone. Together, they become whole.</h2>
   <p style="font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:680px;margin:0 auto 36px;line-height:1.9;">Western psychotherapy and Eastern wisdom traditions are not opposites. They are complements. But to integrate them, you must first understand what each got right — and what each missed.</p>
 
@@ -3213,7 +3283,7 @@ tr.matrix-highlight{
       </div>
       <div style="padding:32px 28px;background:var(--bg);border:1.5px solid rgba(212,175,55,0.45);text-align:left;">
         <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:14px;">The Mind — Subtle Matter</div>
-        <p style="font-family:var(--serif);font-size:15.5px;color:var(--grey);line-height:1.88;">The inner instrument (antahkarana). A finer body, constantly changing. Like water in the pot — it changes shape, absorbs new properties, and dictates what the vessel actually holds.</p>
+        <p style="font-family:var(--serif);font-size:15.5px;color:var(--grey);line-height:1.88;">The inner instrument (<span class="gloss">antahkarana<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define antahkarana">+</button><span class="gloss-pop">Literally &ldquo;the inner instrument&rdquo; &mdash; the collective term in Vedanta for mind, intellect, and ego-sense together: the machinery through which consciousness processes experience.</span></span>). A finer body, constantly changing. Like water in the pot — it changes shape, absorbs new properties, and dictates what the vessel actually holds.</p>
       </div>
       <div style="padding:32px 28px;background:var(--bg-lift);border:1px solid var(--gold);border-left:3px solid var(--gold);text-align:left;">
         <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:14px;">Consciousness — Pure Spirit</div>
@@ -3266,8 +3336,15 @@ tr.matrix-highlight{
   <p>The universe doesn&rsquo;t contain Consciousness.</p>
   <p>Consciousness contains the universe.</p>
   <p class="plain">*SELF is the practice of knowing that from the inside.</p>
-  <button id="foundationToggle" onclick="toggleFoundation(this)" style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);background:transparent;border:1.5px solid rgba(212,175,55,0.55);padding:10px 24px;cursor:pointer;margin:28px auto 0;display:block;transition:border-color .25s;" aria-expanded="false">Show Traditions &#9660;</button>
+  <div class="src-key" style="margin-top:36px;">
+    <span class="src-tag src-trad">Traditional Source</span>
+    <span class="src-tag src-research">Modern Research</span>
+    <span class="src-tag src-synth">42SELF Interpretation</span>
+  </div>
+  <p style="font-family:var(--sans);font-size:10px;letter-spacing:.5px;color:var(--dim);max-width:600px;margin:0 auto 8px;text-align:center;">Used throughout this page. Traditional Source = documented in the named tradition&rsquo;s own texts. Modern Research = a cited study or published finding. 42SELF Interpretation = our own synthesis connecting traditions, not a claim any one of them makes on its own.</p>
+  <button id="foundationToggle" onclick="toggleFoundation(this)" style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);background:transparent;border:1.5px solid rgba(212,175,55,0.55);padding:10px 24px;cursor:pointer;margin:20px auto 0;display:block;transition:border-color .25s;" aria-expanded="false">Show Traditions &#9660;</button>
   <div id="foundationContent" class="foundation-content collapsed">
+  <p style="text-align:center;margin-bottom:16px;"><span class="src-tag src-trad">Traditional Source</span> for each row&rsquo;s core term &mdash; <span class="src-tag src-synth" style="margin-left:6px;">42SELF Interpretation</span> for grouping them under &ldquo;42&rdquo; specifically.</p>
   <div class="tradition-table">
     <div class="tradition-row header">
       <div class="tradition-cell">Tradition</div>
@@ -3296,7 +3373,8 @@ tr.matrix-highlight{
 <!-- AUROBINDO FOUR THEORIES — standalone, always visible -->
 <section style="padding:52px 24px;background:var(--bg);border-top:1px solid #111;overflow-x:hidden;">
   <div style="max-width:860px;margin:0 auto;">
-    <span class="label" style="margin-bottom:28px;">The Four Theories of Human Existence</span>
+    <span class="label" style="margin-bottom:12px;">The Four Theories of Human Existence</span>
+    <p style="text-align:center;margin-bottom:20px;"><span class="src-tag src-trad">Traditional Source</span> &mdash; drawn from Sri Aurobindo&rsquo;s <em style="color:var(--dim);">The Life Divine</em>.</p>
 <div class="self-table-wrap" style="max-width:820px;margin:0 auto;">
   <table class="self-table" style="min-width:520px;">
     <thead>
@@ -3578,6 +3656,7 @@ tr.matrix-highlight{
 </section>
 <section class="section-wide" id="physical-correlate" style="scroll-margin-top:56px;">
   <span class="label" style="color:var(--dim);">A Note for the Skeptics</span>
+  <p style="text-align:center;margin-bottom:14px;"><span class="src-tag src-research">Modern Research</span></p>
   <h2 style="font-size:clamp(20px,3vw,30px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;">The field/flashlight distinction isn&rsquo;t only philosophical. It leaves a measurable shadow in the brain.</h2>
   <p style="font-size:clamp(14px,1.8vw,17px);color:var(--grey);max-width:620px;margin:0 auto 32px;font-style:italic;line-height:1.85;">This section is not a metaphysical claim. It is a plain summary of published neuroscience research &mdash; included because the pattern above happens to have an independent, quantitative echo, not because a brain scan can settle what consciousness ultimately is.</p>
 
@@ -6306,7 +6385,13 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
         <p style="font-family:var(--serif);font-size:clamp(16px,2.1vw,19px);color:var(--white);line-height:1.85;font-style:italic;">You are not guided toward results. You are exposed to your own responses. The framework provides the screen. You interpret the experience.</p>
       </div>
 
-      <p style="font-family:var(--serif);font-size:clamp(15px,1.9vw,18px);color:var(--grey);line-height:1.95;margin-bottom:0;">This framework belongs to no religion, nationality, or background. The vocabulary draws from Hindu tradition — not because it holds exclusive claim, but because it is the living language of the person who built it. <em style="color:var(--mid);">The door is not the destination.</em></p>
+      <p style="font-family:var(--serif);font-size:clamp(15px,1.9vw,18px);color:var(--grey);line-height:1.95;margin-bottom:20px;">This framework belongs to no religion, nationality, or background. The vocabulary draws from Hindu tradition — not because it holds exclusive claim, but because it is the living language of the person who built it. <em style="color:var(--mid);">The door is not the destination.</em></p>
+
+      <div style="border-top:1px solid rgba(192,57,43,0.3);margin-top:28px;padding-top:28px;">
+        <p style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#c0392b;opacity:.85;margin-bottom:14px;">Not a substitute for care</p>
+        <p style="font-family:var(--serif);font-size:clamp(15px,1.9vw,18px);color:var(--grey);line-height:1.95;margin-bottom:14px;">Sections like the Dark Night frame suffering as a signal, not just a malfunction — but that&rsquo;s for existential ache, not diagnosable illness. If you&rsquo;re dealing with persistent depression, trauma, dissociation, or thoughts of self-harm, treat that clinically first. This site is not licensed medical or psychological advice.</p>
+        <p style="font-family:var(--serif);font-size:clamp(15px,1.9vw,18px);color:var(--grey);line-height:1.95;margin-bottom:0;">In the U.S., you can call or text <strong style="color:var(--white);font-weight:400;">988</strong> any time. Outside the U.S., contact your local crisis line or nearest emergency department.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -6354,6 +6439,10 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
           <tr class="gloss-entry" id="gloss-chitta">
             <td>Chitta</td>
             <td>The mind-stuff, or memory-store &mdash; the layer that holds impressions, conditioning, and habitual patterns built up over time. Not thought itself, but the substrate thought leaves marks on.</td>
+          </tr>
+          <tr class="gloss-entry" id="gloss-antahkarana">
+            <td>Antahkarana</td>
+            <td>Literally "the inner instrument" &mdash; the collective term in Vedanta for mind, intellect, and ego-sense together: the machinery through which consciousness processes experience.</td>
           </tr>
           <tr class="gloss-entry" id="gloss-Ahamkara">
             <td>Ahamkara</td>
@@ -7444,7 +7533,7 @@ function updateNav(){
     'home','super-ordinate-goal','framework','dimension','consciousness','forty-two','masters','patanjali','go-deeper',
     'ego','bodhichitta','pain-body','ego-checklist','diagnostic','feedback-loop',
     'ledger','ipo','mirror','contract','contribution',
-    'faq-section','feedback','disclaimer'
+    'glossary','faq-section','feedback','disclaimer'
   ];
   var currentActive = '';
 
@@ -7455,7 +7544,8 @@ function updateNav(){
     'ego':'traditions','bodhichitta':'traditions','pain-body':'traditions','contribution':'traditions',
     'ego-checklist':'practice','diagnostic':'practice','feedback-loop':'practice',
     'ledger':'shop-circle','ipo':'shop-circle','mirror':'shop-circle',
-    'contract':'shop-circle'
+    'contract':'shop-circle',
+    'glossary':'resources','faq-section':'resources','feedback':'resources','disclaimer':'resources'
   };
 
   function setActive(id){
