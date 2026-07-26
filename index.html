@@ -1063,12 +1063,12 @@ section{scroll-margin-top:56px;}
 .astrolabe-section h2{color:var(--white);max-width:660px;margin:0 auto 16px;}
 .astrolabe-section .sub{font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:520px;margin:0 auto 52px;font-style:italic;line-height:1.85;}
 .pillar-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2px;max-width:980px;margin:0 auto 44px;text-align:left;}
-.pillar-card{padding:32px 28px;background:var(--bg-lift);border:1px solid rgba(212,175,55,0.3);cursor:pointer;transition:border-color .3s;}
+.pillar-card{padding:32px 28px;background:var(--bg-lift);border:1px solid rgba(212,175,55,0.3);cursor:pointer;transition:border-color .3s;position:relative;}
 .pillar-card:hover{border-color:rgba(212,175,55,0.6);}
 .pillar-card.open{border-color:var(--gold);}
 .pillar-card .p-num{font-family:var(--sans);font-size:10px;letter-spacing:3px;color:var(--gold);opacity:.65;margin-bottom:10px;display:block;}
 .pillar-card .p-title{font-family:var(--serif);font-size:clamp(19px,2vw,24px);font-weight:400;color:var(--white);margin-bottom:0;line-height:1.35;}
-.pillar-card .p-expand{font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-top:8px;display:block;}
+.pillar-card .p-expand{font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.7;position:absolute;top:32px;right:28px;margin-top:0;display:block;}
 .pillar-card .p-body{font-family:var(--serif);font-size:15.5px;font-weight:300;color:var(--grey);line-height:1.88;margin-top:16px;display:none;border-top:1px solid rgba(212,175,55,0.3);padding-top:16px;}
 .pillar-card.open .p-body{display:block;}
 .astrolabe-cta{font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:500px;margin:0 auto;font-style:italic;line-height:1.85;}
@@ -2861,14 +2861,14 @@ tr.matrix-highlight{
         <p style="font-family:var(--serif);font-size:16px;color:var(--grey);line-height:1.88;">It is initiation &mdash; the forge in which a deeper life becomes possible. It does not end. It graduates.</p>
       </div>
     </div>
-    <div style="max-width:500px;margin:0 auto;text-align:left;">
+    <div style="max-width:660px;margin:0 auto;text-align:left;">
       <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.75;margin-bottom:20px;">One who stayed in it</div>
       <div style="padding:32px 28px;background:var(--bg);border:1px solid rgba(212,175,55,0.3);text-align:left;">
         <p style="font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:8px;font-weight:400;">Nelson Mandela</p>
         <p style="font-family:var(--serif);font-size:15px;color:var(--grey);line-height:1.85;">27 years. Not cured. Not escaped. Graduated. What emerged was not the man who entered.</p>
       </div>
     </div>
-    <div style="max-width:800px;margin:36px auto 0;padding:40px 52px;border:1px solid rgba(212,175,55,0.55);border-left:4px solid var(--gold);border-right:4px solid var(--gold);background:radial-gradient(ellipse at 50% 50%,rgba(212,175,55,.06) 0%,transparent 70%);text-align:center;">
+    <div style="max-width:660px;margin:36px auto 0;padding:40px 44px;border:1px solid rgba(212,175,55,0.55);border-left:4px solid var(--gold);border-right:4px solid var(--gold);background:radial-gradient(ellipse at 50% 50%,rgba(212,175,55,.06) 0%,transparent 70%);text-align:center;">
       <p style="font-family:var(--serif);font-size:clamp(18px,2.5vw,24px);color:var(--gold);font-style:italic;line-height:1.85;margin:0;">If you have experienced something like this &mdash;<br>your journey toward Self-Realization has already started.</p>
     </div>
   </div>
@@ -3026,56 +3026,56 @@ tr.matrix-highlight{
   </div>
   <div id="ascent-full-content" class="section-collapse-wrap collapsed">
   <div class="framework-grid">
-    <div class="framework-card collapsed">
-      <span class="num">L1 &mdash; Red</span>
+    <div class="framework-card collapsed" style="border-left:3px solid #e74c3c;">
+      <span class="num" style="color:#e74c3c;opacity:.95;">L1 &mdash; Red</span>
       <h3>Survival — &ldquo;I Exist&rdquo;</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Grounding in the body</p><div class="framework-content">
       <p>Consciousness fully embedded in matter. You do not operate reality; reality operates on you. Dense, chaotic, and entirely focused on reacting to physical constraints just to maintain baseline existence.</p>
       <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">Alchemy: Lead (Base Matter) &middot; Brainwave: Delta</p>
       <p style="margin-top:10px;font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;border-top:1px solid rgba(212,175,55,0.28);padding-top:12px;">Life Stage: Womb &amp; Infancy</p>
       <p style="margin-top:6px;font-size:14px;color:var(--grey);">The Vertical Leap &mdash; <em style="color:var(--gold);font-style:italic;">Somatic Grounding:</em> anchor completely in the physical form without resisting limits or survival demands.</p>
     </div></div>
-    <div class="framework-card collapsed">
-      <span class="num">L2 &mdash; Orange</span>
+    <div class="framework-card collapsed" style="border-left:3px solid #e67e22;">
+      <span class="num" style="color:#e67e22;opacity:.95;">L2 &mdash; Orange</span>
       <h3>Emotion — &ldquo;I Feel&rdquo;</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Meeting emotion with breath</p><div class="framework-content">
       <p>Raw physical experience is no longer just endured — it generates an internal, subjective, volatile charge. These emotional spikes create the very first echoes of a subjective self, distinct from the world pushing against it.</p>
       <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">Alchemy: Copper (Purification) &middot; Brainwave: Theta</p>
       <p style="margin-top:10px;font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;border-top:1px solid rgba(212,175,55,0.28);padding-top:12px;">Life Stage: Childhood &mdash; First Cry / Play</p>
       <p style="margin-top:6px;font-size:14px;color:var(--grey);">The Vertical Leap &mdash; <em style="color:var(--gold);font-style:italic;">Breath Mastery:</em> use the breath as a conscious regulator to wash away reactionary emotional spikes.</p>
     </div></div>
-    <div class="framework-card collapsed">
-      <span class="num">L3 &mdash; Yellow</span>
+    <div class="framework-card collapsed" style="border-left:3px solid #f1c40f;">
+      <span class="num" style="color:#f1c40f;opacity:.95;">L3 &mdash; Yellow</span>
       <h3>Thought — &ldquo;I Think&rdquo;</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Watching the thoughts, not being them</p><div class="framework-content">
       <p>To survive the chaos of raw emotion, the mind begins to categorize and predict. Reactions calcify into predictable, automated patterns — a rigid architecture built around the initial spark of consciousness to keep it safe.</p>
       <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">Alchemy: Iron (Strength) &middot; Brainwave: Alpha</p>
       <p style="margin-top:10px;font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;border-top:1px solid rgba(212,175,55,0.28);padding-top:12px;">Life Stage: Early Youth &mdash; Sensory / School</p>
       <p style="margin-top:6px;font-size:14px;color:var(--grey);">The Vertical Leap &mdash; <em style="color:var(--gold);font-style:italic;">Mindful Observation:</em> step back from the mental chatter; shift from being the thoughts to watching them.</p>
     </div></div>
-    <div class="framework-card collapsed">
-      <span class="num">L4 &mdash; Green</span>
+    <div class="framework-card collapsed" style="border-left:3px solid #2ecc71;">
+      <span class="num" style="color:#2ecc71;opacity:.95;">L4 &mdash; Green</span>
       <h3>Love — &ldquo;I Connect&rdquo;</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">The heart as bridge</p><div class="framework-content">
       <p>Identity is not who you truly are — it is the refined construct built from every layer of prior conditioning. It acts as a filter and a fulcrum, bridging the mechanical responses of your past with the expansive awareness of your future. The heart is the bridge from density to divinity.</p>
       <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">Alchemy: Silver (Refinement) &middot; Brainwave: Mu</p>
       <p style="margin-top:10px;font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;border-top:1px solid rgba(212,175,55,0.28);padding-top:12px;">Life Stage: Late Youth &mdash; Curiosity / Higher Learning</p>
       <p style="margin-top:6px;font-size:14px;color:var(--grey);">The Vertical Leap &mdash; <em style="color:var(--gold);font-style:italic;">Intellectual Surrender:</em> recognize the limits of dry logic and let concepts dissolve into intuitive knowing.</p>
     </div></div>
-    <div class="framework-card collapsed">
-      <span class="num">L5 &mdash; Blue</span>
+    <div class="framework-card collapsed" style="border-left:3px solid #3498db;">
+      <span class="num" style="color:#3498db;opacity:.95;">L5 &mdash; Blue</span>
       <h3>Wisdom — &ldquo;I Understand&rdquo;</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Alchemical gold: self-awareness</p><div class="framework-content">
       <p>Consciousness dis-identifies from its own patterns. You realize you are not your thoughts, emotions, or history — you are the silent entity observing identity itself. This separation is the true alchemical gold: the dawn of objective self-awareness.</p>
       <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">Alchemy: Gold (Illumination) &middot; Brainwave: Beta</p>
       <p style="margin-top:10px;font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;border-top:1px solid rgba(212,175,55,0.28);padding-top:12px;">Life Stage: Young Adulthood &mdash; First Impressions / Career</p>
       <p style="margin-top:6px;font-size:14px;color:var(--grey);">The Vertical Leap &mdash; <em style="color:var(--gold);font-style:italic;">Alchemical Refinement:</em> strip away the personal stories attached to your past; hold your history as educational data.</p>
     </div></div>
-    <div class="framework-card collapsed">
-      <span class="num">L6 &mdash; Indigo</span>
+    <div class="framework-card collapsed" style="border-left:3px solid #6a5acd;">
+      <span class="num" style="color:#6a5acd;opacity:.95;">L6 &mdash; Indigo</span>
       <h3>Bliss — &ldquo;I Transcend&rdquo;</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Where observer and observed merge</p><div class="framework-content">
       <p>As awareness heightens, the dualistic gap between the observer and reality collapses. The psychological friction of separation ceases, distilling consciousness into pure integration and unmediated bliss.</p>
       <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">Alchemy: Quintessence (Spirit/Essence) &middot; Brainwave: Gamma</p>
       <p style="margin-top:10px;font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;border-top:1px solid rgba(212,175,55,0.28);padding-top:12px;">Life Stage: Mature Adulthood &mdash; Ambition / Leadership</p>
       <p style="margin-top:6px;font-size:14px;color:var(--grey);">The Vertical Leap &mdash; <em style="color:var(--gold);font-style:italic;">Dissolving the Observer:</em> merge the gap between watcher and watched; step out of individual self-importance.</p>
     </div></div>
-    <div class="framework-card collapsed">
-      <span class="num">L7 &mdash; Violet</span>
+    <div class="framework-card collapsed" style="border-left:3px solid #9b59b6;">
+      <span class="num" style="color:#9b59b6;opacity:.95;">L7 &mdash; Violet</span>
       <h3>Oneness — &ldquo;I Am&rdquo;</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">The unshakeable &ldquo;I Am&rdquo;</p><div class="framework-content">
       <p>Beyond patterns, beyond identity, beyond even the observer. You are no longer experiencing reality — you realize you are the ultimate reality experiencing itself. Complete ontological transmutation. The absolute &ldquo;I am&rdquo; phase.</p>
       <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">Alchemy: Philosopher&rsquo;s Stone (Completion) &middot; Brainwave: Lambda</p>
@@ -3108,31 +3108,31 @@ tr.matrix-highlight{
     <div class="pillar-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.p-expand');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="p-num">Pillar 01</span><p class="p-title">Who am I?</p>
       <span class="p-expand">Expand &#9660;</span>
-      <span class="section-collapse-label" style="margin-top:6px;">Your gift, distilled</span>
+      <span class="section-collapse-label" style="font-family:var(--serif);font-size:14px;font-weight:300;color:var(--grey);margin-top:16px;">Your gift, distilled</span>
       <p class="p-body">Discovering your passion, attributes, and legacy. If you had one gift of value for the world &mdash; what is it? Not your job title. Not your resume. The singular thing only you can bring.</p>
     </div>
     <div class="pillar-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.p-expand');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="p-num">Pillar 02</span><p class="p-title">Where am I from?</p>
       <span class="p-expand">Expand &#9660;</span>
-      <span class="section-collapse-label" style="margin-top:6px;">Your source &amp; conditioning</span>
+      <span class="section-collapse-label" style="font-family:var(--serif);font-size:14px;font-weight:300;color:var(--grey);margin-top:16px;">Your source &amp; conditioning</span>
       <p class="p-body">Understanding your spiritual source and your current baseline reality. What shaped the lens you see through? What do you carry that you didn&rsquo;t choose? And what of it is actually you?</p>
     </div>
     <div class="pillar-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.p-expand');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="p-num">Pillar 03</span><p class="p-title">Why am I here?</p>
       <span class="p-expand">Expand &#9660;</span>
-      <span class="section-collapse-label" style="margin-top:6px;">Your purpose, named</span>
+      <span class="section-collapse-label" style="font-family:var(--serif);font-size:14px;font-weight:300;color:var(--grey);margin-top:16px;">Your purpose, named</span>
       <p class="p-body">Defining your innate purpose and the specific problems you are uniquely built to solve. Not what the world needs from everyone. What it needs from you specifically.</p>
     </div>
     <div class="pillar-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.p-expand');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="p-num">Pillar 04</span><p class="p-title">What can I do?</p>
       <span class="p-expand">Expand &#9660;</span>
-      <span class="section-collapse-label" style="margin-top:6px;">Your gifts, in action</span>
+      <span class="section-collapse-label" style="font-family:var(--serif);font-size:14px;font-weight:300;color:var(--grey);margin-top:16px;">Your gifts, in action</span>
       <p class="p-body">Actionable service. Developing the strategic route to deploy your gifts. The gap between knowing your purpose and actually serving it is practice &mdash; not revelation.</p>
     </div>
     <div class="pillar-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.p-expand');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="p-num">Pillar 05</span><p class="p-title">Where am I going?</p>
       <span class="p-expand">Expand &#9660;</span>
-      <span class="section-collapse-label" style="margin-top:6px;">Direction, not destination</span>
+      <span class="section-collapse-label" style="font-family:var(--serif);font-size:14px;font-weight:300;color:var(--grey);margin-top:16px;">Direction, not destination</span>
       <p class="p-body">Defining your ultimate destination and vision to empower your true potential. Self-realization is direction, not arrival. Are you pointed right? That is the only question that matters.</p>
     </div>
   </div>
