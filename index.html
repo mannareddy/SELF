@@ -1265,7 +1265,7 @@ section{scroll-margin-top:56px;}
 
 /* ── SURRENDER SECTION ────────────────────────────────────────────────────── */
 .surrender-section{margin-top:52px;max-width:760px;margin-left:auto;margin-right:auto;text-align:left;}
-.surrender-section h4{color:var(--white);margin-bottom:8px;text-align:center;cursor:pointer;user-select:none;display:flex;align-items:center;justify-content:center;gap:16px;}
+.surrender-section h4{color:var(--white);margin-bottom:8px;text-align:center;}
 .surrender-section .surrender-sub{font-family:var(--serif);font-size:clamp(13px,1.8vw,16px);color:var(--grey);font-style:italic;text-align:center;margin-bottom:40px;line-height:1.8;}
 .stage-expand-label{font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;padding:4px 10px;border:1.5px solid rgba(212,175,55,0.55);transition:all .25s;}
 .surrender-section h4:hover .stage-expand-label{border-color:var(--gold);}
@@ -3016,9 +3016,9 @@ tr.matrix-highlight{
   <span class="label">The Ascent of Self</span>
   <p class="phil-line bright">Seven layers. Seven stages of a single life. One universal pattern.</p>
   <p class="phil-line dim" style="text-align:left;max-width:640px;margin-left:auto;margin-right:auto;">Nature, consciousness, and human life all move through the same sequence — from the density of raw survival to the clarity of pure being.</p>
-  <div class="cosmo-quote" style="max-width:660px;margin:0 auto 36px;text-align:center;">
+  <div class="cosmo-quote" style="max-width:660px;margin:0 auto 36px;">
     <p>&ldquo;As above, so below.&rdquo;</p>
-    <cite>The Hermetic Principle of Correspondence</cite>
+    <cite>&mdash; The Hermetic Principle of Correspondence</cite>
   </div>
   <div style="text-align:center;margin-bottom:8px;">
     <button class="collapse-toggle-btn" onclick="sectionCollapse('ascent-full-content',this)">Expand &#9660;</button>
@@ -3166,8 +3166,12 @@ tr.matrix-highlight{
 
   <!-- 5 Stages of Surrender -->
   <div class="surrender-section collapsed">
-    <h4>The Five Stages of Surrender <span class="stage-expand-label">Expand ▼</span></h4>
-    <p class="surrender-sub">In the Sivananda Lahiri, Adi Shankaracharya maps the melting of the individual ego through five vivid metaphors &mdash; from strenuous individual effort to effortless, absolute wholeness.</p>
+    <h4>The Five Stages of Surrender</h4>
+    <p class="surrender-sub" style="max-width:660px;margin-left:auto;margin-right:auto;">In the Sivananda Lahiri, Adi Shankaracharya maps the melting of the individual ego through five vivid metaphors &mdash; from strenuous individual effort to effortless, absolute wholeness.</p>
+    <div style="text-align:center;margin-bottom:8px;">
+      <button class="collapse-toggle-btn" onclick="surrenderToggle(this)">Expand &#9660;</button>
+      <p class="section-collapse-label" style="margin-top:8px;">Tap to expand — the five stages of surrender</p>
+    </div>
     <div class="surrender-content">
     <div class="stage-item">
       <div class="stage-num-col"><span class="s-n">01</span></div>
@@ -7726,15 +7730,13 @@ function updateNav(){
   }
 
   /* ── 5 STAGES OF SURRENDER toggle ── */
-  var surrenderSection = document.querySelector('.surrender-section');
-  var surrenderH4 = surrenderSection ? surrenderSection.querySelector('h4') : null;
-  if(surrenderH4){
-    surrenderH4.addEventListener('click', function(){
-      surrenderSection.classList.toggle('collapsed');
-      var lbl = surrenderSection.querySelector('.stage-expand-label');
-      if(lbl) lbl.textContent = surrenderSection.classList.contains('collapsed') ? 'Expand ▼' : 'Collapse ▲';
-    });
-  }
+  window.surrenderToggle = function(btn){
+    var surrenderSection = document.querySelector('.surrender-section');
+    if(!surrenderSection) return;
+    surrenderSection.classList.toggle('collapsed');
+    var isCollapsed = surrenderSection.classList.contains('collapsed');
+    if(btn) btn.innerHTML = isCollapsed ? 'Expand &#9660;' : 'Collapse &#9650;';
+  };
 
 })();
 
