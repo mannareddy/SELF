@@ -356,6 +356,8 @@ body{
 [data-theme="light"] .nav-left li:first-child a{border-left-color:rgba(0,0,0,0.1) !important;}
 [data-theme="light"] .nav-left li a.active,[data-theme="light"] .nav-right li a.active{color:#8a6a12 !important;}
 [data-theme="light"] .nav-left li a:hover,[data-theme="light"] .nav-right li a:hover{color:#8a6a12 !important;}
+[data-theme="light"] .site-nav{background:rgba(245,241,232,0.96) !important;}
+[data-theme="light"] .site-nav.scrolled{background:rgba(245,241,232,0.99) !important;}
 [data-theme="light"] .nav-logo-center{border-color:rgba(138,106,18,0.5) !important;}
 [data-theme="light"] #themeToggleBtn{background:rgba(245,241,232,0.98) !important;border-color:rgba(0,0,0,0.15) !important;color:#5a4a2a !important;}
 [data-theme="light"] .progress-bar{background:linear-gradient(90deg,rgba(138,106,18,0.4),#8a6a12);}
@@ -958,19 +960,21 @@ section{scroll-margin-top:56px;}
    mobile hero rules above). ── */
 @media(min-width:641px) and (max-height:980px){
   .hero{padding-top:10px;}
-  .hero-question{margin-bottom:14px !important;font-size:clamp(14px,1.8vw,19px) !important;line-height:1.35 !important;}
+  .hero-question{margin-bottom:44px !important;font-size:clamp(14px,1.8vw,19px) !important;line-height:1.35 !important;}
   .hero > div[style*="padding:22px 32px"]{padding:16px 28px 14px !important;margin-bottom:10px !important;}
   .hero > div[style*="padding:22px 32px"] > p{margin-bottom:8px !important;}
   .hero > div[style*="padding:22px 32px"] > div[style*="border-top"]{padding-top:8px !important;}
   .hero > a[href="#contract"]{margin-top:8px !important;}
   .hero-ca-arrow{padding-top:4px !important;}
+  .hero-continue-mobile{padding-top:32px !important;}
 }
 @media(min-width:641px) and (max-height:820px){
-  .hero-question{font-size:clamp(13px,1.6vw,16px) !important;margin-bottom:10px !important;}
+  .hero-question{font-size:clamp(13px,1.6vw,16px) !important;margin-bottom:32px !important;}
   .hero > div[style*="padding:22px 32px"]{padding:12px 24px 10px !important;}
   .hero > div[style*="padding:22px 32px"] p{line-height:1.55 !important;}
   .hero > div[style*="padding:22px 32px"] > div[style*="border-top"] p{font-size:clamp(11px,1.4vw,14px) !important;}
   .hero > a[href="#contract"] > div{padding:8px 20px !important;}
+  .hero-continue-mobile{padding-top:20px !important;}
 }
 
 /* ── THEME TOGGLE — desktop button shown by default; mobile button (fixed,
@@ -979,7 +983,7 @@ section{scroll-margin-top:56px;}
 
 /* ── HERO ─────────────────────────────────────────────────────────────────── */
 .hero{min-height:calc(100vh - var(--nav-h));display:flex;flex-direction:column;justify-content:center;align-items:center;padding:16px 24px 0;position:relative;background:radial-gradient(ellipse at 50% 35%,rgba(212,175,55,.05) 0%,transparent 68%);}
-.hero-question{font-size:clamp(15px,2vw,22px);font-weight:300;font-style:italic;color:var(--gold);line-height:1.45;max-width:620px;margin-bottom:10px;letter-spacing:.3px;text-align:center;}
+.hero-question{font-size:clamp(15px,2vw,22px);font-weight:300;font-style:italic;color:var(--gold);line-height:1.45;max-width:700px;margin-bottom:10px;letter-spacing:.3px;text-align:center;}
 .hero-sub{font-size:clamp(15px,2vw,18px);color:var(--mid);font-weight:300;max-width:480px;line-height:1.85;margin-bottom:8px;}
 .expand-label{display:inline-block;font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);border:1px solid rgba(212,175,55,.3);padding:4px 12px;margin-left:12px;transition:border-color .25s;vertical-align:middle;}
 .btn-gold{padding:14px 44px;background:var(--gold);color:#000;font-family:var(--sans);font-size:12px;font-weight:800;letter-spacing:3px;text-transform:uppercase;border:none;cursor:pointer;transition:opacity .25s,transform .2s;text-decoration:none;display:inline-block;box-shadow:0 0 20px rgba(212,175,55,.3);}
@@ -992,6 +996,10 @@ section{scroll-margin-top:56px;}
 .continue-hint::after{content:'↓';display:block;font-size:16px;margin-top:4px;letter-spacing:0;}
 .hero-ca-arrow{display:block;font-size:15px;color:var(--gold);opacity:.55;padding-top:6px;animation:fade 3.5s ease-in-out infinite;}
 .hero-ca-link:hover .hero-ca-arrow{opacity:.9;}
+.hero-continue-mobile{display:block;padding:24px 0 0 !important;}
+@media(min-width:641px){
+  .hero-continue-mobile{padding-top:48px !important;}
+}
 
 /* ── BANNER ──────────────────────────────────────────────────────────────── */
 .banner-section{max-width:1400px;margin:0 auto;}
@@ -1388,7 +1396,7 @@ section{scroll-margin-top:56px;}
 .rasa-closing p{font-family:var(--serif);font-size:clamp(16px,2.1vw,19px);color:var(--grey);line-height:1.9;margin-bottom:12px;}
 .rasa-closing p.gold{color:var(--gold);font-style:italic;margin-bottom:0;}
 /* ── STANDALONE PULL-QUOTE — always-visible closing quotes pulled out of collapse wraps ── */
-.pq-standalone{border:1px solid rgba(212,175,55,.4) !important;}
+.pq-standalone{border:1px solid rgba(212,175,55,.4) !important;max-width:900px !important;width:100%;}
 [data-theme="light"] .pq-standalone{border-color:rgba(122,94,14,.45) !important;}
 /* ── COGNITION TABLE LIGHT THEME ─────────────────────────────────────────── */
 [data-theme="light"] .cognition-header-row{background:#c8bfa0 !important;}
@@ -1745,23 +1753,46 @@ h4 {
 }
 
 /* Exception — keep larger size for hero/mission statements specifically */
-.hero-question,
 .ipo-headline,
 .vision-statement,
 .cosmo-block p,
 .void-test-question {
-  font-size: clamp(18px,2.8vw,28px) !important;
-}  
+  font-size: clamp(16px,2.8vw,28px) !important;
+}
+
+/* Hero intro line ("There is a question...") should read as a quiet lead-in,
+   not compete with the boxed question below it — kept close to its
+   original size (not shrunk down) but a touch lighter/dimmer so the
+   boxed headline still reads as the focal point. */
+@media(min-width:641px){
+  .hero-question{
+    font-size: clamp(16px,2vw,22px) !important;
+    font-weight: 300 !important;
+    letter-spacing: .3px !important;
+    word-spacing: normal !important;
+    opacity: .85;
+  }
+}
 @media(max-width:640px){
   /* 100dvh recalculates on every scroll tick on Android as the URL bar
      shows/hides, forcing continuous layout reflow on the very first
      section the user touches. Switched to a static 100vh + min-height
      (computed once, not on every frame) to eliminate the jerk. */
-  .hero{min-height:calc(100vh - var(--nav-h));height:auto;padding:12px 16px 0 !important;justify-content:space-evenly;}
+  .hero{min-height:calc(100vh - var(--nav-h));height:auto;padding:12px 16px 28px !important;justify-content:center;gap:38px;}
   .hero-ca-arrow{padding-top:0 !important;}
-  .hero-question{font-size:18px !important;margin-bottom:0 !important;}
+  .hero-question{font-size:20px !important;line-height:1.55 !important;margin-bottom:0 !important;}
   .hero > a[href="#contract"]{margin:0 auto !important;}
-  .hero > div[style*="padding:22px 32px"]{padding:14px 18px !important;margin-bottom:0 !important;}
+  .hero > div[style*="padding:22px 32px"]{padding:20px 22px !important;margin-bottom:0 !important;}
+  .hero > div[style*="padding:22px 32px"] > p:first-of-type{font-size:25px !important;line-height:1.4 !important;}
+  .hero > div[style*="padding:22px 32px"] > p:nth-of-type(2){font-size:15px !important;}
+  .hero > div[style*="padding:22px 32px"] > div[style*="border-top"] p:first-child{font-size:10.5px !important;}
+  .hero > div[style*="padding:22px 32px"] > div[style*="border-top"] p:last-child{font-size:16px !important;line-height:1.7 !important;}
+  .hero-continue-mobile{
+    display:block !important;
+    position:static;
+    margin-top:20px;
+    padding:0;
+  }
   /* Card titles — lock all three card types to same mobile size */
   .framework-card h3,
   .identity-card h4,
@@ -2701,7 +2732,7 @@ tr.matrix-highlight{
 
 <!-- ══════════════════════════ HERO ══════════════════════════════════════ -->
 <section class="hero" id="home">
-  <p class="hero-question" style="margin-bottom:24px;">There is a question you have been avoiding<br>your entire life.<br>It will not wait forever.</p>
+  <p class="hero-question" style="margin-bottom:64px;">There is a question you have been avoiding<br>your entire life. It will not wait forever.</p>
   <div style="position:relative;max-width:540px;width:100%;border:1.5px solid rgba(212,175,55,0.55);background:rgba(212,175,55,.04);padding:22px 32px 20px;margin-bottom:14px;text-align:center;">
     <div style="position:absolute;top:-1px;left:-1px;width:16px;height:16px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);"></div>
     <div style="position:absolute;top:-1px;right:-1px;width:16px;height:16px;border-top:1px solid var(--gold);border-right:1px solid var(--gold);"></div>
@@ -2714,6 +2745,7 @@ tr.matrix-highlight{
       <p style="font-family:var(--serif);font-size:clamp(13px,1.7vw,17px);color:var(--mid);font-style:italic;line-height:1.7;margin-bottom:0;">Imagine, for one moment, that today is your last day &mdash; would you still see your SELF the way you do right now?</p>
     </div>
   </div>
+  <span class="continue-hint hero-continue-mobile">continue</span>
 </section>
 <!-- BANNER -->
 <div class="banner-section">
@@ -2731,20 +2763,20 @@ tr.matrix-highlight{
   <p style="font-family:var(--serif);font-size:clamp(16px,2.2vw,20px);color:var(--mid);line-height:1.9;max-width:700px;margin:0 auto 40px;text-align:left;">In one paragraph: <strong style="color:var(--white);font-weight:400;">*SELF is a self-inquiry framework</strong> &mdash; a synthesis of Vedanta, Stoicism, Jungian psychology, and modern neuroscience, built around the practice of noticing the gap between a trigger and your reaction to it. It exists as a free website, a paid write-in workbook, a free web companion, a public community, and &mdash; separately &mdash; a token on Solana that funds and stress-tests it in public. Those five things are related but not the same, and you don&rsquo;t need all five to use any one of them.</p>
 
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2px;max-width:980px;margin:0 auto 40px;">
-    <div class="why-card" style="text-align:left;">
+    <div class="why-card" style="text-align:left;display:flex;flex-direction:column;">
       <h4 style="margin-bottom:10px;">Just curious</h4>
       <p style="margin-bottom:16px;">You want to understand the model before deciding anything. No commitment, no signup.</p>
-      <a href="#framework" style="font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);">Read the Framework &rarr;</a>
+      <a href="#framework" style="font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-top:auto;">Read the Framework &rarr;</a>
     </div>
-    <div class="why-card" style="text-align:left;">
+    <div class="why-card" style="text-align:left;display:flex;flex-direction:column;">
       <h4 style="margin-bottom:10px;">Ready to practice</h4>
       <p style="margin-bottom:16px;">You want something to actually do today &mdash; not more theory.</p>
-      <a href="#ego-checklist" style="font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);">Go to Daily Practice &rarr;</a>
+      <a href="#ego-checklist" style="font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-top:auto;">Go to Daily Practice &rarr;</a>
     </div>
-    <div class="why-card" style="text-align:left;">
+    <div class="why-card" style="text-align:left;display:flex;flex-direction:column;">
       <h4 style="margin-bottom:10px;">Here about the token</h4>
       <p style="margin-bottom:16px;">You want the contract, the supply, and what holding it actually means.</p>
-      <a href="#ipo" style="font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);">Go to the IPO &amp; Contract &rarr;</a>
+      <a href="#ipo" style="font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-top:auto;">Go to the IPO &amp; Contract &rarr;</a>
     </div>
   </div>
 
@@ -2887,7 +2919,7 @@ tr.matrix-highlight{
 <section class="section-wide superordinate-section" id="super-ordinate-goal" style="scroll-margin-top:56px;padding:90px 24px;">
   <div style="max-width:760px;margin:0 auto;">
     <span class="label">The Super-Ordinate Goal</span>
-    <div style="padding:44px 40px;border:1px solid rgba(212,175,55,0.55);border-left:4px solid var(--gold);border-right:4px solid var(--gold);background:var(--bg);text-align:left;position:relative;margin-bottom:36px;">
+    <div class="superordinate-box" style="border-right:4px solid var(--gold);text-align:left;position:relative;margin-bottom:36px;">
       <div style="position:absolute;top:-1px;left:-1px;width:20px;height:20px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);"></div>
       <div style="position:absolute;bottom:-1px;right:-1px;width:20px;height:20px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);"></div>
       <p style="font-size:clamp(17px,2.3vw,22px);color:var(--white);line-height:1.9;margin-bottom:20px;">Human birth is a rare opportunity for Self-Realization &mdash; everything else we seek is, at bottom, sought for the sake of the SELF.</p>
@@ -2912,6 +2944,10 @@ tr.matrix-highlight{
     <p>&ldquo;Until you make the unconscious conscious, it will direct your life and you will call it fate.&rdquo;</p>
     <cite>&mdash; Carl Jung</cite>
   </div>
+  <div style="text-align:center;margin-bottom:8px;">
+    <button class="collapse-toggle-btn" onclick="sectionCollapse('framework-full-content',this)">Expand &#9660;</button>
+  </div>
+  <div id="framework-full-content" class="section-collapse-wrap collapsed">
   <div class="framework-grid">
     <div class="framework-card collapsed">
       <span class="num">01</span>
@@ -2969,6 +3005,7 @@ tr.matrix-highlight{
       <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">Situations are either accepted or acted upon &mdash; never turned into &ldquo;problems.&rdquo; The moment you say and believe &ldquo;my life,&rdquo; you&rsquo;ve split yourself from life itself. There is no such split. You don&rsquo;t have a life. You <em>are</em> life.</p>
     </div></div>
   </div>
+  </div>
 </section>
 <span class="continue-hint">continue</span>
 <div class="divider"></div>
@@ -2977,11 +3014,15 @@ tr.matrix-highlight{
 <section class="section-wide" id="spectrum">
   <span class="label">The Ascent of Self</span>
   <p class="phil-line bright">Seven layers. Seven stages of a single life. One universal pattern.</p>
-  <p class="phil-line dim">Nature, consciousness, and human life all move through the same sequence — from the density of raw survival to the clarity of pure being.</p>
+  <p class="phil-line dim" style="text-align:left;max-width:640px;margin-left:auto;margin-right:auto;">Nature, consciousness, and human life all move through the same sequence — from the density of raw survival to the clarity of pure being.</p>
   <div class="cosmo-quote" style="max-width:660px;margin:0 auto 36px;">
     <p>&ldquo;As above, so below.&rdquo;</p>
     <cite>&mdash; The Hermetic Principle of Correspondence</cite>
   </div>
+  <div style="text-align:center;margin-bottom:8px;">
+    <button class="collapse-toggle-btn" onclick="sectionCollapse('ascent-full-content',this)">Expand &#9660;</button>
+  </div>
+  <div id="ascent-full-content" class="section-collapse-wrap collapsed">
   <div class="framework-grid">
     <div class="framework-card collapsed">
       <span class="num">L1 &mdash; Red</span>
@@ -3040,6 +3081,7 @@ tr.matrix-highlight{
       <p style="margin-top:6px;font-size:14px;color:var(--grey);">The Vertical Leap &mdash; <em style="color:var(--gold);font-style:italic;">Final Realization:</em> rest permanently in the unshakeable &ldquo;I Am,&rdquo; free from the illusions of time, change, and decay.</p>
     </div></div>
   </div>
+  </div>
   <div class="cosmo-quote" style="max-width:660px;margin:36px auto 0;">
     <p>Different expressions. One enduring pattern. From physical survival to final realization, there is one map — and you are the one moving through it.</p>
   </div>
@@ -3055,32 +3097,37 @@ tr.matrix-highlight{
   <span class="label">Where Are You on the Map?</span>
   <h2>The 5 Pillars of Self-Enquiry</h2>
   <p class="sub">Answer honestly.</p>
+  <div style="text-align:center;margin-bottom:8px;">
+    <button class="collapse-toggle-btn" onclick="sectionCollapse('self-enquiry-full-content',this)">Expand &#9660;</button>
+  </div>
+  <div id="self-enquiry-full-content" class="section-collapse-wrap collapsed">
   <div class="pillar-grid">
-    <div class="pillar-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.p-expand');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9660;':'Expand &#9654;';}">
+    <div class="pillar-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.p-expand');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="p-num">Pillar 01</span><p class="p-title">Who am I?</p>
-      <span class="p-expand">Expand &#9654;</span>
+      <span class="p-expand">Expand &#9660;</span>
       <p class="p-body">Discovering your passion, attributes, and legacy. If you had one gift of value for the world &mdash; what is it? Not your job title. Not your resume. The singular thing only you can bring.</p>
     </div>
-    <div class="pillar-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.p-expand');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9660;':'Expand &#9654;';}">
+    <div class="pillar-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.p-expand');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="p-num">Pillar 02</span><p class="p-title">Where am I from?</p>
-      <span class="p-expand">Expand &#9654;</span>
+      <span class="p-expand">Expand &#9660;</span>
       <p class="p-body">Understanding your spiritual source and your current baseline reality. What shaped the lens you see through? What do you carry that you didn&rsquo;t choose? And what of it is actually you?</p>
     </div>
-    <div class="pillar-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.p-expand');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9660;':'Expand &#9654;';}">
+    <div class="pillar-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.p-expand');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="p-num">Pillar 03</span><p class="p-title">Why am I here?</p>
-      <span class="p-expand">Expand &#9654;</span>
+      <span class="p-expand">Expand &#9660;</span>
       <p class="p-body">Defining your innate purpose and the specific problems you are uniquely built to solve. Not what the world needs from everyone. What it needs from you specifically.</p>
     </div>
-    <div class="pillar-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.p-expand');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9660;':'Expand &#9654;';}">
+    <div class="pillar-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.p-expand');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="p-num">Pillar 04</span><p class="p-title">What can I do?</p>
-      <span class="p-expand">Expand &#9654;</span>
+      <span class="p-expand">Expand &#9660;</span>
       <p class="p-body">Actionable service. Developing the strategic route to deploy your gifts. The gap between knowing your purpose and actually serving it is practice &mdash; not revelation.</p>
     </div>
-    <div class="pillar-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.p-expand');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9660;':'Expand &#9654;';}">
+    <div class="pillar-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.p-expand');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="p-num">Pillar 05</span><p class="p-title">Where am I going?</p>
-      <span class="p-expand">Expand &#9654;</span>
+      <span class="p-expand">Expand &#9660;</span>
       <p class="p-body">Defining your ultimate destination and vision to empower your true potential. Self-realization is direction, not arrival. Are you pointed right? That is the only question that matters.</p>
     </div>
+  </div>
   </div>
   <p class="astrolabe-cta">The Mirror Room is where you bring your answers. &mdash; <a href="https://x.com/i/chat/group_join/g2056088351590220124/gAK9fW8Y29" target="_blank" rel="noopener">Enter &rarr;</a></p>
   <p style="text-align:center;font-family:var(--serif);font-style:italic;font-size:clamp(14px,2vw,16px);color:var(--dim);max-width:640px;margin:24px auto 0;line-height:1.85;">Write them down in <a href="https://www.amazon.com/dp/B0H9HRM59K" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">the workbook</a>, or return to them anytime in the <a href="https://companion.42self.xyz" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">Web Companion</a>.</p>
@@ -3438,7 +3485,7 @@ tr.matrix-highlight{
   <span class="label">The Dimension Beneath</span>
   <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:720px;margin:0 auto 16px;line-height:1.5;">Matter is not stuff. It is a dimension &mdash; and dimensions can hold spirit just fine.</h2>
   <p style="font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:580px;margin:0 auto 40px;font-style:italic;line-height:1.85;">Neuroscience was never the enemy of the soul. It only ever described the stage. It was never in a position to describe the play.</p>
-  <p style="font-family:var(--serif);font-size:clamp(16px,2.1vw,19px);color:var(--mid);line-height:1.9;max-width:680px;margin:0 auto 36px;text-align:left;">Matter need not be the opposite of spirit. It can be the dimension spirit appears through.</p>
+  <p style="font-family:var(--serif);font-size:clamp(16px,2.1vw,19px);color:var(--mid);line-height:1.9;max-width:680px;margin:0 auto 36px;text-align:center;">Matter need not be the opposite of spirit. It can be the dimension spirit appears through.</p>
 
   <div style="text-align:center;margin-bottom:16px;">
     <button class="collapse-toggle-btn" onclick="sectionCollapse('dimension-detail',this)">Expand &#9660;</button>
@@ -3485,7 +3532,7 @@ tr.matrix-highlight{
   <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:720px;margin:0 auto 16px;line-height:1.5;">Consciousness is the operating system. Awareness is the moment it notices itself running.</h2>
   <p style="font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:620px;margin:0 auto 40px;font-style:italic;line-height:1.85;">Most people use these two words as if they were the same thing. They are not &mdash; and the gap between them is where the entire Default OS either keeps running unseen, or finally gets caught in the act.</p>
 
-  <p style="font-family:var(--serif);font-size:clamp(16px,2.1vw,19px);color:var(--mid);line-height:1.9;max-width:680px;margin:0 auto 36px;text-align:left;">Consciousness is the whole field &mdash; every thought, sensation, memory, and impulse that ever arises, whether you notice it or not. It is always on. It is the screen nothing can appear outside of. Awareness is narrower and sharper: it is the flashlight, the instant you catch a specific thought, feeling, or reaction as it happens instead of being run by it. <span style="color:var(--gold);font-style:italic;">You can be fully conscious and still spend an entire day on autopilot.</span> Awareness is what interrupts the loop.</p>
+  <p style="font-family:var(--serif);font-size:clamp(16px,2.1vw,19px);color:var(--mid);line-height:1.9;max-width:820px;margin:0 auto 36px;text-align:left;">Consciousness is the whole field &mdash; every thought, sensation, memory, and impulse that ever arises, whether you notice it or not. It is always on. It is the screen nothing can appear outside of. Awareness is narrower and sharper: it is the flashlight, the instant you catch a specific thought, feeling, or reaction as it happens instead of being run by it. <span style="color:var(--gold);font-style:italic;">You can be fully conscious and still spend an entire day on autopilot.</span> Awareness is what interrupts the loop.</p>
 
   <div style="text-align:center;margin-bottom:16px;">
     <button class="collapse-toggle-btn" onclick="sectionCollapse('consciousness-detail',this)">Expand &#9660;</button>
@@ -3546,7 +3593,7 @@ tr.matrix-highlight{
     <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin:48px 0 16px;text-align:left;max-width:820px;margin-left:auto;margin-right:auto;">Zooming Out &mdash; The Same Question, Asked of Everything</p>
     <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--grey);line-height:1.9;max-width:820px;margin:0 auto 24px;text-align:left;">This distinction is not only personal. Across life, different forms can respond, orient, intend, or reflect. Humans can notice the noticing itself.</p>
 
-    <div class="self-table-wrap" style="max-width:780px;margin:0 auto 28px;">
+    <div class="self-table-wrap" style="max-width:820px;margin:0 auto 28px;">
       <table class="self-table compact" style="min-width:560px;">
         <thead>
           <tr>
@@ -3565,7 +3612,7 @@ tr.matrix-highlight{
       </table>
     </div>
 
-    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--grey);line-height:1.9;max-width:780px;margin:0 auto 40px;text-align:left;">Altitude five is a capacity, not a permanent address. Most of most days, most people still run on altitude one or two &mdash; reacting, orienting, no one home watching it happen. The practice was never becoming capable of more. That capacity was never in question. <span style="color:var(--gold);font-style:italic;">It&rsquo;s noticing which altitude you&rsquo;re actually standing on, right now.</span></p>
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--grey);line-height:1.9;max-width:820px;margin:0 auto 40px;text-align:left;">Altitude five is a capacity, not a permanent address. Most of most days, most people still run on altitude one or two &mdash; reacting, orienting, no one home watching it happen. The practice was never becoming capable of more. That capacity was never in question. <span style="color:var(--gold);font-style:italic;">It&rsquo;s noticing which altitude you&rsquo;re actually standing on, right now.</span></p>
 
   </div>
   <!-- Closing pull quote — standalone, always visible -->
@@ -3582,7 +3629,7 @@ tr.matrix-highlight{
   </div>
   <div id="physical-correlate-detail" class="section-collapse-wrap collapsed">
 
-    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;max-width:700px;margin:0 auto 28px;text-align:left;">Researchers can measure how much a brain&rsquo;s regions are <em>integrating</em> information, not just firing together. Tracked through general anesthesia, that capacity collapses sharply in the gamma band as consciousness fades &mdash; while synchronized firing in the same regions barely changes. What&rsquo;s lost isn&rsquo;t activity. It&rsquo;s binding &mdash; the difference between a field that&rsquo;s merely <em>on</em> and one <em>gathered into one experience.</em></p>
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;max-width:780px;margin:0 auto 28px;text-align:left;">Researchers can measure how much a brain&rsquo;s regions are <em>integrating</em> information, not just firing together. Tracked through general anesthesia, that capacity collapses sharply in the gamma band as consciousness fades &mdash; while synchronized firing in the same regions barely changes. What&rsquo;s lost isn&rsquo;t activity. It&rsquo;s binding &mdash; the difference between a field that&rsquo;s merely <em>on</em> and one <em>gathered into one experience.</em></p>
 
     <div style="max-width:780px;margin:0 auto 28px;padding:28px 26px;background:var(--bg-lift);border:1.5px solid rgba(212,175,55,0.45);text-align:left;">
       <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:16px;">What the Research Found</div>
@@ -4134,16 +4181,21 @@ tr.matrix-highlight{
 
   <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;max-width:760px;margin:24px auto 0;text-align:left;font-style:italic;">No fixation holds still. Each type below carries its own pressure-release valve and its own opening &mdash; the direction the personality is pulled apart under threat, and the direction it loosens under genuine growth. Tap a card to see both.</p>
 
+  <div style="text-align:center;margin-bottom:8px;">
+    <button class="collapse-toggle-btn" onclick="sectionCollapse('enn-full-content',this)">Expand &#9660;</button>
+  </div>
+  <div id="enn-full-content" class="section-collapse-wrap collapsed">
+
   <div style="text-align:center;margin-top:32px;margin-bottom:36px;">
     <button id="ennExpandBtn" class="collapse-toggle-btn" onclick="toggleEnn(this)">Expand All 9 Types &#9660;</button>
   </div>
 
   <div class="enn-grid" id="ennGrid">
-    <div class="enneagram-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Tap to collapse &#9660;':'Tap to expand &#9654;';}">
+    <div class="enneagram-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="ec-type">Type 1 &mdash; The Perfectionist</span>
       <div class="ec-name">The Perfectionist</div>
       <div class="ec-fear">Core Fear: Being imperfect or corrupt</div>
-      <span class="ec-toggle">Tap to expand &#9654;</span>
+      <span class="ec-toggle">Expand &#9660;</span>
       <div class="ec-body">
         <div class="ec-row">
           <div><span class="ec-col-label shadow">Shadow Rasa</span><div class="ec-val">Vibhatsya (Disgust / Aversion) &mdash; frustration with an imperfect reality</div></div>
@@ -4156,11 +4208,11 @@ tr.matrix-highlight{
         </div>
       </div>
     </div>
-    <div class="enneagram-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Tap to collapse &#9660;':'Tap to expand &#9654;';}">
+    <div class="enneagram-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="ec-type">Type 2 &mdash; The Giver</span>
       <div class="ec-name">The Giver</div>
       <div class="ec-fear">Core Fear: Being unlovable</div>
-      <span class="ec-toggle">Tap to expand &#9654;</span>
+      <span class="ec-toggle">Expand &#9660;</span>
       <div class="ec-body">
         <div class="ec-row">
           <div><span class="ec-col-label shadow">Shadow Rasa</span><div class="ec-val">Shringara (Needy Love) &mdash; manipulating affection through helpfulness</div></div>
@@ -4173,11 +4225,11 @@ tr.matrix-highlight{
         </div>
       </div>
     </div>
-    <div class="enneagram-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Tap to collapse &#9660;':'Tap to expand &#9654;';}">
+    <div class="enneagram-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="ec-type">Type 3 &mdash; The Achiever</span>
       <div class="ec-name">The Achiever</div>
       <div class="ec-fear">Core Fear: Failure, lacking inherent value</div>
-      <span class="ec-toggle">Tap to expand &#9654;</span>
+      <span class="ec-toggle">Expand &#9660;</span>
       <div class="ec-body">
         <div class="ec-row">
           <div><span class="ec-col-label shadow">Shadow Rasa</span><div class="ec-val">Hasya (Performative Joy) &mdash; masking deceit with a polished, successful exterior</div></div>
@@ -4190,11 +4242,11 @@ tr.matrix-highlight{
         </div>
       </div>
     </div>
-    <div class="enneagram-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Tap to collapse &#9660;':'Tap to expand &#9654;';}">
+    <div class="enneagram-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="ec-type">Type 4 &mdash; The Individualist</span>
       <div class="ec-name">The Individualist</div>
       <div class="ec-fear">Core Fear: Being flawed, lacking a unique identity</div>
-      <span class="ec-toggle">Tap to expand &#9654;</span>
+      <span class="ec-toggle">Expand &#9660;</span>
       <div class="ec-body">
         <div class="ec-row">
           <div><span class="ec-col-label shadow">Shadow Rasa</span><div class="ec-val">Karuna (Sorrow / Melancholy) &mdash; seeking deep emotional pain as an identity</div></div>
@@ -4207,11 +4259,11 @@ tr.matrix-highlight{
         </div>
       </div>
     </div>
-    <div class="enneagram-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Tap to collapse &#9660;':'Tap to expand &#9654;';}">
+    <div class="enneagram-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="ec-type">Type 5 &mdash; The Investigator</span>
       <div class="ec-name">The Investigator</div>
       <div class="ec-fear">Core Fear: Being overwhelmed by demands or needs</div>
-      <span class="ec-toggle">Tap to expand &#9654;</span>
+      <span class="ec-toggle">Expand &#9660;</span>
       <div class="ec-body">
         <div class="ec-row">
           <div><span class="ec-col-label shadow">Shadow Rasa</span><div class="ec-val">Bhayanaka (Fear/Insecurity) &mdash; retreating into the mind to avoid the black hole</div></div>
@@ -4224,11 +4276,11 @@ tr.matrix-highlight{
         </div>
       </div>
     </div>
-    <div class="enneagram-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Tap to collapse &#9660;':'Tap to expand &#9654;';}">
+    <div class="enneagram-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="ec-type">Type 6 &mdash; The Skeptic</span>
       <div class="ec-name">The Skeptic</div>
       <div class="ec-fear">Core Fear: Being unprepared, unable to defend against danger</div>
-      <span class="ec-toggle">Tap to expand &#9654;</span>
+      <span class="ec-toggle">Expand &#9660;</span>
       <div class="ec-body">
         <div class="ec-row">
           <div><span class="ec-col-label shadow">Shadow Rasa</span><div class="ec-val">Bhayanaka (Terror / Anxiety) &mdash; constantly generating frightening mental fantasies</div></div>
@@ -4241,11 +4293,11 @@ tr.matrix-highlight{
         </div>
       </div>
     </div>
-    <div class="enneagram-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Tap to collapse &#9660;':'Tap to expand &#9654;';}">
+    <div class="enneagram-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="ec-type">Type 7 &mdash; The Enthusiast</span>
       <div class="ec-name">The Enthusiast</div>
       <div class="ec-fear">Core Fear: Experiencing emotional pain or sadness</div>
-      <span class="ec-toggle">Tap to expand &#9654;</span>
+      <span class="ec-toggle">Expand &#9660;</span>
       <div class="ec-body">
         <div class="ec-row">
           <div><span class="ec-col-label shadow">Shadow Rasa</span><div class="ec-val">Hasya (Superficial Humor) &mdash; staying busy and distracted to outrun underlying fear</div></div>
@@ -4258,11 +4310,11 @@ tr.matrix-highlight{
         </div>
       </div>
     </div>
-    <div class="enneagram-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Tap to collapse &#9660;':'Tap to expand &#9654;';}">
+    <div class="enneagram-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="ec-type">Type 8 &mdash; The Challenger</span>
       <div class="ec-name">The Challenger</div>
       <div class="ec-fear">Core Fear: Being powerless, vulnerable, or controlled</div>
-      <span class="ec-toggle">Tap to expand &#9654;</span>
+      <span class="ec-toggle">Expand &#9660;</span>
       <div class="ec-body">
         <div class="ec-row">
           <div><span class="ec-col-label shadow">Shadow Rasa</span><div class="ec-val">Raudra (Anger / Stress) &mdash; fueling lust for control</div></div>
@@ -4275,11 +4327,11 @@ tr.matrix-highlight{
         </div>
       </div>
     </div>
-    <div class="enneagram-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Tap to collapse &#9660;':'Tap to expand &#9654;';}">
+    <div class="enneagram-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="ec-type">Type 9 &mdash; The Peacemaker</span>
       <div class="ec-name">The Peacemaker</div>
       <div class="ec-fear">Core Fear: Pushing people away, conflict, fragmentation</div>
-      <span class="ec-toggle">Tap to expand &#9654;</span>
+      <span class="ec-toggle">Expand &#9660;</span>
       <div class="ec-body">
         <div class="ec-row">
           <div><span class="ec-col-label shadow">Shadow Rasa</span><div class="ec-val">Karuna (Sadness) &mdash; nines suppress anger into sadness to stay safe</div></div>
@@ -4298,6 +4350,7 @@ tr.matrix-highlight{
     <p style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.75;margin-bottom:16px;">The Warning</p>
     <p style="font-family:var(--serif);font-size:clamp(17px,2.4vw,22px);color:var(--white);line-height:1.85;margin-bottom:14px;">These are not who you are.<br>They are the exact shape of your trance.</p>
     <p style="font-family:var(--serif);font-size:clamp(15px,1.9vw,18px);color:var(--grey);line-height:1.9;">When you can recognize who you are not, then there is a possibility to wake up and discover who you really are.</p>
+  </div>
   </div>
 </section>
 <span class="continue-hint">continue</span>
@@ -4546,7 +4599,7 @@ tr.matrix-highlight{
     <p style="font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:580px;margin:0 auto 52px;font-style:italic;line-height:1.85;text-align:center;">Douglas Adams called 42 a joke. He wrote it as absurdist comedy. We're not asking you to believe it's anything more &mdash; only to see what it can point toward.</p>
 
     <div style="text-align:center;margin-bottom:8px;">
-      <button class="collapse-toggle-btn" onclick="sectionCollapse('forty-two-full-content',this)">Expand Section &#9660;</button>
+      <button class="collapse-toggle-btn" onclick="sectionCollapse('forty-two-full-content',this)">Expand &#9660;</button>
     </div>
     <div id="forty-two-full-content" class="section-collapse-wrap collapsed">
 
@@ -4947,7 +5000,7 @@ tr.matrix-highlight{
   <h2>Six teachers. Two hemispheres. One destination.</h2>
   <p class="sub">The <a href="#subtilization" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">path of subtilization</a> was never the property of one tradition. East and West independently arrived at the same <a href="#spectrum" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">map</a> &mdash;By holding different lanterns.</p>
   <div style="text-align:center;margin-top:36px;margin-bottom:8px;">
-    <button class="collapse-toggle-btn" onclick="sectionCollapse('masters-full-content',this)">Expand Section &#9660;</button>
+    <button class="collapse-toggle-btn" onclick="sectionCollapse('masters-full-content',this)">Expand &#9660;</button>
     <p class="section-collapse-label">Section collapsed by default — tap to expand all six masters</p>
   </div>
   <div id="masters-full-content" class="section-collapse-wrap collapsed">
@@ -5233,7 +5286,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
     <div style="position:absolute;bottom:-1px;right:-1px;width:22px;height:22px;border-bottom:2px solid var(--gold);border-right:2px solid var(--gold);"></div>
     <div style="padding:60px 40px;">
       <span class="label">Why $SELF</span>
-      <h2 id="why-toggle" onclick="whyToggle()" style="cursor:pointer;user-select:none;position:relative;">Most tokens ask you to believe in the chart.<br>This one asks a different question. <span id="why-expand-label" class="expand-label">Expand &#9660;</span></h2>
+      <h2 id="why-toggle" onclick="whyToggle()" style="cursor:pointer;user-select:none;position:relative;">Most tokens ask you to believe in the chart.<br>This one asks a different question.<br><span id="why-expand-label" class="expand-label" style="margin-left:0;margin-top:14px;">Expand &#9660;</span></h2>
       <div id="why-content" class="why-content collapsed" style="margin-top:28px;">
         <div class="why-grid">
           <div class="why-card"><span class="icon">&#x1FA9E;</span><h4>A declaration, not a trade</h4><p>Buying $SELF is a philosophical stake. It says you know the journey matters &mdash; not just the balance sheet everyone else is watching.</p></div>
@@ -5287,7 +5340,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
       <p style="font-family:var(--serif);font-size:clamp(16px,2.1vw,19px);color:var(--grey);line-height:1.9;margin-bottom:0;">The RRRR Protocol works here too. Before you drink water &mdash; pause. Before you breathe &mdash; notice. The gap between trigger and response is not only for market crashes. It is for this morning&rsquo;s first breath.</p>
     </div>
  
-    <div style="max-width:560px;margin:0 auto 36px;text-align:center;">
+    <div style="max-width:680px;margin:0 auto 36px;text-align:center;">
   <!-- top tier -->
   <div style="padding:22px 28px;background:rgba(192,57,43,.06);border:1.5px solid rgba(192,57,43,0.55);">
     <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;
@@ -5355,7 +5408,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
     </div>
 
     <div style="text-align:center;margin-bottom:8px;">
-      <button class="collapse-toggle-btn" onclick="sectionCollapse('master-matrix-full-content',this)">Expand Section &#9660;</button>
+      <button class="collapse-toggle-btn" onclick="sectionCollapse('master-matrix-full-content',this)">Expand &#9660;</button>
       <p class="section-collapse-label">Section collapsed by default — tap to expand the full matrix</p>
     </div>
     <div id="master-matrix-full-content" class="section-collapse-wrap collapsed">
@@ -5623,29 +5676,37 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
   </div>
   <div id="memory-architect-detail" class="section-collapse-wrap collapsed">
 
-    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;max-width:700px;margin:0 auto 24px;text-align:left;">Layer 5 doesn&rsquo;t hold a recording of your life. It holds an edit. Every time a memory surfaces, it is quietly rebuilt &mdash; a little re-lit, a little re-cut &mdash; and it&rsquo;s that rebuilt version, not the original moment, that goes on to inform who you think you are.</p>
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;max-width:700px;margin:0 auto 24px;text-align:left;">Layer 5 does not keep your life exactly as it happened. It keeps the version memory hands back.</p>
 
-    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;max-width:700px;margin:0 auto 24px;text-align:left;">This is why two people can live through the same room and walk away with different histories. The event was shared; the editing wasn&rsquo;t. Most of what you call &ldquo;myself&rdquo; was assembled this way &mdash; not in the moment things happened, but afterward, in the cutting room, one replay at a time.</p>
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;max-width:700px;margin:0 auto 24px;text-align:left;">Each time a memory returns, something is adjusted.<br><br>A detail is sharpened. Another is softened. A meaning is added later.</p>
+
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--gold);font-style:italic;line-height:1.9;max-width:700px;margin:0 auto 24px;text-align:left;">What shapes identity is often not the moment itself, but the version that stayed.</p>
+
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;max-width:700px;margin:0 auto 24px;text-align:left;">This is why two people can live through the same event and carry different selves afterward.<br><br>The moment was shared. The inner version was not.</p>
+
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;max-width:700px;margin:0 auto 24px;text-align:left;">Much of what you call &ldquo;me&rdquo; was built this way &mdash; not only in the moment, but afterward, as memory kept sorting, weighing, and retelling.</p>
 
     <div style="max-width:780px;margin:0 auto 28px;padding:28px 26px;background:var(--bg-lift);border:1.5px solid rgba(212,175,55,0.45);text-align:left;">
       <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:16px;">Four Things <span class="gloss" style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);">Chitta<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Chitta">+</button><span class="gloss-pop">The mind-stuff, or memory-store &mdash; the layer that holds impressions, conditioning, and habitual patterns built up over time.</span></span> Is Doing Right Now</div>
       <div style="display:grid;grid-template-columns:140px 1fr;gap:14px 20px;align-items:start;">
-        <div style="font-family:var(--sans);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);text-align:left;padding-top:2px;">Cutting</div>
-        <div style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.7;text-align:left;">Most of any given day is discarded on arrival; only a fraction is kept for the reel.</div>
-        <div style="font-family:var(--sans);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);text-align:left;padding-top:2px;">Grading</div>
-        <div style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.7;text-align:left;">What survives the cut gets re-toned every time it&rsquo;s replayed &mdash; harsher some years, softer others.</div>
-        <div style="font-family:var(--sans);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);text-align:left;padding-top:2px;">Splicing</div>
-        <div style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.7;text-align:left;">Unrelated frames from different years get spliced together into a single, tidy scene that never actually happened in that order.</div>
+        <div style="font-family:var(--sans);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);text-align:left;padding-top:2px;">Selecting</div>
+        <div style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.7;text-align:left;">Not everything is kept. Memory decides what stands out and what fades.</div>
+        <div style="font-family:var(--sans);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);text-align:left;padding-top:2px;">Weighing</div>
+        <div style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.7;text-align:left;">Some moments are made heavier than others. Pain, love, shame, pride &mdash; memory gives them different weight.</div>
+        <div style="font-family:var(--sans);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);text-align:left;padding-top:2px;">Linking</div>
+        <div style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.7;text-align:left;">Memory connects one moment to another, building a larger story from scattered pieces.</div>
         <div style="font-family:var(--sans);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);text-align:left;padding-top:2px;">Narrating</div>
-        <div style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.7;text-align:left;">The finished cut is played back with a voiceover that insists it&rsquo;s simply &ldquo;what happened&rdquo; &mdash; the edit hides itself.</div>
+        <div style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.7;text-align:left;">After enough retelling, the story starts to sound like simple fact: &ldquo;This is just who I am.&rdquo;</div>
       </div>
     </div>
 
-    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;max-width:700px;margin:0 auto 24px;text-align:left;">The person who never opens the editing room stays governed by whatever cut got locked in early, usually under duress. The person who does &mdash; without flinching, without rushing to defend the footage &mdash; finds something underneath it: a viewer who was never actually identical to the film being watched.</p>
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;max-width:700px;margin:0 auto 24px;text-align:left;">The person who never looks into memory gets ruled by whatever version settled first, often under stress.</p>
 
-    <!-- Cross-reference to the live Master Matrix table (#master-matrix, row #matrix-row-5,
-         "Layer 5 — Memory / Throat Chakra": Existence Layer=Chitta, Stage=Understand.) -->
-    <p style="font-family:var(--serif);font-size:14px;color:var(--dim);line-height:1.8;max-width:780px;margin:0 auto 0;text-align:left;font-style:italic;">This is what <a href="#matrix-row-5" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">Layer 5 &mdash; Memory</a> is actually doing, underneath its own row in the grid: not archiving your life, but editing it, take after take. The Art &rarr; Connection movement at this layer &mdash; Forgetfulness distilling into Erasure &mdash; is the same idea from the far end: the raw footage itself is eventually let go, once the finished cut no longer needs the original reels to stand on its own.</p>
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;max-width:700px;margin:0 auto 24px;text-align:left;">The person who does look &mdash; carefully, honestly, without rushing to defend the story &mdash; finds something deeper than memory itself:<br><br>the one who carries it, the one who interprets it, the one who was never identical to it.</p>
+
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--gold);font-style:italic;line-height:1.9;max-width:700px;margin:0 auto 24px;text-align:left;">Memory is not the self. It is material.</p>
+
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;max-width:700px;margin:0 auto 0;text-align:left;">Look closely enough, and the past stops being a prison.<br><br>It becomes something you can finally understand.</p>
 
   </div>
   <!-- Closing pull quote — standalone, always visible -->
@@ -5659,6 +5720,10 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
   <span class="label">Quick Self-Check</span>
   <p class="phil-line bright" style="margin-bottom:8px;">Is your ego currently active?</p>
   <p class="phil-line dim" style="margin-bottom:36px;">Ten warning lights. Notice which ones are flashing in your daily interactions &mdash; no need to fix anything yet, just notice.</p>
+  <div style="text-align:center;margin-bottom:8px;">
+    <button class="collapse-toggle-btn" onclick="sectionCollapse('ego-checklist-full-content',this)">Expand &#9660;</button>
+  </div>
+  <div id="ego-checklist-full-content" class="section-collapse-wrap collapsed">
   <div style="max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2px;">
     <div class="sl-stage"><div class="sl-name">Needs to Look Good</div><p class="sl-desc">Diminishes authenticity to impress others. Refuses to admit mistakes.</p></div>
     <div class="sl-stage"><div class="sl-name">My Way Only</div><p class="sl-desc">Imposes personal rules on others. Refuses to collaborate.</p></div>
@@ -5670,6 +5735,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
     <div class="sl-stage danger"><div class="sl-name" style="color:#c0392b;">Loves Control</div><p class="sl-desc">Resists change. Panics in the face of uncertainty.</p></div>
     <div class="sl-stage"><div class="sl-name">Seeks Validation</div><p class="sl-desc">Ties self-worth entirely to the praise and opinions of others.</p></div>
     <div class="sl-stage danger"><div class="sl-name" style="color:#c0392b;">Creates Separation</div><p class="sl-desc">Focuses purely on &ldquo;I&rdquo;, treating differing beliefs as hostile threats.</p></div>
+  </div>
   </div>
   <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;max-width:760px;margin:36px auto 0;text-align:center;">None of these make you a bad person. They make you a person currently being run by the firewall instead of standing behind it. The nine questions below go deeper into exactly where.</p>
 </section>
@@ -5699,8 +5765,8 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
 <!-- THE FEEDBACK LOOP — recurring self-enquiry practice, not a one-time diagnostic -->
 <section class="section" id="feedback-loop">
   <span class="label">The Feedback Loop</span>
-  <p class="phil-line bright" style="margin-bottom:8px;">Suffering runs on autopilot. This one runs on your input.</p>
-  <p class="phil-line dim" style="margin-bottom:36px;">The grid above is a snapshot. This is the practice. Come back to it &mdash; daily, weekly, whenever you notice the Default OS running &mdash; and let your own answers be the feedback.</p>
+  <p class="phil-line bright" style="margin-bottom:8px;max-width:640px;margin-left:auto;margin-right:auto;text-align:left;">Suffering runs on autopilot. This one runs on your input.</p>
+  <p class="phil-line dim" style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;text-align:left;">The grid above is a snapshot. This is the practice. Come back to it &mdash; daily, weekly, whenever you notice the Default OS running &mdash; and let your own answers be the feedback.</p>
 
   <div style="max-width:640px;margin:0 auto;text-align:left;">
     <div id="feedbackLoopList" style="display:flex;flex-direction:column;gap:2px;">
@@ -6296,7 +6362,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
   <p style="font-family:var(--serif);font-style:italic;font-size:clamp(14px,1.8vw,16px);color:var(--grey);max-width:600px;margin:0 auto 36px;line-height:1.8;">This site borrows words from a few different traditions &mdash; Sanskrit psychology, alchemy, Hermetic philosophy, neuroscience. None of them are assumed knowledge. Look anything up here, or tap the <span style="color:var(--gold);">+</span> next to a word wherever you find it.</p>
 
   <div style="text-align:center;margin-bottom:8px;">
-    <button class="collapse-toggle-btn" onclick="sectionCollapse('glossary-full-content',this)">Expand Section &#9660;</button>
+    <button class="collapse-toggle-btn" onclick="sectionCollapse('glossary-full-content',this)">Expand &#9660;</button>
     <p class="section-collapse-label">Section collapsed by default — tap to expand the full glossary</p>
   </div>
   <div id="glossary-full-content" class="section-collapse-wrap collapsed">
@@ -7662,10 +7728,10 @@ function toggleEnn(btn){
   var cards=grid.querySelectorAll('.enneagram-card');
   var isOpen=btn.innerHTML.indexOf('Collapse')>-1;
   if(isOpen){
-    cards.forEach(function(c){c.classList.remove('open');var lbl=c.querySelector('.ec-toggle');if(lbl)lbl.innerHTML='Tap to expand &#9654;';});
+    cards.forEach(function(c){c.classList.remove('open');var lbl=c.querySelector('.ec-toggle');if(lbl)lbl.innerHTML='Expand &#9660;';});
     btn.innerHTML='Expand All 9 Types &#9660;';
   } else {
-    cards.forEach(function(c){c.classList.add('open');var lbl=c.querySelector('.ec-toggle');if(lbl)lbl.innerHTML='Tap to collapse &#9660;';});
+    cards.forEach(function(c){c.classList.add('open');var lbl=c.querySelector('.ec-toggle');if(lbl)lbl.innerHTML='Collapse &#9660;';});
     btn.innerHTML='Collapse All &#9650;';
   }
 }
@@ -7709,9 +7775,17 @@ function toggleTheme(){
   // change to a frame; the nested second runs after that frame paints,
   // which is the safe moment to remove .theme-swap without the removal
   // itself triggering a visible re-transition.
+  // Double rAF gets us past the frame where data-theme actually swaps and paints.
+  // A short extra delay on top of that is deliberate: backdrop-filter blur on the
+  // fixed nav has to recompute over its full width, which is slower the wider the
+  // viewport is — on desktop that recompute can still be mid-flight when the next
+  // frame lands, so removing the freeze right then reads as a flicker. 80ms is
+  // comfortably past that on desktop while still feeling instant to the user.
   requestAnimationFrame(function(){
     requestAnimationFrame(function(){
-      html.classList.remove('theme-swap');
+      setTimeout(function(){
+        html.classList.remove('theme-swap');
+      }, 80);
     });
   });
 }
