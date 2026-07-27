@@ -3027,13 +3027,92 @@ a.src-tag:hover{opacity:.75;}
     <p>&ldquo;As above, so below.&rdquo;</p>
     <cite>The Hermetic Principle of Correspondence</cite>
   </div>
+
+  <!-- ASCENT OF SELF MAP — always-visible navigator, styled to match the
+       Enneagram map. Purely navigational; tapping a stage expands the card
+       grid below (if collapsed) and scrolls to + opens that stage's card.
+       Connector rule: every connector uses the same fixed 3-step staircase
+       (not a variable step count), so the stairs read consistently at any
+       scale. Labels sit to the right of each node rather than directly
+       below it, since the incoming connector's final riser lands exactly
+       on the node's own x-coordinate — a label placed straight below would
+       sit right on top of that line. -->
+  <div style="max-width:420px;margin:40px auto 8px;">
+    <svg viewBox="0 0 440 470" style="width:100%;height:auto;overflow:visible;" role="img" aria-label="Ascent of Self map — tap a stage to jump to its full breakdown">
+      <style>
+        .ascent-map-node{cursor:pointer;}
+        .ascent-map-node:hover circle.ascent-node-bg{fill:rgba(212,175,55,.14);}
+        .ascent-map-node:focus circle.ascent-node-bg{fill:rgba(212,175,55,.14);}
+        .ascent-map-node text{pointer-events:none;}
+      </style>
+      <!-- connectors: fixed 3-step staircase between every consecutive pair -->
+      <path d="M 44,414 h14 v-18 h14 v-18 h14 v-18" fill="none" stroke="var(--gold)" stroke-width="1.5" opacity="0.4"/>
+      <path d="M 86,360 h14 v-18 h14 v-18 h14 v-18" fill="none" stroke="var(--gold)" stroke-width="1.5" opacity="0.4"/>
+      <path d="M 128,306 h14 v-18 h14 v-18 h14 v-18" fill="none" stroke="var(--gold)" stroke-width="1.5" opacity="0.4"/>
+      <path d="M 170,252 h14 v-18 h14 v-18 h14 v-18" fill="none" stroke="var(--gold)" stroke-width="1.5" opacity="0.4"/>
+      <path d="M 212,198 h14 v-18 h14 v-18 h14 v-18" fill="none" stroke="var(--gold)" stroke-width="1.5" opacity="0.4"/>
+      <path d="M 254,144 h14 v-18 h14 v-18 h14 v-18" fill="none" stroke="var(--gold)" stroke-width="1.5" opacity="0.4"/>
+      <!-- nodes -->
+      <g class="ascent-map-node" tabindex="0" role="button" aria-label="Layer 1 — Survival, I Exist" onclick="scrollToAscentCard(1)" onkeypress="if(event.key==='Enter')scrollToAscentCard(1)">
+        <title>L1 — Survival — &ldquo;I Exist&rdquo;</title>
+        <circle class="ascent-node-bg" cx="44" cy="414" r="22" fill="var(--bg-lift)" stroke="#e74c3c" stroke-width="1.5"/>
+        <text x="44" y="420" text-anchor="middle" font-family="var(--sans)" font-size="14" font-weight="700" fill="#e74c3c">1</text>
+        <text x="78" y="411" text-anchor="start" font-family="var(--sans)" font-size="9" letter-spacing="1.5" fill="var(--dim)" style="text-transform:uppercase;">L1</text>
+        <text x="78" y="425" text-anchor="start" font-family="var(--sans)" font-size="13" fill="var(--white)">Survival</text>
+      </g>
+      <g class="ascent-map-node" tabindex="0" role="button" aria-label="Layer 2 — Emotion, I Feel" onclick="scrollToAscentCard(2)" onkeypress="if(event.key==='Enter')scrollToAscentCard(2)">
+        <title>L2 — Emotion — &ldquo;I Feel&rdquo;</title>
+        <circle class="ascent-node-bg" cx="86" cy="360" r="22" fill="var(--bg-lift)" stroke="#e67e22" stroke-width="1.5"/>
+        <text x="86" y="366" text-anchor="middle" font-family="var(--sans)" font-size="14" font-weight="700" fill="#e67e22">2</text>
+        <text x="120" y="357" text-anchor="start" font-family="var(--sans)" font-size="9" letter-spacing="1.5" fill="var(--dim)" style="text-transform:uppercase;">L2</text>
+        <text x="120" y="371" text-anchor="start" font-family="var(--sans)" font-size="13" fill="var(--white)">Emotion</text>
+      </g>
+      <g class="ascent-map-node" tabindex="0" role="button" aria-label="Layer 3 — Thought, I Think" onclick="scrollToAscentCard(3)" onkeypress="if(event.key==='Enter')scrollToAscentCard(3)">
+        <title>L3 — Thought — &ldquo;I Think&rdquo;</title>
+        <circle class="ascent-node-bg" cx="128" cy="306" r="22" fill="var(--bg-lift)" stroke="#f1c40f" stroke-width="1.5"/>
+        <text x="128" y="312" text-anchor="middle" font-family="var(--sans)" font-size="14" font-weight="700" fill="#f1c40f">3</text>
+        <text x="162" y="303" text-anchor="start" font-family="var(--sans)" font-size="9" letter-spacing="1.5" fill="var(--dim)" style="text-transform:uppercase;">L3</text>
+        <text x="162" y="317" text-anchor="start" font-family="var(--sans)" font-size="13" fill="var(--white)">Thought</text>
+      </g>
+      <g class="ascent-map-node" tabindex="0" role="button" aria-label="Layer 4 — Love, I Connect" onclick="scrollToAscentCard(4)" onkeypress="if(event.key==='Enter')scrollToAscentCard(4)">
+        <title>L4 — Love — &ldquo;I Connect&rdquo;</title>
+        <circle class="ascent-node-bg" cx="170" cy="252" r="22" fill="var(--bg-lift)" stroke="#2ecc71" stroke-width="1.5"/>
+        <text x="170" y="258" text-anchor="middle" font-family="var(--sans)" font-size="14" font-weight="700" fill="#2ecc71">4</text>
+        <text x="204" y="249" text-anchor="start" font-family="var(--sans)" font-size="9" letter-spacing="1.5" fill="var(--dim)" style="text-transform:uppercase;">L4</text>
+        <text x="204" y="263" text-anchor="start" font-family="var(--sans)" font-size="13" fill="var(--white)">Love</text>
+      </g>
+      <g class="ascent-map-node" tabindex="0" role="button" aria-label="Layer 5 — Wisdom, I Understand" onclick="scrollToAscentCard(5)" onkeypress="if(event.key==='Enter')scrollToAscentCard(5)">
+        <title>L5 — Wisdom — &ldquo;I Understand&rdquo;</title>
+        <circle class="ascent-node-bg" cx="212" cy="198" r="22" fill="var(--bg-lift)" stroke="#3498db" stroke-width="1.5"/>
+        <text x="212" y="204" text-anchor="middle" font-family="var(--sans)" font-size="14" font-weight="700" fill="#3498db">5</text>
+        <text x="246" y="195" text-anchor="start" font-family="var(--sans)" font-size="9" letter-spacing="1.5" fill="var(--dim)" style="text-transform:uppercase;">L5</text>
+        <text x="246" y="209" text-anchor="start" font-family="var(--sans)" font-size="13" fill="var(--white)">Wisdom</text>
+      </g>
+      <g class="ascent-map-node" tabindex="0" role="button" aria-label="Layer 6 — Bliss, I Transcend" onclick="scrollToAscentCard(6)" onkeypress="if(event.key==='Enter')scrollToAscentCard(6)">
+        <title>L6 — Bliss — &ldquo;I Transcend&rdquo;</title>
+        <circle class="ascent-node-bg" cx="254" cy="144" r="22" fill="var(--bg-lift)" stroke="#6a5acd" stroke-width="1.5"/>
+        <text x="254" y="150" text-anchor="middle" font-family="var(--sans)" font-size="14" font-weight="700" fill="#6a5acd">6</text>
+        <text x="288" y="141" text-anchor="start" font-family="var(--sans)" font-size="9" letter-spacing="1.5" fill="var(--dim)" style="text-transform:uppercase;">L6</text>
+        <text x="288" y="155" text-anchor="start" font-family="var(--sans)" font-size="13" fill="var(--white)">Bliss</text>
+      </g>
+      <g class="ascent-map-node" tabindex="0" role="button" aria-label="Layer 7 — Oneness, I Am" onclick="scrollToAscentCard(7)" onkeypress="if(event.key==='Enter')scrollToAscentCard(7)">
+        <title>L7 — Oneness — &ldquo;I Am&rdquo;</title>
+        <circle class="ascent-node-bg" cx="296" cy="90" r="22" fill="var(--bg-lift)" stroke="#9b59b6" stroke-width="1.5"/>
+        <text x="296" y="96" text-anchor="middle" font-family="var(--sans)" font-size="14" font-weight="700" fill="#9b59b6">7</text>
+        <text x="330" y="87" text-anchor="start" font-family="var(--sans)" font-size="9" letter-spacing="1.5" fill="var(--dim)" style="text-transform:uppercase;">L7</text>
+        <text x="330" y="101" text-anchor="start" font-family="var(--sans)" font-size="13" fill="var(--white)">Oneness</text>
+      </g>
+    </svg>
+    <p style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#555;text-align:center;margin-top:8px;">Tap a stage to jump to its full breakdown</p>
+  </div>
+
   <div style="text-align:center;margin-bottom:8px;">
     <button class="collapse-toggle-btn" onclick="sectionCollapse('ascent-full-content',this)">Expand &#9660;</button>
     <p class="section-collapse-label" style="margin-top:8px;">Tap to expand — the seven stages, Red to Violet</p>
   </div>
   <div id="ascent-full-content" class="section-collapse-wrap collapsed">
   <div class="framework-grid">
-    <div class="framework-card collapsed" style="border:1.5px solid rgba(231,76,60,0.65) !important;">
+    <div class="framework-card collapsed" id="ascent-card-1" style="border:1.5px solid rgba(231,76,60,0.65) !important;">
       <span class="num" style="color:#e74c3c !important;opacity:.95;">L1 &mdash; Red</span>
       <h3>Survival — &ldquo;I Exist&rdquo;</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Grounding in the body</p><div class="framework-content">
       <p>Consciousness fully embedded in matter. You do not operate reality; reality operates on you. Dense, chaotic, and entirely focused on reacting to physical constraints just to maintain baseline existence.</p>
@@ -3041,7 +3120,7 @@ a.src-tag:hover{opacity:.75;}
       <p style="margin-top:10px;font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;border-top:1px solid rgba(212,175,55,0.28);padding-top:12px;">Life Stage: Womb &amp; Infancy</p>
       <p style="margin-top:6px;font-size:14px;color:var(--grey);">The Vertical Leap &mdash; <em style="color:var(--gold);font-style:italic;">Somatic Grounding:</em> anchor completely in the physical form without resisting limits or survival demands.</p>
     </div></div>
-    <div class="framework-card collapsed" style="border:1.5px solid rgba(230,126,34,0.65) !important;">
+    <div class="framework-card collapsed" id="ascent-card-2" style="border:1.5px solid rgba(230,126,34,0.65) !important;">
       <span class="num" style="color:#e67e22 !important;opacity:.95;">L2 &mdash; Orange</span>
       <h3>Emotion — &ldquo;I Feel&rdquo;</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Meeting emotion with breath</p><div class="framework-content">
       <p>Raw physical experience is no longer just endured — it generates an internal, subjective, volatile charge. These emotional spikes create the very first echoes of a subjective self, distinct from the world pushing against it.</p>
@@ -3049,7 +3128,7 @@ a.src-tag:hover{opacity:.75;}
       <p style="margin-top:10px;font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;border-top:1px solid rgba(212,175,55,0.28);padding-top:12px;">Life Stage: Childhood &mdash; First Cry / Play</p>
       <p style="margin-top:6px;font-size:14px;color:var(--grey);">The Vertical Leap &mdash; <em style="color:var(--gold);font-style:italic;">Breath Mastery:</em> use the breath as a conscious regulator to wash away reactionary emotional spikes.</p>
     </div></div>
-    <div class="framework-card collapsed" style="border:1.5px solid rgba(241,196,15,0.65) !important;">
+    <div class="framework-card collapsed" id="ascent-card-3" style="border:1.5px solid rgba(241,196,15,0.65) !important;">
       <span class="num" style="color:#f1c40f !important;opacity:.95;">L3 &mdash; Yellow</span>
       <h3>Thought — &ldquo;I Think&rdquo;</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Watching the thoughts, not being them</p><div class="framework-content">
       <p>To survive the chaos of raw emotion, the mind begins to categorize and predict. Reactions calcify into predictable, automated patterns — a rigid architecture built around the initial spark of consciousness to keep it safe.</p>
@@ -3057,7 +3136,7 @@ a.src-tag:hover{opacity:.75;}
       <p style="margin-top:10px;font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;border-top:1px solid rgba(212,175,55,0.28);padding-top:12px;">Life Stage: Early Youth &mdash; Sensory / School</p>
       <p style="margin-top:6px;font-size:14px;color:var(--grey);">The Vertical Leap &mdash; <em style="color:var(--gold);font-style:italic;">Mindful Observation:</em> step back from the mental chatter; shift from being the thoughts to watching them.</p>
     </div></div>
-    <div class="framework-card collapsed" style="border:1.5px solid rgba(46,204,113,0.65) !important;">
+    <div class="framework-card collapsed" id="ascent-card-4" style="border:1.5px solid rgba(46,204,113,0.65) !important;">
       <span class="num" style="color:#2ecc71 !important;opacity:.95;">L4 &mdash; Green</span>
       <h3>Love — &ldquo;I Connect&rdquo;</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">The heart as bridge</p><div class="framework-content">
       <p>Identity is not who you truly are — it is the refined construct built from every layer of prior conditioning. It acts as a filter and a fulcrum, bridging the mechanical responses of your past with the expansive awareness of your future. The heart is the bridge from density to divinity.</p>
@@ -3065,7 +3144,7 @@ a.src-tag:hover{opacity:.75;}
       <p style="margin-top:10px;font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;border-top:1px solid rgba(212,175,55,0.28);padding-top:12px;">Life Stage: Late Youth &mdash; Curiosity / Higher Learning</p>
       <p style="margin-top:6px;font-size:14px;color:var(--grey);">The Vertical Leap &mdash; <em style="color:var(--gold);font-style:italic;">Intellectual Surrender:</em> recognize the limits of dry logic and let concepts dissolve into intuitive knowing.</p>
     </div></div>
-    <div class="framework-card collapsed" style="border:1.5px solid rgba(52,152,219,0.65) !important;">
+    <div class="framework-card collapsed" id="ascent-card-5" style="border:1.5px solid rgba(52,152,219,0.65) !important;">
       <span class="num" style="color:#3498db !important;opacity:.95;">L5 &mdash; Blue</span>
       <h3>Wisdom — &ldquo;I Understand&rdquo;</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Alchemical gold: self-awareness</p><div class="framework-content">
       <p>Consciousness dis-identifies from its own patterns. You realize you are not your thoughts, emotions, or history — you are the silent entity observing identity itself. This separation is the true alchemical gold: the dawn of objective self-awareness.</p>
@@ -3073,7 +3152,7 @@ a.src-tag:hover{opacity:.75;}
       <p style="margin-top:10px;font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;border-top:1px solid rgba(212,175,55,0.28);padding-top:12px;">Life Stage: Young Adulthood &mdash; First Impressions / Career</p>
       <p style="margin-top:6px;font-size:14px;color:var(--grey);">The Vertical Leap &mdash; <em style="color:var(--gold);font-style:italic;">Alchemical Refinement:</em> strip away the personal stories attached to your past; hold your history as educational data.</p>
     </div></div>
-    <div class="framework-card collapsed" style="border:1.5px solid rgba(106,90,205,0.65) !important;">
+    <div class="framework-card collapsed" id="ascent-card-6" style="border:1.5px solid rgba(106,90,205,0.65) !important;">
       <span class="num" style="color:#6a5acd !important;opacity:.95;">L6 &mdash; Indigo</span>
       <h3>Bliss — &ldquo;I Transcend&rdquo;</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Where observer and observed merge</p><div class="framework-content">
       <p>As awareness heightens, the dualistic gap between the observer and reality collapses. The psychological friction of separation ceases, distilling consciousness into pure integration and unmediated bliss.</p>
@@ -3081,7 +3160,7 @@ a.src-tag:hover{opacity:.75;}
       <p style="margin-top:10px;font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;border-top:1px solid rgba(212,175,55,0.28);padding-top:12px;">Life Stage: Mature Adulthood &mdash; Ambition / Leadership</p>
       <p style="margin-top:6px;font-size:14px;color:var(--grey);">The Vertical Leap &mdash; <em style="color:var(--gold);font-style:italic;">Dissolving the Observer:</em> merge the gap between watcher and watched; step out of individual self-importance.</p>
     </div></div>
-    <div class="framework-card collapsed" style="border:1.5px solid rgba(155,89,182,0.65) !important;">
+    <div class="framework-card collapsed" id="ascent-card-7" style="border:1.5px solid rgba(155,89,182,0.65) !important;">
       <span class="num" style="color:#9b59b6 !important;opacity:.95;">L7 &mdash; Violet</span>
       <h3>Oneness — &ldquo;I Am&rdquo;</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">The unshakeable &ldquo;I Am&rdquo;</p><div class="framework-content">
       <p>Beyond patterns, beyond identity, beyond even the observer. You are no longer experiencing reality — you realize you are the ultimate reality experiencing itself. Complete ontological transmutation. The absolute &ldquo;I am&rdquo; phase.</p>
@@ -7886,6 +7965,27 @@ function scrollToEnnCard(n){
   // If the grid was just expanded, its max-height transition needs a beat
   // to register before scrollIntoView measures a real position — same
   // delay pattern used for anchor links into collapsed sections elsewhere.
+  if(wasCollapsed){ setTimeout(openAndScroll, 350); } else { openAndScroll(); }
+}
+
+/* ── ASCENT OF SELF MAP: click a stage → expand the grid (if collapsed),
+   open that stage's card, scroll to it. Framework cards use 'collapsed'
+   as their OWN collapsed-state class (opposite convention from the
+   Enneagram cards' 'open'), so opening one means removing 'collapsed'
+   rather than adding 'open'. Same expand-then-scroll pattern otherwise. ── */
+function scrollToAscentCard(n){
+  var wrap = document.getElementById('ascent-full-content');
+  var wasCollapsed = wrap && wrap.classList.contains('collapsed');
+  if(wasCollapsed) sectionCollapse('ascent-full-content');
+
+  var card = document.getElementById('ascent-card-' + n);
+  if(!card) return;
+
+  function openAndScroll(){
+    card.classList.remove('collapsed');
+    card.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
   if(wasCollapsed){ setTimeout(openAndScroll, 350); } else { openAndScroll(); }
 }
 
