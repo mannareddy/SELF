@@ -4288,7 +4288,7 @@ a.src-tag:hover{opacity:.75;}
        full card. Purely navigational — no content lives in the map itself,
        so nothing here needs to stay in sync with the card text below. -->
   <div style="max-width:480px;margin:40px auto 8px;">
-    <svg viewBox="0 0 400 400" style="width:100%;height:auto;overflow:visible;" role="img" aria-label="Enneagram map — tap a type to jump to its full breakdown">
+    <svg viewBox="0 -20 400 420" style="width:100%;height:auto;overflow:visible;" role="img" aria-label="Enneagram map — tap a type to jump to its full breakdown">
       <style>
         .enn-map-node{cursor:pointer;}
         .enn-map-node:hover circle.enn-node-bg{fill:rgba(212,175,55,.14);stroke:var(--gold);}
@@ -4300,10 +4300,13 @@ a.src-tag:hover{opacity:.75;}
       <polyline points="330,275 70,275 200,50 330,275" fill="none" stroke="var(--gold)" stroke-width="1" opacity="0.28"/>
       <!-- outer ring -->
       <circle cx="200" cy="200" r="150" fill="none" stroke="var(--gold)" stroke-width="1" opacity="0.18"/>
-      <!-- triad labels -->
-      <text x="200" y="18" text-anchor="middle" font-family="var(--sans)" font-size="9" letter-spacing="2" fill="var(--gold)" opacity="0.5" style="text-transform:uppercase;">Body</text>
-      <text x="368" y="297" text-anchor="middle" font-family="var(--sans)" font-size="9" letter-spacing="2" fill="var(--gold)" opacity="0.5" style="text-transform:uppercase;">Heart</text>
-      <text x="32" y="297" text-anchor="middle" font-family="var(--sans)" font-size="9" letter-spacing="2" fill="var(--gold)" opacity="0.5" style="text-transform:uppercase;">Head</text>
+      <!-- triad labels: viewBox extends 20px above y=0 just for these, and
+           they're nudged out at the two lower corners, so none of them ever
+           sits under a node's own name label (Body/Peacemaker was the worst
+           offender — they used to be only 17px apart). -->
+      <text x="200" y="-6" text-anchor="middle" font-family="var(--sans)" font-size="9" letter-spacing="2" fill="var(--gold)" opacity="0.5" style="text-transform:uppercase;">Body</text>
+      <text x="380" y="300" text-anchor="middle" font-family="var(--sans)" font-size="9" letter-spacing="2" fill="var(--gold)" opacity="0.5" style="text-transform:uppercase;">Heart</text>
+      <text x="20" y="300" text-anchor="middle" font-family="var(--sans)" font-size="9" letter-spacing="2" fill="var(--gold)" opacity="0.5" style="text-transform:uppercase;">Head</text>
       <!-- nodes -->
       <g class="enn-map-node" tabindex="0" role="button" aria-label="Type 1 — The Perfectionist" onclick="scrollToEnnCard(1)" onkeypress="if(event.key==='Enter')scrollToEnnCard(1)">
         <title>Type 1 — The Perfectionist</title>
@@ -4357,7 +4360,7 @@ a.src-tag:hover{opacity:.75;}
         <title>Type 9 — The Peacemaker</title>
         <circle class="enn-node-bg" cx="200" cy="50" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
         <text x="200" y="56" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">9</text>
-        <text x="200" y="35" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Peacemaker</text>
+        <text x="200" y="20" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Peacemaker</text>
       </g>
     </svg>
     <p style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#555;text-align:center;margin-top:8px;">Tap a type to jump to its full breakdown</p>
@@ -4375,7 +4378,7 @@ a.src-tag:hover{opacity:.75;}
   </div>
 
   <div class="enn-grid" id="ennGrid">
-    <div class="enneagram-card" id="enn-card-1" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="enneagram-card" id="enn-card-1" onclick="if(!this.classList.contains('open')){var self=this;document.querySelectorAll('#ennGrid .enneagram-card.open').forEach(function(c){if(c!==self){c.classList.remove('open');var l=c.querySelector('.ec-toggle');if(l)l.innerHTML='Expand &#9660;';}});}this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="ec-type">Type 1 &mdash; The Perfectionist</span>
       <div class="ec-name">The Perfectionist</div>
       <div class="ec-fear">Core Fear: Being imperfect or corrupt</div>
@@ -4393,7 +4396,7 @@ a.src-tag:hover{opacity:.75;}
         </div>
       </div>
     </div>
-    <div class="enneagram-card" id="enn-card-2" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="enneagram-card" id="enn-card-2" onclick="if(!this.classList.contains('open')){var self=this;document.querySelectorAll('#ennGrid .enneagram-card.open').forEach(function(c){if(c!==self){c.classList.remove('open');var l=c.querySelector('.ec-toggle');if(l)l.innerHTML='Expand &#9660;';}});}this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="ec-type">Type 2 &mdash; The Giver</span>
       <div class="ec-name">The Giver</div>
       <div class="ec-fear">Core Fear: Being unlovable</div>
@@ -4411,7 +4414,7 @@ a.src-tag:hover{opacity:.75;}
         </div>
       </div>
     </div>
-    <div class="enneagram-card" id="enn-card-3" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="enneagram-card" id="enn-card-3" onclick="if(!this.classList.contains('open')){var self=this;document.querySelectorAll('#ennGrid .enneagram-card.open').forEach(function(c){if(c!==self){c.classList.remove('open');var l=c.querySelector('.ec-toggle');if(l)l.innerHTML='Expand &#9660;';}});}this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="ec-type">Type 3 &mdash; The Achiever</span>
       <div class="ec-name">The Achiever</div>
       <div class="ec-fear">Core Fear: Failure, lacking inherent value</div>
@@ -4429,7 +4432,7 @@ a.src-tag:hover{opacity:.75;}
         </div>
       </div>
     </div>
-    <div class="enneagram-card" id="enn-card-4" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="enneagram-card" id="enn-card-4" onclick="if(!this.classList.contains('open')){var self=this;document.querySelectorAll('#ennGrid .enneagram-card.open').forEach(function(c){if(c!==self){c.classList.remove('open');var l=c.querySelector('.ec-toggle');if(l)l.innerHTML='Expand &#9660;';}});}this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="ec-type">Type 4 &mdash; The Individualist</span>
       <div class="ec-name">The Individualist</div>
       <div class="ec-fear">Core Fear: Being flawed, lacking a unique identity</div>
@@ -4447,7 +4450,7 @@ a.src-tag:hover{opacity:.75;}
         </div>
       </div>
     </div>
-    <div class="enneagram-card" id="enn-card-5" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="enneagram-card" id="enn-card-5" onclick="if(!this.classList.contains('open')){var self=this;document.querySelectorAll('#ennGrid .enneagram-card.open').forEach(function(c){if(c!==self){c.classList.remove('open');var l=c.querySelector('.ec-toggle');if(l)l.innerHTML='Expand &#9660;';}});}this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="ec-type">Type 5 &mdash; The Investigator</span>
       <div class="ec-name">The Investigator</div>
       <div class="ec-fear">Core Fear: Being overwhelmed by demands or needs</div>
@@ -4465,7 +4468,7 @@ a.src-tag:hover{opacity:.75;}
         </div>
       </div>
     </div>
-    <div class="enneagram-card" id="enn-card-6" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="enneagram-card" id="enn-card-6" onclick="if(!this.classList.contains('open')){var self=this;document.querySelectorAll('#ennGrid .enneagram-card.open').forEach(function(c){if(c!==self){c.classList.remove('open');var l=c.querySelector('.ec-toggle');if(l)l.innerHTML='Expand &#9660;';}});}this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="ec-type">Type 6 &mdash; The Skeptic</span>
       <div class="ec-name">The Skeptic</div>
       <div class="ec-fear">Core Fear: Being unprepared, unable to defend against danger</div>
@@ -4483,7 +4486,7 @@ a.src-tag:hover{opacity:.75;}
         </div>
       </div>
     </div>
-    <div class="enneagram-card" id="enn-card-7" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="enneagram-card" id="enn-card-7" onclick="if(!this.classList.contains('open')){var self=this;document.querySelectorAll('#ennGrid .enneagram-card.open').forEach(function(c){if(c!==self){c.classList.remove('open');var l=c.querySelector('.ec-toggle');if(l)l.innerHTML='Expand &#9660;';}});}this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="ec-type">Type 7 &mdash; The Enthusiast</span>
       <div class="ec-name">The Enthusiast</div>
       <div class="ec-fear">Core Fear: Experiencing emotional pain or sadness</div>
@@ -4501,7 +4504,7 @@ a.src-tag:hover{opacity:.75;}
         </div>
       </div>
     </div>
-    <div class="enneagram-card" id="enn-card-8" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="enneagram-card" id="enn-card-8" onclick="if(!this.classList.contains('open')){var self=this;document.querySelectorAll('#ennGrid .enneagram-card.open').forEach(function(c){if(c!==self){c.classList.remove('open');var l=c.querySelector('.ec-toggle');if(l)l.innerHTML='Expand &#9660;';}});}this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="ec-type">Type 8 &mdash; The Challenger</span>
       <div class="ec-name">The Challenger</div>
       <div class="ec-fear">Core Fear: Being powerless, vulnerable, or controlled</div>
@@ -4519,7 +4522,7 @@ a.src-tag:hover{opacity:.75;}
         </div>
       </div>
     </div>
-    <div class="enneagram-card" id="enn-card-9" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="enneagram-card" id="enn-card-9" onclick="if(!this.classList.contains('open')){var self=this;document.querySelectorAll('#ennGrid .enneagram-card.open').forEach(function(c){if(c!==self){c.classList.remove('open');var l=c.querySelector('.ec-toggle');if(l)l.innerHTML='Expand &#9660;';}});}this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="ec-type">Type 9 &mdash; The Peacemaker</span>
       <div class="ec-name">The Peacemaker</div>
       <div class="ec-fear">Core Fear: Pushing people away, conflict, fragmentation</div>
@@ -7880,10 +7883,21 @@ function updateNav(){
     if(lbl) lbl.innerHTML = nowOpen ? 'Collapse &#9650;' : 'Expand &#9660;';
   };
 
-  /* ── FRAMEWORK CARDS: click to toggle ── */
+  /* ── FRAMEWORK CARDS: click to toggle. Scoped accordion — opening one card
+     closes any other open card in the SAME section (#framework-full-content
+     or #ascent-full-content), but the two sections stay independent of each
+     other. ── */
   document.querySelectorAll('.framework-card').forEach(function(card){
     card.addEventListener('click', function(e){
       if(e.target.tagName === 'A') return;
+      var wrap = this.closest('#ascent-full-content') || this.closest('#framework-full-content');
+      var isOpening = this.classList.contains('collapsed');
+      if(wrap && isOpening){
+        var self = this;
+        wrap.querySelectorAll('.framework-card').forEach(function(c){
+          if(c !== self) c.classList.add('collapsed');
+        });
+      }
       this.classList.toggle('collapsed');
     });
   });
@@ -7954,6 +7968,14 @@ function scrollToEnnCard(n){
   if(!card) return;
 
   function openAndScroll(){
+    // accordion: close any other open type before opening this one
+    document.querySelectorAll('#ennGrid .enneagram-card.open').forEach(function(c){
+      if(c !== card){
+        c.classList.remove('open');
+        var l = c.querySelector('.ec-toggle');
+        if(l) l.innerHTML = 'Expand &#9660;';
+      }
+    });
     if(!card.classList.contains('open')){
       card.classList.add('open');
       var lbl = card.querySelector('.ec-toggle');
@@ -7982,6 +8004,10 @@ function scrollToAscentCard(n){
   if(!card) return;
 
   function openAndScroll(){
+    // accordion: close any other open stage before opening this one
+    document.querySelectorAll('#ascent-full-content .framework-card').forEach(function(c){
+      if(c !== card) c.classList.add('collapsed');
+    });
     card.classList.remove('collapsed');
     card.scrollIntoView({behavior:'smooth', block:'start'});
   }
