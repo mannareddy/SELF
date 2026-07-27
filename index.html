@@ -5591,7 +5591,95 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
     <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;text-align:center;">6 Material Stages × 7 Spiritual Layers = 42</h2>
     <p style="font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:600px;margin:0 auto 16px;font-style:italic;line-height:1.85;text-align:center;">Every possible human experience can be mapped to a specific coordinate in this grid. You are somewhere on it right now.</p>
     <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.75;text-align:center;margin-bottom:28px;max-width:820px;margin-left:auto;margin-right:auto;">The body ages horizontally. Consciousness must ascend vertically. Most people move only left to right — never up.</p>
+    <!-- MASTER MATRIX MAP — always-visible navigator, styled to match the
+     Ascent of Self map. Purely navigational; tapping a layer expands the
+     matrix (if collapsed) and scrolls to + opens that layer's row.
+     Stage-axis ticks (top-right) are decorative only — they assert the
+     second (horizontal) dimension without replicating all 42 cells;
+     the three mode-toggle buttons below remain the only way to actually
+     switch which stage-columns are visible. -->
+<div style="max-width:420px;margin:32px auto 8px;">
+  <svg viewBox="0 0 440 470" style="width:100%;height:auto;overflow:visible;" role="img" aria-label="Master Matrix map — tap a layer to jump to its full row">
+    <style>
+      .matrix-map-node{cursor:pointer;}
+      .matrix-map-node:hover circle.matrix-node-bg{fill:rgba(212,175,55,.14);}
+      .matrix-map-node:focus circle.matrix-node-bg{fill:rgba(212,175,55,.14);}
+      .matrix-map-node text{pointer-events:none;}
+    </style>
+    <!-- connectors: fixed 3-step staircase between every consecutive pair -->
+    <path d="M 44,414 h14 v-18 h14 v-18 h14 v-18" fill="none" stroke="var(--gold)" stroke-width="1.5" opacity="0.4"/>
+    <path d="M 86,360 h14 v-18 h14 v-18 h14 v-18" fill="none" stroke="var(--gold)" stroke-width="1.5" opacity="0.4"/>
+    <path d="M 128,306 h14 v-18 h14 v-18 h14 v-18" fill="none" stroke="var(--gold)" stroke-width="1.5" opacity="0.4"/>
+    <path d="M 170,252 h14 v-18 h14 v-18 h14 v-18" fill="none" stroke="var(--gold)" stroke-width="1.5" opacity="0.4"/>
+    <path d="M 212,198 h14 v-18 h14 v-18 h14 v-18" fill="none" stroke="var(--gold)" stroke-width="1.5" opacity="0.4"/>
+    <path d="M 254,144 h14 v-18 h14 v-18 h14 v-18" fill="none" stroke="var(--gold)" stroke-width="1.5" opacity="0.4"/>
 
+    <!-- stage-axis: decorative ruler, top-right, asserting the horizontal dimension -->
+    <g opacity="0.55">
+      <line x1="300" y1="16" x2="420" y2="16" stroke="var(--dim)" stroke-width="1"/>
+      <line x1="300" y1="12" x2="300" y2="20" stroke="var(--dim)" stroke-width="1"/>
+      <line x1="324" y1="13" x2="324" y2="19" stroke="var(--dim)" stroke-width="1"/>
+      <line x1="348" y1="13" x2="348" y2="19" stroke="var(--dim)" stroke-width="1"/>
+      <line x1="372" y1="13" x2="372" y2="19" stroke="var(--dim)" stroke-width="1"/>
+      <line x1="396" y1="13" x2="396" y2="19" stroke="var(--dim)" stroke-width="1"/>
+      <line x1="420" y1="12" x2="420" y2="20" stroke="var(--dim)" stroke-width="1"/>
+      <text x="300" y="32" font-family="var(--sans)" font-size="7" letter-spacing="0.5" fill="var(--dim)" style="text-transform:uppercase;">Birth</text>
+      <text x="420" y="32" text-anchor="end" font-family="var(--sans)" font-size="7" letter-spacing="0.5" fill="var(--dim)" style="text-transform:uppercase;">Death</text>
+      <text x="360" y="8" text-anchor="middle" font-family="var(--sans)" font-size="7" letter-spacing="1.5" fill="var(--dim)" style="text-transform:uppercase;">6 stages →</text>
+    </g>
+
+    <!-- nodes -->
+    <g class="matrix-map-node" tabindex="0" role="button" aria-label="Layer 1 — Body, Root Chakra" onclick="expandMatrixRow(1)" onkeypress="if(event.key==='Enter')expandMatrixRow(1)">
+      <title>L1 — Body — Root Chakra</title>
+      <circle class="matrix-node-bg" cx="44" cy="414" r="22" fill="var(--bg-lift)" stroke="#e74c3c" stroke-width="1.5"/>
+      <text x="44" y="420" text-anchor="middle" font-family="var(--sans)" font-size="14" font-weight="700" fill="#e74c3c">1</text>
+      <text x="78" y="411" text-anchor="start" font-family="var(--sans)" font-size="9" letter-spacing="1.5" fill="var(--dim)" style="text-transform:uppercase;">L1</text>
+      <text x="78" y="425" text-anchor="start" font-family="var(--sans)" font-size="13" fill="var(--white)">Body</text>
+    </g>
+    <g class="matrix-map-node" tabindex="0" role="button" aria-label="Layer 2 — Breath, Sacral Chakra" onclick="expandMatrixRow(2)" onkeypress="if(event.key==='Enter')expandMatrixRow(2)">
+      <title>L2 — Breath — Sacral Chakra</title>
+      <circle class="matrix-node-bg" cx="86" cy="360" r="22" fill="var(--bg-lift)" stroke="#e67e22" stroke-width="1.5"/>
+      <text x="86" y="366" text-anchor="middle" font-family="var(--sans)" font-size="14" font-weight="700" fill="#e67e22">2</text>
+      <text x="120" y="357" text-anchor="start" font-family="var(--sans)" font-size="9" letter-spacing="1.5" fill="var(--dim)" style="text-transform:uppercase;">L2</text>
+      <text x="120" y="371" text-anchor="start" font-family="var(--sans)" font-size="13" fill="var(--white)">Breath</text>
+    </g>
+    <g class="matrix-map-node" tabindex="0" role="button" aria-label="Layer 3 — Mind, Solar Plexus" onclick="expandMatrixRow(3)" onkeypress="if(event.key==='Enter')expandMatrixRow(3)">
+      <title>L3 — Mind — Solar Plexus</title>
+      <circle class="matrix-node-bg" cx="128" cy="306" r="22" fill="var(--bg-lift)" stroke="#f1c40f" stroke-width="1.5"/>
+      <text x="128" y="312" text-anchor="middle" font-family="var(--sans)" font-size="14" font-weight="700" fill="#f1c40f">3</text>
+      <text x="162" y="303" text-anchor="start" font-family="var(--sans)" font-size="9" letter-spacing="1.5" fill="var(--dim)" style="text-transform:uppercase;">L3</text>
+      <text x="162" y="317" text-anchor="start" font-family="var(--sans)" font-size="13" fill="var(--white)">Mind</text>
+    </g>
+    <g class="matrix-map-node" tabindex="0" role="button" aria-label="Layer 4 — Intellect, Heart Chakra" onclick="expandMatrixRow(4)" onkeypress="if(event.key==='Enter')expandMatrixRow(4)">
+      <title>L4 — Intellect — Heart Chakra</title>
+      <circle class="matrix-node-bg" cx="170" cy="252" r="22" fill="var(--bg-lift)" stroke="#2ecc71" stroke-width="1.5"/>
+      <text x="170" y="258" text-anchor="middle" font-family="var(--sans)" font-size="14" font-weight="700" fill="#2ecc71">4</text>
+      <text x="204" y="249" text-anchor="start" font-family="var(--sans)" font-size="9" letter-spacing="1.5" fill="var(--dim)" style="text-transform:uppercase;">L4</text>
+      <text x="204" y="263" text-anchor="start" font-family="var(--sans)" font-size="13" fill="var(--white)">Intellect</text>
+    </g>
+    <g class="matrix-map-node" tabindex="0" role="button" aria-label="Layer 5 — Memory, Throat Chakra" onclick="expandMatrixRow(5)" onkeypress="if(event.key==='Enter')expandMatrixRow(5)">
+      <title>L5 — Memory — Throat Chakra</title>
+      <circle class="matrix-node-bg" cx="212" cy="198" r="22" fill="var(--bg-lift)" stroke="#3498db" stroke-width="1.5"/>
+      <text x="212" y="204" text-anchor="middle" font-family="var(--sans)" font-size="14" font-weight="700" fill="#3498db">5</text>
+      <text x="246" y="195" text-anchor="start" font-family="var(--sans)" font-size="9" letter-spacing="1.5" fill="var(--dim)" style="text-transform:uppercase;">L5</text>
+      <text x="246" y="209" text-anchor="start" font-family="var(--sans)" font-size="13" fill="var(--white)">Memory</text>
+    </g>
+    <g class="matrix-map-node" tabindex="0" role="button" aria-label="Layer 6 — Ego, Third Eye" onclick="expandMatrixRow(6)" onkeypress="if(event.key==='Enter')expandMatrixRow(6)">
+      <title>L6 — Ego — Third Eye</title>
+      <circle class="matrix-node-bg" cx="254" cy="144" r="22" fill="var(--bg-lift)" stroke="#6a5acd" stroke-width="1.5"/>
+      <text x="254" y="150" text-anchor="middle" font-family="var(--sans)" font-size="14" font-weight="700" fill="#6a5acd">6</text>
+      <text x="288" y="141" text-anchor="start" font-family="var(--sans)" font-size="9" letter-spacing="1.5" fill="var(--dim)" style="text-transform:uppercase;">L6</text>
+      <text x="288" y="155" text-anchor="start" font-family="var(--sans)" font-size="13" fill="var(--white)">Ego</text>
+    </g>
+    <g class="matrix-map-node" tabindex="0" role="button" aria-label="Layer 7 — Self / Soul, Crown Chakra" onclick="expandMatrixRow(7)" onkeypress="if(event.key==='Enter')expandMatrixRow(7)">
+      <title>L7 — Self / Soul — Crown Chakra</title>
+      <circle class="matrix-node-bg" cx="296" cy="90" r="22" fill="var(--bg-lift)" stroke="#9b59b6" stroke-width="1.5"/>
+      <text x="296" y="96" text-anchor="middle" font-family="var(--sans)" font-size="14" font-weight="700" fill="#9b59b6">7</text>
+      <text x="330" y="87" text-anchor="start" font-family="var(--sans)" font-size="9" letter-spacing="1.5" fill="var(--dim)" style="text-transform:uppercase;">L7</text>
+      <text x="330" y="101" text-anchor="start" font-family="var(--sans)" font-size="13" fill="var(--white)">Self</text> </g>
+  </svg>
+  <p style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#555;text-align:center;margin-top:8px;">Tap a layer to jump to its full row</p>
+</div>
     <div class="cosmo-quote" style="max-width:820px;margin:0 auto 36px;">
       <p>&ldquo;Your life purpose unfolds through the activities you engage in on the horizontal dimension &mdash; the dimension of doing. But everybody eventually finds that operating only on the horizontal dimension never satisfies them. There is another dimension &mdash; the vertical dimension, the dimension of being. The mastery of life is the dance between the two.&rdquo;</p>
       <cite>&mdash; Eckhart Tolle</cite>
