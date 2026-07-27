@@ -394,7 +394,7 @@ body{
 [data-theme="light"] .cosmo-quote cite{color:#8a6a12 !important;}
 [data-theme="light"] .symptoms-block-box{border-color:rgba(0,0,0,0.15) !important;background:#e8e0cc !important;}
 [data-theme="light"] .framework-card h3{color:#1a1208 !important;}
-[data-theme="light"] .framework-card:not(.ascent-card) .num{color:#8a6a12 !important;}
+[data-theme="light"] .framework-card .num{color:#8a6a12 !important;}
 [data-theme="light"] .pillar-card .p-title{color:#1a1208 !important;}
 [data-theme="light"] .why-card h4{color:#8a6a12 !important;}
 [data-theme="light"] .faq-q{color:#1a1208 !important;font-weight:600 !important;}
@@ -490,8 +490,7 @@ body{
 /* ── LIGHT THEME: CSS-class border-color fixes (class-defined borders are not
    caught by the inline [style*=] attribute selectors above) ─────────────── */
 [data-theme="light"] .why-card{border-color:rgba(0,0,0,0.1) !important;}
-[data-theme="light"] .framework-card:not(.ascent-card){border-color:rgba(0,0,0,0.1) !important;}
-[data-theme="light"] .ascent-card{border-top-color:rgba(138,106,18,0.3) !important;border-right-color:rgba(138,106,18,0.3) !important;border-bottom-color:rgba(138,106,18,0.3) !important;}
+[data-theme="light"] .framework-card{border-color:rgba(0,0,0,0.1) !important;}
 [data-theme="light"] .pillar-card{border-color:rgba(0,0,0,0.1) !important;}
 [data-theme="light"] .ipo-cell{border-right-color:rgba(0,0,0,0.25) !important;}
 [data-theme="light"] .ipo-table-row.header .ipo-cell{border-right-color:rgba(0,0,0,0.32) !important;}
@@ -919,20 +918,14 @@ a:hover{opacity:.7;}
 @media(min-width:1024px){
   .section{max-width:720px;}
   .section-wide{max-width:1080px;}
-  .hero-question{max-width:820px !important;}
-  .hero > div[style*="max-width:540px"]{max-width:640px !important;}
 }
 @media(min-width:1300px){
   .section{max-width:780px;}
   .section-wide{max-width:1200px;}
-  .hero-question{max-width:860px !important;}
-  .hero > div[style*="max-width:540px"]{max-width:700px !important;}
 }
 @media(min-width:1600px){
   .section{max-width:820px;}
   .section-wide{max-width:1280px;}
-  .hero-question{max-width:900px !important;}
-  .hero > div[style*="max-width:540px"]{max-width:760px !important;}
 }
 section{scroll-margin-top:56px;}
 .divider{width:1px;height:70px;background:linear-gradient(to bottom,transparent,#2a2a2a,transparent);margin:0 auto;}
@@ -2861,7 +2854,7 @@ a.src-tag:hover{opacity:.75;}
   <div class="dark-night-card" style="max-width:680px;margin:0 auto;">
     <span class="label">The Dark Night</span>
     <p style="font-family:var(--sans);font-size:10px;letter-spacing:.5px;color:var(--dim);max-width:600px;margin:0 auto 28px;text-align:center;line-height:1.8;">This section speaks to existential ache, not diagnosable illness. If what you&rsquo;re carrying includes persistent depression, trauma, or thoughts of harming yourself, please treat that clinically first &mdash; see the <a href="#disclaimer" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">full note on care</a>.</p>
-    <div class="pull-quote" style="margin-bottom:36px;max-width:660px;border:1px solid rgba(212,175,55,0.45);border-left:3px solid var(--gold);padding:36px 40px;">
+    <div class="pull-quote" style="margin-bottom:36px;border:1px solid rgba(212,175,55,0.45);border-left:3px solid var(--gold);padding:36px 40px;">
       <p>&ldquo;It is not a breakdown. It is a breakthrough wearing a disguise.&rdquo;</p>
       <cite>The universal initiation no tradition calls optional</cite>
     </div>
@@ -3030,9 +3023,9 @@ a.src-tag:hover{opacity:.75;}
   <span class="label">The Ascent of Self</span>
   <p class="phil-line bright">Seven layers. Seven stages of a single life. One universal pattern.</p>
   <p class="phil-line dim" style="text-align:left;max-width:640px;margin-left:auto;margin-right:auto;">Nature, consciousness, and human life all move through the same sequence — from the density of raw survival to the clarity of pure being.</p>
-  <div class="cosmo-quote" style="max-width:660px;margin:0 auto 36px;text-align:center;">
+  <div class="cosmo-quote" style="max-width:660px;margin:0 auto 36px;">
     <p>&ldquo;As above, so below.&rdquo;</p>
-    <cite>The Hermetic Principle of Correspondence</cite>
+    <cite>&mdash; The Hermetic Principle of Correspondence</cite>
   </div>
   <div style="text-align:center;margin-bottom:8px;">
     <button class="collapse-toggle-btn" onclick="sectionCollapse('ascent-full-content',this)">Expand &#9660;</button>
@@ -3040,7 +3033,7 @@ a.src-tag:hover{opacity:.75;}
   </div>
   <div id="ascent-full-content" class="section-collapse-wrap collapsed">
   <div class="framework-grid">
-    <div class="framework-card ascent-card collapsed" style="border-left:3px solid #e74c3c;">
+    <div class="framework-card collapsed" style="border-left:3px solid #e74c3c;">
       <span class="num" style="color:#e74c3c;opacity:.95;">L1 &mdash; Red</span>
       <h3>Survival — &ldquo;I Exist&rdquo;</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Grounding in the body</p><div class="framework-content">
       <p>Consciousness fully embedded in matter. You do not operate reality; reality operates on you. Dense, chaotic, and entirely focused on reacting to physical constraints just to maintain baseline existence.</p>
@@ -3048,7 +3041,7 @@ a.src-tag:hover{opacity:.75;}
       <p style="margin-top:10px;font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;border-top:1px solid rgba(212,175,55,0.28);padding-top:12px;">Life Stage: Womb &amp; Infancy</p>
       <p style="margin-top:6px;font-size:14px;color:var(--grey);">The Vertical Leap &mdash; <em style="color:var(--gold);font-style:italic;">Somatic Grounding:</em> anchor completely in the physical form without resisting limits or survival demands.</p>
     </div></div>
-    <div class="framework-card ascent-card collapsed" style="border-left:3px solid #e67e22;">
+    <div class="framework-card collapsed" style="border-left:3px solid #e67e22;">
       <span class="num" style="color:#e67e22;opacity:.95;">L2 &mdash; Orange</span>
       <h3>Emotion — &ldquo;I Feel&rdquo;</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Meeting emotion with breath</p><div class="framework-content">
       <p>Raw physical experience is no longer just endured — it generates an internal, subjective, volatile charge. These emotional spikes create the very first echoes of a subjective self, distinct from the world pushing against it.</p>
@@ -3056,7 +3049,7 @@ a.src-tag:hover{opacity:.75;}
       <p style="margin-top:10px;font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;border-top:1px solid rgba(212,175,55,0.28);padding-top:12px;">Life Stage: Childhood &mdash; First Cry / Play</p>
       <p style="margin-top:6px;font-size:14px;color:var(--grey);">The Vertical Leap &mdash; <em style="color:var(--gold);font-style:italic;">Breath Mastery:</em> use the breath as a conscious regulator to wash away reactionary emotional spikes.</p>
     </div></div>
-    <div class="framework-card ascent-card collapsed" style="border-left:3px solid #f1c40f;">
+    <div class="framework-card collapsed" style="border-left:3px solid #f1c40f;">
       <span class="num" style="color:#f1c40f;opacity:.95;">L3 &mdash; Yellow</span>
       <h3>Thought — &ldquo;I Think&rdquo;</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Watching the thoughts, not being them</p><div class="framework-content">
       <p>To survive the chaos of raw emotion, the mind begins to categorize and predict. Reactions calcify into predictable, automated patterns — a rigid architecture built around the initial spark of consciousness to keep it safe.</p>
@@ -3064,7 +3057,7 @@ a.src-tag:hover{opacity:.75;}
       <p style="margin-top:10px;font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;border-top:1px solid rgba(212,175,55,0.28);padding-top:12px;">Life Stage: Early Youth &mdash; Sensory / School</p>
       <p style="margin-top:6px;font-size:14px;color:var(--grey);">The Vertical Leap &mdash; <em style="color:var(--gold);font-style:italic;">Mindful Observation:</em> step back from the mental chatter; shift from being the thoughts to watching them.</p>
     </div></div>
-    <div class="framework-card ascent-card collapsed" style="border-left:3px solid #2ecc71;">
+    <div class="framework-card collapsed" style="border-left:3px solid #2ecc71;">
       <span class="num" style="color:#2ecc71;opacity:.95;">L4 &mdash; Green</span>
       <h3>Love — &ldquo;I Connect&rdquo;</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">The heart as bridge</p><div class="framework-content">
       <p>Identity is not who you truly are — it is the refined construct built from every layer of prior conditioning. It acts as a filter and a fulcrum, bridging the mechanical responses of your past with the expansive awareness of your future. The heart is the bridge from density to divinity.</p>
@@ -3072,7 +3065,7 @@ a.src-tag:hover{opacity:.75;}
       <p style="margin-top:10px;font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;border-top:1px solid rgba(212,175,55,0.28);padding-top:12px;">Life Stage: Late Youth &mdash; Curiosity / Higher Learning</p>
       <p style="margin-top:6px;font-size:14px;color:var(--grey);">The Vertical Leap &mdash; <em style="color:var(--gold);font-style:italic;">Intellectual Surrender:</em> recognize the limits of dry logic and let concepts dissolve into intuitive knowing.</p>
     </div></div>
-    <div class="framework-card ascent-card collapsed" style="border-left:3px solid #3498db;">
+    <div class="framework-card collapsed" style="border-left:3px solid #3498db;">
       <span class="num" style="color:#3498db;opacity:.95;">L5 &mdash; Blue</span>
       <h3>Wisdom — &ldquo;I Understand&rdquo;</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Alchemical gold: self-awareness</p><div class="framework-content">
       <p>Consciousness dis-identifies from its own patterns. You realize you are not your thoughts, emotions, or history — you are the silent entity observing identity itself. This separation is the true alchemical gold: the dawn of objective self-awareness.</p>
@@ -3080,7 +3073,7 @@ a.src-tag:hover{opacity:.75;}
       <p style="margin-top:10px;font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;border-top:1px solid rgba(212,175,55,0.28);padding-top:12px;">Life Stage: Young Adulthood &mdash; First Impressions / Career</p>
       <p style="margin-top:6px;font-size:14px;color:var(--grey);">The Vertical Leap &mdash; <em style="color:var(--gold);font-style:italic;">Alchemical Refinement:</em> strip away the personal stories attached to your past; hold your history as educational data.</p>
     </div></div>
-    <div class="framework-card ascent-card collapsed" style="border-left:3px solid #6a5acd;">
+    <div class="framework-card collapsed" style="border-left:3px solid #6a5acd;">
       <span class="num" style="color:#6a5acd;opacity:.95;">L6 &mdash; Indigo</span>
       <h3>Bliss — &ldquo;I Transcend&rdquo;</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Where observer and observed merge</p><div class="framework-content">
       <p>As awareness heightens, the dualistic gap between the observer and reality collapses. The psychological friction of separation ceases, distilling consciousness into pure integration and unmediated bliss.</p>
@@ -3088,7 +3081,7 @@ a.src-tag:hover{opacity:.75;}
       <p style="margin-top:10px;font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;border-top:1px solid rgba(212,175,55,0.28);padding-top:12px;">Life Stage: Mature Adulthood &mdash; Ambition / Leadership</p>
       <p style="margin-top:6px;font-size:14px;color:var(--grey);">The Vertical Leap &mdash; <em style="color:var(--gold);font-style:italic;">Dissolving the Observer:</em> merge the gap between watcher and watched; step out of individual self-importance.</p>
     </div></div>
-    <div class="framework-card ascent-card collapsed" style="border-left:3px solid #9b59b6;">
+    <div class="framework-card collapsed" style="border-left:3px solid #9b59b6;">
       <span class="num" style="color:#9b59b6;opacity:.95;">L7 &mdash; Violet</span>
       <h3>Oneness — &ldquo;I Am&rdquo;</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">The unshakeable &ldquo;I Am&rdquo;</p><div class="framework-content">
       <p>Beyond patterns, beyond identity, beyond even the observer. You are no longer experiencing reality — you realize you are the ultimate reality experiencing itself. Complete ontological transmutation. The absolute &ldquo;I am&rdquo; phase.</p>
@@ -4211,6 +4204,86 @@ a.src-tag:hover{opacity:.75;}
 
   <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;max-width:760px;margin:24px auto 0;text-align:left;font-style:italic;">No fixation holds still. Each type below carries its own pressure-release valve and its own opening &mdash; the direction the personality is pulled apart under threat, and the direction it loosens under genuine growth. Tap a card to see both.</p>
 
+  <!-- ENNEAGRAM MAP — always-visible navigator. Tapping a node expands the
+       card grid below (if collapsed) and scrolls to + opens that type's
+       full card. Purely navigational — no content lives in the map itself,
+       so nothing here needs to stay in sync with the card text below. -->
+  <div style="max-width:480px;margin:40px auto 8px;">
+    <svg viewBox="0 0 400 400" style="width:100%;height:auto;overflow:visible;" role="img" aria-label="Enneagram map — tap a type to jump to its full breakdown">
+      <style>
+        .enn-map-node{cursor:pointer;}
+        .enn-map-node:hover circle.enn-node-bg{fill:rgba(212,175,55,.14);stroke:var(--gold);}
+        .enn-map-node:focus circle.enn-node-bg{fill:rgba(212,175,55,.14);stroke:var(--gold);}
+        .enn-map-node text{pointer-events:none;}
+      </style>
+      <!-- connecting lines: classic Enneagram hexad (1-4-2-8-5-7-1) + triangle (3-6-9-3) -->
+      <polyline points="296,85 251,341 348,174 104,85 149,341 52,174 296,85" fill="none" stroke="var(--gold)" stroke-width="1" opacity="0.28"/>
+      <polyline points="330,275 70,275 200,50 330,275" fill="none" stroke="var(--gold)" stroke-width="1" opacity="0.28"/>
+      <!-- outer ring -->
+      <circle cx="200" cy="200" r="150" fill="none" stroke="var(--gold)" stroke-width="1" opacity="0.18"/>
+      <!-- triad labels -->
+      <text x="200" y="18" text-anchor="middle" font-family="var(--sans)" font-size="9" letter-spacing="2" fill="var(--gold)" opacity="0.5" style="text-transform:uppercase;">Body</text>
+      <text x="368" y="297" text-anchor="middle" font-family="var(--sans)" font-size="9" letter-spacing="2" fill="var(--gold)" opacity="0.5" style="text-transform:uppercase;">Heart</text>
+      <text x="32" y="297" text-anchor="middle" font-family="var(--sans)" font-size="9" letter-spacing="2" fill="var(--gold)" opacity="0.5" style="text-transform:uppercase;">Head</text>
+      <!-- nodes -->
+      <g class="enn-map-node" tabindex="0" role="button" aria-label="Type 1 — The Perfectionist" onclick="scrollToEnnCard(1)" onkeypress="if(event.key==='Enter')scrollToEnnCard(1)">
+        <title>Type 1 — The Perfectionist</title>
+        <circle class="enn-node-bg" cx="296" cy="85" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
+        <text x="296" y="91" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">1</text>
+        <text x="296" y="120" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Perfectionist</text>
+      </g>
+      <g class="enn-map-node" tabindex="0" role="button" aria-label="Type 2 — The Giver" onclick="scrollToEnnCard(2)" onkeypress="if(event.key==='Enter')scrollToEnnCard(2)">
+        <title>Type 2 — The Giver</title>
+        <circle class="enn-node-bg" cx="348" cy="174" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
+        <text x="348" y="180" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">2</text>
+        <text x="348" y="209" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Giver</text>
+      </g>
+      <g class="enn-map-node" tabindex="0" role="button" aria-label="Type 3 — The Achiever" onclick="scrollToEnnCard(3)" onkeypress="if(event.key==='Enter')scrollToEnnCard(3)">
+        <title>Type 3 — The Achiever</title>
+        <circle class="enn-node-bg" cx="330" cy="275" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
+        <text x="330" y="281" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">3</text>
+        <text x="330" y="310" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Achiever</text>
+      </g>
+      <g class="enn-map-node" tabindex="0" role="button" aria-label="Type 4 — The Individualist" onclick="scrollToEnnCard(4)" onkeypress="if(event.key==='Enter')scrollToEnnCard(4)">
+        <title>Type 4 — The Individualist</title>
+        <circle class="enn-node-bg" cx="251" cy="341" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
+        <text x="251" y="347" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">4</text>
+        <text x="251" y="371" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Individualist</text>
+      </g>
+      <g class="enn-map-node" tabindex="0" role="button" aria-label="Type 5 — The Investigator" onclick="scrollToEnnCard(5)" onkeypress="if(event.key==='Enter')scrollToEnnCard(5)">
+        <title>Type 5 — The Investigator</title>
+        <circle class="enn-node-bg" cx="149" cy="341" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
+        <text x="149" y="347" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">5</text>
+        <text x="149" y="371" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Investigator</text>
+      </g>
+      <g class="enn-map-node" tabindex="0" role="button" aria-label="Type 6 — The Skeptic" onclick="scrollToEnnCard(6)" onkeypress="if(event.key==='Enter')scrollToEnnCard(6)">
+        <title>Type 6 — The Skeptic</title>
+        <circle class="enn-node-bg" cx="70" cy="275" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
+        <text x="70" y="281" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">6</text>
+        <text x="70" y="310" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Skeptic</text>
+      </g>
+      <g class="enn-map-node" tabindex="0" role="button" aria-label="Type 7 — The Enthusiast" onclick="scrollToEnnCard(7)" onkeypress="if(event.key==='Enter')scrollToEnnCard(7)">
+        <title>Type 7 — The Enthusiast</title>
+        <circle class="enn-node-bg" cx="52" cy="174" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
+        <text x="52" y="180" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">7</text>
+        <text x="52" y="209" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Enthusiast</text>
+      </g>
+      <g class="enn-map-node" tabindex="0" role="button" aria-label="Type 8 — The Challenger" onclick="scrollToEnnCard(8)" onkeypress="if(event.key==='Enter')scrollToEnnCard(8)">
+        <title>Type 8 — The Challenger</title>
+        <circle class="enn-node-bg" cx="104" cy="85" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
+        <text x="104" y="91" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">8</text>
+        <text x="104" y="120" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Challenger</text>
+      </g>
+      <g class="enn-map-node" tabindex="0" role="button" aria-label="Type 9 — The Peacemaker" onclick="scrollToEnnCard(9)" onkeypress="if(event.key==='Enter')scrollToEnnCard(9)">
+        <title>Type 9 — The Peacemaker</title>
+        <circle class="enn-node-bg" cx="200" cy="50" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
+        <text x="200" y="56" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">9</text>
+        <text x="200" y="35" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Peacemaker</text>
+      </g>
+    </svg>
+    <p style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#555;text-align:center;margin-top:8px;">Tap a type to jump to its full breakdown</p>
+  </div>
+
   <div style="text-align:center;margin-bottom:8px;">
     <button class="collapse-toggle-btn" onclick="sectionCollapse('enn-full-content',this)">Expand &#9660;</button>
     <p class="section-collapse-label" style="margin-top:8px;">Tap to expand — all nine Enneagram types</p>
@@ -4223,7 +4296,7 @@ a.src-tag:hover{opacity:.75;}
   </div>
 
   <div class="enn-grid" id="ennGrid">
-    <div class="enneagram-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="enneagram-card" id="enn-card-1" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="ec-type">Type 1 &mdash; The Perfectionist</span>
       <div class="ec-name">The Perfectionist</div>
       <div class="ec-fear">Core Fear: Being imperfect or corrupt</div>
@@ -4241,7 +4314,7 @@ a.src-tag:hover{opacity:.75;}
         </div>
       </div>
     </div>
-    <div class="enneagram-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="enneagram-card" id="enn-card-2" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="ec-type">Type 2 &mdash; The Giver</span>
       <div class="ec-name">The Giver</div>
       <div class="ec-fear">Core Fear: Being unlovable</div>
@@ -4259,7 +4332,7 @@ a.src-tag:hover{opacity:.75;}
         </div>
       </div>
     </div>
-    <div class="enneagram-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="enneagram-card" id="enn-card-3" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="ec-type">Type 3 &mdash; The Achiever</span>
       <div class="ec-name">The Achiever</div>
       <div class="ec-fear">Core Fear: Failure, lacking inherent value</div>
@@ -4277,7 +4350,7 @@ a.src-tag:hover{opacity:.75;}
         </div>
       </div>
     </div>
-    <div class="enneagram-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="enneagram-card" id="enn-card-4" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="ec-type">Type 4 &mdash; The Individualist</span>
       <div class="ec-name">The Individualist</div>
       <div class="ec-fear">Core Fear: Being flawed, lacking a unique identity</div>
@@ -4295,7 +4368,7 @@ a.src-tag:hover{opacity:.75;}
         </div>
       </div>
     </div>
-    <div class="enneagram-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="enneagram-card" id="enn-card-5" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="ec-type">Type 5 &mdash; The Investigator</span>
       <div class="ec-name">The Investigator</div>
       <div class="ec-fear">Core Fear: Being overwhelmed by demands or needs</div>
@@ -4313,7 +4386,7 @@ a.src-tag:hover{opacity:.75;}
         </div>
       </div>
     </div>
-    <div class="enneagram-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="enneagram-card" id="enn-card-6" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="ec-type">Type 6 &mdash; The Skeptic</span>
       <div class="ec-name">The Skeptic</div>
       <div class="ec-fear">Core Fear: Being unprepared, unable to defend against danger</div>
@@ -4331,7 +4404,7 @@ a.src-tag:hover{opacity:.75;}
         </div>
       </div>
     </div>
-    <div class="enneagram-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="enneagram-card" id="enn-card-7" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="ec-type">Type 7 &mdash; The Enthusiast</span>
       <div class="ec-name">The Enthusiast</div>
       <div class="ec-fear">Core Fear: Experiencing emotional pain or sadness</div>
@@ -4349,7 +4422,7 @@ a.src-tag:hover{opacity:.75;}
         </div>
       </div>
     </div>
-    <div class="enneagram-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="enneagram-card" id="enn-card-8" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="ec-type">Type 8 &mdash; The Challenger</span>
       <div class="ec-name">The Challenger</div>
       <div class="ec-fear">Core Fear: Being powerless, vulnerable, or controlled</div>
@@ -4367,7 +4440,7 @@ a.src-tag:hover{opacity:.75;}
         </div>
       </div>
     </div>
-    <div class="enneagram-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="enneagram-card" id="enn-card-9" onclick="this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="ec-type">Type 9 &mdash; The Peacemaker</span>
       <div class="ec-name">The Peacemaker</div>
       <div class="ec-fear">Core Fear: Pushing people away, conflict, fragmentation</div>
@@ -7788,6 +7861,32 @@ function toggleEnn(btn){
     cards.forEach(function(c){c.classList.add('open');var lbl=c.querySelector('.ec-toggle');if(lbl)lbl.innerHTML='Collapse &#9660;';});
     btn.innerHTML='Collapse All &#9650;';
   }
+}
+
+/* ── ENNEAGRAM MAP: click a node → expand the grid (if collapsed), open
+   that type's card, scroll to it. Same expand-then-scroll pattern as
+   openFaqEntry() elsewhere on the site. ── */
+function scrollToEnnCard(n){
+  var wrap = document.getElementById('enn-full-content');
+  var wasCollapsed = wrap && wrap.classList.contains('collapsed');
+  if(wasCollapsed) sectionCollapse('enn-full-content');
+
+  var card = document.getElementById('enn-card-' + n);
+  if(!card) return;
+
+  function openAndScroll(){
+    if(!card.classList.contains('open')){
+      card.classList.add('open');
+      var lbl = card.querySelector('.ec-toggle');
+      if(lbl) lbl.innerHTML = 'Collapse &#9660;';
+    }
+    card.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  // If the grid was just expanded, its max-height transition needs a beat
+  // to register before scrollIntoView measures a real position — same
+  // delay pattern used for anchor links into collapsed sections elsewhere.
+  if(wasCollapsed){ setTimeout(openAndScroll, 350); } else { openAndScroll(); }
 }
 
 /* ── FOUNDATION TOGGLE ───────────────────────────────────────────────────── */
