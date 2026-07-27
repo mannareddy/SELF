@@ -9044,10 +9044,20 @@ init();
     updateMatrixReadHowBox(mode || 'grid');
   });
 
-  /* ---------- ROW EXPAND: only the two fields with no column of their own ---------- */
   window.expandMatrixRow = function(n){
     var wrap = document.getElementById('master-matrix-full-content');
     if(wrap && wrap.classList.contains('collapsed')) sectionCollapse('master-matrix-full-content');
+
+    // accordion: close any other open row before opening this one
+    document.querySelectorAll('#masterMatrixTable .row-detail').forEach(function(d){
+      var otherN = d.id.replace('matrix-detail-', '');
+      if(otherN !== String(n) && d.style.display === 'table-row'){
+        d.style.display = 'none';
+        var otherBtn = document.getElementById('matrix-toggle-' + otherN);
+        if(otherBtn) otherBtn.textContent = '+';
+      }
+    });
+
     var detail = document.getElementById('matrix-detail-' + n);
     if(!detail || detail.style.display !== 'table-row') toggleMatrixRow(n);
     setTimeout(function(){
