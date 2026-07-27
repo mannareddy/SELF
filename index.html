@@ -210,6 +210,153 @@ body{
 .self-table tr.gold-row td:first-child{border-left:3px solid var(--gold);}
 .self-table tr.gold-row td.gold{color:var(--gold);}
 .self-table tr.gold-row td.gold-flaw{color:var(--gold);font-style:italic;}
+
+/* Master Matrix chakra row-striping — same red-to-violet palette already used
+   by the #master-matrix SVG grid map's row strokes/fills (L1 #e74c3c through
+   L7 #9b59b6), so the scrollable table and the spatial map read as one
+   system rather than two differently-colored versions of the same data.
+   Layer 7 now takes the SVG's violet (#9b59b6) as well, applied uniformly
+   with the other six rows. Scoped to #masterMatrixTable only so no other
+   .self-table on the site is affected. */
+#masterMatrixTable tr.chakra-row-1{background:rgba(231,76,60,.05);}
+#masterMatrixTable tr.chakra-row-1 td:first-child{border-left:3px solid #e74c3c;}
+#masterMatrixTable tr.chakra-row-2{background:rgba(230,126,34,.05);}
+#masterMatrixTable tr.chakra-row-2 td:first-child{border-left:3px solid #e67e22;}
+#masterMatrixTable tr.chakra-row-3{background:rgba(241,196,15,.05);}
+#masterMatrixTable tr.chakra-row-3 td:first-child{border-left:3px solid #f1c40f;}
+#masterMatrixTable tr.chakra-row-4{background:rgba(46,204,113,.05);}
+#masterMatrixTable tr.chakra-row-4 td:first-child{border-left:3px solid #2ecc71;}
+#masterMatrixTable tr.chakra-row-5{background:rgba(52,152,219,.05);}
+#masterMatrixTable tr.chakra-row-5 td:first-child{border-left:3px solid #3498db;}
+#masterMatrixTable tr.chakra-row-6{background:rgba(106,90,205,.05);}
+#masterMatrixTable tr.chakra-row-6 td:first-child{border-left:3px solid #6a5acd;}
+#masterMatrixTable tr.chakra-row-7{background:rgba(155,89,182,.05);}
+#masterMatrixTable tr.chakra-row-7 td:first-child{border-left:3px solid #9b59b6;}
+
+/* Row text color — every data cell in a row (label, grid values, brainwave,
+   awareness, stage, alchemy, existence/kosha) now takes the row's own
+   chakra hue uniformly, with no cell left a different color. The former
+   per-column exemptions (.red on Crisis/Rigidity, inline gold on the
+   Brainwave column and Dissolution ✦, .bright on Shifting beliefs/Trauma,
+   inline grey on the kosha names) have been removed from the table markup
+   itself so nothing overrides these rules anymore. The :not() selectors
+   below are kept only as a safety net in case any of those classes are
+   ever reintroduced elsewhere in this table. */
+#masterMatrixTable tr.chakra-row-1 td:not(.gold):not(.red):not(.bright):not(.gold-flaw){color:#e74c3c;}
+#masterMatrixTable tr.chakra-row-2 td:not(.gold):not(.red):not(.bright):not(.gold-flaw){color:#e67e22;}
+#masterMatrixTable tr.chakra-row-3 td:not(.gold):not(.red):not(.bright):not(.gold-flaw){color:#f1c40f;}
+#masterMatrixTable tr.chakra-row-4 td:not(.gold):not(.red):not(.bright):not(.gold-flaw){color:#2ecc71;}
+#masterMatrixTable tr.chakra-row-5 td:not(.gold):not(.red):not(.bright):not(.gold-flaw){color:#3498db;}
+#masterMatrixTable tr.chakra-row-6 td:not(.gold):not(.red):not(.bright):not(.gold-flaw){color:#6a5acd;}
+#masterMatrixTable tr.chakra-row-7 td:not(.gold):not(.red):not(.bright):not(.gold-flaw){color:#9b59b6;}
+
+/* Row-expand "+" circle button and gloss-term "+" buttons/underlines were
+   still hard-coded gold (via .row-expand-btn/.gloss-btn/.gloss's shared,
+   site-wide base rules). Scoped overrides so these small interactive marks
+   match their own row's chakra color too, leaving nothing gold except the
+   Brainwave-column intent already covered by uniform row coloring above. */
+#masterMatrixTable tr.chakra-row-1 .row-expand-btn{color:#e74c3c;border-color:#e74c3c;}
+#masterMatrixTable tr.chakra-row-1 .row-expand-btn:hover{background:#e74c3c;color:#0a0a0a;}
+#masterMatrixTable tr.chakra-row-1 .gloss-btn{color:#e74c3c;}
+#masterMatrixTable tr.chakra-row-1 .gloss{border-bottom-color:#e74c3c;}
+#masterMatrixTable tr.chakra-row-2 .row-expand-btn{color:#e67e22;border-color:#e67e22;}
+#masterMatrixTable tr.chakra-row-2 .row-expand-btn:hover{background:#e67e22;color:#0a0a0a;}
+#masterMatrixTable tr.chakra-row-2 .gloss-btn{color:#e67e22;}
+#masterMatrixTable tr.chakra-row-2 .gloss{border-bottom-color:#e67e22;}
+#masterMatrixTable tr.chakra-row-3 .row-expand-btn{color:#f1c40f;border-color:#f1c40f;}
+#masterMatrixTable tr.chakra-row-3 .row-expand-btn:hover{background:#f1c40f;color:#0a0a0a;}
+#masterMatrixTable tr.chakra-row-3 .gloss-btn{color:#f1c40f;}
+#masterMatrixTable tr.chakra-row-3 .gloss{border-bottom-color:#f1c40f;}
+#masterMatrixTable tr.chakra-row-4 .row-expand-btn{color:#2ecc71;border-color:#2ecc71;}
+#masterMatrixTable tr.chakra-row-4 .row-expand-btn:hover{background:#2ecc71;color:#0a0a0a;}
+#masterMatrixTable tr.chakra-row-4 .gloss-btn{color:#2ecc71;}
+#masterMatrixTable tr.chakra-row-4 .gloss{border-bottom-color:#2ecc71;}
+#masterMatrixTable tr.chakra-row-5 .row-expand-btn{color:#3498db;border-color:#3498db;}
+#masterMatrixTable tr.chakra-row-5 .row-expand-btn:hover{background:#3498db;color:#0a0a0a;}
+#masterMatrixTable tr.chakra-row-5 .gloss-btn{color:#3498db;}
+#masterMatrixTable tr.chakra-row-5 .gloss{border-bottom-color:#3498db;}
+#masterMatrixTable tr.chakra-row-6 .row-expand-btn{color:#6a5acd;border-color:#6a5acd;}
+#masterMatrixTable tr.chakra-row-6 .row-expand-btn:hover{background:#6a5acd;color:#0a0a0a;}
+#masterMatrixTable tr.chakra-row-6 .gloss-btn{color:#6a5acd;}
+#masterMatrixTable tr.chakra-row-6 .gloss{border-bottom-color:#6a5acd;}
+#masterMatrixTable tr.chakra-row-7 .row-expand-btn{color:#9b59b6;border-color:#9b59b6;}
+#masterMatrixTable tr.chakra-row-7 .row-expand-btn:hover{background:#9b59b6;color:#0a0a0a;}
+#masterMatrixTable tr.chakra-row-7 .gloss-btn{color:#9b59b6;}
+#masterMatrixTable tr.chakra-row-7 .gloss{border-bottom-color:#9b59b6;}
+
+/* Light theme equivalents — same hues, deepened for legibility against the
+   pale cream background (mirrors how the site already deepens gold from
+   #d4af37 to #7a5e0e for light mode). !important needed here because the
+   base light-theme rule (`[data-theme="light"] .self-table td{color:...
+   !important}`) is itself !important. */
+[data-theme="light"] #masterMatrixTable tr.chakra-row-1 td:not(.gold):not(.red):not(.bright):not(.gold-flaw){color:#c0392b !important;}
+[data-theme="light"] #masterMatrixTable tr.chakra-row-2 td:not(.gold):not(.red):not(.bright):not(.gold-flaw){color:#a15c00 !important;}
+[data-theme="light"] #masterMatrixTable tr.chakra-row-3 td:not(.gold):not(.red):not(.bright):not(.gold-flaw){color:#8a6d00 !important;}
+[data-theme="light"] #masterMatrixTable tr.chakra-row-4 td:not(.gold):not(.red):not(.bright):not(.gold-flaw){color:#1e8c50 !important;}
+[data-theme="light"] #masterMatrixTable tr.chakra-row-5 td:not(.gold):not(.red):not(.bright):not(.gold-flaw){color:#1e64a0 !important;}
+[data-theme="light"] #masterMatrixTable tr.chakra-row-6 td:not(.gold):not(.red):not(.bright):not(.gold-flaw){color:#4b3aa0 !important;}
+[data-theme="light"] #masterMatrixTable tr.chakra-row-7 td:not(.gold):not(.red):not(.bright):not(.gold-flaw){color:#7d3c98 !important;}
+
+/* Light-theme equivalents for the row-expand "+" circle and gloss "+"
+   buttons/underlines, matching the deepened hues used for row text above. */
+[data-theme="light"] #masterMatrixTable tr.chakra-row-1 .row-expand-btn{color:#c0392b !important;border-color:#c0392b !important;}
+[data-theme="light"] #masterMatrixTable tr.chakra-row-1 .row-expand-btn:hover{background:#c0392b !important;color:#f5f1e8 !important;}
+[data-theme="light"] #masterMatrixTable tr.chakra-row-1 .gloss-btn{color:#c0392b !important;}
+[data-theme="light"] #masterMatrixTable tr.chakra-row-1 .gloss{border-bottom-color:#c0392b !important;}
+[data-theme="light"] #masterMatrixTable tr.chakra-row-2 .row-expand-btn{color:#a15c00 !important;border-color:#a15c00 !important;}
+[data-theme="light"] #masterMatrixTable tr.chakra-row-2 .row-expand-btn:hover{background:#a15c00 !important;color:#f5f1e8 !important;}
+[data-theme="light"] #masterMatrixTable tr.chakra-row-2 .gloss-btn{color:#a15c00 !important;}
+[data-theme="light"] #masterMatrixTable tr.chakra-row-2 .gloss{border-bottom-color:#a15c00 !important;}
+[data-theme="light"] #masterMatrixTable tr.chakra-row-3 .row-expand-btn{color:#8a6d00 !important;border-color:#8a6d00 !important;}
+[data-theme="light"] #masterMatrixTable tr.chakra-row-3 .row-expand-btn:hover{background:#8a6d00 !important;color:#f5f1e8 !important;}
+[data-theme="light"] #masterMatrixTable tr.chakra-row-3 .gloss-btn{color:#8a6d00 !important;}
+[data-theme="light"] #masterMatrixTable tr.chakra-row-3 .gloss{border-bottom-color:#8a6d00 !important;}
+[data-theme="light"] #masterMatrixTable tr.chakra-row-4 .row-expand-btn{color:#1e8c50 !important;border-color:#1e8c50 !important;}
+[data-theme="light"] #masterMatrixTable tr.chakra-row-4 .row-expand-btn:hover{background:#1e8c50 !important;color:#f5f1e8 !important;}
+[data-theme="light"] #masterMatrixTable tr.chakra-row-4 .gloss-btn{color:#1e8c50 !important;}
+[data-theme="light"] #masterMatrixTable tr.chakra-row-4 .gloss{border-bottom-color:#1e8c50 !important;}
+[data-theme="light"] #masterMatrixTable tr.chakra-row-5 .row-expand-btn{color:#1e64a0 !important;border-color:#1e64a0 !important;}
+[data-theme="light"] #masterMatrixTable tr.chakra-row-5 .row-expand-btn:hover{background:#1e64a0 !important;color:#f5f1e8 !important;}
+[data-theme="light"] #masterMatrixTable tr.chakra-row-5 .gloss-btn{color:#1e64a0 !important;}
+[data-theme="light"] #masterMatrixTable tr.chakra-row-5 .gloss{border-bottom-color:#1e64a0 !important;}
+[data-theme="light"] #masterMatrixTable tr.chakra-row-6 .row-expand-btn{color:#4b3aa0 !important;border-color:#4b3aa0 !important;}
+[data-theme="light"] #masterMatrixTable tr.chakra-row-6 .row-expand-btn:hover{background:#4b3aa0 !important;color:#f5f1e8 !important;}
+[data-theme="light"] #masterMatrixTable tr.chakra-row-6 .gloss-btn{color:#4b3aa0 !important;}
+[data-theme="light"] #masterMatrixTable tr.chakra-row-6 .gloss{border-bottom-color:#4b3aa0 !important;}
+[data-theme="light"] #masterMatrixTable tr.chakra-row-7 .row-expand-btn{color:#7d3c98 !important;border-color:#7d3c98 !important;}
+[data-theme="light"] #masterMatrixTable tr.chakra-row-7 .row-expand-btn:hover{background:#7d3c98 !important;color:#f5f1e8 !important;}
+[data-theme="light"] #masterMatrixTable tr.chakra-row-7 .gloss-btn{color:#7d3c98 !important;}
+[data-theme="light"] #masterMatrixTable tr.chakra-row-7 .gloss{border-bottom-color:#7d3c98 !important;}
+
+/* Row-label chakra sub-labels ("Root Chakra", "Sacral Chakra"...) — class-
+   based instead of the hardcoded inline hex they used previously, so a
+   light-theme variant is actually possible (inline styles can't be
+   overridden by a stylesheet without fighting specificity). */
+.chakra-label-1{color:#e74c3c;}
+.chakra-label-2{color:#e67e22;}
+.chakra-label-3{color:#f1c40f;}
+.chakra-label-4{color:#2ecc71;}
+.chakra-label-5{color:#3498db;}
+.chakra-label-6{color:#6a5acd;}
+.chakra-label-7{color:#9b59b6;}
+[data-theme="light"] .chakra-label-1{color:#c0392b !important;}
+[data-theme="light"] .chakra-label-2{color:#a15c00 !important;}
+[data-theme="light"] .chakra-label-3{color:#8a6d00 !important;}
+[data-theme="light"] .chakra-label-4{color:#1e8c50 !important;}
+[data-theme="light"] .chakra-label-5{color:#1e64a0 !important;}
+[data-theme="light"] .chakra-label-6{color:#4b3aa0 !important;}
+[data-theme="light"] .chakra-label-7{color:#7d3c98 !important;}
+
+/* Light theme: same hues, background wash tuned down since the base is
+   already pale (mirrors the existing gold-row light-theme pattern below). */
+[data-theme="light"] #masterMatrixTable tr.chakra-row-1{background:rgba(192,57,43,.07);}
+[data-theme="light"] #masterMatrixTable tr.chakra-row-2{background:rgba(180,95,15,.07);}
+[data-theme="light"] #masterMatrixTable tr.chakra-row-3{background:rgba(158,127,8,.09);}
+[data-theme="light"] #masterMatrixTable tr.chakra-row-4{background:rgba(30,140,80,.07);}
+[data-theme="light"] #masterMatrixTable tr.chakra-row-5{background:rgba(30,100,160,.07);}
+[data-theme="light"] #masterMatrixTable tr.chakra-row-6{background:rgba(80,65,160,.07);}
+[data-theme="light"] #masterMatrixTable tr.chakra-row-7{background:rgba(125,60,152,.07);}
+
 .self-table .axis-cell{
   font-family:var(--sans);
   font-size:8px;
@@ -5853,113 +6000,113 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
           </tr>
         </thead>
         <tbody>
-          <tr id="matrix-row-1" data-layer="1">
-            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-1" onclick="toggleMatrixRow(1)" aria-label="Expand Layer 1 detail">+</button><span style="color:var(--dim);font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 1</span>Body<span style="display:block;font-size:9px;color:var(--dim);font-style:normal;letter-spacing:0;margin-top:2px;">Root Chakra</span></td>
+          <tr id="matrix-row-1" class="chakra-row-1" data-layer="1">
+            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-1" onclick="toggleMatrixRow(1)" aria-label="Expand Layer 1 detail">+</button><span style="font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 1</span>Body<span class="chakra-label-1" style="display:block;font-size:9px;font-style:normal;letter-spacing:0;margin-top:2px;">Root Chakra</span></td>
             <td class="col-grid">Womb</td><td class="col-grid">Infancy</td><td class="col-grid">Health</td><td class="col-grid">Aging</td><td class="col-grid"><span class="gloss">Senescence<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Senescence">+</button><span class="gloss-pop">The point where cells stop dividing and repairing themselves as efficiently &mdash; the biological beginning of decline, before outright breakdown.</span></span></td><td class="col-grid">Mortality</td>
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Hunger, exhaustion, illness, and raw biological baselines.</td>
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Takes a literal physical toll (Aging).</td>
             <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">Ground the Vessel: eat cleanly, move optimally, and anchor your physical frame to build a resilient survival baseline free of ambient panic.</td>
             <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">&ldquo;I am here, safely grounded in physical form.&rdquo;</td>
-            <td class="col-meta" style="border-left:2px solid rgba(212,175,55,0.3);color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:1px;"><span class="gloss">Delta<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Delta">+</button><span class="gloss-pop">The slowest brainwave band, dominant in deep, dreamless sleep &mdash; the conscious mind is fully offline while the body repairs itself.</span></span></td>
-            <td class="col-meta" style="font-size:12px;">Unconscious <span style="color:var(--dim);font-size:10px;">(Deep Sleep)</span></td>
+            <td class="col-meta" style="border-left:2px solid rgba(231,76,60,0.3);font-family:var(--sans);font-size:10px;letter-spacing:1px;"><span class="gloss">Delta<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Delta">+</button><span class="gloss-pop">The slowest brainwave band, dominant in deep, dreamless sleep &mdash; the conscious mind is fully offline while the body repairs itself.</span></span></td>
+            <td class="col-meta" style="font-size:12px;">Unconscious <span style="font-size:10px;">(Deep Sleep)</span></td>
             <td class="col-meta" style="font-size:12px;">Exist</td>
-            <td class="col-meta" style="font-size:12px;"><span class="gloss">Lead<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Lead">+</button><span class="gloss-pop">The heaviest, most inert starting material in alchemy &mdash; the raw, unrefined condition everything else in the sequence works on.</span></span> <span style="color:var(--dim);font-size:10px;">(Base)</span></td>
-            <td class="col-meta" style="font-size:12px;color:var(--grey);"><span class="gloss">Annamaya<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Annamaya">+</button><span class="gloss-pop">The &ldquo;food sheath&rdquo; &mdash; the physical body itself, the most outer and dense of the five koshas said to wrap the true Self.</span></span></td>
+            <td class="col-meta" style="font-size:12px;"><span class="gloss">Lead<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Lead">+</button><span class="gloss-pop">The heaviest, most inert starting material in alchemy &mdash; the raw, unrefined condition everything else in the sequence works on.</span></span> <span style="font-size:10px;">(Base)</span></td>
+            <td class="col-meta" style="font-size:12px;"><span class="gloss">Annamaya<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Annamaya">+</button><span class="gloss-pop">The &ldquo;food sheath&rdquo; &mdash; the physical body itself, the most outer and dense of the five koshas said to wrap the true Self.</span></span></td>
           </tr>
           <tr class="row-detail" id="matrix-detail-1"><td colspan="16"></td></tr>
 
-          <tr id="matrix-row-2" data-layer="2">
-            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-2" onclick="toggleMatrixRow(2)" aria-label="Expand Layer 2 detail">+</button><span style="color:var(--dim);font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 2</span>Breath<span style="display:block;font-size:9px;color:var(--dim);font-style:normal;letter-spacing:0;margin-top:2px;">Sacral Chakra</span></td>
+          <tr id="matrix-row-2" class="chakra-row-2" data-layer="2">
+            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-2" onclick="toggleMatrixRow(2)" aria-label="Expand Layer 2 detail">+</button><span style="font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 2</span>Breath<span class="chakra-label-2" style="display:block;font-size:9px;font-style:normal;letter-spacing:0;margin-top:2px;">Sacral Chakra</span></td>
             <td class="col-grid">First cry</td><td class="col-grid">Deepening</td><td class="col-grid">Rhythm</td><td class="col-grid">Emotion</td><td class="col-grid">Laboured</td><td class="col-grid">Last breath</td>
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Fluctuations between deep belly sighs and erratic breathing.</td>
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Locks panic or grief into the nervous system (Emotion).</td>
             <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">Cleanse the Energy: when an emotional wave hits, use conscious, rhythmic breathing to clear the charge rather than burying it in your tissue.</td>
             <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">&ldquo;I feel the moving currents of vital energy.&rdquo;</td>
-            <td class="col-meta" style="border-left:2px solid rgba(212,175,55,0.3);color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:1px;"><span class="gloss">Theta<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Theta">+</button><span class="gloss-pop">Active during the twilight zone between waking and sleep, or deep meditation &mdash; attention turns inward toward imagery, intuition, and dreams.</span></span></td>
-            <td class="col-meta" style="font-size:12px;">Subconscious <span style="color:var(--dim);font-size:10px;">(Twilight)</span></td>
+            <td class="col-meta" style="border-left:2px solid rgba(230,126,34,0.3);font-family:var(--sans);font-size:10px;letter-spacing:1px;"><span class="gloss">Theta<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Theta">+</button><span class="gloss-pop">Active during the twilight zone between waking and sleep, or deep meditation &mdash; attention turns inward toward imagery, intuition, and dreams.</span></span></td>
+            <td class="col-meta" style="font-size:12px;">Subconscious <span style="font-size:10px;">(Twilight)</span></td>
             <td class="col-meta" style="font-size:12px;">Feel</td>
-            <td class="col-meta" style="font-size:12px;"><span class="gloss">Copper<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Copper">+</button><span class="gloss-pop">An early refining stage &mdash; impurities in the base material start burning off, but the result is still volatile and unstable.</span></span> <span style="color:var(--dim);font-size:10px;">(Purify)</span></td>
-            <td class="col-meta" style="font-size:12px;color:var(--grey);"><span class="gloss">Pranamaya<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Pranamaya">+</button><span class="gloss-pop">The &ldquo;breath/vital-energy sheath&rdquo; &mdash; one layer in from the physical body: the life-force and breath that animates it.</span></span></td>
+            <td class="col-meta" style="font-size:12px;"><span class="gloss">Copper<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Copper">+</button><span class="gloss-pop">An early refining stage &mdash; impurities in the base material start burning off, but the result is still volatile and unstable.</span></span> <span style="font-size:10px;">(Purify)</span></td>
+            <td class="col-meta" style="font-size:12px;"><span class="gloss">Pranamaya<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Pranamaya">+</button><span class="gloss-pop">The &ldquo;breath/vital-energy sheath&rdquo; &mdash; one layer in from the physical body: the life-force and breath that animates it.</span></span></td>
           </tr>
           <tr class="row-detail" id="matrix-detail-2"><td colspan="16"></td></tr>
 
-          <tr id="matrix-row-3" data-layer="3">
-            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-3" onclick="toggleMatrixRow(3)" aria-label="Expand Layer 3 detail">+</button><span style="color:var(--dim);font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 3</span>Mind<span style="display:block;font-size:9px;color:var(--dim);font-style:normal;letter-spacing:0;margin-top:2px;">Solar Plexus</span></td>
+          <tr id="matrix-row-3" class="chakra-row-3" data-layer="3">
+            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-3" onclick="toggleMatrixRow(3)" aria-label="Expand Layer 3 detail">+</button><span style="font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 3</span>Mind<span class="chakra-label-3" style="display:block;font-size:9px;font-style:normal;letter-spacing:0;margin-top:2px;">Solar Plexus</span></td>
             <td class="col-grid">Sensory</td><td class="col-grid">Learning</td><td class="col-grid">Perception</td><td class="col-grid">Shifting</td><td class="col-grid">Fatigue</td><td class="col-grid">Loss of senses</td>
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Daily to-do lists, routine patterns, and automatic mental chatter.</td>
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Shatters routines, forcing focus to spin out (Shifting).</td>
             <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">Decondition the Mind: actively audit automatic loops and scripts. Train awareness to step back into the seat of the neutral observer.</td>
             <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">&ldquo;I observe my thoughts without becoming them.&rdquo;</td>
-            <td class="col-meta" style="border-left:2px solid rgba(212,175,55,0.3);color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:1px;"><span class="gloss">Alpha<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Alpha">+</button><span class="gloss-pop">The state of calm, relaxed wakefulness &mdash; an &ldquo;idling&rdquo; visual system, often peaking when the eyes close and the mind drifts.</span></span></td>
-            <td class="col-meta" style="font-size:12px;">Relaxed Waking <span style="color:var(--dim);font-size:10px;">(Visual Rest)</span></td>
+            <td class="col-meta" style="border-left:2px solid rgba(241,196,15,0.3);font-family:var(--sans);font-size:10px;letter-spacing:1px;"><span class="gloss">Alpha<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Alpha">+</button><span class="gloss-pop">The state of calm, relaxed wakefulness &mdash; an &ldquo;idling&rdquo; visual system, often peaking when the eyes close and the mind drifts.</span></span></td>
+            <td class="col-meta" style="font-size:12px;">Relaxed Waking <span style="font-size:10px;">(Visual Rest)</span></td>
             <td class="col-meta" style="font-size:12px;">Think</td>
-            <td class="col-meta" style="font-size:12px;"><span class="gloss">Iron<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Iron">+</button><span class="gloss-pop">A hardening stage &mdash; the volatility of the previous stage sets into something rigid and load-bearing, for better and worse.</span></span> <span style="color:var(--dim);font-size:10px;">(Strength)</span></td>
-            <td class="col-meta" style="font-size:12px;color:var(--grey);"><span class="gloss">Manomaya<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Manomaya">+</button><span class="gloss-pop">The &ldquo;mind sheath&rdquo; &mdash; the layer of thought, emotion, and sensory processing; where most people spend nearly all their time without noticing it.</span></span></td>
+            <td class="col-meta" style="font-size:12px;"><span class="gloss">Iron<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Iron">+</button><span class="gloss-pop">A hardening stage &mdash; the volatility of the previous stage sets into something rigid and load-bearing, for better and worse.</span></span> <span style="font-size:10px;">(Strength)</span></td>
+            <td class="col-meta" style="font-size:12px;"><span class="gloss">Manomaya<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Manomaya">+</button><span class="gloss-pop">The &ldquo;mind sheath&rdquo; &mdash; the layer of thought, emotion, and sensory processing; where most people spend nearly all their time without noticing it.</span></span></td>
           </tr>
           <tr class="row-detail" id="matrix-detail-3"><td colspan="16"></td></tr>
 
-          <tr id="matrix-row-4" data-layer="4">
-            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-4" onclick="toggleMatrixRow(4)" aria-label="Expand Layer 4 detail">+</button><span style="color:var(--dim);font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 4</span>Intellect<span style="display:block;font-size:9px;color:var(--dim);font-style:normal;letter-spacing:0;margin-top:2px;">Heart Chakra</span></td>
-            <td class="col-grid">Curiosity</td><td class="col-grid">Logic</td><td class="col-grid">Stability</td><td class="col-grid bright">Shifting beliefs</td><td class="col-grid">Decline</td><td class="col-grid">Loss of judgment</td>
+          <tr id="matrix-row-4" class="chakra-row-4" data-layer="4">
+            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-4" onclick="toggleMatrixRow(4)" aria-label="Expand Layer 4 detail">+</button><span style="font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 4</span>Intellect<span class="chakra-label-4" style="display:block;font-size:9px;font-style:normal;letter-spacing:0;margin-top:2px;">Heart Chakra</span></td>
+            <td class="col-grid">Curiosity</td><td class="col-grid">Logic</td><td class="col-grid">Stability</td><td class="col-grid">Shifting beliefs</td><td class="col-grid">Decline</td><td class="col-grid">Loss of judgment</td>
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Discerning right vs. wrong; building a structured logic framework.</td>
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Old worldviews fail over time, forcing a pivot (Shifting Beliefs).</td>
             <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">Bridge to Heart Wisdom: when core beliefs are tested by life, do not double down on rigid logic. Let old frameworks break to allow intuitive knowing.</td>
             <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">&ldquo;I choose core wisdom over rigid mental logic.&rdquo;</td>
-            <td class="col-meta" style="border-left:2px solid rgba(212,175,55,0.3);color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:1px;"><span class="gloss">Mu<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Mu">+</button><span class="gloss-pop">Shares Alpha's frequency but sits over the motor cortex &mdash; the body idling in neutral, present during physical stillness and vanishing the instant you move, or even intend to.</span></span></td>
-            <td class="col-meta" style="font-size:12px;">Stillness <span style="color:var(--dim);font-size:10px;">(Motor Ready)</span></td>
+            <td class="col-meta" style="border-left:2px solid rgba(46,204,113,0.3);font-family:var(--sans);font-size:10px;letter-spacing:1px;"><span class="gloss">Mu<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Mu">+</button><span class="gloss-pop">Shares Alpha's frequency but sits over the motor cortex &mdash; the body idling in neutral, present during physical stillness and vanishing the instant you move, or even intend to.</span></span></td>
+            <td class="col-meta" style="font-size:12px;">Stillness <span style="font-size:10px;">(Motor Ready)</span></td>
             <td class="col-meta" style="font-size:12px;">Connect</td>
-            <td class="col-meta" style="font-size:12px;"><span class="gloss">Silver<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Silver">+</button><span class="gloss-pop">A polishing stage &mdash; the rigid material of the last stage gets refined into something more responsive and reflective, without yet reaching gold's stability.</span></span> <span style="color:var(--dim);font-size:10px;">(Refine)</span></td>
-            <td class="col-meta" style="font-size:12px;color:var(--grey);"><span class="gloss">Vijnanamaya<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Vijnanamaya">+</button><span class="gloss-pop">The &ldquo;wisdom/intellect sheath&rdquo; &mdash; the layer of discernment, one step subtler than ordinary thought: the part that can notice the mind sheath working.</span></span></td>
+            <td class="col-meta" style="font-size:12px;"><span class="gloss">Silver<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Silver">+</button><span class="gloss-pop">A polishing stage &mdash; the rigid material of the last stage gets refined into something more responsive and reflective, without yet reaching gold's stability.</span></span> <span style="font-size:10px;">(Refine)</span></td>
+            <td class="col-meta" style="font-size:12px;"><span class="gloss">Vijnanamaya<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Vijnanamaya">+</button><span class="gloss-pop">The &ldquo;wisdom/intellect sheath&rdquo; &mdash; the layer of discernment, one step subtler than ordinary thought: the part that can notice the mind sheath working.</span></span></td>
           </tr>
           <tr class="row-detail" id="matrix-detail-4"><td colspan="16"></td></tr>
 
-          <tr id="matrix-row-5" data-layer="5">
-            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-5" onclick="toggleMatrixRow(5)" aria-label="Expand Layer 5 detail">+</button><span style="color:var(--dim);font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 5</span>Memory<span style="display:block;font-size:9px;color:var(--dim);font-style:normal;letter-spacing:0;margin-top:2px;">Throat Chakra</span></td>
-            <td class="col-grid">First impression</td><td class="col-grid">Experience</td><td class="col-grid">Storing</td><td class="col-grid bright">Trauma</td><td class="col-grid">Forgetfulness</td><td class="col-grid">Erasure</td>
+          <tr id="matrix-row-5" class="chakra-row-5" data-layer="5">
+            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-5" onclick="toggleMatrixRow(5)" aria-label="Expand Layer 5 detail">+</button><span style="font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 5</span>Memory<span class="chakra-label-5" style="display:block;font-size:9px;font-style:normal;letter-spacing:0;margin-top:2px;">Throat Chakra</span></td>
+            <td class="col-grid">First impression</td><td class="col-grid">Experience</td><td class="col-grid">Storing</td><td class="col-grid">Trauma</td><td class="col-grid">Forgetfulness</td><td class="col-grid">Erasure</td>
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Nostalgia, flashbacks, triggers, and automated habit loops.</td>
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Triggers deeply buried ghosts, wounds, or past failures (Trauma).</td>
             <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">Decondition the Memory: consciously unpack early conditioning. Reframe your past as purely educational database data rather than your definition.</td>
             <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">&ldquo;My past is educational data, not my definition.&rdquo;</td>
-            <td class="col-meta" style="border-left:2px solid rgba(212,175,55,0.3);color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:1px;"><span class="gloss">Beta<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Beta">+</button><span class="gloss-pop">The everyday waking state &mdash; dominant when attention is directed outward: solving problems, conversing, making decisions.</span></span></td>
-            <td class="col-meta" style="font-size:12px;">Active <span style="color:var(--dim);font-size:10px;">(Alert Focus)</span></td>
+            <td class="col-meta" style="border-left:2px solid rgba(52,152,219,0.3);font-family:var(--sans);font-size:10px;letter-spacing:1px;"><span class="gloss">Beta<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Beta">+</button><span class="gloss-pop">The everyday waking state &mdash; dominant when attention is directed outward: solving problems, conversing, making decisions.</span></span></td>
+            <td class="col-meta" style="font-size:12px;">Active <span style="font-size:10px;">(Alert Focus)</span></td>
             <td class="col-meta" style="font-size:12px;">Understand</td>
-            <td class="col-meta" style="font-size:12px;"><span class="gloss">Gold<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Gold">+</button><span class="gloss-pop">The classical alchemical goal-material &mdash; incorruptible, stable, &ldquo;illuminated.&rdquo; What the earlier, cruder stages were always in service of becoming.</span></span> <span style="color:var(--dim);font-size:10px;">(Illuminate)</span></td>
-            <td class="col-meta" style="font-size:12px;color:var(--grey);"><span class="gloss">Chitta<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Chitta">+</button><span class="gloss-pop">The mind-stuff, or memory-store &mdash; the layer that holds impressions, conditioning, and habitual patterns built up over time.</span></span></td>
+            <td class="col-meta" style="font-size:12px;"><span class="gloss">Gold<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Gold">+</button><span class="gloss-pop">The classical alchemical goal-material &mdash; incorruptible, stable, &ldquo;illuminated.&rdquo; What the earlier, cruder stages were always in service of becoming.</span></span> <span style="font-size:10px;">(Illuminate)</span></td>
+            <td class="col-meta" style="font-size:12px;"><span class="gloss">Chitta<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Chitta">+</button><span class="gloss-pop">The mind-stuff, or memory-store &mdash; the layer that holds impressions, conditioning, and habitual patterns built up over time.</span></span></td>
           </tr>
           <tr class="row-detail" id="matrix-detail-5"><td colspan="16"></td></tr>
 
-          <tr id="matrix-row-6" data-layer="6">
-            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-6" onclick="toggleMatrixRow(6)" aria-label="Expand Layer 6 detail">+</button><span style="color:var(--dim);font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 6</span>Ego<span style="display:block;font-size:9px;color:var(--dim);font-style:normal;letter-spacing:0;margin-top:2px;">Third Eye</span></td>
-            <td class="col-grid">Toddlerhood</td><td class="col-grid">Ambition</td><td class="col-grid">Persona</td><td class="col-grid red">Crisis</td><td class="col-grid red">Rigidity</td><td class="col-grid" style="color:var(--gold);font-style:italic;">Dissolution ✦</td>
+          <tr id="matrix-row-6" class="chakra-row-6" data-layer="6">
+            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-6" onclick="toggleMatrixRow(6)" aria-label="Expand Layer 6 detail">+</button><span style="font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 6</span>Ego<span class="chakra-label-6" style="display:block;font-size:9px;font-style:normal;letter-spacing:0;margin-top:2px;">Third Eye</span></td>
+            <td class="col-grid">Toddlerhood</td><td class="col-grid">Ambition</td><td class="col-grid">Persona</td><td class="col-grid">Crisis</td><td class="col-grid">Rigidity</td><td class="col-grid" style="font-style:italic;">Dissolution ✦</td>
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Feeling proud, defensive, or protective of &ldquo;who you think you are&rdquo;.</td>
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Causes your curated persona to completely shatter (Crisis).</td>
             <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">Dissolve the Persona: when an existential crisis hits your career or relationships, do not fight to save the mask. Use it to shatter false identity.</td>
             <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">&ldquo;I am not the mask; I am the one watching it.&rdquo;</td>
-            <td class="col-meta" style="border-left:2px solid rgba(212,175,55,0.3);color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:1px;"><span class="gloss">Gamma<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Gamma">+</button><span class="gloss-pop">The fastest standard brainwave band, associated with binding information across brain regions into one coherent experience &mdash; present during peak focus and sudden insight.</span></span></td>
-            <td class="col-meta" style="font-size:12px;">Superconsciousness <span style="color:var(--dim);font-size:10px;">(Hyper-Focus)</span></td>
+            <td class="col-meta" style="border-left:2px solid rgba(106,90,205,0.3);font-family:var(--sans);font-size:10px;letter-spacing:1px;"><span class="gloss">Gamma<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Gamma">+</button><span class="gloss-pop">The fastest standard brainwave band, associated with binding information across brain regions into one coherent experience &mdash; present during peak focus and sudden insight.</span></span></td>
+            <td class="col-meta" style="font-size:12px;">Superconsciousness <span style="font-size:10px;">(Hyper-Focus)</span></td>
             <td class="col-meta" style="font-size:12px;">Transcend</td>
             <td class="col-meta" style="font-size:12px;"><span class="gloss">Quintessence<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Quintessence">+</button><span class="gloss-pop">Literally the &ldquo;fifth essence&rdquo; &mdash; beyond the four classical elements, the pure spirit or vital essence said to underlie and animate all of them.</span></span></td>
-            <td class="col-meta" style="font-size:12px;color:var(--grey);"><span class="gloss">Ahamkara<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Ahamkara">+</button><span class="gloss-pop">Literally &ldquo;the I-maker&rdquo; &mdash; the function of mind that stamps &ldquo;me&rdquo; onto raw experience, manufacturing a sense of separate identity.</span></span></td>
+            <td class="col-meta" style="font-size:12px;"><span class="gloss">Ahamkara<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Ahamkara">+</button><span class="gloss-pop">Literally &ldquo;the I-maker&rdquo; &mdash; the function of mind that stamps &ldquo;me&rdquo; onto raw experience, manufacturing a sense of separate identity.</span></span></td>
           </tr>
           <tr class="row-detail" id="matrix-detail-6"><td colspan="16"></td></tr>
 
-          <tr class="gold-row" id="matrix-row-7" data-layer="7">
-            <td class="row-label" style="font-style:italic;color:var(--gold);text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-7" onclick="toggleMatrixRow(7)" aria-label="Expand Layer 7 detail">+</button><span style="font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;color:var(--gold);">Layer 7</span>Self / Soul<span style="display:block;font-size:9px;color:var(--gold);font-style:normal;letter-spacing:0;margin-top:2px;opacity:.7;">Crown Chakra</span></td>
-            <td class="col-grid" style="font-family:var(--sans);font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--gold);">Manifestation</td>
-            <td class="col-grid" style="font-family:var(--sans);font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--gold);">Realization</td>
-            <td class="col-grid" style="font-family:var(--sans);font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--gold);">Eternal Witness</td>
-            <td class="col-grid" style="font-family:var(--sans);font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--gold);">Transcends</td>
-            <td class="col-grid" style="font-family:var(--sans);font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--gold);">Unchanged</td>
-            <td class="col-grid" style="font-family:var(--sans);font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--gold);">Unchanged</td>
-            <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;color:var(--mid);">Operating from a quiet, peaceful space of non-judgmental observation.</td>
-            <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;color:var(--mid);">Complete immunity; remains entirely untouched (Transcends).</td>
-            <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;color:var(--mid);">Rest as the Witness: stop identifying with things that decay. When death arrives, view it as the effortless dropping of a mastered instrument.</td>
-            <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;color:var(--mid);">&ldquo;I Am That I Am. The Unchanging Source.&rdquo;</td>
-            <td class="col-meta" style="border-left:2px solid rgba(212,175,55,0.3);color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:1px;"><span class="gloss">Lambda<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Lambda">+</button><span class="gloss-pop">A rarely-observed, very high frequency band associated with profound meditative or altered states &mdash; deep stillness paired with rapid, high-coherence processing.</span></span></td>
-            <td class="col-meta" style="font-size:12px;color:var(--gold);">Transcendence <span style="opacity:.7;font-size:10px;">(Altered States)</span></td>
-            <td class="col-meta" style="font-size:12px;color:var(--gold);">I Am</td>
-            <td class="col-meta" style="font-size:12px;color:var(--gold);"><span class="gloss">Philosopher&rsquo;s Stone<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Philosopher&rsquo;s Stone">+</button><span class="gloss-pop">The legendary end-goal of alchemy &mdash; not a literal object but a completed transformation, capable of &ldquo;turning lead into gold&rdquo;: here, base conditioning fully transmuted into realized SELF.</span></span></td>
-            <td class="col-meta" style="font-size:12px;color:var(--gold);"><span class="gloss">Atman<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Atman">+</button><span class="gloss-pop">The individual self, in Vedanta &mdash; held as identical to, not separate from, universal consciousness. Closer to the awareness doing the possessing than a possession itself.</span></span></td>
+          <tr class="chakra-row-7" id="matrix-row-7" data-layer="7">
+            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-7" onclick="toggleMatrixRow(7)" aria-label="Expand Layer 7 detail">+</button><span style="font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 7</span>Self / Soul<span class="chakra-label-7" style="display:block;font-size:9px;font-style:normal;letter-spacing:0;margin-top:2px;">Crown Chakra</span></td>
+            <td class="col-grid">Manifestation</td>
+            <td class="col-grid">Realization</td>
+            <td class="col-grid">Eternal Witness</td>
+            <td class="col-grid">Transcends</td>
+            <td class="col-grid">Unchanged</td>
+            <td class="col-grid">Unchanged</td>
+            <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Operating from a quiet, peaceful space of non-judgmental observation.</td>
+            <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Complete immunity; remains entirely untouched (Transcends).</td>
+            <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">Rest as the Witness: stop identifying with things that decay. When death arrives, view it as the effortless dropping of a mastered instrument.</td>
+            <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">&ldquo;I Am That I Am. The Unchanging Source.&rdquo;</td>
+            <td class="col-meta" style="border-left:2px solid rgba(155,89,182,0.3);font-family:var(--sans);font-size:10px;letter-spacing:1px;"><span class="gloss">Lambda<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Lambda">+</button><span class="gloss-pop">A rarely-observed, very high frequency band associated with profound meditative or altered states &mdash; deep stillness paired with rapid, high-coherence processing.</span></span></td>
+            <td class="col-meta" style="font-size:12px;">Transcendence <span style="font-size:10px;">(Altered States)</span></td>
+            <td class="col-meta" style="font-size:12px;">I Am</td>
+            <td class="col-meta" style="font-size:12px;"><span class="gloss">Philosopher&rsquo;s Stone<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Philosopher&rsquo;s Stone">+</button><span class="gloss-pop">The legendary end-goal of alchemy &mdash; not a literal object but a completed transformation, capable of &ldquo;turning lead into gold&rdquo;: here, base conditioning fully transmuted into realized SELF.</span></span></td>
+            <td class="col-meta" style="font-size:12px;"><span class="gloss">Atman<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Atman">+</button><span class="gloss-pop">The individual self, in Vedanta &mdash; held as identical to, not separate from, universal consciousness. Closer to the awareness doing the possessing than a possession itself.</span></span></td>
           </tr>
           <tr class="row-detail" id="matrix-detail-7"><td colspan="16"></td></tr>
         </tbody>
