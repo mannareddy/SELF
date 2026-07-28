@@ -255,8 +255,8 @@ body{
   font-size:12.5px !important;
   font-weight:400 !important;
   font-family:var(--serif) !important;
-  text-transform:none;
-  letter-spacing:0.2px;
+  text-transform:uppercase;
+  letter-spacing:0.3px;
 }
 [data-theme="light"] #masterMatrixTable td.col-meta{
   font-weight:500 !important;
@@ -280,8 +280,8 @@ body{
 #masterMatrixTable td.col-grid{
   font-size:12.5px !important;
   font-weight:400 !important;
-  text-transform:none;
-  letter-spacing:0.2px;
+  text-transform:uppercase;
+  letter-spacing:0.3px;
 }
 [data-theme="light"] #masterMatrixTable td.col-grid{
   font-weight:500 !important;
@@ -2773,7 +2773,11 @@ a.src-tag:hover{opacity:.75;}
       <a href="#glossary" data-group="new">New<span class="nav-new-dot"></span><span class="nav-caret">▾</span></a>
       <div class="nav-dropdown-panel" id="newMenuPanel">
         <a href="#glossary" data-group="new">Glossary — New Terms Added</a>
-        <a href="#master-matrix" data-group="new">Master Matrix — Reading Guide</a>
+        <a href="#master-matrix" data-group="new">Master Matrix — New Map Added</a>
+        <a href="#enneagram" data-group="new">Enneagram — Map Added</a>
+        <a href="#spectrum" data-group="new">Ascent of Self — Map Added</a>
+        <a href="#rosetta-stone" data-group="new">Rosetta Stone — Map Added</a>
+        <a href="#masters" data-group="new">Masters at a Glance — Map Added</a>
         <a href="#disclaimer" data-group="new">Disclaimer — Expanded Care Guidance</a>
       </div>
     </li>
@@ -2850,7 +2854,11 @@ a.src-tag:hover{opacity:.75;}
       </button>
       <div class="mnav-group-panel" id="newMenuPanelMobile">
         <a href="#glossary">Glossary — New Terms Added</a>
-        <a href="#master-matrix">Master Matrix — Reading Guide</a>
+        <a href="#master-matrix">Master Matrix — New Map Added</a>
+        <a href="#enneagram">Enneagram — Map Added</a>
+        <a href="#spectrum">Ascent of Self — Map Added</a>
+        <a href="#rosetta-stone">Rosetta Stone — Map Added</a>
+        <a href="#masters">Masters at a Glance — Map Added</a>
         <a href="#disclaimer">Disclaimer — Expanded Care Guidance</a>
       </div>
     </li>
@@ -4405,7 +4413,7 @@ a.src-tag:hover{opacity:.75;}
 <div class="divider"></div>
 
 <!-- ENNEAGRAM -->
-<section class="enn-section">
+<section class="enn-section" id="enneagram" style="scroll-margin-top:56px;">
   <span class="label">The Enneagram of Character Fixation</span>
   <h2>The Enneagram is Not Who You Are.</h2>
   <p class="sub">It is a diagnostic map of who you are NOT. It reveals the 9 specific masks the ego uses to manage the universal engine of desire, fear, and anger.</p>
@@ -4774,7 +4782,7 @@ a.src-tag:hover{opacity:.75;}
 <div class="divider"></div>
 
 <!-- ROSETTA STONE — table collapsible, closing text standalone -->
-<section class="rasa-section">
+<section class="rasa-section" id="rosetta-stone" style="scroll-margin-top:56px;">
   <span class="label">The Rosetta Stone of the Ego</span>
   <h2>The Master Synthesis: Ego to Essence</h2>
   <p class="sub">Two ancient traditions. One universal trance induction. The Enneagram maps the egoic structure. The Vedic Rasas map the emotional weather it generates. Together they reveal both the prison and the key.</p>
