@@ -5745,11 +5745,24 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
      glance instead of requiring horizontal table scroll. Tapping anywhere
      in a row reuses the existing expandMatrixRow() navigator: expands the
      full matrix (if collapsed), opens that layer's accordion row, and
-     scrolls to it — same behavior as the old 7-node map, just triggered
-     from a real grid instead of an implied one. Highlighted cells (gold
-     "bright" outline, red outline) mirror the live table's own emphasis
-     on the Transformation column and Layer 6's Crisis/Rigidity pair —
-     the Construction -> Switch -> Deconstruction pivot made visible. -->
+     scrolls to it — clicking is row-level only, individual cells are not
+     separately clickable, so cell text is a preview, not a control.
+     Highlighted cells (gold "bright" outline, red outline) mirror the live
+     table's own emphasis on the Transformation column and Layer 6's
+     Crisis/Rigidity pair — the Construction -> Switch -> Deconstruction
+     pivot made visible.
+
+     DENSITY FIX (this pass): cell text was 6.6px in the SVG's own
+     coordinate space — after the responsive scale-down on a real ~320-360px
+     phone width (viewBox is 460 units wide), that rendered under 5px,
+     effectively unreadable. Fixed by (a) bumping cell text 6.6→12,
+     header labels 7.5→10, row-number circles r12→14/font 11→13, and
+     (b) shortening the handful of cell labels that were long enough to
+     overflow a cell at the bigger size (e.g. "Shift belief"→"Reframe",
+     "Lost senses"→"No sense") so every displayed label is ≤8 characters —
+     the full original word is preserved in each cell's <title> tooltip.
+     Row/column geometry itself is untouched; this was a legibility fix,
+     not a layout rebuild. -->
 <div style="max-width:460px;margin:32px auto 8px;">
   <svg viewBox="0 0 460 354" style="width:100%;height:auto;overflow:visible;" role="img" aria-label="Master Matrix grid map — 7 layers by 6 stages, tap a row to jump to its full detail">
     <style>
@@ -5760,139 +5773,139 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
       .matrix-cell-text{font-family:var(--sans);}
     </style>
     <g opacity="0.85">
-      <text x="92.5" y="24" text-anchor="middle" font-family="var(--sans)" font-size="7.5" letter-spacing="0.5" fill="var(--gold)" style="text-transform:uppercase;">Birth</text>
-      <text x="157.5" y="24" text-anchor="middle" font-family="var(--sans)" font-size="7.5" letter-spacing="0.5" fill="var(--gold)" style="text-transform:uppercase;">Growth</text>
-      <text x="222.5" y="24" text-anchor="middle" font-family="var(--sans)" font-size="7.5" letter-spacing="0.5" fill="var(--gold)" style="text-transform:uppercase;">Sustain</text>
-      <text x="287.5" y="24" text-anchor="middle" font-family="var(--sans)" font-size="7.5" letter-spacing="0.5" fill="var(--gold)" style="text-transform:uppercase;">Transform</text>
-      <text x="352.5" y="24" text-anchor="middle" font-family="var(--sans)" font-size="7.5" letter-spacing="0.5" fill="var(--gold)" style="text-transform:uppercase;">Declin’n</text>
-      <text x="417.5" y="24" text-anchor="middle" font-family="var(--sans)" font-size="7.5" letter-spacing="0.5" fill="var(--gold)" style="text-transform:uppercase;">Death</text>
-      <text x="4" y="24" font-family="var(--sans)" font-size="7" letter-spacing="1" fill="var(--dim)" style="text-transform:uppercase;">7L↓</text>
+      <text x="92.5" y="26" text-anchor="middle" font-family="var(--sans)" font-size="10" letter-spacing="0.5" fill="var(--gold)" style="text-transform:uppercase;">Birth</text>
+      <text x="157.5" y="26" text-anchor="middle" font-family="var(--sans)" font-size="10" letter-spacing="0.5" fill="var(--gold)" style="text-transform:uppercase;">Growth</text>
+      <text x="222.5" y="26" text-anchor="middle" font-family="var(--sans)" font-size="10" letter-spacing="0.5" fill="var(--gold)" style="text-transform:uppercase;">Sustain</text>
+      <text x="287.5" y="26" text-anchor="middle" font-family="var(--sans)" font-size="10" letter-spacing="0.5" fill="var(--gold)" style="text-transform:uppercase;">Transform</text>
+      <text x="352.5" y="26" text-anchor="middle" font-family="var(--sans)" font-size="10" letter-spacing="0.5" fill="var(--gold)" style="text-transform:uppercase;">Declin’n</text>
+      <text x="417.5" y="26" text-anchor="middle" font-family="var(--sans)" font-size="10" letter-spacing="0.5" fill="var(--gold)" style="text-transform:uppercase;">Death</text>
+      <text x="4" y="26" font-family="var(--sans)" font-size="9" letter-spacing="1" fill="var(--dim)" style="text-transform:uppercase;">7L↓</text>
     </g>
     <g class="matrix-map-node" tabindex="0" role="button" aria-label="Layer 7 — Self" onclick="expandMatrixRow(7)" onkeypress="if(event.key==='Enter')expandMatrixRow(7)">
       <title>L7 — Self</title>
-      <circle cx="30" cy="58.0" r="12" fill="var(--bg-lift)" stroke="#9b59b6" stroke-width="1.5"/>
-      <text x="30" y="61.5" text-anchor="middle" font-family="var(--sans)" font-size="11" font-weight="700" fill="#9b59b6">7</text>
+      <circle cx="30" cy="58.0" r="14" fill="var(--bg-lift)" stroke="#9b59b6" stroke-width="1.5"/>
+      <text x="30" y="62.5" text-anchor="middle" font-family="var(--sans)" font-size="13" font-weight="700" fill="#9b59b6">7</text>
       <rect class="matrix-row-bg" x="60" y="40.0" width="390" height="36" rx="4" fill="#9b59b6" fill-opacity="0.06"/>
       <rect x="62" y="40.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#9b59b6" stroke-width="0.75" stroke-opacity="0.55"/>
-      <text class="matrix-cell-text" x="92.5" y="60.3" text-anchor="middle" font-size="6.6" fill="var(--grey)"><title>Manifestation</title>Manifest</text>
+      <text class="matrix-cell-text" x="92.5" y="60.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Manifestation</title>Manifest</text>
       <rect x="127" y="40.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#9b59b6" stroke-width="0.75" stroke-opacity="0.55"/>
-      <text class="matrix-cell-text" x="157.5" y="60.3" text-anchor="middle" font-size="6.6" fill="var(--grey)"><title>Realization</title>Realize</text>
+      <text class="matrix-cell-text" x="157.5" y="60.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Realization</title>Realize</text>
       <rect x="192" y="40.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#9b59b6" stroke-width="0.75" stroke-opacity="0.55"/>
-      <text class="matrix-cell-text" x="222.5" y="60.3" text-anchor="middle" font-size="6.6" fill="var(--grey)"><title>Eternal Witness</title>Witness</text>
+      <text class="matrix-cell-text" x="222.5" y="60.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Eternal Witness</title>Witness</text>
       <rect x="257" y="40.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#9b59b6" stroke-width="0.75" stroke-opacity="0.55"/>
-      <text class="matrix-cell-text" x="287.5" y="60.3" text-anchor="middle" font-size="6.6" fill="var(--grey)"><title>Transcends</title>Transcend</text>
+      <text class="matrix-cell-text" x="287.5" y="60.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Transcends</title>Beyond</text>
       <rect x="322" y="40.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#9b59b6" stroke-width="0.75" stroke-opacity="0.55"/>
-      <text class="matrix-cell-text" x="352.5" y="60.3" text-anchor="middle" font-size="6.6" fill="var(--grey)"><title>Unchanged</title>Unchngd</text>
+      <text class="matrix-cell-text" x="352.5" y="60.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Unchanged</title>Unchngd</text>
       <rect x="387" y="40.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#9b59b6" stroke-width="0.75" stroke-opacity="0.55"/>
-      <text class="matrix-cell-text" x="417.5" y="60.3" text-anchor="middle" font-size="6.6" fill="var(--grey)"><title>Unchanged</title>Unchngd</text>
+      <text class="matrix-cell-text" x="417.5" y="60.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Unchanged</title>Unchngd</text>
     </g>
     <g class="matrix-map-node" tabindex="0" role="button" aria-label="Layer 6 — Ego" onclick="expandMatrixRow(6)" onkeypress="if(event.key==='Enter')expandMatrixRow(6)">
       <title>L6 — Ego</title>
-      <circle cx="30" cy="102.0" r="12" fill="var(--bg-lift)" stroke="#6a5acd" stroke-width="1.5"/>
-      <text x="30" y="105.5" text-anchor="middle" font-family="var(--sans)" font-size="11" font-weight="700" fill="#6a5acd">6</text>
+      <circle cx="30" cy="102.0" r="14" fill="var(--bg-lift)" stroke="#6a5acd" stroke-width="1.5"/>
+      <text x="30" y="106.5" text-anchor="middle" font-family="var(--sans)" font-size="13" font-weight="700" fill="#6a5acd">6</text>
       <rect class="matrix-row-bg" x="60" y="84.0" width="390" height="36" rx="4" fill="#6a5acd" fill-opacity="0.06"/>
       <rect x="62" y="84.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#6a5acd" stroke-width="0.75" stroke-opacity="0.55"/>
-      <text class="matrix-cell-text" x="92.5" y="104.3" text-anchor="middle" font-size="6.6" fill="var(--grey)"><title>Toddlerhood</title>Toddler</text>
+      <text class="matrix-cell-text" x="92.5" y="104.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Toddlerhood</title>Toddler</text>
       <rect x="127" y="84.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#6a5acd" stroke-width="0.75" stroke-opacity="0.55"/>
-      <text class="matrix-cell-text" x="157.5" y="104.3" text-anchor="middle" font-size="6.6" fill="var(--grey)"><title>Ambition</title>Ambition</text>
+      <text class="matrix-cell-text" x="157.5" y="104.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Ambition</title>Ambition</text>
       <rect x="192" y="84.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#6a5acd" stroke-width="0.75" stroke-opacity="0.55"/>
-      <text class="matrix-cell-text" x="222.5" y="104.3" text-anchor="middle" font-size="6.6" fill="var(--grey)"><title>Persona</title>Persona</text>
+      <text class="matrix-cell-text" x="222.5" y="104.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Persona</title>Persona</text>
       <rect x="257" y="84.0" width="61" height="36" rx="3" fill="#e74c3c" fill-opacity="0.16" stroke="#e74c3c" stroke-width="1.3" stroke-opacity="0.55"/>
-      <text class="matrix-cell-text" x="287.5" y="104.3" text-anchor="middle" font-size="6.6" fill="#e74c3c"><title>Crisis</title>Crisis</text>
+      <text class="matrix-cell-text" x="287.5" y="104.3" text-anchor="middle" font-size="12" fill="#e74c3c"><title>Crisis</title>Crisis</text>
       <rect x="322" y="84.0" width="61" height="36" rx="3" fill="#e74c3c" fill-opacity="0.16" stroke="#e74c3c" stroke-width="1.3" stroke-opacity="0.55"/>
-      <text class="matrix-cell-text" x="352.5" y="104.3" text-anchor="middle" font-size="6.6" fill="#e74c3c"><title>Rigidity</title>Rigidity</text>
+      <text class="matrix-cell-text" x="352.5" y="104.3" text-anchor="middle" font-size="12" fill="#e74c3c"><title>Rigidity</title>Rigidity</text>
       <rect x="387" y="84.0" width="61" height="36" rx="3" fill="var(--gold)" fill-opacity="0.22" stroke="var(--gold)" stroke-width="1.5" stroke-opacity="0.55"/>
-      <text class="matrix-cell-text" x="417.5" y="104.3" text-anchor="middle" font-size="6.6" fill="var(--gold)"><title>Dissolution ✦</title>Dissolve</text>
+      <text class="matrix-cell-text" x="417.5" y="104.3" text-anchor="middle" font-size="12" fill="var(--gold)"><title>Dissolution ✦</title>Dissolve</text>
     </g>
     <g class="matrix-map-node" tabindex="0" role="button" aria-label="Layer 5 — Memory" onclick="expandMatrixRow(5)" onkeypress="if(event.key==='Enter')expandMatrixRow(5)">
       <title>L5 — Memory</title>
-      <circle cx="30" cy="146.0" r="12" fill="var(--bg-lift)" stroke="#3498db" stroke-width="1.5"/>
-      <text x="30" y="149.5" text-anchor="middle" font-family="var(--sans)" font-size="11" font-weight="700" fill="#3498db">5</text>
+      <circle cx="30" cy="146.0" r="14" fill="var(--bg-lift)" stroke="#3498db" stroke-width="1.5"/>
+      <text x="30" y="150.5" text-anchor="middle" font-family="var(--sans)" font-size="13" font-weight="700" fill="#3498db">5</text>
       <rect class="matrix-row-bg" x="60" y="128.0" width="390" height="36" rx="4" fill="#3498db" fill-opacity="0.06"/>
       <rect x="62" y="128.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#3498db" stroke-width="0.75" stroke-opacity="0.55"/>
-      <text class="matrix-cell-text" x="92.5" y="148.3" text-anchor="middle" font-size="6.6" fill="var(--grey)"><title>First impression</title>1st impr.</text>
+      <text class="matrix-cell-text" x="92.5" y="148.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>First impression</title>1st impr</text>
       <rect x="127" y="128.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#3498db" stroke-width="0.75" stroke-opacity="0.55"/>
-      <text class="matrix-cell-text" x="157.5" y="148.3" text-anchor="middle" font-size="6.6" fill="var(--grey)"><title>Experience</title>Experience</text>
+      <text class="matrix-cell-text" x="157.5" y="148.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Experience</title>Gaining</text>
       <rect x="192" y="128.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#3498db" stroke-width="0.75" stroke-opacity="0.55"/>
-      <text class="matrix-cell-text" x="222.5" y="148.3" text-anchor="middle" font-size="6.6" fill="var(--grey)"><title>Storing</title>Storing</text>
+      <text class="matrix-cell-text" x="222.5" y="148.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Storing</title>Storing</text>
       <rect x="257" y="128.0" width="61" height="36" rx="3" fill="var(--gold)" fill-opacity="0.14" stroke="var(--gold)" stroke-width="1.3" stroke-opacity="0.55"/>
-      <text class="matrix-cell-text" x="287.5" y="148.3" text-anchor="middle" font-size="6.6" fill="var(--gold)"><title>Trauma</title>Trauma</text>
+      <text class="matrix-cell-text" x="287.5" y="148.3" text-anchor="middle" font-size="12" fill="var(--gold)"><title>Trauma</title>Trauma</text>
       <rect x="322" y="128.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#3498db" stroke-width="0.75" stroke-opacity="0.55"/>
-      <text class="matrix-cell-text" x="352.5" y="148.3" text-anchor="middle" font-size="6.6" fill="var(--grey)"><title>Forgetfulness</title>Forgetng</text>
+      <text class="matrix-cell-text" x="352.5" y="148.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Forgetfulness</title>Forgetng</text>
       <rect x="387" y="128.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#3498db" stroke-width="0.75" stroke-opacity="0.55"/>
-      <text class="matrix-cell-text" x="417.5" y="148.3" text-anchor="middle" font-size="6.6" fill="var(--grey)"><title>Erasure</title>Erasure</text>
+      <text class="matrix-cell-text" x="417.5" y="148.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Erasure</title>Erasure</text>
     </g>
     <g class="matrix-map-node" tabindex="0" role="button" aria-label="Layer 4 — Intellect" onclick="expandMatrixRow(4)" onkeypress="if(event.key==='Enter')expandMatrixRow(4)">
       <title>L4 — Intellect</title>
-      <circle cx="30" cy="190.0" r="12" fill="var(--bg-lift)" stroke="#2ecc71" stroke-width="1.5"/>
-      <text x="30" y="193.5" text-anchor="middle" font-family="var(--sans)" font-size="11" font-weight="700" fill="#2ecc71">4</text>
+      <circle cx="30" cy="190.0" r="14" fill="var(--bg-lift)" stroke="#2ecc71" stroke-width="1.5"/>
+      <text x="30" y="194.5" text-anchor="middle" font-family="var(--sans)" font-size="13" font-weight="700" fill="#2ecc71">4</text>
       <rect class="matrix-row-bg" x="60" y="172.0" width="390" height="36" rx="4" fill="#2ecc71" fill-opacity="0.06"/>
       <rect x="62" y="172.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#2ecc71" stroke-width="0.75" stroke-opacity="0.55"/>
-      <text class="matrix-cell-text" x="92.5" y="192.3" text-anchor="middle" font-size="6.6" fill="var(--grey)"><title>Curiosity</title>Curiosity</text>
+      <text class="matrix-cell-text" x="92.5" y="192.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Curiosity</title>Curious</text>
       <rect x="127" y="172.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#2ecc71" stroke-width="0.75" stroke-opacity="0.55"/>
-      <text class="matrix-cell-text" x="157.5" y="192.3" text-anchor="middle" font-size="6.6" fill="var(--grey)"><title>Logic</title>Logic</text>
+      <text class="matrix-cell-text" x="157.5" y="192.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Logic</title>Logic</text>
       <rect x="192" y="172.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#2ecc71" stroke-width="0.75" stroke-opacity="0.55"/>
-      <text class="matrix-cell-text" x="222.5" y="192.3" text-anchor="middle" font-size="6.6" fill="var(--grey)"><title>Stability</title>Stability</text>
+      <text class="matrix-cell-text" x="222.5" y="192.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Stability</title>Stable</text>
       <rect x="257" y="172.0" width="61" height="36" rx="3" fill="var(--gold)" fill-opacity="0.14" stroke="var(--gold)" stroke-width="1.3" stroke-opacity="0.55"/>
-      <text class="matrix-cell-text" x="287.5" y="192.3" text-anchor="middle" font-size="6.6" fill="var(--gold)"><title>Shifting beliefs</title>Shift belief</text>
+      <text class="matrix-cell-text" x="287.5" y="192.3" text-anchor="middle" font-size="12" fill="var(--gold)"><title>Shifting beliefs</title>Reframe</text>
       <rect x="322" y="172.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#2ecc71" stroke-width="0.75" stroke-opacity="0.55"/>
-      <text class="matrix-cell-text" x="352.5" y="192.3" text-anchor="middle" font-size="6.6" fill="var(--grey)"><title>Decline</title>Decline</text>
+      <text class="matrix-cell-text" x="352.5" y="192.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Decline</title>Decline</text>
       <rect x="387" y="172.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#2ecc71" stroke-width="0.75" stroke-opacity="0.55"/>
-      <text class="matrix-cell-text" x="417.5" y="192.3" text-anchor="middle" font-size="6.6" fill="var(--grey)"><title>Loss of judgment</title>Lost judgm.</text>
+      <text class="matrix-cell-text" x="417.5" y="192.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Loss of judgment</title>No judgm</text>
     </g>
     <g class="matrix-map-node" tabindex="0" role="button" aria-label="Layer 3 — Mind" onclick="expandMatrixRow(3)" onkeypress="if(event.key==='Enter')expandMatrixRow(3)">
       <title>L3 — Mind</title>
-      <circle cx="30" cy="234.0" r="12" fill="var(--bg-lift)" stroke="#f1c40f" stroke-width="1.5"/>
-      <text x="30" y="237.5" text-anchor="middle" font-family="var(--sans)" font-size="11" font-weight="700" fill="#f1c40f">3</text>
+      <circle cx="30" cy="234.0" r="14" fill="var(--bg-lift)" stroke="#f1c40f" stroke-width="1.5"/>
+      <text x="30" y="238.5" text-anchor="middle" font-family="var(--sans)" font-size="13" font-weight="700" fill="#f1c40f">3</text>
       <rect class="matrix-row-bg" x="60" y="216.0" width="390" height="36" rx="4" fill="#f1c40f" fill-opacity="0.06"/>
       <rect x="62" y="216.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#f1c40f" stroke-width="0.75" stroke-opacity="0.55"/>
-      <text class="matrix-cell-text" x="92.5" y="236.3" text-anchor="middle" font-size="6.6" fill="var(--grey)"><title>Sensory</title>Sensory</text>
+      <text class="matrix-cell-text" x="92.5" y="236.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Sensory</title>Sensory</text>
       <rect x="127" y="216.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#f1c40f" stroke-width="0.75" stroke-opacity="0.55"/>
-      <text class="matrix-cell-text" x="157.5" y="236.3" text-anchor="middle" font-size="6.6" fill="var(--grey)"><title>Learning</title>Learning</text>
+      <text class="matrix-cell-text" x="157.5" y="236.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Learning</title>Learning</text>
       <rect x="192" y="216.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#f1c40f" stroke-width="0.75" stroke-opacity="0.55"/>
-      <text class="matrix-cell-text" x="222.5" y="236.3" text-anchor="middle" font-size="6.6" fill="var(--grey)"><title>Perception</title>Percept.</text>
+      <text class="matrix-cell-text" x="222.5" y="236.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Perception</title>Percept.</text>
       <rect x="257" y="216.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#f1c40f" stroke-width="0.75" stroke-opacity="0.55"/>
-      <text class="matrix-cell-text" x="287.5" y="236.3" text-anchor="middle" font-size="6.6" fill="var(--grey)"><title>Shifting</title>Shifting</text>
+      <text class="matrix-cell-text" x="287.5" y="236.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Shifting</title>Shifting</text>
       <rect x="322" y="216.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#f1c40f" stroke-width="0.75" stroke-opacity="0.55"/>
-      <text class="matrix-cell-text" x="352.5" y="236.3" text-anchor="middle" font-size="6.6" fill="var(--grey)"><title>Fatigue</title>Fatigue</text>
+      <text class="matrix-cell-text" x="352.5" y="236.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Fatigue</title>Fatigue</text>
       <rect x="387" y="216.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#f1c40f" stroke-width="0.75" stroke-opacity="0.55"/>
-      <text class="matrix-cell-text" x="417.5" y="236.3" text-anchor="middle" font-size="6.6" fill="var(--grey)"><title>Loss of senses</title>Lost senses</text>
+      <text class="matrix-cell-text" x="417.5" y="236.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Loss of senses</title>No sense</text>
     </g>
     <g class="matrix-map-node" tabindex="0" role="button" aria-label="Layer 2 — Breath" onclick="expandMatrixRow(2)" onkeypress="if(event.key==='Enter')expandMatrixRow(2)">
       <title>L2 — Breath</title>
-      <circle cx="30" cy="278.0" r="12" fill="var(--bg-lift)" stroke="#e67e22" stroke-width="1.5"/>
-      <text x="30" y="281.5" text-anchor="middle" font-family="var(--sans)" font-size="11" font-weight="700" fill="#e67e22">2</text>
+      <circle cx="30" cy="278.0" r="14" fill="var(--bg-lift)" stroke="#e67e22" stroke-width="1.5"/>
+      <text x="30" y="282.5" text-anchor="middle" font-family="var(--sans)" font-size="13" font-weight="700" fill="#e67e22">2</text>
       <rect class="matrix-row-bg" x="60" y="260.0" width="390" height="36" rx="4" fill="#e67e22" fill-opacity="0.06"/>
       <rect x="62" y="260.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#e67e22" stroke-width="0.75" stroke-opacity="0.55"/>
-      <text class="matrix-cell-text" x="92.5" y="280.3" text-anchor="middle" font-size="6.6" fill="var(--grey)"><title>First cry</title>1st cry</text>
+      <text class="matrix-cell-text" x="92.5" y="280.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>First cry</title>1st cry</text>
       <rect x="127" y="260.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#e67e22" stroke-width="0.75" stroke-opacity="0.55"/>
-      <text class="matrix-cell-text" x="157.5" y="280.3" text-anchor="middle" font-size="6.6" fill="var(--grey)"><title>Deepening</title>Deepening</text>
+      <text class="matrix-cell-text" x="157.5" y="280.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Deepening</title>Deepen</text>
       <rect x="192" y="260.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#e67e22" stroke-width="0.75" stroke-opacity="0.55"/>
-      <text class="matrix-cell-text" x="222.5" y="280.3" text-anchor="middle" font-size="6.6" fill="var(--grey)"><title>Rhythm</title>Rhythm</text>
+      <text class="matrix-cell-text" x="222.5" y="280.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Rhythm</title>Rhythm</text>
       <rect x="257" y="260.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#e67e22" stroke-width="0.75" stroke-opacity="0.55"/>
-      <text class="matrix-cell-text" x="287.5" y="280.3" text-anchor="middle" font-size="6.6" fill="var(--grey)"><title>Emotion</title>Emotion</text>
+      <text class="matrix-cell-text" x="287.5" y="280.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Emotion</title>Emotion</text>
       <rect x="322" y="260.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#e67e22" stroke-width="0.75" stroke-opacity="0.55"/>
-      <text class="matrix-cell-text" x="352.5" y="280.3" text-anchor="middle" font-size="6.6" fill="var(--grey)"><title>Laboured</title>Labored</text>
+      <text class="matrix-cell-text" x="352.5" y="280.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Laboured</title>Labored</text>
       <rect x="387" y="260.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#e67e22" stroke-width="0.75" stroke-opacity="0.55"/>
-      <text class="matrix-cell-text" x="417.5" y="280.3" text-anchor="middle" font-size="6.6" fill="var(--grey)"><title>Last breath</title>Last breath</text>
+      <text class="matrix-cell-text" x="417.5" y="280.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Last breath</title>Dying</text>
     </g>
     <g class="matrix-map-node" tabindex="0" role="button" aria-label="Layer 1 — Body" onclick="expandMatrixRow(1)" onkeypress="if(event.key==='Enter')expandMatrixRow(1)">
       <title>L1 — Body</title>
-      <circle cx="30" cy="322.0" r="12" fill="var(--bg-lift)" stroke="#e74c3c" stroke-width="1.5"/>
-      <text x="30" y="325.5" text-anchor="middle" font-family="var(--sans)" font-size="11" font-weight="700" fill="#e74c3c">1</text>
+      <circle cx="30" cy="322.0" r="14" fill="var(--bg-lift)" stroke="#e74c3c" stroke-width="1.5"/>
+      <text x="30" y="326.5" text-anchor="middle" font-family="var(--sans)" font-size="13" font-weight="700" fill="#e74c3c">1</text>
       <rect class="matrix-row-bg" x="60" y="304.0" width="390" height="36" rx="4" fill="#e74c3c" fill-opacity="0.06"/>
       <rect x="62" y="304.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#e74c3c" stroke-width="0.75" stroke-opacity="0.55"/>
-      <text class="matrix-cell-text" x="92.5" y="324.3" text-anchor="middle" font-size="6.6" fill="var(--grey)"><title>Womb</title>Womb</text>
+      <text class="matrix-cell-text" x="92.5" y="324.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Womb</title>Womb</text>
       <rect x="127" y="304.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#e74c3c" stroke-width="0.75" stroke-opacity="0.55"/>
-      <text class="matrix-cell-text" x="157.5" y="324.3" text-anchor="middle" font-size="6.6" fill="var(--grey)"><title>Infancy</title>Infancy</text>
+      <text class="matrix-cell-text" x="157.5" y="324.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Infancy</title>Infancy</text>
       <rect x="192" y="304.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#e74c3c" stroke-width="0.75" stroke-opacity="0.55"/>
-      <text class="matrix-cell-text" x="222.5" y="324.3" text-anchor="middle" font-size="6.6" fill="var(--grey)"><title>Health</title>Health</text>
+      <text class="matrix-cell-text" x="222.5" y="324.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Health</title>Health</text>
       <rect x="257" y="304.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#e74c3c" stroke-width="0.75" stroke-opacity="0.55"/>
-      <text class="matrix-cell-text" x="287.5" y="324.3" text-anchor="middle" font-size="6.6" fill="var(--grey)"><title>Aging</title>Aging</text>
+      <text class="matrix-cell-text" x="287.5" y="324.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Aging</title>Aging</text>
       <rect x="322" y="304.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#e74c3c" stroke-width="0.75" stroke-opacity="0.55"/>
-      <text class="matrix-cell-text" x="352.5" y="324.3" text-anchor="middle" font-size="6.6" fill="var(--grey)"><title>Senescence</title>Senesc.</text>
+      <text class="matrix-cell-text" x="352.5" y="324.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Senescence</title>Senesc.</text>
       <rect x="387" y="304.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#e74c3c" stroke-width="0.75" stroke-opacity="0.55"/>
-      <text class="matrix-cell-text" x="417.5" y="324.3" text-anchor="middle" font-size="6.6" fill="var(--grey)"><title>Mortality</title>Mortality</text>
+      <text class="matrix-cell-text" x="417.5" y="324.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Mortality</title>Mortal</text>
     </g>
 </svg>
   <p style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#555;text-align:center;margin-top:8px;">Tap a row to jump to its full detail</p>
