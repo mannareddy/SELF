@@ -3184,7 +3184,7 @@ a.src-tag:hover{opacity:.75;}
        below it, since the incoming connector's final riser lands exactly
        on the node's own x-coordinate — a label placed straight below would
        sit right on top of that line. -->
-  <div style="max-width:420px;margin:40px auto 8px;">
+  <div style="max-width:420px;margin:40px auto 36px;">
     <svg viewBox="0 0 440 470" style="width:100%;height:auto;overflow:visible;" role="img" aria-label="Ascent of Self map — tap a stage to jump to its full breakdown">
       <style>
         .ascent-map-node{cursor:pointer;}
@@ -3255,7 +3255,7 @@ a.src-tag:hover{opacity:.75;}
 
   <div style="text-align:center;margin-bottom:8px;">
     <button class="collapse-toggle-btn" onclick="sectionCollapse('ascent-full-content',this)">Expand &#9660;</button>
-    <p class="section-collapse-label" style="margin-top:8px;">Tap to expand — the seven stages, Red to Violet</p>
+    <p class="section-collapse-label" style="margin-top:8px;">Collapsed by default — expand to see all seven stages, Red to Violet</p>
   </div>
   <div id="ascent-full-content" class="section-collapse-wrap collapsed">
   <div class="framework-grid">
@@ -4434,8 +4434,8 @@ a.src-tag:hover{opacity:.75;}
        card grid below (if collapsed) and scrolls to + opens that type's
        full card. Purely navigational — no content lives in the map itself,
        so nothing here needs to stay in sync with the card text below. -->
-  <div style="max-width:480px;margin:40px auto 8px;">
-    <svg viewBox="0 -20 400 420" style="width:100%;height:auto;overflow:visible;" role="img" aria-label="Enneagram map — tap a type to jump to its full breakdown">
+  <div style="max-width:480px;margin:40px auto 36px;">
+    <svg viewBox="-55 -35 495 470" style="width:100%;height:auto;overflow:visible;" role="img" aria-label="Enneagram map — tap a type to jump to its full breakdown">
       <style>
         .enn-map-node{cursor:pointer;}
         .enn-map-node:hover circle.enn-node-bg{fill:rgba(212,175,55,.14);stroke:var(--gold);}
@@ -4451,63 +4451,63 @@ a.src-tag:hover{opacity:.75;}
            they're nudged out at the two lower corners, so none of them ever
            sits under a node's own name label (Body/Peacemaker was the worst
            offender — they used to be only 17px apart). -->
-      <text x="200" y="-6" text-anchor="middle" font-family="var(--sans)" font-size="9" letter-spacing="2" fill="var(--gold)" opacity="0.5" style="text-transform:uppercase;">Body</text>
-      <text x="380" y="300" text-anchor="middle" font-family="var(--sans)" font-size="9" letter-spacing="2" fill="var(--gold)" opacity="0.5" style="text-transform:uppercase;">Heart</text>
-      <text x="20" y="300" text-anchor="middle" font-family="var(--sans)" font-size="9" letter-spacing="2" fill="var(--gold)" opacity="0.5" style="text-transform:uppercase;">Head</text>
+      <text x="200" y="-25" text-anchor="middle" font-family="var(--sans)" font-size="9" letter-spacing="2" fill="var(--gold)" opacity="0.5" style="text-transform:uppercase;">Body</text>
+      <text x="415" y="225" text-anchor="middle" font-family="var(--sans)" font-size="9" letter-spacing="2" fill="var(--gold)" opacity="0.5" style="text-transform:uppercase;">Heart</text>
+      <text x="-15" y="225" text-anchor="middle" font-family="var(--sans)" font-size="9" letter-spacing="2" fill="var(--gold)" opacity="0.5" style="text-transform:uppercase;">Head</text>
       <!-- nodes -->
       <g class="enn-map-node" tabindex="0" role="button" aria-label="Type 1 — The Perfectionist" onclick="scrollToEnnCard(1)" onkeypress="if(event.key==='Enter')scrollToEnnCard(1)">
         <title>Type 1 — The Perfectionist</title>
         <circle class="enn-node-bg" cx="296" cy="85" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
         <text x="296" y="91" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">1</text>
-        <text x="296" y="120" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Perfectionist</text>
+        <text x="296" y="45" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Perfectionist</text>
       </g>
       <g class="enn-map-node" tabindex="0" role="button" aria-label="Type 2 — The Giver" onclick="scrollToEnnCard(2)" onkeypress="if(event.key==='Enter')scrollToEnnCard(2)">
         <title>Type 2 — The Giver</title>
         <circle class="enn-node-bg" cx="348" cy="174" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
         <text x="348" y="180" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">2</text>
-        <text x="348" y="209" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Giver</text>
+        <text x="388" y="178" text-anchor="start" font-family="var(--sans)" font-size="9" fill="var(--dim)">Giver</text>
       </g>
       <g class="enn-map-node" tabindex="0" role="button" aria-label="Type 3 — The Achiever" onclick="scrollToEnnCard(3)" onkeypress="if(event.key==='Enter')scrollToEnnCard(3)">
         <title>Type 3 — The Achiever</title>
         <circle class="enn-node-bg" cx="330" cy="275" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
         <text x="330" y="281" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">3</text>
-        <text x="330" y="310" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Achiever</text>
+        <text x="370" y="279" text-anchor="start" font-family="var(--sans)" font-size="9" fill="var(--dim)">Achiever</text>
       </g>
       <g class="enn-map-node" tabindex="0" role="button" aria-label="Type 4 — The Individualist" onclick="scrollToEnnCard(4)" onkeypress="if(event.key==='Enter')scrollToEnnCard(4)">
         <title>Type 4 — The Individualist</title>
         <circle class="enn-node-bg" cx="251" cy="341" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
         <text x="251" y="347" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">4</text>
-        <text x="251" y="389" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Individualist</text>
+        <text x="251" y="381" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Individualist</text>
       </g>
       <g class="enn-map-node" tabindex="0" role="button" aria-label="Type 5 — The Investigator" onclick="scrollToEnnCard(5)" onkeypress="if(event.key==='Enter')scrollToEnnCard(5)">
         <title>Type 5 — The Investigator</title>
         <circle class="enn-node-bg" cx="149" cy="341" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
         <text x="149" y="347" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">5</text>
-        <text x="149" y="371" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Investigator</text>
+        <text x="149" y="381" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Investigator</text>
       </g>
       <g class="enn-map-node" tabindex="0" role="button" aria-label="Type 6 — The Skeptic" onclick="scrollToEnnCard(6)" onkeypress="if(event.key==='Enter')scrollToEnnCard(6)">
         <title>Type 6 — The Skeptic</title>
         <circle class="enn-node-bg" cx="70" cy="275" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
         <text x="70" y="281" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">6</text>
-        <text x="70" y="310" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Skeptic</text>
+        <text x="30" y="279" text-anchor="end" font-family="var(--sans)" font-size="9" fill="var(--dim)">Skeptic</text>
       </g>
       <g class="enn-map-node" tabindex="0" role="button" aria-label="Type 7 — The Enthusiast" onclick="scrollToEnnCard(7)" onkeypress="if(event.key==='Enter')scrollToEnnCard(7)">
         <title>Type 7 — The Enthusiast</title>
         <circle class="enn-node-bg" cx="52" cy="174" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
         <text x="52" y="180" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">7</text>
-        <text x="52" y="209" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Enthusiast</text>
+        <text x="12" y="178" text-anchor="end" font-family="var(--sans)" font-size="9" fill="var(--dim)">Enthusiast</text>
       </g>
       <g class="enn-map-node" tabindex="0" role="button" aria-label="Type 8 — The Challenger" onclick="scrollToEnnCard(8)" onkeypress="if(event.key==='Enter')scrollToEnnCard(8)">
         <title>Type 8 — The Challenger</title>
         <circle class="enn-node-bg" cx="104" cy="85" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
         <text x="104" y="91" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">8</text>
-        <text x="104" y="120" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Challenger</text>
+        <text x="104" y="45" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Challenger</text>
       </g>
       <g class="enn-map-node" tabindex="0" role="button" aria-label="Type 9 — The Peacemaker" onclick="scrollToEnnCard(9)" onkeypress="if(event.key==='Enter')scrollToEnnCard(9)">
         <title>Type 9 — The Peacemaker</title>
         <circle class="enn-node-bg" cx="200" cy="50" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
         <text x="200" y="56" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">9</text>
-        <text x="200" y="20" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Peacemaker</text>
+        <text x="200" y="10" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Peacemaker</text>
       </g>
     </svg>
     <p style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#555;text-align:center;margin-top:8px;">Tap a type to jump to its full breakdown</p>
@@ -4515,7 +4515,7 @@ a.src-tag:hover{opacity:.75;}
 
   <div style="text-align:center;margin-bottom:8px;">
     <button class="collapse-toggle-btn" onclick="sectionCollapse('enn-full-content',this)">Expand &#9660;</button>
-    <p class="section-collapse-label" style="margin-top:8px;">Tap to expand — all nine Enneagram types</p>
+    <p class="section-collapse-label" style="margin-top:8px;">Collapsed by default — expand to see all nine types</p>
   </div>
   <div id="enn-full-content" class="section-collapse-wrap collapsed">
 
@@ -5763,7 +5763,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
      the full original word is preserved in each cell's <title> tooltip.
      Row/column geometry itself is untouched; this was a legibility fix,
      not a layout rebuild. -->
-<div style="max-width:460px;margin:32px auto 8px;">
+<div style="max-width:460px;margin:32px auto 36px;">
   <svg viewBox="0 0 460 354" style="width:100%;height:auto;overflow:visible;" role="img" aria-label="Master Matrix grid map — 7 layers by 6 stages, tap a row to jump to its full detail">
     <style>
       .matrix-map-node{cursor:pointer;}
