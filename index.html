@@ -220,113 +220,85 @@ body{
    .self-table on the site is affected. */
 #masterMatrixTable tr.chakra-row-1{background:rgba(231,76,60,.05);}
 #masterMatrixTable tr.chakra-row-1 td:first-child{border-left:3px solid #e74c3c;}
-#masterMatrixTable tr.chakra-row-2{background:rgba(230,126,34,.05);}
-#masterMatrixTable tr.chakra-row-2 td:first-child{border-left:3px solid #e67e22;}
-#masterMatrixTable tr.chakra-row-3{background:rgba(241,196,15,.05);}
-#masterMatrixTable tr.chakra-row-3 td:first-child{border-left:3px solid #f1c40f;}
-#masterMatrixTable tr.chakra-row-4{background:rgba(46,204,113,.05);}
-#masterMatrixTable tr.chakra-row-4 td:first-child{border-left:3px solid #2ecc71;}
-#masterMatrixTable tr.chakra-row-5{background:rgba(52,152,219,.05);}
-#masterMatrixTable tr.chakra-row-5 td:first-child{border-left:3px solid #3498db;}
-#masterMatrixTable tr.chakra-row-6{background:rgba(106,90,205,.05);}
-#masterMatrixTable tr.chakra-row-6 td:first-child{border-left:3px solid #6a5acd;}
-#masterMatrixTable tr.chakra-row-7{background:rgba(155,89,182,.05);}
-#masterMatrixTable tr.chakra-row-7 td:first-child{border-left:3px solid #9b59b6;}
+/* Rows 2-7 reverted to the old, uncolored default table look — only Row 1
+   (Layer 1 / Body) keeps the chakra color wash and accent bar. */
 
-/* Row text color — every data cell in a row (label, grid values, brainwave,
-   awareness, stage, alchemy, existence/kosha) now takes the row's own
-   chakra hue uniformly, with no cell left a different color. The former
-   per-column exemptions (.red on Crisis/Rigidity, inline gold on the
-   Brainwave column and Dissolution ✦, .bright on Shifting beliefs/Trauma,
-   inline grey on the kosha names) have been removed from the table markup
-   itself so nothing overrides these rules anymore. The :not() selectors
-   below are kept only as a safety net in case any of those classes are
-   ever reintroduced elsewhere in this table. */
-#masterMatrixTable tr.chakra-row-1 td:not(.gold):not(.red):not(.bright):not(.gold-flaw){color:#e74c3c;}
-#masterMatrixTable tr.chakra-row-2 td:not(.gold):not(.red):not(.bright):not(.gold-flaw){color:#e67e22;}
-#masterMatrixTable tr.chakra-row-3 td:not(.gold):not(.red):not(.bright):not(.gold-flaw){color:#f1c40f;}
-#masterMatrixTable tr.chakra-row-4 td:not(.gold):not(.red):not(.bright):not(.gold-flaw){color:#2ecc71;}
-#masterMatrixTable tr.chakra-row-5 td:not(.gold):not(.red):not(.bright):not(.gold-flaw){color:#3498db;}
-#masterMatrixTable tr.chakra-row-6 td:not(.gold):not(.red):not(.bright):not(.gold-flaw){color:#6a5acd;}
-#masterMatrixTable tr.chakra-row-7 td:not(.gold):not(.red):not(.bright):not(.gold-flaw){color:#9b59b6;}
+/* Row text and button/gloss coloring reverted to the table's original
+   default colors — only the row-label's own chakra sub-label
+   (.chakra-label-1..7, further below) still carries its chakra hue.
+   Background wash and the first-cell border-left accent above are left
+   as-is since those aren't text coloring. */
 
-/* Row-expand "+" circle button and gloss-term "+" buttons/underlines were
-   still hard-coded gold (via .row-expand-btn/.gloss-btn/.gloss's shared,
-   site-wide base rules). Scoped overrides so these small interactive marks
-   match their own row's chakra color too, leaving nothing gold except the
-   Brainwave-column intent already covered by uniform row coloring above. */
-#masterMatrixTable tr.chakra-row-1 .row-expand-btn{color:#e74c3c;border-color:#e74c3c;}
-#masterMatrixTable tr.chakra-row-1 .row-expand-btn:hover{background:#e74c3c;color:#0a0a0a;}
-#masterMatrixTable tr.chakra-row-1 .gloss-btn{color:#e74c3c;}
-#masterMatrixTable tr.chakra-row-1 .gloss{border-bottom-color:#e74c3c;}
-#masterMatrixTable tr.chakra-row-2 .row-expand-btn{color:#e67e22;border-color:#e67e22;}
-#masterMatrixTable tr.chakra-row-2 .row-expand-btn:hover{background:#e67e22;color:#0a0a0a;}
-#masterMatrixTable tr.chakra-row-2 .gloss-btn{color:#e67e22;}
-#masterMatrixTable tr.chakra-row-2 .gloss{border-bottom-color:#e67e22;}
-#masterMatrixTable tr.chakra-row-3 .row-expand-btn{color:#f1c40f;border-color:#f1c40f;}
-#masterMatrixTable tr.chakra-row-3 .row-expand-btn:hover{background:#f1c40f;color:#0a0a0a;}
-#masterMatrixTable tr.chakra-row-3 .gloss-btn{color:#f1c40f;}
-#masterMatrixTable tr.chakra-row-3 .gloss{border-bottom-color:#f1c40f;}
-#masterMatrixTable tr.chakra-row-4 .row-expand-btn{color:#2ecc71;border-color:#2ecc71;}
-#masterMatrixTable tr.chakra-row-4 .row-expand-btn:hover{background:#2ecc71;color:#0a0a0a;}
-#masterMatrixTable tr.chakra-row-4 .gloss-btn{color:#2ecc71;}
-#masterMatrixTable tr.chakra-row-4 .gloss{border-bottom-color:#2ecc71;}
-#masterMatrixTable tr.chakra-row-5 .row-expand-btn{color:#3498db;border-color:#3498db;}
-#masterMatrixTable tr.chakra-row-5 .row-expand-btn:hover{background:#3498db;color:#0a0a0a;}
-#masterMatrixTable tr.chakra-row-5 .gloss-btn{color:#3498db;}
-#masterMatrixTable tr.chakra-row-5 .gloss{border-bottom-color:#3498db;}
-#masterMatrixTable tr.chakra-row-6 .row-expand-btn{color:#6a5acd;border-color:#6a5acd;}
-#masterMatrixTable tr.chakra-row-6 .row-expand-btn:hover{background:#6a5acd;color:#0a0a0a;}
-#masterMatrixTable tr.chakra-row-6 .gloss-btn{color:#6a5acd;}
-#masterMatrixTable tr.chakra-row-6 .gloss{border-bottom-color:#6a5acd;}
-#masterMatrixTable tr.chakra-row-7 .row-expand-btn{color:#9b59b6;border-color:#9b59b6;}
-#masterMatrixTable tr.chakra-row-7 .row-expand-btn:hover{background:#9b59b6;color:#0a0a0a;}
-#masterMatrixTable tr.chakra-row-7 .gloss-btn{color:#9b59b6;}
-#masterMatrixTable tr.chakra-row-7 .gloss{border-bottom-color:#9b59b6;}
+/* Light-theme row text/button coloring reverted to default as well —
+   see the matching dark-theme note above. Only the chakra sub-label
+   (.chakra-label-1..7) keeps its own light-theme hue, just below. */
 
-/* Light theme equivalents — same hues, deepened for legibility against the
-   pale cream background (mirrors how the site already deepens gold from
-   #d4af37 to #7a5e0e for light mode). !important needed here because the
-   base light-theme rule (`[data-theme="light"] .self-table td{color:...
-   !important}`) is itself !important. */
-[data-theme="light"] #masterMatrixTable tr.chakra-row-1 td:not(.gold):not(.red):not(.bright):not(.gold-flaw){color:#c0392b !important;}
-[data-theme="light"] #masterMatrixTable tr.chakra-row-2 td:not(.gold):not(.red):not(.bright):not(.gold-flaw){color:#a15c00 !important;}
-[data-theme="light"] #masterMatrixTable tr.chakra-row-3 td:not(.gold):not(.red):not(.bright):not(.gold-flaw){color:#8a6d00 !important;}
-[data-theme="light"] #masterMatrixTable tr.chakra-row-4 td:not(.gold):not(.red):not(.bright):not(.gold-flaw){color:#1e8c50 !important;}
-[data-theme="light"] #masterMatrixTable tr.chakra-row-5 td:not(.gold):not(.red):not(.bright):not(.gold-flaw){color:#1e64a0 !important;}
-[data-theme="light"] #masterMatrixTable tr.chakra-row-6 td:not(.gold):not(.red):not(.bright):not(.gold-flaw){color:#4b3aa0 !important;}
-[data-theme="light"] #masterMatrixTable tr.chakra-row-7 td:not(.gold):not(.red):not(.bright):not(.gold-flaw){color:#7d3c98 !important;}
+/* Uniform, bold, legible cell text — the meta columns (Brainwave, Awareness,
+   Stage, Alchemy, Existence Layer) had smaller inline font-sizes (10-12px)
+   than the main grid columns (13px via .compact), so cells read at visibly
+   different sizes across the same row. Overridden here with !important
+   since inline styles otherwise win. Small parenthetical sub-notes (e.g.
+   "(Deep Sleep)") are left at their own smaller size on purpose, as a
+   secondary annotation rather than the cell's primary word. Weight bumped
+   from the base serif 400 to 600 for clearer legibility, scoped to the
+   short grid/meta cells only — the longer Lived Reality / Ascension Path
+   prose columns keep their lighter weight since bold sentence-length text
+   is harder to read, not easier. */
+#masterMatrixTable td.col-meta{
+  font-size:9px !important;
+  font-weight:400 !important;
+  font-family:var(--serif) !important;
+  text-transform:uppercase;
+  letter-spacing:0.3px;
+}
+[data-theme="light"] #masterMatrixTable td.col-meta{
+  font-weight:500 !important;
+}
+/* Small parenthetical sub-notes inside meta cells (e.g. "(Deep Sleep)")
+   now stack on their own line directly beneath the main word — one word
+   on top, the note underneath, both centered — instead of wrapping mid-
+   sentence. They stay one size below the 9px main text so they still fit
+   their box without reading larger than the primary word. Only targets
+   the inline-styled sub-note spans (via [style*="font-size"]), not the
+   .gloss term spans, which have no inline style of their own and should
+   stay at the full 9px like every other cell. */
+#masterMatrixTable td.col-meta span[style*="font-size"]{
+  display:block;
+  margin-top:3px;
+  font-size:8px !important;
+}
 
-/* Light-theme equivalents for the row-expand "+" circle and gloss "+"
-   buttons/underlines, matching the deepened hues used for row text above. */
-[data-theme="light"] #masterMatrixTable tr.chakra-row-1 .row-expand-btn{color:#c0392b !important;border-color:#c0392b !important;}
-[data-theme="light"] #masterMatrixTable tr.chakra-row-1 .row-expand-btn:hover{background:#c0392b !important;color:#f5f1e8 !important;}
-[data-theme="light"] #masterMatrixTable tr.chakra-row-1 .gloss-btn{color:#c0392b !important;}
-[data-theme="light"] #masterMatrixTable tr.chakra-row-1 .gloss{border-bottom-color:#c0392b !important;}
-[data-theme="light"] #masterMatrixTable tr.chakra-row-2 .row-expand-btn{color:#a15c00 !important;border-color:#a15c00 !important;}
-[data-theme="light"] #masterMatrixTable tr.chakra-row-2 .row-expand-btn:hover{background:#a15c00 !important;color:#f5f1e8 !important;}
-[data-theme="light"] #masterMatrixTable tr.chakra-row-2 .gloss-btn{color:#a15c00 !important;}
-[data-theme="light"] #masterMatrixTable tr.chakra-row-2 .gloss{border-bottom-color:#a15c00 !important;}
-[data-theme="light"] #masterMatrixTable tr.chakra-row-3 .row-expand-btn{color:#8a6d00 !important;border-color:#8a6d00 !important;}
-[data-theme="light"] #masterMatrixTable tr.chakra-row-3 .row-expand-btn:hover{background:#8a6d00 !important;color:#f5f1e8 !important;}
-[data-theme="light"] #masterMatrixTable tr.chakra-row-3 .gloss-btn{color:#8a6d00 !important;}
-[data-theme="light"] #masterMatrixTable tr.chakra-row-3 .gloss{border-bottom-color:#8a6d00 !important;}
-[data-theme="light"] #masterMatrixTable tr.chakra-row-4 .row-expand-btn{color:#1e8c50 !important;border-color:#1e8c50 !important;}
-[data-theme="light"] #masterMatrixTable tr.chakra-row-4 .row-expand-btn:hover{background:#1e8c50 !important;color:#f5f1e8 !important;}
-[data-theme="light"] #masterMatrixTable tr.chakra-row-4 .gloss-btn{color:#1e8c50 !important;}
-[data-theme="light"] #masterMatrixTable tr.chakra-row-4 .gloss{border-bottom-color:#1e8c50 !important;}
-[data-theme="light"] #masterMatrixTable tr.chakra-row-5 .row-expand-btn{color:#1e64a0 !important;border-color:#1e64a0 !important;}
-[data-theme="light"] #masterMatrixTable tr.chakra-row-5 .row-expand-btn:hover{background:#1e64a0 !important;color:#f5f1e8 !important;}
-[data-theme="light"] #masterMatrixTable tr.chakra-row-5 .gloss-btn{color:#1e64a0 !important;}
-[data-theme="light"] #masterMatrixTable tr.chakra-row-5 .gloss{border-bottom-color:#1e64a0 !important;}
-[data-theme="light"] #masterMatrixTable tr.chakra-row-6 .row-expand-btn{color:#4b3aa0 !important;border-color:#4b3aa0 !important;}
-[data-theme="light"] #masterMatrixTable tr.chakra-row-6 .row-expand-btn:hover{background:#4b3aa0 !important;color:#f5f1e8 !important;}
-[data-theme="light"] #masterMatrixTable tr.chakra-row-6 .gloss-btn{color:#4b3aa0 !important;}
-[data-theme="light"] #masterMatrixTable tr.chakra-row-6 .gloss{border-bottom-color:#4b3aa0 !important;}
-[data-theme="light"] #masterMatrixTable tr.chakra-row-7 .row-expand-btn{color:#7d3c98 !important;border-color:#7d3c98 !important;}
-[data-theme="light"] #masterMatrixTable tr.chakra-row-7 .row-expand-btn:hover{background:#7d3c98 !important;color:#f5f1e8 !important;}
-[data-theme="light"] #masterMatrixTable tr.chakra-row-7 .gloss-btn{color:#7d3c98 !important;}
-[data-theme="light"] #masterMatrixTable tr.chakra-row-7 .gloss{border-bottom-color:#7d3c98 !important;}
+/* The 42 grid cells (Birth → Death columns) also matched to the header's
+   font size for uniformity across the whole table. */
+#masterMatrixTable td.col-grid{
+  font-size:9px !important;
+  font-weight:400 !important;
+  text-transform:uppercase;
+  letter-spacing:0.3px;
+}
+[data-theme="light"] #masterMatrixTable td.col-grid{
+  font-weight:500 !important;
+}
+
+/* First (axis/row-label) column was rendering far wider than intended —
+   .compact's row-label rule forces white-space:nowrap, which overrides the
+   8% width hint and lets long labels like "ROOT CHAKRA" force the column
+   wide. Scoped override here lets it wrap and actually respect the
+   narrower width. */
+#masterMatrixTable td.row-label{
+  white-space:normal !important;
+  padding:10px 6px !important;
+}
+#masterMatrixTable th.axis-cell{
+  white-space:normal !important;
+}
+
+/* Gloss underline + "+" button now match whatever color the surrounding
+   cell text is, instead of always being hard-coded gold — scoped to this
+   table only so gloss terms elsewhere on the site (which use gold on
+   purpose) are unaffected. */
+#masterMatrixTable .gloss{border-bottom-color:currentColor;}
+#masterMatrixTable .gloss-btn{color:inherit !important;}
 
 /* Row-label chakra sub-labels ("Root Chakra", "Sacral Chakra"...) — class-
    based instead of the hardcoded inline hex they used previously, so a
@@ -349,13 +321,9 @@ body{
 
 /* Light theme: same hues, background wash tuned down since the base is
    already pale (mirrors the existing gold-row light-theme pattern below). */
-[data-theme="light"] #masterMatrixTable tr.chakra-row-1{background:rgba(192,57,43,.07);}
-[data-theme="light"] #masterMatrixTable tr.chakra-row-2{background:rgba(180,95,15,.07);}
-[data-theme="light"] #masterMatrixTable tr.chakra-row-3{background:rgba(158,127,8,.09);}
-[data-theme="light"] #masterMatrixTable tr.chakra-row-4{background:rgba(30,140,80,.07);}
-[data-theme="light"] #masterMatrixTable tr.chakra-row-5{background:rgba(30,100,160,.07);}
-[data-theme="light"] #masterMatrixTable tr.chakra-row-6{background:rgba(80,65,160,.07);}
-[data-theme="light"] #masterMatrixTable tr.chakra-row-7{background:rgba(125,60,152,.07);}
+[data-theme="light"] #masterMatrixTable tr.chakra-row-1{background:transparent !important;}
+/* Row 1's color wash removed in light theme per feedback — red background
+   read poorly there. Rows 2-7 already have no wash (see dark-theme note above). */
 
 .self-table .axis-cell{
   font-family:var(--sans);
@@ -5990,7 +5958,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
       <table class="self-table compact" id="masterMatrixTable" style="min-width:1200px;">
         <thead>
           <tr>
-            <th class="axis-cell" style="width:13%;vertical-align:middle;">
+            <th class="axis-cell" style="width:8%;vertical-align:middle;">
               <span style="color:var(--gold);display:block;font-size:8px;letter-spacing:1px;">7 Layers ↓</span>
               <div style="width:50%;height:1px;background:rgba(212,175,55,0.4);margin:4px auto;"></div>
               <span style="color:var(--gold);display:block;font-size:8px;letter-spacing:1px;">→ 6 Stages</span>
