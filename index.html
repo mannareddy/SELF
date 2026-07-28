@@ -215,19 +215,23 @@ body{
    by the #master-matrix SVG grid map's row strokes/fills (L1 #e74c3c through
    L7 #9b59b6), so the scrollable table and the spatial map read as one
    system rather than two differently-colored versions of the same data.
-   Layer 7 now takes the SVG's violet (#9b59b6) as well, applied uniformly
-   with the other six rows. Scoped to #masterMatrixTable only so no other
-   .self-table on the site is affected. */
-#masterMatrixTable tr.chakra-row-1{background:rgba(231,76,60,.05);}
+   All seven rows now carry both the background wash and the left accent
+   bar, matching the map's per-row band fill-opacity treatment exactly —
+   superseding the earlier row-1-only scoping. Scoped to #masterMatrixTable
+   only so no other .self-table on the site is affected. */
+#masterMatrixTable tr.chakra-row-1{background:rgba(231,76,60,.06);}
 #masterMatrixTable tr.chakra-row-1 td:first-child{border-left:3px solid #e74c3c;}
-/* Rows 2-7: no background wash (kept row-1-only per earlier request), but
-   the colored left accent bar on column 1 — matching each row's chakra,
-   same palette as the SVG map — is restored across all seven rows. */
+#masterMatrixTable tr.chakra-row-2{background:rgba(230,126,34,.06);}
 #masterMatrixTable tr.chakra-row-2 td:first-child{border-left:3px solid #e67e22;}
+#masterMatrixTable tr.chakra-row-3{background:rgba(241,196,15,.06);}
 #masterMatrixTable tr.chakra-row-3 td:first-child{border-left:3px solid #f1c40f;}
+#masterMatrixTable tr.chakra-row-4{background:rgba(46,204,113,.06);}
 #masterMatrixTable tr.chakra-row-4 td:first-child{border-left:3px solid #2ecc71;}
+#masterMatrixTable tr.chakra-row-5{background:rgba(52,152,219,.06);}
 #masterMatrixTable tr.chakra-row-5 td:first-child{border-left:3px solid #3498db;}
+#masterMatrixTable tr.chakra-row-6{background:rgba(106,90,205,.06);}
 #masterMatrixTable tr.chakra-row-6 td:first-child{border-left:3px solid #6a5acd;}
+#masterMatrixTable tr.chakra-row-7{background:rgba(155,89,182,.06);}
 #masterMatrixTable tr.chakra-row-7 td:first-child{border-left:3px solid #9b59b6;}
 
 /* Row text and button/gloss coloring reverted to the table's original
@@ -252,14 +256,14 @@ body{
    prose columns keep their lighter weight since bold sentence-length text
    is harder to read, not easier. */
 #masterMatrixTable td.col-meta{
-  font-size:12.5px !important;
-  font-weight:400 !important;
-  font-family:var(--serif) !important;
+  font-family:var(--sans) !important;
+  font-size:9px !important;
+  font-weight:700 !important;
   text-transform:uppercase;
-  letter-spacing:0.3px;
+  letter-spacing:2px;
 }
 [data-theme="light"] #masterMatrixTable td.col-meta{
-  font-weight:500 !important;
+  font-weight:700 !important;
 }
 /* Small parenthetical sub-notes inside meta cells (e.g. "(Deep Sleep)")
    now stack on their own line directly beneath the main word — one word
@@ -275,16 +279,19 @@ body{
   font-size:10.5px !important;
 }
 
-/* The 42 grid cells (Birth → Death columns) also matched to the header's
-   font size for uniformity across the whole table. */
+/* The 42 grid cells (Birth → Death columns) matched to the header's own
+   font size (9px, same as .self-table.compact th / .col-title) rather than
+   the larger 12.5px used previously — keeps column labels and their data
+   cells visually the same weight/scale down the whole table. */
 #masterMatrixTable td.col-grid{
-  font-size:12.5px !important;
-  font-weight:400 !important;
+  font-family:var(--sans) !important;
+  font-size:9px !important;
+  font-weight:700 !important;
   text-transform:uppercase;
-  letter-spacing:0.3px;
+  letter-spacing:2px;
 }
 [data-theme="light"] #masterMatrixTable td.col-grid{
-  font-weight:500 !important;
+  font-weight:700 !important;
 }
 
 /* First (axis/row-label) column was rendering far wider than intended —
@@ -5900,7 +5907,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
       <text x="157.5" y="26" text-anchor="middle" font-family="var(--sans)" font-size="10" letter-spacing="0.5" fill="var(--gold)" style="text-transform:uppercase;">Growth</text>
       <text x="222.5" y="26" text-anchor="middle" font-family="var(--sans)" font-size="10" letter-spacing="0.5" fill="var(--gold)" style="text-transform:uppercase;">Sustain</text>
       <text x="287.5" y="26" text-anchor="middle" font-family="var(--sans)" font-size="10" letter-spacing="0.5" fill="var(--gold)" style="text-transform:uppercase;">Transform</text>
-      <text x="352.5" y="26" text-anchor="middle" font-family="var(--sans)" font-size="10" letter-spacing="0.5" fill="var(--gold)" style="text-transform:uppercase;">Declin’n</text>
+      <text x="352.5" y="26" text-anchor="middle" font-family="var(--sans)" font-size="9" letter-spacing="0.2" fill="var(--gold)" style="text-transform:uppercase;">Decline</text>
       <text x="417.5" y="26" text-anchor="middle" font-family="var(--sans)" font-size="10" letter-spacing="0.5" fill="var(--gold)" style="text-transform:uppercase;">Death</text>
       <text x="4" y="26" font-family="var(--sans)" font-size="9" letter-spacing="1" fill="var(--dim)" style="text-transform:uppercase;">7L↓</text>
     </g>
@@ -6183,7 +6190,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
 
           <tr id="matrix-row-4" class="chakra-row-4" data-layer="4">
             <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-4" onclick="toggleMatrixRow(4)" aria-label="Expand Layer 4 detail">+</button><span style="font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 4</span>Intellect<span class="chakra-label-4" style="display:block;font-size:9px;font-style:normal;letter-spacing:0;margin-top:2px;">Heart Chakra</span></td>
-            <td class="col-grid">Curiosity</td><td class="col-grid">Logic</td><td class="col-grid">Stability</td><td class="col-grid">Shifting beliefs</td><td class="col-grid">Decline</td><td class="col-grid">Loss of judgment</td>
+            <td class="col-grid">Curiosity</td><td class="col-grid">Logic</td><td class="col-grid">Stability</td><td class="col-grid gold">Shifting beliefs</td><td class="col-grid">Decline</td><td class="col-grid">Loss of judgment</td>
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Discerning right vs. wrong; building a structured logic framework.</td>
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Old worldviews fail over time, forcing a pivot (Shifting Beliefs).</td>
             <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">Bridge to Heart Wisdom: when core beliefs are tested by life, do not double down on rigid logic. Let old frameworks break to allow intuitive knowing.</td>
@@ -6198,7 +6205,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
 
           <tr id="matrix-row-5" class="chakra-row-5" data-layer="5">
             <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-5" onclick="toggleMatrixRow(5)" aria-label="Expand Layer 5 detail">+</button><span style="font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 5</span>Memory<span class="chakra-label-5" style="display:block;font-size:9px;font-style:normal;letter-spacing:0;margin-top:2px;">Throat Chakra</span></td>
-            <td class="col-grid">First impression</td><td class="col-grid">Experience</td><td class="col-grid">Storing</td><td class="col-grid">Trauma</td><td class="col-grid">Forgetfulness</td><td class="col-grid">Erasure</td>
+            <td class="col-grid">First impression</td><td class="col-grid">Experience</td><td class="col-grid">Storing</td><td class="col-grid gold">Trauma</td><td class="col-grid">Forgetfulness</td><td class="col-grid">Erasure</td>
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Nostalgia, flashbacks, triggers, and automated habit loops.</td>
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Triggers deeply buried ghosts, wounds, or past failures (Trauma).</td>
             <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">Decondition the Memory: consciously unpack early conditioning. Reframe your past as purely educational database data rather than your definition.</td>
@@ -6213,7 +6220,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
 
           <tr id="matrix-row-6" class="chakra-row-6" data-layer="6">
             <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-6" onclick="toggleMatrixRow(6)" aria-label="Expand Layer 6 detail">+</button><span style="font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 6</span>Ego<span class="chakra-label-6" style="display:block;font-size:9px;font-style:normal;letter-spacing:0;margin-top:2px;">Third Eye</span></td>
-            <td class="col-grid">Toddlerhood</td><td class="col-grid">Ambition</td><td class="col-grid">Persona</td><td class="col-grid">Crisis</td><td class="col-grid">Rigidity</td><td class="col-grid" style="font-style:italic;">Dissolution ✦</td>
+            <td class="col-grid">Toddlerhood</td><td class="col-grid">Ambition</td><td class="col-grid">Persona</td><td class="col-grid red">Crisis</td><td class="col-grid red">Rigidity</td><td class="col-grid gold" style="font-style:italic;">Dissolution ✦</td>
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Feeling proud, defensive, or protective of &ldquo;who you think you are&rdquo;.</td>
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Causes your curated persona to completely shatter (Crisis).</td>
             <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">Dissolve the Persona: when an existential crisis hits your career or relationships, do not fight to save the mask. Use it to shatter false identity.</td>
