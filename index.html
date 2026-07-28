@@ -220,8 +220,15 @@ body{
    .self-table on the site is affected. */
 #masterMatrixTable tr.chakra-row-1{background:rgba(231,76,60,.05);}
 #masterMatrixTable tr.chakra-row-1 td:first-child{border-left:3px solid #e74c3c;}
-/* Rows 2-7 reverted to the old, uncolored default table look — only Row 1
-   (Layer 1 / Body) keeps the chakra color wash and accent bar. */
+/* Rows 2-7: no background wash (kept row-1-only per earlier request), but
+   the colored left accent bar on column 1 — matching each row's chakra,
+   same palette as the SVG map — is restored across all seven rows. */
+#masterMatrixTable tr.chakra-row-2 td:first-child{border-left:3px solid #e67e22;}
+#masterMatrixTable tr.chakra-row-3 td:first-child{border-left:3px solid #f1c40f;}
+#masterMatrixTable tr.chakra-row-4 td:first-child{border-left:3px solid #2ecc71;}
+#masterMatrixTable tr.chakra-row-5 td:first-child{border-left:3px solid #3498db;}
+#masterMatrixTable tr.chakra-row-6 td:first-child{border-left:3px solid #6a5acd;}
+#masterMatrixTable tr.chakra-row-7 td:first-child{border-left:3px solid #9b59b6;}
 
 /* Row text and button/gloss coloring reverted to the table's original
    default colors — only the row-label's own chakra sub-label
