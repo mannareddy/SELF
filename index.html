@@ -258,12 +258,9 @@ body{
 #masterMatrixTable td.col-meta{
   font-family:var(--sans) !important;
   font-size:9px !important;
-  font-weight:700 !important;
-  text-transform:uppercase;
-  letter-spacing:2px;
-}
-[data-theme="light"] #masterMatrixTable td.col-meta{
-  font-weight:700 !important;
+  font-weight:400 !important;
+  text-transform:uppercase !important;
+  letter-spacing:2px !important;
 }
 /* Small parenthetical sub-notes inside meta cells (e.g. "(Deep Sleep)")
    now stack on their own line directly beneath the main word — one word
@@ -276,7 +273,7 @@ body{
 #masterMatrixTable td.col-meta span[style*="font-size"]{
   display:block;
   margin-top:3px;
-  font-size:10.5px !important;
+  font-size:7.5px !important;
 }
 
 /* The 42 grid cells (Birth → Death columns) matched to the header's own
@@ -286,12 +283,23 @@ body{
 #masterMatrixTable td.col-grid{
   font-family:var(--sans) !important;
   font-size:9px !important;
-  font-weight:700 !important;
-  text-transform:uppercase;
-  letter-spacing:2px;
+  font-weight:400 !important;
+  text-transform:uppercase !important;
+  letter-spacing:2px !important;
 }
-[data-theme="light"] #masterMatrixTable td.col-grid{
-  font-weight:700 !important;
+
+/* Lived Reality (Daily Experience, Shockwave) and Ascension Path (Action
+   Plan, Realization) matched to the same uppercase-sans treatment used
+   everywhere else in the table, instead of their own left-aligned serif
+   prose styling. */
+#masterMatrixTable td.col-lived,
+#masterMatrixTable td.col-ascension{
+  font-family:var(--sans) !important;
+  font-size:9px !important;
+  font-weight:400 !important;
+  text-transform:uppercase !important;
+  letter-spacing:2px !important;
+  line-height:1.7 !important;
 }
 
 /* First (axis/row-label) column was rendering far wider than intended —
@@ -302,9 +310,19 @@ body{
 #masterMatrixTable td.row-label{
   white-space:normal !important;
   padding:10px 6px !important;
+  letter-spacing:2px !important;
 }
 #masterMatrixTable th.axis-cell{
   white-space:normal !important;
+}
+#masterMatrixTable th{
+  font-weight:700 !important;
+}
+#masterMatrixTable td{
+  font-weight:400 !important;
+}
+#masterMatrixTable td.row-label{
+  font-weight:700 !important;
 }
 
 /* Gloss underline + "+" button now match whatever color the surrounding
@@ -313,6 +331,21 @@ body{
    purpose) are unaffected. */
 #masterMatrixTable .gloss{border-bottom-color:currentColor;}
 #masterMatrixTable .gloss-btn{color:inherit !important;}
+/* The site-wide light-theme rule (further below) forces every <span> to
+   font-weight:400 — it doesn't know about glossary terms sitting inside
+   this table's cells (Delta, Lead, Annamaya, Senescence...). That silently
+   thinned out exactly the cells that happen to be glossary terms, while
+   plain-text cells in the same column (Mortality, Laboured) stayed bold.
+   Forcing inheritance here makes every col-grid/col-meta cell match its
+   column, glossary term or not, in both themes. */
+#masterMatrixTable td.col-meta .gloss,
+#masterMatrixTable td.col-grid .gloss{
+  font-weight:inherit !important;
+  font-size:inherit !important;
+  letter-spacing:inherit !important;
+  text-transform:inherit !important;
+  color:inherit !important;
+}
 
 /* Row-label chakra sub-labels ("Root Chakra", "Sacral Chakra"...) — class-
    based instead of the hardcoded inline hex they used previously, so a
@@ -335,9 +368,9 @@ body{
 
 /* Light theme: same hues, background wash tuned down since the base is
    already pale (mirrors the existing gold-row light-theme pattern below). */
-[data-theme="light"] #masterMatrixTable tr.chakra-row-1{background:transparent !important;}
-/* Row 1's color wash removed in light theme per feedback — red background
-   read poorly there. Rows 2-7 already have no wash (see dark-theme note above). */
+[data-theme="light"] #masterMatrixTable tr.chakra-row-1{background:rgba(231,76,60,.10) !important;}
+/* Row 1 red wash restored for light theme per updated feedback. Rows 2-7
+   still have no wash (see dark-theme note above). */
 
 .self-table .axis-cell{
   font-family:var(--sans);
@@ -432,7 +465,13 @@ body{
 [data-theme="light"] body{background:#f5f1e8 !important;color:#1a1208 !important;font-weight:400;}
 
 /* Light: boost body text weight/brightness across all text elements */
-[data-theme="light"] p,[data-theme="light"] li,[data-theme="light"] span:not(.label):not(.ec-type):not(.p-num):not(.num):not(.layer-tag):not(.s-sub):not(.ds-subtitle):not(.rasa-cell):not(.tradition-cell){color:#1a1208 !important;font-weight:400 !important;}
+[data-theme="light"] p,[data-theme="light"] li,[data-theme="light"] span:not(.label):not(.ec-type):not(.p-num):not(.num):not(.layer-tag):not(.s-sub):not(.ds-subtitle):not(.rasa-cell):not(.tradition-cell):not(.col-title){color:#1a1208 !important;font-weight:400 !important;}
+/* Same bug as the glossary-term fix above, but hitting header text this
+   time: this rule catches .col-title spans inside <th>, silently
+   un-bolding "BIRTH", "GROWTH", etc. even though the parent <th> is
+   correctly set to font-weight:700 in light theme. Excluded above, and
+   inheritance forced here so header labels bold like row headers. */
+[data-theme="light"] th .col-title{font-weight:inherit !important;}
 [data-theme="light"] .phil-line{font-weight:500 !important;color:#1a1208 !important;}
 [data-theme="light"] .phil-line.dim{color:#3d2e10 !important;}
 [data-theme="light"] .symptoms-block p:not(.small){color:#1a1208 !important;font-weight:500 !important;}
@@ -2041,8 +2080,8 @@ h4 {
   }
  
   /* Master Matrix (7×6) — widest table */
-  .self-table[style*="min-width:1200px"]{
-  min-width:1100px !important;
+  .self-table[style*="min-width:1000px"]{
+  min-width:900px !important;
 }
 }
  /* Master Matrix mobile: explicit scroll container */
@@ -2062,6 +2101,11 @@ h4 {
 #masterMatrixTable th:not(.axis-cell){
   vertical-align:top !important;
   padding-top:14px !important;
+  white-space:normal !important;
+}
+#masterMatrixTable th .col-title{
+  font-size:8px !important;
+  letter-spacing:1.4px !important;
 }
 
 @media(max-width:768px){
@@ -2122,13 +2166,17 @@ h4 {
   display:table-cell;
 }
 
-/* Lived Reality / Ascension Path only render 3 columns (row-label + 2 data
-   columns), so the 7-column grid's min-width stretches each cell far too
-   wide with mostly empty space. !important overrides the inline min-width
-   set by setMatrixMode() in JS, whatever format the browser serializes it in. */
+/* Lived Reality / Ascension Path render row-label + 2 data columns +
+   the 5 meta columns (Brainwave..Existence Layer) on desktop. Widened
+   from 700px so the two data columns have visibly more room than the
+   short meta columns alongside them. */
 #masterMatrixWrap[data-mode="lived"] #masterMatrixTable,
 #masterMatrixWrap[data-mode="ascension"] #masterMatrixTable{
-  min-width:700px !important;
+  min-width:1150px !important;
+}
+#masterMatrixWrap[data-mode="lived"] #masterMatrixTable th.col-lived,
+#masterMatrixWrap[data-mode="ascension"] #masterMatrixTable th.col-ascension{
+  width:19% !important;
 }
 @media(max-width:768px){
   /* table-layout:fixed + hidden <td> cells for the *other* mode's columns
@@ -2779,13 +2827,11 @@ a.src-tag:hover{opacity:.75;}
     <li class="nav-dropdown-wrap">
       <a href="#glossary" data-group="new">New<span class="nav-new-dot"></span><span class="nav-caret">▾</span></a>
       <div class="nav-dropdown-panel" id="newMenuPanel">
-        <a href="#glossary" data-group="new">Glossary — New Terms Added</a>
         <a href="#master-matrix" data-group="new">Master Matrix — New Map Added</a>
         <a href="#enneagram" data-group="new">Enneagram — Map Added</a>
         <a href="#spectrum" data-group="new">Ascent of Self — Map Added</a>
         <a href="#rosetta-stone" data-group="new">Rosetta Stone — Map Added</a>
         <a href="#masters" data-group="new">Masters at a Glance — Map Added</a>
-        <a href="#disclaimer" data-group="new">Disclaimer — Expanded Care Guidance</a>
       </div>
     </li>
 
@@ -2860,13 +2906,11 @@ a.src-tag:hover{opacity:.75;}
         New <span class="nav-new-dot"></span><span class="mnav-caret">▾</span>
       </button>
       <div class="mnav-group-panel" id="newMenuPanelMobile">
-        <a href="#glossary">Glossary — New Terms Added</a>
         <a href="#master-matrix">Master Matrix — New Map Added</a>
         <a href="#enneagram">Enneagram — Map Added</a>
         <a href="#spectrum">Ascent of Self — Map Added</a>
         <a href="#rosetta-stone">Rosetta Stone — Map Added</a>
         <a href="#masters">Masters at a Glance — Map Added</a>
-        <a href="#disclaimer">Disclaimer — Expanded Care Guidance</a>
       </div>
     </li>
 
@@ -6117,7 +6161,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
     </div>
 
     <div class="self-table-wrap" id="masterMatrixWrap" data-mode="grid" style="max-width:900px;margin:0 auto 32px;">
-      <table class="self-table compact" id="masterMatrixTable" style="min-width:1200px;">
+      <table class="self-table compact" id="masterMatrixTable" style="min-width:1000px;">
         <thead>
           <tr>
             <th class="axis-cell" style="width:8%;vertical-align:middle;">
@@ -9436,7 +9480,7 @@ init();
     var wrap = document.getElementById('masterMatrixWrap');
     if(wrap) wrap.setAttribute('data-mode', mode);
     var table = document.getElementById('masterMatrixTable');
-    if(table) table.style.minWidth = (mode === 'grid') ? '1200px' : '980px';
+    if(table) table.style.minWidth = (mode === 'grid') ? '1000px' : '1150px';
     document.querySelectorAll('.matrix-mode-toggle .mode-btn').forEach(function(b){
       b.classList.toggle('active', b.getAttribute('data-mode-btn') === mode);
     });
