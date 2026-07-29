@@ -8490,7 +8490,47 @@ function sectionCollapse(id,btn){
   } else {
     wrap.classList.add('collapsed');
     if(btn)btn.innerHTML=btn.innerHTML.replace('Collapse','Expand').replace('▲','▼').replace('&#9650;','&#9660;');
+    resetNestedToggles(wrap);
   }
+}
+
+/* ── RESET NESTED EXPAND STATE ────────────────────────────────────────────
+   When a section-collapse-wrap closes, any per-card / per-row accordion
+   state left open inside it (Framework cards, Ascent of Self cards,
+   Self-Enquiry pillars, Enneagram cards, Master Matrix rows) is reset to
+   collapsed. Otherwise the wrap just hides at max-height:0 while its
+   children keep their open state, so re-expanding the section shows the
+   same card still expanded instead of the intended fresh, all-collapsed
+   view. Purely additive — sections with no nested toggles are unaffected
+   since the querySelectorAll calls simply find nothing. ── */
+function resetNestedToggles(wrap){
+  // Framework + Ascent of Self cards: 'collapsed' IS their own closed state
+  wrap.querySelectorAll('.framework-card:not(.collapsed)').forEach(function(c){
+    c.classList.add('collapsed');
+  });
+  // Self-Enquiry pillar cards: 'open' is their expanded state
+  wrap.querySelectorAll('.pillar-card.open').forEach(function(c){
+    c.classList.remove('open');
+    var lbl=c.querySelector('.p-expand');
+    if(lbl) lbl.innerHTML='Expand &#9660;';
+  });
+  // Enneagram cards: 'open' is their expanded state
+  wrap.querySelectorAll('.enneagram-card.open').forEach(function(c){
+    c.classList.remove('open');
+    var lbl=c.querySelector('.ec-toggle');
+    if(lbl) lbl.innerHTML='Expand &#9660;';
+  });
+  var ennBtn=wrap.querySelector('#ennExpandBtn');
+  if(ennBtn) ennBtn.innerHTML='Expand All 9 Types &#9660;';
+  // Master Matrix rows: expanded state is an inline display:table-row
+  wrap.querySelectorAll('.row-detail').forEach(function(d){
+    if(d.style.display==='table-row'){
+      d.style.display='none';
+      var n=d.id.replace('matrix-detail-','');
+      var b=document.getElementById('matrix-toggle-'+n);
+      if(b) b.textContent='+';
+    }
+  });
 }
 
 /* ── ENNEAGRAM EXPAND ALL ────────────────────────────────────────────────── */
