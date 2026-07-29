@@ -240,6 +240,45 @@ body{
    Background wash and the first-cell border-left accent above are left
    as-is since those aren't text coloring. */
 
+/* ...restored again, dark theme only: every data cell in the row (Birth→
+   Death grid, Daily Experience/Shockwave, Action Plan/Realization, and
+   Brainwave/Awareness/Stage/Alchemy/Existence Layer) now picks up the
+   row's chakra hue instead of staying flat white/grey, matching the
+   border-left accent and the row-label sub-line. Special-category cells
+   (Shifting Beliefs, Trauma, Crisis, Rigidity, Dissolution) already carry
+   their own .gold/.red highlight class and are excluded here so this
+   doesn't dilute that distinct meaning. Light theme is untouched — its
+   own [data-theme="light"] .self-table td rule below already forces a
+   fixed dark-brown !important on every cell regardless of this. */
+#masterMatrixTable tr.chakra-row-1 td.col-grid:not(.gold):not(.red),
+#masterMatrixTable tr.chakra-row-1 td.col-lived:not(.gold):not(.red),
+#masterMatrixTable tr.chakra-row-1 td.col-ascension:not(.gold):not(.red),
+#masterMatrixTable tr.chakra-row-1 td.col-meta:not(.gold):not(.red){color:#e74c3c;}
+#masterMatrixTable tr.chakra-row-2 td.col-grid:not(.gold):not(.red),
+#masterMatrixTable tr.chakra-row-2 td.col-lived:not(.gold):not(.red),
+#masterMatrixTable tr.chakra-row-2 td.col-ascension:not(.gold):not(.red),
+#masterMatrixTable tr.chakra-row-2 td.col-meta:not(.gold):not(.red){color:#e67e22;}
+#masterMatrixTable tr.chakra-row-3 td.col-grid:not(.gold):not(.red),
+#masterMatrixTable tr.chakra-row-3 td.col-lived:not(.gold):not(.red),
+#masterMatrixTable tr.chakra-row-3 td.col-ascension:not(.gold):not(.red),
+#masterMatrixTable tr.chakra-row-3 td.col-meta:not(.gold):not(.red){color:var(--chakra-3);}
+#masterMatrixTable tr.chakra-row-4 td.col-grid:not(.gold):not(.red),
+#masterMatrixTable tr.chakra-row-4 td.col-lived:not(.gold):not(.red),
+#masterMatrixTable tr.chakra-row-4 td.col-ascension:not(.gold):not(.red),
+#masterMatrixTable tr.chakra-row-4 td.col-meta:not(.gold):not(.red){color:var(--chakra-4);}
+#masterMatrixTable tr.chakra-row-5 td.col-grid:not(.gold):not(.red),
+#masterMatrixTable tr.chakra-row-5 td.col-lived:not(.gold):not(.red),
+#masterMatrixTable tr.chakra-row-5 td.col-ascension:not(.gold):not(.red),
+#masterMatrixTable tr.chakra-row-5 td.col-meta:not(.gold):not(.red){color:#3498db;}
+#masterMatrixTable tr.chakra-row-6 td.col-grid:not(.gold):not(.red),
+#masterMatrixTable tr.chakra-row-6 td.col-lived:not(.gold):not(.red),
+#masterMatrixTable tr.chakra-row-6 td.col-ascension:not(.gold):not(.red),
+#masterMatrixTable tr.chakra-row-6 td.col-meta:not(.gold):not(.red){color:#6a5acd;}
+#masterMatrixTable tr.chakra-row-7 td.col-grid:not(.gold):not(.red),
+#masterMatrixTable tr.chakra-row-7 td.col-lived:not(.gold):not(.red),
+#masterMatrixTable tr.chakra-row-7 td.col-ascension:not(.gold):not(.red),
+#masterMatrixTable tr.chakra-row-7 td.col-meta:not(.gold):not(.red){color:#9b59b6;}
+
 /* Light-theme row text/button coloring reverted to default as well —
    see the matching dark-theme note above. Only the chakra sub-label
    (.chakra-label-1..7) keeps its own light-theme hue, just below. */
@@ -315,15 +354,23 @@ body{
 #masterMatrixTable th.axis-cell{
   white-space:normal !important;
 }
-#masterMatrixTable th{
+#masterMatrixTable th,
+#masterMatrixTable th .col-title{
   font-weight:700 !important;
 }
 #masterMatrixTable td{
   font-weight:400 !important;
 }
-#masterMatrixTable td.row-label{
+#masterMatrixTable td.row-label,
+#masterMatrixTable td.row-label span{
   font-weight:700 !important;
 }
+/* Both rules above are unscoped by theme and use the table's own ID, so
+   they hold regardless of data-theme and regardless of whatever a span
+   or th's own inherited weight would otherwise resolve to — closes the
+   same class of bug as the col-title fix, just for every span nested in
+   a header or row-label cell (col-title itself, and the row-label's
+   "Layer N" caption + chakra-label-N line), in both themes at once. */
 
 /* Gloss underline + "+" button now match whatever color the surrounding
    cell text is, instead of always being hard-coded gold — scoped to this
@@ -455,12 +502,25 @@ body{
   --serif:'Cormorant Garamond',Georgia,serif;
   --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
   --nav-h:44px;
+  /* Layer 3 (yellow) / Layer 4 (green) accent used by the Ascent of Self
+     and Master Matrix map SVGs. Split into a variable here (dark-theme
+     value matches the original hardcoded #f1c40f/#2ecc71) so light theme
+     can swap in a readable shade below instead of the raw hex staying
+     fixed everywhere. */
+  --chakra-3:#f1c40f;
+  --chakra-4:#2ecc71;
 }
 
 /* ── LIGHT THEME ─────────────────────────────────────────────────────────── */
 [data-theme="light"]{
   --bg:#f5f1e8;--bg-lift:#f5f1e8;--white:#0f0a02;--gold:#7a5e0e;--mid:#2e2008;--grey:#3d2e10;--dim:#5a4a2a;
   --gold-glow:rgba(122,94,14,0.3);--gold-dim:rgba(122,94,14,0.1);
+  /* Raw #f1c40f/#2ecc71 measure ~1.5:1 and ~1.9:1 against the light
+     cream background — well under the 3:1 minimum for UI text/icons.
+     Reusing the same tuned shades already proven legible for
+     .chakra-label-3/4 elsewhere on the page. */
+  --chakra-3:#8a6d00;
+  --chakra-4:#1e8c50;
 }
 [data-theme="light"] body{background:#f5f1e8 !important;color:#1a1208 !important;font-weight:400;}
 
@@ -3262,15 +3322,15 @@ a.src-tag:hover{opacity:.75;}
       </g>
       <g class="ascent-map-node" tabindex="0" role="button" aria-label="Layer 3 — Thought, I Think" onclick="scrollToAscentCard(3)" onkeypress="if(event.key==='Enter')scrollToAscentCard(3)">
         <title>L3 — Thought — &ldquo;I Think&rdquo;</title>
-        <circle class="ascent-node-bg" cx="128" cy="306" r="22" fill="var(--bg-lift)" stroke="#f1c40f" stroke-width="1.5"/>
-        <text x="128" y="312" text-anchor="middle" font-family="var(--sans)" font-size="14" font-weight="700" fill="#f1c40f">3</text>
+        <circle class="ascent-node-bg" cx="128" cy="306" r="22" fill="var(--bg-lift)" stroke="var(--chakra-3)" stroke-width="1.5"/>
+        <text x="128" y="312" text-anchor="middle" font-family="var(--sans)" font-size="14" font-weight="700" fill="var(--chakra-3)">3</text>
         <text x="162" y="303" text-anchor="start" font-family="var(--sans)" font-size="9" letter-spacing="1.5" fill="var(--dim)" style="text-transform:uppercase;">L3</text>
         <text x="162" y="317" text-anchor="start" font-family="var(--sans)" font-size="13" fill="var(--white)">Thought</text>
       </g>
       <g class="ascent-map-node" tabindex="0" role="button" aria-label="Layer 4 — Love, I Connect" onclick="scrollToAscentCard(4)" onkeypress="if(event.key==='Enter')scrollToAscentCard(4)">
         <title>L4 — Love — &ldquo;I Connect&rdquo;</title>
-        <circle class="ascent-node-bg" cx="170" cy="252" r="22" fill="var(--bg-lift)" stroke="#2ecc71" stroke-width="1.5"/>
-        <text x="170" y="258" text-anchor="middle" font-family="var(--sans)" font-size="14" font-weight="700" fill="#2ecc71">4</text>
+        <circle class="ascent-node-bg" cx="170" cy="252" r="22" fill="var(--bg-lift)" stroke="var(--chakra-4)" stroke-width="1.5"/>
+        <text x="170" y="258" text-anchor="middle" font-family="var(--sans)" font-size="14" font-weight="700" fill="var(--chakra-4)">4</text>
         <text x="204" y="249" text-anchor="start" font-family="var(--sans)" font-size="9" letter-spacing="1.5" fill="var(--dim)" style="text-transform:uppercase;">L4</text>
         <text x="204" y="263" text-anchor="start" font-family="var(--sans)" font-size="13" fill="var(--white)">Love</text>
       </g>
@@ -6011,38 +6071,38 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
     </g>
     <g class="matrix-map-node" tabindex="0" role="button" aria-label="Layer 4 — Intellect" onclick="expandMatrixRow(4)" onkeypress="if(event.key==='Enter')expandMatrixRow(4)">
       <title>L4 — Intellect</title>
-      <circle cx="30" cy="190.0" r="14" fill="var(--bg-lift)" stroke="#2ecc71" stroke-width="1.5"/>
-      <text x="30" y="194.5" text-anchor="middle" font-family="var(--sans)" font-size="13" font-weight="700" fill="#2ecc71">4</text>
-      <rect class="matrix-row-bg" x="60" y="172.0" width="390" height="36" rx="4" fill="#2ecc71" fill-opacity="0.06"/>
-      <rect x="62" y="172.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#2ecc71" stroke-width="0.75" stroke-opacity="0.55"/>
+      <circle cx="30" cy="190.0" r="14" fill="var(--bg-lift)" stroke="var(--chakra-4)" stroke-width="1.5"/>
+      <text x="30" y="194.5" text-anchor="middle" font-family="var(--sans)" font-size="13" font-weight="700" fill="var(--chakra-4)">4</text>
+      <rect class="matrix-row-bg" x="60" y="172.0" width="390" height="36" rx="4" fill="var(--chakra-4)" fill-opacity="0.06"/>
+      <rect x="62" y="172.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="var(--chakra-4)" stroke-width="0.75" stroke-opacity="0.55"/>
       <text class="matrix-cell-text" x="92.5" y="192.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Curiosity</title>Curious</text>
-      <rect x="127" y="172.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#2ecc71" stroke-width="0.75" stroke-opacity="0.55"/>
+      <rect x="127" y="172.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="var(--chakra-4)" stroke-width="0.75" stroke-opacity="0.55"/>
       <text class="matrix-cell-text" x="157.5" y="192.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Logic</title>Logic</text>
-      <rect x="192" y="172.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#2ecc71" stroke-width="0.75" stroke-opacity="0.55"/>
+      <rect x="192" y="172.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="var(--chakra-4)" stroke-width="0.75" stroke-opacity="0.55"/>
       <text class="matrix-cell-text" x="222.5" y="192.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Stability</title>Stable</text>
       <rect x="257" y="172.0" width="61" height="36" rx="3" fill="var(--gold)" fill-opacity="0.14" stroke="var(--gold)" stroke-width="1.3" stroke-opacity="0.55"/>
       <text class="matrix-cell-text" x="287.5" y="192.3" text-anchor="middle" font-size="12" fill="var(--gold)"><title>Shifting beliefs</title>Reframe</text>
-      <rect x="322" y="172.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#2ecc71" stroke-width="0.75" stroke-opacity="0.55"/>
+      <rect x="322" y="172.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="var(--chakra-4)" stroke-width="0.75" stroke-opacity="0.55"/>
       <text class="matrix-cell-text" x="352.5" y="192.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Decline</title>Decline</text>
-      <rect x="387" y="172.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#2ecc71" stroke-width="0.75" stroke-opacity="0.55"/>
+      <rect x="387" y="172.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="var(--chakra-4)" stroke-width="0.75" stroke-opacity="0.55"/>
       <text class="matrix-cell-text" x="417.5" y="192.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Loss of judgment</title>No judgm</text>
     </g>
     <g class="matrix-map-node" tabindex="0" role="button" aria-label="Layer 3 — Mind" onclick="expandMatrixRow(3)" onkeypress="if(event.key==='Enter')expandMatrixRow(3)">
       <title>L3 — Mind</title>
-      <circle cx="30" cy="234.0" r="14" fill="var(--bg-lift)" stroke="#f1c40f" stroke-width="1.5"/>
-      <text x="30" y="238.5" text-anchor="middle" font-family="var(--sans)" font-size="13" font-weight="700" fill="#f1c40f">3</text>
-      <rect class="matrix-row-bg" x="60" y="216.0" width="390" height="36" rx="4" fill="#f1c40f" fill-opacity="0.06"/>
-      <rect x="62" y="216.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#f1c40f" stroke-width="0.75" stroke-opacity="0.55"/>
+      <circle cx="30" cy="234.0" r="14" fill="var(--bg-lift)" stroke="var(--chakra-3)" stroke-width="1.5"/>
+      <text x="30" y="238.5" text-anchor="middle" font-family="var(--sans)" font-size="13" font-weight="700" fill="var(--chakra-3)">3</text>
+      <rect class="matrix-row-bg" x="60" y="216.0" width="390" height="36" rx="4" fill="var(--chakra-3)" fill-opacity="0.06"/>
+      <rect x="62" y="216.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="var(--chakra-3)" stroke-width="0.75" stroke-opacity="0.55"/>
       <text class="matrix-cell-text" x="92.5" y="236.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Sensory</title>Sensory</text>
-      <rect x="127" y="216.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#f1c40f" stroke-width="0.75" stroke-opacity="0.55"/>
+      <rect x="127" y="216.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="var(--chakra-3)" stroke-width="0.75" stroke-opacity="0.55"/>
       <text class="matrix-cell-text" x="157.5" y="236.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Learning</title>Learning</text>
-      <rect x="192" y="216.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#f1c40f" stroke-width="0.75" stroke-opacity="0.55"/>
+      <rect x="192" y="216.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="var(--chakra-3)" stroke-width="0.75" stroke-opacity="0.55"/>
       <text class="matrix-cell-text" x="222.5" y="236.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Perception</title>Percept.</text>
-      <rect x="257" y="216.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#f1c40f" stroke-width="0.75" stroke-opacity="0.55"/>
+      <rect x="257" y="216.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="var(--chakra-3)" stroke-width="0.75" stroke-opacity="0.55"/>
       <text class="matrix-cell-text" x="287.5" y="236.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Shifting</title>Shifting</text>
-      <rect x="322" y="216.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#f1c40f" stroke-width="0.75" stroke-opacity="0.55"/>
+      <rect x="322" y="216.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="var(--chakra-3)" stroke-width="0.75" stroke-opacity="0.55"/>
       <text class="matrix-cell-text" x="352.5" y="236.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Fatigue</title>Fatigue</text>
-      <rect x="387" y="216.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#f1c40f" stroke-width="0.75" stroke-opacity="0.55"/>
+      <rect x="387" y="216.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="var(--chakra-3)" stroke-width="0.75" stroke-opacity="0.55"/>
       <text class="matrix-cell-text" x="417.5" y="236.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Loss of senses</title>No sense</text>
     </g>
     <g class="matrix-map-node" tabindex="0" role="button" aria-label="Layer 2 — Breath" onclick="expandMatrixRow(2)" onkeypress="if(event.key==='Enter')expandMatrixRow(2)">
