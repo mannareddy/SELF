@@ -3470,31 +3470,31 @@ a.src-tag:hover{opacity:.75;}
   </div>
   <div id="self-enquiry-full-content" class="section-collapse-wrap collapsed">
   <div class="pillar-grid">
-    <div class="pillar-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.p-expand');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="pillar-card">
       <span class="p-num">Pillar 01</span><p class="p-title">Who am I?</p>
       <span class="p-expand">Expand &#9660;</span>
       <span class="section-collapse-label" style="font-family:var(--serif);font-size:14px;font-weight:300;color:var(--grey);margin-top:16px;">Your gift, distilled</span>
       <p class="p-body">Discovering your passion, attributes, and legacy. If you had one gift of value for the world &mdash; what is it? Not your job title. Not your resume. The singular thing only you can bring.</p>
     </div>
-    <div class="pillar-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.p-expand');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="pillar-card">
       <span class="p-num">Pillar 02</span><p class="p-title">Where am I from?</p>
       <span class="p-expand">Expand &#9660;</span>
       <span class="section-collapse-label" style="font-family:var(--serif);font-size:14px;font-weight:300;color:var(--grey);margin-top:16px;">Your source &amp; conditioning</span>
       <p class="p-body">Understanding your spiritual source and your current baseline reality. What shaped the lens you see through? What do you carry that you didn&rsquo;t choose? And what of it is actually you?</p>
     </div>
-    <div class="pillar-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.p-expand');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="pillar-card">
       <span class="p-num">Pillar 03</span><p class="p-title">Why am I here?</p>
       <span class="p-expand">Expand &#9660;</span>
       <span class="section-collapse-label" style="font-family:var(--serif);font-size:14px;font-weight:300;color:var(--grey);margin-top:16px;">Your purpose, named</span>
       <p class="p-body">Defining your innate purpose and the specific problems you are uniquely built to solve. Not what the world needs from everyone. What it needs from you specifically.</p>
     </div>
-    <div class="pillar-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.p-expand');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="pillar-card">
       <span class="p-num">Pillar 04</span><p class="p-title">What can I do?</p>
       <span class="p-expand">Expand &#9660;</span>
       <span class="section-collapse-label" style="font-family:var(--serif);font-size:14px;font-weight:300;color:var(--grey);margin-top:16px;">Your gifts, in action</span>
       <p class="p-body">Actionable service. Developing the strategic route to deploy your gifts. The gap between knowing your purpose and actually serving it is practice &mdash; not revelation.</p>
     </div>
-    <div class="pillar-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.p-expand');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="pillar-card">
       <span class="p-num">Pillar 05</span><p class="p-title">Where am I going?</p>
       <span class="p-expand">Expand &#9660;</span>
       <span class="section-collapse-label" style="font-family:var(--serif);font-size:14px;font-weight:300;color:var(--grey);margin-top:16px;">Direction, not destination</span>
@@ -8484,6 +8484,29 @@ function updateNav(){
         });
       }
       this.classList.toggle('collapsed');
+    });
+  });
+
+  /* ── PILLAR CARDS (5 Pillars of Self-Enquiry): click to toggle. Accordion —
+     opening one card closes any other open card in the same .pillar-grid. ── */
+  document.querySelectorAll('.pillar-card').forEach(function(card){
+    card.addEventListener('click', function(e){
+      if(e.target.tagName === 'A') return;
+      var grid = this.closest('.pillar-grid');
+      var isOpening = !this.classList.contains('open');
+      if(grid && isOpening){
+        var self = this;
+        grid.querySelectorAll('.pillar-card.open').forEach(function(c){
+          if(c !== self){
+            c.classList.remove('open');
+            var l = c.querySelector('.p-expand');
+            if(l) l.innerHTML = 'Expand &#9660;';
+          }
+        });
+      }
+      this.classList.toggle('open');
+      var lbl = this.querySelector('.p-expand');
+      if(lbl) lbl.innerHTML = this.classList.contains('open') ? 'Collapse &#9650;' : 'Expand &#9660;';
     });
   });
 
