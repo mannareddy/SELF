@@ -1105,9 +1105,20 @@ a:hover{opacity:.7;}
     background:rgba(0,0,0,0.97);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
     z-index:998;overflow-y:auto;-webkit-overflow-scrolling:touch;
     transform:translateY(-8px);opacity:0;pointer-events:none;
-    transition:opacity .22s ease,transform .22s ease;
+    visibility:hidden;
+    transition:opacity .22s ease,transform .22s ease,visibility 0s linear .22s;
   }
-  .mnav-panel.open{opacity:1;transform:translateY(0);pointer-events:auto;}
+  /* visibility:hidden while closed takes this fixed, full-height,
+     backdrop-filter-blurred panel out of the paint/composite path
+     entirely. Without it, the panel still has to be kept as a live
+     compositing layer even at opacity:0, so when .theme-swap snaps
+     its background color instantly on toggle, the GPU has to
+     recomposite a near-full-viewport blurred layer in one frame —
+     that's the jump/flash at the bottom of the screen on mobile,
+     even when the menu was never opened. visibility only flips back
+     to hidden after the close transition finishes (the transition-delay
+     above), so the open/close animation itself is unaffected. */
+  .mnav-panel.open{opacity:1;transform:translateY(0);pointer-events:auto;visibility:visible;transition:opacity .22s ease,transform .22s ease;}
   [data-theme="light"] .mnav-panel{background:rgba(245,241,232,0.97);}
 
   .mnav-list{list-style:none;margin:0;padding:8px 0 48px;}
