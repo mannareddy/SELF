@@ -1040,23 +1040,29 @@ a:hover{opacity:.7;}
   .nav-logo-center picture{
     display:flex;align-items:center;justify-content:center;
     width:38px;height:38px;border-radius:6px;overflow:visible;
+    --glow-a:rgba(212,175,55,0.35);--glow-b:rgba(212,175,55,0.14);
+    --glow-c:rgba(212,175,55,0.65);--glow-d:rgba(212,175,55,0.3);
     box-shadow:0 0 8px rgba(212,175,55,0.4), 0 0 22px rgba(212,175,55,0.18);
     animation:mnavLogoGlow 3s ease-in-out infinite;
   }
+  /* Single keyframe shared by both themes — only the custom properties it
+     reads change on toggle, not the animation-name itself. Swapping
+     animation-name on data-theme change (the old approach) restarts the
+     animation's internal timeline, which reads as a jump/flicker on the
+     nav logo right when .theme-swap is trying to keep everything else
+     still. Referencing --glow-* instead means the running animation just
+     picks up the new color on its next frame, no restart. */
   @keyframes mnavLogoGlow{
-    0%,100%{box-shadow:0 0 6px rgba(212,175,55,0.35),0 0 16px rgba(212,175,55,0.14);}
-    50%{box-shadow:0 0 13px rgba(212,175,55,0.65),0 0 28px rgba(212,175,55,0.3);}
+    0%,100%{box-shadow:0 0 6px var(--glow-a),0 0 16px var(--glow-b);}
+    50%{box-shadow:0 0 13px var(--glow-c),0 0 28px var(--glow-d);}
   }
   /* Light mode: same floating glow, but in the darker amber tone already
      used for gold accents on the cream background (pale gold would barely
      show against cream) */
   [data-theme="light"] .nav-logo-center picture{
+    --glow-a:rgba(138,106,18,0.3);--glow-b:rgba(138,106,18,0.12);
+    --glow-c:rgba(138,106,18,0.5);--glow-d:rgba(138,106,18,0.25);
     box-shadow:0 0 8px rgba(138,106,18,0.35), 0 0 20px rgba(138,106,18,0.16);
-    animation:mnavLogoGlowLight 3s ease-in-out infinite;
-  }
-  @keyframes mnavLogoGlowLight{
-    0%,100%{box-shadow:0 0 6px rgba(138,106,18,0.3),0 0 14px rgba(138,106,18,0.12);}
-    50%{box-shadow:0 0 12px rgba(138,106,18,0.5),0 0 24px rgba(138,106,18,0.25);}
   }
   .nav-logo-center img{
     width:36px !important;height:36px !important;
@@ -3663,6 +3669,9 @@ a.src-tag:hover{opacity:.75;}
     <span class="src-tag src-trad">Traditional Source</span>
     <span class="src-tag src-research">Modern Research</span>
     <span class="src-tag src-synth">42SELF Interpretation</span>
+  </div>
+  <div style="font-family:var(--sans);font-size:13px;color:var(--grey);line-height:1.9;max-width:640px;margin:16px auto 0;font-style:normal;">
+    You'll see these three tags throughout the site, wherever a specific claim is made. <span style="color:#c9a84c;">Traditional Source</span> means it's drawn directly from a named tradition or text. <span style="color:#6fa8dc;">Modern Research</span> means it's a plain summary of published science. <span style="color:var(--grey);">42SELF Interpretation</span> means it's our own synthesis &mdash; not a claim the underlying tradition or study makes on its own. Every tag links back to this key.
   </div>
   <button id="foundationToggle" onclick="toggleFoundation(this)" style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);background:transparent;border:1.5px solid rgba(212,175,55,0.55);padding:10px 24px;cursor:pointer;margin:20px auto 0;display:block;transition:border-color .25s;" aria-expanded="false">Show Traditions &#9660;</button>
   <div id="foundationContent" class="foundation-content collapsed">
