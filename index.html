@@ -46,6 +46,17 @@ background:var(--bg);   /* add this line */
 .theme-swap, .theme-swap *, .theme-swap *::before, .theme-swap *::after{
   transition:none !important;
 }
+/* Exception: freezeTransitions() is also called on every framework/pillar
+   card click (not just theme swaps — see the comment above its definition),
+   so the blanket freeze above was silently cancelling the card's own
+   open/close height animation, which needs its transition to survive to
+   actually glide instead of snap. Keep it alive here. */
+.theme-swap .framework-content{
+  transition:max-height .4s ease,opacity .3s ease !important;
+}
+.theme-swap .p-body{
+  transition:max-height .4s ease,opacity .3s ease,margin-top .4s ease,padding-top .4s ease,border-top-width .4s ease !important;
+}
 body{
   background:var(--bg);
   color:var(--white);
@@ -399,20 +410,20 @@ body{
    based instead of the hardcoded inline hex they used previously, so a
    light-theme variant is actually possible (inline styles can't be
    overridden by a stylesheet without fighting specificity). */
-.chakra-label-1{color:#e74c3c;}
-.chakra-label-2{color:#e67e22;}
-.chakra-label-3{color:#f1c40f;}
-.chakra-label-4{color:#2ecc71;}
-.chakra-label-5{color:#3498db;}
+.chakra-label-1{color:var(--chakra-label-1);}
+.chakra-label-2{color:var(--chakra-label-2);}
+.chakra-label-3{color:var(--chakra-label-3);}
+.chakra-label-4{color:var(--chakra-label-4);}
+.chakra-label-5{color:var(--chakra-label-5);}
 .chakra-label-6{color:#6a5acd;}
 .chakra-label-7{color:#9b59b6;}
-[data-theme="light"] .chakra-label-1{color:#c0392b !important;}
-[data-theme="light"] .chakra-label-2{color:#a15c00 !important;}
-[data-theme="light"] .chakra-label-3{color:#8a6d00 !important;}
-[data-theme="light"] .chakra-label-4{color:#1e8c50 !important;}
-[data-theme="light"] .chakra-label-5{color:#1e64a0 !important;}
-[data-theme="light"] .chakra-label-6{color:#4b3aa0 !important;}
-[data-theme="light"] .chakra-label-7{color:#7d3c98 !important;}
+
+
+
+
+
+
+
 
 /* Light theme: same hues, background wash tuned down since the base is
    already pale (mirrors the existing gold-row light-theme pattern below). */
@@ -432,17 +443,17 @@ body{
 }
  
 /* Light theme */
-[data-theme="light"] .self-table th{background:#c8bfa0 !important;color:#3a2a0a !important;font-weight:700 !important;}
-[data-theme="light"] .self-table td{color:#1a1208 !important;font-weight:500 !important;border-color:rgba(0,0,0,0.28) !important;}
-[data-theme="light"] .self-table th{border-color:rgba(0,0,0,0.32) !important;}
-[data-theme="light"] .self-table td.row-label{color:#5a4a2a !important;}
-[data-theme="light"] .self-table td.gold{color:#7a5e0e !important;}
-[data-theme="light"] .self-table td.red{color:#c0392b !important;}
+[data-theme="light"] .self-table th{background:var(--bg-header) !important;color:var(--text-head-dark) !important;font-weight:700 !important;}
+[data-theme="light"] .self-table td{color:var(--text-body) !important;font-weight:500 !important;border-color:rgba(var(--shadow-rgb),0.28) !important;}
+[data-theme="light"] .self-table th{border-color:rgba(var(--shadow-rgb),0.32) !important;}
+[data-theme="light"] .self-table td.row-label{color:var(--text-dim) !important;}
+[data-theme="light"] .self-table td.gold{color:var(--gold) !important;}
+[data-theme="light"] .self-table td.red{color:var(--chakra-label-1) !important;}
 [data-theme="light"] .self-table tr.gold-row td{background:rgba(122,94,14,.06);}
-[data-theme="light"] .self-table tr.gold-row td.gold{color:#7a5e0e !important;}
-[data-theme="light"] .self-table tr.gold-row td.gold-flaw{color:#7a5e0e !important;}
-[data-theme="light"] .self-table-wrap{border:2px solid rgba(0,0,0,0.4);}
-[data-theme="light"] .axis-cell{background:#c8bfa0 !important;}
+[data-theme="light"] .self-table tr.gold-row td.gold{color:var(--gold) !important;}
+[data-theme="light"] .self-table tr.gold-row td.gold-flaw{color:var(--gold) !important;}
+[data-theme="light"] .self-table-wrap{border:2px solid rgba(var(--shadow-rgb),0.4);}
+[data-theme="light"] .axis-cell{background:var(--bg-header) !important;}
 /* Mobile: stack axis label in 6x7 table */
 @media(max-width:640px){
   .self-table th,
@@ -500,6 +511,22 @@ body{
   --dim:#999999;
   --bg:#000000;
   --bg-lift:#060606;
+  /* theme-migration tokens — dark defaults (transparent/inherit = no change in dark) */
+  --text-body:#f0f0f0;
+  --text-mid:#cccccc;
+  --text-dim:#999999;
+  --text-deep:#cccccc;
+  --text-head-dark:#3a2a0a;
+  --accent-gold:#d4af37;
+  --accent-gold-rgb:212,175,55;
+  --shadow-rgb:0,0,0;
+  --bg-card:#060606;
+  --bg-card-2:#060606;
+  --bg-header:#060606;
+  --bg-page:#000000;
+  --bg-footer:#060606;
+  --bg-sunken:#060606;
+  --text-on-accent:#f0f0f0;
   --serif:'Cormorant Garamond',Georgia,serif;
   --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
   --nav-h:44px;
@@ -510,6 +537,21 @@ body{
      fixed everywhere. */
   --chakra-3:#f1c40f;
   --chakra-4:#2ecc71;
+  --chakra-label-1:#e74c3c;
+  --chakra-label-2:#e67e22;
+  --chakra-label-3:#f1c40f;
+  --chakra-label-4:#2ecc71;
+  --chakra-label-5:#3498db;
+  --chakra-label-6:#9b59b6;
+  --chakra-label-7:#8e44ad;
+  /* ── batch 7 migration tokens — dark defaults (only actually consumed
+     inside [data-theme="light"] rules; kept here for consistency with
+     the rest of the token map) ── */
+  --text-nav:#999999;             /* nav/menu link text, matches --dim */
+  --text-muted:#555555;           /* void-restart-link, matches its dark base */
+  --bg-card-3:#060606;            /* .why-card bg, matches --bg-card */
+  --text-research-blue:#6fa8dc;   /* .src-research, matches its dark base */
+  --text-research-blue-rgb:111,168,220;
 }
 
 /* ── LIGHT THEME ─────────────────────────────────────────────────────────── */
@@ -522,240 +564,269 @@ body{
      .chakra-label-3/4 elsewhere on the page. */
   --chakra-3:#8a6d00;
   --chakra-4:#1e8c50;
+  /* ── migration tokens ── */
+  --text-body:#1a1208;
+  --text-mid:#2e2008;
+  --text-dim:#5a4a2a;
+  --text-deep:#2e2008;
+  --text-head-dark:#3a2a0a;
+  --accent-gold:#8a6a12;
+  --accent-gold-rgb:138,106,18;
+  --shadow-rgb:0,0,0;
+  --bg-card:#e8e0cc;
+  --bg-card-2:#e5ddc5;
+  --bg-header:#c8bfa0;
+  --bg-page:#f5f1e8;
+  --bg-footer:#e5ddc5;
+  --bg-sunken:#ddd5b8;
+  --text-on-accent:#faf8f3;
+  --chakra-label-1:#c0392b;
+  --chakra-label-2:#a15c00;
+  --chakra-label-3:#8a6d00;
+  --chakra-label-4:#1e8c50;
+  --chakra-label-5:#1e64a0;
+  --chakra-label-6:#4b3aa0;
+  --chakra-label-7:#7d3c98;
+  /* ── batch 7 migration tokens ── */
+  --text-nav:#4a3a1a;
+  --text-muted:#7a6a4a;
+  --bg-card-3:#d8d0b8;
+  --text-research-blue:#2a5a8a;
+  --text-research-blue-rgb:42,90,138;
 }
-[data-theme="light"] body{background:#f5f1e8 !important;color:#1a1208 !important;font-weight:400;}
+[data-theme="light"] body{background:var(--bg-page) !important;color:var(--text-body) !important;font-weight:400;}
 
 /* Light: boost body text weight/brightness across all text elements */
-[data-theme="light"] p,[data-theme="light"] li,[data-theme="light"] span:not(.label):not(.ec-type):not(.p-num):not(.num):not(.layer-tag):not(.s-sub):not(.ds-subtitle):not(.rasa-cell):not(.tradition-cell):not(.col-title){color:#1a1208 !important;font-weight:400 !important;}
+[data-theme="light"] p,[data-theme="light"] li,[data-theme="light"] span:not(.label):not(.ec-type):not(.p-num):not(.num):not(.layer-tag):not(.s-sub):not(.ds-subtitle):not(.rasa-cell):not(.tradition-cell):not(.col-title){color:var(--text-body) !important;font-weight:400 !important;}
 /* Same bug as the glossary-term fix above, but hitting header text this
    time: this rule catches .col-title spans inside <th>, silently
    un-bolding "BIRTH", "GROWTH", etc. even though the parent <th> is
    correctly set to font-weight:700 in light theme. Excluded above, and
    inheritance forced here so header labels bold like row headers. */
 [data-theme="light"] th .col-title{font-weight:inherit !important;}
-[data-theme="light"] .phil-line{font-weight:500 !important;color:#1a1208 !important;}
-[data-theme="light"] .phil-line.dim{color:#3d2e10 !important;}
-[data-theme="light"] .symptoms-block p:not(.small){color:#1a1208 !important;font-weight:500 !important;}
-[data-theme="light"] .symptoms-block p.gold:not(.small){color:#8a6a12 !important;}
-[data-theme="light"] .symptoms-block p.small{color:#3d2e10 !important;font-weight:400 !important;}
-[data-theme="light"] .faq-a-inner{color:#1a1208 !important;font-weight:400 !important;}
-[data-theme="light"] .framework-card p{color:#2e2008 !important;font-weight:400 !important;}
-[data-theme="light"] .pillar-card .p-body{color:#2e2008 !important;font-weight:400 !important;}
-[data-theme="light"] .path-card p{color:#2e2008 !important;font-weight:400 !important;}
-[data-theme="light"] .why-card p{color:#2e2008 !important;font-weight:400 !important;}
-[data-theme="light"] .identity-card p{color:#2e2008 !important;font-weight:400 !important;}
-[data-theme="light"] .ec-val{color:#1a1208 !important;font-weight:400 !important;}
-[data-theme="light"] .ec-synthesis{color:#2e2008 !important;font-weight:400 !important;}
-[data-theme="light"] .ipo-cell{color:#1a1208 !important;font-weight:500 !important;}
-[data-theme="light"] .rasa-cell{color:#1a1208 !important;font-weight:500 !important;}
-[data-theme="light"] .sl-desc{color:#1a1208 !important;font-weight:400 !important;}
-[data-theme="light"] .ds-text{color:#1a1208 !important;font-weight:400 !important;}
-[data-theme="light"] .as-text{color:#1a1208 !important;font-weight:400 !important;}
-[data-theme="light"] .ego-twin-card p{color:#1a1208 !important;font-weight:400 !important;}
-[data-theme="light"] .tradition-cell{color:#1a1208 !important;font-weight:400 !important;}
-[data-theme="light"] .mc-desc{color:#1a1208 !important;font-weight:400 !important;}
-[data-theme="light"] .pull-quote p{color:#1a1208 !important;font-weight:400 !important;}
-[data-theme="light"] .cosmo-quote p{color:#1a1208 !important;font-weight:400 !important;}
+[data-theme="light"] .phil-line{font-weight:500 !important;color:var(--text-body) !important;}
+[data-theme="light"] .phil-line.dim{color:var(--grey) !important;}
+[data-theme="light"] .symptoms-block p:not(.small){color:var(--text-body) !important;font-weight:500 !important;}
+[data-theme="light"] .symptoms-block p.gold:not(.small){color:var(--accent-gold) !important;}
+[data-theme="light"] .symptoms-block p.small{color:var(--grey) !important;font-weight:400 !important;}
+[data-theme="light"] .faq-a-inner{color:var(--text-body) !important;font-weight:400 !important;}
+[data-theme="light"] .framework-card p{color:var(--text-mid) !important;font-weight:400 !important;}
+[data-theme="light"] .pillar-card .p-body{color:var(--text-mid) !important;font-weight:400 !important;}
+[data-theme="light"] .path-card p{color:var(--text-mid) !important;font-weight:400 !important;}
+[data-theme="light"] .why-card p{color:var(--text-mid) !important;font-weight:400 !important;}
+[data-theme="light"] .identity-card p{color:var(--text-mid) !important;font-weight:400 !important;}
+[data-theme="light"] .ec-val{color:var(--text-body) !important;font-weight:400 !important;}
+[data-theme="light"] .ec-synthesis{color:var(--text-mid) !important;font-weight:400 !important;}
+[data-theme="light"] .ipo-cell{color:var(--text-body) !important;font-weight:500 !important;}
+[data-theme="light"] .rasa-cell{color:var(--text-body) !important;font-weight:500 !important;}
+[data-theme="light"] .sl-desc{color:var(--text-body) !important;font-weight:400 !important;}
+[data-theme="light"] .ds-text{color:var(--text-body) !important;font-weight:400 !important;}
+[data-theme="light"] .as-text{color:var(--text-body) !important;font-weight:400 !important;}
+[data-theme="light"] .ego-twin-card p{color:var(--text-body) !important;font-weight:400 !important;}
+[data-theme="light"] .tradition-cell{color:var(--text-body) !important;font-weight:400 !important;}
+[data-theme="light"] .mc-desc{color:var(--text-body) !important;font-weight:400 !important;}
+[data-theme="light"] .pull-quote p{color:var(--text-body) !important;font-weight:400 !important;}
+[data-theme="light"] .cosmo-quote p{color:var(--text-body) !important;font-weight:400 !important;}
 /* Superordinate section — light theme: plain page bg, gold only on the box */
-[data-theme="light"] .superordinate-section{background:#f5f1e8 !important;border-top-color:rgba(0,0,0,0.06) !important;border-bottom-color:rgba(0,0,0,0.06) !important;}
-[data-theme="light"] .superordinate-box p{color:#2e2008 !important;font-weight:400 !important;}
+[data-theme="light"] .superordinate-section{background:var(--bg-page) !important;border-top-color:rgba(var(--shadow-rgb),0.06) !important;border-bottom-color:rgba(var(--shadow-rgb),0.06) !important;}
+[data-theme="light"] .superordinate-box p{color:var(--text-mid) !important;font-weight:400 !important;}
 /* Light theme — p.gold inside superordinate box */
 [data-theme="light"] .superordinate-box p.gold{color:var(--gold) !important;font-weight:700 !important;}
-[data-theme="light"] .enn-intro-box p{color:#2e2008 !important;font-weight:400 !important;}
-[data-theme="light"] .cosmic-section p{color:#2e2008 !important;font-weight:400 !important;}
-[data-theme="light"] .rrrr-desc{color:#2e2008 !important;font-weight:400 !important;}
-[data-theme="light"] .rrrr-steps{color:#1a1208 !important;font-weight:500 !important;}
+[data-theme="light"] .enn-intro-box p{color:var(--text-mid) !important;font-weight:400 !important;}
+[data-theme="light"] .cosmic-section p{color:var(--text-mid) !important;font-weight:400 !important;}
+[data-theme="light"] .rrrr-desc{color:var(--text-mid) !important;font-weight:400 !important;}
+[data-theme="light"] .rrrr-steps{color:var(--text-body) !important;font-weight:500 !important;}
 
 /* Light: tradition table header */
-[data-theme="light"] .tradition-row.header{background:#c8bfa0 !important;}
-[data-theme="light"] .tradition-row.header .tradition-cell{color:#3a2a0a !important;font-weight:700 !important;background:#c8bfa0 !important;}
-[data-theme="light"] .rasa-row.header{background:#c8bfa0 !important;}
-[data-theme="light"] .rasa-row.header .rasa-cell{color:#3a2a0a !important;font-weight:700 !important;background:#c8bfa0 !important;}
-[data-theme="light"] [style*="background:#0a0a0a"]{background:#c8bfa0 !important;color:#3a2a0a !important;}
-[data-theme="light"] .ipo-table-row.header{background:#c8bfa0 !important;}
-[data-theme="light"] .ipo-table-row.header .ipo-cell{color:#3a2a0a !important;font-weight:700 !important;background:#c8bfa0 !important;}
+[data-theme="light"] .tradition-row.header{background:var(--bg-header) !important;}
+[data-theme="light"] .tradition-row.header .tradition-cell{color:var(--text-head-dark) !important;font-weight:700 !important;background:var(--bg-header) !important;}
+[data-theme="light"] .rasa-row.header{background:var(--bg-header) !important;}
+[data-theme="light"] .rasa-row.header .rasa-cell{color:var(--text-head-dark) !important;font-weight:700 !important;background:var(--bg-header) !important;}
+[data-theme="light"] [style*="background:#0a0a0a"]{background:var(--bg-header) !important;color:var(--text-head-dark) !important;}
+[data-theme="light"] .ipo-table-row.header{background:var(--bg-header) !important;}
+[data-theme="light"] .ipo-table-row.header .ipo-cell{color:var(--text-head-dark) !important;font-weight:700 !important;background:var(--bg-header) !important;}
 [data-theme="light"] .cognition-header-row,
 [data-theme="light"] [style*="background:#0a0a0a"] {
-  background: #c8bfa0 !important;
+  background: var(--bg-header) !important;
 }
 /* Light: nav */
-[data-theme="light"] .site-nav{background:rgba(245,241,232,0.98) !important;border-bottom:2px solid rgba(0,0,0,0.15) !important;}
+[data-theme="light"] .site-nav{background:rgba(245,241,232,0.98) !important;border-bottom:2px solid rgba(var(--shadow-rgb),0.15) !important;}
 [data-theme="light"] .site-nav.scrolled{background:rgba(245,241,232,1) !important;}
-[data-theme="light"] .nav-left li a,[data-theme="light"] .nav-right li a{color:#4a3a1a !important;border-right-color:rgba(0,0,0,0.1) !important;}
-[data-theme="light"] .nav-left li:first-child a{border-left-color:rgba(0,0,0,0.1) !important;}
-[data-theme="light"] .nav-left li a.active,[data-theme="light"] .nav-right li a.active{color:#8a6a12 !important;}
-[data-theme="light"] .nav-left li a:hover,[data-theme="light"] .nav-right li a:hover{color:#8a6a12 !important;}
+[data-theme="light"] .nav-left li a,[data-theme="light"] .nav-right li a{color:var(--text-nav) !important;border-right-color:rgba(var(--shadow-rgb),0.1) !important;}
+[data-theme="light"] .nav-left li:first-child a{border-left-color:rgba(var(--shadow-rgb),0.1) !important;}
+[data-theme="light"] .nav-left li a.active,[data-theme="light"] .nav-right li a.active{color:var(--accent-gold) !important;}
+[data-theme="light"] .nav-left li a:hover,[data-theme="light"] .nav-right li a:hover{color:var(--accent-gold) !important;}
 [data-theme="light"] .site-nav{background:rgba(245,241,232,0.96) !important;}
 [data-theme="light"] .site-nav.scrolled{background:rgba(245,241,232,0.99) !important;}
-[data-theme="light"] .nav-logo-center{border-color:rgba(138,106,18,0.5) !important;}
-[data-theme="light"] #themeToggleBtn{background:rgba(245,241,232,0.98) !important;border-color:rgba(0,0,0,0.15) !important;color:#5a4a2a !important;}
-[data-theme="light"] .progress-bar{background:linear-gradient(90deg,rgba(138,106,18,0.4),#8a6a12);}
-[data-theme="light"] #themeToggleMobile{color:#5a4a2a !important;border-left-color:rgba(0,0,0,0.1) !important;}
-[data-theme="light"] #themeToggleMobile:hover{color:#8a6a12 !important;}
+[data-theme="light"] .nav-logo-center{border-color:rgba(var(--accent-gold-rgb),0.5) !important;}
+[data-theme="light"] #themeToggleBtn{background:rgba(245,241,232,0.98) !important;border-color:rgba(var(--shadow-rgb),0.15) !important;color:var(--text-dim) !important;}
+[data-theme="light"] .progress-bar{background:linear-gradient(90deg,rgba(var(--accent-gold-rgb),0.4),var(--accent-gold));}
+[data-theme="light"] #themeToggleMobile{color:var(--text-dim) !important;border-left-color:rgba(var(--shadow-rgb),0.1) !important;}
+[data-theme="light"] #themeToggleMobile:hover{color:var(--accent-gold) !important;}
 /* Light: mega-menu dropdown (desktop) + hamburger/accordion (mobile) — additive, see nav CSS block below */
-[data-theme="light"] .nav-dropdown-panel{background:rgba(245,241,232,0.98) !important;border-color:rgba(138,106,18,0.35) !important;}
-[data-theme="light"] .nav-dropdown-panel a{color:#4a3a1a !important;}
-[data-theme="light"] .nav-dropdown-panel a:hover{color:#8a6a12 !important;background:rgba(138,106,18,0.06) !important;}
-[data-theme="light"] .mnav-toggle{background:rgba(245,241,232,0.98) !important;border-color:rgba(0,0,0,0.15) !important;}
-[data-theme="light"] .mnav-toggle span{background:#4a3a1a !important;}
+[data-theme="light"] .nav-dropdown-panel{background:rgba(245,241,232,0.98) !important;border-color:rgba(var(--accent-gold-rgb),0.35) !important;}
+[data-theme="light"] .nav-dropdown-panel a{color:var(--text-nav) !important;}
+[data-theme="light"] .nav-dropdown-panel a:hover{color:var(--accent-gold) !important;background:rgba(var(--accent-gold-rgb),0.06) !important;}
+[data-theme="light"] .mnav-toggle{background:rgba(245,241,232,0.98) !important;border-color:rgba(var(--shadow-rgb),0.15) !important;}
+[data-theme="light"] .mnav-toggle span{background:var(--text-nav) !important;}
 [data-theme="light"] .mnav-panel{background:rgba(245,241,232,0.97) !important;}
-[data-theme="light"] .mnav-list>li{border-color:rgba(0,0,0,0.1) !important;}
-[data-theme="light"] .mnav-list>li>a,[data-theme="light"] .mnav-group-toggle{color:#4a3a1a !important;}
-[data-theme="light"] .mnav-group-panel a{color:#4a3a1a !important;border-color:rgba(0,0,0,0.08) !important;}
-[data-theme="light"] .mnav-group-panel a:hover{color:#8a6a12 !important;}
-[data-theme="light"] .mnav-list a.active{color:#8a6a12 !important;}
+[data-theme="light"] .mnav-list>li{border-color:rgba(var(--shadow-rgb),0.1) !important;}
+[data-theme="light"] .mnav-list>li>a,[data-theme="light"] .mnav-group-toggle{color:var(--text-nav) !important;}
+[data-theme="light"] .mnav-group-panel a{color:var(--text-nav) !important;border-color:rgba(var(--shadow-rgb),0.08) !important;}
+[data-theme="light"] .mnav-group-panel a:hover{color:var(--accent-gold) !important;}
+[data-theme="light"] .mnav-list a.active{color:var(--accent-gold) !important;}
 
 /* Light: section backgrounds */
 [data-theme="light"] .framework-card,[data-theme="light"] .pillar-card,[data-theme="light"] .identity-card,
-[data-theme="light"] .surrender-section{background:#f5f1e8 !important;}
-[data-theme="light"] .why-card{background:#d8d0b8 !important;}
+[data-theme="light"] .surrender-section{background:var(--bg-page) !important;}
+[data-theme="light"] .why-card{background:var(--bg-card-3) !important;}
 [data-theme="light"] .faq-item{background:transparent !important;}
-[data-theme="light"] .faq-a-inner{background:#f5f1e8;padding:20px 16px 28px;margin:0 0 4px;}
+[data-theme="light"] .faq-a-inner{background:var(--bg-page);padding:20px 16px 28px;margin:0 0 4px;}
 [data-theme="light"] .bg-lift,[data-theme="light"] .ipo-section,[data-theme="light"] .mirror-room,[data-theme="light"] .fartcoin-section,
-[data-theme="light"] .ca-full-section,[data-theme="light"] .bridge-section{background:#f5f1e8 !important;}
-[data-theme="light"] .faq-section{background:#e8e0cc !important;}
-[data-theme="light"] .divider{background:rgba(0,0,0,0.08);}
-[data-theme="light"] .hero-question{color:#8a6a12 !important;}
-[data-theme="light"] .label{color:#8a6a12 !important;}
-[data-theme="light"] .section-kicker{color:#8a6a12 !important;}
-[data-theme="light"] .gold-line{background:#8a6a12 !important;}
-[data-theme="light"] .pull-quote cite{color:#8a6a12 !important;}
-[data-theme="light"] .cosmo-quote cite{color:#8a6a12 !important;}
-[data-theme="light"] .symptoms-block-box{border-color:rgba(0,0,0,0.15) !important;background:#e8e0cc !important;}
-[data-theme="light"] .framework-card h3{color:#1a1208 !important;}
-[data-theme="light"] .framework-card .num{color:#8a6a12 !important;}
-[data-theme="light"] .pillar-card .p-title{color:#1a1208 !important;}
-[data-theme="light"] .why-card h4{color:#8a6a12 !important;}
-[data-theme="light"] .faq-q{color:#1a1208 !important;font-weight:600 !important;}
-[data-theme="light"] .faq-icon{color:#8a6a12 !important;border-color:rgba(138,106,18,0.4) !important;}
-[data-theme="light"] .faq-item{border-bottom-color:rgba(0,0,0,0.14) !important;}
-[data-theme="light"] .faq-item:first-child{border-top-color:rgba(0,0,0,0.14) !important;}
-[data-theme="light"] #faqCatMenu{background:#e8e0cc !important;border-color:rgba(0,0,0,0.15) !important;}
-[data-theme="light"] .faq-cat-btn{border-color:rgba(0,0,0,0.2) !important;}
-[data-theme="light"] #faqCatMenuBtn{border-color:rgba(0,0,0,0.2) !important;color:#1a1208 !important;}
-[data-theme="light"] #faqCatMenuBtn span span{background:#1a1208 !important;}
-[data-theme="light"] .mc-card{background:#e8e0cc !important;border-color:rgba(0,0,0,0.1) !important;}
-[data-theme="light"] .mc-name{color:#5a4a2a !important;}
-[data-theme="light"] .tradition-row td{color:#4a3a1a !important;border-color:rgba(0,0,0,0.1) !important;}
-[data-theme="light"] .tradition-row th{color:#8a6a12 !important;background:#e5ddc5 !important;}
-[data-theme="light"] .ipo-table{border:2px solid rgba(0,0,0,0.4) !important;}
-[data-theme="light"] .ipo-table-row{border-bottom-color:rgba(0,0,0,0.25) !important;}
-[data-theme="light"] .ca-full-box{background:#e8e0cc !important;border-color:rgba(0,0,0,0.15) !important;}
-[data-theme="light"] .surrender-stage{background:#e5ddc5 !important;border-color:rgba(0,0,0,0.1) !important;}
-[data-theme="light"] .identity-card{background:#e8e0cc !important;border-color:rgba(0,0,0,0.1) !important;}
-[data-theme="light"] .identity-card h4{color:#1a1208 !important;}
-[data-theme="light"] .path-card{background:#e8e0cc !important;border-color:rgba(0,0,0,0.1) !important;}
-[data-theme="light"] .void-btn{border-color:rgba(138,106,18,0.4) !important;color:#4a3a1a !important;}
-[data-theme="light"] .void-btn.active{background:#8a6a12 !important;color:#faf8f3 !important;}
-[data-theme="light"] .void-restart-link{color:#7a6a4a !important;}
-[data-theme="light"] .footer{background:#e5ddc5 !important;border-top-color:rgba(0,0,0,0.1) !important;}
-[data-theme="light"] .footer-socials a{color:#5a4a2a !important;}
-[data-theme="light"] .footer-socials a:hover{color:#8a6a12 !important;}
-[data-theme="light"] .footer-tagline,[data-theme="light"] .footer-ca{color:#5a4a2a !important;}
-[data-theme="light"] .geo-badge{background:rgba(245,241,232,0.95) !important;border-color:rgba(0,0,0,0.15) !important;}
-[data-theme="light"] [style*="background:var(--bg);"]{background:#f5f1e8 !important;}
+[data-theme="light"] .ca-full-section,[data-theme="light"] .bridge-section{background:var(--bg-page) !important;}
+[data-theme="light"] .faq-section{background:var(--bg-card) !important;}
+[data-theme="light"] .divider{background:rgba(var(--shadow-rgb),0.08);}
+[data-theme="light"] .hero-question{color:var(--accent-gold) !important;}
+[data-theme="light"] .label{color:var(--accent-gold) !important;}
+[data-theme="light"] .section-kicker{color:var(--accent-gold) !important;}
+[data-theme="light"] .gold-line{background:var(--accent-gold) !important;}
+[data-theme="light"] .pull-quote cite{color:var(--accent-gold) !important;}
+[data-theme="light"] .cosmo-quote cite{color:var(--accent-gold) !important;}
+[data-theme="light"] .symptoms-block-box{border-color:rgba(var(--shadow-rgb),0.15) !important;background:var(--bg-card) !important;}
+[data-theme="light"] .framework-card h3{color:var(--text-body) !important;}
+[data-theme="light"] .framework-card .num{color:var(--accent-gold) !important;}
+[data-theme="light"] .pillar-card .p-title{color:var(--text-body) !important;}
+[data-theme="light"] .why-card h4{color:var(--accent-gold) !important;}
+[data-theme="light"] .faq-q{color:var(--text-body) !important;font-weight:600 !important;}
+[data-theme="light"] .faq-icon{color:var(--accent-gold) !important;border-color:rgba(var(--accent-gold-rgb),0.4) !important;}
+[data-theme="light"] .faq-item{border-bottom-color:rgba(var(--shadow-rgb),0.14) !important;}
+[data-theme="light"] .faq-item:first-child{border-top-color:rgba(var(--shadow-rgb),0.14) !important;}
+[data-theme="light"] #faqCatMenu{background:var(--bg-card) !important;border-color:rgba(var(--shadow-rgb),0.15) !important;}
+[data-theme="light"] .faq-cat-btn{border-color:rgba(var(--shadow-rgb),0.2) !important;}
+[data-theme="light"] #faqCatMenuBtn{border-color:rgba(var(--shadow-rgb),0.2) !important;color:var(--text-body) !important;}
+[data-theme="light"] #faqCatMenuBtn span span{background:var(--text-body) !important;}
+[data-theme="light"] .mc-card{background:var(--bg-card) !important;border-color:rgba(var(--shadow-rgb),0.1) !important;}
+[data-theme="light"] .mc-name{color:var(--text-dim) !important;}
+[data-theme="light"] .tradition-row td{color:var(--text-nav) !important;border-color:rgba(var(--shadow-rgb),0.1) !important;}
+[data-theme="light"] .tradition-row th{color:var(--accent-gold) !important;background:var(--bg-card-2) !important;}
+[data-theme="light"] .ipo-table{border:2px solid rgba(var(--shadow-rgb),0.4) !important;}
+[data-theme="light"] .ipo-table-row{border-bottom-color:rgba(var(--shadow-rgb),0.25) !important;}
+[data-theme="light"] .ca-full-box{background:var(--bg-card) !important;border-color:rgba(var(--shadow-rgb),0.15) !important;}
+[data-theme="light"] .surrender-stage{background:var(--bg-card-2) !important;border-color:rgba(var(--shadow-rgb),0.1) !important;}
+[data-theme="light"] .identity-card{background:var(--bg-card) !important;border-color:rgba(var(--shadow-rgb),0.1) !important;}
+[data-theme="light"] .identity-card h4{color:var(--text-body) !important;}
+[data-theme="light"] .path-card{background:var(--bg-card) !important;border-color:rgba(var(--shadow-rgb),0.1) !important;}
+[data-theme="light"] .void-btn{border-color:rgba(var(--accent-gold-rgb),0.4) !important;color:var(--text-nav) !important;}
+[data-theme="light"] .void-btn.active{background:var(--accent-gold) !important;color:var(--text-on-accent) !important;}
+[data-theme="light"] .void-restart-link{color:var(--text-muted) !important;}
+[data-theme="light"] .footer{background:var(--bg-card-2) !important;border-top-color:rgba(var(--shadow-rgb),0.1) !important;}
+[data-theme="light"] .footer-socials a{color:var(--text-dim) !important;}
+[data-theme="light"] .footer-socials a:hover{color:var(--accent-gold) !important;}
+[data-theme="light"] .footer-tagline,[data-theme="light"] .footer-ca{color:var(--text-dim) !important;}
+[data-theme="light"] .geo-badge{background:rgba(245,241,232,0.95) !important;border-color:rgba(var(--shadow-rgb),0.15) !important;}
+[data-theme="light"] [style*="background:var(--bg);"]{background:var(--bg-page) !important;}
 [data-theme="light"] [style*="background:rgba(0,0,0"]{background:transparent !important;}
-[data-theme="light"] [style*="color:var(--white)"]{color:#1a1208 !important;}
-[data-theme="light"] [style*="color:var(--mid)"]{color:#2e2008 !important;}
-[data-theme="light"] [style*="color:var(--grey)"]{color:#3d2e10 !important;}
-[data-theme="light"] [style*="color:var(--dim)"]{color:#5a4a2a !important;}
-[data-theme="light"] [style*="border:1.5px solid rgba(212,175,55,0.55)"]{border-color:rgba(0,0,0,0.15) !important;}
-[data-theme="light"] [style*="border:1.5px solid rgba(212,175,55,0.45)"]{border-color:rgba(0,0,0,0.1) !important;}
-[data-theme="light"] [style*="background:var(--bg-lift)"]{background:#f5f1e8 !important;}
-[data-theme="light"] .phil-line.gold{color:#8a6a12 !important;font-weight:600;}
-[data-theme="light"] h2{color:#1a1208 !important;font-weight:500;}
-[data-theme="light"] h3{color:#2a2008 !important;font-weight:500;}
-[data-theme="light"] h4{color:#2a2008 !important;font-weight:500;}
+[data-theme="light"] [style*="color:var(--white)"]{color:var(--text-body) !important;}
+[data-theme="light"] [style*="color:var(--mid)"]{color:var(--text-mid) !important;}
+[data-theme="light"] [style*="color:var(--grey)"]{color:var(--grey) !important;}
+[data-theme="light"] [style*="color:var(--dim)"]{color:var(--text-dim) !important;}
+[data-theme="light"] [style*="border:1.5px solid rgba(212,175,55,0.55)"]{border-color:rgba(var(--shadow-rgb),0.15) !important;}
+[data-theme="light"] [style*="border:1.5px solid rgba(212,175,55,0.45)"]{border-color:rgba(var(--shadow-rgb),0.1) !important;}
+[data-theme="light"] [style*="background:var(--bg-lift)"]{background:var(--bg-page) !important;}
+[data-theme="light"] .phil-line.gold{color:var(--accent-gold) !important;font-weight:600;}
+[data-theme="light"] h2{color:var(--text-body) !important;font-weight:500;}
+[data-theme="light"] h3{color:var(--text-mid) !important;font-weight:500;}
+[data-theme="light"] h4{color:var(--text-mid) !important;font-weight:500;}
 [data-theme="light"] .scroll-hint{color:#8a7a5a !important;}
-[data-theme="light"] .enneagram-card{background:#e5ddc5 !important;border-color:rgba(0,0,0,0.12) !important;}
-[data-theme="light"] .descent-step{background:#e5ddc5 !important;border-color:rgba(0,0,0,0.18) !important;}
-[data-theme="light"] .rasa-row{border-color:rgba(0,0,0,0.25) !important;}
-[data-theme="light"] .ego-twin-card{background:#e5ddc5 !important;border-color:rgba(0,0,0,0.1) !important;}
-[data-theme="light"] .sl-stage{background:#e5ddc5 !important;border-color:rgba(0,0,0,0.1) !important;}
-[data-theme="light"] .sl-name{color:#1a1208 !important;}
-[data-theme="light"] .sl-stage.danger .sl-name{color:#c0392b !important;}
+[data-theme="light"] .enneagram-card{background:var(--bg-card-2) !important;border-color:rgba(var(--shadow-rgb),0.12) !important;}
+[data-theme="light"] .descent-step{background:var(--bg-card-2) !important;border-color:rgba(var(--shadow-rgb),0.18) !important;}
+[data-theme="light"] .rasa-row{border-color:rgba(var(--shadow-rgb),0.25) !important;}
+[data-theme="light"] .ego-twin-card{background:var(--bg-card-2) !important;border-color:rgba(var(--shadow-rgb),0.1) !important;}
+[data-theme="light"] .sl-stage{background:var(--bg-card-2) !important;border-color:rgba(var(--shadow-rgb),0.1) !important;}
+[data-theme="light"] .sl-name{color:var(--text-body) !important;}
+[data-theme="light"] .sl-stage.danger .sl-name{color:var(--chakra-label-1) !important;}
 [data-theme="light"] .sl-name[style*="var(--gold)"]{color:var(--gold) !important;}
-[data-theme="light"] .collapse-toggle-btn{border-color:rgba(138,106,18,0.5) !important;color:#7a5e0e !important;}
+[data-theme="light"] .collapse-toggle-btn{border-color:rgba(var(--accent-gold-rgb),0.5) !important;color:var(--gold) !important;}
 [data-theme="light"] .continue-hint{color:#9a8454 !important;}
 [data-theme="light"] .collapse-toggle-btn:hover{background:rgba(122,94,14,0.1) !important;}
 /* IPO inner wrapper: remove outer box in both themes */
 .ipo-section > div[style*="border:1.5px solid rgba(212,175,55,0.55)"]{border-color:transparent !important;}
 .ipo-section > div > div[style*="border-top:1px solid var(--gold)"],
 .ipo-section > div > div[style*="border-bottom:1px solid var(--gold)"]{display:none !important;}
-[data-theme="light"] .ipo-upanishad{border-color:rgba(0,0,0,0.15) !important;border-left-color:rgba(138,106,18,0.6) !important;background:#e8e0cc !important;}
-[data-theme="light"] .antidote-box{border-color:rgba(138,106,18,0.5) !important;background:rgba(138,106,18,0.04) !important;}
-[data-theme="light"] .antidote-step{background:#f5f1e8 !important;border-color:rgba(0,0,0,0.1) !important;}
+[data-theme="light"] .ipo-upanishad{border-color:rgba(var(--shadow-rgb),0.15) !important;border-left-color:rgba(var(--accent-gold-rgb),0.6) !important;background:var(--bg-card) !important;}
+[data-theme="light"] .antidote-box{border-color:rgba(var(--accent-gold-rgb),0.5) !important;background:rgba(var(--accent-gold-rgb),0.04) !important;}
+[data-theme="light"] .antidote-step{background:var(--bg-page) !important;border-color:rgba(var(--shadow-rgb),0.1) !important;}
 /* Light theme — border fixes for previously-missed bordered elements */
-[data-theme="light"] .ec-body{border-top-color:rgba(0,0,0,0.12) !important;}
-[data-theme="light"] .rrrr-version{background:#ddd5b8 !important;border-color:rgba(0,0,0,0.08) !important;border-width:0 !important;border-left:3px solid rgba(138,106,18,0.35) !important;}
-[data-theme="light"] .faq-a-inner > div[style*="bg-lift"]{background:#ddd5b8 !important;border-color:rgba(0,0,0,0.08) !important;}
-[data-theme="light"] .stage-expand-label{border-color:rgba(138,106,18,0.5) !important;color:#7a5e0e !important;}
-[data-theme="light"] .stage-num-col{border-right-color:rgba(0,0,0,0.12) !important;}
-[data-theme="light"] .tradition-table{border:2px solid rgba(0,0,0,0.4) !important;}
-[data-theme="light"] .void-response{background:#e8e0cc !important;border-color:rgba(0,0,0,0.15) !important;}
-[data-theme="light"] .vision-box{border-color:rgba(138,106,18,0.45) !important;border-left-color:rgba(138,106,18,0.9) !important;border-right-color:rgba(138,106,18,0.9) !important;background:#e8e0cc !important;}
-[data-theme="light"] .vision-pillar{border-left-color:rgba(138,106,18,0.6) !important;}
-[data-theme="light"] .cosmo-quote{background:#e8e0cc !important;border-color:rgba(0,0,0,0.15) !important;border-left-color:rgba(138,106,18,0.7) !important;}
-[data-theme="light"] .pull-quote{border-left-color:rgba(138,106,18,0.6) !important;}
-[data-theme="light"] .symptoms-block-box{background:#e8e0cc !important;}
-[data-theme="light"] .ipo-table{border:2px solid rgba(0,0,0,0.4) !important;}
-[data-theme="light"] .ipo-table-row{border-bottom-color:rgba(0,0,0,0.25) !important;}
-[data-theme="light"] .rasa-closing{background:#f5f1e8 !important;border-color:rgba(0,0,0,0.12) !important;border-left-color:rgba(138,106,18,0.6) !important;}
-[data-theme="light"] .superordinate-box{background:rgba(138,106,18,0.08) !important;border-color:rgba(138,106,18,0.45) !important;border-left-color:rgba(138,106,18,0.9) !important;box-shadow:0 0 32px rgba(138,106,18,0.10) !important;}
-[data-theme="light"] .enn-intro-box{background:#f5f1e8 !important;border-color:rgba(0,0,0,0.12) !important;}
-[data-theme="light"] .ego-ring-wrap{background:#e8e0cc !important;border-color:rgba(0,0,0,0.15) !important;}
-[data-theme="light"] .ca-full-box{background:#e8e0cc !important;border-color:rgba(0,0,0,0.15) !important;}
-[data-theme="light"] .watch-link{border-color:rgba(0,0,0,0.15) !important;}
-[data-theme="light"] .watch-thumb{border-color:rgba(0,0,0,0.15) !important;}
-[data-theme="light"] .mirror-link{border-color:rgba(0,0,0,0.15) !important;}
-[data-theme="light"] .mirror-link.primary{background:rgba(138,106,18,0.9) !important;color:#faf8f3 !important;border-color:transparent !important;}
+[data-theme="light"] .ec-body{border-top-color:rgba(var(--shadow-rgb),0.12) !important;}
+[data-theme="light"] .rrrr-version{background:var(--bg-sunken) !important;border-color:rgba(var(--shadow-rgb),0.08) !important;border-width:0 !important;border-left:3px solid rgba(var(--accent-gold-rgb),0.35) !important;}
+[data-theme="light"] .faq-a-inner > div[style*="bg-lift"]{background:var(--bg-sunken) !important;border-color:rgba(var(--shadow-rgb),0.08) !important;}
+[data-theme="light"] .stage-expand-label{border-color:rgba(var(--accent-gold-rgb),0.5) !important;color:var(--gold) !important;}
+[data-theme="light"] .stage-num-col{border-right-color:rgba(var(--shadow-rgb),0.12) !important;}
+[data-theme="light"] .tradition-table{border:2px solid rgba(var(--shadow-rgb),0.4) !important;}
+[data-theme="light"] .void-response{background:var(--bg-card) !important;border-color:rgba(var(--shadow-rgb),0.15) !important;}
+[data-theme="light"] .vision-box{border-color:rgba(var(--accent-gold-rgb),0.45) !important;border-left-color:rgba(var(--accent-gold-rgb),0.9) !important;border-right-color:rgba(var(--accent-gold-rgb),0.9) !important;background:var(--bg-card) !important;}
+[data-theme="light"] .vision-pillar{border-left-color:rgba(var(--accent-gold-rgb),0.6) !important;}
+[data-theme="light"] .cosmo-quote{background:var(--bg-card) !important;border-color:rgba(var(--shadow-rgb),0.15) !important;border-left-color:rgba(var(--accent-gold-rgb),0.7) !important;}
+[data-theme="light"] .pull-quote{border-left-color:rgba(var(--accent-gold-rgb),0.6) !important;}
+[data-theme="light"] .symptoms-block-box{background:var(--bg-card) !important;}
+[data-theme="light"] .ipo-table{border:2px solid rgba(var(--shadow-rgb),0.4) !important;}
+[data-theme="light"] .ipo-table-row{border-bottom-color:rgba(var(--shadow-rgb),0.25) !important;}
+[data-theme="light"] .rasa-closing{background:var(--bg-page) !important;border-color:rgba(var(--shadow-rgb),0.12) !important;border-left-color:rgba(var(--accent-gold-rgb),0.6) !important;}
+[data-theme="light"] .superordinate-box{background:rgba(var(--accent-gold-rgb),0.08) !important;border-color:rgba(var(--accent-gold-rgb),0.45) !important;border-left-color:rgba(var(--accent-gold-rgb),0.9) !important;box-shadow:0 0 32px rgba(var(--accent-gold-rgb),0.10) !important;}
+[data-theme="light"] .enn-intro-box{background:var(--bg-page) !important;border-color:rgba(var(--shadow-rgb),0.12) !important;}
+[data-theme="light"] .ego-ring-wrap{background:var(--bg-card) !important;border-color:rgba(var(--shadow-rgb),0.15) !important;}
+[data-theme="light"] .ca-full-box{background:var(--bg-card) !important;border-color:rgba(var(--shadow-rgb),0.15) !important;}
+[data-theme="light"] .watch-link{border-color:rgba(var(--shadow-rgb),0.15) !important;}
+[data-theme="light"] .watch-thumb{border-color:rgba(var(--shadow-rgb),0.15) !important;}
+[data-theme="light"] .mirror-link{border-color:rgba(var(--shadow-rgb),0.15) !important;}
+[data-theme="light"] .mirror-link.primary{background:rgba(var(--accent-gold-rgb),0.9) !important;color:var(--text-on-accent) !important;border-color:transparent !important;}
 /* faq-section bg already set above to #f5f1e8 */
 /* Inline bordered boxes with var() references */
-[data-theme="light"] [style*="border:1px solid var(--gold)"]{border-color:rgba(138,106,18,0.55) !important;}
-[data-theme="light"] [style*="border-left:3px solid var(--gold)"]{border-left-color:rgba(138,106,18,0.7) !important;}
-[data-theme="light"] [style*="border:2px solid var(--gold)"]{border-color:rgba(138,106,18,0.55) !important;}
-[data-theme="light"] [style*="border-left:2px solid var(--gold)"]{border-left-color:rgba(138,106,18,0.6) !important;} 
-[data-theme="light"] [style*="border-right:1px solid #1a1a1a"]{border-right-color:rgba(0,0,0,0.1) !important;}
+[data-theme="light"] [style*="border:1px solid var(--gold)"]{border-color:rgba(var(--accent-gold-rgb),0.55) !important;}
+[data-theme="light"] [style*="border-left:3px solid var(--gold)"]{border-left-color:rgba(var(--accent-gold-rgb),0.7) !important;}
+[data-theme="light"] [style*="border:2px solid var(--gold)"]{border-color:rgba(var(--accent-gold-rgb),0.55) !important;}
+[data-theme="light"] [style*="border-left:2px solid var(--gold)"]{border-left-color:rgba(var(--accent-gold-rgb),0.6) !important;} 
+[data-theme="light"] [style*="border-right:1px solid #1a1a1a"]{border-right-color:rgba(var(--shadow-rgb),0.1) !important;}
 /* ── LIGHT THEME: CSS-class border-color fixes (class-defined borders are not
    caught by the inline [style*=] attribute selectors above) ─────────────── */
-[data-theme="light"] .why-card{border-color:rgba(0,0,0,0.1) !important;}
-[data-theme="light"] .framework-card{border-color:rgba(0,0,0,0.1) !important;}
-[data-theme="light"] .pillar-card{border-color:rgba(0,0,0,0.1) !important;}
-[data-theme="light"] .ipo-cell{border-right-color:rgba(0,0,0,0.25) !important;}
-[data-theme="light"] .ipo-table-row.header .ipo-cell{border-right-color:rgba(0,0,0,0.32) !important;}
+[data-theme="light"] .why-card{border-color:rgba(var(--shadow-rgb),0.1) !important;}
+[data-theme="light"] .framework-card{border-color:rgba(var(--shadow-rgb),0.1) !important;}
+[data-theme="light"] .pillar-card{border-color:rgba(var(--shadow-rgb),0.1) !important;}
+[data-theme="light"] .ipo-cell{border-right-color:rgba(var(--shadow-rgb),0.25) !important;}
+[data-theme="light"] .ipo-table-row.header .ipo-cell{border-right-color:rgba(var(--shadow-rgb),0.32) !important;}
 /* IPO outer wrapper box (inline border:1.5px solid rgba(212,175,55,0.55) already covered above,
    but the inner pull-quote section needs explicit left-border restoration) */
-[data-theme="light"] .ipo-upanishad{border-left-color:rgba(138,106,18,0.6) !important;}
+[data-theme="light"] .ipo-upanishad{border-left-color:rgba(var(--accent-gold-rgb),0.6) !important;}
 /* Two Paths — inner quote boxes */
-[data-theme="light"] .paths-convergence{color:#2e2008 !important;}
+[data-theme="light"] .paths-convergence{color:var(--text-mid) !important;}
 /* Why $SELF section inner cards */
-[data-theme="light"] .why-card{border-color:rgba(0,0,0,0.1) !important;}
+[data-theme="light"] .why-card{border-color:rgba(var(--shadow-rgb),0.1) !important;}
 /* Path of Subtilization — evo-grid inline boxes */
-[data-theme="light"] .identity-card .practice{border-top-color:rgba(0,0,0,0.1) !important;}
+[data-theme="light"] .identity-card .practice{border-top-color:rgba(var(--shadow-rgb),0.1) !important;}
 /* Sacred Mechanics — inline boxes use #1e1e1e covered by attr selector,
    but the ladder-grid cells use inline border:1.5px solid rgba(212,175,55,0.45) — already covered */
 /* Section-collapse inner border */
-[data-theme="light"] .section-collapse-wrap .section-collapse-inner{border-color:rgba(0,0,0,0.1) !important;}
-[data-theme="light"] .section-collapse-wrap .section-collapse-inner{border-color:rgba(0,0,0,0.1) !important;}
-[data-theme="light"] .stage-item{border-color:rgba(0,0,0,0.1) !important;background:#e8e0cc !important;}
-[data-theme="light"] .stage-body-col .s-title{color:#1a1208 !important;}
-[data-theme="light"] .stage-body-col .s-text{color:#2e2008 !important;font-weight:400 !important;}
-[data-theme="light"] .ego-arch-section{background:#f5f1e8 !important;}
-[data-theme="light"] .descent-section{background:#f5f1e8 !important;}
-[data-theme="light"] .antidote-step{background:#e8e0cc !important;border-color:rgba(0,0,0,0.12) !important;}
-[data-theme="light"] .as-title{color:#1a1208 !important;}
-[data-theme="light"] .rasa-closing p{color:#2e2008 !important;font-weight:400 !important;}
-[data-theme="light"] .dark-night-card p { color:#2e2008 !important; font-weight:400 !important; }
-[data-theme="light"] .gratitude-card p  { color:#2e2008 !important; font-weight:400 !important; }
+[data-theme="light"] .section-collapse-wrap .section-collapse-inner{border-color:rgba(var(--shadow-rgb),0.1) !important;}
+[data-theme="light"] .section-collapse-wrap .section-collapse-inner{border-color:rgba(var(--shadow-rgb),0.1) !important;}
+[data-theme="light"] .stage-item{border-color:rgba(var(--shadow-rgb),0.1) !important;background:var(--bg-card) !important;}
+[data-theme="light"] .stage-body-col .s-title{color:var(--text-body) !important;}
+[data-theme="light"] .stage-body-col .s-text{color:var(--text-mid) !important;font-weight:400 !important;}
+[data-theme="light"] .ego-arch-section{background:var(--bg-page) !important;}
+[data-theme="light"] .descent-section{background:var(--bg-page) !important;}
+[data-theme="light"] .antidote-step{background:var(--bg-card) !important;border-color:rgba(var(--shadow-rgb),0.12) !important;}
+[data-theme="light"] .as-title{color:var(--text-body) !important;}
+[data-theme="light"] .rasa-closing p{color:var(--text-mid) !important;font-weight:400 !important;}
+[data-theme="light"] .dark-night-card p { color:var(--text-mid) !important; font-weight:400 !important; }
+[data-theme="light"] .gratitude-card p  { color:var(--text-mid) !important; font-weight:400 !important; }
 a{color:var(--gold);text-decoration:none;transition:opacity .25s;}
 a:hover{opacity:.7;}
 /* Default OS tier cards */
 [data-theme="light"] [style*="background:rgba(192,57,43,.06)"]{background:rgba(192,57,43,.08) !important;}
 [data-theme="light"] [style*="border:1.5px solid rgba(192,57,43,0.55)"]{border-color:rgba(192,57,43,.3) !important;}
-[data-theme="light"] [style*="background:rgba(212,175,55,.05)"][style*="border:1px solid var(--gold)"]{background:rgba(138,106,18,.08) !important;}
+[data-theme="light"] [style*="background:rgba(212,175,55,.05)"][style*="border:1px solid var(--gold)"]{background:rgba(var(--accent-gold-rgb),.08) !important;}
 /* ── FOUR THEORIES TABLE — LIGHT THEME HEADER FIX ───────────────────────── */
 [data-theme="light"] [style*="grid-template-columns:1.4fr 1fr 1fr 1fr"] > div[style*="background:#0a0a0a"] > div {
-  color: #3a2a0a !important;
+  color: var(--text-head-dark) !important;
   font-weight: 600 !important;
 }
 /* ── STICKY NAV — centered logo, items split left/right ─────────────────── */
@@ -1112,7 +1183,7 @@ a:hover{opacity:.7;}
 
   .mnav-list{list-style:none;margin:0;padding:8px 0 48px;}
   .mnav-list>li{border-bottom:1px solid #1a1a1a;}
-  [data-theme="light"] .mnav-list>li{border-bottom-color:rgba(0,0,0,0.08);}
+  [data-theme="light"] .mnav-list>li{border-bottom-color:rgba(var(--shadow-rgb),0.08);}
   .mnav-list>li>a,
   .mnav-group-toggle{
     display:flex;align-items:center;justify-content:space-between;width:100%;
@@ -1180,8 +1251,8 @@ section{scroll-margin-top:56px;}
 .fl-history-entry{border:1.5px solid rgba(212,175,55,0.45);background:var(--bg-lift);padding:12px 16px;margin-bottom:2px;}
 .fl-history-entry .fl-history-date{font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:6px;display:block;}
 .fl-history-entry .fl-history-item{font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.6;margin:0 0 2px;}
-[data-theme="light"] .fl-io-btn{border-color:rgba(0,0,0,0.2) !important;}
-[data-theme="light"] .fl-history-entry{background:#e8e0cc !important;border-color:rgba(0,0,0,0.1) !important;}
+[data-theme="light"] .fl-io-btn{border-color:rgba(var(--shadow-rgb),0.2) !important;}
+[data-theme="light"] .fl-history-entry{background:var(--bg-card) !important;border-color:rgba(var(--shadow-rgb),0.1) !important;}
 .section-collapse-label{font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#555;margin-top:8px;margin-bottom:0;display:block;}
 .section-collapse-wrap{overflow:hidden;transition:max-height .55s cubic-bezier(0,1,.25,1),opacity .35s ease;opacity:1;}
 .section-collapse-wrap > *:first-child{margin-top:14px;}
@@ -1307,8 +1378,11 @@ section{scroll-margin-top:56px;}
 .pillar-card .p-num{font-family:var(--sans);font-size:10px;letter-spacing:3px;color:var(--gold);opacity:.65;margin-bottom:10px;display:block;}
 .pillar-card .p-title{font-family:var(--serif);font-size:clamp(19px,2vw,24px);font-weight:400;color:var(--white);margin-bottom:0;line-height:1.35;}
 .pillar-card .p-expand{font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.7;position:absolute;top:32px;right:28px;margin-top:0;display:block;}
-.pillar-card .p-body{font-family:var(--serif);font-size:15.5px;font-weight:300;color:var(--grey);line-height:1.88;margin-top:16px;display:none;border-top:1px solid rgba(212,175,55,0.3);padding-top:16px;}
-.pillar-card.open .p-body{display:block;}
+.pillar-card .p-body{font-family:var(--serif);font-size:15.5px;font-weight:300;color:var(--grey);line-height:1.88;overflow:hidden;max-height:0;opacity:0;margin-top:0;border-top:0 solid rgba(212,175,55,0.3);padding-top:0;transition:max-height .4s ease,opacity .3s ease,margin-top .4s ease,padding-top .4s ease,border-top-width .4s ease;}
+.pillar-card.open .p-body{opacity:1;margin-top:16px;border-top-width:1px;padding-top:16px;}
+/* max-height itself is set inline in px by JS (see pillar-card click handler) so it can
+   animate to the element's real content height instead of snapping via display:none/block —
+   this was the source of the abrupt, non-smooth "jerk" reported when opening these cards. */
 .astrolabe-cta{font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:500px;margin:0 auto;font-style:italic;line-height:1.85;}
 
 /* ── TWO PATHS ───────────────────────────────────────────────────────────── */
@@ -1469,7 +1543,7 @@ section{scroll-margin-top:56px;}
 .ca-full-box::before{content:'';position:absolute;top:-1px;left:-1px;width:18px;height:18px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);}
 .ca-full-box::after{content:'';position:absolute;bottom:-1px;right:-1px;width:18px;height:18px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);}
 .ca-label{font-family:var(--sans);font-size:10px;color:var(--dim);letter-spacing:4px;text-transform:uppercase;margin-bottom:10px;}
-.ca-address-full{font-family:var(--sans);font-size:12px;color:#ddd;word-break:break-all;letter-spacing:1px;margin:12px 0;transition:color .3s;} [data-theme="light"] .ca-address-full{color:#1a1208 !important;}
+.ca-address-full{font-family:var(--sans);font-size:12px;color:#ddd;word-break:break-all;letter-spacing:1px;margin:12px 0;transition:color .3s;} [data-theme="light"] .ca-address-full{color:var(--text-body) !important;}
 .supply{font-family:var(--sans);font-size:11px;color:var(--dim);letter-spacing:2px;text-transform:uppercase;margin-top:10px;}
 .trade-links{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-top:20px;}
 .trade-links a{font-family:var(--sans);font-size:11.5px;color:var(--mid);letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:color .25s;}
@@ -1561,7 +1635,7 @@ section{scroll-margin-top:56px;}
 .fl-item:hover{color:var(--white);}
 .fl-item .fl-check{margin-top:4px;width:16px;height:16px;accent-color:var(--gold);flex-shrink:0;cursor:pointer;}
 .fl-item input:checked ~ span{color:var(--white);}
-[data-theme="light"] .fl-item{border-bottom-color:rgba(0,0,0,0.1);}
+[data-theme="light"] .fl-item{border-bottom-color:rgba(var(--shadow-rgb),0.1);}
 
 /* ── ENNEAGRAM SECTION ───────────────────────────────────────────────────── */
 .enn-section{padding:90px 24px;background:var(--bg-lift);}
@@ -1637,8 +1711,8 @@ section{scroll-margin-top:56px;}
 .pq-standalone{border:1px solid rgba(212,175,55,.4) !important;max-width:900px !important;width:100%;}
 [data-theme="light"] .pq-standalone{border-color:rgba(122,94,14,.45) !important;}
 /* ── COGNITION TABLE LIGHT THEME ─────────────────────────────────────────── */
-[data-theme="light"] .cognition-header-row{background:#c8bfa0 !important;}
-[data-theme="light"] .cognition-header-cell{color:#3a2a0a !important;background:#c8bfa0 !important;}
+[data-theme="light"] .cognition-header-row{background:var(--bg-header) !important;}
+[data-theme="light"] .cognition-header-cell{color:var(--text-head-dark) !important;background:var(--bg-header) !important;}
 /* ── MOBILE RESPONSIVE ───────────────────────────────────────────────────── */
 @media(max-width:640px){
   .hero{padding:12px 20px 0;}
@@ -2062,14 +2136,14 @@ h4 {
 /* translateZ(0) removed — was causing scroll jerk on mobile by forcing GPU layer on fixed nav */
  /* ── MASTER MATRIX LIGHT THEME ───────────────────────────────────────────── */
 [data-theme="light"] [style*="min-width:700px"] > div[style*="background:#0a0a0a"] {
-  background: #c8bfa0 !important;
+  background: var(--bg-header) !important;
 }
 [data-theme="light"] [style*="min-width:700px"] > div > div {
-  color: #1a1208 !important;
-  border-color: rgba(0,0,0,0.1) !important;
+  color: var(--text-body) !important;
+  border-color: rgba(var(--shadow-rgb),0.1) !important;
 }
 [data-theme="light"] [style*="min-width:700px"] > div > div[style*="color:var(--gold)"] {
-  color: #7a5e0e !important;
+  color: var(--gold) !important;
 }
 [data-theme="light"] [style*="min-width:700px"] > div[style*="border-left:3px solid var(--gold)"] {
   background: rgba(122,94,14,0.05) !important;
@@ -2086,8 +2160,40 @@ h4 {
      override removed from here — they duplicated/fought the single
      in-flow theme button already handled by the mega-menu 3-column
      layer above. */
+
+  /* .mnav-panel (the full-screen mobile nav dropdown) was the last element
+     on mobile still carrying backdrop-filter after .site-nav had it removed
+     above for the same reason. On Chrome for Android, a blurred, fixed,
+     nearly-full-viewport layer that also sits under the data-theme swap
+     recomposites visibly — reads as flicker concentrated toward the bottom
+     of the panel, where the blurred backdrop has the most content behind
+     it to sample. Chromium-based Opera for Android appears to schedule
+     this recomposite differently and doesn't show it, which is why the
+     symptom looked browser-specific rather than page-specific. The panel's
+     own background is already ~97% opaque, so the blur adds very little
+     visible effect for the cost. Removed here rather than adding more
+     freeze-timing — matches the .site-nav fix already in place. */
+  .mnav-panel{
+    backdrop-filter:none !important;
+    -webkit-backdrop-filter:none !important;
+  }
 }
    
+/* Decorative bordered "frame" boxes (Cosmic Ledger quote, Radiant Wildcard
+   Synthesis, Bridge section) sit directly in normal flow with no padded
+   ancestor. Their own max-width (560-680px) exceeds most phone viewports,
+   so below that width they silently expand to 100% and their border lands
+   exactly on the physical screen edge — effectively invisible in light
+   theme and barely visible in dark theme. Force a small gutter so the
+   border is always inset and visible. */
+@media(max-width:768px){
+  .edge-safe-frame{
+    max-width:calc(100% - 24px) !important;
+    margin-left:12px !important;
+    margin-right:12px !important;
+  }
+}
+
 /* Override the mobile negative-margin bleed that causes right-side cutoff */
 @media(max-width:640px){
  
@@ -2591,7 +2697,7 @@ tr.matrix-highlight{
   display:grid;grid-template-columns:repeat(9,1fr);gap:4px;margin-bottom:48px;
 }
 .diag-progress .seg{height:2px;background:#2a2a2a;transition:background .4s;}
-[data-theme="light"] .diag-progress .seg{background:rgba(0,0,0,.12);}
+[data-theme="light"] .diag-progress .seg{background:rgba(var(--shadow-rgb),.12);}
 .diag-progress .seg.done{background:var(--gold);}
 .diag-progress .seg.current{background:var(--gold);opacity:.4;}
 .diag-eyebrow{
@@ -2610,7 +2716,7 @@ tr.matrix-highlight{
   padding:20px 22px;background:var(--bg-lift);border:1.5px solid rgba(212,175,55,0.45);
   color:var(--mid);font-family:var(--serif);cursor:pointer;transition:border-color .25s,background .25s;
 }
-[data-theme="light"] .diag-opt{border-color:rgba(0,0,0,.12);}
+[data-theme="light"] .diag-opt{border-color:rgba(var(--shadow-rgb),.12);}
 .diag-opt:hover{border-color:var(--gold);}
 .diag-opt.selected{border-color:var(--gold);background:rgba(212,175,55,.06);}
 .diag-opt-mark{
@@ -2640,7 +2746,7 @@ tr.matrix-highlight{
   color:var(--white);font-family:var(--serif);font-style:italic;font-size:16px;
   padding:18px 20px;resize:vertical;line-height:1.7;
 }
-[data-theme="light"] .diag-textarea{border-color:rgba(0,0,0,.18);color:#1a1208;}
+[data-theme="light"] .diag-textarea{border-color:rgba(var(--shadow-rgb),.18);color:var(--text-body);}
 .diag-textarea:focus{outline:none;border-color:var(--gold);}
 .diag-textarea::placeholder{color:var(--dim);opacity:.7;}
 .diag-result-eyebrow{font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.8;text-align:center;margin-bottom:18px;}
@@ -2651,18 +2757,18 @@ tr.matrix-highlight{
   width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;
   border:2px solid #4d4d4d;margin:36px auto;max-width:100%;
 }
-[data-theme="light"] .diag-matrix-wrap{border:2px solid rgba(0,0,0,0.4);}
+[data-theme="light"] .diag-matrix-wrap{border:2px solid rgba(var(--shadow-rgb),0.4);}
 .diag-matrix{width:100%;border-collapse:collapse;min-width:600px;font-size:12px;}
 .diag-matrix th{
   font-family:var(--sans);font-size:8px;letter-spacing:1.5px;text-transform:uppercase;
   color:var(--dim);background:var(--bg-lift);padding:10px 6px;border:1px solid #333333;text-align:center;
 }
-[data-theme="light"] .diag-matrix th{background:#c8bfa0;color:#3a2a0a;border-color:rgba(0,0,0,.3);font-weight:700;}
+[data-theme="light"] .diag-matrix th{background:var(--bg-header);color:var(--text-head-dark);border-color:rgba(var(--shadow-rgb),.3);font-weight:700;}
 .diag-matrix td{
   padding:10px 6px;border:1px solid #2e2e2e;color:#c9c9c9;text-align:center;font-weight:400;
   font-family:var(--serif);transition:background .4s,color .4s;
 }
-[data-theme="light"] .diag-matrix td{border-color:rgba(0,0,0,.25);color:#2e2008;font-weight:500;}
+[data-theme="light"] .diag-matrix td{border-color:rgba(var(--shadow-rgb),.25);color:var(--text-mid);font-weight:500;}
 .diag-matrix td.row-label{
   font-style:italic;text-align:left;padding-left:10px;color:var(--dim);font-size:11px;
 }
@@ -2674,10 +2780,10 @@ tr.matrix-highlight{
   margin:18px auto;max-width:560px;padding:26px 28px;background:var(--bg-lift);
   border:1px solid var(--gold);border-left:3px solid var(--gold);text-align:left;
 }
-[data-theme="light"] .diag-pillar-card{background:#e8e0cc;}
+[data-theme="light"] .diag-pillar-card{background:var(--bg-card);}
 .diag-pillar-tag{font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;margin-bottom:10px;display:block;}
 .diag-pillar-q{font-family:var(--serif);font-style:italic;font-size:clamp(16px,2.1vw,19px);color:var(--white);line-height:1.7;}
-[data-theme="light"] .diag-pillar-q{color:#1a1208;}
+[data-theme="light"] .diag-pillar-q{color:var(--text-body);}
 .diag-restart{
   display:block;margin:48px auto 0;font-family:var(--sans);font-size:10px;letter-spacing:3px;
   text-transform:uppercase;color:var(--dim);background:transparent;border:none;cursor:pointer;text-align:center;
@@ -2778,11 +2884,11 @@ tr.matrix-highlight{
 .gloss-table td.gloss-card{font-size:12.5px;color:var(--grey);font-style:italic;}
 .gloss-table tr:hover td{background:rgba(212,175,55,.03);}
 .gloss-table tr:target td{background:rgba(212,175,55,.08);border-color:rgba(212,175,55,.35);}
-[data-theme="light"] .gloss-table{outline-color:rgba(0,0,0,0.22) !important;}
-[data-theme="light"] .gloss-table th{background:rgba(180,140,30,.15) !important;color:#7a5e0e !important;border-color:rgba(0,0,0,0.22) !important;}
-[data-theme="light"] .gloss-table td{border-color:rgba(0,0,0,0.18) !important;color:#1a1208 !important;}
-[data-theme="light"] .gloss-table td:first-child{color:#3a2a0a !important;}
-[data-theme="light"] .gloss-table td.gloss-card{color:#5a4a2a !important;}
+[data-theme="light"] .gloss-table{outline-color:rgba(var(--shadow-rgb),0.22) !important;}
+[data-theme="light"] .gloss-table th{background:rgba(180,140,30,.15) !important;color:var(--gold) !important;border-color:rgba(var(--shadow-rgb),0.22) !important;}
+[data-theme="light"] .gloss-table td{border-color:rgba(var(--shadow-rgb),0.18) !important;color:var(--text-body) !important;}
+[data-theme="light"] .gloss-table td:first-child{color:var(--text-head-dark) !important;}
+[data-theme="light"] .gloss-table td.gloss-card{color:var(--text-dim) !important;}
 @media(max-width:640px){
   .gloss-table th:first-child,.gloss-table td:first-child{white-space:normal;width:34%;}
   .gloss-table th,.gloss-table td{padding:10px 8px;font-size:12.5px;line-height:1.6;}
@@ -2804,9 +2910,9 @@ a.src-tag:hover{opacity:.75;}
 .src-research::before{background:#6fa8dc;}
 .src-synth{color:var(--grey);border-color:#333;}
 .src-synth::before{background:var(--grey);}
-[data-theme="light"] .src-trad{color:#8a6a12;border-color:rgba(138,106,18,0.5);}
-[data-theme="light"] .src-research{color:#2a5a8a;border-color:rgba(42,90,138,0.5);}
-[data-theme="light"] .src-synth{color:#3d2e10;border-color:rgba(0,0,0,0.25);}
+[data-theme="light"] .src-trad{color:var(--accent-gold);border-color:rgba(var(--accent-gold-rgb),0.5);}
+[data-theme="light"] .src-research{color:var(--text-research-blue);border-color:rgba(var(--text-research-blue-rgb),0.5);}
+[data-theme="light"] .src-synth{color:var(--grey);border-color:rgba(var(--shadow-rgb),0.25);}
 
 </style>
 </head>
@@ -3455,31 +3561,31 @@ a.src-tag:hover{opacity:.75;}
   </div>
   <div id="self-enquiry-full-content" class="section-collapse-wrap collapsed">
   <div class="pillar-grid">
-    <div class="pillar-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.p-expand');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="pillar-card">
       <span class="p-num">Pillar 01</span><p class="p-title">Who am I?</p>
       <span class="p-expand">Expand &#9660;</span>
       <span class="section-collapse-label" style="font-family:var(--serif);font-size:14px;font-weight:300;color:var(--grey);margin-top:16px;">Your gift, distilled</span>
       <p class="p-body">Discovering your passion, attributes, and legacy. If you had one gift of value for the world &mdash; what is it? Not your job title. Not your resume. The singular thing only you can bring.</p>
     </div>
-    <div class="pillar-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.p-expand');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="pillar-card">
       <span class="p-num">Pillar 02</span><p class="p-title">Where am I from?</p>
       <span class="p-expand">Expand &#9660;</span>
       <span class="section-collapse-label" style="font-family:var(--serif);font-size:14px;font-weight:300;color:var(--grey);margin-top:16px;">Your source &amp; conditioning</span>
       <p class="p-body">Understanding your spiritual source and your current baseline reality. What shaped the lens you see through? What do you carry that you didn&rsquo;t choose? And what of it is actually you?</p>
     </div>
-    <div class="pillar-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.p-expand');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="pillar-card">
       <span class="p-num">Pillar 03</span><p class="p-title">Why am I here?</p>
       <span class="p-expand">Expand &#9660;</span>
       <span class="section-collapse-label" style="font-family:var(--serif);font-size:14px;font-weight:300;color:var(--grey);margin-top:16px;">Your purpose, named</span>
       <p class="p-body">Defining your innate purpose and the specific problems you are uniquely built to solve. Not what the world needs from everyone. What it needs from you specifically.</p>
     </div>
-    <div class="pillar-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.p-expand');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="pillar-card">
       <span class="p-num">Pillar 04</span><p class="p-title">What can I do?</p>
       <span class="p-expand">Expand &#9660;</span>
       <span class="section-collapse-label" style="font-family:var(--serif);font-size:14px;font-weight:300;color:var(--grey);margin-top:16px;">Your gifts, in action</span>
       <p class="p-body">Actionable service. Developing the strategic route to deploy your gifts. The gap between knowing your purpose and actually serving it is practice &mdash; not revelation.</p>
     </div>
-    <div class="pillar-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.p-expand');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="pillar-card">
       <span class="p-num">Pillar 05</span><p class="p-title">Where am I going?</p>
       <span class="p-expand">Expand &#9660;</span>
       <span class="section-collapse-label" style="font-family:var(--serif);font-size:14px;font-weight:300;color:var(--grey);margin-top:16px;">Direction, not destination</span>
@@ -4645,7 +4751,7 @@ a.src-tag:hover{opacity:.75;}
   </div>
 
   <div class="enn-grid" id="ennGrid">
-    <div class="enneagram-card" id="enn-card-1" onclick="if(!this.classList.contains('open')){var self=this;document.querySelectorAll('#ennGrid .enneagram-card.open').forEach(function(c){if(c!==self){c.classList.remove('open');var l=c.querySelector('.ec-toggle');if(l)l.innerHTML='Expand &#9660;';}});}this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="enneagram-card" id="enn-card-1" onclick="freezeTransitions();if(!this.classList.contains('open')){var self=this;document.querySelectorAll('#ennGrid .enneagram-card.open').forEach(function(c){if(c!==self){c.classList.remove('open');var l=c.querySelector('.ec-toggle');if(l)l.innerHTML='Expand &#9660;';}});}this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="ec-type">Type 1 &mdash; The Perfectionist</span>
       <div class="ec-name">The Perfectionist</div>
       <div class="ec-fear">Core Fear: Being imperfect or corrupt</div>
@@ -4663,7 +4769,7 @@ a.src-tag:hover{opacity:.75;}
         </div>
       </div>
     </div>
-    <div class="enneagram-card" id="enn-card-2" onclick="if(!this.classList.contains('open')){var self=this;document.querySelectorAll('#ennGrid .enneagram-card.open').forEach(function(c){if(c!==self){c.classList.remove('open');var l=c.querySelector('.ec-toggle');if(l)l.innerHTML='Expand &#9660;';}});}this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="enneagram-card" id="enn-card-2" onclick="freezeTransitions();if(!this.classList.contains('open')){var self=this;document.querySelectorAll('#ennGrid .enneagram-card.open').forEach(function(c){if(c!==self){c.classList.remove('open');var l=c.querySelector('.ec-toggle');if(l)l.innerHTML='Expand &#9660;';}});}this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="ec-type">Type 2 &mdash; The Giver</span>
       <div class="ec-name">The Giver</div>
       <div class="ec-fear">Core Fear: Being unlovable</div>
@@ -4681,7 +4787,7 @@ a.src-tag:hover{opacity:.75;}
         </div>
       </div>
     </div>
-    <div class="enneagram-card" id="enn-card-3" onclick="if(!this.classList.contains('open')){var self=this;document.querySelectorAll('#ennGrid .enneagram-card.open').forEach(function(c){if(c!==self){c.classList.remove('open');var l=c.querySelector('.ec-toggle');if(l)l.innerHTML='Expand &#9660;';}});}this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="enneagram-card" id="enn-card-3" onclick="freezeTransitions();if(!this.classList.contains('open')){var self=this;document.querySelectorAll('#ennGrid .enneagram-card.open').forEach(function(c){if(c!==self){c.classList.remove('open');var l=c.querySelector('.ec-toggle');if(l)l.innerHTML='Expand &#9660;';}});}this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="ec-type">Type 3 &mdash; The Achiever</span>
       <div class="ec-name">The Achiever</div>
       <div class="ec-fear">Core Fear: Failure, lacking inherent value</div>
@@ -4699,7 +4805,7 @@ a.src-tag:hover{opacity:.75;}
         </div>
       </div>
     </div>
-    <div class="enneagram-card" id="enn-card-4" onclick="if(!this.classList.contains('open')){var self=this;document.querySelectorAll('#ennGrid .enneagram-card.open').forEach(function(c){if(c!==self){c.classList.remove('open');var l=c.querySelector('.ec-toggle');if(l)l.innerHTML='Expand &#9660;';}});}this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="enneagram-card" id="enn-card-4" onclick="freezeTransitions();if(!this.classList.contains('open')){var self=this;document.querySelectorAll('#ennGrid .enneagram-card.open').forEach(function(c){if(c!==self){c.classList.remove('open');var l=c.querySelector('.ec-toggle');if(l)l.innerHTML='Expand &#9660;';}});}this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="ec-type">Type 4 &mdash; The Individualist</span>
       <div class="ec-name">The Individualist</div>
       <div class="ec-fear">Core Fear: Being flawed, lacking a unique identity</div>
@@ -4717,7 +4823,7 @@ a.src-tag:hover{opacity:.75;}
         </div>
       </div>
     </div>
-    <div class="enneagram-card" id="enn-card-5" onclick="if(!this.classList.contains('open')){var self=this;document.querySelectorAll('#ennGrid .enneagram-card.open').forEach(function(c){if(c!==self){c.classList.remove('open');var l=c.querySelector('.ec-toggle');if(l)l.innerHTML='Expand &#9660;';}});}this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="enneagram-card" id="enn-card-5" onclick="freezeTransitions();if(!this.classList.contains('open')){var self=this;document.querySelectorAll('#ennGrid .enneagram-card.open').forEach(function(c){if(c!==self){c.classList.remove('open');var l=c.querySelector('.ec-toggle');if(l)l.innerHTML='Expand &#9660;';}});}this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="ec-type">Type 5 &mdash; The Investigator</span>
       <div class="ec-name">The Investigator</div>
       <div class="ec-fear">Core Fear: Being overwhelmed by demands or needs</div>
@@ -4735,7 +4841,7 @@ a.src-tag:hover{opacity:.75;}
         </div>
       </div>
     </div>
-    <div class="enneagram-card" id="enn-card-6" onclick="if(!this.classList.contains('open')){var self=this;document.querySelectorAll('#ennGrid .enneagram-card.open').forEach(function(c){if(c!==self){c.classList.remove('open');var l=c.querySelector('.ec-toggle');if(l)l.innerHTML='Expand &#9660;';}});}this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="enneagram-card" id="enn-card-6" onclick="freezeTransitions();if(!this.classList.contains('open')){var self=this;document.querySelectorAll('#ennGrid .enneagram-card.open').forEach(function(c){if(c!==self){c.classList.remove('open');var l=c.querySelector('.ec-toggle');if(l)l.innerHTML='Expand &#9660;';}});}this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="ec-type">Type 6 &mdash; The Skeptic</span>
       <div class="ec-name">The Skeptic</div>
       <div class="ec-fear">Core Fear: Being unprepared, unable to defend against danger</div>
@@ -4753,7 +4859,7 @@ a.src-tag:hover{opacity:.75;}
         </div>
       </div>
     </div>
-    <div class="enneagram-card" id="enn-card-7" onclick="if(!this.classList.contains('open')){var self=this;document.querySelectorAll('#ennGrid .enneagram-card.open').forEach(function(c){if(c!==self){c.classList.remove('open');var l=c.querySelector('.ec-toggle');if(l)l.innerHTML='Expand &#9660;';}});}this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="enneagram-card" id="enn-card-7" onclick="freezeTransitions();if(!this.classList.contains('open')){var self=this;document.querySelectorAll('#ennGrid .enneagram-card.open').forEach(function(c){if(c!==self){c.classList.remove('open');var l=c.querySelector('.ec-toggle');if(l)l.innerHTML='Expand &#9660;';}});}this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="ec-type">Type 7 &mdash; The Enthusiast</span>
       <div class="ec-name">The Enthusiast</div>
       <div class="ec-fear">Core Fear: Experiencing emotional pain or sadness</div>
@@ -4771,7 +4877,7 @@ a.src-tag:hover{opacity:.75;}
         </div>
       </div>
     </div>
-    <div class="enneagram-card" id="enn-card-8" onclick="if(!this.classList.contains('open')){var self=this;document.querySelectorAll('#ennGrid .enneagram-card.open').forEach(function(c){if(c!==self){c.classList.remove('open');var l=c.querySelector('.ec-toggle');if(l)l.innerHTML='Expand &#9660;';}});}this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="enneagram-card" id="enn-card-8" onclick="freezeTransitions();if(!this.classList.contains('open')){var self=this;document.querySelectorAll('#ennGrid .enneagram-card.open').forEach(function(c){if(c!==self){c.classList.remove('open');var l=c.querySelector('.ec-toggle');if(l)l.innerHTML='Expand &#9660;';}});}this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="ec-type">Type 8 &mdash; The Challenger</span>
       <div class="ec-name">The Challenger</div>
       <div class="ec-fear">Core Fear: Being powerless, vulnerable, or controlled</div>
@@ -4789,7 +4895,7 @@ a.src-tag:hover{opacity:.75;}
         </div>
       </div>
     </div>
-    <div class="enneagram-card" id="enn-card-9" onclick="if(!this.classList.contains('open')){var self=this;document.querySelectorAll('#ennGrid .enneagram-card.open').forEach(function(c){if(c!==self){c.classList.remove('open');var l=c.querySelector('.ec-toggle');if(l)l.innerHTML='Expand &#9660;';}});}this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="enneagram-card" id="enn-card-9" onclick="freezeTransitions();if(!this.classList.contains('open')){var self=this;document.querySelectorAll('#ennGrid .enneagram-card.open').forEach(function(c){if(c!==self){c.classList.remove('open');var l=c.querySelector('.ec-toggle');if(l)l.innerHTML='Expand &#9660;';}});}this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="ec-type">Type 9 &mdash; The Peacemaker</span>
       <div class="ec-name">The Peacemaker</div>
       <div class="ec-fear">Core Fear: Pushing people away, conflict, fragmentation</div>
@@ -5774,7 +5880,7 @@ a.src-tag:hover{opacity:.75;}
 </section>
 <div class="divider"></div>
 
-<div style="max-width:680px;margin:0 auto;padding:0 24px 36px;position:relative;border:1px solid var(--gold);">
+<div class="edge-safe-frame" style="max-width:680px;margin:0 auto;padding:0 24px 36px;position:relative;border:1px solid var(--gold);">
   <div style="position:absolute;top:-1px;left:-1px;width:20px;height:20px;border-top:2px solid var(--gold);border-left:2px solid var(--gold);"></div>
   <div style="position:absolute;top:-1px;right:-1px;width:20px;height:20px;border-top:2px solid var(--gold);border-right:2px solid var(--gold);"></div>
   <div style="position:absolute;bottom:-1px;left:-1px;width:20px;height:20px;border-bottom:2px solid var(--gold);border-left:2px solid var(--gold);"></div>
@@ -5840,7 +5946,7 @@ a.src-tag:hover{opacity:.75;}
 <span class="continue-hint">continue</span>
 <div class="divider"></div>
 
-<div style="max-width:560px;margin:0 auto 20px;padding:44px 36px;text-align:center;
+<div class="edge-safe-frame" style="max-width:560px;margin:0 auto 20px;padding:44px 36px;text-align:center;
 border:1px solid var(--gold);background:radial-gradient(ellipse at 50% 50%,
 rgba(212,175,55,.06) 0%,transparent 65%);">
   <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;
@@ -5904,7 +6010,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
 <div class="divider"></div>
 
 <!-- BRIDGE -->
-  <section class="bridge-section" style="position:relative;border:1px solid var(--gold);max-width:560px;margin:0 auto;">
+  <section class="bridge-section edge-safe-frame" style="position:relative;border:1px solid var(--gold);max-width:560px;margin:0 auto;">
   <div style="position:absolute;top:-1px;left:-1px;width:20px;height:20px;border-top:2px solid var(--gold);border-left:2px solid var(--gold);"></div>
   <div style="position:absolute;top:-1px;right:-1px;width:20px;height:20px;border-top:2px solid var(--gold);border-right:2px solid var(--gold);"></div>
   <div style="position:absolute;bottom:-1px;left:-1px;width:20px;height:20px;border-bottom:2px solid var(--gold);border-left:2px solid var(--gold);"></div>
@@ -8453,22 +8559,124 @@ function updateNav(){
     if(lbl) lbl.innerHTML = nowOpen ? 'Collapse &#9650;' : 'Expand &#9660;';
   };
 
+  /* ── SMOOTH HEIGHT HELPERS ────────────────────────────────────────────
+     CSS-only max-height accordions (max-height:0 <-> max-height:none) can't
+     actually animate, because a transition needs two real length values —
+     "none" isn't one, so the browser just snaps to full height instantly
+     while opacity keeps fading on its own timer. That mismatch is what read
+     as an abrupt jerk when opening framework / self-enquiry cards. These
+     helpers measure the element's real scrollHeight and animate to/from
+     that pixel value instead, then release back to max-height:none once
+     open so later content changes (gloss popups, orientation change) don't
+     get clipped. ── */
+  function isStillOpen(el){
+    var fc = el.closest('.framework-card');
+    if(fc) return !fc.classList.contains('collapsed');
+    var pc = el.closest('.pillar-card');
+    if(pc) return pc.classList.contains('open');
+    return true;
+  }
+  window.expandHeight = function expandHeight(el){
+    if(!el) return;
+    // scrollHeight reflects the element's real content height regardless of
+    // any current max-height clipping, so it's safe to read before pinning.
+    var target = el.scrollHeight;
+    el.style.maxHeight = '0px';
+    void el.offsetHeight; // force a synchronous reflow so 0px lands on a real frame
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
+        el.style.maxHeight = target + 'px';
+      });
+    });
+    var released = false;
+    function release(){
+      if(released) return;
+      released = true;
+      el.removeEventListener('transitionend', onEnd);
+      // Only hand back to 'none' if this card is still the one meant to be
+      // open — a card collapsed elsewhere in the meantime (accordion,
+      // section reset) already owns its own max-height and shouldn't have
+      // it overwritten by a late-arriving release from an earlier open.
+      if(isStillOpen(el)) el.style.maxHeight = 'none';
+    }
+    function onEnd(e){
+      if(e.target !== el || e.propertyName !== 'max-height') return;
+      release();
+    }
+    el.addEventListener('transitionend', onEnd);
+    // Fallback: if the transition gets frozen/interrupted mid-flight (e.g. a
+    // theme toggle firing freezeTransitions() while this was still animating)
+    // no transitionend fires at all, and without this, max-height would stay
+    // pinned at today's pixel number forever — clipping the card's own
+    // content the moment it needs to be any taller (a theme swap nudging
+    // line-height, a resize, reopening after the section was reset). This is
+    // what caused the "card looks open but the body is empty" bug.
+    setTimeout(release, 550);
+  };
+  window.collapseHeight = function collapseHeight(el){
+    if(!el) return;
+    var current = el.style.maxHeight;
+    if(!current || current === 'none'){
+      el.style.maxHeight = el.scrollHeight + 'px';
+      void el.offsetHeight; // force reflow so the pinned height registers before it changes again
+    }
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
+        el.style.maxHeight = '0px';
+      });
+    });
+  };
+  var expandHeight = window.expandHeight, collapseHeight = window.collapseHeight;
+
   /* ── FRAMEWORK CARDS: click to toggle. Scoped accordion — opening one card
      closes any other open card in the SAME section (#framework-full-content
      or #ascent-full-content), but the two sections stay independent of each
      other. ── */
   document.querySelectorAll('.framework-card').forEach(function(card){
+    var content = card.querySelector('.framework-content');
     card.addEventListener('click', function(e){
       if(e.target.tagName === 'A') return;
+      freezeTransitions();
       var wrap = this.closest('#ascent-full-content') || this.closest('#framework-full-content');
       var isOpening = this.classList.contains('collapsed');
       if(wrap && isOpening){
         var self = this;
         wrap.querySelectorAll('.framework-card').forEach(function(c){
-          if(c !== self) c.classList.add('collapsed');
+          if(c !== self && !c.classList.contains('collapsed')){
+            c.classList.add('collapsed');
+            collapseHeight(c.querySelector('.framework-content'));
+          }
         });
       }
       this.classList.toggle('collapsed');
+      if(isOpening) expandHeight(content); else collapseHeight(content);
+    });
+  });
+
+  /* ── PILLAR CARDS (5 Pillars of Self-Enquiry): click to toggle. Accordion —
+     opening one card closes any other open card in the same .pillar-grid. ── */
+  document.querySelectorAll('.pillar-card').forEach(function(card){
+    var body = card.querySelector('.p-body');
+    card.addEventListener('click', function(e){
+      if(e.target.tagName === 'A') return;
+      freezeTransitions();
+      var grid = this.closest('.pillar-grid');
+      var isOpening = !this.classList.contains('open');
+      if(grid && isOpening){
+        var self = this;
+        grid.querySelectorAll('.pillar-card.open').forEach(function(c){
+          if(c !== self){
+            c.classList.remove('open');
+            collapseHeight(c.querySelector('.p-body'));
+            var l = c.querySelector('.p-expand');
+            if(l) l.innerHTML = 'Expand &#9660;';
+          }
+        });
+      }
+      this.classList.toggle('open');
+      if(isOpening) expandHeight(body); else collapseHeight(body);
+      var lbl = this.querySelector('.p-expand');
+      if(lbl) lbl.innerHTML = this.classList.contains('open') ? 'Collapse &#9650;' : 'Expand &#9660;';
     });
   });
 
@@ -8525,10 +8733,14 @@ function resetNestedToggles(wrap){
   // Framework + Ascent of Self cards: 'collapsed' IS their own closed state
   wrap.querySelectorAll('.framework-card:not(.collapsed)').forEach(function(c){
     c.classList.add('collapsed');
+    var fc=c.querySelector('.framework-content');
+    if(fc) fc.style.maxHeight='';
   });
   // Self-Enquiry pillar cards: 'open' is their expanded state
   wrap.querySelectorAll('.pillar-card.open').forEach(function(c){
     c.classList.remove('open');
+    var pb=c.querySelector('.p-body');
+    if(pb) pb.style.maxHeight='';
     var lbl=c.querySelector('.p-expand');
     if(lbl) lbl.innerHTML='Expand &#9660;';
   });
@@ -8616,9 +8828,14 @@ function scrollToAscentCard(n){
   function openAndScroll(){
     // accordion: close any other open stage before opening this one
     document.querySelectorAll('#ascent-full-content .framework-card').forEach(function(c){
-      if(c !== card) c.classList.add('collapsed');
+      if(c !== card && !c.classList.contains('collapsed')){
+        c.classList.add('collapsed');
+        if(typeof collapseHeight==='function') collapseHeight(c.querySelector('.framework-content'));
+      }
     });
+    var wasCardCollapsed = card.classList.contains('collapsed');
     card.classList.remove('collapsed');
+    if(wasCardCollapsed && typeof expandHeight==='function') expandHeight(card.querySelector('.framework-content'));
     card.scrollIntoView({behavior:'smooth', block:'start'});
   }
 
@@ -8685,13 +8902,42 @@ function toggleFoundation(btn){
     btn.setAttribute('aria-expanded','true');
   }
 }
+/* ── FREEZE-TRANSITIONS HELPER ────────────────────────────────────────────
+   Originally written inline inside toggleTheme() to stop the page's many
+   independently-timed transitions firing out of sync and reading as a
+   flash. The same jank shows up whenever an accordion click changes page
+   height under the fixed, backdrop-filter nav (framework/pillar/enneagram
+   cards) — most visible on mobile and in dark theme where the flash reads
+   as a bright flicker against the dark background. Pulled out here so any
+   interaction that reflows the layout can borrow the same fix. ── */
+function freezeTransitions(){
+  var html = document.documentElement;
+  html.classList.add('theme-swap');
+  // Desktop's 80ms was tuned specifically to outlast the fixed nav's
+  // backdrop-filter blur recompute (see toggleTheme below). That cost no
+  // longer exists on mobile — backdrop-filter was removed from both the
+  // site nav and the mobile nav dropdown — but mobile still has to
+  // recalculate every [data-theme="light"] rule across this long document,
+  // which can take noticeably longer than 80ms on slower Android hardware.
+  // If the freeze lifts before that finishes, whatever hasn't repainted yet
+  // still transitions individually and reads as flicker. Give mobile more
+  // headroom than desktop needs.
+  var unfreezeDelay = (window.innerWidth <= 900) ? 220 : 80;
+  requestAnimationFrame(function(){
+    requestAnimationFrame(function(){
+      setTimeout(function(){
+        html.classList.remove('theme-swap');
+      }, unfreezeDelay);
+    });
+  });
+}
 /* ── THEME TOGGLE ─────────────────────────────────────────────────────────── */
 function toggleTheme(){
   var html = document.documentElement;
   // Freeze all transitions before the swap so the hundreds of independently
   // timed color transitions on this page don't fire out of sync and read
   // as a flash/flicker.
-  html.classList.add('theme-swap');
+  freezeTransitions();
   var current = html.getAttribute('data-theme');
   var next = (current === 'light') ? 'dark' : 'light';
   html.setAttribute('data-theme', next === 'dark' ? '' : 'light');
@@ -8716,13 +8962,6 @@ function toggleTheme(){
   // viewport is — on desktop that recompute can still be mid-flight when the next
   // frame lands, so removing the freeze right then reads as a flicker. 80ms is
   // comfortably past that on desktop while still feeling instant to the user.
-  requestAnimationFrame(function(){
-    requestAnimationFrame(function(){
-      setTimeout(function(){
-        html.classList.remove('theme-swap');
-      }, 80);
-    });
-  });
 }
 // Theme already set in <head> — just sync button icons and reveal
 (function(){
