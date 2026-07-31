@@ -1307,8 +1307,11 @@ section{scroll-margin-top:56px;}
 .pillar-card .p-num{font-family:var(--sans);font-size:10px;letter-spacing:3px;color:var(--gold);opacity:.65;margin-bottom:10px;display:block;}
 .pillar-card .p-title{font-family:var(--serif);font-size:clamp(19px,2vw,24px);font-weight:400;color:var(--white);margin-bottom:0;line-height:1.35;}
 .pillar-card .p-expand{font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.7;position:absolute;top:32px;right:28px;margin-top:0;display:block;}
-.pillar-card .p-body{font-family:var(--serif);font-size:15.5px;font-weight:300;color:var(--grey);line-height:1.88;margin-top:16px;display:none;border-top:1px solid rgba(212,175,55,0.3);padding-top:16px;}
-.pillar-card.open .p-body{display:block;}
+.pillar-card .p-body{font-family:var(--serif);font-size:15.5px;font-weight:300;color:var(--grey);line-height:1.88;overflow:hidden;max-height:0;opacity:0;margin-top:0;border-top:0 solid rgba(212,175,55,0.3);padding-top:0;transition:max-height .4s ease,opacity .3s ease,margin-top .4s ease,padding-top .4s ease,border-top-width .4s ease;}
+.pillar-card.open .p-body{opacity:1;margin-top:16px;border-top-width:1px;padding-top:16px;}
+/* max-height itself is set inline in px by JS (see pillar-card click handler) so it can
+   animate to the element's real content height instead of snapping via display:none/block —
+   this was the source of the abrupt, non-smooth "jerk" reported when opening these cards. */
 .astrolabe-cta{font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:500px;margin:0 auto;font-style:italic;line-height:1.85;}
 
 /* ── TWO PATHS ───────────────────────────────────────────────────────────── */
@@ -2086,6 +2089,23 @@ h4 {
      override removed from here — they duplicated/fought the single
      in-flow theme button already handled by the mega-menu 3-column
      layer above. */
+
+  /* .mnav-panel (the full-screen mobile nav dropdown) was the last element
+     on mobile still carrying backdrop-filter after .site-nav had it removed
+     above for the same reason. On Chrome for Android, a blurred, fixed,
+     nearly-full-viewport layer that also sits under the data-theme swap
+     recomposites visibly — reads as flicker concentrated toward the bottom
+     of the panel, where the blurred backdrop has the most content behind
+     it to sample. Chromium-based Opera for Android appears to schedule
+     this recomposite differently and doesn't show it, which is why the
+     symptom looked browser-specific rather than page-specific. The panel's
+     own background is already ~97% opaque, so the blur adds very little
+     visible effect for the cost. Removed here rather than adding more
+     freeze-timing — matches the .site-nav fix already in place. */
+  .mnav-panel{
+    backdrop-filter:none !important;
+    -webkit-backdrop-filter:none !important;
+  }
 }
    
 /* Decorative bordered "frame" boxes (Cosmic Ledger quote, Radiant Wildcard
@@ -8468,11 +8488,55 @@ function updateNav(){
     if(lbl) lbl.innerHTML = nowOpen ? 'Collapse &#9650;' : 'Expand &#9660;';
   };
 
+  /* ── SMOOTH HEIGHT HELPERS ────────────────────────────────────────────
+     CSS-only max-height accordions (max-height:0 <-> max-height:none) can't
+     actually animate, because a transition needs two real length values —
+     "none" isn't one, so the browser just snaps to full height instantly
+     while opacity keeps fading on its own timer. That mismatch is what read
+     as an abrupt jerk when opening framework / self-enquiry cards. These
+     helpers measure the element's real scrollHeight and animate to/from
+     that pixel value instead, then release back to max-height:none once
+     open so later content changes (gloss popups, orientation change) don't
+     get clipped. ── */
+  window.expandHeight = function expandHeight(el){
+    if(!el) return;
+    // scrollHeight reflects the element's real content height regardless of
+    // any current max-height clipping, so it's safe to read before pinning.
+    var target = el.scrollHeight;
+    el.style.maxHeight = '0px';
+    void el.offsetHeight; // force a synchronous reflow so 0px lands on a real frame
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
+        el.style.maxHeight = target + 'px';
+      });
+    });
+    el.addEventListener('transitionend', function onEnd(e){
+      if(e.target !== el || e.propertyName !== 'max-height') return;
+      el.style.maxHeight = 'none';
+      el.removeEventListener('transitionend', onEnd);
+    });
+  };
+  window.collapseHeight = function collapseHeight(el){
+    if(!el) return;
+    var current = el.style.maxHeight;
+    if(!current || current === 'none'){
+      el.style.maxHeight = el.scrollHeight + 'px';
+      void el.offsetHeight; // force reflow so the pinned height registers before it changes again
+    }
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
+        el.style.maxHeight = '0px';
+      });
+    });
+  };
+  var expandHeight = window.expandHeight, collapseHeight = window.collapseHeight;
+
   /* ── FRAMEWORK CARDS: click to toggle. Scoped accordion — opening one card
      closes any other open card in the SAME section (#framework-full-content
      or #ascent-full-content), but the two sections stay independent of each
      other. ── */
   document.querySelectorAll('.framework-card').forEach(function(card){
+    var content = card.querySelector('.framework-content');
     card.addEventListener('click', function(e){
       if(e.target.tagName === 'A') return;
       freezeTransitions();
@@ -8481,16 +8545,21 @@ function updateNav(){
       if(wrap && isOpening){
         var self = this;
         wrap.querySelectorAll('.framework-card').forEach(function(c){
-          if(c !== self) c.classList.add('collapsed');
+          if(c !== self && !c.classList.contains('collapsed')){
+            c.classList.add('collapsed');
+            collapseHeight(c.querySelector('.framework-content'));
+          }
         });
       }
       this.classList.toggle('collapsed');
+      if(isOpening) expandHeight(content); else collapseHeight(content);
     });
   });
 
   /* ── PILLAR CARDS (5 Pillars of Self-Enquiry): click to toggle. Accordion —
      opening one card closes any other open card in the same .pillar-grid. ── */
   document.querySelectorAll('.pillar-card').forEach(function(card){
+    var body = card.querySelector('.p-body');
     card.addEventListener('click', function(e){
       if(e.target.tagName === 'A') return;
       freezeTransitions();
@@ -8501,12 +8570,14 @@ function updateNav(){
         grid.querySelectorAll('.pillar-card.open').forEach(function(c){
           if(c !== self){
             c.classList.remove('open');
+            collapseHeight(c.querySelector('.p-body'));
             var l = c.querySelector('.p-expand');
             if(l) l.innerHTML = 'Expand &#9660;';
           }
         });
       }
       this.classList.toggle('open');
+      if(isOpening) expandHeight(body); else collapseHeight(body);
       var lbl = this.querySelector('.p-expand');
       if(lbl) lbl.innerHTML = this.classList.contains('open') ? 'Collapse &#9650;' : 'Expand &#9660;';
     });
@@ -8565,10 +8636,14 @@ function resetNestedToggles(wrap){
   // Framework + Ascent of Self cards: 'collapsed' IS their own closed state
   wrap.querySelectorAll('.framework-card:not(.collapsed)').forEach(function(c){
     c.classList.add('collapsed');
+    var fc=c.querySelector('.framework-content');
+    if(fc) fc.style.maxHeight='';
   });
   // Self-Enquiry pillar cards: 'open' is their expanded state
   wrap.querySelectorAll('.pillar-card.open').forEach(function(c){
     c.classList.remove('open');
+    var pb=c.querySelector('.p-body');
+    if(pb) pb.style.maxHeight='';
     var lbl=c.querySelector('.p-expand');
     if(lbl) lbl.innerHTML='Expand &#9660;';
   });
@@ -8656,9 +8731,14 @@ function scrollToAscentCard(n){
   function openAndScroll(){
     // accordion: close any other open stage before opening this one
     document.querySelectorAll('#ascent-full-content .framework-card').forEach(function(c){
-      if(c !== card) c.classList.add('collapsed');
+      if(c !== card && !c.classList.contains('collapsed')){
+        c.classList.add('collapsed');
+        if(typeof collapseHeight==='function') collapseHeight(c.querySelector('.framework-content'));
+      }
     });
+    var wasCardCollapsed = card.classList.contains('collapsed');
     card.classList.remove('collapsed');
+    if(wasCardCollapsed && typeof expandHeight==='function') expandHeight(card.querySelector('.framework-content'));
     card.scrollIntoView({behavior:'smooth', block:'start'});
   }
 
