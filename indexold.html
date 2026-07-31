@@ -38,12 +38,24 @@ gtag('config','G-XC5FG6W949');
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{
 scroll-behavior:smooth;
+background:var(--bg);   /* add this line */
 }
 /* Freeze all transitions for the one frame where data-theme actually swaps,
    so hundreds of independently-timed color transitions don't fire out of
    sync and read as a flash. Removed on the next paint via double rAF. */
 .theme-swap, .theme-swap *, .theme-swap *::before, .theme-swap *::after{
   transition:none !important;
+}
+/* Exception: freezeTransitions() is also called on every framework/pillar
+   card click (not just theme swaps — see the comment above its definition),
+   so the blanket freeze above was silently cancelling the card's own
+   open/close height animation, which needs its transition to survive to
+   actually glide instead of snap. Keep it alive here. */
+.theme-swap .framework-content{
+  transition:max-height .4s ease,opacity .3s ease !important;
+}
+.theme-swap .p-body{
+  transition:max-height .4s ease,opacity .3s ease,margin-top .4s ease,padding-top .4s ease,border-top-width .4s ease !important;
 }
 body{
   background:var(--bg);
@@ -210,6 +222,215 @@ body{
 .self-table tr.gold-row td:first-child{border-left:3px solid var(--gold);}
 .self-table tr.gold-row td.gold{color:var(--gold);}
 .self-table tr.gold-row td.gold-flaw{color:var(--gold);font-style:italic;}
+
+/* Master Matrix chakra row-striping — same red-to-violet palette already used
+   by the #master-matrix SVG grid map's row strokes/fills (L1 #e74c3c through
+   L7 #9b59b6), so the scrollable table and the spatial map read as one
+   system rather than two differently-colored versions of the same data.
+   All seven rows now carry both the background wash and the left accent
+   bar, matching the map's per-row band fill-opacity treatment exactly —
+   superseding the earlier row-1-only scoping. Scoped to #masterMatrixTable
+   only so no other .self-table on the site is affected. */
+#masterMatrixTable tr.chakra-row-1{background:rgba(231,76,60,.06);}
+#masterMatrixTable tr.chakra-row-1 td:first-child{border-left:3px solid #e74c3c;}
+#masterMatrixTable tr.chakra-row-2{background:rgba(230,126,34,.06);}
+#masterMatrixTable tr.chakra-row-2 td:first-child{border-left:3px solid #e67e22;}
+#masterMatrixTable tr.chakra-row-3{background:rgba(241,196,15,.06);}
+#masterMatrixTable tr.chakra-row-3 td:first-child{border-left:3px solid #f1c40f;}
+#masterMatrixTable tr.chakra-row-4{background:rgba(46,204,113,.06);}
+#masterMatrixTable tr.chakra-row-4 td:first-child{border-left:3px solid #2ecc71;}
+#masterMatrixTable tr.chakra-row-5{background:rgba(52,152,219,.06);}
+#masterMatrixTable tr.chakra-row-5 td:first-child{border-left:3px solid #3498db;}
+#masterMatrixTable tr.chakra-row-6{background:rgba(106,90,205,.06);}
+#masterMatrixTable tr.chakra-row-6 td:first-child{border-left:3px solid #6a5acd;}
+#masterMatrixTable tr.chakra-row-7{background:rgba(155,89,182,.06);}
+#masterMatrixTable tr.chakra-row-7 td:first-child{border-left:3px solid #9b59b6;}
+
+/* Row text and button/gloss coloring reverted to the table's original
+   default colors — only the row-label's own chakra sub-label
+   (.chakra-label-1..7, further below) still carries its chakra hue.
+   Background wash and the first-cell border-left accent above are left
+   as-is since those aren't text coloring. */
+
+/* ...restored again, dark theme only: every data cell in the row (Birth→
+   Death grid, Daily Experience/Shockwave, Action Plan/Realization, and
+   Brainwave/Awareness/Stage/Alchemy/Existence Layer) now picks up the
+   row's chakra hue instead of staying flat white/grey, matching the
+   border-left accent and the row-label sub-line. Special-category cells
+   (Shifting Beliefs, Trauma, Crisis, Rigidity, Dissolution) already carry
+   their own .gold/.red highlight class and are excluded here so this
+   doesn't dilute that distinct meaning. Light theme is untouched — its
+   own [data-theme="light"] .self-table td rule below already forces a
+   fixed dark-brown !important on every cell regardless of this. */
+#masterMatrixTable tr.chakra-row-1 td.col-grid:not(.gold):not(.red),
+#masterMatrixTable tr.chakra-row-1 td.col-lived:not(.gold):not(.red),
+#masterMatrixTable tr.chakra-row-1 td.col-ascension:not(.gold):not(.red),
+#masterMatrixTable tr.chakra-row-1 td.col-meta:not(.gold):not(.red){color:#e74c3c;}
+#masterMatrixTable tr.chakra-row-2 td.col-grid:not(.gold):not(.red),
+#masterMatrixTable tr.chakra-row-2 td.col-lived:not(.gold):not(.red),
+#masterMatrixTable tr.chakra-row-2 td.col-ascension:not(.gold):not(.red),
+#masterMatrixTable tr.chakra-row-2 td.col-meta:not(.gold):not(.red){color:#e67e22;}
+#masterMatrixTable tr.chakra-row-3 td.col-grid:not(.gold):not(.red),
+#masterMatrixTable tr.chakra-row-3 td.col-lived:not(.gold):not(.red),
+#masterMatrixTable tr.chakra-row-3 td.col-ascension:not(.gold):not(.red),
+#masterMatrixTable tr.chakra-row-3 td.col-meta:not(.gold):not(.red){color:var(--chakra-3);}
+#masterMatrixTable tr.chakra-row-4 td.col-grid:not(.gold):not(.red),
+#masterMatrixTable tr.chakra-row-4 td.col-lived:not(.gold):not(.red),
+#masterMatrixTable tr.chakra-row-4 td.col-ascension:not(.gold):not(.red),
+#masterMatrixTable tr.chakra-row-4 td.col-meta:not(.gold):not(.red){color:var(--chakra-4);}
+#masterMatrixTable tr.chakra-row-5 td.col-grid:not(.gold):not(.red),
+#masterMatrixTable tr.chakra-row-5 td.col-lived:not(.gold):not(.red),
+#masterMatrixTable tr.chakra-row-5 td.col-ascension:not(.gold):not(.red),
+#masterMatrixTable tr.chakra-row-5 td.col-meta:not(.gold):not(.red){color:#3498db;}
+#masterMatrixTable tr.chakra-row-6 td.col-grid:not(.gold):not(.red),
+#masterMatrixTable tr.chakra-row-6 td.col-lived:not(.gold):not(.red),
+#masterMatrixTable tr.chakra-row-6 td.col-ascension:not(.gold):not(.red),
+#masterMatrixTable tr.chakra-row-6 td.col-meta:not(.gold):not(.red){color:#6a5acd;}
+#masterMatrixTable tr.chakra-row-7 td.col-grid:not(.gold):not(.red),
+#masterMatrixTable tr.chakra-row-7 td.col-lived:not(.gold):not(.red),
+#masterMatrixTable tr.chakra-row-7 td.col-ascension:not(.gold):not(.red),
+#masterMatrixTable tr.chakra-row-7 td.col-meta:not(.gold):not(.red){color:#9b59b6;}
+
+/* Light-theme row text/button coloring reverted to default as well —
+   see the matching dark-theme note above. Only the chakra sub-label
+   (.chakra-label-1..7) keeps its own light-theme hue, just below. */
+
+/* Uniform, bold, legible cell text — the meta columns (Brainwave, Awareness,
+   Stage, Alchemy, Existence Layer) had smaller inline font-sizes (10-12px)
+   than the main grid columns (13px via .compact), so cells read at visibly
+   different sizes across the same row. Overridden here with !important
+   since inline styles otherwise win. Small parenthetical sub-notes (e.g.
+   "(Deep Sleep)") are left at their own smaller size on purpose, as a
+   secondary annotation rather than the cell's primary word. Weight bumped
+   from the base serif 400 to 600 for clearer legibility, scoped to the
+   short grid/meta cells only — the longer Lived Reality / Ascension Path
+   prose columns keep their lighter weight since bold sentence-length text
+   is harder to read, not easier. */
+#masterMatrixTable td.col-meta{
+  font-family:var(--sans) !important;
+  font-size:9px !important;
+  font-weight:400 !important;
+  text-transform:uppercase !important;
+  letter-spacing:2px !important;
+}
+/* Small parenthetical sub-notes inside meta cells (e.g. "(Deep Sleep)")
+   now stack on their own line directly beneath the main word — one word
+   on top, the note underneath, both centered — instead of wrapping mid-
+   sentence. They stay one size below the 9px main text so they still fit
+   their box without reading larger than the primary word. Only targets
+   the inline-styled sub-note spans (via [style*="font-size"]), not the
+   .gloss term spans, which have no inline style of their own and should
+   stay at the full 9px like every other cell. */
+#masterMatrixTable td.col-meta span[style*="font-size"]{
+  display:block;
+  margin-top:3px;
+  font-size:7.5px !important;
+}
+
+/* The 42 grid cells (Birth → Death columns) matched to the header's own
+   font size (9px, same as .self-table.compact th / .col-title) rather than
+   the larger 12.5px used previously — keeps column labels and their data
+   cells visually the same weight/scale down the whole table. */
+#masterMatrixTable td.col-grid{
+  font-family:var(--sans) !important;
+  font-size:9px !important;
+  font-weight:400 !important;
+  text-transform:uppercase !important;
+  letter-spacing:2px !important;
+}
+
+/* Lived Reality (Daily Experience, Shockwave) and Ascension Path (Action
+   Plan, Realization) matched to the same uppercase-sans treatment used
+   everywhere else in the table, instead of their own left-aligned serif
+   prose styling. */
+#masterMatrixTable td.col-lived,
+#masterMatrixTable td.col-ascension{
+  font-family:var(--sans) !important;
+  font-size:9px !important;
+  font-weight:400 !important;
+  text-transform:uppercase !important;
+  letter-spacing:2px !important;
+  line-height:1.7 !important;
+}
+
+/* First (axis/row-label) column was rendering far wider than intended —
+   .compact's row-label rule forces white-space:nowrap, which overrides the
+   8% width hint and lets long labels like "ROOT CHAKRA" force the column
+   wide. Scoped override here lets it wrap and actually respect the
+   narrower width. */
+#masterMatrixTable td.row-label{
+  white-space:normal !important;
+  padding:10px 6px !important;
+  letter-spacing:2px !important;
+}
+#masterMatrixTable th.axis-cell{
+  white-space:normal !important;
+}
+#masterMatrixTable th,
+#masterMatrixTable th .col-title{
+  font-weight:700 !important;
+}
+#masterMatrixTable td{
+  font-weight:400 !important;
+}
+#masterMatrixTable td.row-label,
+#masterMatrixTable td.row-label span{
+  font-weight:700 !important;
+}
+/* Both rules above are unscoped by theme and use the table's own ID, so
+   they hold regardless of data-theme and regardless of whatever a span
+   or th's own inherited weight would otherwise resolve to — closes the
+   same class of bug as the col-title fix, just for every span nested in
+   a header or row-label cell (col-title itself, and the row-label's
+   "Layer N" caption + chakra-label-N line), in both themes at once. */
+
+/* Gloss underline + "+" button now match whatever color the surrounding
+   cell text is, instead of always being hard-coded gold — scoped to this
+   table only so gloss terms elsewhere on the site (which use gold on
+   purpose) are unaffected. */
+#masterMatrixTable .gloss{border-bottom-color:currentColor;}
+#masterMatrixTable .gloss-btn{color:inherit !important;}
+/* The site-wide light-theme rule (further below) forces every <span> to
+   font-weight:400 — it doesn't know about glossary terms sitting inside
+   this table's cells (Delta, Lead, Annamaya, Senescence...). That silently
+   thinned out exactly the cells that happen to be glossary terms, while
+   plain-text cells in the same column (Mortality, Laboured) stayed bold.
+   Forcing inheritance here makes every col-grid/col-meta cell match its
+   column, glossary term or not, in both themes. */
+#masterMatrixTable td.col-meta .gloss,
+#masterMatrixTable td.col-grid .gloss{
+  font-weight:inherit !important;
+  font-size:inherit !important;
+  letter-spacing:inherit !important;
+  text-transform:inherit !important;
+  color:inherit !important;
+}
+
+/* Row-label chakra sub-labels ("Root Chakra", "Sacral Chakra"...) — class-
+   based instead of the hardcoded inline hex they used previously, so a
+   light-theme variant is actually possible (inline styles can't be
+   overridden by a stylesheet without fighting specificity). */
+.chakra-label-1{color:#e74c3c;}
+.chakra-label-2{color:#e67e22;}
+.chakra-label-3{color:#f1c40f;}
+.chakra-label-4{color:#2ecc71;}
+.chakra-label-5{color:#3498db;}
+.chakra-label-6{color:#6a5acd;}
+.chakra-label-7{color:#9b59b6;}
+[data-theme="light"] .chakra-label-1{color:#c0392b !important;}
+[data-theme="light"] .chakra-label-2{color:#a15c00 !important;}
+[data-theme="light"] .chakra-label-3{color:#8a6d00 !important;}
+[data-theme="light"] .chakra-label-4{color:#1e8c50 !important;}
+[data-theme="light"] .chakra-label-5{color:#1e64a0 !important;}
+[data-theme="light"] .chakra-label-6{color:#4b3aa0 !important;}
+[data-theme="light"] .chakra-label-7{color:#7d3c98 !important;}
+
+/* Light theme: same hues, background wash tuned down since the base is
+   already pale (mirrors the existing gold-row light-theme pattern below). */
+[data-theme="light"] #masterMatrixTable tr.chakra-row-1{background:rgba(231,76,60,.10) !important;}
+/* Row 1 red wash restored for light theme per updated feedback. Rows 2-7
+   still have no wash (see dark-theme note above). */
+
 .self-table .axis-cell{
   font-family:var(--sans);
   font-size:8px;
@@ -293,17 +514,36 @@ body{
   --serif:'Cormorant Garamond',Georgia,serif;
   --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
   --nav-h:44px;
+  /* Layer 3 (yellow) / Layer 4 (green) accent used by the Ascent of Self
+     and Master Matrix map SVGs. Split into a variable here (dark-theme
+     value matches the original hardcoded #f1c40f/#2ecc71) so light theme
+     can swap in a readable shade below instead of the raw hex staying
+     fixed everywhere. */
+  --chakra-3:#f1c40f;
+  --chakra-4:#2ecc71;
 }
 
 /* ── LIGHT THEME ─────────────────────────────────────────────────────────── */
 [data-theme="light"]{
   --bg:#f5f1e8;--bg-lift:#f5f1e8;--white:#0f0a02;--gold:#7a5e0e;--mid:#2e2008;--grey:#3d2e10;--dim:#5a4a2a;
   --gold-glow:rgba(122,94,14,0.3);--gold-dim:rgba(122,94,14,0.1);
+  /* Raw #f1c40f/#2ecc71 measure ~1.5:1 and ~1.9:1 against the light
+     cream background — well under the 3:1 minimum for UI text/icons.
+     Reusing the same tuned shades already proven legible for
+     .chakra-label-3/4 elsewhere on the page. */
+  --chakra-3:#8a6d00;
+  --chakra-4:#1e8c50;
 }
 [data-theme="light"] body{background:#f5f1e8 !important;color:#1a1208 !important;font-weight:400;}
 
 /* Light: boost body text weight/brightness across all text elements */
-[data-theme="light"] p,[data-theme="light"] li,[data-theme="light"] span:not(.label):not(.ec-type):not(.p-num):not(.num):not(.layer-tag):not(.s-sub):not(.ds-subtitle):not(.rasa-cell):not(.tradition-cell){color:#1a1208 !important;font-weight:400 !important;}
+[data-theme="light"] p,[data-theme="light"] li,[data-theme="light"] span:not(.label):not(.ec-type):not(.p-num):not(.num):not(.layer-tag):not(.s-sub):not(.ds-subtitle):not(.rasa-cell):not(.tradition-cell):not(.col-title){color:#1a1208 !important;font-weight:400 !important;}
+/* Same bug as the glossary-term fix above, but hitting header text this
+   time: this rule catches .col-title spans inside <th>, silently
+   un-bolding "BIRTH", "GROWTH", etc. even though the parent <th> is
+   correctly set to font-weight:700 in light theme. Excluded above, and
+   inheritance forced here so header labels bold like row headers. */
+[data-theme="light"] th .col-title{font-weight:inherit !important;}
 [data-theme="light"] .phil-line{font-weight:500 !important;color:#1a1208 !important;}
 [data-theme="light"] .phil-line.dim{color:#3d2e10 !important;}
 [data-theme="light"] .symptoms-block p:not(.small){color:#1a1208 !important;font-weight:500 !important;}
@@ -812,23 +1052,29 @@ a:hover{opacity:.7;}
   .nav-logo-center picture{
     display:flex;align-items:center;justify-content:center;
     width:38px;height:38px;border-radius:6px;overflow:visible;
+    --glow-a:rgba(212,175,55,0.35);--glow-b:rgba(212,175,55,0.14);
+    --glow-c:rgba(212,175,55,0.65);--glow-d:rgba(212,175,55,0.3);
     box-shadow:0 0 8px rgba(212,175,55,0.4), 0 0 22px rgba(212,175,55,0.18);
     animation:mnavLogoGlow 3s ease-in-out infinite;
   }
+  /* Single keyframe shared by both themes — only the custom properties it
+     reads change on toggle, not the animation-name itself. Swapping
+     animation-name on data-theme change (the old approach) restarts the
+     animation's internal timeline, which reads as a jump/flicker on the
+     nav logo right when .theme-swap is trying to keep everything else
+     still. Referencing --glow-* instead means the running animation just
+     picks up the new color on its next frame, no restart. */
   @keyframes mnavLogoGlow{
-    0%,100%{box-shadow:0 0 6px rgba(212,175,55,0.35),0 0 16px rgba(212,175,55,0.14);}
-    50%{box-shadow:0 0 13px rgba(212,175,55,0.65),0 0 28px rgba(212,175,55,0.3);}
+    0%,100%{box-shadow:0 0 6px var(--glow-a),0 0 16px var(--glow-b);}
+    50%{box-shadow:0 0 13px var(--glow-c),0 0 28px var(--glow-d);}
   }
   /* Light mode: same floating glow, but in the darker amber tone already
      used for gold accents on the cream background (pale gold would barely
      show against cream) */
   [data-theme="light"] .nav-logo-center picture{
+    --glow-a:rgba(138,106,18,0.3);--glow-b:rgba(138,106,18,0.12);
+    --glow-c:rgba(138,106,18,0.5);--glow-d:rgba(138,106,18,0.25);
     box-shadow:0 0 8px rgba(138,106,18,0.35), 0 0 20px rgba(138,106,18,0.16);
-    animation:mnavLogoGlowLight 3s ease-in-out infinite;
-  }
-  @keyframes mnavLogoGlowLight{
-    0%,100%{box-shadow:0 0 6px rgba(138,106,18,0.3),0 0 14px rgba(138,106,18,0.12);}
-    50%{box-shadow:0 0 12px rgba(138,106,18,0.5),0 0 24px rgba(138,106,18,0.25);}
   }
   .nav-logo-center img{
     width:36px !important;height:36px !important;
@@ -1072,8 +1318,11 @@ section{scroll-margin-top:56px;}
 .pillar-card .p-num{font-family:var(--sans);font-size:10px;letter-spacing:3px;color:var(--gold);opacity:.65;margin-bottom:10px;display:block;}
 .pillar-card .p-title{font-family:var(--serif);font-size:clamp(19px,2vw,24px);font-weight:400;color:var(--white);margin-bottom:0;line-height:1.35;}
 .pillar-card .p-expand{font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.7;position:absolute;top:32px;right:28px;margin-top:0;display:block;}
-.pillar-card .p-body{font-family:var(--serif);font-size:15.5px;font-weight:300;color:var(--grey);line-height:1.88;margin-top:16px;display:none;border-top:1px solid rgba(212,175,55,0.3);padding-top:16px;}
-.pillar-card.open .p-body{display:block;}
+.pillar-card .p-body{font-family:var(--serif);font-size:15.5px;font-weight:300;color:var(--grey);line-height:1.88;overflow:hidden;max-height:0;opacity:0;margin-top:0;border-top:0 solid rgba(212,175,55,0.3);padding-top:0;transition:max-height .4s ease,opacity .3s ease,margin-top .4s ease,padding-top .4s ease,border-top-width .4s ease;}
+.pillar-card.open .p-body{opacity:1;margin-top:16px;border-top-width:1px;padding-top:16px;}
+/* max-height itself is set inline in px by JS (see pillar-card click handler) so it can
+   animate to the element's real content height instead of snapping via display:none/block —
+   this was the source of the abrupt, non-smooth "jerk" reported when opening these cards. */
 .astrolabe-cta{font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:500px;margin:0 auto;font-style:italic;line-height:1.85;}
 
 /* ── TWO PATHS ───────────────────────────────────────────────────────────── */
@@ -1851,8 +2100,40 @@ h4 {
      override removed from here — they duplicated/fought the single
      in-flow theme button already handled by the mega-menu 3-column
      layer above. */
+
+  /* .mnav-panel (the full-screen mobile nav dropdown) was the last element
+     on mobile still carrying backdrop-filter after .site-nav had it removed
+     above for the same reason. On Chrome for Android, a blurred, fixed,
+     nearly-full-viewport layer that also sits under the data-theme swap
+     recomposites visibly — reads as flicker concentrated toward the bottom
+     of the panel, where the blurred backdrop has the most content behind
+     it to sample. Chromium-based Opera for Android appears to schedule
+     this recomposite differently and doesn't show it, which is why the
+     symptom looked browser-specific rather than page-specific. The panel's
+     own background is already ~97% opaque, so the blur adds very little
+     visible effect for the cost. Removed here rather than adding more
+     freeze-timing — matches the .site-nav fix already in place. */
+  .mnav-panel{
+    backdrop-filter:none !important;
+    -webkit-backdrop-filter:none !important;
+  }
 }
    
+/* Decorative bordered "frame" boxes (Cosmic Ledger quote, Radiant Wildcard
+   Synthesis, Bridge section) sit directly in normal flow with no padded
+   ancestor. Their own max-width (560-680px) exceeds most phone viewports,
+   so below that width they silently expand to 100% and their border lands
+   exactly on the physical screen edge — effectively invisible in light
+   theme and barely visible in dark theme. Force a small gutter so the
+   border is always inset and visible. */
+@media(max-width:768px){
+  .edge-safe-frame{
+    max-width:calc(100% - 24px) !important;
+    margin-left:12px !important;
+    margin-right:12px !important;
+  }
+}
+
 /* Override the mobile negative-margin bleed that causes right-side cutoff */
 @media(max-width:640px){
  
@@ -1912,8 +2193,8 @@ h4 {
   }
  
   /* Master Matrix (7×6) — widest table */
-  .self-table[style*="min-width:1200px"]{
-  min-width:1100px !important;
+  .self-table[style*="min-width:1000px"]{
+  min-width:900px !important;
 }
 }
  /* Master Matrix mobile: explicit scroll container */
@@ -1933,6 +2214,11 @@ h4 {
 #masterMatrixTable th:not(.axis-cell){
   vertical-align:top !important;
   padding-top:14px !important;
+  white-space:normal !important;
+}
+#masterMatrixTable th .col-title{
+  font-size:8px !important;
+  letter-spacing:1.4px !important;
 }
 
 @media(max-width:768px){
@@ -1993,13 +2279,17 @@ h4 {
   display:table-cell;
 }
 
-/* Lived Reality / Ascension Path only render 3 columns (row-label + 2 data
-   columns), so the 7-column grid's min-width stretches each cell far too
-   wide with mostly empty space. !important overrides the inline min-width
-   set by setMatrixMode() in JS, whatever format the browser serializes it in. */
+/* Lived Reality / Ascension Path render row-label + 2 data columns +
+   the 5 meta columns (Brainwave..Existence Layer) on desktop. Widened
+   from 700px so the two data columns have visibly more room than the
+   short meta columns alongside them. */
 #masterMatrixWrap[data-mode="lived"] #masterMatrixTable,
 #masterMatrixWrap[data-mode="ascension"] #masterMatrixTable{
-  min-width:700px !important;
+  min-width:1150px !important;
+}
+#masterMatrixWrap[data-mode="lived"] #masterMatrixTable th.col-lived,
+#masterMatrixWrap[data-mode="ascension"] #masterMatrixTable th.col-ascension{
+  width:19% !important;
 }
 @media(max-width:768px){
   /* table-layout:fixed + hidden <td> cells for the *other* mode's columns
@@ -2111,6 +2401,18 @@ tr.matrix-highlight td.row-label{
 }
 tr.matrix-highlight{
   background:rgba(212,175,55,.05);
+}
+
+/* Generic jump-target flash — used by the Rosetta Stone map and Masters
+   at a Glance map to briefly call out whichever row/card was just
+   scrolled to, since neither has its own per-row expand/collapse state
+   to signal the jump the way the Enneagram/Ascent/Master Matrix cards do. */
+.jump-flash{
+  animation:jumpFlash 1.6s ease;
+}
+@keyframes jumpFlash{
+  0%{background-color:rgba(212,175,55,.28);}
+  100%{background-color:transparent;}
 }
 
 /* Maturity quick-quiz */
@@ -2577,11 +2879,13 @@ a.src-tag:hover{opacity:.75;}
         <a href="#spectrum" data-group="traditions">Ascent of Self</a>
         <a href="#dimension" data-group="traditions">Matter as Dimension</a>
         <a href="#consciousness" data-group="traditions">Consciousness vs Awareness</a>
+        <a href="#physical-correlate" data-group="traditions">Physical Correlate</a>
         <a href="#ego" data-group="traditions">Ego Architecture</a>
         <a href="#forty-two" data-group="traditions">42 — The Symbol</a>
         <a href="#patanjali" data-group="traditions">Patanjali's Experiment</a>
         <a href="#contribution" data-group="traditions">Ceiling of Contribution</a>
         <a href="#master-matrix" data-group="traditions">Master Matrix</a>
+        <a href="#memory-architect" data-group="traditions">Memory Architect</a>
         <a href="#go-deeper" data-group="traditions">Go Deeper</a>
       </div>
     </li>
@@ -2638,9 +2942,11 @@ a.src-tag:hover{opacity:.75;}
     <li class="nav-dropdown-wrap">
       <a href="#glossary" data-group="new">New<span class="nav-new-dot"></span><span class="nav-caret">▾</span></a>
       <div class="nav-dropdown-panel" id="newMenuPanel">
-        <a href="#glossary" data-group="new">Glossary — New Terms Added</a>
-        <a href="#master-matrix" data-group="new">Master Matrix — Reading Guide</a>
-        <a href="#disclaimer" data-group="new">Disclaimer — Expanded Care Guidance</a>
+        <a href="#master-matrix" data-group="new">Master Matrix — New Map Added</a>
+        <a href="#enneagram" data-group="new">Enneagram — Map Added</a>
+        <a href="#spectrum" data-group="new">Ascent of Self — Map Added</a>
+        <a href="#rosetta-stone" data-group="new">Rosetta Stone — Map Added</a>
+        <a href="#masters" data-group="new">Masters at a Glance — Map Added</a>
       </div>
     </li>
 
@@ -2673,11 +2979,13 @@ a.src-tag:hover{opacity:.75;}
         <a href="#spectrum">Ascent of Self</a>
         <a href="#dimension">Matter as Dimension</a>
         <a href="#consciousness">Consciousness vs Awareness</a>
+        <a href="#physical-correlate">Physical Correlate</a>
         <a href="#ego">Ego Architecture</a>
         <a href="#forty-two">42 — The Symbol</a>
         <a href="#patanjali">Patanjali's Experiment</a>
         <a href="#contribution">Ceiling of Contribution</a>
         <a href="#master-matrix">Master Matrix</a>
+        <a href="#memory-architect">Memory Architect</a>
         <a href="#go-deeper">Go Deeper</a>
       </div>
     </li>
@@ -2715,9 +3023,11 @@ a.src-tag:hover{opacity:.75;}
         New <span class="nav-new-dot"></span><span class="mnav-caret">▾</span>
       </button>
       <div class="mnav-group-panel" id="newMenuPanelMobile">
-        <a href="#glossary">Glossary — New Terms Added</a>
-        <a href="#master-matrix">Master Matrix — Reading Guide</a>
-        <a href="#disclaimer">Disclaimer — Expanded Care Guidance</a>
+        <a href="#master-matrix">Master Matrix — New Map Added</a>
+        <a href="#enneagram">Enneagram — Map Added</a>
+        <a href="#spectrum">Ascent of Self — Map Added</a>
+        <a href="#rosetta-stone">Rosetta Stone — Map Added</a>
+        <a href="#masters">Masters at a Glance — Map Added</a>
       </div>
     </li>
 
@@ -3037,7 +3347,7 @@ a.src-tag:hover{opacity:.75;}
        below it, since the incoming connector's final riser lands exactly
        on the node's own x-coordinate — a label placed straight below would
        sit right on top of that line. -->
-  <div style="max-width:420px;margin:40px auto 8px;">
+  <div style="max-width:420px;margin:40px auto 36px;">
     <svg viewBox="0 0 440 470" style="width:100%;height:auto;overflow:visible;" role="img" aria-label="Ascent of Self map — tap a stage to jump to its full breakdown">
       <style>
         .ascent-map-node{cursor:pointer;}
@@ -3069,15 +3379,15 @@ a.src-tag:hover{opacity:.75;}
       </g>
       <g class="ascent-map-node" tabindex="0" role="button" aria-label="Layer 3 — Thought, I Think" onclick="scrollToAscentCard(3)" onkeypress="if(event.key==='Enter')scrollToAscentCard(3)">
         <title>L3 — Thought — &ldquo;I Think&rdquo;</title>
-        <circle class="ascent-node-bg" cx="128" cy="306" r="22" fill="var(--bg-lift)" stroke="#f1c40f" stroke-width="1.5"/>
-        <text x="128" y="312" text-anchor="middle" font-family="var(--sans)" font-size="14" font-weight="700" fill="#f1c40f">3</text>
+        <circle class="ascent-node-bg" cx="128" cy="306" r="22" fill="var(--bg-lift)" stroke="var(--chakra-3)" stroke-width="1.5"/>
+        <text x="128" y="312" text-anchor="middle" font-family="var(--sans)" font-size="14" font-weight="700" fill="var(--chakra-3)">3</text>
         <text x="162" y="303" text-anchor="start" font-family="var(--sans)" font-size="9" letter-spacing="1.5" fill="var(--dim)" style="text-transform:uppercase;">L3</text>
         <text x="162" y="317" text-anchor="start" font-family="var(--sans)" font-size="13" fill="var(--white)">Thought</text>
       </g>
       <g class="ascent-map-node" tabindex="0" role="button" aria-label="Layer 4 — Love, I Connect" onclick="scrollToAscentCard(4)" onkeypress="if(event.key==='Enter')scrollToAscentCard(4)">
         <title>L4 — Love — &ldquo;I Connect&rdquo;</title>
-        <circle class="ascent-node-bg" cx="170" cy="252" r="22" fill="var(--bg-lift)" stroke="#2ecc71" stroke-width="1.5"/>
-        <text x="170" y="258" text-anchor="middle" font-family="var(--sans)" font-size="14" font-weight="700" fill="#2ecc71">4</text>
+        <circle class="ascent-node-bg" cx="170" cy="252" r="22" fill="var(--bg-lift)" stroke="var(--chakra-4)" stroke-width="1.5"/>
+        <text x="170" y="258" text-anchor="middle" font-family="var(--sans)" font-size="14" font-weight="700" fill="var(--chakra-4)">4</text>
         <text x="204" y="249" text-anchor="start" font-family="var(--sans)" font-size="9" letter-spacing="1.5" fill="var(--dim)" style="text-transform:uppercase;">L4</text>
         <text x="204" y="263" text-anchor="start" font-family="var(--sans)" font-size="13" fill="var(--white)">Love</text>
       </g>
@@ -3108,7 +3418,7 @@ a.src-tag:hover{opacity:.75;}
 
   <div style="text-align:center;margin-bottom:8px;">
     <button class="collapse-toggle-btn" onclick="sectionCollapse('ascent-full-content',this)">Expand &#9660;</button>
-    <p class="section-collapse-label" style="margin-top:8px;">Tap to expand — the seven stages, Red to Violet</p>
+    <p class="section-collapse-label" style="margin-top:8px;">Collapsed by default — expand to see all seven stages, Red to Violet</p>
   </div>
   <div id="ascent-full-content" class="section-collapse-wrap collapsed">
   <div class="framework-grid">
@@ -3191,31 +3501,31 @@ a.src-tag:hover{opacity:.75;}
   </div>
   <div id="self-enquiry-full-content" class="section-collapse-wrap collapsed">
   <div class="pillar-grid">
-    <div class="pillar-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.p-expand');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="pillar-card">
       <span class="p-num">Pillar 01</span><p class="p-title">Who am I?</p>
       <span class="p-expand">Expand &#9660;</span>
       <span class="section-collapse-label" style="font-family:var(--serif);font-size:14px;font-weight:300;color:var(--grey);margin-top:16px;">Your gift, distilled</span>
       <p class="p-body">Discovering your passion, attributes, and legacy. If you had one gift of value for the world &mdash; what is it? Not your job title. Not your resume. The singular thing only you can bring.</p>
     </div>
-    <div class="pillar-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.p-expand');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="pillar-card">
       <span class="p-num">Pillar 02</span><p class="p-title">Where am I from?</p>
       <span class="p-expand">Expand &#9660;</span>
       <span class="section-collapse-label" style="font-family:var(--serif);font-size:14px;font-weight:300;color:var(--grey);margin-top:16px;">Your source &amp; conditioning</span>
       <p class="p-body">Understanding your spiritual source and your current baseline reality. What shaped the lens you see through? What do you carry that you didn&rsquo;t choose? And what of it is actually you?</p>
     </div>
-    <div class="pillar-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.p-expand');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="pillar-card">
       <span class="p-num">Pillar 03</span><p class="p-title">Why am I here?</p>
       <span class="p-expand">Expand &#9660;</span>
       <span class="section-collapse-label" style="font-family:var(--serif);font-size:14px;font-weight:300;color:var(--grey);margin-top:16px;">Your purpose, named</span>
       <p class="p-body">Defining your innate purpose and the specific problems you are uniquely built to solve. Not what the world needs from everyone. What it needs from you specifically.</p>
     </div>
-    <div class="pillar-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.p-expand');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="pillar-card">
       <span class="p-num">Pillar 04</span><p class="p-title">What can I do?</p>
       <span class="p-expand">Expand &#9660;</span>
       <span class="section-collapse-label" style="font-family:var(--serif);font-size:14px;font-weight:300;color:var(--grey);margin-top:16px;">Your gifts, in action</span>
       <p class="p-body">Actionable service. Developing the strategic route to deploy your gifts. The gap between knowing your purpose and actually serving it is practice &mdash; not revelation.</p>
     </div>
-    <div class="pillar-card" onclick="this.classList.toggle('open');var lbl=this.querySelector('.p-expand');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="pillar-card">
       <span class="p-num">Pillar 05</span><p class="p-title">Where am I going?</p>
       <span class="p-expand">Expand &#9660;</span>
       <span class="section-collapse-label" style="font-family:var(--serif);font-size:14px;font-weight:300;color:var(--grey);margin-top:16px;">Direction, not destination</span>
@@ -3406,6 +3716,9 @@ a.src-tag:hover{opacity:.75;}
     <span class="src-tag src-trad">Traditional Source</span>
     <span class="src-tag src-research">Modern Research</span>
     <span class="src-tag src-synth">42SELF Interpretation</span>
+  </div>
+  <div style="font-family:var(--sans);font-size:13px;color:var(--grey);line-height:1.9;max-width:640px;margin:16px auto 0;font-style:normal;">
+    You'll see these three tags throughout the site, wherever a specific claim is made. <span style="color:#c9a84c;">Traditional Source</span> means it's drawn directly from a named tradition or text. <span style="color:#6fa8dc;">Modern Research</span> means it's a plain summary of published science. <span style="color:var(--grey);">42SELF Interpretation</span> means it's our own synthesis &mdash; not a claim the underlying tradition or study makes on its own. Every tag links back to this key.
   </div>
   <button id="foundationToggle" onclick="toggleFoundation(this)" style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);background:transparent;border:1.5px solid rgba(212,175,55,0.55);padding:10px 24px;cursor:pointer;margin:20px auto 0;display:block;transition:border-color .25s;" aria-expanded="false">Show Traditions &#9660;</button>
   <div id="foundationContent" class="foundation-content collapsed">
@@ -4271,7 +4584,7 @@ a.src-tag:hover{opacity:.75;}
 <div class="divider"></div>
 
 <!-- ENNEAGRAM -->
-<section class="enn-section">
+<section class="enn-section" id="enneagram" style="scroll-margin-top:56px;">
   <span class="label">The Enneagram of Character Fixation</span>
   <h2>The Enneagram is Not Who You Are.</h2>
   <p class="sub">It is a diagnostic map of who you are NOT. It reveals the 9 specific masks the ego uses to manage the universal engine of desire, fear, and anger.</p>
@@ -4287,8 +4600,8 @@ a.src-tag:hover{opacity:.75;}
        card grid below (if collapsed) and scrolls to + opens that type's
        full card. Purely navigational — no content lives in the map itself,
        so nothing here needs to stay in sync with the card text below. -->
-  <div style="max-width:480px;margin:40px auto 8px;">
-    <svg viewBox="0 -20 400 420" style="width:100%;height:auto;overflow:visible;" role="img" aria-label="Enneagram map — tap a type to jump to its full breakdown">
+  <div style="max-width:480px;margin:40px auto 36px;">
+    <svg viewBox="-55 -35 495 470" style="width:100%;height:auto;overflow:visible;" role="img" aria-label="Enneagram map — tap a type to jump to its full breakdown">
       <style>
         .enn-map-node{cursor:pointer;}
         .enn-map-node:hover circle.enn-node-bg{fill:rgba(212,175,55,.14);stroke:var(--gold);}
@@ -4304,63 +4617,63 @@ a.src-tag:hover{opacity:.75;}
            they're nudged out at the two lower corners, so none of them ever
            sits under a node's own name label (Body/Peacemaker was the worst
            offender — they used to be only 17px apart). -->
-      <text x="200" y="-6" text-anchor="middle" font-family="var(--sans)" font-size="9" letter-spacing="2" fill="var(--gold)" opacity="0.5" style="text-transform:uppercase;">Body</text>
-      <text x="380" y="300" text-anchor="middle" font-family="var(--sans)" font-size="9" letter-spacing="2" fill="var(--gold)" opacity="0.5" style="text-transform:uppercase;">Heart</text>
-      <text x="20" y="300" text-anchor="middle" font-family="var(--sans)" font-size="9" letter-spacing="2" fill="var(--gold)" opacity="0.5" style="text-transform:uppercase;">Head</text>
+      <text x="200" y="-25" text-anchor="middle" font-family="var(--sans)" font-size="9" letter-spacing="2" fill="var(--gold)" opacity="0.5" style="text-transform:uppercase;">Body</text>
+      <text x="415" y="225" text-anchor="middle" font-family="var(--sans)" font-size="9" letter-spacing="2" fill="var(--gold)" opacity="0.5" style="text-transform:uppercase;">Heart</text>
+      <text x="-15" y="225" text-anchor="middle" font-family="var(--sans)" font-size="9" letter-spacing="2" fill="var(--gold)" opacity="0.5" style="text-transform:uppercase;">Head</text>
       <!-- nodes -->
       <g class="enn-map-node" tabindex="0" role="button" aria-label="Type 1 — The Perfectionist" onclick="scrollToEnnCard(1)" onkeypress="if(event.key==='Enter')scrollToEnnCard(1)">
         <title>Type 1 — The Perfectionist</title>
         <circle class="enn-node-bg" cx="296" cy="85" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
         <text x="296" y="91" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">1</text>
-        <text x="296" y="120" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Perfectionist</text>
+        <text x="296" y="45" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Perfectionist</text>
       </g>
       <g class="enn-map-node" tabindex="0" role="button" aria-label="Type 2 — The Giver" onclick="scrollToEnnCard(2)" onkeypress="if(event.key==='Enter')scrollToEnnCard(2)">
         <title>Type 2 — The Giver</title>
         <circle class="enn-node-bg" cx="348" cy="174" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
         <text x="348" y="180" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">2</text>
-        <text x="348" y="209" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Giver</text>
+        <text x="388" y="178" text-anchor="start" font-family="var(--sans)" font-size="9" fill="var(--dim)">Giver</text>
       </g>
       <g class="enn-map-node" tabindex="0" role="button" aria-label="Type 3 — The Achiever" onclick="scrollToEnnCard(3)" onkeypress="if(event.key==='Enter')scrollToEnnCard(3)">
         <title>Type 3 — The Achiever</title>
         <circle class="enn-node-bg" cx="330" cy="275" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
         <text x="330" y="281" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">3</text>
-        <text x="330" y="310" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Achiever</text>
+        <text x="370" y="279" text-anchor="start" font-family="var(--sans)" font-size="9" fill="var(--dim)">Achiever</text>
       </g>
       <g class="enn-map-node" tabindex="0" role="button" aria-label="Type 4 — The Individualist" onclick="scrollToEnnCard(4)" onkeypress="if(event.key==='Enter')scrollToEnnCard(4)">
         <title>Type 4 — The Individualist</title>
         <circle class="enn-node-bg" cx="251" cy="341" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
         <text x="251" y="347" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">4</text>
-        <text x="251" y="371" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Individualist</text>
+        <text x="251" y="381" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Individualist</text>
       </g>
       <g class="enn-map-node" tabindex="0" role="button" aria-label="Type 5 — The Investigator" onclick="scrollToEnnCard(5)" onkeypress="if(event.key==='Enter')scrollToEnnCard(5)">
         <title>Type 5 — The Investigator</title>
         <circle class="enn-node-bg" cx="149" cy="341" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
         <text x="149" y="347" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">5</text>
-        <text x="149" y="371" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Investigator</text>
+        <text x="149" y="381" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Investigator</text>
       </g>
       <g class="enn-map-node" tabindex="0" role="button" aria-label="Type 6 — The Skeptic" onclick="scrollToEnnCard(6)" onkeypress="if(event.key==='Enter')scrollToEnnCard(6)">
         <title>Type 6 — The Skeptic</title>
         <circle class="enn-node-bg" cx="70" cy="275" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
         <text x="70" y="281" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">6</text>
-        <text x="70" y="310" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Skeptic</text>
+        <text x="30" y="279" text-anchor="end" font-family="var(--sans)" font-size="9" fill="var(--dim)">Skeptic</text>
       </g>
       <g class="enn-map-node" tabindex="0" role="button" aria-label="Type 7 — The Enthusiast" onclick="scrollToEnnCard(7)" onkeypress="if(event.key==='Enter')scrollToEnnCard(7)">
         <title>Type 7 — The Enthusiast</title>
         <circle class="enn-node-bg" cx="52" cy="174" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
         <text x="52" y="180" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">7</text>
-        <text x="52" y="209" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Enthusiast</text>
+        <text x="12" y="178" text-anchor="end" font-family="var(--sans)" font-size="9" fill="var(--dim)">Enthusiast</text>
       </g>
       <g class="enn-map-node" tabindex="0" role="button" aria-label="Type 8 — The Challenger" onclick="scrollToEnnCard(8)" onkeypress="if(event.key==='Enter')scrollToEnnCard(8)">
         <title>Type 8 — The Challenger</title>
         <circle class="enn-node-bg" cx="104" cy="85" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
         <text x="104" y="91" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">8</text>
-        <text x="104" y="120" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Challenger</text>
+        <text x="104" y="45" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Challenger</text>
       </g>
       <g class="enn-map-node" tabindex="0" role="button" aria-label="Type 9 — The Peacemaker" onclick="scrollToEnnCard(9)" onkeypress="if(event.key==='Enter')scrollToEnnCard(9)">
         <title>Type 9 — The Peacemaker</title>
         <circle class="enn-node-bg" cx="200" cy="50" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
         <text x="200" y="56" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">9</text>
-        <text x="200" y="20" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Peacemaker</text>
+        <text x="200" y="10" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Peacemaker</text>
       </g>
     </svg>
     <p style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#555;text-align:center;margin-top:8px;">Tap a type to jump to its full breakdown</p>
@@ -4368,7 +4681,7 @@ a.src-tag:hover{opacity:.75;}
 
   <div style="text-align:center;margin-bottom:8px;">
     <button class="collapse-toggle-btn" onclick="sectionCollapse('enn-full-content',this)">Expand &#9660;</button>
-    <p class="section-collapse-label" style="margin-top:8px;">Tap to expand — all nine Enneagram types</p>
+    <p class="section-collapse-label" style="margin-top:8px;">Collapsed by default — expand to see all nine types</p>
   </div>
   <div id="enn-full-content" class="section-collapse-wrap collapsed">
 
@@ -4378,7 +4691,7 @@ a.src-tag:hover{opacity:.75;}
   </div>
 
   <div class="enn-grid" id="ennGrid">
-    <div class="enneagram-card" id="enn-card-1" onclick="if(!this.classList.contains('open')){var self=this;document.querySelectorAll('#ennGrid .enneagram-card.open').forEach(function(c){if(c!==self){c.classList.remove('open');var l=c.querySelector('.ec-toggle');if(l)l.innerHTML='Expand &#9660;';}});}this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="enneagram-card" id="enn-card-1" onclick="freezeTransitions();if(!this.classList.contains('open')){var self=this;document.querySelectorAll('#ennGrid .enneagram-card.open').forEach(function(c){if(c!==self){c.classList.remove('open');var l=c.querySelector('.ec-toggle');if(l)l.innerHTML='Expand &#9660;';}});}this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="ec-type">Type 1 &mdash; The Perfectionist</span>
       <div class="ec-name">The Perfectionist</div>
       <div class="ec-fear">Core Fear: Being imperfect or corrupt</div>
@@ -4396,7 +4709,7 @@ a.src-tag:hover{opacity:.75;}
         </div>
       </div>
     </div>
-    <div class="enneagram-card" id="enn-card-2" onclick="if(!this.classList.contains('open')){var self=this;document.querySelectorAll('#ennGrid .enneagram-card.open').forEach(function(c){if(c!==self){c.classList.remove('open');var l=c.querySelector('.ec-toggle');if(l)l.innerHTML='Expand &#9660;';}});}this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="enneagram-card" id="enn-card-2" onclick="freezeTransitions();if(!this.classList.contains('open')){var self=this;document.querySelectorAll('#ennGrid .enneagram-card.open').forEach(function(c){if(c!==self){c.classList.remove('open');var l=c.querySelector('.ec-toggle');if(l)l.innerHTML='Expand &#9660;';}});}this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="ec-type">Type 2 &mdash; The Giver</span>
       <div class="ec-name">The Giver</div>
       <div class="ec-fear">Core Fear: Being unlovable</div>
@@ -4414,7 +4727,7 @@ a.src-tag:hover{opacity:.75;}
         </div>
       </div>
     </div>
-    <div class="enneagram-card" id="enn-card-3" onclick="if(!this.classList.contains('open')){var self=this;document.querySelectorAll('#ennGrid .enneagram-card.open').forEach(function(c){if(c!==self){c.classList.remove('open');var l=c.querySelector('.ec-toggle');if(l)l.innerHTML='Expand &#9660;';}});}this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="enneagram-card" id="enn-card-3" onclick="freezeTransitions();if(!this.classList.contains('open')){var self=this;document.querySelectorAll('#ennGrid .enneagram-card.open').forEach(function(c){if(c!==self){c.classList.remove('open');var l=c.querySelector('.ec-toggle');if(l)l.innerHTML='Expand &#9660;';}});}this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="ec-type">Type 3 &mdash; The Achiever</span>
       <div class="ec-name">The Achiever</div>
       <div class="ec-fear">Core Fear: Failure, lacking inherent value</div>
@@ -4432,7 +4745,7 @@ a.src-tag:hover{opacity:.75;}
         </div>
       </div>
     </div>
-    <div class="enneagram-card" id="enn-card-4" onclick="if(!this.classList.contains('open')){var self=this;document.querySelectorAll('#ennGrid .enneagram-card.open').forEach(function(c){if(c!==self){c.classList.remove('open');var l=c.querySelector('.ec-toggle');if(l)l.innerHTML='Expand &#9660;';}});}this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="enneagram-card" id="enn-card-4" onclick="freezeTransitions();if(!this.classList.contains('open')){var self=this;document.querySelectorAll('#ennGrid .enneagram-card.open').forEach(function(c){if(c!==self){c.classList.remove('open');var l=c.querySelector('.ec-toggle');if(l)l.innerHTML='Expand &#9660;';}});}this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="ec-type">Type 4 &mdash; The Individualist</span>
       <div class="ec-name">The Individualist</div>
       <div class="ec-fear">Core Fear: Being flawed, lacking a unique identity</div>
@@ -4450,7 +4763,7 @@ a.src-tag:hover{opacity:.75;}
         </div>
       </div>
     </div>
-    <div class="enneagram-card" id="enn-card-5" onclick="if(!this.classList.contains('open')){var self=this;document.querySelectorAll('#ennGrid .enneagram-card.open').forEach(function(c){if(c!==self){c.classList.remove('open');var l=c.querySelector('.ec-toggle');if(l)l.innerHTML='Expand &#9660;';}});}this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="enneagram-card" id="enn-card-5" onclick="freezeTransitions();if(!this.classList.contains('open')){var self=this;document.querySelectorAll('#ennGrid .enneagram-card.open').forEach(function(c){if(c!==self){c.classList.remove('open');var l=c.querySelector('.ec-toggle');if(l)l.innerHTML='Expand &#9660;';}});}this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="ec-type">Type 5 &mdash; The Investigator</span>
       <div class="ec-name">The Investigator</div>
       <div class="ec-fear">Core Fear: Being overwhelmed by demands or needs</div>
@@ -4468,7 +4781,7 @@ a.src-tag:hover{opacity:.75;}
         </div>
       </div>
     </div>
-    <div class="enneagram-card" id="enn-card-6" onclick="if(!this.classList.contains('open')){var self=this;document.querySelectorAll('#ennGrid .enneagram-card.open').forEach(function(c){if(c!==self){c.classList.remove('open');var l=c.querySelector('.ec-toggle');if(l)l.innerHTML='Expand &#9660;';}});}this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="enneagram-card" id="enn-card-6" onclick="freezeTransitions();if(!this.classList.contains('open')){var self=this;document.querySelectorAll('#ennGrid .enneagram-card.open').forEach(function(c){if(c!==self){c.classList.remove('open');var l=c.querySelector('.ec-toggle');if(l)l.innerHTML='Expand &#9660;';}});}this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="ec-type">Type 6 &mdash; The Skeptic</span>
       <div class="ec-name">The Skeptic</div>
       <div class="ec-fear">Core Fear: Being unprepared, unable to defend against danger</div>
@@ -4486,7 +4799,7 @@ a.src-tag:hover{opacity:.75;}
         </div>
       </div>
     </div>
-    <div class="enneagram-card" id="enn-card-7" onclick="if(!this.classList.contains('open')){var self=this;document.querySelectorAll('#ennGrid .enneagram-card.open').forEach(function(c){if(c!==self){c.classList.remove('open');var l=c.querySelector('.ec-toggle');if(l)l.innerHTML='Expand &#9660;';}});}this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="enneagram-card" id="enn-card-7" onclick="freezeTransitions();if(!this.classList.contains('open')){var self=this;document.querySelectorAll('#ennGrid .enneagram-card.open').forEach(function(c){if(c!==self){c.classList.remove('open');var l=c.querySelector('.ec-toggle');if(l)l.innerHTML='Expand &#9660;';}});}this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="ec-type">Type 7 &mdash; The Enthusiast</span>
       <div class="ec-name">The Enthusiast</div>
       <div class="ec-fear">Core Fear: Experiencing emotional pain or sadness</div>
@@ -4504,7 +4817,7 @@ a.src-tag:hover{opacity:.75;}
         </div>
       </div>
     </div>
-    <div class="enneagram-card" id="enn-card-8" onclick="if(!this.classList.contains('open')){var self=this;document.querySelectorAll('#ennGrid .enneagram-card.open').forEach(function(c){if(c!==self){c.classList.remove('open');var l=c.querySelector('.ec-toggle');if(l)l.innerHTML='Expand &#9660;';}});}this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="enneagram-card" id="enn-card-8" onclick="freezeTransitions();if(!this.classList.contains('open')){var self=this;document.querySelectorAll('#ennGrid .enneagram-card.open').forEach(function(c){if(c!==self){c.classList.remove('open');var l=c.querySelector('.ec-toggle');if(l)l.innerHTML='Expand &#9660;';}});}this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="ec-type">Type 8 &mdash; The Challenger</span>
       <div class="ec-name">The Challenger</div>
       <div class="ec-fear">Core Fear: Being powerless, vulnerable, or controlled</div>
@@ -4522,7 +4835,7 @@ a.src-tag:hover{opacity:.75;}
         </div>
       </div>
     </div>
-    <div class="enneagram-card" id="enn-card-9" onclick="if(!this.classList.contains('open')){var self=this;document.querySelectorAll('#ennGrid .enneagram-card.open').forEach(function(c){if(c!==self){c.classList.remove('open');var l=c.querySelector('.ec-toggle');if(l)l.innerHTML='Expand &#9660;';}});}this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
+    <div class="enneagram-card" id="enn-card-9" onclick="freezeTransitions();if(!this.classList.contains('open')){var self=this;document.querySelectorAll('#ennGrid .enneagram-card.open').forEach(function(c){if(c!==self){c.classList.remove('open');var l=c.querySelector('.ec-toggle');if(l)l.innerHTML='Expand &#9660;';}});}this.classList.toggle('open');var lbl=this.querySelector('.ec-toggle');if(lbl){lbl.innerHTML=this.classList.contains('open')?'Collapse &#9650;':'Expand &#9660;';}">
       <span class="ec-type">Type 9 &mdash; The Peacemaker</span>
       <div class="ec-name">The Peacemaker</div>
       <div class="ec-fear">Core Fear: Pushing people away, conflict, fragmentation</div>
@@ -4640,10 +4953,84 @@ a.src-tag:hover{opacity:.75;}
 <div class="divider"></div>
 
 <!-- ROSETTA STONE — table collapsible, closing text standalone -->
-<section class="rasa-section">
+<section class="rasa-section" id="rosetta-stone" style="scroll-margin-top:56px;">
   <span class="label">The Rosetta Stone of the Ego</span>
   <h2>The Master Synthesis: Ego to Essence</h2>
   <p class="sub">Two ancient traditions. One universal trance induction. The Enneagram maps the egoic structure. The Vedic Rasas map the emotional weather it generates. Together they reveal both the prison and the key.</p>
+
+  <!-- ROSETTA STONE MAP — always-visible navigator, reusing the Enneagram
+       map's exact node geometry (same hexad + triangle, same coordinates)
+       since this table is organized by the same nine types. Tapping a
+       node expands the table (if collapsed) and scrolls to + flashes
+       that type's row. -->
+  <div style="max-width:480px;margin:32px auto 36px;">
+    <svg viewBox="-55 -35 495 470" style="width:100%;height:auto;overflow:visible;" role="img" aria-label="Rosetta Stone map — tap a type to jump to its Shadow Rasa and Essence">
+      <style>
+        .rasa-map-node{cursor:pointer;}
+        .rasa-map-node:hover circle.rasa-node-bg{fill:rgba(212,175,55,.14);stroke:var(--gold);}
+        .rasa-map-node:focus circle.rasa-node-bg{fill:rgba(212,175,55,.14);stroke:var(--gold);}
+        .rasa-map-node text{pointer-events:none;}
+      </style>
+      <polyline points="296,85 251,341 348,174 104,85 149,341 52,174 296,85" fill="none" stroke="var(--gold)" stroke-width="1" opacity="0.28"/>
+      <polyline points="330,275 70,275 200,50 330,275" fill="none" stroke="var(--gold)" stroke-width="1" opacity="0.28"/>
+      <circle cx="200" cy="200" r="150" fill="none" stroke="var(--gold)" stroke-width="1" opacity="0.18"/>
+      <g class="rasa-map-node" tabindex="0" role="button" aria-label="Type 1 — Perfectionist, Shadow Rasa Disgust" onclick="scrollToRasaRow(1)" onkeypress="if(event.key==='Enter')scrollToRasaRow(1)">
+        <title>Type 1 — Perfectionist</title>
+        <circle class="rasa-node-bg" cx="296" cy="85" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
+        <text x="296" y="91" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">1</text>
+        <text x="296" y="45" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Perfectionist</text>
+      </g>
+      <g class="rasa-map-node" tabindex="0" role="button" aria-label="Type 2 — Giver, Shadow Rasa Attachment" onclick="scrollToRasaRow(2)" onkeypress="if(event.key==='Enter')scrollToRasaRow(2)">
+        <title>Type 2 — Giver</title>
+        <circle class="rasa-node-bg" cx="348" cy="174" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
+        <text x="348" y="180" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">2</text>
+        <text x="388" y="178" text-anchor="start" font-family="var(--sans)" font-size="9" fill="var(--dim)">Giver</text>
+      </g>
+      <g class="rasa-map-node" tabindex="0" role="button" aria-label="Type 3 — Achiever, Shadow Rasa Performative Joy" onclick="scrollToRasaRow(3)" onkeypress="if(event.key==='Enter')scrollToRasaRow(3)">
+        <title>Type 3 — Achiever</title>
+        <circle class="rasa-node-bg" cx="330" cy="275" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
+        <text x="330" y="281" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">3</text>
+        <text x="370" y="279" text-anchor="start" font-family="var(--sans)" font-size="9" fill="var(--dim)">Achiever</text>
+      </g>
+      <g class="rasa-map-node" tabindex="0" role="button" aria-label="Type 4 — Individualist, Shadow Rasa Sorrow" onclick="scrollToRasaRow(4)" onkeypress="if(event.key==='Enter')scrollToRasaRow(4)">
+        <title>Type 4 — Individualist</title>
+        <circle class="rasa-node-bg" cx="251" cy="341" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
+        <text x="251" y="347" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">4</text>
+        <text x="251" y="381" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Individualist</text>
+      </g>
+      <g class="rasa-map-node" tabindex="0" role="button" aria-label="Type 5 — Investigator, Shadow Rasa Fear" onclick="scrollToRasaRow(5)" onkeypress="if(event.key==='Enter')scrollToRasaRow(5)">
+        <title>Type 5 — Investigator</title>
+        <circle class="rasa-node-bg" cx="149" cy="341" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
+        <text x="149" y="347" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">5</text>
+        <text x="149" y="381" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Investigator</text>
+      </g>
+      <g class="rasa-map-node" tabindex="0" role="button" aria-label="Type 6 — Skeptic, Shadow Rasa Anxiety" onclick="scrollToRasaRow(6)" onkeypress="if(event.key==='Enter')scrollToRasaRow(6)">
+        <title>Type 6 — Skeptic</title>
+        <circle class="rasa-node-bg" cx="70" cy="275" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
+        <text x="70" y="281" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">6</text>
+        <text x="30" y="279" text-anchor="end" font-family="var(--sans)" font-size="9" fill="var(--dim)">Skeptic</text>
+      </g>
+      <g class="rasa-map-node" tabindex="0" role="button" aria-label="Type 7 — Enthusiast, Shadow Rasa Distraction" onclick="scrollToRasaRow(7)" onkeypress="if(event.key==='Enter')scrollToRasaRow(7)">
+        <title>Type 7 — Enthusiast</title>
+        <circle class="rasa-node-bg" cx="52" cy="174" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
+        <text x="52" y="180" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">7</text>
+        <text x="12" y="178" text-anchor="end" font-family="var(--sans)" font-size="9" fill="var(--dim)">Enthusiast</text>
+      </g>
+      <g class="rasa-map-node" tabindex="0" role="button" aria-label="Type 8 — Challenger, Shadow Rasa Rage" onclick="scrollToRasaRow(8)" onkeypress="if(event.key==='Enter')scrollToRasaRow(8)">
+        <title>Type 8 — Challenger</title>
+        <circle class="rasa-node-bg" cx="104" cy="85" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
+        <text x="104" y="91" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">8</text>
+        <text x="104" y="45" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Challenger</text>
+      </g>
+      <g class="rasa-map-node" tabindex="0" role="button" aria-label="Type 9 — Peacemaker, Shadow Rasa Sadness" onclick="scrollToRasaRow(9)" onkeypress="if(event.key==='Enter')scrollToRasaRow(9)">
+        <title>Type 9 — Peacemaker</title>
+        <circle class="rasa-node-bg" cx="200" cy="50" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
+        <text x="200" y="56" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">9</text>
+        <text x="200" y="10" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Peacemaker</text>
+      </g>
+    </svg>
+    <p style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#555;text-align:center;margin-top:8px;">Tap a type to jump to its Shadow Rasa &amp; Essence</p>
+  </div>
 
   <div style="text-align:center;margin-bottom:12px;">
     <button class="collapse-toggle-btn" id="rasaBtn" onclick="sectionCollapse('rasa-table-wrap',this)">Expand &#9660;</button>
@@ -4657,15 +5044,15 @@ a.src-tag:hover{opacity:.75;}
         <div class="rasa-cell">Shadow Rasa</div>
         <div class="rasa-cell">Essence (Light Rasa)</div>
       </div>
-      <div class="rasa-row"><div class="rasa-cell type">8 — Challenger</div><div class="rasa-cell">Powerlessness · Lust</div><div class="rasa-cell shadow">Rage (Raudra)</div><div class="rasa-cell light">Power (Shakti) · Truth</div></div>
-      <div class="rasa-row"><div class="rasa-cell type">9 — Peacemaker</div><div class="rasa-cell">Pushing away · Laziness</div><div class="rasa-cell shadow">Sadness (Karuna)</div><div class="rasa-cell light">Awareness · Love</div></div>
-      <div class="rasa-row"><div class="rasa-cell type">1 — Perfectionist</div><div class="rasa-cell">Imperfection · Anger</div><div class="rasa-cell shadow">Disgust (Vibhatsya)</div><div class="rasa-cell light">Purity · Perfection</div></div>
-      <div class="rasa-row"><div class="rasa-cell type">2 — Giver</div><div class="rasa-cell">Unlovable · Pride</div><div class="rasa-cell shadow">Attachment (Shringara)</div><div class="rasa-cell light">Kindness · Freedom</div></div>
-      <div class="rasa-row"><div class="rasa-cell type">3 — Achiever</div><div class="rasa-cell">Valueless · Deceit</div><div class="rasa-cell shadow">Performative (Hasya)</div><div class="rasa-cell light">Love · Hope/Law</div></div>
-      <div class="rasa-row"><div class="rasa-cell type">4 — Individualist</div><div class="rasa-cell">Flawed/Common · Envy</div><div class="rasa-cell shadow">Sorrow (Karuna)</div><div class="rasa-cell light">Joy · Origin</div></div>
-      <div class="rasa-row"><div class="rasa-cell type">5 — Investigator</div><div class="rasa-cell">Overwhelmed · Avarice</div><div class="rasa-cell shadow">Fear (Bhayanaka)</div><div class="rasa-cell light">Peace/Emptiness · Omniscience</div></div>
-      <div class="rasa-row"><div class="rasa-cell type">6 — Skeptic</div><div class="rasa-cell">Unprepared · Doubt</div><div class="rasa-cell shadow">Anxiety (Bhayanaka)</div><div class="rasa-cell light">Courage (Vira) · Faith</div></div>
-      <div class="rasa-row"><div class="rasa-cell type">7 — Enthusiast</div><div class="rasa-cell">Pain/Sadness · Gluttony</div><div class="rasa-cell shadow">Distraction (Hasya)</div><div class="rasa-cell light">Absorption · Work</div></div>
+      <div class="rasa-row" id="rasa-row-8"><div class="rasa-cell type">8 — Challenger</div><div class="rasa-cell">Powerlessness · Lust</div><div class="rasa-cell shadow">Rage (Raudra)</div><div class="rasa-cell light">Power (Shakti) · Truth</div></div>
+      <div class="rasa-row" id="rasa-row-9"><div class="rasa-cell type">9 — Peacemaker</div><div class="rasa-cell">Pushing away · Laziness</div><div class="rasa-cell shadow">Sadness (Karuna)</div><div class="rasa-cell light">Awareness · Love</div></div>
+      <div class="rasa-row" id="rasa-row-1"><div class="rasa-cell type">1 — Perfectionist</div><div class="rasa-cell">Imperfection · Anger</div><div class="rasa-cell shadow">Disgust (Vibhatsya)</div><div class="rasa-cell light">Purity · Perfection</div></div>
+      <div class="rasa-row" id="rasa-row-2"><div class="rasa-cell type">2 — Giver</div><div class="rasa-cell">Unlovable · Pride</div><div class="rasa-cell shadow">Attachment (Shringara)</div><div class="rasa-cell light">Kindness · Freedom</div></div>
+      <div class="rasa-row" id="rasa-row-3"><div class="rasa-cell type">3 — Achiever</div><div class="rasa-cell">Valueless · Deceit</div><div class="rasa-cell shadow">Performative (Hasya)</div><div class="rasa-cell light">Love · Hope/Law</div></div>
+      <div class="rasa-row" id="rasa-row-4"><div class="rasa-cell type">4 — Individualist</div><div class="rasa-cell">Flawed/Common · Envy</div><div class="rasa-cell shadow">Sorrow (Karuna)</div><div class="rasa-cell light">Joy · Origin</div></div>
+      <div class="rasa-row" id="rasa-row-5"><div class="rasa-cell type">5 — Investigator</div><div class="rasa-cell">Overwhelmed · Avarice</div><div class="rasa-cell shadow">Fear (Bhayanaka)</div><div class="rasa-cell light">Peace/Emptiness · Omniscience</div></div>
+      <div class="rasa-row" id="rasa-row-6"><div class="rasa-cell type">6 — Skeptic</div><div class="rasa-cell">Unprepared · Doubt</div><div class="rasa-cell shadow">Anxiety (Bhayanaka)</div><div class="rasa-cell light">Courage (Vira) · Faith</div></div>
+      <div class="rasa-row" id="rasa-row-7"><div class="rasa-cell type">7 — Enthusiast</div><div class="rasa-cell">Pain/Sadness · Gluttony</div><div class="rasa-cell shadow">Distraction (Hasya)</div><div class="rasa-cell light">Absorption · Work</div></div>
     </div>
   </div>
 
@@ -5199,6 +5586,60 @@ a.src-tag:hover{opacity:.75;}
   <span class="label">The Masters at a Glance</span>
   <h2>Six teachers. Two hemispheres. One destination.</h2>
   <p class="sub">The <a href="#subtilization" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">path of subtilization</a> was never the property of one tradition. East and West independently arrived at the same <a href="#spectrum" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">map</a> &mdash;By holding different lanterns.</p>
+
+  <!-- MASTERS AT A GLANCE MAP — always-visible navigator, two rows of
+       three (Eastern / Western lineage). Tapping a node expands the grid
+       (if collapsed) and scrolls to + flashes that teacher's card. -->
+  <div style="max-width:460px;margin:32px auto 36px;">
+    <svg viewBox="0 0 420 250" style="width:100%;height:auto;overflow:visible;" role="img" aria-label="Masters at a Glance map — tap a teacher to jump to their card">
+      <style>
+        .masters-map-node{cursor:pointer;}
+        .masters-map-node:hover circle.masters-node-bg{fill:rgba(212,175,55,.14);stroke:var(--gold);}
+        .masters-map-node:focus circle.masters-node-bg{fill:rgba(212,175,55,.14);stroke:var(--gold);}
+        .masters-map-node text{pointer-events:none;}
+      </style>
+      <text x="210" y="16" text-anchor="middle" font-family="var(--sans)" font-size="9" letter-spacing="2" fill="var(--gold)" opacity="0.6" style="text-transform:uppercase;">Eastern Lineage</text>
+      <g class="masters-map-node" tabindex="0" role="button" aria-label="Srila Prabhupada — Bhakti Yoga, ISKCON" onclick="scrollToMasterCard(1)" onkeypress="if(event.key==='Enter')scrollToMasterCard(1)">
+        <title>Srila Prabhupada</title>
+        <circle class="masters-node-bg" cx="70" cy="60" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
+        <text x="70" y="66" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">1</text>
+        <text x="70" y="100" text-anchor="middle" font-family="var(--sans)" font-size="10.5" fill="var(--white)">Prabhupada</text>
+      </g>
+      <g class="masters-map-node" tabindex="0" role="button" aria-label="Gurudev Sri Sri Ravi Shankar — The Art of Living" onclick="scrollToMasterCard(2)" onkeypress="if(event.key==='Enter')scrollToMasterCard(2)">
+        <title>Sri Sri Ravi Shankar</title>
+        <circle class="masters-node-bg" cx="210" cy="60" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
+        <text x="210" y="66" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">2</text>
+        <text x="210" y="100" text-anchor="middle" font-family="var(--sans)" font-size="10.5" fill="var(--white)">Sri Sri Ravi Shankar</text>
+      </g>
+      <g class="masters-map-node" tabindex="0" role="button" aria-label="The Buddha — The Middle Way" onclick="scrollToMasterCard(3)" onkeypress="if(event.key==='Enter')scrollToMasterCard(3)">
+        <title>The Buddha</title>
+        <circle class="masters-node-bg" cx="350" cy="60" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
+        <text x="350" y="66" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">3</text>
+        <text x="350" y="100" text-anchor="middle" font-family="var(--sans)" font-size="10.5" fill="var(--white)">The Buddha</text>
+      </g>
+      <text x="210" y="148" text-anchor="middle" font-family="var(--sans)" font-size="9" letter-spacing="2" fill="var(--dim)" opacity="0.7" style="text-transform:uppercase;">Western Lineage</text>
+      <g class="masters-map-node" tabindex="0" role="button" aria-label="Socrates — The Examined Life" onclick="scrollToMasterCard(4)" onkeypress="if(event.key==='Enter')scrollToMasterCard(4)">
+        <title>Socrates</title>
+        <circle class="masters-node-bg" cx="70" cy="192" r="24" fill="var(--bg-lift)" stroke="var(--dim)" stroke-width="1.5"/>
+        <text x="70" y="198" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--dim)">4</text>
+        <text x="70" y="232" text-anchor="middle" font-family="var(--sans)" font-size="10.5" fill="var(--white)">Socrates</text>
+      </g>
+      <g class="masters-map-node" tabindex="0" role="button" aria-label="Marcus Aurelius — Stoicism" onclick="scrollToMasterCard(5)" onkeypress="if(event.key==='Enter')scrollToMasterCard(5)">
+        <title>Marcus Aurelius</title>
+        <circle class="masters-node-bg" cx="210" cy="192" r="24" fill="var(--bg-lift)" stroke="var(--dim)" stroke-width="1.5"/>
+        <text x="210" y="198" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--dim)">5</text>
+        <text x="210" y="232" text-anchor="middle" font-family="var(--sans)" font-size="10.5" fill="var(--white)">Marcus Aurelius</text>
+      </g>
+      <g class="masters-map-node" tabindex="0" role="button" aria-label="Eckhart Tolle — Present-Moment Teaching" onclick="scrollToMasterCard(6)" onkeypress="if(event.key==='Enter')scrollToMasterCard(6)">
+        <title>Eckhart Tolle</title>
+        <circle class="masters-node-bg" cx="350" cy="192" r="24" fill="var(--bg-lift)" stroke="var(--dim)" stroke-width="1.5"/>
+        <text x="350" y="198" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--dim)">6</text>
+        <text x="350" y="232" text-anchor="middle" font-family="var(--sans)" font-size="10.5" fill="var(--white)">Eckhart Tolle</text>
+      </g>
+    </svg>
+    <p style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#555;text-align:center;margin-top:8px;">Tap a teacher to jump to their card</p>
+  </div>
+
   <div style="text-align:center;margin-top:36px;margin-bottom:8px;">
     <button class="collapse-toggle-btn" onclick="sectionCollapse('masters-full-content',this)">Expand &#9660;</button>
     <p class="section-collapse-label">Section collapsed by default — tap to expand all six masters</p>
@@ -5206,19 +5647,19 @@ a.src-tag:hover{opacity:.75;}
   <div id="masters-full-content" class="section-collapse-wrap collapsed">
   <p style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.7;text-align:left;max-width:980px;margin:40px auto 16px;">The Eastern Lineage</p>
   <div class="masters-grid">
-    <div class="identity-card">
+    <div class="identity-card" id="master-card-1">
       <span class="layer-tag">Bhakti Yoga &middot; ISKCON</span>
       <h4>Srila Prabhupada</h4>
       <p>Taught through a systematic methodology requiring authoritative intellect, and logical deduction &mdash; treating the science of the soul with the same rigor as any verifiable discipline, not as private feeling.</p>
       <p class="practice">Metaphor: The physics of the soul. Knowledge as verifiable science.</p>
     </div>
-    <div class="identity-card">
+    <div class="identity-card" id="master-card-2">
       <span class="layer-tag">The Art of Living</span>
       <h4>Gurudev Sri Sri Ravi Shankar</h4>
       <p>Taught through breath, silence, and present-moment awareness &mdash; moving practitioners from a localized, defended ego toward an experience of infinite, expanding consciousness.</p>
       <p class="practice">Metaphor: The expanding space. Localized ego dissolving into the room it was always inside of.</p>
     </div>
-    <div class="identity-card">
+    <div class="identity-card" id="master-card-3">
       <span class="layer-tag">Buddhism &middot; The Middle Way</span>
       <h4>The Buddha</h4>
       <p>Taught through direct observation of suffering itself &mdash; not a revealed doctrine handed down, but a method anyone could verify by examining their own mind closely enough.</p>
@@ -5228,19 +5669,19 @@ a.src-tag:hover{opacity:.75;}
 
   <p style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.7;text-align:left;max-width:980px;margin:40px auto 16px;">The Western Lineage</p>
   <div class="masters-grid">
-    <div class="identity-card">
+    <div class="identity-card" id="master-card-4">
       <span class="layer-tag">Classical Greek &middot; The Examined Life</span>
       <h4>Socrates</h4>
       <p>Taught through relentless question, not doctrine &mdash; stripping away every inherited assumption until only what could survive scrutiny remained. The unexamined life, in his accounting, was not worth living.</p>
       <p class="practice">Metaphor: The midwife. Drawing out a truth the student already carried, rather than installing a new one.</p>
     </div>
-    <div class="identity-card">
+    <div class="identity-card" id="master-card-5">
       <span class="layer-tag">Stoicism &middot; Roman Imperial Period</span>
       <h4>Marcus Aurelius</h4>
       <p>Taught through private discipline rather than public doctrine &mdash; an emperor writing nightly reminders to himself that status, applause, and even the empire were never the territory a person actually governs.</p>
       <p class="practice">Metaphor: The citadel. An inner fortress no circumstance is permitted to breach.</p>
     </div>
-    <div class="identity-card">
+    <div class="identity-card" id="master-card-6">
       <span class="layer-tag">Contemporary &middot; Present-Moment Teaching</span>
       <h4>Eckhart Tolle</h4>
       <p>Taught through the dissolution of psychological time &mdash; locating suffering not in circumstance itself, but in the mind's compulsive narration of past and future as the only moment that has ever existed.</p>
@@ -5379,7 +5820,7 @@ a.src-tag:hover{opacity:.75;}
 </section>
 <div class="divider"></div>
 
-<div style="max-width:680px;margin:0 auto;padding:0 24px 36px;position:relative;border:1px solid var(--gold);">
+<div class="edge-safe-frame" style="max-width:680px;margin:0 auto;padding:0 24px 36px;position:relative;border:1px solid var(--gold);">
   <div style="position:absolute;top:-1px;left:-1px;width:20px;height:20px;border-top:2px solid var(--gold);border-left:2px solid var(--gold);"></div>
   <div style="position:absolute;top:-1px;right:-1px;width:20px;height:20px;border-top:2px solid var(--gold);border-right:2px solid var(--gold);"></div>
   <div style="position:absolute;bottom:-1px;left:-1px;width:20px;height:20px;border-bottom:2px solid var(--gold);border-left:2px solid var(--gold);"></div>
@@ -5445,7 +5886,7 @@ a.src-tag:hover{opacity:.75;}
 <span class="continue-hint">continue</span>
 <div class="divider"></div>
 
-<div style="max-width:560px;margin:0 auto 20px;padding:44px 36px;text-align:center;
+<div class="edge-safe-frame" style="max-width:560px;margin:0 auto 20px;padding:44px 36px;text-align:center;
 border:1px solid var(--gold);background:radial-gradient(ellipse at 50% 50%,
 rgba(212,175,55,.06) 0%,transparent 65%);">
   <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;
@@ -5509,7 +5950,7 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
 <div class="divider"></div>
 
 <!-- BRIDGE -->
-  <section class="bridge-section" style="position:relative;border:1px solid var(--gold);max-width:560px;margin:0 auto;">
+  <section class="bridge-section edge-safe-frame" style="position:relative;border:1px solid var(--gold);max-width:560px;margin:0 auto;">
   <div style="position:absolute;top:-1px;left:-1px;width:20px;height:20px;border-top:2px solid var(--gold);border-left:2px solid var(--gold);"></div>
   <div style="position:absolute;top:-1px;right:-1px;width:20px;height:20px;border-top:2px solid var(--gold);border-right:2px solid var(--gold);"></div>
   <div style="position:absolute;bottom:-1px;left:-1px;width:20px;height:20px;border-bottom:2px solid var(--gold);border-left:2px solid var(--gold);"></div>
@@ -5591,94 +6032,177 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
     <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;text-align:center;">6 Material Stages × 7 Spiritual Layers = 42</h2>
     <p style="font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:600px;margin:0 auto 16px;font-style:italic;line-height:1.85;text-align:center;">Every possible human experience can be mapped to a specific coordinate in this grid. You are somewhere on it right now.</p>
     <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.75;text-align:center;margin-bottom:28px;max-width:820px;margin-left:auto;margin-right:auto;">The body ages horizontally. Consciousness must ascend vertically. Most people move only left to right — never up.</p>
-    <!-- MASTER MATRIX MAP — always-visible navigator, styled to match the
-     Ascent of Self map. Purely navigational; tapping a layer expands the
-     matrix (if collapsed) and scrolls to + opens that layer's row.
-     Stage-axis ticks (top-right) are decorative only — they assert the
-     second (horizontal) dimension without replicating all 42 cells;
-     the three mode-toggle buttons below remain the only way to actually
-     switch which stage-columns are visible. -->
-<div style="max-width:420px;margin:32px auto 8px;">
-  <svg viewBox="0 0 440 470" style="width:100%;height:auto;overflow:visible;" role="img" aria-label="Master Matrix map — tap a layer to jump to its full row">
+    <!-- MASTER MATRIX MAP — genuine 7 layers x 6 stages spatial grid (not the
+     staircase used by the Ascent of Self map). Each row = one layer, each
+     column = one stage; cell text is the same 42-cell "grid mode" content
+     that lives in #masterMatrixTable, just made spatially legible at a
+     glance instead of requiring horizontal table scroll. Tapping anywhere
+     in a row reuses the existing expandMatrixRow() navigator: expands the
+     full matrix (if collapsed), opens that layer's accordion row, and
+     scrolls to it — clicking is row-level only, individual cells are not
+     separately clickable, so cell text is a preview, not a control.
+     Highlighted cells (gold "bright" outline, red outline) mirror the live
+     table's own emphasis on the Transformation column and Layer 6's
+     Crisis/Rigidity pair — the Construction -> Switch -> Deconstruction
+     pivot made visible.
+
+     DENSITY FIX (this pass): cell text was 6.6px in the SVG's own
+     coordinate space — after the responsive scale-down on a real ~320-360px
+     phone width (viewBox is 460 units wide), that rendered under 5px,
+     effectively unreadable. Fixed by (a) bumping cell text 6.6→12,
+     header labels 7.5→10, row-number circles r12→14/font 11→13, and
+     (b) shortening the handful of cell labels that were long enough to
+     overflow a cell at the bigger size (e.g. "Shift belief"→"Reframe",
+     "Lost senses"→"No sense") so every displayed label is ≤8 characters —
+     the full original word is preserved in each cell's <title> tooltip.
+     Row/column geometry itself is untouched; this was a legibility fix,
+     not a layout rebuild. -->
+<div style="max-width:460px;margin:32px auto 36px;">
+  <svg viewBox="0 0 460 354" style="width:100%;height:auto;overflow:visible;" role="img" aria-label="Master Matrix grid map — 7 layers by 6 stages, tap a row to jump to its full detail">
     <style>
       .matrix-map-node{cursor:pointer;}
-      .matrix-map-node:hover circle.matrix-node-bg{fill:rgba(212,175,55,.14);}
-      .matrix-map-node:focus circle.matrix-node-bg{fill:rgba(212,175,55,.14);}
+      .matrix-map-node:hover rect.matrix-row-bg{fill-opacity:0.22;}
+      .matrix-map-node:focus rect.matrix-row-bg{fill-opacity:0.22;}
       .matrix-map-node text{pointer-events:none;}
+      .matrix-cell-text{font-family:var(--sans);}
     </style>
-    <!-- connectors: fixed 3-step staircase between every consecutive pair -->
-    <path d="M 44,414 h14 v-18 h14 v-18 h14 v-18" fill="none" stroke="var(--gold)" stroke-width="1.5" opacity="0.4"/>
-    <path d="M 86,360 h14 v-18 h14 v-18 h14 v-18" fill="none" stroke="var(--gold)" stroke-width="1.5" opacity="0.4"/>
-    <path d="M 128,306 h14 v-18 h14 v-18 h14 v-18" fill="none" stroke="var(--gold)" stroke-width="1.5" opacity="0.4"/>
-    <path d="M 170,252 h14 v-18 h14 v-18 h14 v-18" fill="none" stroke="var(--gold)" stroke-width="1.5" opacity="0.4"/>
-    <path d="M 212,198 h14 v-18 h14 v-18 h14 v-18" fill="none" stroke="var(--gold)" stroke-width="1.5" opacity="0.4"/>
-    <path d="M 254,144 h14 v-18 h14 v-18 h14 v-18" fill="none" stroke="var(--gold)" stroke-width="1.5" opacity="0.4"/>
-
-    <!-- stage-axis: decorative ruler, top-right, asserting the horizontal dimension -->
-    <g opacity="0.55">
-      <line x1="300" y1="16" x2="420" y2="16" stroke="var(--dim)" stroke-width="1"/>
-      <line x1="300" y1="12" x2="300" y2="20" stroke="var(--dim)" stroke-width="1"/>
-      <line x1="324" y1="13" x2="324" y2="19" stroke="var(--dim)" stroke-width="1"/>
-      <line x1="348" y1="13" x2="348" y2="19" stroke="var(--dim)" stroke-width="1"/>
-      <line x1="372" y1="13" x2="372" y2="19" stroke="var(--dim)" stroke-width="1"/>
-      <line x1="396" y1="13" x2="396" y2="19" stroke="var(--dim)" stroke-width="1"/>
-      <line x1="420" y1="12" x2="420" y2="20" stroke="var(--dim)" stroke-width="1"/>
-      <text x="300" y="32" font-family="var(--sans)" font-size="7" letter-spacing="0.5" fill="var(--dim)" style="text-transform:uppercase;">Birth</text>
-      <text x="420" y="32" text-anchor="end" font-family="var(--sans)" font-size="7" letter-spacing="0.5" fill="var(--dim)" style="text-transform:uppercase;">Death</text>
-      <text x="360" y="8" text-anchor="middle" font-family="var(--sans)" font-size="7" letter-spacing="1.5" fill="var(--dim)" style="text-transform:uppercase;">6 stages →</text>
+    <g opacity="0.85">
+      <text x="92.5" y="26" text-anchor="middle" font-family="var(--sans)" font-size="10" letter-spacing="0.5" fill="var(--gold)" style="text-transform:uppercase;">Birth</text>
+      <text x="157.5" y="26" text-anchor="middle" font-family="var(--sans)" font-size="10" letter-spacing="0.5" fill="var(--gold)" style="text-transform:uppercase;">Growth</text>
+      <text x="222.5" y="26" text-anchor="middle" font-family="var(--sans)" font-size="10" letter-spacing="0.5" fill="var(--gold)" style="text-transform:uppercase;">Sustain</text>
+      <text x="287.5" y="26" text-anchor="middle" font-family="var(--sans)" font-size="10" letter-spacing="0.5" fill="var(--gold)" style="text-transform:uppercase;">Transform</text>
+      <text x="352.5" y="26" text-anchor="middle" font-family="var(--sans)" font-size="9" letter-spacing="0.2" fill="var(--gold)" style="text-transform:uppercase;">Decline</text>
+      <text x="417.5" y="26" text-anchor="middle" font-family="var(--sans)" font-size="10" letter-spacing="0.5" fill="var(--gold)" style="text-transform:uppercase;">Death</text>
+      <text x="4" y="26" font-family="var(--sans)" font-size="9" letter-spacing="1" fill="var(--dim)" style="text-transform:uppercase;">7L↓</text>
     </g>
-
-    <!-- nodes -->
-    <g class="matrix-map-node" tabindex="0" role="button" aria-label="Layer 1 — Body, Root Chakra" onclick="expandMatrixRow(1)" onkeypress="if(event.key==='Enter')expandMatrixRow(1)">
-      <title>L1 — Body — Root Chakra</title>
-      <circle class="matrix-node-bg" cx="44" cy="414" r="22" fill="var(--bg-lift)" stroke="#e74c3c" stroke-width="1.5"/>
-      <text x="44" y="420" text-anchor="middle" font-family="var(--sans)" font-size="14" font-weight="700" fill="#e74c3c">1</text>
-      <text x="78" y="411" text-anchor="start" font-family="var(--sans)" font-size="9" letter-spacing="1.5" fill="var(--dim)" style="text-transform:uppercase;">L1</text>
-      <text x="78" y="425" text-anchor="start" font-family="var(--sans)" font-size="13" fill="var(--white)">Body</text>
+    <g class="matrix-map-node" tabindex="0" role="button" aria-label="Layer 7 — Self" onclick="expandMatrixRow(7)" onkeypress="if(event.key==='Enter')expandMatrixRow(7)">
+      <title>L7 — Self</title>
+      <circle cx="30" cy="58.0" r="14" fill="var(--bg-lift)" stroke="#9b59b6" stroke-width="1.5"/>
+      <text x="30" y="62.5" text-anchor="middle" font-family="var(--sans)" font-size="13" font-weight="700" fill="#9b59b6">7</text>
+      <rect class="matrix-row-bg" x="60" y="40.0" width="390" height="36" rx="4" fill="#9b59b6" fill-opacity="0.06"/>
+      <rect x="62" y="40.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#9b59b6" stroke-width="0.75" stroke-opacity="0.55"/>
+      <text class="matrix-cell-text" x="92.5" y="60.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Manifestation</title>Manifest</text>
+      <rect x="127" y="40.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#9b59b6" stroke-width="0.75" stroke-opacity="0.55"/>
+      <text class="matrix-cell-text" x="157.5" y="60.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Realization</title>Realize</text>
+      <rect x="192" y="40.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#9b59b6" stroke-width="0.75" stroke-opacity="0.55"/>
+      <text class="matrix-cell-text" x="222.5" y="60.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Eternal Witness</title>Witness</text>
+      <rect x="257" y="40.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#9b59b6" stroke-width="0.75" stroke-opacity="0.55"/>
+      <text class="matrix-cell-text" x="287.5" y="60.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Transcends</title>Beyond</text>
+      <rect x="322" y="40.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#9b59b6" stroke-width="0.75" stroke-opacity="0.55"/>
+      <text class="matrix-cell-text" x="352.5" y="60.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Unchanged</title>Unchngd</text>
+      <rect x="387" y="40.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#9b59b6" stroke-width="0.75" stroke-opacity="0.55"/>
+      <text class="matrix-cell-text" x="417.5" y="60.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Unchanged</title>Unchngd</text>
     </g>
-    <g class="matrix-map-node" tabindex="0" role="button" aria-label="Layer 2 — Breath, Sacral Chakra" onclick="expandMatrixRow(2)" onkeypress="if(event.key==='Enter')expandMatrixRow(2)">
-      <title>L2 — Breath — Sacral Chakra</title>
-      <circle class="matrix-node-bg" cx="86" cy="360" r="22" fill="var(--bg-lift)" stroke="#e67e22" stroke-width="1.5"/>
-      <text x="86" y="366" text-anchor="middle" font-family="var(--sans)" font-size="14" font-weight="700" fill="#e67e22">2</text>
-      <text x="120" y="357" text-anchor="start" font-family="var(--sans)" font-size="9" letter-spacing="1.5" fill="var(--dim)" style="text-transform:uppercase;">L2</text>
-      <text x="120" y="371" text-anchor="start" font-family="var(--sans)" font-size="13" fill="var(--white)">Breath</text>
+    <g class="matrix-map-node" tabindex="0" role="button" aria-label="Layer 6 — Ego" onclick="expandMatrixRow(6)" onkeypress="if(event.key==='Enter')expandMatrixRow(6)">
+      <title>L6 — Ego</title>
+      <circle cx="30" cy="102.0" r="14" fill="var(--bg-lift)" stroke="#6a5acd" stroke-width="1.5"/>
+      <text x="30" y="106.5" text-anchor="middle" font-family="var(--sans)" font-size="13" font-weight="700" fill="#6a5acd">6</text>
+      <rect class="matrix-row-bg" x="60" y="84.0" width="390" height="36" rx="4" fill="#6a5acd" fill-opacity="0.06"/>
+      <rect x="62" y="84.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#6a5acd" stroke-width="0.75" stroke-opacity="0.55"/>
+      <text class="matrix-cell-text" x="92.5" y="104.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Toddlerhood</title>Toddler</text>
+      <rect x="127" y="84.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#6a5acd" stroke-width="0.75" stroke-opacity="0.55"/>
+      <text class="matrix-cell-text" x="157.5" y="104.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Ambition</title>Ambition</text>
+      <rect x="192" y="84.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#6a5acd" stroke-width="0.75" stroke-opacity="0.55"/>
+      <text class="matrix-cell-text" x="222.5" y="104.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Persona</title>Persona</text>
+      <rect x="257" y="84.0" width="61" height="36" rx="3" fill="#e74c3c" fill-opacity="0.16" stroke="#e74c3c" stroke-width="1.3" stroke-opacity="0.55"/>
+      <text class="matrix-cell-text" x="287.5" y="104.3" text-anchor="middle" font-size="12" fill="#e74c3c"><title>Crisis</title>Crisis</text>
+      <rect x="322" y="84.0" width="61" height="36" rx="3" fill="#e74c3c" fill-opacity="0.16" stroke="#e74c3c" stroke-width="1.3" stroke-opacity="0.55"/>
+      <text class="matrix-cell-text" x="352.5" y="104.3" text-anchor="middle" font-size="12" fill="#e74c3c"><title>Rigidity</title>Rigidity</text>
+      <rect x="387" y="84.0" width="61" height="36" rx="3" fill="var(--gold)" fill-opacity="0.22" stroke="var(--gold)" stroke-width="1.5" stroke-opacity="0.55"/>
+      <text class="matrix-cell-text" x="417.5" y="104.3" text-anchor="middle" font-size="12" fill="var(--gold)"><title>Dissolution ✦</title>Dissolve</text>
     </g>
-    <g class="matrix-map-node" tabindex="0" role="button" aria-label="Layer 3 — Mind, Solar Plexus" onclick="expandMatrixRow(3)" onkeypress="if(event.key==='Enter')expandMatrixRow(3)">
-      <title>L3 — Mind — Solar Plexus</title>
-      <circle class="matrix-node-bg" cx="128" cy="306" r="22" fill="var(--bg-lift)" stroke="#f1c40f" stroke-width="1.5"/>
-      <text x="128" y="312" text-anchor="middle" font-family="var(--sans)" font-size="14" font-weight="700" fill="#f1c40f">3</text>
-      <text x="162" y="303" text-anchor="start" font-family="var(--sans)" font-size="9" letter-spacing="1.5" fill="var(--dim)" style="text-transform:uppercase;">L3</text>
-      <text x="162" y="317" text-anchor="start" font-family="var(--sans)" font-size="13" fill="var(--white)">Mind</text>
+    <g class="matrix-map-node" tabindex="0" role="button" aria-label="Layer 5 — Memory" onclick="expandMatrixRow(5)" onkeypress="if(event.key==='Enter')expandMatrixRow(5)">
+      <title>L5 — Memory</title>
+      <circle cx="30" cy="146.0" r="14" fill="var(--bg-lift)" stroke="#3498db" stroke-width="1.5"/>
+      <text x="30" y="150.5" text-anchor="middle" font-family="var(--sans)" font-size="13" font-weight="700" fill="#3498db">5</text>
+      <rect class="matrix-row-bg" x="60" y="128.0" width="390" height="36" rx="4" fill="#3498db" fill-opacity="0.06"/>
+      <rect x="62" y="128.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#3498db" stroke-width="0.75" stroke-opacity="0.55"/>
+      <text class="matrix-cell-text" x="92.5" y="148.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>First impression</title>1st impr</text>
+      <rect x="127" y="128.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#3498db" stroke-width="0.75" stroke-opacity="0.55"/>
+      <text class="matrix-cell-text" x="157.5" y="148.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Experience</title>Gaining</text>
+      <rect x="192" y="128.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#3498db" stroke-width="0.75" stroke-opacity="0.55"/>
+      <text class="matrix-cell-text" x="222.5" y="148.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Storing</title>Storing</text>
+      <rect x="257" y="128.0" width="61" height="36" rx="3" fill="var(--gold)" fill-opacity="0.14" stroke="var(--gold)" stroke-width="1.3" stroke-opacity="0.55"/>
+      <text class="matrix-cell-text" x="287.5" y="148.3" text-anchor="middle" font-size="12" fill="var(--gold)"><title>Trauma</title>Trauma</text>
+      <rect x="322" y="128.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#3498db" stroke-width="0.75" stroke-opacity="0.55"/>
+      <text class="matrix-cell-text" x="352.5" y="148.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Forgetfulness</title>Forgetng</text>
+      <rect x="387" y="128.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#3498db" stroke-width="0.75" stroke-opacity="0.55"/>
+      <text class="matrix-cell-text" x="417.5" y="148.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Erasure</title>Erasure</text>
     </g>
-    <g class="matrix-map-node" tabindex="0" role="button" aria-label="Layer 4 — Intellect, Heart Chakra" onclick="expandMatrixRow(4)" onkeypress="if(event.key==='Enter')expandMatrixRow(4)">
-      <title>L4 — Intellect — Heart Chakra</title>
-      <circle class="matrix-node-bg" cx="170" cy="252" r="22" fill="var(--bg-lift)" stroke="#2ecc71" stroke-width="1.5"/>
-      <text x="170" y="258" text-anchor="middle" font-family="var(--sans)" font-size="14" font-weight="700" fill="#2ecc71">4</text>
-      <text x="204" y="249" text-anchor="start" font-family="var(--sans)" font-size="9" letter-spacing="1.5" fill="var(--dim)" style="text-transform:uppercase;">L4</text>
-      <text x="204" y="263" text-anchor="start" font-family="var(--sans)" font-size="13" fill="var(--white)">Intellect</text>
+    <g class="matrix-map-node" tabindex="0" role="button" aria-label="Layer 4 — Intellect" onclick="expandMatrixRow(4)" onkeypress="if(event.key==='Enter')expandMatrixRow(4)">
+      <title>L4 — Intellect</title>
+      <circle cx="30" cy="190.0" r="14" fill="var(--bg-lift)" stroke="var(--chakra-4)" stroke-width="1.5"/>
+      <text x="30" y="194.5" text-anchor="middle" font-family="var(--sans)" font-size="13" font-weight="700" fill="var(--chakra-4)">4</text>
+      <rect class="matrix-row-bg" x="60" y="172.0" width="390" height="36" rx="4" fill="var(--chakra-4)" fill-opacity="0.06"/>
+      <rect x="62" y="172.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="var(--chakra-4)" stroke-width="0.75" stroke-opacity="0.55"/>
+      <text class="matrix-cell-text" x="92.5" y="192.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Curiosity</title>Curious</text>
+      <rect x="127" y="172.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="var(--chakra-4)" stroke-width="0.75" stroke-opacity="0.55"/>
+      <text class="matrix-cell-text" x="157.5" y="192.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Logic</title>Logic</text>
+      <rect x="192" y="172.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="var(--chakra-4)" stroke-width="0.75" stroke-opacity="0.55"/>
+      <text class="matrix-cell-text" x="222.5" y="192.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Stability</title>Stable</text>
+      <rect x="257" y="172.0" width="61" height="36" rx="3" fill="var(--gold)" fill-opacity="0.14" stroke="var(--gold)" stroke-width="1.3" stroke-opacity="0.55"/>
+      <text class="matrix-cell-text" x="287.5" y="192.3" text-anchor="middle" font-size="12" fill="var(--gold)"><title>Shifting beliefs</title>Reframe</text>
+      <rect x="322" y="172.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="var(--chakra-4)" stroke-width="0.75" stroke-opacity="0.55"/>
+      <text class="matrix-cell-text" x="352.5" y="192.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Decline</title>Decline</text>
+      <rect x="387" y="172.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="var(--chakra-4)" stroke-width="0.75" stroke-opacity="0.55"/>
+      <text class="matrix-cell-text" x="417.5" y="192.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Loss of judgment</title>No judgm</text>
     </g>
-    <g class="matrix-map-node" tabindex="0" role="button" aria-label="Layer 5 — Memory, Throat Chakra" onclick="expandMatrixRow(5)" onkeypress="if(event.key==='Enter')expandMatrixRow(5)">
-      <title>L5 — Memory — Throat Chakra</title>
-      <circle class="matrix-node-bg" cx="212" cy="198" r="22" fill="var(--bg-lift)" stroke="#3498db" stroke-width="1.5"/>
-      <text x="212" y="204" text-anchor="middle" font-family="var(--sans)" font-size="14" font-weight="700" fill="#3498db">5</text>
-      <text x="246" y="195" text-anchor="start" font-family="var(--sans)" font-size="9" letter-spacing="1.5" fill="var(--dim)" style="text-transform:uppercase;">L5</text>
-      <text x="246" y="209" text-anchor="start" font-family="var(--sans)" font-size="13" fill="var(--white)">Memory</text>
+    <g class="matrix-map-node" tabindex="0" role="button" aria-label="Layer 3 — Mind" onclick="expandMatrixRow(3)" onkeypress="if(event.key==='Enter')expandMatrixRow(3)">
+      <title>L3 — Mind</title>
+      <circle cx="30" cy="234.0" r="14" fill="var(--bg-lift)" stroke="var(--chakra-3)" stroke-width="1.5"/>
+      <text x="30" y="238.5" text-anchor="middle" font-family="var(--sans)" font-size="13" font-weight="700" fill="var(--chakra-3)">3</text>
+      <rect class="matrix-row-bg" x="60" y="216.0" width="390" height="36" rx="4" fill="var(--chakra-3)" fill-opacity="0.06"/>
+      <rect x="62" y="216.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="var(--chakra-3)" stroke-width="0.75" stroke-opacity="0.55"/>
+      <text class="matrix-cell-text" x="92.5" y="236.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Sensory</title>Sensory</text>
+      <rect x="127" y="216.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="var(--chakra-3)" stroke-width="0.75" stroke-opacity="0.55"/>
+      <text class="matrix-cell-text" x="157.5" y="236.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Learning</title>Learning</text>
+      <rect x="192" y="216.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="var(--chakra-3)" stroke-width="0.75" stroke-opacity="0.55"/>
+      <text class="matrix-cell-text" x="222.5" y="236.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Perception</title>Percept.</text>
+      <rect x="257" y="216.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="var(--chakra-3)" stroke-width="0.75" stroke-opacity="0.55"/>
+      <text class="matrix-cell-text" x="287.5" y="236.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Shifting</title>Shifting</text>
+      <rect x="322" y="216.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="var(--chakra-3)" stroke-width="0.75" stroke-opacity="0.55"/>
+      <text class="matrix-cell-text" x="352.5" y="236.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Fatigue</title>Fatigue</text>
+      <rect x="387" y="216.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="var(--chakra-3)" stroke-width="0.75" stroke-opacity="0.55"/>
+      <text class="matrix-cell-text" x="417.5" y="236.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Loss of senses</title>No sense</text>
     </g>
-    <g class="matrix-map-node" tabindex="0" role="button" aria-label="Layer 6 — Ego, Third Eye" onclick="expandMatrixRow(6)" onkeypress="if(event.key==='Enter')expandMatrixRow(6)">
-      <title>L6 — Ego — Third Eye</title>
-      <circle class="matrix-node-bg" cx="254" cy="144" r="22" fill="var(--bg-lift)" stroke="#6a5acd" stroke-width="1.5"/>
-      <text x="254" y="150" text-anchor="middle" font-family="var(--sans)" font-size="14" font-weight="700" fill="#6a5acd">6</text>
-      <text x="288" y="141" text-anchor="start" font-family="var(--sans)" font-size="9" letter-spacing="1.5" fill="var(--dim)" style="text-transform:uppercase;">L6</text>
-      <text x="288" y="155" text-anchor="start" font-family="var(--sans)" font-size="13" fill="var(--white)">Ego</text>
+    <g class="matrix-map-node" tabindex="0" role="button" aria-label="Layer 2 — Breath" onclick="expandMatrixRow(2)" onkeypress="if(event.key==='Enter')expandMatrixRow(2)">
+      <title>L2 — Breath</title>
+      <circle cx="30" cy="278.0" r="14" fill="var(--bg-lift)" stroke="#e67e22" stroke-width="1.5"/>
+      <text x="30" y="282.5" text-anchor="middle" font-family="var(--sans)" font-size="13" font-weight="700" fill="#e67e22">2</text>
+      <rect class="matrix-row-bg" x="60" y="260.0" width="390" height="36" rx="4" fill="#e67e22" fill-opacity="0.06"/>
+      <rect x="62" y="260.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#e67e22" stroke-width="0.75" stroke-opacity="0.55"/>
+      <text class="matrix-cell-text" x="92.5" y="280.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>First cry</title>1st cry</text>
+      <rect x="127" y="260.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#e67e22" stroke-width="0.75" stroke-opacity="0.55"/>
+      <text class="matrix-cell-text" x="157.5" y="280.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Deepening</title>Deepen</text>
+      <rect x="192" y="260.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#e67e22" stroke-width="0.75" stroke-opacity="0.55"/>
+      <text class="matrix-cell-text" x="222.5" y="280.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Rhythm</title>Rhythm</text>
+      <rect x="257" y="260.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#e67e22" stroke-width="0.75" stroke-opacity="0.55"/>
+      <text class="matrix-cell-text" x="287.5" y="280.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Emotion</title>Emotion</text>
+      <rect x="322" y="260.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#e67e22" stroke-width="0.75" stroke-opacity="0.55"/>
+      <text class="matrix-cell-text" x="352.5" y="280.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Laboured</title>Labored</text>
+      <rect x="387" y="260.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#e67e22" stroke-width="0.75" stroke-opacity="0.55"/>
+      <text class="matrix-cell-text" x="417.5" y="280.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Last breath</title>Dying</text>
     </g>
-    <g class="matrix-map-node" tabindex="0" role="button" aria-label="Layer 7 — Self / Soul, Crown Chakra" onclick="expandMatrixRow(7)" onkeypress="if(event.key==='Enter')expandMatrixRow(7)">
-      <title>L7 — Self / Soul — Crown Chakra</title>
-      <circle class="matrix-node-bg" cx="296" cy="90" r="22" fill="var(--bg-lift)" stroke="#9b59b6" stroke-width="1.5"/>
-      <text x="296" y="96" text-anchor="middle" font-family="var(--sans)" font-size="14" font-weight="700" fill="#9b59b6">7</text>
-      <text x="330" y="87" text-anchor="start" font-family="var(--sans)" font-size="9" letter-spacing="1.5" fill="var(--dim)" style="text-transform:uppercase;">L7</text>
-      <text x="330" y="101" text-anchor="start" font-family="var(--sans)" font-size="13" fill="var(--white)">Self</text> </g>
-  </svg>
-  <p style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#555;text-align:center;margin-top:8px;">Tap a layer to jump to its full row</p>
+    <g class="matrix-map-node" tabindex="0" role="button" aria-label="Layer 1 — Body" onclick="expandMatrixRow(1)" onkeypress="if(event.key==='Enter')expandMatrixRow(1)">
+      <title>L1 — Body</title>
+      <circle cx="30" cy="322.0" r="14" fill="var(--bg-lift)" stroke="#e74c3c" stroke-width="1.5"/>
+      <text x="30" y="326.5" text-anchor="middle" font-family="var(--sans)" font-size="13" font-weight="700" fill="#e74c3c">1</text>
+      <rect class="matrix-row-bg" x="60" y="304.0" width="390" height="36" rx="4" fill="#e74c3c" fill-opacity="0.06"/>
+      <rect x="62" y="304.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#e74c3c" stroke-width="0.75" stroke-opacity="0.55"/>
+      <text class="matrix-cell-text" x="92.5" y="324.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Womb</title>Womb</text>
+      <rect x="127" y="304.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#e74c3c" stroke-width="0.75" stroke-opacity="0.55"/>
+      <text class="matrix-cell-text" x="157.5" y="324.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Infancy</title>Infancy</text>
+      <rect x="192" y="304.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#e74c3c" stroke-width="0.75" stroke-opacity="0.55"/>
+      <text class="matrix-cell-text" x="222.5" y="324.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Health</title>Health</text>
+      <rect x="257" y="304.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#e74c3c" stroke-width="0.75" stroke-opacity="0.55"/>
+      <text class="matrix-cell-text" x="287.5" y="324.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Aging</title>Aging</text>
+      <rect x="322" y="304.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#e74c3c" stroke-width="0.75" stroke-opacity="0.55"/>
+      <text class="matrix-cell-text" x="352.5" y="324.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Senescence</title>Senesc.</text>
+      <rect x="387" y="304.0" width="61" height="36" rx="3" fill="#000" fill-opacity="0" stroke="#e74c3c" stroke-width="0.75" stroke-opacity="0.55"/>
+      <text class="matrix-cell-text" x="417.5" y="324.3" text-anchor="middle" font-size="12" fill="var(--grey)"><title>Mortality</title>Mortal</text>
+    </g>
+</svg>
+  <p style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#555;text-align:center;margin-top:8px;">Tap a row to jump to its full detail</p>
 </div>
     <div class="cosmo-quote" style="max-width:820px;margin:0 auto 36px;">
       <p>&ldquo;Your life purpose unfolds through the activities you engage in on the horizontal dimension &mdash; the dimension of doing. But everybody eventually finds that operating only on the horizontal dimension never satisfies them. There is another dimension &mdash; the vertical dimension, the dimension of being. The mastery of life is the dance between the two.&rdquo;</p>
@@ -5757,10 +6281,10 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
     </div>
 
     <div class="self-table-wrap" id="masterMatrixWrap" data-mode="grid" style="max-width:900px;margin:0 auto 32px;">
-      <table class="self-table compact" id="masterMatrixTable" style="min-width:1200px;">
+      <table class="self-table compact" id="masterMatrixTable" style="min-width:1000px;">
         <thead>
           <tr>
-            <th class="axis-cell" style="width:13%;vertical-align:middle;">
+            <th class="axis-cell" style="width:8%;vertical-align:middle;">
               <span style="color:var(--gold);display:block;font-size:8px;letter-spacing:1px;">7 Layers ↓</span>
               <div style="width:50%;height:1px;background:rgba(212,175,55,0.4);margin:4px auto;"></div>
               <span style="color:var(--gold);display:block;font-size:8px;letter-spacing:1px;">→ 6 Stages</span>
@@ -5783,113 +6307,113 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
           </tr>
         </thead>
         <tbody>
-          <tr id="matrix-row-1" data-layer="1">
-            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-1" onclick="toggleMatrixRow(1)" aria-label="Expand Layer 1 detail">+</button><span style="color:var(--dim);font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 1</span>Body<span style="display:block;font-size:9px;color:var(--dim);font-style:normal;letter-spacing:0;margin-top:2px;">Root Chakra</span></td>
+          <tr id="matrix-row-1" class="chakra-row-1" data-layer="1">
+            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-1" onclick="toggleMatrixRow(1)" aria-label="Expand Layer 1 detail">+</button><span style="font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 1</span>Body<span class="chakra-label-1" style="display:block;font-size:9px;font-style:normal;letter-spacing:0;margin-top:2px;">Root Chakra</span></td>
             <td class="col-grid">Womb</td><td class="col-grid">Infancy</td><td class="col-grid">Health</td><td class="col-grid">Aging</td><td class="col-grid"><span class="gloss">Senescence<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Senescence">+</button><span class="gloss-pop">The point where cells stop dividing and repairing themselves as efficiently &mdash; the biological beginning of decline, before outright breakdown.</span></span></td><td class="col-grid">Mortality</td>
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Hunger, exhaustion, illness, and raw biological baselines.</td>
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Takes a literal physical toll (Aging).</td>
             <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">Ground the Vessel: eat cleanly, move optimally, and anchor your physical frame to build a resilient survival baseline free of ambient panic.</td>
             <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">&ldquo;I am here, safely grounded in physical form.&rdquo;</td>
-            <td class="col-meta" style="border-left:2px solid rgba(212,175,55,0.3);color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:1px;"><span class="gloss">Delta<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Delta">+</button><span class="gloss-pop">The slowest brainwave band, dominant in deep, dreamless sleep &mdash; the conscious mind is fully offline while the body repairs itself.</span></span></td>
-            <td class="col-meta" style="font-size:12px;">Unconscious <span style="color:var(--dim);font-size:10px;">(Deep Sleep)</span></td>
+            <td class="col-meta" style="border-left:2px solid rgba(231,76,60,0.3);font-family:var(--sans);font-size:10px;letter-spacing:1px;"><span class="gloss">Delta<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Delta">+</button><span class="gloss-pop">The slowest brainwave band, dominant in deep, dreamless sleep &mdash; the conscious mind is fully offline while the body repairs itself.</span></span></td>
+            <td class="col-meta" style="font-size:12px;">Unconscious <span style="font-size:10px;">(Deep Sleep)</span></td>
             <td class="col-meta" style="font-size:12px;">Exist</td>
-            <td class="col-meta" style="font-size:12px;"><span class="gloss">Lead<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Lead">+</button><span class="gloss-pop">The heaviest, most inert starting material in alchemy &mdash; the raw, unrefined condition everything else in the sequence works on.</span></span> <span style="color:var(--dim);font-size:10px;">(Base)</span></td>
-            <td class="col-meta" style="font-size:12px;color:var(--grey);"><span class="gloss">Annamaya<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Annamaya">+</button><span class="gloss-pop">The &ldquo;food sheath&rdquo; &mdash; the physical body itself, the most outer and dense of the five koshas said to wrap the true Self.</span></span></td>
+            <td class="col-meta" style="font-size:12px;"><span class="gloss">Lead<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Lead">+</button><span class="gloss-pop">The heaviest, most inert starting material in alchemy &mdash; the raw, unrefined condition everything else in the sequence works on.</span></span> <span style="font-size:10px;">(Base)</span></td>
+            <td class="col-meta" style="font-size:12px;"><span class="gloss">Annamaya<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Annamaya">+</button><span class="gloss-pop">The &ldquo;food sheath&rdquo; &mdash; the physical body itself, the most outer and dense of the five koshas said to wrap the true Self.</span></span></td>
           </tr>
           <tr class="row-detail" id="matrix-detail-1"><td colspan="16"></td></tr>
 
-          <tr id="matrix-row-2" data-layer="2">
-            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-2" onclick="toggleMatrixRow(2)" aria-label="Expand Layer 2 detail">+</button><span style="color:var(--dim);font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 2</span>Breath<span style="display:block;font-size:9px;color:var(--dim);font-style:normal;letter-spacing:0;margin-top:2px;">Sacral Chakra</span></td>
+          <tr id="matrix-row-2" class="chakra-row-2" data-layer="2">
+            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-2" onclick="toggleMatrixRow(2)" aria-label="Expand Layer 2 detail">+</button><span style="font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 2</span>Breath<span class="chakra-label-2" style="display:block;font-size:9px;font-style:normal;letter-spacing:0;margin-top:2px;">Sacral Chakra</span></td>
             <td class="col-grid">First cry</td><td class="col-grid">Deepening</td><td class="col-grid">Rhythm</td><td class="col-grid">Emotion</td><td class="col-grid">Laboured</td><td class="col-grid">Last breath</td>
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Fluctuations between deep belly sighs and erratic breathing.</td>
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Locks panic or grief into the nervous system (Emotion).</td>
             <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">Cleanse the Energy: when an emotional wave hits, use conscious, rhythmic breathing to clear the charge rather than burying it in your tissue.</td>
             <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">&ldquo;I feel the moving currents of vital energy.&rdquo;</td>
-            <td class="col-meta" style="border-left:2px solid rgba(212,175,55,0.3);color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:1px;"><span class="gloss">Theta<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Theta">+</button><span class="gloss-pop">Active during the twilight zone between waking and sleep, or deep meditation &mdash; attention turns inward toward imagery, intuition, and dreams.</span></span></td>
-            <td class="col-meta" style="font-size:12px;">Subconscious <span style="color:var(--dim);font-size:10px;">(Twilight)</span></td>
+            <td class="col-meta" style="border-left:2px solid rgba(230,126,34,0.3);font-family:var(--sans);font-size:10px;letter-spacing:1px;"><span class="gloss">Theta<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Theta">+</button><span class="gloss-pop">Active during the twilight zone between waking and sleep, or deep meditation &mdash; attention turns inward toward imagery, intuition, and dreams.</span></span></td>
+            <td class="col-meta" style="font-size:12px;">Subconscious <span style="font-size:10px;">(Twilight)</span></td>
             <td class="col-meta" style="font-size:12px;">Feel</td>
-            <td class="col-meta" style="font-size:12px;"><span class="gloss">Copper<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Copper">+</button><span class="gloss-pop">An early refining stage &mdash; impurities in the base material start burning off, but the result is still volatile and unstable.</span></span> <span style="color:var(--dim);font-size:10px;">(Purify)</span></td>
-            <td class="col-meta" style="font-size:12px;color:var(--grey);"><span class="gloss">Pranamaya<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Pranamaya">+</button><span class="gloss-pop">The &ldquo;breath/vital-energy sheath&rdquo; &mdash; one layer in from the physical body: the life-force and breath that animates it.</span></span></td>
+            <td class="col-meta" style="font-size:12px;"><span class="gloss">Copper<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Copper">+</button><span class="gloss-pop">An early refining stage &mdash; impurities in the base material start burning off, but the result is still volatile and unstable.</span></span> <span style="font-size:10px;">(Purify)</span></td>
+            <td class="col-meta" style="font-size:12px;"><span class="gloss">Pranamaya<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Pranamaya">+</button><span class="gloss-pop">The &ldquo;breath/vital-energy sheath&rdquo; &mdash; one layer in from the physical body: the life-force and breath that animates it.</span></span></td>
           </tr>
           <tr class="row-detail" id="matrix-detail-2"><td colspan="16"></td></tr>
 
-          <tr id="matrix-row-3" data-layer="3">
-            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-3" onclick="toggleMatrixRow(3)" aria-label="Expand Layer 3 detail">+</button><span style="color:var(--dim);font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 3</span>Mind<span style="display:block;font-size:9px;color:var(--dim);font-style:normal;letter-spacing:0;margin-top:2px;">Solar Plexus</span></td>
+          <tr id="matrix-row-3" class="chakra-row-3" data-layer="3">
+            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-3" onclick="toggleMatrixRow(3)" aria-label="Expand Layer 3 detail">+</button><span style="font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 3</span>Mind<span class="chakra-label-3" style="display:block;font-size:9px;font-style:normal;letter-spacing:0;margin-top:2px;">Solar Plexus</span></td>
             <td class="col-grid">Sensory</td><td class="col-grid">Learning</td><td class="col-grid">Perception</td><td class="col-grid">Shifting</td><td class="col-grid">Fatigue</td><td class="col-grid">Loss of senses</td>
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Daily to-do lists, routine patterns, and automatic mental chatter.</td>
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Shatters routines, forcing focus to spin out (Shifting).</td>
             <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">Decondition the Mind: actively audit automatic loops and scripts. Train awareness to step back into the seat of the neutral observer.</td>
             <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">&ldquo;I observe my thoughts without becoming them.&rdquo;</td>
-            <td class="col-meta" style="border-left:2px solid rgba(212,175,55,0.3);color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:1px;"><span class="gloss">Alpha<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Alpha">+</button><span class="gloss-pop">The state of calm, relaxed wakefulness &mdash; an &ldquo;idling&rdquo; visual system, often peaking when the eyes close and the mind drifts.</span></span></td>
-            <td class="col-meta" style="font-size:12px;">Relaxed Waking <span style="color:var(--dim);font-size:10px;">(Visual Rest)</span></td>
+            <td class="col-meta" style="border-left:2px solid rgba(241,196,15,0.3);font-family:var(--sans);font-size:10px;letter-spacing:1px;"><span class="gloss">Alpha<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Alpha">+</button><span class="gloss-pop">The state of calm, relaxed wakefulness &mdash; an &ldquo;idling&rdquo; visual system, often peaking when the eyes close and the mind drifts.</span></span></td>
+            <td class="col-meta" style="font-size:12px;">Relaxed Waking <span style="font-size:10px;">(Visual Rest)</span></td>
             <td class="col-meta" style="font-size:12px;">Think</td>
-            <td class="col-meta" style="font-size:12px;"><span class="gloss">Iron<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Iron">+</button><span class="gloss-pop">A hardening stage &mdash; the volatility of the previous stage sets into something rigid and load-bearing, for better and worse.</span></span> <span style="color:var(--dim);font-size:10px;">(Strength)</span></td>
-            <td class="col-meta" style="font-size:12px;color:var(--grey);"><span class="gloss">Manomaya<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Manomaya">+</button><span class="gloss-pop">The &ldquo;mind sheath&rdquo; &mdash; the layer of thought, emotion, and sensory processing; where most people spend nearly all their time without noticing it.</span></span></td>
+            <td class="col-meta" style="font-size:12px;"><span class="gloss">Iron<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Iron">+</button><span class="gloss-pop">A hardening stage &mdash; the volatility of the previous stage sets into something rigid and load-bearing, for better and worse.</span></span> <span style="font-size:10px;">(Strength)</span></td>
+            <td class="col-meta" style="font-size:12px;"><span class="gloss">Manomaya<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Manomaya">+</button><span class="gloss-pop">The &ldquo;mind sheath&rdquo; &mdash; the layer of thought, emotion, and sensory processing; where most people spend nearly all their time without noticing it.</span></span></td>
           </tr>
           <tr class="row-detail" id="matrix-detail-3"><td colspan="16"></td></tr>
 
-          <tr id="matrix-row-4" data-layer="4">
-            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-4" onclick="toggleMatrixRow(4)" aria-label="Expand Layer 4 detail">+</button><span style="color:var(--dim);font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 4</span>Intellect<span style="display:block;font-size:9px;color:var(--dim);font-style:normal;letter-spacing:0;margin-top:2px;">Heart Chakra</span></td>
-            <td class="col-grid">Curiosity</td><td class="col-grid">Logic</td><td class="col-grid">Stability</td><td class="col-grid bright">Shifting beliefs</td><td class="col-grid">Decline</td><td class="col-grid">Loss of judgment</td>
+          <tr id="matrix-row-4" class="chakra-row-4" data-layer="4">
+            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-4" onclick="toggleMatrixRow(4)" aria-label="Expand Layer 4 detail">+</button><span style="font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 4</span>Intellect<span class="chakra-label-4" style="display:block;font-size:9px;font-style:normal;letter-spacing:0;margin-top:2px;">Heart Chakra</span></td>
+            <td class="col-grid">Curiosity</td><td class="col-grid">Logic</td><td class="col-grid">Stability</td><td class="col-grid gold">Shifting beliefs</td><td class="col-grid">Decline</td><td class="col-grid">Loss of judgment</td>
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Discerning right vs. wrong; building a structured logic framework.</td>
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Old worldviews fail over time, forcing a pivot (Shifting Beliefs).</td>
             <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">Bridge to Heart Wisdom: when core beliefs are tested by life, do not double down on rigid logic. Let old frameworks break to allow intuitive knowing.</td>
             <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">&ldquo;I choose core wisdom over rigid mental logic.&rdquo;</td>
-            <td class="col-meta" style="border-left:2px solid rgba(212,175,55,0.3);color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:1px;"><span class="gloss">Mu<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Mu">+</button><span class="gloss-pop">Shares Alpha's frequency but sits over the motor cortex &mdash; the body idling in neutral, present during physical stillness and vanishing the instant you move, or even intend to.</span></span></td>
-            <td class="col-meta" style="font-size:12px;">Stillness <span style="color:var(--dim);font-size:10px;">(Motor Ready)</span></td>
+            <td class="col-meta" style="border-left:2px solid rgba(46,204,113,0.3);font-family:var(--sans);font-size:10px;letter-spacing:1px;"><span class="gloss">Mu<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Mu">+</button><span class="gloss-pop">Shares Alpha's frequency but sits over the motor cortex &mdash; the body idling in neutral, present during physical stillness and vanishing the instant you move, or even intend to.</span></span></td>
+            <td class="col-meta" style="font-size:12px;">Stillness <span style="font-size:10px;">(Motor Ready)</span></td>
             <td class="col-meta" style="font-size:12px;">Connect</td>
-            <td class="col-meta" style="font-size:12px;"><span class="gloss">Silver<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Silver">+</button><span class="gloss-pop">A polishing stage &mdash; the rigid material of the last stage gets refined into something more responsive and reflective, without yet reaching gold's stability.</span></span> <span style="color:var(--dim);font-size:10px;">(Refine)</span></td>
-            <td class="col-meta" style="font-size:12px;color:var(--grey);"><span class="gloss">Vijnanamaya<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Vijnanamaya">+</button><span class="gloss-pop">The &ldquo;wisdom/intellect sheath&rdquo; &mdash; the layer of discernment, one step subtler than ordinary thought: the part that can notice the mind sheath working.</span></span></td>
+            <td class="col-meta" style="font-size:12px;"><span class="gloss">Silver<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Silver">+</button><span class="gloss-pop">A polishing stage &mdash; the rigid material of the last stage gets refined into something more responsive and reflective, without yet reaching gold's stability.</span></span> <span style="font-size:10px;">(Refine)</span></td>
+            <td class="col-meta" style="font-size:12px;"><span class="gloss">Vijnanamaya<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Vijnanamaya">+</button><span class="gloss-pop">The &ldquo;wisdom/intellect sheath&rdquo; &mdash; the layer of discernment, one step subtler than ordinary thought: the part that can notice the mind sheath working.</span></span></td>
           </tr>
           <tr class="row-detail" id="matrix-detail-4"><td colspan="16"></td></tr>
 
-          <tr id="matrix-row-5" data-layer="5">
-            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-5" onclick="toggleMatrixRow(5)" aria-label="Expand Layer 5 detail">+</button><span style="color:var(--dim);font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 5</span>Memory<span style="display:block;font-size:9px;color:var(--dim);font-style:normal;letter-spacing:0;margin-top:2px;">Throat Chakra</span></td>
-            <td class="col-grid">First impression</td><td class="col-grid">Experience</td><td class="col-grid">Storing</td><td class="col-grid bright">Trauma</td><td class="col-grid">Forgetfulness</td><td class="col-grid">Erasure</td>
+          <tr id="matrix-row-5" class="chakra-row-5" data-layer="5">
+            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-5" onclick="toggleMatrixRow(5)" aria-label="Expand Layer 5 detail">+</button><span style="font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 5</span>Memory<span class="chakra-label-5" style="display:block;font-size:9px;font-style:normal;letter-spacing:0;margin-top:2px;">Throat Chakra</span></td>
+            <td class="col-grid">First impression</td><td class="col-grid">Experience</td><td class="col-grid">Storing</td><td class="col-grid gold">Trauma</td><td class="col-grid">Forgetfulness</td><td class="col-grid">Erasure</td>
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Nostalgia, flashbacks, triggers, and automated habit loops.</td>
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Triggers deeply buried ghosts, wounds, or past failures (Trauma).</td>
             <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">Decondition the Memory: consciously unpack early conditioning. Reframe your past as purely educational database data rather than your definition.</td>
             <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">&ldquo;My past is educational data, not my definition.&rdquo;</td>
-            <td class="col-meta" style="border-left:2px solid rgba(212,175,55,0.3);color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:1px;"><span class="gloss">Beta<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Beta">+</button><span class="gloss-pop">The everyday waking state &mdash; dominant when attention is directed outward: solving problems, conversing, making decisions.</span></span></td>
-            <td class="col-meta" style="font-size:12px;">Active <span style="color:var(--dim);font-size:10px;">(Alert Focus)</span></td>
+            <td class="col-meta" style="border-left:2px solid rgba(52,152,219,0.3);font-family:var(--sans);font-size:10px;letter-spacing:1px;"><span class="gloss">Beta<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Beta">+</button><span class="gloss-pop">The everyday waking state &mdash; dominant when attention is directed outward: solving problems, conversing, making decisions.</span></span></td>
+            <td class="col-meta" style="font-size:12px;">Active <span style="font-size:10px;">(Alert Focus)</span></td>
             <td class="col-meta" style="font-size:12px;">Understand</td>
-            <td class="col-meta" style="font-size:12px;"><span class="gloss">Gold<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Gold">+</button><span class="gloss-pop">The classical alchemical goal-material &mdash; incorruptible, stable, &ldquo;illuminated.&rdquo; What the earlier, cruder stages were always in service of becoming.</span></span> <span style="color:var(--dim);font-size:10px;">(Illuminate)</span></td>
-            <td class="col-meta" style="font-size:12px;color:var(--grey);"><span class="gloss">Chitta<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Chitta">+</button><span class="gloss-pop">The mind-stuff, or memory-store &mdash; the layer that holds impressions, conditioning, and habitual patterns built up over time.</span></span></td>
+            <td class="col-meta" style="font-size:12px;"><span class="gloss">Gold<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Gold">+</button><span class="gloss-pop">The classical alchemical goal-material &mdash; incorruptible, stable, &ldquo;illuminated.&rdquo; What the earlier, cruder stages were always in service of becoming.</span></span> <span style="font-size:10px;">(Illuminate)</span></td>
+            <td class="col-meta" style="font-size:12px;"><span class="gloss">Chitta<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Chitta">+</button><span class="gloss-pop">The mind-stuff, or memory-store &mdash; the layer that holds impressions, conditioning, and habitual patterns built up over time.</span></span></td>
           </tr>
           <tr class="row-detail" id="matrix-detail-5"><td colspan="16"></td></tr>
 
-          <tr id="matrix-row-6" data-layer="6">
-            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-6" onclick="toggleMatrixRow(6)" aria-label="Expand Layer 6 detail">+</button><span style="color:var(--dim);font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 6</span>Ego<span style="display:block;font-size:9px;color:var(--dim);font-style:normal;letter-spacing:0;margin-top:2px;">Third Eye</span></td>
-            <td class="col-grid">Toddlerhood</td><td class="col-grid">Ambition</td><td class="col-grid">Persona</td><td class="col-grid red">Crisis</td><td class="col-grid red">Rigidity</td><td class="col-grid" style="color:var(--gold);font-style:italic;">Dissolution ✦</td>
+          <tr id="matrix-row-6" class="chakra-row-6" data-layer="6">
+            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-6" onclick="toggleMatrixRow(6)" aria-label="Expand Layer 6 detail">+</button><span style="font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 6</span>Ego<span class="chakra-label-6" style="display:block;font-size:9px;font-style:normal;letter-spacing:0;margin-top:2px;">Third Eye</span></td>
+            <td class="col-grid">Toddlerhood</td><td class="col-grid">Ambition</td><td class="col-grid">Persona</td><td class="col-grid red">Crisis</td><td class="col-grid red">Rigidity</td><td class="col-grid gold" style="font-style:italic;">Dissolution ✦</td>
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Feeling proud, defensive, or protective of &ldquo;who you think you are&rdquo;.</td>
             <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Causes your curated persona to completely shatter (Crisis).</td>
             <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">Dissolve the Persona: when an existential crisis hits your career or relationships, do not fight to save the mask. Use it to shatter false identity.</td>
             <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">&ldquo;I am not the mask; I am the one watching it.&rdquo;</td>
-            <td class="col-meta" style="border-left:2px solid rgba(212,175,55,0.3);color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:1px;"><span class="gloss">Gamma<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Gamma">+</button><span class="gloss-pop">The fastest standard brainwave band, associated with binding information across brain regions into one coherent experience &mdash; present during peak focus and sudden insight.</span></span></td>
-            <td class="col-meta" style="font-size:12px;">Superconsciousness <span style="color:var(--dim);font-size:10px;">(Hyper-Focus)</span></td>
+            <td class="col-meta" style="border-left:2px solid rgba(106,90,205,0.3);font-family:var(--sans);font-size:10px;letter-spacing:1px;"><span class="gloss">Gamma<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Gamma">+</button><span class="gloss-pop">The fastest standard brainwave band, associated with binding information across brain regions into one coherent experience &mdash; present during peak focus and sudden insight.</span></span></td>
+            <td class="col-meta" style="font-size:12px;">Superconsciousness <span style="font-size:10px;">(Hyper-Focus)</span></td>
             <td class="col-meta" style="font-size:12px;">Transcend</td>
             <td class="col-meta" style="font-size:12px;"><span class="gloss">Quintessence<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Quintessence">+</button><span class="gloss-pop">Literally the &ldquo;fifth essence&rdquo; &mdash; beyond the four classical elements, the pure spirit or vital essence said to underlie and animate all of them.</span></span></td>
-            <td class="col-meta" style="font-size:12px;color:var(--grey);"><span class="gloss">Ahamkara<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Ahamkara">+</button><span class="gloss-pop">Literally &ldquo;the I-maker&rdquo; &mdash; the function of mind that stamps &ldquo;me&rdquo; onto raw experience, manufacturing a sense of separate identity.</span></span></td>
+            <td class="col-meta" style="font-size:12px;"><span class="gloss">Ahamkara<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Ahamkara">+</button><span class="gloss-pop">Literally &ldquo;the I-maker&rdquo; &mdash; the function of mind that stamps &ldquo;me&rdquo; onto raw experience, manufacturing a sense of separate identity.</span></span></td>
           </tr>
           <tr class="row-detail" id="matrix-detail-6"><td colspan="16"></td></tr>
 
-          <tr class="gold-row" id="matrix-row-7" data-layer="7">
-            <td class="row-label" style="font-style:italic;color:var(--gold);text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-7" onclick="toggleMatrixRow(7)" aria-label="Expand Layer 7 detail">+</button><span style="font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;color:var(--gold);">Layer 7</span>Self / Soul<span style="display:block;font-size:9px;color:var(--gold);font-style:normal;letter-spacing:0;margin-top:2px;opacity:.7;">Crown Chakra</span></td>
-            <td class="col-grid" style="font-family:var(--sans);font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--gold);">Manifestation</td>
-            <td class="col-grid" style="font-family:var(--sans);font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--gold);">Realization</td>
-            <td class="col-grid" style="font-family:var(--sans);font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--gold);">Eternal Witness</td>
-            <td class="col-grid" style="font-family:var(--sans);font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--gold);">Transcends</td>
-            <td class="col-grid" style="font-family:var(--sans);font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--gold);">Unchanged</td>
-            <td class="col-grid" style="font-family:var(--sans);font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--gold);">Unchanged</td>
-            <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;color:var(--mid);">Operating from a quiet, peaceful space of non-judgmental observation.</td>
-            <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;color:var(--mid);">Complete immunity; remains entirely untouched (Transcends).</td>
-            <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;color:var(--mid);">Rest as the Witness: stop identifying with things that decay. When death arrives, view it as the effortless dropping of a mastered instrument.</td>
-            <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;color:var(--mid);">&ldquo;I Am That I Am. The Unchanging Source.&rdquo;</td>
-            <td class="col-meta" style="border-left:2px solid rgba(212,175,55,0.3);color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:1px;"><span class="gloss">Lambda<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Lambda">+</button><span class="gloss-pop">A rarely-observed, very high frequency band associated with profound meditative or altered states &mdash; deep stillness paired with rapid, high-coherence processing.</span></span></td>
-            <td class="col-meta" style="font-size:12px;color:var(--gold);">Transcendence <span style="opacity:.7;font-size:10px;">(Altered States)</span></td>
-            <td class="col-meta" style="font-size:12px;color:var(--gold);">I Am</td>
-            <td class="col-meta" style="font-size:12px;color:var(--gold);"><span class="gloss">Philosopher&rsquo;s Stone<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Philosopher&rsquo;s Stone">+</button><span class="gloss-pop">The legendary end-goal of alchemy &mdash; not a literal object but a completed transformation, capable of &ldquo;turning lead into gold&rdquo;: here, base conditioning fully transmuted into realized SELF.</span></span></td>
-            <td class="col-meta" style="font-size:12px;color:var(--gold);"><span class="gloss">Atman<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Atman">+</button><span class="gloss-pop">The individual self, in Vedanta &mdash; held as identical to, not separate from, universal consciousness. Closer to the awareness doing the possessing than a possession itself.</span></span></td>
+          <tr class="chakra-row-7" id="matrix-row-7" data-layer="7">
+            <td class="row-label" style="font-style:italic;text-align:left;padding-left:10px;"><button class="row-expand-btn" id="matrix-toggle-7" onclick="toggleMatrixRow(7)" aria-label="Expand Layer 7 detail">+</button><span style="font-size:8px;display:block;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Layer 7</span>Self / Soul<span class="chakra-label-7" style="display:block;font-size:9px;font-style:normal;letter-spacing:0;margin-top:2px;">Crown Chakra</span></td>
+            <td class="col-grid">Manifestation</td>
+            <td class="col-grid">Realization</td>
+            <td class="col-grid">Eternal Witness</td>
+            <td class="col-grid">Transcends</td>
+            <td class="col-grid">Unchanged</td>
+            <td class="col-grid">Unchanged</td>
+            <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Operating from a quiet, peaceful space of non-judgmental observation.</td>
+            <td class="col-lived" style="text-align:left;padding:14px 16px;font-size:12.5px;">Complete immunity; remains entirely untouched (Transcends).</td>
+            <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">Rest as the Witness: stop identifying with things that decay. When death arrives, view it as the effortless dropping of a mastered instrument.</td>
+            <td class="col-ascension" style="text-align:left;padding:14px 16px;font-size:12.5px;">&ldquo;I Am That I Am. The Unchanging Source.&rdquo;</td>
+            <td class="col-meta" style="border-left:2px solid rgba(155,89,182,0.3);font-family:var(--sans);font-size:10px;letter-spacing:1px;"><span class="gloss">Lambda<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Lambda">+</button><span class="gloss-pop">A rarely-observed, very high frequency band associated with profound meditative or altered states &mdash; deep stillness paired with rapid, high-coherence processing.</span></span></td>
+            <td class="col-meta" style="font-size:12px;">Transcendence <span style="font-size:10px;">(Altered States)</span></td>
+            <td class="col-meta" style="font-size:12px;">I Am</td>
+            <td class="col-meta" style="font-size:12px;"><span class="gloss">Philosopher&rsquo;s Stone<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Philosopher&rsquo;s Stone">+</button><span class="gloss-pop">The legendary end-goal of alchemy &mdash; not a literal object but a completed transformation, capable of &ldquo;turning lead into gold&rdquo;: here, base conditioning fully transmuted into realized SELF.</span></span></td>
+            <td class="col-meta" style="font-size:12px;"><span class="gloss">Atman<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Atman">+</button><span class="gloss-pop">The individual self, in Vedanta &mdash; held as identical to, not separate from, universal consciousness. Closer to the awareness doing the possessing than a possession itself.</span></span></td>
           </tr>
           <tr class="row-detail" id="matrix-detail-7"><td colspan="16"></td></tr>
         </tbody>
@@ -6789,6 +7313,10 @@ rgba(212,175,55,.06) 0%,transparent 65%);">
           <tr class="gloss-entry" id="gloss-dharma">
             <td>Dharma</td>
             <td>One's right action or duty in a given moment &mdash; not a fixed rulebook handed down from outside, but what is actually called for by your nature, circumstance, and stage on the path.</td>
+          </tr>
+          <tr class="gloss-entry" id="gloss-kama">
+            <td>Kama</td>
+            <td>Desire &mdash; wish, longing, or sensory pleasure; one of the four traditional aims of life (Purusharthas) alongside duty, prosperity, and liberation. In this framework, the raw craving that hardens into a constructed identity (Ahamkara).</td>
           </tr>
           <tr class="gloss-entry" id="gloss-karma">
             <td>Karma</td>
@@ -7971,22 +8499,124 @@ function updateNav(){
     if(lbl) lbl.innerHTML = nowOpen ? 'Collapse &#9650;' : 'Expand &#9660;';
   };
 
+  /* ── SMOOTH HEIGHT HELPERS ────────────────────────────────────────────
+     CSS-only max-height accordions (max-height:0 <-> max-height:none) can't
+     actually animate, because a transition needs two real length values —
+     "none" isn't one, so the browser just snaps to full height instantly
+     while opacity keeps fading on its own timer. That mismatch is what read
+     as an abrupt jerk when opening framework / self-enquiry cards. These
+     helpers measure the element's real scrollHeight and animate to/from
+     that pixel value instead, then release back to max-height:none once
+     open so later content changes (gloss popups, orientation change) don't
+     get clipped. ── */
+  function isStillOpen(el){
+    var fc = el.closest('.framework-card');
+    if(fc) return !fc.classList.contains('collapsed');
+    var pc = el.closest('.pillar-card');
+    if(pc) return pc.classList.contains('open');
+    return true;
+  }
+  window.expandHeight = function expandHeight(el){
+    if(!el) return;
+    // scrollHeight reflects the element's real content height regardless of
+    // any current max-height clipping, so it's safe to read before pinning.
+    var target = el.scrollHeight;
+    el.style.maxHeight = '0px';
+    void el.offsetHeight; // force a synchronous reflow so 0px lands on a real frame
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
+        el.style.maxHeight = target + 'px';
+      });
+    });
+    var released = false;
+    function release(){
+      if(released) return;
+      released = true;
+      el.removeEventListener('transitionend', onEnd);
+      // Only hand back to 'none' if this card is still the one meant to be
+      // open — a card collapsed elsewhere in the meantime (accordion,
+      // section reset) already owns its own max-height and shouldn't have
+      // it overwritten by a late-arriving release from an earlier open.
+      if(isStillOpen(el)) el.style.maxHeight = 'none';
+    }
+    function onEnd(e){
+      if(e.target !== el || e.propertyName !== 'max-height') return;
+      release();
+    }
+    el.addEventListener('transitionend', onEnd);
+    // Fallback: if the transition gets frozen/interrupted mid-flight (e.g. a
+    // theme toggle firing freezeTransitions() while this was still animating)
+    // no transitionend fires at all, and without this, max-height would stay
+    // pinned at today's pixel number forever — clipping the card's own
+    // content the moment it needs to be any taller (a theme swap nudging
+    // line-height, a resize, reopening after the section was reset). This is
+    // what caused the "card looks open but the body is empty" bug.
+    setTimeout(release, 550);
+  };
+  window.collapseHeight = function collapseHeight(el){
+    if(!el) return;
+    var current = el.style.maxHeight;
+    if(!current || current === 'none'){
+      el.style.maxHeight = el.scrollHeight + 'px';
+      void el.offsetHeight; // force reflow so the pinned height registers before it changes again
+    }
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
+        el.style.maxHeight = '0px';
+      });
+    });
+  };
+  var expandHeight = window.expandHeight, collapseHeight = window.collapseHeight;
+
   /* ── FRAMEWORK CARDS: click to toggle. Scoped accordion — opening one card
      closes any other open card in the SAME section (#framework-full-content
      or #ascent-full-content), but the two sections stay independent of each
      other. ── */
   document.querySelectorAll('.framework-card').forEach(function(card){
+    var content = card.querySelector('.framework-content');
     card.addEventListener('click', function(e){
       if(e.target.tagName === 'A') return;
+      freezeTransitions();
       var wrap = this.closest('#ascent-full-content') || this.closest('#framework-full-content');
       var isOpening = this.classList.contains('collapsed');
       if(wrap && isOpening){
         var self = this;
         wrap.querySelectorAll('.framework-card').forEach(function(c){
-          if(c !== self) c.classList.add('collapsed');
+          if(c !== self && !c.classList.contains('collapsed')){
+            c.classList.add('collapsed');
+            collapseHeight(c.querySelector('.framework-content'));
+          }
         });
       }
       this.classList.toggle('collapsed');
+      if(isOpening) expandHeight(content); else collapseHeight(content);
+    });
+  });
+
+  /* ── PILLAR CARDS (5 Pillars of Self-Enquiry): click to toggle. Accordion —
+     opening one card closes any other open card in the same .pillar-grid. ── */
+  document.querySelectorAll('.pillar-card').forEach(function(card){
+    var body = card.querySelector('.p-body');
+    card.addEventListener('click', function(e){
+      if(e.target.tagName === 'A') return;
+      freezeTransitions();
+      var grid = this.closest('.pillar-grid');
+      var isOpening = !this.classList.contains('open');
+      if(grid && isOpening){
+        var self = this;
+        grid.querySelectorAll('.pillar-card.open').forEach(function(c){
+          if(c !== self){
+            c.classList.remove('open');
+            collapseHeight(c.querySelector('.p-body'));
+            var l = c.querySelector('.p-expand');
+            if(l) l.innerHTML = 'Expand &#9660;';
+          }
+        });
+      }
+      this.classList.toggle('open');
+      if(isOpening) expandHeight(body); else collapseHeight(body);
+      var lbl = this.querySelector('.p-expand');
+      if(lbl) lbl.innerHTML = this.classList.contains('open') ? 'Collapse &#9650;' : 'Expand &#9660;';
     });
   });
 
@@ -8026,7 +8656,51 @@ function sectionCollapse(id,btn){
   } else {
     wrap.classList.add('collapsed');
     if(btn)btn.innerHTML=btn.innerHTML.replace('Collapse','Expand').replace('▲','▼').replace('&#9650;','&#9660;');
+    resetNestedToggles(wrap);
   }
+}
+
+/* ── RESET NESTED EXPAND STATE ────────────────────────────────────────────
+   When a section-collapse-wrap closes, any per-card / per-row accordion
+   state left open inside it (Framework cards, Ascent of Self cards,
+   Self-Enquiry pillars, Enneagram cards, Master Matrix rows) is reset to
+   collapsed. Otherwise the wrap just hides at max-height:0 while its
+   children keep their open state, so re-expanding the section shows the
+   same card still expanded instead of the intended fresh, all-collapsed
+   view. Purely additive — sections with no nested toggles are unaffected
+   since the querySelectorAll calls simply find nothing. ── */
+function resetNestedToggles(wrap){
+  // Framework + Ascent of Self cards: 'collapsed' IS their own closed state
+  wrap.querySelectorAll('.framework-card:not(.collapsed)').forEach(function(c){
+    c.classList.add('collapsed');
+    var fc=c.querySelector('.framework-content');
+    if(fc) fc.style.maxHeight='';
+  });
+  // Self-Enquiry pillar cards: 'open' is their expanded state
+  wrap.querySelectorAll('.pillar-card.open').forEach(function(c){
+    c.classList.remove('open');
+    var pb=c.querySelector('.p-body');
+    if(pb) pb.style.maxHeight='';
+    var lbl=c.querySelector('.p-expand');
+    if(lbl) lbl.innerHTML='Expand &#9660;';
+  });
+  // Enneagram cards: 'open' is their expanded state
+  wrap.querySelectorAll('.enneagram-card.open').forEach(function(c){
+    c.classList.remove('open');
+    var lbl=c.querySelector('.ec-toggle');
+    if(lbl) lbl.innerHTML='Expand &#9660;';
+  });
+  var ennBtn=wrap.querySelector('#ennExpandBtn');
+  if(ennBtn) ennBtn.innerHTML='Expand All 9 Types &#9660;';
+  // Master Matrix rows: expanded state is an inline display:table-row
+  wrap.querySelectorAll('.row-detail').forEach(function(d){
+    if(d.style.display==='table-row'){
+      d.style.display='none';
+      var n=d.id.replace('matrix-detail-','');
+      var b=document.getElementById('matrix-toggle-'+n);
+      if(b) b.textContent='+';
+    }
+  });
 }
 
 /* ── ENNEAGRAM EXPAND ALL ────────────────────────────────────────────────── */
@@ -8094,13 +8768,64 @@ function scrollToAscentCard(n){
   function openAndScroll(){
     // accordion: close any other open stage before opening this one
     document.querySelectorAll('#ascent-full-content .framework-card').forEach(function(c){
-      if(c !== card) c.classList.add('collapsed');
+      if(c !== card && !c.classList.contains('collapsed')){
+        c.classList.add('collapsed');
+        if(typeof collapseHeight==='function') collapseHeight(c.querySelector('.framework-content'));
+      }
     });
+    var wasCardCollapsed = card.classList.contains('collapsed');
     card.classList.remove('collapsed');
+    if(wasCardCollapsed && typeof expandHeight==='function') expandHeight(card.querySelector('.framework-content'));
     card.scrollIntoView({behavior:'smooth', block:'start'});
   }
 
   if(wasCollapsed){ setTimeout(openAndScroll, 350); } else { openAndScroll(); }
+}
+
+/* ── ROSETTA STONE MAP: click a type → expand the table (if collapsed),
+   scroll to + briefly flash that type's row. The table has no per-row
+   expand state (it's one flat table), so a flash is the only way to
+   call out which row just got jumped to. ── */
+function scrollToRasaRow(n){
+  var wrap = document.getElementById('rasa-table-wrap');
+  var wasCollapsed = wrap && wrap.classList.contains('collapsed');
+  if(wasCollapsed) sectionCollapse('rasa-table-wrap');
+
+  var row = document.getElementById('rasa-row-' + n);
+  if(!row) return;
+
+  function focusRow(){
+    row.classList.remove('jump-flash');
+    void row.offsetWidth; // restart animation if the same row is tapped twice
+    row.classList.add('jump-flash');
+    row.scrollIntoView({behavior:'smooth', block:'center'});
+    setTimeout(function(){ row.classList.remove('jump-flash'); }, 1700);
+  }
+
+  if(wasCollapsed){ setTimeout(focusRow, 350); } else { focusRow(); }
+}
+
+/* ── MASTERS AT A GLANCE MAP: click a teacher → expand the grid (if
+   collapsed), scroll to + briefly flash that teacher's card. Same flash
+   pattern as scrollToRasaRow, since these cards have no individual
+   expand/collapse state either. ── */
+function scrollToMasterCard(n){
+  var wrap = document.getElementById('masters-full-content');
+  var wasCollapsed = wrap && wrap.classList.contains('collapsed');
+  if(wasCollapsed) sectionCollapse('masters-full-content');
+
+  var card = document.getElementById('master-card-' + n);
+  if(!card) return;
+
+  function focusCard(){
+    card.classList.remove('jump-flash');
+    void card.offsetWidth;
+    card.classList.add('jump-flash');
+    card.scrollIntoView({behavior:'smooth', block:'start'});
+    setTimeout(function(){ card.classList.remove('jump-flash'); }, 1700);
+  }
+
+  if(wasCollapsed){ setTimeout(focusCard, 350); } else { focusCard(); }
 }
 
 /* ── FOUNDATION TOGGLE ───────────────────────────────────────────────────── */
@@ -8117,13 +8842,42 @@ function toggleFoundation(btn){
     btn.setAttribute('aria-expanded','true');
   }
 }
+/* ── FREEZE-TRANSITIONS HELPER ────────────────────────────────────────────
+   Originally written inline inside toggleTheme() to stop the page's many
+   independently-timed transitions firing out of sync and reading as a
+   flash. The same jank shows up whenever an accordion click changes page
+   height under the fixed, backdrop-filter nav (framework/pillar/enneagram
+   cards) — most visible on mobile and in dark theme where the flash reads
+   as a bright flicker against the dark background. Pulled out here so any
+   interaction that reflows the layout can borrow the same fix. ── */
+function freezeTransitions(){
+  var html = document.documentElement;
+  html.classList.add('theme-swap');
+  // Desktop's 80ms was tuned specifically to outlast the fixed nav's
+  // backdrop-filter blur recompute (see toggleTheme below). That cost no
+  // longer exists on mobile — backdrop-filter was removed from both the
+  // site nav and the mobile nav dropdown — but mobile still has to
+  // recalculate every [data-theme="light"] rule across this long document,
+  // which can take noticeably longer than 80ms on slower Android hardware.
+  // If the freeze lifts before that finishes, whatever hasn't repainted yet
+  // still transitions individually and reads as flicker. Give mobile more
+  // headroom than desktop needs.
+  var unfreezeDelay = (window.innerWidth <= 900) ? 220 : 80;
+  requestAnimationFrame(function(){
+    requestAnimationFrame(function(){
+      setTimeout(function(){
+        html.classList.remove('theme-swap');
+      }, unfreezeDelay);
+    });
+  });
+}
 /* ── THEME TOGGLE ─────────────────────────────────────────────────────────── */
 function toggleTheme(){
   var html = document.documentElement;
   // Freeze all transitions before the swap so the hundreds of independently
   // timed color transitions on this page don't fire out of sync and read
   // as a flash/flicker.
-  html.classList.add('theme-swap');
+  freezeTransitions();
   var current = html.getAttribute('data-theme');
   var next = (current === 'light') ? 'dark' : 'light';
   html.setAttribute('data-theme', next === 'dark' ? '' : 'light');
@@ -8148,13 +8902,6 @@ function toggleTheme(){
   // viewport is — on desktop that recompute can still be mid-flight when the next
   // frame lands, so removing the freeze right then reads as a flicker. 80ms is
   // comfortably past that on desktop while still feeling instant to the user.
-  requestAnimationFrame(function(){
-    requestAnimationFrame(function(){
-      setTimeout(function(){
-        html.classList.remove('theme-swap');
-      }, 80);
-    });
-  });
 }
 // Theme already set in <head> — just sync button icons and reveal
 (function(){
@@ -9030,7 +9777,7 @@ init();
     var wrap = document.getElementById('masterMatrixWrap');
     if(wrap) wrap.setAttribute('data-mode', mode);
     var table = document.getElementById('masterMatrixTable');
-    if(table) table.style.minWidth = (mode === 'grid') ? '1200px' : '980px';
+    if(table) table.style.minWidth = (mode === 'grid') ? '1000px' : '1150px';
     document.querySelectorAll('.matrix-mode-toggle .mode-btn').forEach(function(b){
       b.classList.toggle('active', b.getAttribute('data-mode-btn') === mode);
     });
