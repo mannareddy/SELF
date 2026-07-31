@@ -46,6 +46,17 @@ background:var(--bg);   /* add this line */
 .theme-swap, .theme-swap *, .theme-swap *::before, .theme-swap *::after{
   transition:none !important;
 }
+/* Exception: freezeTransitions() is also called on every framework/pillar
+   card click (not just theme swaps — see the comment above its definition),
+   so the blanket freeze above was silently cancelling the card's own
+   open/close height animation, which needs its transition to survive to
+   actually glide instead of snap. Keep it alive here. */
+.theme-swap .framework-content{
+  transition:max-height .4s ease,opacity .3s ease !important;
+}
+.theme-swap .p-body{
+  transition:max-height .4s ease,opacity .3s ease,margin-top .4s ease,padding-top .4s ease,border-top-width .4s ease !important;
+}
 body{
   background:var(--bg);
   color:var(--white);
@@ -8498,6 +8509,13 @@ function updateNav(){
      that pixel value instead, then release back to max-height:none once
      open so later content changes (gloss popups, orientation change) don't
      get clipped. ── */
+  function isStillOpen(el){
+    var fc = el.closest('.framework-card');
+    if(fc) return !fc.classList.contains('collapsed');
+    var pc = el.closest('.pillar-card');
+    if(pc) return pc.classList.contains('open');
+    return true;
+  }
   window.expandHeight = function expandHeight(el){
     if(!el) return;
     // scrollHeight reflects the element's real content height regardless of
@@ -8510,11 +8528,30 @@ function updateNav(){
         el.style.maxHeight = target + 'px';
       });
     });
-    el.addEventListener('transitionend', function onEnd(e){
-      if(e.target !== el || e.propertyName !== 'max-height') return;
-      el.style.maxHeight = 'none';
+    var released = false;
+    function release(){
+      if(released) return;
+      released = true;
       el.removeEventListener('transitionend', onEnd);
-    });
+      // Only hand back to 'none' if this card is still the one meant to be
+      // open — a card collapsed elsewhere in the meantime (accordion,
+      // section reset) already owns its own max-height and shouldn't have
+      // it overwritten by a late-arriving release from an earlier open.
+      if(isStillOpen(el)) el.style.maxHeight = 'none';
+    }
+    function onEnd(e){
+      if(e.target !== el || e.propertyName !== 'max-height') return;
+      release();
+    }
+    el.addEventListener('transitionend', onEnd);
+    // Fallback: if the transition gets frozen/interrupted mid-flight (e.g. a
+    // theme toggle firing freezeTransitions() while this was still animating)
+    // no transitionend fires at all, and without this, max-height would stay
+    // pinned at today's pixel number forever — clipping the card's own
+    // content the moment it needs to be any taller (a theme swap nudging
+    // line-height, a resize, reopening after the section was reset). This is
+    // what caused the "card looks open but the body is empty" bug.
+    setTimeout(release, 550);
   };
   window.collapseHeight = function collapseHeight(el){
     if(!el) return;
@@ -8816,11 +8853,21 @@ function toggleFoundation(btn){
 function freezeTransitions(){
   var html = document.documentElement;
   html.classList.add('theme-swap');
+  // Desktop's 80ms was tuned specifically to outlast the fixed nav's
+  // backdrop-filter blur recompute (see toggleTheme below). That cost no
+  // longer exists on mobile — backdrop-filter was removed from both the
+  // site nav and the mobile nav dropdown — but mobile still has to
+  // recalculate every [data-theme="light"] rule across this long document,
+  // which can take noticeably longer than 80ms on slower Android hardware.
+  // If the freeze lifts before that finishes, whatever hasn't repainted yet
+  // still transitions individually and reads as flicker. Give mobile more
+  // headroom than desktop needs.
+  var unfreezeDelay = (window.innerWidth <= 900) ? 220 : 80;
   requestAnimationFrame(function(){
     requestAnimationFrame(function(){
       setTimeout(function(){
         html.classList.remove('theme-swap');
-      }, 80);
+      }, unfreezeDelay);
     });
   });
 }
