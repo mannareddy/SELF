@@ -839,7 +839,15 @@ a:hover{opacity:.7;}
 .site-nav{
   position:fixed;top:0;left:0;right:0;z-index:999;height:var(--nav-h);
   display:flex;align-items:center;
-  background:rgba(0,0,0,0.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  /* backdrop-filter removed — same reasoning as the mobile .site-nav/.mnav-panel
+     fix below: a blurred fixed layer has to recompute its blur sample against
+     the newly-recolored page underneath it on every theme swap, and that
+     recompute can still be mid-flight when freezeTransitions() lifts, which
+     reads as a bright blurred flash ("flashlight") near the top of the
+     screen — worse the more gradient-heavy the page underneath gets. Opacity
+     bumped from .92 to .97 to keep the nav legible without the blur, matching
+     the .97 used on .mnav-panel for the same tradeoff. */
+  background:rgba(0,0,0,0.97);
   border-bottom:2px solid rgba(212,175,55,0.55);transition:background .3s;
   overflow-x:clip;
   will-change:auto;
@@ -9043,23 +9051,23 @@ function toggleFoundation(btn){
    Originally written inline inside toggleTheme() to stop the page's many
    independently-timed transitions firing out of sync and reading as a
    flash. The same jank shows up whenever an accordion click changes page
-   height under the fixed, backdrop-filter nav (framework/pillar/enneagram
-   cards) — most visible on mobile and in dark theme where the flash reads
-   as a bright flicker against the dark background. Pulled out here so any
-   interaction that reflows the layout can borrow the same fix. ── */
+   height under the fixed nav (framework/pillar/enneagram cards) — most
+   visible on mobile and in dark theme where the flash reads as a bright
+   flicker against the dark background. Pulled out here so any interaction
+   that reflows the layout can borrow the same fix. ── */
 function freezeTransitions(){
   var html = document.documentElement;
   html.classList.add('theme-swap');
-  // Desktop's 80ms was tuned specifically to outlast the fixed nav's
-  // backdrop-filter blur recompute (see toggleTheme below). That cost no
-  // longer exists on mobile — backdrop-filter was removed from both the
-  // site nav and the mobile nav dropdown — but mobile still has to
-  // recalculate every [data-theme="light"] rule across this long document,
-  // which can take noticeably longer than 80ms on slower Android hardware.
-  // If the freeze lifts before that finishes, whatever hasn't repainted yet
-  // still transitions individually and reads as flicker. Give mobile more
-  // headroom than desktop needs.
-  var unfreezeDelay = (window.innerWidth <= 900) ? 220 : 80;
+  // backdrop-filter is gone from .site-nav and .mnav-panel on both desktop
+  // and mobile now, so neither has that recompute cost anymore. The
+  // remaining cost on a swap is repainting every large radial-gradient
+  // decorative background across the page (recomputed against the new
+  // --bg underneath) plus, on mobile, recalculating every [data-theme="light"]
+  // rule across this long document on slower hardware. If the freeze lifts
+  // before that finishes, whatever hasn't repainted yet still transitions
+  // individually and reads as flicker. Give mobile more headroom than
+  // desktop needs.
+  var unfreezeDelay = (window.innerWidth <= 900) ? 220 : 100;
   requestAnimationFrame(function(){
     requestAnimationFrame(function(){
       setTimeout(function(){
@@ -9092,13 +9100,11 @@ function toggleTheme(){
   // Double rAF: the first runs after the browser commits the data-theme
   // change to a frame; the nested second runs after that frame paints,
   // which is the safe moment to remove .theme-swap without the removal
-  // itself triggering a visible re-transition.
-  // Double rAF gets us past the frame where data-theme actually swaps and paints.
-  // A short extra delay on top of that is deliberate: backdrop-filter blur on the
-  // fixed nav has to recompute over its full width, which is slower the wider the
-  // viewport is — on desktop that recompute can still be mid-flight when the next
-  // frame lands, so removing the freeze right then reads as a flicker. 80ms is
-  // comfortably past that on desktop while still feeling instant to the user.
+  // itself triggering a visible re-transition. The actual freeze/unfreeze
+  // (including the extra timeout beyond the double rAF, sized per-viewport)
+  // lives in freezeTransitions() above — see the comment there for what
+  // that extra delay is covering now that backdrop-filter is gone from
+  // the nav on both desktop and mobile.
 }
 // Theme already set in <head> — just sync button icons and reveal
 (function(){
