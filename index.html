@@ -50,12 +50,15 @@ background:var(--bg);   /* add this line */
    card click (not just theme swaps — see the comment above its definition),
    so the blanket freeze above was silently cancelling the card's own
    open/close height animation, which needs its transition to survive to
-   actually glide instead of snap. Keep it alive here. */
+   actually glide instead of snap. Keep it alive here. Framework and pillar
+   cards now share the exact same 2-property animation contract
+   (max-height + opacity only — no margin/padding/border animating
+   alongside it), so both rules below are identical on purpose. */
 .theme-swap .framework-content{
   transition:max-height .4s ease,opacity .3s ease !important;
 }
 .theme-swap .p-body{
-  transition:max-height .4s ease,opacity .3s ease,margin-top .4s ease,padding-top .4s ease,border-top-width .4s ease !important;
+  transition:max-height .4s ease,opacity .3s ease !important;
 }
 body{
   background:var(--bg);
@@ -1381,8 +1384,8 @@ section{scroll-margin-top:56px;}
 .pillar-card .p-num{font-family:var(--sans);font-size:10px;letter-spacing:3px;color:var(--gold);opacity:.65;margin-bottom:10px;display:block;}
 .pillar-card .p-title{font-family:var(--serif);font-size:clamp(19px,2vw,24px);font-weight:400;color:var(--white);margin-bottom:0;line-height:1.35;}
 .pillar-card .p-expand{font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.7;position:absolute;top:32px;right:28px;margin-top:0;display:block;}
-.pillar-card .p-body{font-family:var(--serif);font-size:15.5px;font-weight:300;color:var(--grey);line-height:1.88;overflow:hidden;max-height:0;opacity:0;margin-top:0;border-top:0 solid rgba(212,175,55,0.3);padding-top:0;transition:max-height .4s ease,opacity .3s ease,margin-top .4s ease,padding-top .4s ease,border-top-width .4s ease;}
-.pillar-card.open .p-body{opacity:1;margin-top:16px;border-top-width:1px;padding-top:16px;}
+.pillar-card .p-body{font-family:var(--serif);font-size:15.5px;font-weight:300;color:var(--grey);line-height:1.88;overflow:hidden;max-height:0;opacity:0;margin-top:0;border-top:1px solid rgba(212,175,55,0.3);padding-top:32px;transition:max-height .4s ease,opacity .3s ease;}
+.pillar-card.open .p-body{opacity:1;}
 /* max-height itself is set inline in px by JS (see pillar-card click handler) so it can
    animate to the element's real content height instead of snapping via display:none/block —
    this was the source of the abrupt, non-smooth "jerk" reported when opening these cards. */
@@ -8876,6 +8879,7 @@ function scrollToEnnCard(n){
   if(!card) return;
 
   function openAndScroll(){
+    if(typeof freezeTransitions==='function') freezeTransitions();
     // accordion: close any other open type before opening this one
     document.querySelectorAll('#ennGrid .enneagram-card.open').forEach(function(c){
       if(c !== card){
@@ -8912,6 +8916,7 @@ function scrollToAscentCard(n){
   if(!card) return;
 
   function openAndScroll(){
+    if(typeof freezeTransitions==='function') freezeTransitions();
     var content = card.querySelector('.framework-content');
     var wasCardCollapsed = card.classList.contains('collapsed');
     function openThisCard(){
