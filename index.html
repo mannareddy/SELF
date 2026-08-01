@@ -8310,7 +8310,25 @@ voidRenderLastNote();
     cachedTotal = doc.scrollHeight - doc.clientHeight;
   }
   recalcTotal();
-  window.addEventListener('resize', recalcTotal, {passive:true});
+  // Mobile browsers fire 'resize' purely from their own address-bar/toolbar
+  // show-hide as the page scrolls (no actual viewport width change). recalcTotal
+  // forces a synchronous layout read (scrollHeight/clientHeight) — doing that on
+  // every one of those toolbar-driven resize events, right while cards are
+  // expanding/collapsing and the page height is already shifting under it, is
+  // exactly the kind of layout thrashing that keeps the toolbar mid-animation
+  // instead of letting it settle, which reads as continuous flicker at the
+  // bottom of the screen. Only actual width changes (real rotation/resize)
+  // need a recalc; a height-only 'resize' can be ignored.
+  var __lastViewportWidth = window.innerWidth;
+  function onlyOnRealResize(fn){
+    return function(){
+      var vw = window.innerWidth;
+      if(vw === __lastViewportWidth) return;
+      __lastViewportWidth = vw;
+      fn();
+    };
+  }
+  window.addEventListener('resize', onlyOnRealResize(recalcTotal), {passive:true});
   // Recalc shortly after any collapse/expand transition finishes (transitions
   // in this page run .5s or less), so the progress bar stays accurate without
   // forcing layout on every scroll frame.
@@ -8433,7 +8451,7 @@ function updateNav(){
     });
   }
   cacheSectionTops();
-  window.addEventListener('resize', cacheSectionTops, {passive:true});
+  window.addEventListener('resize', onlyOnRealResize(cacheSectionTops), {passive:true});
 
   var sweepPending = false;
   function sweepActive(){
