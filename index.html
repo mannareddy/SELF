@@ -1384,8 +1384,10 @@ section{scroll-margin-top:56px;}
 .pillar-card .p-num{font-family:var(--sans);font-size:10px;letter-spacing:3px;color:var(--gold);opacity:.65;margin-bottom:10px;display:block;}
 .pillar-card .p-title{font-family:var(--serif);font-size:clamp(19px,2vw,24px);font-weight:400;color:var(--white);margin-bottom:0;line-height:1.35;}
 .pillar-card .p-expand{font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.7;position:absolute;top:32px;right:28px;margin-top:0;display:block;}
-.pillar-card .p-body{font-family:var(--serif);font-size:15.5px;font-weight:300;color:var(--grey);line-height:1.88;overflow:hidden;max-height:0;opacity:0;margin-top:0;border-top:1px solid rgba(212,175,55,0.3);padding-top:32px;transition:max-height .4s ease,opacity .3s ease;}
+.pillar-card .p-body{font-family:var(--serif);font-size:15.5px;font-weight:300;color:var(--grey);line-height:1.88;overflow:hidden;overflow-anchor:none;max-height:0;opacity:0;margin-top:0;border-top:1px solid rgba(212,175,55,0.3);padding-top:32px;transition:max-height .4s ease,opacity .3s ease;}
 .pillar-card.open .p-body{opacity:1;}
+.pillar-card,.pillar-grid{overflow-anchor:none;}
+.framework-card,.framework-grid,.framework-content{overflow-anchor:none;}
 /* max-height itself is set inline in px by JS (see pillar-card click handler) so it can
    animate to the element's real content height instead of snapping via display:none/block —
    this was the source of the abrupt, non-smooth "jerk" reported when opening these cards. */
