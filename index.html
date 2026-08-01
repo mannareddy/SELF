@@ -656,14 +656,12 @@ body{
   background: var(--bg-header) !important;
 }
 /* Light: nav */
-[data-theme="light"] .site-nav{background:rgba(245,241,232,0.98) !important;border-bottom:2px solid rgba(var(--shadow-rgb),0.15) !important;}
-[data-theme="light"] .site-nav.scrolled{background:rgba(245,241,232,1) !important;}
+[data-theme="light"] .site-nav{background:rgba(245,241,232,0.99) !important;border-bottom:2px solid rgba(var(--shadow-rgb),0.15) !important;}
+[data-theme="light"] .site-nav.scrolled{background:rgba(245,241,232,0.99) !important;}
 [data-theme="light"] .nav-left li a,[data-theme="light"] .nav-right li a{color:var(--text-nav) !important;border-right-color:rgba(var(--shadow-rgb),0.1) !important;}
 [data-theme="light"] .nav-left li:first-child a{border-left-color:rgba(var(--shadow-rgb),0.1) !important;}
 [data-theme="light"] .nav-left li a.active,[data-theme="light"] .nav-right li a.active{color:var(--accent-gold) !important;}
 [data-theme="light"] .nav-left li a:hover,[data-theme="light"] .nav-right li a:hover{color:var(--accent-gold) !important;}
-[data-theme="light"] .site-nav{background:rgba(245,241,232,0.96) !important;}
-[data-theme="light"] .site-nav.scrolled{background:rgba(245,241,232,0.99) !important;}
 [data-theme="light"] .nav-logo-center{border-color:rgba(var(--accent-gold-rgb),0.5) !important;}
 [data-theme="light"] #themeToggleBtn{background:rgba(245,241,232,0.98) !important;border-color:rgba(var(--shadow-rgb),0.15) !important;color:var(--text-dim) !important;}
 [data-theme="light"] .progress-bar{background:linear-gradient(90deg,rgba(var(--accent-gold-rgb),0.4),var(--accent-gold));}
@@ -1067,9 +1065,10 @@ a:hover{opacity:.7;}
     padding:0 !important;
     border-bottom:2px solid rgba(212,175,55,0.55) !important;
   }
-  [data-theme="light"] .site-nav{
-    border-bottom:2px solid rgba(0,0,0,0.15) !important;
-  }
+  /* [data-theme="light"] .site-nav border-bottom override removed here —
+     rgba(0,0,0,0.15) is identical to the global rule's
+     rgba(var(--shadow-rgb),0.15), since --shadow-rgb is 0,0,0 in both
+     themes. This mobile-scoped copy was dead weight. */
 
   /* Left division: hamburger in-flow (not fixed) */
   .mnav-toggle{
@@ -2671,10 +2670,11 @@ tr.matrix-highlight{
   }
 }
  
-  /* Light theme solid nav on mobile */
-  [data-theme="light"] .site-nav{
-    background:rgba(245,241,232,0.99) !important;
-  }
+  /* [data-theme="light"] .site-nav background override removed here — despite
+     its "mobile" comment, this rule sat outside any @media block and was
+     already applying globally; it duplicated (same 0.99 value) the
+     consolidated [data-theme="light"] .site-nav rule near the top of the
+     light-theme block. */
  
 /* ── Progress bar: requestAnimationFrame is the correct fix for scroll perf ──
    The progress bar width update via JS .style.width on scroll can cause
