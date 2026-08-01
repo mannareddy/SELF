@@ -8784,6 +8784,38 @@ function toggleEnn(btn){
 /* ── ENNEAGRAM MAP: click a node → expand the grid (if collapsed), open
    that type's card, scroll to it. Same expand-then-scroll pattern as
    openFaqEntry() elsewhere on the site. ── */
+/* ── SCROLL-AFTER-SETTLE ──────────────────────────────────────────────────
+   scrollIntoView() measures layout synchronously at call time. Framework
+   cards animate their height via expandHeight/collapseHeight, which defer
+   the real max-height change by two animation frames (see comment above
+   expandHeight's definition). Calling scrollIntoView right after triggering
+   that animation scrolls to a STALE position — the target card is still
+   near 0px and any sibling being collapsed is still full height — and then,
+   a couple of frames later, both heights land at once and shove the page
+   around underneath the already-in-flight scroll. That's what reads as the
+   card getting "pulled up, then down". Waiting for the target card's own
+   max-height transition to finish (or a fallback timeout, in case
+   transitionend doesn't fire — e.g. frozen mid-flight by freezeTransitions)
+   before scrolling fixes it: scrollIntoView then measures the card's real,
+   settled position. ── */
+function scrollAfterSettle(card, content, isAnimating){
+  function go(){ card.scrollIntoView({behavior:'smooth', block:'start'}); }
+  if(!content || !isAnimating){ go(); return; }
+  var done = false;
+  function finish(){
+    if(done) return;
+    done = true;
+    content.removeEventListener('transitionend', onEnd);
+    go();
+  }
+  function onEnd(e){
+    if(e.target !== content || e.propertyName !== 'max-height') return;
+    finish();
+  }
+  content.addEventListener('transitionend', onEnd);
+  setTimeout(finish, 500);
+}
+
 function scrollToEnnCard(n){
   var wrap = document.getElementById('enn-full-content');
   var wasCollapsed = wrap && wrap.classList.contains('collapsed');
@@ -8838,8 +8870,9 @@ function scrollToAscentCard(n){
     });
     var wasCardCollapsed = card.classList.contains('collapsed');
     card.classList.remove('collapsed');
-    if(wasCardCollapsed && typeof expandHeight==='function') expandHeight(card.querySelector('.framework-content'));
-    card.scrollIntoView({behavior:'smooth', block:'start'});
+    var content = card.querySelector('.framework-content');
+    if(wasCardCollapsed && typeof expandHeight==='function') expandHeight(content);
+    scrollAfterSettle(card, content, wasCardCollapsed);
   }
 
   if(wasCollapsed){ setTimeout(openAndScroll, 350); } else { openAndScroll(); }
