@@ -427,7 +427,7 @@ body{
 
 /* Light theme: same hues, background wash tuned down since the base is
    already pale (mirrors the existing gold-row light-theme pattern below). */
-[data-theme="light"] #masterMatrixTable tr.chakra-row-1{background:rgba(231,76,60,.10) !important;}
+[data-theme="light"] #masterMatrixTable tr.chakra-row-1{background:rgba(var(--chakra-label-1-rgb),.10) !important;}
 /* Row 1 red wash restored for light theme per updated feedback. Rows 2-7
    still have no wash (see dark-theme note above). */
 
@@ -538,6 +538,7 @@ body{
   --chakra-3:#f1c40f;
   --chakra-4:#2ecc71;
   --chakra-label-1:#e74c3c;
+  --chakra-label-1-rgb:231,76,60;
   --chakra-label-2:#e67e22;
   --chakra-label-3:#f1c40f;
   --chakra-label-4:#2ecc71;
@@ -552,6 +553,7 @@ body{
   --bg-card-3:#060606;            /* .why-card bg, matches --bg-card */
   --text-research-blue:#6fa8dc;   /* .src-research, matches its dark base */
   --text-research-blue-rgb:111,168,220;
+  --gloss-tint-rgb:212,175,55;    /* gloss-table th bg wash, matches --accent-gold-rgb dark default */
 }
 
 /* ── LIGHT THEME ─────────────────────────────────────────────────────────── */
@@ -593,6 +595,7 @@ body{
   --bg-card-3:#d8d0b8;
   --text-research-blue:#2a5a8a;
   --text-research-blue-rgb:42,90,138;
+  --gloss-tint-rgb:180,140,30;
 }
 [data-theme="light"] body{background:var(--bg-page) !important;color:var(--text-body) !important;font-weight:400;}
 
@@ -2885,7 +2888,7 @@ tr.matrix-highlight{
 .gloss-table tr:hover td{background:rgba(212,175,55,.03);}
 .gloss-table tr:target td{background:rgba(212,175,55,.08);border-color:rgba(212,175,55,.35);}
 [data-theme="light"] .gloss-table{outline-color:rgba(var(--shadow-rgb),0.22) !important;}
-[data-theme="light"] .gloss-table th{background:rgba(180,140,30,.15) !important;color:var(--gold) !important;border-color:rgba(var(--shadow-rgb),0.22) !important;}
+[data-theme="light"] .gloss-table th{background:rgba(var(--gloss-tint-rgb),.15) !important;color:var(--gold) !important;border-color:rgba(var(--shadow-rgb),0.22) !important;}
 [data-theme="light"] .gloss-table td{border-color:rgba(var(--shadow-rgb),0.18) !important;color:var(--text-body) !important;}
 [data-theme="light"] .gloss-table td:first-child{color:var(--text-head-dark) !important;}
 [data-theme="light"] .gloss-table td.gloss-card{color:var(--text-dim) !important;}
