@@ -1374,7 +1374,15 @@ section{scroll-margin-top:56px;}
 .framework-card.collapsed::after{content:'Expand ▼';}
 
 /* ── 5 PILLARS ───────────────────────────────────────────────────────────── */
-.astrolabe-section{padding:90px 24px;background:radial-gradient(ellipse at 50% 100%,rgba(212,175,55,.06) 0%,transparent 60%);}
+/* Fixed pixel size (not "at 50% 100%" sized to the box) so this gradient's
+   raster doesn't need recomputing every animation frame while the pillar
+   cards open/close and the section's own height keeps changing underneath
+   it — only its position shifts, which is a cheap composite, not an
+   expensive repaint. That per-frame gradient repaint (worst against a
+   near-black dark-theme background, where Chrome's rasterizer works
+   hardest to avoid banding) was the actual source of the self-enquiry
+   jerk; Opera's compositor just happened to absorb it better. */
+.astrolabe-section{padding:90px 24px;background:radial-gradient(ellipse 900px 620px at 50% 100%,rgba(212,175,55,.06) 0%,transparent 60%) no-repeat;}
 .astrolabe-section h2{color:var(--white);max-width:660px;margin:0 auto 16px;}
 .astrolabe-section .sub{font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:520px;margin:0 auto 52px;font-style:italic;line-height:1.85;}
 .pillar-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2px;max-width:980px;margin:0 auto 44px;text-align:left;}
