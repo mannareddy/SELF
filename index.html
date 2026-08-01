@@ -49,7 +49,8 @@ background:var(--bg);   /* add this line */
    being horizontally draggable on mobile; individual sections that need
    horizontal scroll (tables) keep their own overflow-x:auto wrappers,
    which still work fine nested inside this. */
-overflow-x:hidden;
+/* was:  overflow-x:hidden; */
+overflow-x:clip;
 max-width:100%;
 }
 /* Freeze all transitions for the one frame where data-theme actually swaps,
@@ -78,7 +79,8 @@ body{
   font-family:var(--serif);
   text-align:center;
   line-height:1.85;
-  overflow-x:hidden;
+  /* was:  overflow-x:hidden; */
+  overflow-x:clip;
   padding-top:var(--nav-h);
   overscroll-behavior:none
 }
