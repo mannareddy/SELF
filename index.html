@@ -8631,6 +8631,33 @@ function updateNav(){
   };
   var expandHeight = window.expandHeight, collapseHeight = window.collapseHeight;
 
+  /* ── AFTER-MAX-HEIGHT-TRANSITION ──────────────────────────────────────
+     Runs a callback once an element's own max-height transition finishes
+     (or after a fallback timeout, in case transitionend never fires — e.g.
+     frozen mid-flight by freezeTransitions). Used to sequence accordion
+     card open/close: collapsing a sibling and expanding the clicked card
+     at the same time visually reads as the clicked card getting "pulled
+     up" (as the sibling above it shrinks) while simultaneously "pushed
+     down" (as it grows) — closing the sibling first, then opening the
+     clicked card only once that's actually finished, removes the
+     concurrent motion. ── */
+  window.afterMaxHeightTransition = function afterMaxHeightTransition(el, cb){
+    if(!el){ cb(); return; }
+    var done = false;
+    function finish(){
+      if(done) return;
+      done = true;
+      el.removeEventListener('transitionend', onEnd);
+      cb();
+    }
+    function onEnd(e){
+      if(e.target !== el || e.propertyName !== 'max-height') return;
+      finish();
+    }
+    el.addEventListener('transitionend', onEnd);
+    setTimeout(finish, 500);
+  };
+
   /* ── FRAMEWORK CARDS: click to toggle. Scoped accordion — opening one card
      closes any other open card in the SAME section (#framework-full-content
      or #ascent-full-content), but the two sections stay independent of each
@@ -8642,17 +8669,28 @@ function updateNav(){
       freezeTransitions();
       var wrap = this.closest('#ascent-full-content') || this.closest('#framework-full-content');
       var isOpening = this.classList.contains('collapsed');
+      var self = this;
+      function openSelf(){
+        self.classList.remove('collapsed');
+        expandHeight(content);
+      }
+      var openSibling = null;
       if(wrap && isOpening){
-        var self = this;
         wrap.querySelectorAll('.framework-card').forEach(function(c){
-          if(c !== self && !c.classList.contains('collapsed')){
-            c.classList.add('collapsed');
-            collapseHeight(c.querySelector('.framework-content'));
-          }
+          if(c !== self && !c.classList.contains('collapsed')) openSibling = c;
         });
       }
-      this.classList.toggle('collapsed');
-      if(isOpening) expandHeight(content); else collapseHeight(content);
+      if(openSibling){
+        var sibContent = openSibling.querySelector('.framework-content');
+        openSibling.classList.add('collapsed');
+        collapseHeight(sibContent);
+        if(isOpening) afterMaxHeightTransition(sibContent, openSelf);
+      } else if(isOpening){
+        openSelf();
+      } else {
+        this.classList.toggle('collapsed');
+        collapseHeight(content);
+      }
     });
   });
 
@@ -8665,21 +8703,34 @@ function updateNav(){
       freezeTransitions();
       var grid = this.closest('.pillar-grid');
       var isOpening = !this.classList.contains('open');
+      var self = this;
+      function openSelf(){
+        self.classList.add('open');
+        expandHeight(body);
+        var lbl = self.querySelector('.p-expand');
+        if(lbl) lbl.innerHTML = 'Collapse &#9650;';
+      }
+      var openSibling = null;
       if(grid && isOpening){
-        var self = this;
         grid.querySelectorAll('.pillar-card.open').forEach(function(c){
-          if(c !== self){
-            c.classList.remove('open');
-            collapseHeight(c.querySelector('.p-body'));
-            var l = c.querySelector('.p-expand');
-            if(l) l.innerHTML = 'Expand &#9660;';
-          }
+          if(c !== self) openSibling = c;
         });
       }
-      this.classList.toggle('open');
-      if(isOpening) expandHeight(body); else collapseHeight(body);
-      var lbl = this.querySelector('.p-expand');
-      if(lbl) lbl.innerHTML = this.classList.contains('open') ? 'Collapse &#9650;' : 'Expand &#9660;';
+      if(openSibling){
+        var sibBody = openSibling.querySelector('.p-body');
+        openSibling.classList.remove('open');
+        collapseHeight(sibBody);
+        var sibLbl = openSibling.querySelector('.p-expand');
+        if(sibLbl) sibLbl.innerHTML = 'Expand &#9660;';
+        afterMaxHeightTransition(sibBody, openSelf);
+      } else if(isOpening){
+        openSelf();
+      } else {
+        this.classList.remove('open');
+        collapseHeight(body);
+        var lbl = this.querySelector('.p-expand');
+        if(lbl) lbl.innerHTML = 'Expand &#9660;';
+      }
     });
   });
 
@@ -8861,18 +8912,35 @@ function scrollToAscentCard(n){
   if(!card) return;
 
   function openAndScroll(){
-    // accordion: close any other open stage before opening this one
-    document.querySelectorAll('#ascent-full-content .framework-card').forEach(function(c){
-      if(c !== card && !c.classList.contains('collapsed')){
-        c.classList.add('collapsed');
-        if(typeof collapseHeight==='function') collapseHeight(c.querySelector('.framework-content'));
-      }
-    });
-    var wasCardCollapsed = card.classList.contains('collapsed');
-    card.classList.remove('collapsed');
     var content = card.querySelector('.framework-content');
-    if(wasCardCollapsed && typeof expandHeight==='function') expandHeight(content);
-    scrollAfterSettle(card, content, wasCardCollapsed);
+    var wasCardCollapsed = card.classList.contains('collapsed');
+    function openThisCard(){
+      card.classList.remove('collapsed');
+      if(wasCardCollapsed && typeof expandHeight==='function') expandHeight(content);
+      scrollAfterSettle(card, content, wasCardCollapsed);
+    }
+    // accordion: close any other open stage first, and — same fix as the
+    // direct-click handler — wait for that collapse to actually finish
+    // before opening this one, so this card doesn't visually get pulled
+    // up (sibling shrinking above it) and pushed down (its own growth)
+    // at the same time.
+    var openSibling = null;
+    document.querySelectorAll('#ascent-full-content .framework-card').forEach(function(c){
+      if(c !== card && !c.classList.contains('collapsed')) openSibling = c;
+    });
+    if(openSibling && wasCardCollapsed){
+      var sibContent = openSibling.querySelector('.framework-content');
+      openSibling.classList.add('collapsed');
+      if(typeof collapseHeight==='function') collapseHeight(sibContent);
+      if(typeof afterMaxHeightTransition==='function') afterMaxHeightTransition(sibContent, openThisCard);
+      else openThisCard();
+    } else {
+      if(openSibling){
+        openSibling.classList.add('collapsed');
+        if(typeof collapseHeight==='function') collapseHeight(openSibling.querySelector('.framework-content'));
+      }
+      openThisCard();
+    }
   }
 
   if(wasCollapsed){ setTimeout(openAndScroll, 350); } else { openAndScroll(); }
