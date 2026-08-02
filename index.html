@@ -1291,23 +1291,28 @@ html[data-fontscale="112"] #zoomScope{zoom:1.12;}
 html[data-fontscale="125"] #zoomScope{zoom:1.25;}
 html[data-fontscale="140"] #zoomScope{zoom:1.4;}
 
-/* `zoom` scales #zoomScope's whole box model, not just its type — at 140%
-   on mobile the effective rendered width of full-bleed content can exceed
-   the physical viewport, and html/body's overflow-x:clip (needed above for
-   the iOS rubber-band fix) then silently clips any overflow rather than
-   showing it. Two previous fixes here — pre-shrinking #zoomScope's width
-   to compensate, and making the whole page scrollable at non-100% scales —
-   both got reverted: the width trick broke layout on real devices, and the
-   scrollable version worked but affected the whole site when in practice
-   only two specific two-column comparison grids (Dark Night mistake/truth,
-   Sevenfold Ignorance/Knowledge — both long-form prose in narrow fixed
-   columns) actually overflow at 140% on mobile; every table on the site
-   already has its own dedicated overflow-x:auto wrapper and was never
-   affected. So instead of a page-wide behavior change, those two grids
-   get their own class (.dark-night-compare, .sevenfold-compare) and simply
-   stack into single-column cards at 140% on mobile — removing the
-   possibility of overflow for them specifically rather than working
-   around it, and leaving overflow-x:clip untouched everywhere else. */
+/* The mobile nav no longer offers a way to reach 112/125/140 (see the
+   markup comment on .nav-fontsize-mobile) — but data-fontscale is stored
+   in localStorage and shared across devices/viewport widths, so someone
+   who set 140% on desktop and then opens the same browser profile on
+   mobile (or just narrows the window) would otherwise still get a 140%
+   zoom with no way to undo it from the mobile UI. This clamps it back to
+   no zoom whenever the viewport is mobile-width, regardless of how the
+   attribute got set. */
+@media(max-width:900px){
+  html[data-fontscale="112"] #zoomScope,
+  html[data-fontscale="125"] #zoomScope,
+  html[data-fontscale="140"] #zoomScope{
+    zoom:1 !important;
+  }
+}
+
+/* Leftover safety net from before A+ was disabled on mobile entirely (see
+   the clamp above and the .nav-fontsize-mobile markup comment) — these two
+   specific comparison grids (Dark Night mistake/truth, Sevenfold Ignorance/
+   Knowledge) were the ones that actually overflowed at 140% on mobile.
+   With 140% now unreachable on mobile this shouldn't fire in practice, but
+   it's harmless to leave in place in case 140% ever gets re-enabled there. */
 @media(max-width:900px){
   html[data-fontscale="140"] .dark-night-compare,
   html[data-fontscale="140"] .sevenfold-compare{
@@ -3219,14 +3224,16 @@ a.src-tag:hover{opacity:.75;}
       </div>
     </li>
   </ul>
-  <!-- Mobile-only text-size controls, embedded in the nav row's spare space
-       (see .nav-fontsize-mobile) instead of floating over content. Same
-       a11yFontStep/a11yFontReset calls as the floating widget — apply()
-       keeps every copy of these buttons in sync. -->
+  <!-- Mobile-only text-size controls: A- and A (reset) only. A+ is
+       intentionally not offered here — see the #zoomScope comment for why
+       140% zoom broke layout in several sections on mobile; the pinch-to-
+       zoom gesture already covers "make things bigger" on a touch device,
+       so this control's job on mobile is just "make it smaller / put it
+       back", matching the floating widget's full A-/A/A+ set on desktop
+       where 140% never caused problems. -->
   <div class="nav-fontsize-mobile" role="group" aria-label="Adjust text size">
     <button type="button" data-a11y="down" onclick="a11yFontStep(-1)" aria-label="Decrease text size">A&#8722;</button>
     <button type="button" data-a11y="reset" onclick="a11yFontReset()" aria-label="Reset text size to default" title="Reset text size">A</button>
-    <button type="button" data-a11y="up" onclick="a11yFontStep(1)" aria-label="Increase text size">A+</button>
   </div>
   <button id="themeToggleBtn" onclick="toggleTheme()" title="Toggle light/dark theme" aria-label="Toggle theme">&#9788;</button>
 </nav>
