@@ -1291,28 +1291,28 @@ html[data-fontscale="112"] #zoomScope{zoom:1.12;}
 html[data-fontscale="125"] #zoomScope{zoom:1.25;}
 html[data-fontscale="140"] #zoomScope{zoom:1.4;}
 
-/* `zoom` scales #zoomScope's whole box model, not just its type — at 112–140%
-   the effective rendered width of full-bleed content exceeds the physical
-   mobile viewport. html/body's overflow-x:clip (needed above for the iOS
-   rubber-band fix) then silently clips that overflow instead of showing a
-   scrollbar, so text past the right edge just disappears rather than being
-   reachable.
-   A theoretical fix was tried here — pre-shrinking #zoomScope's width by
-   the inverse of the zoom factor so it lands back at exactly 100% after
-   zoom multiplies it — but on real mobile browsers this produced a
-   narrower, misaligned box with broken vertical spacing (percentage width
-   and `zoom` don't compose the way the math suggests across engines), so
-   it's reverted. Falling back to the simpler, verified-working option:
-   only while a non-100% scale is active, and only on mobile widths, switch
-   html/body from clip to scrollable — trading back a small amount of the
-   original rubber-band protection for making sure nothing the person
-   enlarged the text to read becomes unreachable. At the default 100% scale
-   (the common case) nothing changes here. */
+/* `zoom` scales #zoomScope's whole box model, not just its type — at 140%
+   on mobile the effective rendered width of full-bleed content can exceed
+   the physical viewport, and html/body's overflow-x:clip (needed above for
+   the iOS rubber-band fix) then silently clips any overflow rather than
+   showing it. Two previous fixes here — pre-shrinking #zoomScope's width
+   to compensate, and making the whole page scrollable at non-100% scales —
+   both got reverted: the width trick broke layout on real devices, and the
+   scrollable version worked but affected the whole site when in practice
+   only two specific two-column comparison grids (Dark Night mistake/truth,
+   Sevenfold Ignorance/Knowledge — both long-form prose in narrow fixed
+   columns) actually overflow at 140% on mobile; every table on the site
+   already has its own dedicated overflow-x:auto wrapper and was never
+   affected. So instead of a page-wide behavior change, those two grids
+   get their own class (.dark-night-compare, .sevenfold-compare) and simply
+   stack into single-column cards at 140% on mobile — removing the
+   possibility of overflow for them specifically rather than working
+   around it, and leaving overflow-x:clip untouched everywhere else. */
 @media(max-width:900px){
-  html[data-fontscale="90"],html[data-fontscale="112"],html[data-fontscale="125"],html[data-fontscale="140"],
-  html[data-fontscale="90"] body,html[data-fontscale="112"] body,html[data-fontscale="125"] body,html[data-fontscale="140"] body{
-    overflow-x:auto !important;
-    -webkit-overflow-scrolling:touch;
+  html[data-fontscale="140"] .dark-night-compare,
+  html[data-fontscale="140"] .sevenfold-compare{
+    grid-template-columns:1fr !important;
+    gap:10px !important;
   }
 }
 
@@ -3454,7 +3454,7 @@ a.src-tag:hover{opacity:.75;}
       <p>&ldquo;It is not a breakdown. It is a breakthrough wearing a disguise.&rdquo;</p>
       <cite>The universal initiation no tradition calls optional</cite>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;max-width:660px;margin:0 auto 36px;">
+    <div class="dark-night-compare" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;max-width:660px;margin:0 auto 36px;">
       <div style="padding:32px 28px;background:var(--bg);border:1px solid rgba(var(--accent-gold-rgb),0.3);text-align:left;">
         <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:14px;">The Mistake</div>
         <p style="font-family:var(--serif);font-size:16px;color:var(--grey);line-height:1.88;">Treating a genuine call for deeper meaning as noise to silence with the next distraction.</p>
@@ -5418,7 +5418,7 @@ a.src-tag:hover{opacity:.75;}
     </div>
 
     <!-- Sevenfold — standalone, always visible -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;max-width:700px;margin:28px auto 0;">
+    <div class="sevenfold-compare" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;max-width:700px;margin:28px auto 0;">
       <div style="padding:28px 24px;background:var(--bg-lift);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);text-align:left;">
         <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:#c0392b;opacity:.85;margin-bottom:14px;">The Sevenfold Ignorance</div>
         <p style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:2.05;margin:0;">
