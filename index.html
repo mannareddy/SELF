@@ -1286,26 +1286,35 @@ a:hover{opacity:.7;}
    The attribute lives on <html> (set synchronously in <head>, same pattern
    as data-theme) so the right scale applies before first paint — no jump
    after JS loads. ── */
-html[data-fontscale="90"] #zoomScope{zoom:.9;width:111.1111%;}
-html[data-fontscale="112"] #zoomScope{zoom:1.12;width:89.2857%;}
-html[data-fontscale="125"] #zoomScope{zoom:1.25;width:80%;}
-html[data-fontscale="140"] #zoomScope{zoom:1.4;width:71.4286%;}
+html[data-fontscale="90"] #zoomScope{zoom:.9;}
+html[data-fontscale="112"] #zoomScope{zoom:1.12;}
+html[data-fontscale="125"] #zoomScope{zoom:1.25;}
+html[data-fontscale="140"] #zoomScope{zoom:1.4;}
 
-/* `zoom` scales #zoomScope's whole box model, not just its type — a plain
-   width:auto div zoomed to 140% renders its layout box at 140% of the
-   viewport, overflowing it (html/body's overflow-x:clip, needed above for
-   the iOS rubber-band fix, was then silently swallowing that overflow, so
-   text past the right edge just disappeared — and the first attempt at a
-   fix, making the page scrollable instead, traded that for an unwanted
-   horizontal swipe/scroll at higher scales that wasn't there at 100%).
-   The actual fix is to pre-shrink #zoomScope's own declared width by
-   exactly the inverse of the zoom factor (100 / zoom%), so multiplying it
-   back up by that same zoom factor lands it at precisely 100% of the true
-   viewport — same trick browsers themselves use internally for page zoom.
-   This is why 90% gets width:111.11% while 140% gets width:71.43%: the
-   smaller the zoom, the more the box needs to be pre-inflated (and vice
-   versa) so the two cancel out exactly. No overflow occurs in the first
-   place, so no scrolling or clipping trade-off is needed either. */
+/* `zoom` scales #zoomScope's whole box model, not just its type — at 112–140%
+   the effective rendered width of full-bleed content exceeds the physical
+   mobile viewport. html/body's overflow-x:clip (needed above for the iOS
+   rubber-band fix) then silently clips that overflow instead of showing a
+   scrollbar, so text past the right edge just disappears rather than being
+   reachable.
+   A theoretical fix was tried here — pre-shrinking #zoomScope's width by
+   the inverse of the zoom factor so it lands back at exactly 100% after
+   zoom multiplies it — but on real mobile browsers this produced a
+   narrower, misaligned box with broken vertical spacing (percentage width
+   and `zoom` don't compose the way the math suggests across engines), so
+   it's reverted. Falling back to the simpler, verified-working option:
+   only while a non-100% scale is active, and only on mobile widths, switch
+   html/body from clip to scrollable — trading back a small amount of the
+   original rubber-band protection for making sure nothing the person
+   enlarged the text to read becomes unreachable. At the default 100% scale
+   (the common case) nothing changes here. */
+@media(max-width:900px){
+  html[data-fontscale="90"],html[data-fontscale="112"],html[data-fontscale="125"],html[data-fontscale="140"],
+  html[data-fontscale="90"] body,html[data-fontscale="112"] body,html[data-fontscale="125"] body,html[data-fontscale="140"] body{
+    overflow-x:auto !important;
+    -webkit-overflow-scrolling:touch;
+  }
+}
 
 .a11y-fontsize{
   position:fixed;bottom:18px;left:16px;z-index:900;
