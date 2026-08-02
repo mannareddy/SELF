@@ -792,7 +792,7 @@ body{
 .ipo-section > div > div[style*="border-top:1px solid var(--gold)"],
 .ipo-section > div > div[style*="border-bottom:1px solid var(--gold)"]{display:none !important;}
 [data-theme="light"] .ipo-upanishad{border-color:rgba(var(--shadow-rgb),0.32) !important;border-left-color:rgba(var(--accent-gold-rgb),0.6) !important;background:var(--bg-card) !important;}
-[data-theme="light"] .antidote-box{border-color:rgba(var(--accent-gold-rgb),0.5) !important;background:rgba(var(--accent-gold-rgb),0.04) !important;}
+[data-theme="light"] .antidote-box{background:rgba(var(--accent-gold-rgb),0.04) !important;}
 [data-theme="light"] .antidote-step{background:var(--bg-page) !important;border-color:rgba(var(--shadow-rgb),0.28) !important;}
 /* Light theme — border fixes for previously-missed bordered elements */
 [data-theme="light"] .ec-body{border-top-color:rgba(var(--shadow-rgb),0.3) !important;}
@@ -1885,9 +1885,7 @@ section{scroll-margin-top:56px;}
 .ds-text{font-family:var(--serif);font-size:14.5px;font-weight:300;color:var(--grey);line-height:1.85;}
 .descent-step.essence .ds-title{color:var(--gold);}
 .descent-arrow{text-align:center;font-size:16px;color:var(--gold);opacity:.25;padding:4px 0;}
-.antidote-box{max-width:660px;margin:0 auto;padding:44px 36px;border:1px solid var(--gold);background:radial-gradient(ellipse at 50% 0%,rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);text-align:center;position:relative;}
-.antidote-box::before{content:'';position:absolute;top:-1px;left:-1px;width:18px;height:18px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);}
-.antidote-box::after{content:'';position:absolute;bottom:-1px;right:-1px;width:18px;height:18px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);}
+.antidote-box{max-width:660px;margin:0 auto;padding:44px 36px;background:radial-gradient(ellipse at 50% 0%,rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);text-align:center;position:relative;}
 .antidote-box .ad-label{font-family:var(--sans);font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);opacity:.75;margin-bottom:20px;display:block;}
 .antidote-box h3{color:var(--white);margin-bottom:20px;}
 .antidote-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:20px;text-align:left;}
@@ -9353,15 +9351,38 @@ function toggleTheme(){
     var i = STEPS.indexOf(parseInt(v, 10));
     return i === -1 ? 1 : i;
   }
+  function currentNavH(){
+    var v = getComputedStyle(html).getPropertyValue('--nav-h');
+    var n = parseFloat(v);
+    return isNaN(n) ? 44 : n;
+  }
+  /* Finds whichever element with an id (section anchors, matrix rows, etc.)
+     is currently sitting at/just past the top of the visible reading area
+     — i.e. whatever the reader is "on" right now — so the scale change can
+     re-anchor to that exact element afterward instead of guessing via a
+     scroll-ratio calculation. The site's many short, single-line sections
+     are only a few dozen px tall, so even a handful of px of drift error
+     from a ratio calculation is enough to visibly jump to the section
+     above or below the one the reader was actually on — the "focus gets
+     lost" issue. Anchoring to real content instead of a computed position
+     removes that error entirely. */
+  function currentAnchor(navH){
+    var scope = document.getElementById('zoomScope');
+    if(!scope) return null;
+    var nodes = scope.querySelectorAll('[id]');
+    var best = null, bestTop = -Infinity;
+    for(var k = 0; k < nodes.length; k++){
+      var top = nodes[k].getBoundingClientRect().top;
+      if(top <= navH + 2 && top > bestTop){ best = nodes[k]; bestTop = top; }
+    }
+    return best;
+  }
   function apply(i){
     var oldVal = parseInt(html.getAttribute('data-fontscale') || '100', 10);
     var val = STEPS[i];
-    /* `zoom` rescales the whole page's layout, so the same scrollTop
-       (in CSS px) now points at a different section — that's what read
-       as the controls "jumping" to a random part of the page. Scale the
-       scroll position by the same ratio the page just scaled by, so the
-       reader stays on the section they were looking at. */
+    var navH = currentNavH();
     var oldScroll = window.pageYOffset || html.scrollTop || document.body.scrollTop;
+    var anchorEl = (oldVal !== val) ? currentAnchor(navH) : null;
     if(val === 100) html.removeAttribute('data-fontscale');
     else html.setAttribute('data-fontscale', String(val));
     if(oldVal !== val && oldVal > 0){
@@ -9370,7 +9391,17 @@ function toggleTheme(){
       // scrollTo can act on stale (pre-zoom) scroll-height metrics and
       // land somewhere else on the page.
       void document.documentElement.scrollHeight;
-      var newY = Math.round(oldScroll * (val / oldVal));
+      var newY;
+      if(anchorEl){
+        var rect = anchorEl.getBoundingClientRect();
+        newY = Math.max(0, Math.round(window.pageYOffset + rect.top - navH));
+      } else {
+        // Fallback for the rare case nothing with an id sits above the
+        // fold yet (e.g. still at the very top of the page) — the old
+        // ratio-based estimate is fine here since there's nothing to
+        // anchor to and the error at small scroll offsets is negligible.
+        newY = Math.round(oldScroll * (val / oldVal));
+      }
       // html{scroll-behavior:smooth} would otherwise make even this
       // 2-argument scrollTo() call glide there over ~300ms — which reads
       // as the page sweeping through other sections rather than staying
