@@ -1266,7 +1266,7 @@ a:hover{opacity:.7;}
     color:#555;padding:13px 22px 13px 34px;border-top:1px solid #1a1a1a;font-style:italic;
   }
   .mnav-list a.active{color:var(--gold);}
-  body.mnav-open{overflow:hidden;}
+  body.mnav-open{     overflow:hidden;     position:fixed;     left:0;     right:0;     width:100%;   }
 }
 
 /* ── GEO BADGE ───────────────────────────────────────────────────────────── */
@@ -8757,15 +8757,20 @@ function updateNav(){
     var panel  = document.getElementById('mnavPanel');
     if(!toggle || !panel) return;
 
+    var mnavScrollY = 0;
     function openMenu(){
       toggle.setAttribute('aria-expanded','true');
       panel.classList.add('open');
+      mnavScrollY = window.scrollY;
+      document.body.style.top = (-mnavScrollY) + 'px';
       document.body.classList.add('mnav-open');
     }
     function closeMenu(){
       toggle.setAttribute('aria-expanded','false');
       panel.classList.remove('open');
       document.body.classList.remove('mnav-open');
+      document.body.style.top = '';
+      window.scrollTo(0, mnavScrollY);
       // Collapse any open accordion group so re-opening the panel always
       // starts fresh, matching the desktop mega-menu's non-persistent state.
       panel.querySelectorAll('.mnav-group.open').forEach(function(g){
@@ -8810,6 +8815,18 @@ function updateNav(){
         closeMenu();
       }
     });
+    // Logo points at the site's own root URL, and since this is a
+    // single-page site that was forcing a full reload — flashing raw
+    // unstyled markup, then landing back at the top. Intercept and
+    // scroll-to-top instead; href stays as a no-JS / new-tab fallback.
+    var logo = document.querySelector('.nav-logo-center');
+    if(logo){
+      logo.addEventListener('click', function(e){
+        e.preventDefault();
+        if(panel.classList.contains('open')) closeMenu();
+        window.scrollTo({top:0, behavior:'smooth'});
+      });
+    }
   })();
 
   /* ── WHY $SELF TOGGLE ── */
