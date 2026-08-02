@@ -1243,17 +1243,20 @@ a:hover{opacity:.7;}
    Nearly all type on this page is set in px, not rem, so scaling html's
    root font-size wouldn't cascade to anything. `zoom` scales the whole
    subtree — text, padding, gaps, everything — proportionally, and unlike
-   `transform:scale()` it doesn't break position:fixed children (the nav
-   stays pinned to the real viewport, just visually bigger) and doesn't
-   throw off click hit-testing. Applied to body, not html, so vh/vw units
-   elsewhere on the page keep referring to the real, unscaled viewport.
+   `transform:scale()` it doesn't distort click hit-testing. Applied to
+   #zoomScope (which wraps all reading content) rather than body — the
+   fixed UI chrome (nav, mobile nav panel, geo badge, this control itself,
+   and .gloss-portal) lives outside that wrapper and stays native-sized;
+   see the #zoomScope comment in the markup for why .gloss-portal in
+   particular needs to be excluded. vh/vw units elsewhere on the page still
+   refer to the real, unscaled viewport since html itself isn't zoomed.
    The attribute lives on <html> (set synchronously in <head>, same pattern
    as data-theme) so the right scale applies before first paint — no jump
    after JS loads. ── */
-html[data-fontscale="90"] body{zoom:.9;}
-html[data-fontscale="112"] body{zoom:1.12;}
-html[data-fontscale="125"] body{zoom:1.25;}
-html[data-fontscale="140"] body{zoom:1.4;}
+html[data-fontscale="90"] #zoomScope{zoom:.9;}
+html[data-fontscale="112"] #zoomScope{zoom:1.12;}
+html[data-fontscale="125"] #zoomScope{zoom:1.25;}
+html[data-fontscale="140"] #zoomScope{zoom:1.4;}
 
 .a11y-fontsize{
   position:fixed;bottom:18px;left:16px;z-index:900;
@@ -3245,6 +3248,22 @@ a.src-tag:hover{opacity:.75;}
   <button type="button" data-a11y="up" onclick="a11yFontStep(1)" aria-label="Increase text size">A+</button>
 </div>
 <div id="a11yFontAnnounce" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);"></div>
+
+<!-- ── ZOOM SCOPE ──────────────────────────────────────────────────────────
+     The font-size control's `zoom` scaling is applied here rather than on
+     <body>. Reason: .gloss-portal is position:fixed and gets positioned by
+     JS math (toggleGloss()) using getBoundingClientRect() on its trigger
+     button plus window.innerWidth/innerHeight for edge clamping. Nesting a
+     JS-positioned position:fixed element inside a zoomed ancestor is
+     exactly the kind of thing browsers disagree on / get wrong — that
+     mismatch is what caused the glossary popover to compute a bad position
+     and immediately close itself at anything other than 100% text size.
+     Keeping the fixed UI chrome (nav, mobile nav panel, geo badge, the A−/A/A+
+     control itself, and the glossary portal) OUTSIDE this wrapper sidesteps
+     the ambiguity entirely — they stay native-sized and reliably positioned
+     regardless of reading text size, while everything a reader actually
+     reads scales together inside here. -->
+<div id="zoomScope">
 
 <!-- ══════════════════════════ HERO ══════════════════════════════════════ -->
 <section class="hero" id="home">
@@ -9257,7 +9276,17 @@ function toggleTheme(){
     if(val === 100) html.removeAttribute('data-fontscale');
     else html.setAttribute('data-fontscale', String(val));
     if(oldVal !== val && oldVal > 0){
-      window.scrollTo(0, Math.round(oldScroll * (val / oldVal)));
+      // Force the browser to actually commit the new zoomed layout before
+      // computing/applying the corrected scroll position — without this,
+      // scrollTo can act on stale (pre-zoom) scroll-height metrics and
+      // land somewhere else on the page.
+      void document.documentElement.scrollHeight;
+      var newY = Math.round(oldScroll * (val / oldVal));
+      // html{scroll-behavior:smooth} would otherwise make even this
+      // 2-argument scrollTo() call glide there over ~300ms — which reads
+      // as the page sweeping through other sections rather than staying
+      // put. behavior:'instant' bypasses that for this one correction.
+      window.scrollTo({top: newY, left: 0, behavior: 'instant'});
     }
     localStorage.setItem('selfFontScale', String(val));
     /* Controls now exist in two places (the floating desktop widget and
@@ -10361,6 +10390,7 @@ init();
 
 })();
 </script>
+</div><!-- /#zoomScope -->
 <div id="glossPortal" class="gloss-portal" role="tooltip"></div>
 </body>
 </html>
