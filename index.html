@@ -1055,7 +1055,7 @@ a:hover{opacity:.7;}
   .nav-dropdown-panel{
     display:flex;flex-direction:column;
     position:absolute;top:calc(100% + 2px);left:0;
-    min-width:230px;background:rgba(0,0,0,0.98);border:1px solid rgba(var(--accent-gold-rgb),0.4);
+    min-width:230px;max-width:300px;background:rgba(0,0,0,0.98);border:1px solid rgba(var(--accent-gold-rgb),0.4);
     box-shadow:0 14px 28px rgba(0,0,0,0.5);
     opacity:0;visibility:hidden;pointer-events:none;
     transition:opacity .15s ease, visibility 0s ease .18s, transform .15s ease;
@@ -1075,7 +1075,7 @@ a:hover{opacity:.7;}
   .nav-dropdown-panel a{
     border-right:none !important;justify-content:flex-start !important;
     padding:11px 22px !important;font-size:10.5px !important;letter-spacing:1.5px !important;
-    height:auto !important;line-height:1.4 !important;white-space:nowrap;color:var(--dim);
+    height:auto !important;line-height:1.4 !important;white-space:normal;color:var(--dim);
   }
   .nav-dropdown-panel a:hover{color:var(--gold) !important;background:rgba(var(--accent-gold-rgb),0.06);}
   .nav-dropdown-panel .new-menu-soon{
@@ -3203,7 +3203,7 @@ a.src-tag:hover{opacity:.75;}
     <li class="nav-dropdown-wrap">
       <a href="#glossary" data-group="new">New<span class="nav-new-dot"></span><span class="nav-caret">▾</span></a>
       <div class="nav-dropdown-panel" id="newMenuPanel">
-        <a href="#home" data-group="new">Accessibility Feature Added — Adjustable Text Size</a>
+        <a href="#home" data-group="new">Accessibility Feature Added</a>
       </div>
     </li>
 
@@ -3289,7 +3289,7 @@ a.src-tag:hover{opacity:.75;}
         New <span class="nav-new-dot"></span><span class="mnav-caret">▾</span>
       </button>
       <div class="mnav-group-panel" id="newMenuPanelMobile">
-        <a href="#home">Accessibility Feature Added — Adjustable Text Size</a>
+        <a href="#home">Accessibility Feature Added</a>
       </div>
     </li>
 
