@@ -9391,6 +9391,14 @@ function toggleTheme(){
     var nodes = scope.querySelectorAll('[id]');
     var best = null, bestTop = -Infinity;
     for(var k = 0; k < nodes.length; k++){
+      // Skip ids nested inside a still-collapsed accordion — overflow:hidden
+      // + max-height:0 only clips painting, so descendants still report
+      // real "as if expanded" bounding rects at coordinates that don't
+      // match anything actually visible. The collapsed wrapper's OWN id
+      // is still a valid anchor (its 0-height box is really there), so
+      // only skip when the collapsed ancestor is not the node itself.
+      var collapsedAncestor = nodes[k].closest('.collapsed');
+      if(collapsedAncestor && collapsedAncestor !== nodes[k]) continue;
       var top = nodes[k].getBoundingClientRect().top;
       if(top <= navH + 2 && top > bestTop){ best = nodes[k]; bestTop = top; }
     }
