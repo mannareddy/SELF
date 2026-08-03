@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -151,40 +152,6 @@ body{
 .self-table{
   width:100%;
   border-collapse:collapse;
-}
-/* ── LANDSCAPE ROTATION HINT FOR WIDE TABLES ──────────────────────────────
-   The site's three genuinely wide tables (.self-table-wrap — Master
-   Matrix plus four smaller reference tables; .ipo-table; .rasa-table)
-   currently only read as "scroll sideways with a thumb" in portrait.
-   Turned to landscape, a phone is often close to twice as wide, which is
-   frequently enough to see the whole table (or far more of it) without
-   scrolling at all. This surfaces that as an explicit option with a small
-   hint shown only in mobile portrait — CSS-only via ::before so no markup
-   needs duplicating per table — and it disappears the moment the device
-   is actually in landscape, or the viewport is wide enough that none of
-   this applies. (Scoped to the tables themselves, not every small
-   .grid-scroll-safe stat grid elsewhere on the page — those are short
-   label/value pairs, not the long-column reading problem this addresses,
-   and a repeated hint on every one of them would just be noise.) */
-.ipo-table,.rasa-table{position:relative;}
-.table-landscape-tip{
-  display:none;
-  font-family:var(--sans);
-  font-size:9px;
-  letter-spacing:1.5px;
-  text-transform:uppercase;
-  text-align:center;
-  color:var(--dim);
-  opacity:.8;
-  margin:10px 0 0;
-}
-@media(max-width:900px) and (orientation:portrait){
-  .table-landscape-tip{
-    display:block;
-  }
-}
-[data-theme="light"] .table-landscape-tip{
-  color:var(--text-dim);
 }
 .self-table th{
   font-family:var(--sans);
@@ -795,6 +762,7 @@ body{
 [data-theme="light"] .footer-socials a{color:var(--text-dim) !important;}
 [data-theme="light"] .footer-socials a:hover{color:var(--accent-gold) !important;}
 [data-theme="light"] .footer-tagline,[data-theme="light"] .footer-ca{color:var(--text-dim) !important;}
+[data-theme="light"] .geo-badge{background:rgba(245,241,232,0.95) !important;border-color:rgba(var(--shadow-rgb),0.32) !important;}
 [data-theme="light"] [style*="background:var(--bg);"]{background:var(--bg-page) !important;}
 [data-theme="light"] [style*="background:rgba(0,0,0"]{background:transparent !important;}
 [data-theme="light"] [style*="color:var(--white)"]{color:var(--text-body) !important;}
@@ -1185,8 +1153,8 @@ a:hover{opacity:.7;}
     margin:0 !important;
     border-top:none !important;
     border-bottom:none !important;
-    border-left:none !important;
-    border-right:none !important;
+    border-left:2px solid rgba(var(--accent-gold-rgb),0.55) !important;
+    border-right:2px solid rgba(var(--accent-gold-rgb),0.55) !important;
     border-radius:0 !important;
     padding:0 22px !important;
     overflow:visible !important;
@@ -1199,8 +1167,8 @@ a:hover{opacity:.7;}
     z-index:1 !important;
   }
   [data-theme="light"] .nav-logo-center{
-    border-left:none !important;
-    border-right:none !important;
+    border-left:2px solid rgba(0,0,0,0.15) !important;
+    border-right:2px solid rgba(0,0,0,0.15) !important;
   }
   /* The actual glowing badge — sized to the logo itself, not the whole
      wide tap-target, so the glow reads as a floating badge again */
@@ -1246,15 +1214,10 @@ a:hover{opacity:.7;}
     mix-blend-mode:multiply;
   }
 
-  /* Right division: theme toggle in-flow. margin-left:auto is what pushes
-     it to the far right of the nav row — the hamburger and the (absolutely
-     positioned, so layout-inert) logo don't take up flex space, so without
-     this the toggle would just sit flush next to the hamburger on the
-     left instead of at the opposite end. */
+  /* Right division: theme toggle in-flow */
   #themeToggleBtn{
     position:static !important;
     flex:0 0 52px !important;
-    margin-left:auto !important;
     align-self:stretch !important;
     display:flex !important;
     align-items:center !important;
@@ -1304,22 +1267,11 @@ a:hover{opacity:.7;}
     color:#555;padding:13px 22px 13px 34px;border-top:1px solid #1a1a1a;font-style:italic;
   }
   .mnav-list a.active{color:var(--gold);}
-  body.mnav-open{     overflow:hidden;     position:fixed;     left:0;     right:0;     width:100%;   }
+  body.mnav-open{overflow:hidden;}
 }
 
-/* ── GEO TAG ─────────────────────────────────────────────────────────────
-   Used to float as a fixed corner badge that peeked in on scroll — on
-   small phones that sat in the one corner people rest a thumb near, and
-   flashing in on every scroll was more distraction than it was worth.
-   Moved inside the mobile nav panel instead: there's plenty of idle room
-   there, and it's only seen when someone has already opened the menu. */
-.mnav-geo{
-  text-align:center;font-family:var(--sans);font-size:9px;letter-spacing:2px;
-  text-transform:uppercase;color:var(--dim);padding:14px 0 6px;
-  border-top:1px solid #1a1a1a;margin-top:8px;
-}
-.mnav-geo:empty{display:none;}
-[data-theme="light"] .mnav-geo{border-top-color:rgba(var(--shadow-rgb),0.24);}
+/* ── GEO BADGE ───────────────────────────────────────────────────────────── */
+.geo-badge{position:fixed;bottom:18px;right:20px;z-index:900;font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);border:1.5px solid rgba(var(--accent-gold-rgb),0.55);padding:5px 10px;background:rgba(0,0,0,.92);opacity:0;transition:opacity .6s ease;pointer-events:none;}
 
 /* ── FONT-SIZE ACCESSIBILITY CONTROL ───────────────────────────────────────
    Nearly all type on this page is set in px, not rem, so scaling html's
@@ -1340,13 +1292,14 @@ html[data-fontscale="112"] #zoomScope{zoom:1.12;}
 html[data-fontscale="125"] #zoomScope{zoom:1.25;}
 html[data-fontscale="140"] #zoomScope{zoom:1.4;}
 
-/* There is no text-size control on mobile at all (see .a11y-fontsize below)
-   — but data-fontscale is stored in localStorage and shared across devices/
-   viewport widths, so someone who set 140% on desktop and then opens the
-   same browser profile on mobile (or just narrows the window) would
-   otherwise still get a 140% zoom with no way to undo it. This clamps it
-   back to no zoom whenever the viewport is mobile-width, regardless of how
-   the attribute got set. */
+/* The mobile nav no longer offers a way to reach 112/125/140 (see the
+   markup comment on .nav-fontsize-mobile) — but data-fontscale is stored
+   in localStorage and shared across devices/viewport widths, so someone
+   who set 140% on desktop and then opens the same browser profile on
+   mobile (or just narrows the window) would otherwise still get a 140%
+   zoom with no way to undo it from the mobile UI. This clamps it back to
+   no zoom whenever the viewport is mobile-width, regardless of how the
+   attribute got set. */
 @media(max-width:900px){
   html[data-fontscale="112"] #zoomScope,
   html[data-fontscale="125"] #zoomScope,
@@ -1355,12 +1308,12 @@ html[data-fontscale="140"] #zoomScope{zoom:1.4;}
   }
 }
 
-/* Leftover safety net from before the text-size control was removed from
-   mobile entirely (see the clamp above) — these two specific comparison
-   grids (Dark Night mistake/truth, Sevenfold Ignorance/Knowledge) were the
-   ones that actually overflowed at 140% on mobile. With no way to reach
-   140% on mobile anymore this shouldn't fire in practice, but it's
-   harmless to leave in place in case zoom controls ever return there. */
+/* Leftover safety net from before A+ was disabled on mobile entirely (see
+   the clamp above and the .nav-fontsize-mobile markup comment) — these two
+   specific comparison grids (Dark Night mistake/truth, Sevenfold Ignorance/
+   Knowledge) were the ones that actually overflowed at 140% on mobile.
+   With 140% now unreachable on mobile this shouldn't fire in practice, but
+   it's harmless to leave in place in case 140% ever gets re-enabled there. */
 @media(max-width:900px){
   html[data-fontscale="140"] .dark-night-compare,
   html[data-fontscale="140"] .sevenfold-compare{
@@ -1394,15 +1347,58 @@ html[data-fontscale="140"] #zoomScope{zoom:1.4;}
   .a11y-fontsize{bottom:14px;left:10px;padding:2px;}
   .a11y-fontsize button{width:27px;height:27px;}
 }
-/* The text-size accessibility control (A−/A/A+) is desktop-only. On a touch
-   device pinch-to-zoom already covers text scaling, and the zoom-based
-   reflow this control drives was producing visible focus jumps that added
-   friction without adding value on small screens — so the floating widget
-   (and the mobile nav-row copy that used to sit next to the theme toggle)
-   is hidden entirely below 900px rather than offered in a reduced form. */
+/* On mobile the floating widget sits low on the screen, out of the way of
+   normal reading/thumb reach, so on mobile the text-size controls move up
+   into the nav row instead (see .nav-fontsize-mobile below) and the
+   floating copy is hidden. */
 @media(max-width:900px){
   .a11y-fontsize{display:none !important;}
 }
+.nav-fontsize-mobile{display:none;}
+/* Mobile nav row: ☰ hamburger (52px, pinned left) — logo (absolutely
+   centered on the page, independent of what's on either side — see
+   .nav-logo-center above) — A− A A+ controls, own fixed-width division
+   (order:2, margin-left:auto pushes it and the theme toggle flush right)
+   — ☀ theme toggle (52px, pinned right).
+   Previously the controls sat absolute-positioned on top of the logo's
+   flex-1 area, left of the logo, with no guaranteed space of their own —
+   tiny 20–24px buttons touching each other (no gap), and their presence
+   also skewed the logo off true center once they took up flex width.
+   Moving them to their own in-flow division to the right of the logo
+   (matching where the request asked for them) and taking the logo out of
+   flex layout entirely (absolute + true centering) fixes both problems
+   independently of each other. */
+@media(max-width:900px){
+  .mnav-toggle{order:1;}
+  .nav-fontsize-mobile{order:2;margin-left:auto;}
+  #themeToggleBtn{order:3;}
+  .nav-fontsize-mobile{
+    display:flex;align-items:stretch;gap:0;
+    position:static;flex:0 0 auto;height:var(--nav-h);
+    border-left:1px solid rgba(var(--accent-gold-rgb),0.35);
+    z-index:auto;
+  }
+  .nav-fontsize-mobile button{
+    font-family:var(--sans);color:var(--dim);background:transparent;border:none;
+    cursor:pointer;width:26px;height:100%;
+    display:flex;align-items:center;justify-content:center;
+    transition:color .2s;line-height:1;padding:0;
+  }
+  .nav-fontsize-mobile button:not(:last-child){border-right:1px solid rgba(var(--accent-gold-rgb),0.2);}
+  .nav-fontsize-mobile button:hover{color:var(--gold);}
+  .nav-fontsize-mobile button:disabled{opacity:.3;cursor:default;}
+  .nav-fontsize-mobile button[data-a11y="down"]{font-size:10px;}
+  .nav-fontsize-mobile button[data-a11y="reset"]{font-size:11px;}
+  .nav-fontsize-mobile button[data-a11y="up"]{font-size:13px;}
+  [data-theme="light"] .nav-fontsize-mobile{border-left-color:rgba(var(--shadow-rgb),0.16) !important;}
+  [data-theme="light"] .nav-fontsize-mobile button{color:var(--text-dim) !important;}
+  [data-theme="light"] .nav-fontsize-mobile button:not(:last-child){border-right-color:rgba(var(--shadow-rgb),0.12) !important;}
+  [data-theme="light"] .nav-fontsize-mobile button:hover{color:var(--accent-gold) !important;}
+}
+@media(max-width:480px){
+  .nav-fontsize-mobile button{width:22px;}
+}
+.geo-badge.visible{opacity:1;}
 
 /* ── UTILITIES ───────────────────────────────────────────────────────────── */
 .section{padding:80px 24px;max-width:660px;margin:0 auto;scroll-margin-top:56px;}
@@ -1494,7 +1490,7 @@ section{scroll-margin-top:56px;}
 .btn-outline:hover{border-color:var(--gold);color:var(--gold);}
 .btn-outline:disabled{opacity:.5;cursor:default;}
 @keyframes fade{0%,100%{opacity:0;}50%{opacity:1;}}
-.continue-hint{display:block;text-align:center;padding:28px 0 36px;font-family:var(--sans);font-size:10px;color:#444;letter-spacing:4px;text-transform:uppercase;animation:fade 3.5s ease-in-out infinite;user-select:none;pointer-events:none;}
+.continue-hint{display:block;text-align:center;padding:28px 0 8px;font-family:var(--sans);font-size:10px;color:#444;letter-spacing:4px;text-transform:uppercase;animation:fade 3.5s ease-in-out infinite;user-select:none;pointer-events:none;}
 .continue-hint::after{content:'↓';display:block;font-size:16px;margin-top:4px;letter-spacing:0;}
 .hero-ca-arrow{display:block;font-size:15px;color:var(--gold);opacity:.55;padding-top:6px;animation:fade 3.5s ease-in-out infinite;}
 .hero-ca-link:hover .hero-ca-arrow{opacity:.9;}
@@ -1955,51 +1951,6 @@ section{scroll-margin-top:56px;}
   .ego-sub-header .collapse-toggle-btn{justify-self:start;}
   .evo-grid{grid-template-columns:1fr !important;}
 }
-
-/* ── MOBILE: STACK INLINE MULTI-COLUMN COMPARISON GRIDS INTO CARDS ────────
-   Dozens of sections (Integration Engine's Two Hemispheres, Dark Night
-   mistake/truth, Sevenfold Ignorance/Knowledge, Mind vs Brain, Conscious
-   vs Aware, and many more) lay two or three long text columns side by
-   side using one-off inline `style="grid-template-columns:1fr 1fr"` (or
-   `1fr 1fr 1fr` / `1fr auto 1fr`) rather than a shared class, since each
-   comparison only appears in one place. On desktop there's room for those
-   columns to breathe; on mobile the same layout squeezes each column
-   down to roughly a third of an already-narrow screen, so every line
-   wraps every few words. Below 900px this turns each one into a single
-   stacked column instead — one card on top of the next, same content,
-   readable width. `!important` is required because an inline style
-   attribute otherwise always wins over an external stylesheet rule, and
-   attribute-selector matching means each individual block doesn't need
-   its own named class + mobile override written by hand.
-   Two exceptions are intentionally NOT stacked here: `.dark-night-compare`
-   / `.sevenfold-compare` already had a narrower 140%-zoom-only fallback
-   (see the FONT-SIZE ACCESSIBILITY CONTROL section above) — they're
-   listed explicitly below so they stack at every mobile width, not just
-   140%. And the "Why Earth Dies Before the Sun" timeline's five-column
-   `1fr auto 1fr auto 1fr` grid is a `.grid-scroll-safe` horizontal
-   timeline by design (scrolls sideways rather than squeezing or
-   stacking) — the second rule below restores it, since its own value
-   contains "1fr auto 1fr" as a substring and would otherwise get caught
-   by the general rule too.
-   Scoped to `orientation:portrait` rather than plain max-width:900px —
-   turning the phone sideways usually gives these grids close to double
-   the width, which is often enough for two (sometimes three) columns to
-   read comfortably again, so landscape is left as a genuine alternative
-   view rather than forcing the same single-column stack regardless of
-   orientation. */
-@media(max-width:900px) and (orientation:portrait){
-  [style*="grid-template-columns:1fr 1fr;"],
-  [style*="grid-template-columns:1fr 1fr 1fr;"],
-  [style*="grid-template-columns:1fr auto 1fr;"],
-  .dark-night-compare,
-  .sevenfold-compare{
-    grid-template-columns:1fr !important;
-  }
-  .grid-scroll-safe > [style*="grid-template-columns:1fr auto 1fr auto 1fr"]{
-    grid-template-columns:1fr auto 1fr auto 1fr !important;
-  }
-}
-
   .desktop-label{
     display:inline;
 }
@@ -2341,21 +2292,11 @@ h4 {
   }
 }
 @media(max-width:640px){
-  /* Progressive-enhancement fallback chain: plain vh (broadest support) →
-     svh (stable, assumes toolbar expanded) → dvh (tracks the browser's
-     actual current viewport). Each later declaration silently overrides
-     the previous one only where the unit is supported, so unsupported
-     browsers keep the closest available value. dvh is what actually
-     stops the banner from peeking in on Chrome/Opera on first load —
-     svh alone was still computing a shorter box than the real visible
-     viewport on some devices, leaving a sliver of the banner exposed.
-     The one-time reflow dvh can cause as the URL bar shows/hides during
-     the very first scroll is a smaller cost than a visible content leak.
-     justify-content:space-between (below) spreads the three hero
-     children — intro line, question box, continue hint — across that
-     full height instead of stacking them at the top with dead space
-     underneath. */
-  .hero{min-height:calc(100vh - var(--nav-h));min-height:calc(100svh - var(--nav-h));min-height:calc(100dvh - var(--nav-h));height:auto;padding:28px 16px 28px !important;justify-content:space-between;gap:16px;}
+  /* 100dvh recalculates on every scroll tick on Android as the URL bar
+     shows/hides, forcing continuous layout reflow on the very first
+     section the user touches. Switched to a static 100vh + min-height
+     (computed once, not on every frame) to eliminate the jerk. */
+  .hero{min-height:calc(100vh - var(--nav-h));height:auto;padding:12px 16px 28px !important;justify-content:center;gap:38px;}
   .hero-ca-arrow{padding-top:0 !important;}
   .hero-question{font-size:20px !important;line-height:1.55 !important;margin-bottom:0 !important;}
   .hero > a[href="#contract"]{margin:0 auto !important;}
@@ -2367,7 +2308,7 @@ h4 {
   .hero-continue-mobile{
     display:block !important;
     position:static;
-    margin-top:0;
+    margin-top:20px;
     padding:0;
   }
   /* Card titles — lock all three card types to same mobile size */
@@ -3282,12 +3223,17 @@ a.src-tag:hover{opacity:.75;}
       </div>
     </li>
   </ul>
-  <!-- The A-/A text-size control previously lived here on mobile. It's been
-       removed entirely from the mobile experience: on a touch device the
-       pinch-to-zoom gesture already covers text scaling, and the control's
-       zoom-based reflow was causing visible focus jumps that added friction
-       without adding value on small screens. The full A-/A/A+ widget remains
-       on desktop (see .a11y-fontsize below). -->
+  <!-- Mobile-only text-size controls: A- and A (reset) only. A+ is
+       intentionally not offered here — see the #zoomScope comment for why
+       140% zoom broke layout in several sections on mobile; the pinch-to-
+       zoom gesture already covers "make things bigger" on a touch device,
+       so this control's job on mobile is just "make it smaller / put it
+       back", matching the floating widget's full A-/A/A+ set on desktop
+       where 140% never caused problems. -->
+  <div class="nav-fontsize-mobile" role="group" aria-label="Adjust text size">
+    <button type="button" data-a11y="down" onclick="a11yFontStep(-1)" aria-label="Decrease text size">A&#8722;</button>
+    <button type="button" data-a11y="reset" onclick="a11yFontReset()" aria-label="Reset text size to default" title="Reset text size">A</button>
+  </div>
   <button id="themeToggleBtn" onclick="toggleTheme()" title="Toggle light/dark theme" aria-label="Toggle theme">&#9788;</button>
 </nav>
 
@@ -3351,6 +3297,7 @@ a.src-tag:hover{opacity:.75;}
         New <span class="nav-new-dot"></span><span class="mnav-caret">▾</span>
       </button>
       <div class="mnav-group-panel" id="newMenuPanelMobile">
+        <a href="#home">Accessibility Feature Added</a>
       </div>
     </li>
 
@@ -3366,9 +3313,9 @@ a.src-tag:hover{opacity:.75;}
       </div>
     </li>
   </ul>
-  <div class="mnav-geo" id="geoBadge"></div>
 </div>
 
+<div class="geo-badge" id="geoBadge"></div>
 <div class="a11y-fontsize" role="group" aria-label="Adjust text size">
   <button type="button" data-a11y="down" onclick="a11yFontStep(-1)" aria-label="Decrease text size">A&#8722;</button>
   <button type="button" data-a11y="reset" onclick="a11yFontReset()" aria-label="Reset text size to default" title="Reset text size">A</button>
@@ -3680,7 +3627,7 @@ a.src-tag:hover{opacity:.75;}
   <p class="phil-line dim" style="text-align:left;max-width:640px;margin-left:auto;margin-right:auto;">Nature, consciousness, and human life all move through the same sequence — from the density of raw survival to the clarity of pure being.</p>
   <div class="cosmo-quote" style="max-width:660px;margin:0 auto 36px;text-align:center;">
     <p>&ldquo;As above, so below.&rdquo;</p>
-    <cite>—The Hermetic Principle of Correspondence</cite>
+    <cite>The Hermetic Principle of Correspondence</cite>
   </div>
 
   <!-- ASCENT OF SELF MAP — always-visible navigator, styled to match the
@@ -4135,7 +4082,6 @@ a.src-tag:hover{opacity:.75;}
     </tbody>
   </table>
   </div>
-  <p class="table-landscape-tip">⟳ Tip: turn your phone to landscape for a wider view of this table</p>
 </div>
  </section>
 <span class="continue-hint">continue</span>
@@ -4225,7 +4171,6 @@ a.src-tag:hover{opacity:.75;}
     </tbody>
   </table>
 </div>
-<p class="table-landscape-tip">⟳ Tip: turn your phone to landscape for a wider view of this table</p>
   </section>
 <span class="continue-hint">continue</span>
 <div class="divider"></div>
@@ -4371,7 +4316,6 @@ a.src-tag:hover{opacity:.75;}
         </tbody>
       </table>
     </div>
-    <p class="table-landscape-tip">⟳ Tip: turn your phone to landscape for a wider view of this table</p>
 
     <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--grey);line-height:1.9;max-width:820px;margin:0 auto 40px;text-align:left;">Altitude five is a capacity, not a permanent address. Most of most days, most people still run on altitude one or two &mdash; reacting, orienting, no one home watching it happen. The practice was never becoming capable of more. That capacity was never in question. <span style="color:var(--gold);font-style:italic;">It&rsquo;s noticing which altitude you&rsquo;re actually standing on, right now.</span></p>
 
@@ -4462,7 +4406,6 @@ a.src-tag:hover{opacity:.75;}
       </tbody>
     </table>
   </div>
-  <p class="table-landscape-tip">⟳ Tip: turn your phone to landscape for a wider view of this table</p>
   <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--mid);line-height:1.85;max-width:660px;margin:0 auto 52px;text-align:center;">You cannot create lasting change while still operating from the same conditioned programming that created the problem.</p>
 
   <!-- The Root of All Suffering — standalone, always visible -->
@@ -5294,10 +5237,8 @@ a.src-tag:hover{opacity:.75;}
         <p class="as-text">Give up the &ldquo;doer.&rdquo; Throw everything that can be burned into the fire, and discover what is left.</p>
       </div>
     </div>
-    <div style="border:1px solid rgba(var(--accent-gold-rgb),0.3);border-left:3px solid var(--gold);background:var(--bg-lift);padding:28px 32px;margin:32px auto 0;max-width:560px;">
-      <p style="font-family:var(--serif);font-size:clamp(16px,2.2vw,21px);color:var(--gold);font-style:italic;line-height:1.8;">&ldquo;I am the Nectar of Knowledge &mdash; homogeneous existence like the sky.&rdquo;</p>
-      <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-top:10px;">— Avadhuta Gita</p>
-    </div>
+    <p style="font-family:var(--serif);font-size:clamp(16px,2.2vw,21px);color:var(--gold);font-style:italic;line-height:1.8;">&ldquo;I am the Nectar of Knowledge &mdash; homogeneous existence like the sky.&rdquo;</p>
+    <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-top:10px;">— Avadhuta Gita</p>
   </div>
 </section>
 <span class="continue-hint">continue</span>
@@ -5406,7 +5347,6 @@ a.src-tag:hover{opacity:.75;}
       <div class="rasa-row" id="rasa-row-7"><div class="rasa-cell type">7 — Enthusiast</div><div class="rasa-cell">Pain/Sadness · Gluttony</div><div class="rasa-cell shadow">Distraction (Hasya)</div><div class="rasa-cell light">Absorption · Work</div></div>
     </div>
   </div>
-  <p class="table-landscape-tip">⟳ Tip: turn your phone to landscape for a wider view of this table</p>
 
   <!-- Closing text — standalone, always visible -->
   <div class="rasa-closing" style="margin-top:36px;">
@@ -6221,7 +6161,6 @@ a.src-tag:hover{opacity:.75;}
       <div class="ipo-table-row"><div class="ipo-cell attr">Supply</div><div class="ipo-cell">Can dilute</div><div class="ipo-cell bright">Fixed forever (1)</div></div>
       <div class="ipo-table-row"><div class="ipo-cell attr">Success</div><div class="ipo-cell">Chart moons</div><div class="ipo-cell gold">You notice more</div></div>
     </div>
-    <p class="table-landscape-tip">⟳ Tip: turn your phone to landscape for a wider view of this table</p>
     <div style="max-width:700px;margin:0 auto 52px;">
       <div class="pull-quote" style="text-align:left;border:1px solid rgba(var(--accent-gold-rgb),0.45);border-left:3px solid var(--gold);padding:36px 40px;">
         <p>&ldquo;The universe has been mapped to its outermost edge. The human interior remains largely unexplored.&rdquo;</p>
@@ -6772,7 +6711,6 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
         </tbody>
       </table>
     </div>
-    <p class="table-landscape-tip">⟳ Tip: turn your phone to landscape for a wider view of this table</p>
 
     <p style="font-family:var(--serif);font-size:clamp(14px,1.9vw,17px);color:var(--gold);font-style:italic;text-align:center;line-height:1.85;max-width:660px;margin:32px auto 32px;">Different expressions. One eternal pattern &mdash; from the heaviest base lead of physical survival to the absolute illumination of the Philosopher&rsquo;s Stone.</p>
 
@@ -7457,16 +7395,6 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
       </div></div>
     </div>
 
-    <div class="faq-item closed">
-      <button class="faq-q" onclick="faqToggle(this)">
-        <span>I'm on my phone &mdash; is there a better way to read the tables and side-by-side comparisons?</span><span class="faq-icon">+</span>
-      </button>
-      <div class="faq-a"><div class="faq-a-inner">
-        <p style="margin-bottom:16px;">Yes &mdash; turn your phone sideways. The Master Matrix, the IPO table, and the Rosetta Stone table are all built to take advantage of the extra width landscape gives you, and on most phones that's close to double what you get in portrait. Several of the two- and three-column comparisons on the page (Mistake vs. Truth, Mind vs. Brain, Conscious vs. Aware, and others) do the same &mdash; they stack into a single column in portrait so nothing gets squeezed, and open back out side by side once you rotate.</p>
-        <p style="color:var(--mid);">Portrait still works fine for scrolling through everything &mdash; landscape is just there as an easier way to see a full wide table or comparison at a glance, not something you need to switch to for the rest of the site.</p>
-      </div></div>
-    </div>
-
   </div>
   </div>
 </section>
@@ -7525,7 +7453,7 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
 
       <p style="font-family:var(--serif);font-size:clamp(15px,1.9vw,18px);color:var(--grey);line-height:1.95;margin-bottom:20px;">This framework is a tool for personal observation and inquiry. It is not financial, medical, or professional advice. Outcomes — including volatility, loss, or inactivity — are determined entirely by participant behaviour.</p>
 
-      <div style="border:1px solid rgba(var(--accent-gold-rgb),0.3);border-left:3px solid var(--gold);background:var(--bg-lift);padding:24px 22px;margin:24px 0;">
+      <div style="border-left:2px solid var(--gold);padding-left:22px;margin:24px 0;">
         <p style="font-family:var(--serif);font-size:clamp(16px,2.1vw,19px);color:var(--white);line-height:1.85;font-style:italic;">You are not guided toward results. You are exposed to your own responses. The framework provides the screen. You interpret the experience.</p>
       </div>
 
@@ -8572,7 +8500,7 @@ function renderVoidNode(nodeId, isRestart){
 
 voidRenderLastNote();
 
-/* ── GEO TAG ─────────────────────────────────────────────────────────────── */
+/* ── GEO BADGE ───────────────────────────────────────────────────────────── */
 (function(){
   try{
     fetch('https://ipapi.co/json/',{signal:AbortSignal.timeout(4000)})
@@ -8582,6 +8510,21 @@ voidRenderLastNote();
           var b=document.getElementById('geoBadge');
           b.textContent=(d.region_code?d.region_code+' \u00b7 ':'')+d.country_code;
           if(typeof gtag==='function'){gtag('event','visitor_geo',{visitor_country:d.country_name,visitor_city:d.city||'',visitor_region:d.region||''});}
+
+          // Previously stayed pinned in the corner for the whole session once
+          // shown. On small phones a permanently-fixed badge quietly eats
+          // real reading space in the one corner people rest a thumb near —
+          // more of a cost there than on desktop, where it's a minor nicety.
+          // Now it peeks in on scroll and fades back out shortly after
+          // scrolling stops, on both mobile and desktop.
+          var hideTimer=null;
+          function peekGeoBadge(){
+            b.classList.add('visible');
+            clearTimeout(hideTimer);
+            hideTimer=setTimeout(function(){ b.classList.remove('visible'); },2200);
+          }
+          peekGeoBadge();
+          window.addEventListener('scroll',peekGeoBadge,{passive:true});
         }
       }).catch(function(){});
   }catch(e){}
@@ -8815,20 +8758,15 @@ function updateNav(){
     var panel  = document.getElementById('mnavPanel');
     if(!toggle || !panel) return;
 
-    var mnavScrollY = 0;
     function openMenu(){
       toggle.setAttribute('aria-expanded','true');
       panel.classList.add('open');
-      mnavScrollY = window.scrollY;
-      document.body.style.top = (-mnavScrollY) + 'px';
       document.body.classList.add('mnav-open');
     }
     function closeMenu(){
       toggle.setAttribute('aria-expanded','false');
       panel.classList.remove('open');
       document.body.classList.remove('mnav-open');
-      document.body.style.top = '';
-      window.scrollTo(0, mnavScrollY);
       // Collapse any open accordion group so re-opening the panel always
       // starts fresh, matching the desktop mega-menu's non-persistent state.
       panel.querySelectorAll('.mnav-group.open').forEach(function(g){
@@ -8873,18 +8811,6 @@ function updateNav(){
         closeMenu();
       }
     });
-    // Logo points at the site's own root URL, and since this is a
-    // single-page site that was forcing a full reload — flashing raw
-    // unstyled markup, then landing back at the top. Intercept and
-    // scroll-to-top instead; href stays as a no-JS / new-tab fallback.
-    var logo = document.querySelector('.nav-logo-center');
-    if(logo){
-      logo.addEventListener('click', function(e){
-        e.preventDefault();
-        if(panel.classList.contains('open')) closeMenu();
-        window.scrollTo({top:0, behavior:'smooth'});
-      });
-    }
   })();
 
   /* ── WHY $SELF TOGGLE ── */
@@ -9426,63 +9352,38 @@ function toggleTheme(){
     var i = STEPS.indexOf(parseInt(v, 10));
     return i === -1 ? 1 : i;
   }
-  /* Finds whichever piece of real content sits nearest the vertical CENTER
-     of the viewport right now — a proxy for whatever the reader is actually
-     looking at — and remembers its exact on-screen position. After the
-     scale change, the anchor's new position is measured and the scroll
-     offset is corrected by the difference (delta), so that same piece of
-     content ends up back at the exact same spot on screen it was at before
-     — not snapped to just under the nav bar, and not wherever a scroll-ratio
-     guess happens to land. This is what actually keeps "focus" — the point
-     on screen the reader's eye was on — fixed through a zoom change,
-     regardless of whether that point was near the top, middle, or bottom
-     of the viewport.
-     Candidates are paragraphs, headings, list items and other content-
-     bearing elements (not just elements with an id) so the nearest match is
-     usually only a few px from viewport-center, minimizing residual error
-     from that element's own height. */
-  function currentAnchor(){
+  function currentNavH(){
+    var v = getComputedStyle(html).getPropertyValue('--nav-h');
+    var n = parseFloat(v);
+    return isNaN(n) ? 44 : n;
+  }
+  /* Finds whichever element with an id (section anchors, matrix rows, etc.)
+     is currently sitting at/just past the top of the visible reading area
+     — i.e. whatever the reader is "on" right now — so the scale change can
+     re-anchor to that exact element afterward instead of guessing via a
+     scroll-ratio calculation. The site's many short, single-line sections
+     are only a few dozen px tall, so even a handful of px of drift error
+     from a ratio calculation is enough to visibly jump to the section
+     above or below the one the reader was actually on — the "focus gets
+     lost" issue. Anchoring to real content instead of a computed position
+     removes that error entirely. */
+  function currentAnchor(navH){
     var scope = document.getElementById('zoomScope');
     if(!scope) return null;
-    var vh = window.innerHeight;
-    var mid = vh / 2;
-    var nodes = scope.querySelectorAll(
-      '[id],p,li,h1,h2,h3,h4,h5,h6,blockquote,td,th,dt,dd,figure,img'
-    );
-    var best = null, bestRect = null, bestDist = Infinity;
-    var bestOnscreen = null, bestOnscreenRect = null, bestOnscreenDist = Infinity;
+    var nodes = scope.querySelectorAll('[id]');
+    var best = null, bestTop = -Infinity;
     for(var k = 0; k < nodes.length; k++){
-      var el = nodes[k];
-      // Skip nodes nested inside a still-collapsed accordion — overflow:hidden
-      // + max-height:0 only clips painting, so descendants still report
-      // real "as if expanded" bounding rects at coordinates that don't
-      // match anything actually visible. The collapsed wrapper's OWN id
-      // is still a valid anchor (its 0-height box is really there), so
-      // only skip when the collapsed ancestor is not the node itself.
-      var collapsedAncestor = el.closest('.collapsed');
-      if(collapsedAncestor && collapsedAncestor !== el) continue;
-      var rect = el.getBoundingClientRect();
-      if(rect.width === 0 && rect.height === 0) continue; // not actually rendered
-      var center = rect.top + rect.height / 2;
-      var dist = Math.abs(center - mid);
-      // Track the best match overall (fallback) and separately the best
-      // match that's actually intersecting the visible viewport, since an
-      // off-screen node could technically have a "closer" center on a very
-      // tall page.
-      if(dist < bestDist){ bestDist = dist; best = el; bestRect = rect; }
-      if(rect.bottom > 0 && rect.top < vh && dist < bestOnscreenDist){
-        bestOnscreenDist = dist; bestOnscreen = el; bestOnscreenRect = rect;
-      }
+      var top = nodes[k].getBoundingClientRect().top;
+      if(top <= navH + 2 && top > bestTop){ best = nodes[k]; bestTop = top; }
     }
-    var chosen = bestOnscreen || best;
-    var chosenRect = bestOnscreen ? bestOnscreenRect : bestRect;
-    return chosen ? {el: chosen, top: chosenRect.top} : null;
+    return best;
   }
   function apply(i){
     var oldVal = parseInt(html.getAttribute('data-fontscale') || '100', 10);
     var val = STEPS[i];
+    var navH = currentNavH();
     var oldScroll = window.pageYOffset || html.scrollTop || document.body.scrollTop;
-    var anchor = (oldVal !== val) ? currentAnchor() : null;
+    var anchorEl = (oldVal !== val) ? currentAnchor(navH) : null;
     if(val === 100) html.removeAttribute('data-fontscale');
     else html.setAttribute('data-fontscale', String(val));
     if(oldVal !== val && oldVal > 0){
@@ -9492,15 +9393,14 @@ function toggleTheme(){
       // land somewhere else on the page.
       void document.documentElement.scrollHeight;
       var newY;
-      if(anchor){
-        var newRect = anchor.el.getBoundingClientRect();
-        var delta = newRect.top - anchor.top;
-        newY = Math.max(0, Math.round(oldScroll + delta));
+      if(anchorEl){
+        var rect = anchorEl.getBoundingClientRect();
+        newY = Math.max(0, Math.round(window.pageYOffset + rect.top - navH));
       } else {
-        // Fallback for the rare case nothing renders above the fold yet
-        // (e.g. still at the very top of the page) — the old ratio-based
-        // estimate is fine here since there's nothing to anchor to and the
-        // error at small scroll offsets is negligible.
+        // Fallback for the rare case nothing with an id sits above the
+        // fold yet (e.g. still at the very top of the page) — the old
+        // ratio-based estimate is fine here since there's nothing to
+        // anchor to and the error at small scroll offsets is negligible.
         newY = Math.round(oldScroll * (val / oldVal));
       }
       // html{scroll-behavior:smooth} would otherwise make even this
@@ -9510,8 +9410,9 @@ function toggleTheme(){
       window.scrollTo({top: newY, left: 0, behavior: 'instant'});
     }
     localStorage.setItem('selfFontScale', String(val));
-    /* querySelectorAll rather than a single lookup, in case this ever
-       gains a second copy again — costs nothing when there's only one. */
+    /* Controls now exist in two places (the floating desktop widget and
+       the mobile nav-embedded copy) — keep every copy of each button in
+       sync, not just the first one found. */
     var downBtns = document.querySelectorAll('[data-a11y="down"]');
     var upBtns = document.querySelectorAll('[data-a11y="up"]');
     for(var d=0; d<downBtns.length; d++) downBtns[d].disabled = (i === 0);
