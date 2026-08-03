@@ -815,7 +815,14 @@ body{
 /* Light theme — border fixes for previously-missed bordered elements */
 [data-theme="light"] .ec-body{border-top-color:rgba(var(--shadow-rgb),0.3) !important;}
 [data-theme="light"] .rrrr-version{background:var(--bg-sunken) !important;border-color:rgba(var(--shadow-rgb),0.24) !important;border-width:0 !important;border-left:3px solid rgba(var(--accent-gold-rgb),0.35) !important;}
-[data-theme="light"] .faq-a-inner > div[style*="bg-lift"]{background:var(--bg-sunken) !important;border-color:rgba(var(--shadow-rgb),0.24) !important;}
+/* This neutralizes all four border sides to a plain shadow tint for light
+   theme — matching every other bg-lift callout box on the page (.ipo-upanishad,
+   .rrrr-version, .cosmo-quote, .rasa-closing, .superordinate-box, etc.) — but
+   unlike those, it was missing the border-left-color restore, so all ~9 FAQ
+   pull-quote callouts (Default OS, Logotherapy tools, Gratitude Recalibration,
+   True Legacy, etc.) lost their gold accent stripe in light theme, going flat
+   grey on all four sides instead of keeping the gold left border. */
+[data-theme="light"] .faq-a-inner > div[style*="bg-lift"]{background:var(--bg-sunken) !important;border-color:rgba(var(--shadow-rgb),0.24) !important;border-left-color:rgba(var(--accent-gold-rgb),0.6) !important;}
 [data-theme="light"] .stage-expand-label{border-color:rgba(var(--accent-gold-rgb),0.5) !important;color:var(--gold) !important;}
 [data-theme="light"] .stage-num-col{border-right-color:rgba(var(--shadow-rgb),0.3) !important;}
 [data-theme="light"] .tradition-table{border:2px solid rgba(var(--shadow-rgb),0.4) !important;}
@@ -3631,7 +3638,7 @@ a.src-tag:hover{opacity:.75;}
   <p class="phil-line dim" style="text-align:left;max-width:640px;margin-left:auto;margin-right:auto;">Nature, consciousness, and human life all move through the same sequence — from the density of raw survival to the clarity of pure being.</p>
   <div class="cosmo-quote" style="max-width:660px;margin:0 auto 36px;text-align:center;">
     <p>&ldquo;As above, so below.&rdquo;</p>
-    <cite>The Hermetic Principle of Correspondence</cite>
+    <cite>— The Hermetic Principle of Correspondence</cite>
   </div>
 
   <!-- ASCENT OF SELF MAP — always-visible navigator, styled to match the
