@@ -71,10 +71,10 @@ max-width:100%;
    (max-height + opacity only — no margin/padding/border animating
    alongside it), so both rules below are identical on purpose. */
 .theme-swap .framework-content{
-  transition:max-height .4s ease,opacity .3s ease !important;
+  transition:max-height .4s cubic-bezier(0,1,.25,1),opacity .3s ease !important;
 }
 .theme-swap .p-body{
-  transition:max-height .4s ease,opacity .3s ease !important;
+  transition:max-height .4s cubic-bezier(0,1,.25,1),opacity .3s ease !important;
 }
 body{
   background:var(--bg);
@@ -1542,7 +1542,7 @@ section{scroll-margin-top:56px;}
 .framework-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:2px;margin:48px auto 0;text-align:left;}
 .framework-card{padding:38px 32px;background:var(--bg-lift);border:1px solid rgba(var(--accent-gold-rgb),0.3);transition:border-color .3s;cursor:pointer;position:relative;}
 .framework-card:hover{border-color:rgba(var(--accent-gold-rgb),0.6);}
-.framework-content{overflow:hidden;transition:max-height .4s ease,opacity .3s ease;opacity:1;}
+.framework-content{overflow:hidden;transition:max-height .4s cubic-bezier(0,1,.25,1),opacity .3s ease;opacity:1;}
 .framework-card.collapsed .framework-content{max-height:0;opacity:0;}
 .framework-card .num{font-family:var(--sans);font-size:10px;letter-spacing:3px;color:var(--gold);opacity:.7;margin-bottom:18px;display:block;}
 .framework-card h3{color:var(--white);margin-bottom:12px;}
@@ -1569,7 +1569,7 @@ section{scroll-margin-top:56px;}
 .pillar-card .p-num{font-family:var(--sans);font-size:10px;letter-spacing:3px;color:var(--gold);opacity:.65;margin-bottom:10px;display:block;}
 .pillar-card .p-title{font-family:var(--serif);font-size:clamp(19px,2vw,24px);font-weight:400;color:var(--white);margin-bottom:0;line-height:1.35;}
 .pillar-card .p-expand{font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.7;position:absolute;top:32px;right:28px;margin-top:0;display:block;}
-.pillar-card .p-body{font-family:var(--serif);font-size:15.5px;font-weight:300;color:var(--grey);line-height:1.88;overflow:hidden;overflow-anchor:none;max-height:0;opacity:0;margin-top:0;border-top:1px solid rgba(var(--accent-gold-rgb),0.3);padding-top:32px;transition:max-height .4s ease,opacity .3s ease;}
+.pillar-card .p-body{font-family:var(--serif);font-size:15.5px;font-weight:300;color:var(--grey);line-height:1.88;overflow:hidden;overflow-anchor:none;max-height:0;opacity:0;margin-top:0;border-top:1px solid rgba(var(--accent-gold-rgb),0.3);padding-top:32px;transition:max-height .4s cubic-bezier(0,1,.25,1),opacity .3s ease;}
 .pillar-card.open .p-body{opacity:1;}
 .pillar-card,.pillar-grid{overflow-anchor:none;}
 .framework-card,.framework-grid,.framework-content{overflow-anchor:none;}
@@ -1734,7 +1734,7 @@ section{scroll-margin-top:56px;}
 .faq-a-inner{padding:0 4px 28px;font-family:var(--serif);font-size:clamp(16px,2vw,19px);font-weight:300;color:var(--grey);line-height:1.95;}
 .faq-a-inner a{color:var(--gold);}
 .faq-a-inner strong{color:var(--mid);font-weight:400;}
-.rrrr-version{margin-bottom:18px;padding:16px 18px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg);}
+.rrrr-version{margin-bottom:18px;padding:16px 18px;border:1px solid rgba(var(--accent-gold-rgb),0.3);border-left:3px solid var(--gold);background:var(--bg);}
 .rrrr-label{font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;display:block;}
 .rrrr-steps{font-size:clamp(16px,2vw,19px);color:var(--white);margin-bottom:8px;font-family:var(--serif);}
 .rrrr-desc{font-size:clamp(14px,1.8vw,17px);color:var(--grey);line-height:1.8;}
@@ -7346,7 +7346,7 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
             <p style="font-size:15px;color:var(--grey);line-height:1.85;">It is the Saturnine forge &mdash; heavy, real, and necessary. It does not end. It graduates.</p>
           </div>
         </div>
-        <p style="margin-bottom:12px;">Abraham Lincoln endured years of depression and repeated failure before the presidency. Nelson Mandela spent 27 years in prison. Neither escaped the dark night &mdash; both were forged by it. What emerged was not the man who entered.</p>
+        <p style="margin-bottom:12px;">Nelson Mandela spent 27 years in prison. He did not escape the dark night &mdash; he was forged by it. What emerged was not the man who entered.</p>
         <p style="color:var(--gold);font-style:italic;">If you have experienced something like this &mdash; your journey toward Self-Realization has already started.</p>
       </div></div>
     </div>
@@ -8853,9 +8853,7 @@ function updateNav(){
     el.style.maxHeight = '0px';
     void el.offsetHeight; // force a synchronous reflow so 0px lands on a real frame
     requestAnimationFrame(function(){
-      requestAnimationFrame(function(){
-        el.style.maxHeight = target + 'px';
-      });
+      el.style.maxHeight = target + 'px';
     });
     var released = false;
     function release(){
@@ -8890,9 +8888,7 @@ function updateNav(){
       void el.offsetHeight; // force reflow so the pinned height registers before it changes again
     }
     requestAnimationFrame(function(){
-      requestAnimationFrame(function(){
-        el.style.maxHeight = '0px';
-      });
+      el.style.maxHeight = '0px';
     });
   };
   var expandHeight = window.expandHeight, collapseHeight = window.collapseHeight;
