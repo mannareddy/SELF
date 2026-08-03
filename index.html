@@ -1931,6 +1931,16 @@ section{scroll-margin-top:56px;}
   .ego-sub-header{grid-template-columns:1fr;gap:12px;}
   .ego-sub-header .collapse-toggle-btn{justify-self:start;}
   .evo-grid{grid-template-columns:1fr !important;}
+  /* Mobile-only: lengthy side-by-side comparison columns (paragraph-heavy
+     text that gets squeezed into narrow half-width columns) become full-width
+     stacked cards instead. Desktop layout is untouched — this rule only
+     fires inside this max-width:640px query. */
+  .mobile-stack-cards,
+  .dark-night-compare,
+  .sevenfold-compare{
+    grid-template-columns:1fr !important;
+    gap:10px !important;
+  }
 }
   .desktop-label{
     display:inline;
@@ -3899,7 +3909,7 @@ a.src-tag:hover{opacity:.75;}
   <!-- STEP 1: THE PROBLEM — Two Hemispheres -->
   <div style="max-width:980px;margin:0 auto 16px;">
     <p style="font-family:var(--sans);font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);opacity:.75;text-align:center;margin-bottom:24px;">Step 1 — The Two Hemispheres</p>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;max-width:800px;margin:0 auto;">
+    <div class="mobile-stack-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;max-width:800px;margin:0 auto;">
       <div style="padding:36px 32px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg);text-align:left;">
         <div style="font-size:36px;color:var(--gold);margin-bottom:16px;opacity:.5;">①</div>
         <h3 style="color:var(--gold);margin-bottom:10px;">The Western Paradigm</h3>
@@ -4179,7 +4189,7 @@ a.src-tag:hover{opacity:.75;}
     <div style="max-width:820px;margin:0 auto 40px;padding:36px 32px;background:var(--bg-lift);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);text-align:center;">
       <p style="font-family:var(--serif);font-size:clamp(20px,3vw,28px);color:var(--white);margin-bottom:10px;">Mind &ne; Brain</p>
       <p style="font-family:var(--serif);font-size:clamp(16px,2.2vw,20px);color:var(--gold);font-style:italic;margin-bottom:28px;">Mind &divide; Brain &nbsp;=&nbsp; Spirit &divide; Matter</p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;text-align:left;">
+      <div class="mobile-stack-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;text-align:left;">
         <div style="padding:20px 22px;background:var(--bg);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);">
           <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:10px;">The Theatre &middot; Matter</div>
           <p style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.85;">The physical brain processes the words in one hemisphere and the music in the other. It is the stage the play happens on &mdash; nothing more, nothing less.</p>
@@ -4192,7 +4202,7 @@ a.src-tag:hover{opacity:.75;}
     </div>
 
     <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin:0 0 16px;text-align:left;max-width:820px;margin-left:auto;margin-right:auto;">The Epistemology of Depth &mdash; You Can Know More Than You Can Tell</p>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;max-width:820px;margin:0 auto 24px;text-align:left;">
+    <div class="mobile-stack-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;max-width:820px;margin:0 auto 24px;text-align:left;">
       <div style="padding:24px 26px;background:var(--bg);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);">
         <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:10px;">What You Can Tell &middot; Surface</div>
         <p style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.9;">Language and facts. Which brain region lit up. The plain sequence of what happened, in order.</p>
@@ -4227,7 +4237,7 @@ a.src-tag:hover{opacity:.75;}
     <div style="max-width:820px;margin:0 auto 40px;padding:36px 32px;background:var(--bg-lift);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);text-align:center;">
       <p style="font-family:var(--serif);font-size:clamp(20px,3vw,28px);color:var(--white);margin-bottom:10px;">Conscious &ne; Aware</p>
       <p style="font-family:var(--serif);font-size:clamp(16px,2.2vw,20px);color:var(--gold);font-style:italic;margin-bottom:28px;">Being awake is not the same as being present.</p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;text-align:left;">
+      <div class="mobile-stack-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;text-align:left;">
         <div style="padding:20px 22px;background:var(--bg);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);">
           <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:10px;">Consciousness &middot; The Field</div>
           <p style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.85;">The entire capacity to perceive, think, and feel. It holds everything &mdash; including the parts of you currently running on autopilot. Broad, constant, mostly unmonitored.</p>
@@ -4240,7 +4250,7 @@ a.src-tag:hover{opacity:.75;}
     </div>
 
     <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin:0 0 16px;text-align:left;max-width:820px;margin-left:auto;margin-right:auto;">Same Moment, Two Ways to Live It</p>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;max-width:820px;margin:0 auto 24px;text-align:left;">
+    <div class="mobile-stack-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;max-width:820px;margin:0 auto 24px;text-align:left;">
       <div style="padding:24px 26px;background:var(--bg);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);">
         <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:10px;">Conscious, Not Aware</div>
         <p style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.9;">You come home irritated, snap at someone, and scroll for an hour without knowing why any of it happened. The lights were on. Nobody was watching.</p>
@@ -4254,7 +4264,7 @@ a.src-tag:hover{opacity:.75;}
     <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin:48px 0 16px;text-align:left;max-width:820px;margin-left:auto;margin-right:auto;">The Field Named in Four Movements &mdash; Mandukya Upanishad</p>
     <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--grey);line-height:1.9;max-width:820px;margin:0 auto 24px;text-align:left;"><span class="gloss">AUM<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define AUM">+</button><span class="gloss-pop">The primal sound-symbol of Vedanta &mdash; A, U, and M map to waking, dreaming, and deep sleep, and the silence after the sound is Turiya, the awareness underneath all three.</span></span> is not treated as a word here. Each sound is mapped to a state you already move through daily &mdash; and what's left when the sound stops is mapped too. Not a claim to take on faith. A structure you can check against your own last twenty-four hours.</p>
 
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;max-width:820px;margin:0 auto 4px;text-align:left;">
+    <div class="mobile-stack-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;max-width:820px;margin:0 auto 4px;text-align:left;">
       <div style="padding:22px 24px;background:var(--bg);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);">
         <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:10px;"><span class="gloss">Jagrat<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Jagrat">+</button><span class="gloss-pop">The ordinary waking state &mdash; consciousness engaged with the external, physical world through the senses.</span></span> &middot; &ldquo;A&rdquo; of AUM</div>
         <p style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.85;">Waking. Consciousness turned outward, running on the senses. Objects, other people, the material world &mdash; all felt as separate from the one perceiving them.</p>
@@ -4543,7 +4553,7 @@ a.src-tag:hover{opacity:.75;}
     <div style="max-width:100%;margin:24px auto 0;padding:32px 28px;background:var(--bg);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);border-left:3px solid var(--gold);text-align:left;">
       <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.75;margin-bottom:12px;">The Loop in History &mdash; Alexander the Great, 336&ndash;323 BCE</div>
       <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.85;margin-bottom:16px;">Brilliant invader. No functioning administration. Death at 32 instantly exposed the void. Empire fractured into civil war within months.</p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:16px;">
+      <div class="mobile-stack-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:16px;">
         <div style="padding:16px 18px;background:var(--bg-lift);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);">
           <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.6;margin-bottom:6px;">Stages 1&ndash;5 — Rise &rarr; Delusion</div>
           <p style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.8;">Conquest, wealth, divine-authority demands. The army alienated. Fundamentals rotting beneath the narrative. The ego became the lens — he could no longer see it.</p>
@@ -4748,7 +4758,7 @@ a.src-tag:hover{opacity:.75;}
     <div style="max-width:100%;margin:0 auto;padding:32px 28px;background:var(--bg);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);border-left:3px solid var(--gold);text-align:left;">
       <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.75;margin-bottom:12px;">Case Study &mdash; The Costume Designer</div>
       <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.85;margin-bottom:16px;">A costume designer believed her producer was inherently rude. What she never noticed: every morning, on the drive to work, she ran intense mental arguments with him &mdash; rehearsing criticism, bracing for conflict before he had said a word.</p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:16px;">
+      <div class="mobile-stack-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:16px;">
         <div style="padding:16px 18px;background:var(--bg-lift);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);">
           <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.6;margin-bottom:6px;">Internal Cause &mdash; Before the Meeting</div>
           <p style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.8;">Rehearsed criticism. Braced posture. Defensive script running on repeat, unnoticed as a cause.</p>
@@ -5500,7 +5510,7 @@ a.src-tag:hover{opacity:.75;}
     <!-- THE COSMIC BOOKENDS -->
     <div style="max-width:760px;margin:0 auto 52px;">
       <p style="font-family:var(--sans);font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);opacity:.75;text-align:center;margin-bottom:24px;">The Cosmic Bookends of Human Existence</p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:20px;">
+      <div class="mobile-stack-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:20px;">
         <div style="padding:32px 28px;background:var(--bg-lift);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);text-align:center;">
           <div style="font-family:var(--serif);font-size:clamp(28px,4vw,48px);color:var(--gold);font-weight:300;margin-bottom:10px;">13.8B</div>
           <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:10px;">Years — Age of the Universe</div>
@@ -5542,7 +5552,7 @@ a.src-tag:hover{opacity:.75;}
       </div>
 
       <!-- The Two Separate Deadlines -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:20px;">
+      <div class="mobile-stack-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:20px;">
         <div style="padding:28px 24px;background:var(--bg-lift);border:1px solid var(--gold);text-align:left;">
           <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:12px;">Deadline 1 &middot; ~1&ndash;1.5 Billion Years</div>
           <div style="font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:10px;">The Habitability Deadline</div>
@@ -5588,7 +5598,7 @@ a.src-tag:hover{opacity:.75;}
     <!-- T+O+B+E -->
     <div style="max-width:760px;margin:0 auto;">
       <p style="font-family:var(--sans);font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);opacity:.75;text-align:center;margin-bottom:24px;">The Architecture of 'To Be'</p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:20px;">
+      <div class="mobile-stack-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:20px;">
         <div style="padding:36px 32px;background:var(--bg-lift);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);text-align:left;">
           <p style="font-family:var(--serif);font-size:clamp(18px,2.8vw,30px);color:var(--gold);font-weight:300;line-height:1.5;margin-bottom:16px;white-space:nowrap;">T(20) + O(15) + B(2) + E(5) = <strong style="font-size:1.3em;">42</strong></p>
           <p style="font-family:var(--serif);font-size:15px;color:var(--mid);line-height:1.85;margin-bottom:14px;">42 is the exact alphanumeric sum of <em style="color:var(--gold);">'TO BE'</em> &mdash; the fundamental statement of existence itself. Shakespeare asked it as a question. We like that 42 answers it as a number.</p>
@@ -5755,7 +5765,7 @@ a.src-tag:hover{opacity:.75;}
     <!-- THE HUMAN THRESHOLD -->
     <div style="max-width:760px;margin:0 auto 36px;">
       <p style="font-family:var(--sans);font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);opacity:.75;text-align:center;margin-bottom:20px;">Step 4 — The Human Threshold: The 6th Sense</p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:16px;">
+      <div class="mobile-stack-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:16px;">
         <div style="padding:28px 24px;background:var(--bg);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);text-align:left;">
           <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:10px;">The Baseline</div>
           <p style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.85;margin:0;">Humans possess the 5 physical senses of the animal kingdom — the accumulated gift of millions of years of involution.</p>
@@ -7301,7 +7311,7 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
       <div class="faq-a"><div class="faq-a-inner">
         <p style="margin-bottom:16px;">The Dark Night of the Soul is not a clinical depression to be treated. It is an initiation &mdash; the universal threshold experience that every wisdom tradition has mapped and that no tradition calls optional.</p>
         <p style="margin-bottom:16px;">The most common mistake is treating it as a malfunction: medicating the signal, waiting for it to pass, reaching for the next distraction. Every exit ramp leads back to the same entrance. The signal returns, louder.</p>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin:20px 0;">
+        <div class="mobile-stack-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin:20px 0;">
           <div style="padding:20px 18px;background:var(--bg-lift);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);">
             <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:10px;">The Mistake</p>
             <p style="font-size:15px;color:var(--grey);line-height:1.85;">Treating it as a depression to be cured. The exit ramps only prolong it.</p>
