@@ -2341,17 +2341,21 @@ h4 {
   }
 }
 @media(max-width:640px){
-  /* 100dvh recalculates on every scroll tick on Android as the URL bar
-     shows/hides, forcing continuous layout reflow on the very first
-     section the user touches. svh (small viewport height) is the stable,
-     one-time-computed alternative — it assumes the browser chrome is
-     fully expanded, so the hero never renders taller than what's actually
-     visible once the address bar settles. Chrome and Opera compute plain
-     vh differently while their toolbars are showing, which is what let a
-     sliver of the banner section peek in under Chrome specifically; svh
-     resolves that inconsistency. Kept as a second declaration so browsers
-     without svh support silently keep using the vh value above it. */
-  .hero{min-height:calc(100vh - var(--nav-h));min-height:calc(100svh - var(--nav-h));height:auto;padding:28px 16px 48px !important;justify-content:flex-start;gap:28px;}
+  /* Progressive-enhancement fallback chain: plain vh (broadest support) →
+     svh (stable, assumes toolbar expanded) → dvh (tracks the browser's
+     actual current viewport). Each later declaration silently overrides
+     the previous one only where the unit is supported, so unsupported
+     browsers keep the closest available value. dvh is what actually
+     stops the banner from peeking in on Chrome/Opera on first load —
+     svh alone was still computing a shorter box than the real visible
+     viewport on some devices, leaving a sliver of the banner exposed.
+     The one-time reflow dvh can cause as the URL bar shows/hides during
+     the very first scroll is a smaller cost than a visible content leak.
+     justify-content:space-between (below) spreads the three hero
+     children — intro line, question box, continue hint — across that
+     full height instead of stacking them at the top with dead space
+     underneath. */
+  .hero{min-height:calc(100vh - var(--nav-h));min-height:calc(100svh - var(--nav-h));min-height:calc(100dvh - var(--nav-h));height:auto;padding:28px 16px 28px !important;justify-content:space-between;gap:16px;}
   .hero-ca-arrow{padding-top:0 !important;}
   .hero-question{font-size:20px !important;line-height:1.55 !important;margin-bottom:0 !important;}
   .hero > a[href="#contract"]{margin:0 auto !important;}
