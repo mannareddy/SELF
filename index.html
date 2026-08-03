@@ -1349,21 +1349,27 @@ html[data-fontscale="140"] #zoomScope{zoom:1.4;}
 
 .a11y-fontsize{
   position:fixed;bottom:18px;left:16px;z-index:900;
-  display:flex;align-items:center;gap:3px;
+  display:flex;align-items:center;gap:4px;
   background:rgba(0,0,0,.92);border:1.5px solid rgba(var(--accent-gold-rgb),0.55);
-  border-radius:22px;padding:3px;
+  border-radius:22px;padding:4px;
 }
 .a11y-fontsize button{
   font-family:var(--sans);color:var(--dim);background:transparent;border:none;
-  cursor:pointer;width:30px;height:30px;border-radius:50%;
+  cursor:pointer;width:30px;height:30px;border-radius:50%;flex:0 0 auto;
   display:flex;align-items:center;justify-content:center;
   transition:color .2s,background .2s;line-height:1;
 }
 .a11y-fontsize button:hover{color:var(--gold);background:rgba(var(--accent-gold-rgb),.14);}
 .a11y-fontsize button:disabled{opacity:.3;cursor:default;background:transparent !important;color:var(--dim) !important;}
-.a11y-fontsize button[data-a11y="down"]{font-size:11px;}
-.a11y-fontsize button[data-a11y="reset"]{font-size:15px;}
-.a11y-fontsize button[data-a11y="up"]{font-size:17px;}
+/* The three glyphs ("A−", "A", "A+") previously ran 11px/15px/17px — that
+   6px spread made them occupy visibly different widths/heights inside
+   identically-sized 30px circles, so the trio read as unevenly spaced even
+   though the flex gap between them was constant. Narrowing the spread to
+   13px/14px/13px keeps "A" as the slightly-larger anchor in the middle
+   without the outer two glyphs looking cramped or oversized next to it. */
+.a11y-fontsize button[data-a11y="down"]{font-size:13px;}
+.a11y-fontsize button[data-a11y="reset"]{font-size:14px;font-weight:600;}
+.a11y-fontsize button[data-a11y="up"]{font-size:13px;}
 [data-theme="light"] .a11y-fontsize{background:rgba(245,241,232,0.96) !important;border-color:rgba(var(--shadow-rgb),0.28) !important;}
 [data-theme="light"] .a11y-fontsize button{color:var(--text-dim) !important;}
 [data-theme="light"] .a11y-fontsize button:hover{color:var(--accent-gold) !important;background:rgba(var(--accent-gold-rgb),.14) !important;}
