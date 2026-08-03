@@ -167,8 +167,8 @@ body{
    label/value pairs, not the long-column reading problem this addresses,
    and a repeated hint on every one of them would just be noise.) */
 .ipo-table,.rasa-table{position:relative;}
-.self-table-wrap::before,.ipo-table::before,.rasa-table::before{
-  content:"⟳ Rotate your device for a wider view";
+.self-table-wrap::after,.ipo-table::after,.rasa-table::after{
+  content:"⟳ Tip: turn your phone to landscape for a wider view of this table";
   display:none;
   font-family:var(--sans);
   font-size:9px;
@@ -177,16 +177,16 @@ body{
   text-align:center;
   color:var(--dim);
   opacity:.8;
-  margin-bottom:8px;
+  margin-top:8px;
 }
 @media(max-width:900px) and (orientation:portrait){
-  .self-table-wrap::before,.ipo-table::before,.rasa-table::before{
+  .self-table-wrap::after,.ipo-table::after,.rasa-table::after{
     display:block;
   }
 }
-[data-theme="light"] .self-table-wrap::before,
-[data-theme="light"] .ipo-table::before,
-[data-theme="light"] .rasa-table::before{
+[data-theme="light"] .self-table-wrap::after,
+[data-theme="light"] .ipo-table::after,
+[data-theme="light"] .rasa-table::after{
   color:var(--text-dim);
 }
 .self-table th{
@@ -1488,7 +1488,7 @@ section{scroll-margin-top:56px;}
 .btn-outline:hover{border-color:var(--gold);color:var(--gold);}
 .btn-outline:disabled{opacity:.5;cursor:default;}
 @keyframes fade{0%,100%{opacity:0;}50%{opacity:1;}}
-.continue-hint{display:block;text-align:center;padding:28px 0 8px;font-family:var(--sans);font-size:10px;color:#444;letter-spacing:4px;text-transform:uppercase;animation:fade 3.5s ease-in-out infinite;user-select:none;pointer-events:none;}
+.continue-hint{display:block;text-align:center;padding:28px 0 36px;font-family:var(--sans);font-size:10px;color:#444;letter-spacing:4px;text-transform:uppercase;animation:fade 3.5s ease-in-out infinite;user-select:none;pointer-events:none;}
 .continue-hint::after{content:'↓';display:block;font-size:16px;margin-top:4px;letter-spacing:0;}
 .hero-ca-arrow{display:block;font-size:15px;color:var(--gold);opacity:.55;padding-top:6px;animation:fade 3.5s ease-in-out infinite;}
 .hero-ca-link:hover .hero-ca-arrow{opacity:.9;}
@@ -2339,7 +2339,7 @@ h4 {
      shows/hides, forcing continuous layout reflow on the very first
      section the user touches. Switched to a static 100vh + min-height
      (computed once, not on every frame) to eliminate the jerk. */
-  .hero{min-height:calc(100vh - var(--nav-h));height:auto;padding:12px 16px 28px !important;justify-content:center;gap:38px;}
+  .hero{min-height:calc(100vh - var(--nav-h));height:auto;padding:28px 16px 20px !important;justify-content:space-between;gap:24px;}
   .hero-ca-arrow{padding-top:0 !important;}
   .hero-question{font-size:20px !important;line-height:1.55 !important;margin-bottom:0 !important;}
   .hero > a[href="#contract"]{margin:0 auto !important;}
@@ -2351,7 +2351,7 @@ h4 {
   .hero-continue-mobile{
     display:block !important;
     position:static;
-    margin-top:20px;
+    margin-top:0;
     padding:0;
   }
   /* Card titles — lock all three card types to same mobile size */
@@ -7431,6 +7431,16 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
           <p style="font-size:15px;color:var(--gold);font-style:italic;line-height:1.85;margin-bottom:0;">Your SELF is the super-ordinate goal. The only one that cannot be taken, liquidated, or diluted. The only balance sheet that survives the final settlement.</p>
         </div>
         <p style="color:var(--mid);">No copycat can touch it. No pump.fun clone can replicate it. Unlike every token manufactured to disguise itself as you &mdash; your SELF is the one thing that cannot be forged. The question is only whether you invest in it before the deathbed.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item closed">
+      <button class="faq-q" onclick="faqToggle(this)">
+        <span>I'm on my phone &mdash; is there a better way to read the tables and side-by-side comparisons?</span><span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p style="margin-bottom:16px;">Yes &mdash; turn your phone sideways. The Master Matrix, the IPO table, and the Rosetta Stone table are all built to take advantage of the extra width landscape gives you, and on most phones that's close to double what you get in portrait. Several of the two- and three-column comparisons on the page (Mistake vs. Truth, Mind vs. Brain, Conscious vs. Aware, and others) do the same &mdash; they stack into a single column in portrait so nothing gets squeezed, and open back out side by side once you rotate.</p>
+        <p style="color:var(--mid);">Portrait still works fine for scrolling through everything &mdash; landscape is just there as an easier way to see a full wide table or comparison at a glance, not something you need to switch to for the rest of the site.</p>
       </div></div>
     </div>
 
