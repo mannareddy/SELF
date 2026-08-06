@@ -1754,6 +1754,14 @@ section{scroll-margin-top:56px;}
 
 /* ── CONTRACT ─────────────────────────────────────────────────────────────── */
 .ca-full-section{scroll-margin-top:56px;padding:40px 24px 60px;max-width:680px;margin:0 auto;}
+/* Contract section coin visual — separate dark/light assets swapped via
+   display:none/block under [data-theme="light"], same pattern as the nav
+   logo swap, to avoid the content:url() flicker risk. */
+.contract-coin-wrapper{max-width:200px;margin:0 auto 28px;}
+.contract-coin{display:block;width:100%;height:auto;}
+.contract-coin.coin-light{display:none;}
+[data-theme="light"] .contract-coin.coin-dark{display:none;}
+[data-theme="light"] .contract-coin.coin-light{display:block;}
 .ca-full-box{border:1.5px solid rgba(var(--accent-gold-rgb),0.55);padding:36px 28px;background:var(--bg-lift);position:relative;}
 .ca-full-box::before{content:'';position:absolute;top:-1px;left:-1px;width:18px;height:18px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);}
 .ca-full-box::after{content:'';position:absolute;bottom:-1px;right:-1px;width:18px;height:18px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);}
@@ -7028,6 +7036,10 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
 <!-- CONTRACT -->
 <section class="ca-full-section" id="contract">
   <span class="label">Contract</span>
+  <div class="contract-coin-wrapper">
+    <img src="./assets/images/coin-dark.png" alt="42Self Coin" class="contract-coin coin-dark">
+    <img src="./assets/images/coin-light.png" alt="42Self Coin" class="contract-coin coin-light">
+  </div>
   <div class="ca-full-box">
     <div class="ca-label">$SELF &middot; Solana</div>
     <div class="ca-address-full">7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump</div>
