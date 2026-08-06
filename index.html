@@ -987,30 +987,6 @@ a:hover{opacity:.7;}
   50%{opacity:1;}
 }
 
-/* Nav wordmark — small gold 3D lockup that sits just under the circular nav
-   badge, desktop only. Kept as a fixed sibling of .site-nav (not a descendant)
-   so it isn't clipped by .site-nav's overflow-x:clip, and given an
-   element+class selector (img.nav-wordmark) so it beats the global
-   img{max-width:100%} reset and the .nav-logo-center img rule purely on
-   specificity, with no reliance on source order. */
-img.nav-wordmark{display:none;}
-@media(min-width:901px){
-  img.nav-wordmark{
-    display:block;
-    position:fixed;
-    top:calc(var(--nav-h) + 5px);
-    left:50%;
-    transform:translateX(-50%);
-    width:46px;
-    max-width:none;
-    height:auto;
-    z-index:998;
-    pointer-events:none;
-    opacity:.9;
-    filter:drop-shadow(0 3px 8px rgba(0,0,0,.5));
-  }
-}
-
 /* Theme button pinned to right edge */
 #themeToggleBtn{
   position:absolute;right:0;top:0;background:rgba(0,0,0,.92);
@@ -3282,10 +3258,6 @@ a.src-tag:hover{opacity:.75;}
        CONTROL script section for how). -->
   <button id="themeToggleBtn" onclick="toggleTheme()" title="Toggle light/dark theme" aria-label="Toggle theme">&#9788;</button>
 </nav>
-
-<!-- Nav wordmark — desktop-only, floats just under the circular nav badge.
-     See img.nav-wordmark rule above for why this lives outside <nav>. -->
-<img src="./assets/images/SELF_Wordmark_Gold.png" alt="" class="nav-wordmark" aria-hidden="true">
 
 <!-- ── MOBILE FULL-SCREEN ACCORDION PANEL ── -->
 <div class="mnav-panel" id="mnavPanel" role="dialog" aria-label="Site navigation">
