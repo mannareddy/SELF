@@ -29,12 +29,12 @@ gtag('config','G-XC5FG6W949');
 <meta property="og:description" content="A self-inquiry framework, guided workbook, and free web companion for people ready to investigate who they actually are.">
 <meta property="og:url" content="https://42self.xyz">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://42self.xyz/assets/images/Banner.jpg">
+<meta property="og:image" content="https://42self.xyz/assets/images/OG-42SELF.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@muraliannareddy">
 <meta name="twitter:title" content="*SELF — Not a meme. A mirror.">
 <meta name="twitter:description" content="Ignorance of your true SELF is the only poverty that actually matters.">
-<meta name="twitter:image" content="https://42self.xyz/assets/images/Banner.jpg">
+<meta name="twitter:image" content="https://42self.xyz/assets/images/OG-42SELF.png">
 <link rel="icon" type="image/png" href="./assets/images/SELF_Origin_1000x1000.png">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -987,6 +987,30 @@ a:hover{opacity:.7;}
   50%{opacity:1;}
 }
 
+/* Nav wordmark — small gold 3D lockup that sits just under the circular nav
+   badge, desktop only. Kept as a fixed sibling of .site-nav (not a descendant)
+   so it isn't clipped by .site-nav's overflow-x:clip, and given an
+   element+class selector (img.nav-wordmark) so it beats the global
+   img{max-width:100%} reset and the .nav-logo-center img rule purely on
+   specificity, with no reliance on source order. */
+img.nav-wordmark{display:none;}
+@media(min-width:901px){
+  img.nav-wordmark{
+    display:block;
+    position:fixed;
+    top:calc(var(--nav-h) + 5px);
+    left:50%;
+    transform:translateX(-50%);
+    width:46px;
+    max-width:none;
+    height:auto;
+    z-index:998;
+    pointer-events:none;
+    opacity:.9;
+    filter:drop-shadow(0 3px 8px rgba(0,0,0,.5));
+  }
+}
+
 /* Theme button pinned to right edge */
 #themeToggleBtn{
   position:absolute;right:0;top:0;background:rgba(0,0,0,.92);
@@ -1487,6 +1511,7 @@ section{scroll-margin-top:56px;}
 
 /* ── HERO ─────────────────────────────────────────────────────────────────── */
 .hero{min-height:calc(100vh - var(--nav-h));display:flex;flex-direction:column;justify-content:center;align-items:center;padding:16px 24px 0;position:relative;background:radial-gradient(ellipse at 50% 35%,rgba(var(--accent-gold-rgb),.05) 0%,transparent 68%);}
+.hero-3d-visual{display:block;width:min(560px,88vw);height:auto;max-width:none;margin:0 auto 36px;}
 .hero-question{font-size:clamp(15px,2vw,22px);font-weight:300;font-style:italic;color:var(--gold);line-height:1.45;max-width:700px;margin-bottom:10px;letter-spacing:.3px;text-align:center;}
 .hero-sub{font-size:clamp(15px,2vw,18px);color:var(--mid);font-weight:300;max-width:480px;line-height:1.85;margin-bottom:8px;}
 .expand-label{display:inline-block;font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);border:1px solid rgba(var(--accent-gold-rgb),.3);padding:4px 12px;margin-left:12px;transition:border-color .25s;vertical-align:middle;}
@@ -3258,6 +3283,10 @@ a.src-tag:hover{opacity:.75;}
   <button id="themeToggleBtn" onclick="toggleTheme()" title="Toggle light/dark theme" aria-label="Toggle theme">&#9788;</button>
 </nav>
 
+<!-- Nav wordmark — desktop-only, floats just under the circular nav badge.
+     See img.nav-wordmark rule above for why this lives outside <nav>. -->
+<img src="./assets/images/SELF_Wordmark_Gold.png" alt="" class="nav-wordmark" aria-hidden="true">
+
 <!-- ── MOBILE FULL-SCREEN ACCORDION PANEL ── -->
 <div class="mnav-panel" id="mnavPanel" role="dialog" aria-label="Site navigation">
   <ul class="mnav-list">
@@ -3364,6 +3393,7 @@ a.src-tag:hover{opacity:.75;}
 
 <!-- ══════════════════════════ HERO ══════════════════════════════════════ -->
 <section class="hero" id="home">
+  <img src="./assets/images/SELF_Hero_3D.png" alt="42SELF" class="hero-3d-visual">
   <p class="hero-question" style="margin-bottom:64px;">There is a question you have been avoiding<br>your entire life. It will not wait forever.</p>
   <div style="position:relative;max-width:540px;width:100%;border:1.5px solid rgba(var(--accent-gold-rgb),0.55);background:rgba(var(--accent-gold-rgb),.04);padding:22px 32px 20px;margin-bottom:14px;text-align:center;">
     <div style="position:absolute;top:-1px;left:-1px;width:16px;height:16px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);"></div>
