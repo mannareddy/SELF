@@ -1462,32 +1462,32 @@ section{scroll-margin-top:56px;}
    compaction based on actual viewport height, not on the person having to
    zoom out manually. Desktop-only (min-width guards it off the existing
    mobile hero rules above). ── */
-@media(min-width:641px) and (max-height:980px){
+@media(min-width:641px) and (max-height:1400px){
   .hero{padding-top:10px;}
-  .hero-question{margin-bottom:44px !important;font-size:clamp(14px,1.8vw,19px) !important;line-height:1.35 !important;}
+  .hero-3d-visual{margin-bottom:16px !important;}
+  .hero-question{margin-bottom:14px !important;font-size:clamp(14px,1.8vw,19px) !important;line-height:1.35 !important;}
   .hero > div[style*="padding:22px 32px"]{padding:16px 28px 14px !important;margin-bottom:10px !important;}
   .hero > div[style*="padding:22px 32px"] > p{margin-bottom:8px !important;}
   .hero > div[style*="padding:22px 32px"] > div[style*="border-top"]{padding-top:8px !important;}
   .hero > a[href="#contract"]{margin-top:8px !important;}
   .hero-ca-arrow{padding-top:4px !important;}
-  .hero-continue-mobile{padding-top:32px !important;}
+  .hero-continue-mobile{padding-top:10px !important;}
 }
 @media(min-width:641px) and (max-height:820px){
-  .hero-question{font-size:clamp(13px,1.6vw,16px) !important;margin-bottom:32px !important;}
+  .hero-question{font-size:clamp(13px,1.6vw,16px) !important;margin-bottom:14px !important;}
   .hero > div[style*="padding:22px 32px"]{padding:12px 24px 10px !important;}
   .hero > div[style*="padding:22px 32px"] p{line-height:1.55 !important;}
   .hero > div[style*="padding:22px 32px"] > div[style*="border-top"] p{font-size:clamp(11px,1.4vw,14px) !important;}
   .hero > a[href="#contract"] > div{padding:8px 20px !important;}
-  .hero-continue-mobile{padding-top:20px !important;}
+  .hero-continue-mobile{padding-top:10px !important;}
 }
-
 /* ── THEME TOGGLE — desktop button shown by default; mobile button (fixed,
    outside the scrollable nav strip) is hidden until the mobile breakpoint ── */
 #themeToggleMobile{display:none;}
 
 /* ── HERO ─────────────────────────────────────────────────────────────────── */
 .hero{min-height:calc(100vh - var(--nav-h));display:flex;flex-direction:column;justify-content:center;align-items:center;padding:16px 24px 0;position:relative;background:radial-gradient(ellipse at 50% 35%,rgba(var(--accent-gold-rgb),.05) 0%,transparent 68%);}
-.hero-3d-visual{display:block;width:min(560px,88vw);height:auto;max-width:none;margin:0 auto 36px;}
+.hero-3d-visual{display:block;width:min(300px,40vw);height:auto;max-width:none;margin:0 auto 36px;}
 .hero-question{font-size:clamp(15px,2vw,22px);font-weight:300;font-style:italic;color:var(--gold);line-height:1.45;max-width:700px;margin-bottom:10px;letter-spacing:.3px;text-align:center;}
 .hero-sub{font-size:clamp(15px,2vw,18px);color:var(--mid);font-weight:300;max-width:480px;line-height:1.85;margin-bottom:8px;}
 .expand-label{display:inline-block;font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);border:1px solid rgba(var(--accent-gold-rgb),.3);padding:4px 12px;margin-left:12px;transition:border-color .25s;vertical-align:middle;}
@@ -1497,13 +1497,15 @@ section{scroll-margin-top:56px;}
 .btn-outline:hover{border-color:var(--gold);color:var(--gold);}
 .btn-outline:disabled{opacity:.5;cursor:default;}
 @keyframes fade{0%,100%{opacity:0;}50%{opacity:1;}}
+@keyframes hero-arrow-glow{0%,100%{opacity:.55;}50%{opacity:1;}}
 .continue-hint{display:block;text-align:center;padding:28px 0 8px;font-family:var(--sans);font-size:10px;color:#444;letter-spacing:4px;text-transform:uppercase;animation:fade 3.5s ease-in-out infinite;user-select:none;pointer-events:none;}
 .continue-hint::after{content:'↓';display:block;font-size:16px;margin-top:4px;letter-spacing:0;}
 .hero-ca-arrow{display:block;font-size:15px;color:var(--gold);opacity:.55;padding-top:6px;animation:fade 3.5s ease-in-out infinite;}
 .hero-ca-link:hover .hero-ca-arrow{opacity:.9;}
-.hero-continue-mobile{display:block;padding:24px 0 0 !important;}
+.hero-continue-mobile{display:block;padding:24px 0 0 !important;animation:hero-arrow-glow 3.5s ease-in-out infinite !important;}
+.hero-continue-mobile::after{font-size:21px !important;color:var(--gold) !important;}
 @media(min-width:641px){
-  .hero-continue-mobile{padding-top:48px !important;}
+  .hero-continue-mobile{padding-top:10px !important;}
 }
 
 /* ── BANNER ──────────────────────────────────────────────────────────────── */
@@ -1754,6 +1756,14 @@ section{scroll-margin-top:56px;}
 
 /* ── CONTRACT ─────────────────────────────────────────────────────────────── */
 .ca-full-section{scroll-margin-top:56px;padding:40px 24px 60px;max-width:680px;margin:0 auto;}
+/* Contract section coin visual — separate dark/light assets swapped via
+   display:none/block under [data-theme="light"], same pattern as the nav
+   logo swap, to avoid the content:url() flicker risk. */
+.contract-coin-wrapper{max-width:200px;margin:0 auto 28px;}
+.contract-coin{display:block;width:100%;height:auto;}
+.contract-coin.coin-light{display:none;}
+[data-theme="light"] .contract-coin.coin-dark{display:none;}
+[data-theme="light"] .contract-coin.coin-light{display:block;}
 .ca-full-box{border:1.5px solid rgba(var(--accent-gold-rgb),0.55);padding:36px 28px;background:var(--bg-lift);position:relative;}
 .ca-full-box::before{content:'';position:absolute;top:-1px;left:-1px;width:18px;height:18px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);}
 .ca-full-box::after{content:'';position:absolute;bottom:-1px;right:-1px;width:18px;height:18px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);}
@@ -2320,6 +2330,13 @@ h4 {
      section the user touches. Switched to a static 100vh + min-height
      (computed once, not on every frame) to eliminate the jerk. */
   .hero{min-height:calc(100vh - var(--nav-h));height:auto;padding:12px 16px 28px !important;justify-content:center;gap:38px;}
+  /* Hero 3D image adds a 4th flex child on top of a mobile layout already
+     tuned to just fit one screen. Shrink it well down and drop its own
+     margin (the .hero gap above already spaces it) so total content height
+     stays inside the viewport and the continue-hint below the question box
+     stays visible on the first screen instead of drifting down near the
+     banner section. */
+  .hero-3d-visual{width:min(220px,52vw);margin:0;}
   .hero-ca-arrow{padding-top:0 !important;}
   .hero-question{font-size:20px !important;line-height:1.55 !important;margin-bottom:0 !important;}
   .hero > a[href="#contract"]{margin:0 auto !important;}
@@ -2334,6 +2351,7 @@ h4 {
     margin-top:20px;
     padding:0;
   }
+  .hero-continue-mobile::after{font-size:26px !important;}
   /* Card titles — lock all three card types to same mobile size */
   .framework-card h3,
   .identity-card h4,
@@ -3245,6 +3263,10 @@ a.src-tag:hover{opacity:.75;}
         <a href="#faq-section" data-group="resources">FAQ</a>
         <a href="#feedback" data-group="resources">Feedback</a>
         <a href="#disclaimer" data-group="resources">Disclaimer</a>
+        <a href="https://x.com/muraliannareddy" target="_blank" rel="noopener" data-group="resources" style="border-top:1px solid rgba(var(--accent-gold-rgb),0.25);margin-top:4px;padding-top:10px;">X (Twitter)</a>
+        <a href="https://t.me/+v6py4dWGU6g2MTU9" target="_blank" rel="noopener" data-group="resources">Telegram</a>
+        <a href="https://www.youtube.com/channel/UCdQDrBMeE_uhDpqWY9QKlgw" target="_blank" rel="noopener" data-group="resources">YouTube</a>
+        <a href="https://www.instagram.com/muralireddy_79/" target="_blank" rel="noopener" data-group="resources">Instagram</a>
       </div>
     </li>
   </ul>
@@ -3334,6 +3356,10 @@ a.src-tag:hover{opacity:.75;}
         <a href="#faq-section">FAQ</a>
         <a href="#feedback">Feedback</a>
         <a href="#disclaimer">Disclaimer</a>
+        <a href="https://x.com/muraliannareddy" target="_blank" rel="noopener" style="border-top:1px solid rgba(var(--accent-gold-rgb),0.25);margin-top:4px;padding-top:10px;">X (Twitter)</a>
+        <a href="https://t.me/+v6py4dWGU6g2MTU9" target="_blank" rel="noopener">Telegram</a>
+        <a href="https://www.youtube.com/channel/UCdQDrBMeE_uhDpqWY9QKlgw" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://www.instagram.com/muralireddy_79/" target="_blank" rel="noopener">Instagram</a>
       </div>
     </li>
   </ul>
@@ -3379,7 +3405,7 @@ a.src-tag:hover{opacity:.75;}
       <p style="font-family:var(--serif);font-size:clamp(13px,1.7vw,17px);color:var(--mid);font-style:italic;line-height:1.7;margin-bottom:0;">Imagine, for one moment, that today is your last day &mdash; would you still see your SELF the way you do right now?</p>
     </div>
   </div>
-  <span class="continue-hint hero-continue-mobile">continue</span>
+  <span class="continue-hint hero-continue-mobile"></span>
 </section>
 <!-- BANNER -->
 <div class="banner-section">
@@ -7013,6 +7039,10 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
 <!-- CONTRACT -->
 <section class="ca-full-section" id="contract">
   <span class="label">Contract</span>
+  <div class="contract-coin-wrapper">
+    <img src="./assets/images/coin-dark.png" alt="42Self Coin" class="contract-coin coin-dark">
+    <img src="./assets/images/coin-light.png" alt="42Self Coin" class="contract-coin coin-light">
+  </div>
   <div class="ca-full-box">
     <div class="ca-label">$SELF &middot; Solana</div>
     <div class="ca-address-full">7b34fSrhKCtmA9T2WUNCuBPpKDeLwe2uNFq7BvsNpump</div>
