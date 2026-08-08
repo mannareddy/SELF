@@ -9534,6 +9534,23 @@ function toggleTheme(){
     apply(STEPS.indexOf(100));
   };
   apply(currentIndex());
+  /* The forced-112% default is set as a static attribute in <head>, before
+     the hero images (and the min-height:100vh flex box around them) have
+     actually loaded and settled. A manual A-/A/A+ click never has this
+     problem because by the time someone clicks, everything is already
+     loaded and the browser does a real layout recalculation for the zoom
+     change. A cold static attribute at parse time doesn't get that same
+     recalculation once images finish loading and change the hero's true
+     height — which is what was leaving "continue" clipped only on first
+     load, never after any click. Once the window fully loads (images
+     included), toggle the attribute off and back on to force the exact
+     same kind of real relayout a click produces. */
+  window.addEventListener('load', function(){
+    var v = html.getAttribute('data-fontscale');
+    html.removeAttribute('data-fontscale');
+    void html.offsetHeight; // force sync layout before restoring
+    if(v) html.setAttribute('data-fontscale', v);
+  });
 })();
 
 /* ── ANCHOR LINKS INTO COLLAPSED SECTIONS ─────────────────────────────────
