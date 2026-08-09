@@ -1486,11 +1486,11 @@ section{scroll-margin-top:56px;}
 
 /* ── HERO ─────────────────────────────────────────────────────────────────── */
 .hero{min-height:calc(100vh - var(--nav-h));display:flex;flex-direction:column;justify-content:center;align-items:center;padding:8px 24px 0;position:relative;background:radial-gradient(ellipse at 50% 35%,rgba(var(--accent-gold-rgb),.05) 0%,transparent 68%);}
-.hero-3d-visual{display:block;width:min(250px,40vw);height:auto;max-width:none;margin:-10px auto 18px;filter:drop-shadow(0 14px 22px rgba(0,0,0,.45));}
+.hero-3d-visual{display:block;width:min(250px,40vw);height:auto;max-width:none;margin:-10px auto 18px;}
 .hero-3d-visual.hero-3d-light{display:none;}
 [data-theme="light"] .hero-3d-visual.hero-3d-dark{display:none;}
 [data-theme="light"] .hero-3d-visual.hero-3d-light{display:block;}
-[data-theme="light"] .hero-3d-visual{filter:drop-shadow(0 10px 18px rgba(80,60,20,.25));}
+[data-theme="light"] .hero-3d-visual{}
 .hero-question{font-size:clamp(14px,1.8vw,20px);font-weight:300;font-style:italic;color:var(--gold);line-height:1.4;max-width:700px;margin-bottom:8px;letter-spacing:.3px;text-align:center;}
 .hero-sub{font-size:clamp(15px,2vw,18px);color:var(--mid);font-weight:300;max-width:480px;line-height:1.85;margin-bottom:8px;}
 .expand-label{display:inline-block;font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);border:1px solid rgba(var(--accent-gold-rgb),.3);padding:4px 12px;margin-left:12px;transition:border-color .25s;vertical-align:middle;}
@@ -2339,15 +2339,15 @@ h4 {
      stays inside the viewport and the continue-hint below the question box
      stays visible on the first screen instead of drifting down near the
      banner section. */
-  .hero-3d-visual{width:min(250px,60vw);margin:0;}
+  .hero-3d-visual{width:min(280px,64vw);margin:0;}
   .hero-ca-arrow{padding-top:0 !important;}
-  .hero-question{font-size:20px !important;line-height:1.55 !important;margin-bottom:0 !important;}
+  .hero-question{font-size:24px !important;line-height:1.55 !important;margin-bottom:6px !important;}
   .hero > a[href="#contract"]{margin:0 auto !important;}
-  .hero > div[style*="padding:22px 32px"]{padding:20px 22px !important;margin-bottom:0 !important;}
-  .hero > div[style*="padding:22px 32px"] > p:first-of-type{font-size:25px !important;line-height:1.4 !important;}
-  .hero > div[style*="padding:22px 32px"] > p:nth-of-type(2){font-size:15px !important;}
-  .hero > div[style*="padding:22px 32px"] > div[style*="border-top"] p:first-child{font-size:10.5px !important;}
-  .hero > div[style*="padding:22px 32px"] > div[style*="border-top"] p:last-child{font-size:16px !important;line-height:1.7 !important;}
+  .hero > div[style*="padding:22px 32px"]{padding:24px 24px !important;margin-bottom:8px !important;}
+  .hero > div[style*="padding:22px 32px"] > p:first-of-type{font-size:29px !important;line-height:1.4 !important;}
+  .hero > div[style*="padding:22px 32px"] > p:nth-of-type(2){font-size:17px !important;}
+  .hero > div[style*="padding:22px 32px"] > div[style*="border-top"] p:first-child{font-size:12px !important;}
+  .hero > div[style*="padding:22px 32px"] > div[style*="border-top"] p:last-child{font-size:18px !important;line-height:1.7 !important;}
   .hero-continue-mobile{
     display:inline-flex !important;
     align-items:center;
@@ -2355,7 +2355,7 @@ h4 {
     position:static;
     margin-top:20px;
     padding:0;
-    font-size:12px;
+    font-size:14px;
   }
   .hero-continue-mobile::after{font-size:26px !important;}
   /* Card titles — lock all three card types to same mobile size */
