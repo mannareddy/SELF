@@ -5,8 +5,7 @@
 (function(){
   var t=localStorage.getItem('selfTheme');
   if(t==='light') document.documentElement.setAttribute('data-theme','light');
-  var fs=localStorage.getItem('selfFontScale');
-  if(fs==='90'||fs==='112'||fs==='125'||fs==='140') document.documentElement.setAttribute('data-fontscale',fs);
+  document.documentElement.setAttribute('data-fontscale','100');
   document.documentElement.style.visibility='hidden';
 })();
 </script>  
@@ -1464,20 +1463,20 @@ section{scroll-margin-top:56px;}
    mobile hero rules above). ── */
 @media(min-width:641px) and (max-height:1400px){
   .hero{padding-top:10px;}
-  .hero-3d-visual{margin-bottom:16px !important;}
+  .hero-3d-visual{margin-bottom:6px !important;}
   .hero-question{margin-bottom:14px !important;font-size:clamp(14px,1.8vw,19px) !important;line-height:1.35 !important;}
-  .hero > div[style*="padding:22px 32px"]{padding:16px 28px 14px !important;margin-bottom:10px !important;}
-  .hero > div[style*="padding:22px 32px"] > p{margin-bottom:8px !important;}
-  .hero > div[style*="padding:22px 32px"] > div[style*="border-top"]{padding-top:8px !important;}
+  .hero-question-box{padding:16px 28px 14px !important;margin-bottom:10px !important;}
+  .hero-question-box > p{margin-bottom:8px !important;}
+  .hero-question-box > div[style*="border-top"]{padding-top:8px !important;}
   .hero > a[href="#contract"]{margin-top:8px !important;}
   .hero-ca-arrow{padding-top:4px !important;}
   .hero-continue-mobile{padding-top:10px !important;}
 }
 @media(min-width:641px) and (max-height:820px){
   .hero-question{font-size:clamp(13px,1.6vw,16px) !important;margin-bottom:14px !important;}
-  .hero > div[style*="padding:22px 32px"]{padding:12px 24px 10px !important;}
-  .hero > div[style*="padding:22px 32px"] p{line-height:1.55 !important;}
-  .hero > div[style*="padding:22px 32px"] > div[style*="border-top"] p{font-size:clamp(11px,1.4vw,14px) !important;}
+  .hero-question-box{padding:12px 24px 10px !important;}
+  .hero-question-box p{line-height:1.55 !important;}
+  .hero-question-box > div[style*="border-top"] p{font-size:clamp(11px,1.4vw,14px) !important;}
   .hero > a[href="#contract"] > div{padding:8px 20px !important;}
   .hero-continue-mobile{padding-top:10px !important;}
 }
@@ -1486,14 +1485,13 @@ section{scroll-margin-top:56px;}
 #themeToggleMobile{display:none;}
 
 /* ── HERO ─────────────────────────────────────────────────────────────────── */
-.hero{min-height:calc(100vh - var(--nav-h));display:flex;flex-direction:column;justify-content:center;align-items:center;padding:16px 24px 0;position:relative;background:radial-gradient(ellipse at 50% 35%,rgba(var(--accent-gold-rgb),.05) 0%,transparent 68%);}
-.hero-3d-visual{display:block;width:min(300px,40vw);height:auto;max-width:none;margin:0 auto 36px;}
-/* Hero 3D logo — separate dark/light renders swapped via display:none/block
-   under [data-theme="light"], same pattern as the contract-coin visual. */
+.hero{min-height:calc(100vh - var(--nav-h));display:flex;flex-direction:column;justify-content:space-between;align-items:center;padding:8px 24px 32px;position:relative;background:radial-gradient(ellipse at 50% 35%,rgba(var(--accent-gold-rgb),.05) 0%,transparent 68%);}
+.hero-3d-visual{display:block;width:min(250px,40vw);height:auto;max-width:none;margin:-10px auto 18px;}
 .hero-3d-visual.hero-3d-light{display:none;}
 [data-theme="light"] .hero-3d-visual.hero-3d-dark{display:none;}
 [data-theme="light"] .hero-3d-visual.hero-3d-light{display:block;}
-.hero-question{font-size:clamp(15px,2vw,22px);font-weight:300;font-style:italic;color:var(--gold);line-height:1.45;max-width:700px;margin-bottom:10px;letter-spacing:.3px;text-align:center;}
+[data-theme="light"] .hero-3d-visual{}
+.hero-question{font-size:clamp(14px,1.8vw,20px);font-weight:300;font-style:italic;color:var(--gold);line-height:1.4;max-width:700px;margin-bottom:8px;letter-spacing:.3px;text-align:center;}
 .hero-sub{font-size:clamp(15px,2vw,18px);color:var(--mid);font-weight:300;max-width:480px;line-height:1.85;margin-bottom:8px;}
 .expand-label{display:inline-block;font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);border:1px solid rgba(var(--accent-gold-rgb),.3);padding:4px 12px;margin-left:12px;transition:border-color .25s;vertical-align:middle;}
 .btn-gold{padding:14px 44px;background:var(--gold);color:#000;font-family:var(--sans);font-size:12px;font-weight:800;letter-spacing:3px;text-transform:uppercase;border:none;cursor:pointer;transition:opacity .25s,transform .2s;text-decoration:none;display:inline-block;box-shadow:0 0 20px rgba(var(--accent-gold-rgb),.3);}
@@ -2334,22 +2332,22 @@ h4 {
      shows/hides, forcing continuous layout reflow on the very first
      section the user touches. Switched to a static 100vh + min-height
      (computed once, not on every frame) to eliminate the jerk. */
-  .hero{min-height:calc(100vh - var(--nav-h));height:auto;padding:12px 16px 28px !important;justify-content:center;gap:38px;}
+  .hero{min-height:calc(100vh - var(--nav-h));height:auto;padding:12px 16px 28px !important;justify-content:space-between;gap:20px;}
   /* Hero 3D image adds a 4th flex child on top of a mobile layout already
      tuned to just fit one screen. Shrink it well down and drop its own
      margin (the .hero gap above already spaces it) so total content height
      stays inside the viewport and the continue-hint below the question box
      stays visible on the first screen instead of drifting down near the
      banner section. */
-  .hero-3d-visual{width:min(220px,52vw);margin:0;}
+  .hero-3d-visual{width:min(280px,64vw);margin:0;}
   .hero-ca-arrow{padding-top:0 !important;}
-  .hero-question{font-size:20px !important;line-height:1.55 !important;margin-bottom:0 !important;}
+  .hero-question{font-size:24px !important;line-height:1.55 !important;margin-bottom:6px !important;}
   .hero > a[href="#contract"]{margin:0 auto !important;}
-  .hero > div[style*="padding:22px 32px"]{padding:20px 22px !important;margin-bottom:0 !important;}
-  .hero > div[style*="padding:22px 32px"] > p:first-of-type{font-size:25px !important;line-height:1.4 !important;}
-  .hero > div[style*="padding:22px 32px"] > p:nth-of-type(2){font-size:15px !important;}
-  .hero > div[style*="padding:22px 32px"] > div[style*="border-top"] p:first-child{font-size:10.5px !important;}
-  .hero > div[style*="padding:22px 32px"] > div[style*="border-top"] p:last-child{font-size:16px !important;line-height:1.7 !important;}
+  .hero-question-box{padding:26px 24px !important;margin-bottom:8px !important;max-width:none !important;}
+  .hero-question-box > p:first-of-type{font-size:30px !important;line-height:1.35 !important;}
+  .hero-question-box > p:nth-of-type(2){font-size:17px !important;}
+  .hero-question-box > div[style*="border-top"] p:first-child{font-size:12px !important;}
+  .hero-question-box > div[style*="border-top"] p:last-child{font-size:18px !important;line-height:1.7 !important;}
   .hero-continue-mobile{
     display:inline-flex !important;
     align-items:center;
@@ -2357,9 +2355,25 @@ h4 {
     position:static;
     margin-top:20px;
     padding:0;
-    font-size:12px;
+    font-size:14px;
   }
   .hero-continue-mobile::after{font-size:26px !important;}
+  /* On shorter mobile viewports (small phones, or narrow embedded preview
+     panes) the taller question box can push the continue indicator below
+     the fold. Scale everything down together so the whole hero still fits
+     in one screen and continue stays visible without scrolling. */
+  @media(max-height:780px){
+    .hero{gap:10px;padding-top:8px !important;}
+    .hero-3d-visual{width:min(150px,40vw) !important;}
+    .hero-question{font-size:18px !important;margin-bottom:0 !important;}
+    .hero-question-box{padding:16px 20px !important;margin-bottom:0 !important;}
+    .hero-question-box > p:first-of-type{font-size:21px !important;line-height:1.3 !important;margin-bottom:4px !important;}
+    .hero-question-box > p:nth-of-type(2){font-size:13px !important;}
+    .hero-question-box > div[style*="border-top"]{padding-top:6px !important;}
+    .hero-question-box > div[style*="border-top"] p:first-child{font-size:10px !important;margin-bottom:3px !important;}
+    .hero-question-box > div[style*="border-top"] p:last-child{font-size:14px !important;line-height:1.45 !important;}
+    .hero-continue-mobile{margin-top:6px !important;}
+  }
   /* Card titles — lock all three card types to same mobile size */
   .framework-card h3,
   .identity-card h4,
@@ -3399,22 +3413,22 @@ a.src-tag:hover{opacity:.75;}
 
 <!-- ══════════════════════════ HERO ══════════════════════════════════════ -->
 <section class="hero" id="home">
-  <img src="./assets/images/hero-3d-dark.png" alt="42SELF" class="hero-3d-visual hero-3d-dark">
-  <img src="./assets/images/hero-3d-light.png" alt="42SELF" class="hero-3d-visual hero-3d-light">
-  <p class="hero-question" style="margin-bottom:64px;">There is a question you have been avoiding<br>your entire life. It will not wait forever.</p>
-  <div style="position:relative;max-width:540px;width:100%;border:1.5px solid rgba(var(--accent-gold-rgb),0.55);background:rgba(var(--accent-gold-rgb),.04);padding:22px 32px 20px;margin-bottom:14px;text-align:center;">
+  <img src="./assets/images/SELF_Hero_3D_dark.png?v=4" alt="42SELF" class="hero-3d-visual hero-3d-dark">
+  <img src="./assets/images/SELF_Hero_3D_light.png?v=4" alt="42SELF" class="hero-3d-visual hero-3d-light">
+  <p class="hero-question" style="margin-bottom:8px;">There is a question you have been avoiding<br>your entire life. It will not wait forever.</p>
+  <div class="hero-question-box" style="position:relative;max-width:540px;width:100%;border:1.5px solid rgba(var(--accent-gold-rgb),0.55);background:rgba(var(--accent-gold-rgb),.04);padding:12px 32px 10px;margin-bottom:6px;text-align:center;">
     <div style="position:absolute;top:-1px;left:-1px;width:16px;height:16px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);"></div>
     <div style="position:absolute;top:-1px;right:-1px;width:16px;height:16px;border-top:1px solid var(--gold);border-right:1px solid var(--gold);"></div>
     <div style="position:absolute;bottom:-1px;left:-1px;width:16px;height:16px;border-bottom:1px solid var(--gold);border-left:1px solid var(--gold);"></div>
     <div style="position:absolute;bottom:-1px;right:-1px;width:16px;height:16px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);"></div>
-    <p style="font-family:var(--serif);font-size:clamp(20px,3vw,30px);font-weight:400;color:var(--gold);line-height:1.35;margin-bottom:12px;">What is your own SELF worth?</p>
-    <p style="font-family:var(--serif);font-size:clamp(12px,1.5vw,15px);color:var(--dim);line-height:1.85;margin-bottom:10px;">In the only currency that cannot be taken from you.</p>
-    <div style="border-top:1px solid rgba(var(--accent-gold-rgb),0.3);padding-top:10px;margin-top:2px;">
-      <p style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:8px;">A thought experiment, not a prediction</p>
-      <p style="font-family:var(--serif);font-size:clamp(13px,1.7vw,17px);color:var(--mid);font-style:italic;line-height:1.7;margin-bottom:0;">Imagine, for one moment, that today is your last day &mdash; would you still see your SELF the way you do right now?</p>
+    <p style="font-family:var(--serif);font-size:clamp(18px,2.6vw,26px);font-weight:400;color:var(--gold);line-height:1.3;margin-bottom:6px;">What is your own SELF worth?</p>
+    <p style="font-family:var(--serif);font-size:clamp(11px,1.4vw,14px);color:var(--dim);line-height:1.5;margin-bottom:6px;">In the only currency that cannot be taken from you.</p>
+    <div style="border-top:1px solid rgba(var(--accent-gold-rgb),0.3);padding-top:6px;margin-top:0;">
+      <p style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:4px;">A thought experiment, not a prediction</p>
+      <p style="font-family:var(--serif);font-size:clamp(12px,1.6vw,16px);color:var(--mid);font-style:italic;line-height:1.4;margin-bottom:0;">Imagine, for one moment, that today is your last day &mdash; would you still see your SELF the way you do right now?</p>
     </div>
   </div>
-  <span class="continue-hint hero-continue-mobile">continue</span>
+  <span class="continue-hint hero-continue-mobile" style="padding-top:4px !important;">continue</span>
 </section>
 <!-- BANNER -->
 <div class="banner-section">
@@ -9536,6 +9550,23 @@ function toggleTheme(){
     apply(STEPS.indexOf(100));
   };
   apply(currentIndex());
+  /* The forced-112% default is set as a static attribute in <head>, before
+     the hero images (and the min-height:100vh flex box around them) have
+     actually loaded and settled. A manual A-/A/A+ click never has this
+     problem because by the time someone clicks, everything is already
+     loaded and the browser does a real layout recalculation for the zoom
+     change. A cold static attribute at parse time doesn't get that same
+     recalculation once images finish loading and change the hero's true
+     height — which is what was leaving "continue" clipped only on first
+     load, never after any click. Once the window fully loads (images
+     included), toggle the attribute off and back on to force the exact
+     same kind of real relayout a click produces. */
+  window.addEventListener('load', function(){
+    var v = html.getAttribute('data-fontscale');
+    html.removeAttribute('data-fontscale');
+    void html.offsetHeight; // force sync layout before restoring
+    if(v) html.setAttribute('data-fontscale', v);
+  });
 })();
 
 /* ── ANCHOR LINKS INTO COLLAPSED SECTIONS ─────────────────────────────────
