@@ -1487,6 +1487,7 @@ section{scroll-margin-top:56px;}
 /* ── HERO ─────────────────────────────────────────────────────────────────── */
 .hero{min-height:calc(100vh - var(--nav-h));display:flex;flex-direction:column;justify-content:space-evenly;align-items:center;padding:8px 24px 32px;gap:16px;position:relative;background:radial-gradient(ellipse at 50% 35%,rgba(var(--accent-gold-rgb),.05) 0%,transparent 68%);}
 .hero-3d-visual{display:block;width:min(250px,40vw);height:auto;max-width:none;margin:-10px auto 18px;}
+.hero-mobile-spacer{display:none;}
 .hero-3d-visual.hero-3d-light{display:none;}
 [data-theme="light"] .hero-3d-visual.hero-3d-dark{display:none;}
 [data-theme="light"] .hero-3d-visual.hero-3d-light{display:block;}
@@ -2332,28 +2333,29 @@ h4 {
      shows/hides, forcing continuous layout reflow on the very first
      section the user touches. Switched to a static 100vh + min-height
      (computed once, not on every frame) to eliminate the jerk. */
-  .hero{min-height:calc(100vh - var(--nav-h));height:auto;padding:12px 16px 28px !important;justify-content:space-evenly;gap:14px;}
+  .hero{min-height:calc(100vh - var(--nav-h));height:auto;padding:12px 16px 28px !important;justify-content:flex-start;gap:0;}
+  .hero-mobile-spacer{display:block;min-height:0;}
   /* Hero 3D image adds a 4th flex child on top of a mobile layout already
      tuned to just fit one screen. Shrink it well down and drop its own
      margin (the .hero gap above already spaces it) so total content height
      stays inside the viewport and the continue-hint below the question box
      stays visible on the first screen instead of drifting down near the
      banner section. */
-  .hero-3d-visual{width:min(280px,64vw);margin:0;}
+  .hero-3d-visual{width:min(330px,80vw);margin:0;}
   .hero-ca-arrow{padding-top:0 !important;}
   .hero-question{font-size:24px !important;line-height:1.55 !important;margin-bottom:6px !important;}
   .hero > a[href="#contract"]{margin:0 auto !important;}
-  .hero-question-box{padding:26px 24px !important;margin-bottom:8px !important;max-width:none !important;}
-  .hero-question-box > p:first-of-type{font-size:30px !important;line-height:1.35 !important;}
-  .hero-question-box > p:nth-of-type(2){font-size:17px !important;}
+  .hero-question-box{padding:28px 26px !important;margin-bottom:8px !important;max-width:none !important;}
+  .hero-question-box > p:first-of-type{font-size:33px !important;line-height:1.3 !important;}
+  .hero-question-box > p:nth-of-type(2){font-size:18px !important;}
   .hero-question-box > div[style*="border-top"] p:first-child{font-size:12px !important;}
-  .hero-question-box > div[style*="border-top"] p:last-child{font-size:18px !important;line-height:1.7 !important;}
+  .hero-question-box > div[style*="border-top"] p:last-child{font-size:19px !important;line-height:1.7 !important;}
   .hero-continue-mobile{
     display:inline-flex !important;
     align-items:center;
     gap:8px;
     position:static;
-    margin-top:20px;
+    margin-top:0;
     padding:0;
     font-size:14px;
   }
@@ -2363,7 +2365,8 @@ h4 {
      the fold. Scale everything down together so the whole hero still fits
      in one screen and continue stays visible without scrolling. */
   @media(max-height:780px){
-    .hero{gap:8px !important;padding-top:8px !important;}
+    .hero{padding-top:8px !important;}
+    .hero-mobile-spacer{flex-grow:0.2 !important;}
     .hero-3d-visual{width:min(150px,40vw) !important;}
     .hero-question{font-size:18px !important;margin-bottom:0 !important;}
     .hero-question-box{padding:16px 20px !important;margin-bottom:0 !important;}
@@ -2372,7 +2375,7 @@ h4 {
     .hero-question-box > div[style*="border-top"]{padding-top:6px !important;}
     .hero-question-box > div[style*="border-top"] p:first-child{font-size:10px !important;margin-bottom:3px !important;}
     .hero-question-box > div[style*="border-top"] p:last-child{font-size:14px !important;line-height:1.45 !important;}
-    .hero-continue-mobile{margin-top:6px !important;}
+    .hero-continue-mobile{margin-top:0 !important;}
   }
   /* Card titles — lock all three card types to same mobile size */
   .framework-card h3,
@@ -3413,9 +3416,12 @@ a.src-tag:hover{opacity:.75;}
 
 <!-- ══════════════════════════ HERO ══════════════════════════════════════ -->
 <section class="hero" id="home">
+  <div class="hero-mobile-spacer hero-mobile-spacer-1" style="flex:0.15 1 0;"></div>
   <img src="./assets/images/SELF_Hero_3D_dark.png?v=4" alt="42SELF" class="hero-3d-visual hero-3d-dark">
   <img src="./assets/images/SELF_Hero_3D_light.png?v=4" alt="42SELF" class="hero-3d-visual hero-3d-light">
+  <div class="hero-mobile-spacer hero-mobile-spacer-2" style="flex:0.65 1 0;"></div>
   <p class="hero-question" style="margin-bottom:8px;">There is a question you have been avoiding<br>your entire life. It will not wait forever.</p>
+  <div class="hero-mobile-spacer hero-mobile-spacer-3" style="flex:0.45 1 0;"></div>
   <div class="hero-question-box" style="position:relative;max-width:540px;width:100%;border:1.5px solid rgba(var(--accent-gold-rgb),0.55);background:rgba(var(--accent-gold-rgb),.04);padding:12px 32px 10px;margin-bottom:6px;text-align:center;">
     <div style="position:absolute;top:-1px;left:-1px;width:16px;height:16px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);"></div>
     <div style="position:absolute;top:-1px;right:-1px;width:16px;height:16px;border-top:1px solid var(--gold);border-right:1px solid var(--gold);"></div>
@@ -3428,7 +3434,9 @@ a.src-tag:hover{opacity:.75;}
       <p style="font-family:var(--serif);font-size:clamp(12px,1.6vw,16px);color:var(--mid);font-style:italic;line-height:1.4;margin-bottom:0;">Imagine, for one moment, that today is your last day &mdash; would you still see your SELF the way you do right now?</p>
     </div>
   </div>
+  <div class="hero-mobile-spacer hero-mobile-spacer-4" style="flex:1 1 0;"></div>
   <span class="continue-hint hero-continue-mobile" style="padding-top:4px !important;">continue</span>
+  <div class="hero-mobile-spacer hero-mobile-spacer-5" style="flex:0.5 1 0;"></div>
 </section>
 <!-- BANNER -->
 <div class="banner-section">
