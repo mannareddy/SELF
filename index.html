@@ -704,7 +704,7 @@ body{
 [data-theme="light"] .nav-dropdown-panel a:hover{color:var(--accent-gold) !important;background:rgba(var(--accent-gold-rgb),0.06) !important;}
 [data-theme="light"] .mnav-toggle{background:rgba(245,241,232,0.98) !important;border-color:rgba(var(--shadow-rgb),0.32) !important;}
 [data-theme="light"] .mnav-toggle span{background:var(--text-nav) !important;}
-[data-theme="light"] .mnav-panel{background:rgba(245,241,232,0.97) !important;}
+[data-theme="light"] .mnav-panel{background:rgb(245,241,232) !important;}
 [data-theme="light"] .mnav-list>li{border-color:rgba(var(--shadow-rgb),0.28) !important;}
 [data-theme="light"] .mnav-list>li>a,[data-theme="light"] .mnav-group-toggle{color:var(--text-nav) !important;}
 [data-theme="light"] .mnav-group-panel a{color:var(--text-nav) !important;border-color:rgba(var(--shadow-rgb),0.24) !important;}
@@ -1266,13 +1266,13 @@ a:hover{opacity:.7;}
   /* Accordion panel — slides down from nav bar */
   .mnav-panel{
     display:block;position:fixed;top:var(--nav-h);left:0;right:0;bottom:0;
-    background:rgba(0,0,0,0.97);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+    background:#000;
     z-index:998;overflow-y:auto;-webkit-overflow-scrolling:touch;
     transform:translateY(-8px);opacity:0;pointer-events:none;
     transition:opacity .22s ease,transform .22s ease;
   }
   .mnav-panel.open{opacity:1;transform:translateY(0);pointer-events:auto;}
-  [data-theme="light"] .mnav-panel{background:rgba(245,241,232,0.97);}
+  [data-theme="light"] .mnav-panel{background:rgb(245,241,232);}
 
   .mnav-list{list-style:none;margin:0;padding:8px 0 48px;}
   .mnav-list>li{border-bottom:1px solid #1a1a1a;}
@@ -2445,7 +2445,7 @@ h4 {
      it to sample. Chromium-based Opera for Android appears to schedule
      this recomposite differently and doesn't show it, which is why the
      symptom looked browser-specific rather than page-specific. The panel's
-     own background is already ~97% opaque, so the blur adds very little
+     own background is now fully opaque, so the blur adds very little
      visible effect for the cost. Removed here rather than adding more
      freeze-timing — matches the .site-nav fix already in place. */
   .mnav-panel{
