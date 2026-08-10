@@ -14,9 +14,6 @@
 <title>*SELF — Self-Inquiry Workbook & Guided Journal | Not a meme. A mirror.</title>
 <meta name="description" content="A self-inquiry framework, guided workbook, and free web companion for people ready to investigate who they actually are — beyond Advaita Vedanta, Jungian psychology, Stoicism, and the Enneagram.">
 <link rel="canonical" href="https://42self.xyz/">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XC5FG6W949"></script>
 <script>
 window.dataLayer=window.dataLayer||[];
@@ -564,7 +561,7 @@ body{
   --bg-footer:#060606;
   --bg-sunken:#060606;
   --text-on-accent:#f0f0f0;
-  --serif:'Cormorant Garamond',Georgia,serif;
+  --serif:Georgia,'Times New Roman',serif;
   --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
   --nav-h:44px;
   /* Layer 3 (yellow) / Layer 4 (green) accent used by the Ascent of Self
@@ -1465,18 +1462,18 @@ section{scroll-margin-top:56px;}
   .hero{padding-top:10px;}
   .hero-3d-visual{margin-bottom:6px !important;}
   .hero-question{margin-bottom:14px !important;font-size:clamp(14px,1.8vw,19px) !important;line-height:1.35 !important;}
-  .hero > div[style*="padding:22px 32px"]{padding:16px 28px 14px !important;margin-bottom:10px !important;}
-  .hero > div[style*="padding:22px 32px"] > p{margin-bottom:8px !important;}
-  .hero > div[style*="padding:22px 32px"] > div[style*="border-top"]{padding-top:8px !important;}
+  .hero-question-box{padding:16px 28px 14px !important;margin-bottom:10px !important;}
+  .hero-question-box > p{margin-bottom:8px !important;}
+  .hero-question-box > div[style*="border-top"]{padding-top:8px !important;}
   .hero > a[href="#contract"]{margin-top:8px !important;}
   .hero-ca-arrow{padding-top:4px !important;}
   .hero-continue-mobile{padding-top:10px !important;}
 }
 @media(min-width:641px) and (max-height:820px){
   .hero-question{font-size:clamp(13px,1.6vw,16px) !important;margin-bottom:14px !important;}
-  .hero > div[style*="padding:22px 32px"]{padding:12px 24px 10px !important;}
-  .hero > div[style*="padding:22px 32px"] p{line-height:1.55 !important;}
-  .hero > div[style*="padding:22px 32px"] > div[style*="border-top"] p{font-size:clamp(11px,1.4vw,14px) !important;}
+  .hero-question-box{padding:12px 24px 10px !important;}
+  .hero-question-box p{line-height:1.55 !important;}
+  .hero-question-box > div[style*="border-top"] p{font-size:clamp(11px,1.4vw,14px) !important;}
   .hero > a[href="#contract"] > div{padding:8px 20px !important;}
   .hero-continue-mobile{padding-top:10px !important;}
 }
@@ -1485,8 +1482,9 @@ section{scroll-margin-top:56px;}
 #themeToggleMobile{display:none;}
 
 /* ── HERO ─────────────────────────────────────────────────────────────────── */
-.hero{min-height:calc(100vh - var(--nav-h));display:flex;flex-direction:column;justify-content:center;align-items:center;padding:8px 24px 0;position:relative;background:radial-gradient(ellipse at 50% 35%,rgba(var(--accent-gold-rgb),.05) 0%,transparent 68%);}
+.hero{min-height:calc(100vh - var(--nav-h));display:flex;flex-direction:column;justify-content:space-evenly;align-items:center;padding:8px 24px 32px;gap:16px;position:relative;background:radial-gradient(ellipse at 50% 35%,rgba(var(--accent-gold-rgb),.05) 0%,transparent 68%);}
 .hero-3d-visual{display:block;width:min(250px,40vw);height:auto;max-width:none;margin:-10px auto 18px;}
+.hero-mobile-spacer{display:none;}
 .hero-3d-visual.hero-3d-light{display:none;}
 [data-theme="light"] .hero-3d-visual.hero-3d-dark{display:none;}
 [data-theme="light"] .hero-3d-visual.hero-3d-light{display:block;}
@@ -2332,32 +2330,50 @@ h4 {
      shows/hides, forcing continuous layout reflow on the very first
      section the user touches. Switched to a static 100vh + min-height
      (computed once, not on every frame) to eliminate the jerk. */
-  .hero{min-height:calc(100vh - var(--nav-h));height:auto;padding:12px 16px 28px !important;justify-content:center;gap:38px;}
+  .hero{min-height:calc(100vh - var(--nav-h));height:auto;padding:12px 16px 28px !important;justify-content:flex-start;gap:0;}
+  .hero-mobile-spacer{display:block;min-height:0;}
   /* Hero 3D image adds a 4th flex child on top of a mobile layout already
      tuned to just fit one screen. Shrink it well down and drop its own
      margin (the .hero gap above already spaces it) so total content height
      stays inside the viewport and the continue-hint below the question box
      stays visible on the first screen instead of drifting down near the
      banner section. */
-  .hero-3d-visual{width:min(280px,64vw);margin:0;}
+  .hero-3d-visual{width:min(330px,80vw);margin:0;}
   .hero-ca-arrow{padding-top:0 !important;}
   .hero-question{font-size:24px !important;line-height:1.55 !important;margin-bottom:6px !important;}
   .hero > a[href="#contract"]{margin:0 auto !important;}
-  .hero > div[style*="padding:22px 32px"]{padding:24px 24px !important;margin-bottom:8px !important;}
-  .hero > div[style*="padding:22px 32px"] > p:first-of-type{font-size:29px !important;line-height:1.4 !important;}
-  .hero > div[style*="padding:22px 32px"] > p:nth-of-type(2){font-size:17px !important;}
-  .hero > div[style*="padding:22px 32px"] > div[style*="border-top"] p:first-child{font-size:12px !important;}
-  .hero > div[style*="padding:22px 32px"] > div[style*="border-top"] p:last-child{font-size:18px !important;line-height:1.7 !important;}
+  .hero-question-box{padding:28px 26px !important;margin-bottom:8px !important;max-width:none !important;}
+  .hero-question-box > p:first-of-type{font-size:33px !important;line-height:1.3 !important;}
+  .hero-question-box > p:nth-of-type(2){font-size:18px !important;}
+  .hero-question-box > div[style*="border-top"] p:first-child{font-size:12px !important;}
+  .hero-question-box > div[style*="border-top"] p:last-child{font-size:19px !important;line-height:1.7 !important;}
   .hero-continue-mobile{
     display:inline-flex !important;
     align-items:center;
     gap:8px;
     position:static;
-    margin-top:20px;
+    margin-top:0;
     padding:0;
     font-size:14px;
   }
   .hero-continue-mobile::after{font-size:26px !important;}
+  /* On shorter mobile viewports (small phones, or narrow embedded preview
+     panes) the taller question box can push the continue indicator below
+     the fold. Scale everything down together so the whole hero still fits
+     in one screen and continue stays visible without scrolling. */
+  @media(max-height:780px){
+    .hero{padding-top:8px !important;}
+    .hero-mobile-spacer{flex-grow:0.1 !important;}
+    .hero-3d-visual{width:min(240px,62vw) !important;}
+    .hero-question{font-size:19px !important;margin-bottom:0 !important;}
+    .hero-question-box{padding:22px 24px !important;margin-bottom:0 !important;}
+    .hero-question-box > p:first-of-type{font-size:27px !important;line-height:1.3 !important;margin-bottom:5px !important;}
+    .hero-question-box > p:nth-of-type(2){font-size:15px !important;}
+    .hero-question-box > div[style*="border-top"]{padding-top:7px !important;}
+    .hero-question-box > div[style*="border-top"] p:first-child{font-size:11px !important;margin-bottom:3px !important;}
+    .hero-question-box > div[style*="border-top"] p:last-child{font-size:16px !important;line-height:1.5 !important;}
+    .hero-continue-mobile{margin-top:0 !important;}
+  }
   /* Card titles — lock all three card types to same mobile size */
   .framework-card h3,
   .identity-card h4,
@@ -3397,10 +3413,13 @@ a.src-tag:hover{opacity:.75;}
 
 <!-- ══════════════════════════ HERO ══════════════════════════════════════ -->
 <section class="hero" id="home">
+  <div class="hero-mobile-spacer hero-mobile-spacer-1" style="flex:0.15 1 0;"></div>
   <img src="./assets/images/SELF_Hero_3D_dark.png?v=4" alt="42SELF" class="hero-3d-visual hero-3d-dark">
   <img src="./assets/images/SELF_Hero_3D_light.png?v=4" alt="42SELF" class="hero-3d-visual hero-3d-light">
+  <div class="hero-mobile-spacer hero-mobile-spacer-2" style="flex:0.65 1 0;"></div>
   <p class="hero-question" style="margin-bottom:8px;">There is a question you have been avoiding<br>your entire life. It will not wait forever.</p>
-  <div style="position:relative;max-width:540px;width:100%;border:1.5px solid rgba(var(--accent-gold-rgb),0.55);background:rgba(var(--accent-gold-rgb),.04);padding:12px 32px 10px;margin-bottom:6px;text-align:center;">
+  <div class="hero-mobile-spacer hero-mobile-spacer-3" style="flex:0.45 1 0;"></div>
+  <div class="hero-question-box" style="position:relative;max-width:540px;width:100%;border:1.5px solid rgba(var(--accent-gold-rgb),0.55);background:rgba(var(--accent-gold-rgb),.04);padding:12px 32px 10px;margin-bottom:6px;text-align:center;">
     <div style="position:absolute;top:-1px;left:-1px;width:16px;height:16px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);"></div>
     <div style="position:absolute;top:-1px;right:-1px;width:16px;height:16px;border-top:1px solid var(--gold);border-right:1px solid var(--gold);"></div>
     <div style="position:absolute;bottom:-1px;left:-1px;width:16px;height:16px;border-bottom:1px solid var(--gold);border-left:1px solid var(--gold);"></div>
@@ -3412,7 +3431,9 @@ a.src-tag:hover{opacity:.75;}
       <p style="font-family:var(--serif);font-size:clamp(12px,1.6vw,16px);color:var(--mid);font-style:italic;line-height:1.4;margin-bottom:0;">Imagine, for one moment, that today is your last day &mdash; would you still see your SELF the way you do right now?</p>
     </div>
   </div>
+  <div class="hero-mobile-spacer hero-mobile-spacer-4" style="flex:1 1 0;"></div>
   <span class="continue-hint hero-continue-mobile" style="padding-top:4px !important;">continue</span>
+  <div class="hero-mobile-spacer hero-mobile-spacer-5" style="flex:0.5 1 0;"></div>
 </section>
 <!-- BANNER -->
 <div class="banner-section">
@@ -6138,6 +6159,11 @@ a.src-tag:hover{opacity:.75;}
   <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;"><span class="gloss">Ahamkara<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Ahamkara">+</button><span class="gloss-pop">Literally &ldquo;the I-maker&rdquo; &mdash; the function of mind that stamps &ldquo;me&rdquo; onto raw experience, manufacturing a sense of separate identity.</span></span> runs the same whether or not you can see it running.</h2>
   <p style="font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:560px;margin:0 auto 40px;font-style:italic;line-height:1.85;">What changes across these four stages is only how much of the I-maker you can see while it operates.</p>
 
+  <div style="text-align:center;margin-bottom:16px;">
+    <button class="collapse-toggle-btn" onclick="sectionCollapse('ego-awareness-stages',this)">Expand &#9660;</button>
+    <p class="section-collapse-label">Tap to expand — the four stages of ego awareness</p>
+  </div>
+  <div id="ego-awareness-stages" class="section-collapse-wrap collapsed">
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:2px;max-width:820px;margin:0 auto 24px;">
     <div class="sl-stage danger"><span class="sl-num" style="color:#c0392b;">Stage 1</span><div class="sl-name" style="color:#c0392b;">Identification</div><p class="sl-desc">No separation between self and ego. <span class="gloss">Purusha<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Purusha">+</button><span class="gloss-pop">Pure consciousness in Samkhya and Yoga philosophy &mdash; the unmoving witness that never itself becomes an object.</span></span> is forgotten entirely; <span class="gloss">Ahamkara<button class="gloss-btn" onclick="toggleGloss(this)" aria-label="Define Ahamkara">+</button><span class="gloss-pop">Literally &ldquo;the I-maker&rdquo; &mdash; the function of mind that stamps &ldquo;me&rdquo; onto raw experience, manufacturing a sense of separate identity.</span></span> runs the show. Disagreement reads as threat, and protecting the identity outranks being honest with yourself.</p></div>
     <div class="sl-stage"><span class="sl-num">Stage 2</span><div class="sl-name">Recognition</div><p class="sl-desc">The first gap opens. A thought can be caught as a thought &mdash; a wave on the lake, not the lake itself &mdash; rather than simply lived as truth. Still intermittent; old conditioning keeps reasserting itself.</p></div>
@@ -6145,6 +6171,7 @@ a.src-tag:hover{opacity:.75;}
     <div class="sl-stage" style="border-left:2px solid var(--gold);background:radial-gradient(ellipse at 50% 0%,rgba(var(--accent-gold-rgb),.06) 0%,transparent 70%);"><span class="sl-num" style="color:var(--gold);">Stage 4</span><div class="sl-name" style="color:var(--gold);">Integration</div><p class="sl-desc">Full acceptance of the shadow and every emotional state, rather than a fight against them. Sometimes called ego death &mdash; not the end of personality, but the end of needing each experience to mean something about &ldquo;me.&rdquo;</p></div>
   </div>
   <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:20px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg);max-width:820px;margin:0 auto;text-align:left;">Not linear in practice &mdash; most people move back and forth between Recognition and Witness for years before Integration stabilizes. This is not a new mechanism. It is the Rider-and-charioteer confusion above, graded by how much of it a person can currently see.</p>
+  </div>
 </section>
 <span class="continue-hint">continue</span>
 <div class="divider"></div>
@@ -9158,6 +9185,22 @@ function resetNestedToggles(wrap){
       if(b) b.textContent='+';
     }
   });
+  // Master Matrix mode: always land back on the 7×6 Grid, regardless of
+  // whether Lived Reality / Ascension Path was left open, so re-expanding
+  // this section (button or map click) never resumes a prior table mode.
+  var mmWrap=wrap.querySelector('#masterMatrixWrap');
+  if(mmWrap && mmWrap.getAttribute('data-mode')!=='grid' && typeof window.setMatrixMode==='function'){
+    window.setMatrixMode('grid');
+  }
+  // Any other nested section-collapse-wrap left open inside this one (e.g.
+  // the Architecture of Ego sub-panels) — close it and reset its own
+  // toggle button back to "Expand" so re-opening the parent section starts
+  // from the same fresh, all-collapsed state as everywhere else.
+  wrap.querySelectorAll('.section-collapse-wrap:not(.collapsed)').forEach(function(sub){
+    sub.classList.add('collapsed');
+    var subBtn=document.querySelector('[onclick*="sectionCollapse(\'' + sub.id + '\'"]');
+    if(subBtn) subBtn.innerHTML=subBtn.innerHTML.replace('Collapse','Expand').replace('▲','▼').replace('&#9650;','&#9660;');
+  });
 }
 
 /* ── ENNEAGRAM EXPAND ALL ────────────────────────────────────────────────── */
@@ -10432,6 +10475,12 @@ init();
   window.expandMatrixRow = function(n){
     var wrap = document.getElementById('master-matrix-full-content');
     if(wrap && wrap.classList.contains('collapsed')) sectionCollapse('master-matrix-full-content');
+
+    // The map only ever represents the 7×6 Grid — always land there,
+    // even if Lived Reality / Ascension Path was left active from a
+    // previous visit to the full table.
+    var mmWrap = document.getElementById('masterMatrixWrap');
+    if(mmWrap && mmWrap.getAttribute('data-mode') !== 'grid') setMatrixMode('grid');
 
     // accordion: close any other open row before opening this one
     document.querySelectorAll('#masterMatrixTable .row-detail').forEach(function(d){
