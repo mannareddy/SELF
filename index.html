@@ -634,7 +634,15 @@ body{
 [data-theme="light"] body{background:var(--bg-page) !important;color:var(--text-body) !important;font-weight:400;}
 
 /* Light: boost body text weight/brightness across all text elements */
-[data-theme="light"] p,[data-theme="light"] li,[data-theme="light"] span:not(.label):not(.ec-type):not(.p-num):not(.num):not(.layer-tag):not(.s-sub):not(.ds-subtitle):not(.rasa-cell):not(.tradition-cell):not(.col-title){color:var(--text-body) !important;font-weight:400 !important;}
+[data-theme="light"] p,[data-theme="light"] li,[data-theme="light"] span:not(.label):not(.ec-type):not(.p-num):not(.num):not(.layer-tag):not(.s-sub):not(.ds-subtitle):not(.rasa-cell):not(.tradition-cell):not(.col-title):not(.gloss-btn){color:var(--text-body) !important;font-weight:400 !important;}
+/* Gloss "+" buttons are <span class="gloss-btn"> (see the gloss-btn block
+   further below for why), so the broad light-theme span rule above was
+   matching them and force-overriding their gold to --text-body — nearly
+   invisible next to bold black heading text (e.g. "Ahamkara"), where it's
+   clearly readable in dark theme since --text-body there is near-white and
+   never masks the gold. Excluded here so .gloss-btn keeps its own
+   color:var(--gold) in light theme too, same as it always has in dark. */
+[data-theme="light"] .gloss-btn{color:var(--gold) !important;}
 /* Same bug as the glossary-term fix above, but hitting header text this
    time: this rule catches .col-title spans inside <th>, silently
    un-bolding "BIRTH", "GROWTH", etc. even though the parent <th> is
