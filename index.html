@@ -9616,6 +9616,14 @@ function toggleTheme(){
       // only skip when the collapsed ancestor is not the node itself.
       var collapsedAncestor = el.closest('.collapsed');
       if(collapsedAncestor && collapsedAncestor !== el) continue;
+      // FAQ answers use a separate .faq-item.closed/.open pair rather than
+      // the generic .collapsed class above — same invisible-content problem,
+      // needs its own check. A currently-closed FAQ item's answer paragraphs
+      // are still in the DOM (just clipped to 0 height), so without this an
+      // A-/A+/A click could anchor to invisible text in a neighboring closed
+      // question and "correct" the scroll to wherever that ends up.
+      var closedFaq = el.closest('.faq-item.closed');
+      if(closedFaq && closedFaq !== el) continue;
       var rect = el.getBoundingClientRect();
       if(rect.width === 0 && rect.height === 0) continue; // not actually rendered
       var center = rect.top + rect.height / 2;
