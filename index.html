@@ -1790,18 +1790,9 @@ section{scroll-margin-top:56px;}
 .trade-links a:hover{color:var(--gold);opacity:1;}
 
 /* ── GO DEEPER ────────────────────────────────────────────────────────────── */
-.deeper-box{max-width:820px;margin:32px auto 0;padding:2px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg-lift);position:relative;}
-.deeper-box::before{content:'';position:absolute;top:-1px;left:-1px;width:20px;height:20px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);z-index:2;}
-.deeper-box::after{content:'';position:absolute;bottom:-1px;right:-1px;width:20px;height:20px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);z-index:2;}
-.deeper-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5px;background:rgba(var(--accent-gold-rgb),0.25);}
-.deeper-card{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:8px;padding:30px 16px;background:var(--bg);text-decoration:none;transition:background .25s;}
-.deeper-card:hover{background:var(--bg-lift);}
-.deeper-card:hover .deeper-title{color:var(--gold);}
-.deeper-card:hover .deeper-arrow{opacity:1;transform:translateX(2px);}
-.deeper-title{font-family:var(--sans);font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--white);transition:color .25s;}
-.deeper-desc{font-family:var(--serif);font-size:12.5px;font-style:italic;color:var(--dim);line-height:1.6;}
-.deeper-arrow{font-size:13px;color:var(--gold);opacity:.5;transition:all .25s;}
-@media (max-width:640px){.deeper-grid{grid-template-columns:repeat(2,1fr);}}
+.explore-links{display:flex;justify-content:center;gap:20px 36px;flex-wrap:wrap;margin-top:28px;}
+.explore-links a{font-family:var(--sans);font-size:11.5px;color:var(--mid);letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:color .25s;}
+.explore-links a:hover{color:var(--gold);opacity:1;}
 
 /* ── FOOTER ───────────────────────────────────────────────────────────────── */
 .footer{padding:64px 24px 52px;border-top:1px solid #1a1a1a;text-align:center;}
@@ -7162,29 +7153,11 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
 <section class="section" id="go-deeper" style="scroll-margin-top:56px;">
   <span class="label">Go Deeper</span>
   <p class="phil-line dim">The full framework. The complete map.</p>
-  <div class="deeper-box">
-    <div class="deeper-grid">
-      <a class="deeper-card" href="https://app.xmind.com/share/OcHbI8Mf?xid=XrVOVKnC" target="_blank" rel="noopener">
-        <span class="deeper-title">Structured Map</span>
-        <span class="deeper-desc">The framework, by section</span>
-        <span class="deeper-arrow">&rarr;</span>
-      </a>
-      <a class="deeper-card" href="https://app.xmind.com/101oMO2f" target="_blank" rel="noopener">
-        <span class="deeper-title">Visual Map</span>
-        <span class="deeper-desc">The same map, laid out spatially</span>
-        <span class="deeper-arrow">&rarr;</span>
-      </a>
-      <a class="deeper-card" href="https://github.com/mannareddy/SELF/tree/main/docs" target="_blank" rel="noopener">
-        <span class="deeper-title">Docs</span>
-        <span class="deeper-desc">The source writing behind the site</span>
-        <span class="deeper-arrow">&rarr;</span>
-      </a>
-      <a class="deeper-card" href="https://github.com/mannareddy/SELF" target="_blank" rel="noopener">
-        <span class="deeper-title">GitHub</span>
-        <span class="deeper-desc">The repo, in full</span>
-        <span class="deeper-arrow">&rarr;</span>
-      </a>
-    </div>
+  <div class="explore-links">
+    <a href="https://app.xmind.com/share/OcHbI8Mf?xid=XrVOVKnC" target="_blank" rel="noopener">Structured Map</a>
+    <a href="https://app.xmind.com/101oMO2f" target="_blank" rel="noopener">Visual Map</a>
+    <a href="https://github.com/mannareddy/SELF/tree/main/docs" target="_blank" rel="noopener">Docs</a>
+    <a href="https://github.com/mannareddy/SELF" target="_blank" rel="noopener">GitHub</a>
   </div>
 </section>
 <span class="continue-hint">continue</span>
@@ -7264,6 +7237,18 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
           </div>
         </div>
         <p style="font-size:15px;color:var(--dim);font-style:italic;margin-top:12px;">Use the Circuit Breaker for acute moments. Use the full RRRR Protocol for deeper processing and reflection.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item closed" data-cat="framework">
+      <button class="faq-q" onclick="faqToggle(this)">
+        <span>What is the Second Arrow?</span><span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p style="text-align:center;margin-bottom:16px;"><a class="src-tag src-trad" href="#sources">Traditional Source</a> &mdash; the Sallatha Sutta, Pali Canon.</p>
+        <p style="margin-bottom:16px;">The First Arrow is the pain itself &mdash; the loss, the diagnosis, the rejection, the loss on the chart. It lands whether you're ready or not, and no amount of awareness stops it from hitting.</p>
+        <p style="margin-bottom:16px;">The Second Arrow is the one you fire yourself, into the same wound: the story layered on top &mdash; <em style="color:var(--gold);">this shouldn't be happening, this means I'm broken, this will never get better.</em> The Buddha's teaching was blunt about the arithmetic &mdash; an untrained person struck by loss feels two arrows' worth of pain for one arrow's worth of event. The second one is optional. Almost no one declines it by default.</p>
+        <p>This is a different mechanism than RRRR or the Circuit Breaker. Those interrupt a reaction before it fires. The Second Arrow shows up after impact &mdash; it's not about stopping an impulse, it's about noticing the exact moment raw pain gets a narrative bolted onto it, and choosing not to pull the bow a second time. <strong style="color:var(--gold);font-weight:400;">The pain was never optional. The suffering, most of it, was.</strong></p>
       </div></div>
     </div>
 
