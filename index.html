@@ -9611,11 +9611,16 @@ function toggleTheme(){
       // Skip nodes nested inside a still-collapsed accordion — overflow:hidden
       // + max-height:0 only clips painting, so descendants still report
       // real "as if expanded" bounding rects at coordinates that don't
-      // match anything actually visible. The collapsed wrapper's OWN id
-      // is still a valid anchor (its 0-height box is really there), so
-      // only skip when the collapsed ancestor is not the node itself.
-      var collapsedAncestor = el.closest('.collapsed');
-      if(collapsedAncestor && collapsedAncestor !== el) continue;
+      // match anything actually visible. Also skip the collapsed wrapper's
+      // own id-bearing element itself: since JS removes the .collapsed
+      // class entirely on expand (see collapseHeight / toggle handlers
+      // below), an element only ever still carries .collapsed while it
+      // genuinely is 0-height and invisible — there's no case where
+      // keeping it as a valid anchor is correct. (Previously this only
+      // skipped descendants, which is what let a still-collapsed section
+      // like #glossary-full-content get picked as the anchor and pull the
+      // scroll position there on an A-/A+/A click.)
+      if(el.closest('.collapsed')) continue;
       // FAQ answers use a separate .faq-item.closed/.open pair rather than
       // the generic .collapsed class above — same invisible-content problem,
       // needs its own check. A currently-closed FAQ item's answer paragraphs
