@@ -9675,47 +9675,46 @@ function toggleTheme(){
     else html.setAttribute('data-fontscale', String(val));
     if(oldVal !== val && oldVal > 0){
       // Force the browser to actually commit the new zoomed layout before
-      // computing/applying the corrected scroll position — without this,
-      // scrollTo can act on stale (pre-zoom) scroll-height metrics and
-      // land somewhere else on the page.
+      // measuring/correcting scroll position — without this, the read
+      // below can act on stale (pre-zoom) geometry and land somewhere else
+      // on the page.
       void document.documentElement.scrollHeight;
-      // The reflow above is enough for ordinary width/height/font-size
-      // driven layout changes, but #zoomScope is resized via the CSS
-      // `zoom` property, which — unlike standard layout properties — isn't
-      // reliably fully settled by the time a same-tick getBoundingClientRect
-      // read happens in every Chromium build; it can still be mid-flight.
-      // A double rAF (wait two full paint cycles) is the standard fix for
-      // measuring geometry after a change like this and is what actually
-      // guarantees anchor.el's rect below reflects the real, final,
-      // post-zoom layout rather than a transitional one.
-      requestAnimationFrame(function(){
-        requestAnimationFrame(function(){
-          if(anchor){
-            // This used to compute newY = oldScroll + (newRect.top -
-            // anchor.top) and call window.scrollTo(newY) directly. That
-            // assumes outer-document scroll pixels and a getBoundingClientRect()
-            // read inside #zoomScope move 1:1 — which does not hold for a
-            // nested CSS `zoom` container. Measured directly: a 4279px
-            // change in window scroll position moved a zoomed element
-            // on-screen by only ~1336px, not 4279px. That mismatch is what
-            // was sending A-/A/A+ to unrelated sections (including
-            // Glossary) instead of keeping the reader's place — the delta
-            // math was internally consistent but built on a coordinate
-            // assumption `zoom` breaks. scrollIntoView() asks the browser
-            // to place this specific element correctly and lets it handle
-            // that translation natively instead of us re-deriving it via
-            // cross-state arithmetic.
-            anchor.el.scrollIntoView({behavior: 'instant', block: 'center'});
-          } else {
-            // Fallback for the rare case nothing renders above the fold yet
-            // (e.g. still at the very top of the page) — the old ratio-based
-            // estimate is fine here since there's nothing to anchor to and
-            // the error at small scroll offsets is negligible.
-            var newY = Math.round(oldScroll * (val / oldVal));
-            window.scrollTo({top: newY, left: 0, behavior: 'instant'});
-          }
-        });
-      });
+      if(anchor){
+        // This used to compute newY = oldScroll + (newRect.top -
+        // anchor.top) and call window.scrollTo(newY) directly. That
+        // assumes outer-document scroll pixels and a getBoundingClientRect()
+        // read inside #zoomScope move 1:1 — which does not hold for a
+        // nested CSS `zoom` container. Measured directly: a 4279px
+        // change in window scroll position moved a zoomed element
+        // on-screen by only ~1336px, not 4279px. That mismatch is what
+        // was sending A-/A/A+ to unrelated sections (including
+        // Glossary) instead of keeping the reader's place — the delta
+        // math was internally consistent but built on a coordinate
+        // assumption `zoom` breaks. scrollIntoView() asks the browser
+        // to place this specific element correctly and lets it handle
+        // that translation natively instead of us re-deriving it via
+        // cross-state arithmetic.
+        //
+        // This runs synchronously right after the forced reflow above,
+        // not deferred to a later animation frame — an earlier version of
+        // this fix waited two rAFs first (a leftover from chasing a
+        // different, incorrect theory about #zoomScope's layout not being
+        // settled yet), but that gap let the browser paint one or two
+        // frames of resized content still sitting at the old scroll
+        // position before snapping to the correct one, which is what
+        // showed up as a visible flicker on every A-/A+/A click. The
+        // forced reflow above is sufficient on its own — confirmed
+        // against a live browser — so the correction can happen
+        // immediately instead.
+        anchor.el.scrollIntoView({behavior: 'instant', block: 'center'});
+      } else {
+        // Fallback for the rare case nothing renders above the fold yet
+        // (e.g. still at the very top of the page) — the old ratio-based
+        // estimate is fine here since there's nothing to anchor to and
+        // the error at small scroll offsets is negligible.
+        var newY = Math.round(oldScroll * (val / oldVal));
+        window.scrollTo({top: newY, left: 0, behavior: 'instant'});
+      }
     }
     localStorage.setItem('selfFontScale', String(val));
     /* querySelectorAll rather than a single lookup, in case this ever
