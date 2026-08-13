@@ -8512,6 +8512,26 @@ function openFaqEntry(id){
     item.classList.add('open');
     var icon = item.querySelector('.faq-icon');
     if(icon) icon.innerHTML='&minus;';
+    // The native browser anchor-jump for href="#id" fires immediately on
+    // click, before the .faq-a max-height transition (450ms, see CSS) has
+    // actually grown the answer to its full height — so the browser scrolls
+    // based on a pre-expansion snapshot and nothing re-corrects it once the
+    // box finishes growing a moment later. That's what was leaving an item
+    // opened this way barely peeking into the bottom of the viewport (or
+    // worse) instead of landing in view — which then fed a bad starting
+    // position into every subsequent A-/A+/A anchor correction, compounding
+    // into scroll jumps to unrelated sections. Explicitly re-land on the
+    // item once the transition genuinely finishes, so it's always actually
+    // in view before anything else touches scroll position.
+    var answer = item.querySelector('.faq-a');
+    var landed = false;
+    function land(){
+      if(landed) return;
+      landed = true;
+      item.scrollIntoView({behavior:'instant', block:'start'});
+    }
+    if(answer) answer.addEventListener('transitionend', land, {once:true});
+    setTimeout(land, 500); // fallback in case transitionend never fires
   }
 }
 
@@ -9659,23 +9679,43 @@ function toggleTheme(){
       // scrollTo can act on stale (pre-zoom) scroll-height metrics and
       // land somewhere else on the page.
       void document.documentElement.scrollHeight;
-      var newY;
-      if(anchor){
-        var newRect = anchor.el.getBoundingClientRect();
-        var delta = newRect.top - anchor.top;
-        newY = Math.max(0, Math.round(oldScroll + delta));
-      } else {
-        // Fallback for the rare case nothing renders above the fold yet
-        // (e.g. still at the very top of the page) — the old ratio-based
-        // estimate is fine here since there's nothing to anchor to and the
-        // error at small scroll offsets is negligible.
-        newY = Math.round(oldScroll * (val / oldVal));
-      }
-      // html{scroll-behavior:smooth} would otherwise make even this
-      // 2-argument scrollTo() call glide there over ~300ms — which reads
-      // as the page sweeping through other sections rather than staying
-      // put. behavior:'instant' bypasses that for this one correction.
-      window.scrollTo({top: newY, left: 0, behavior: 'instant'});
+      // The reflow above is enough for ordinary width/height/font-size
+      // driven layout changes, but #zoomScope is resized via the CSS
+      // `zoom` property, which — unlike standard layout properties — isn't
+      // reliably fully settled by the time a same-tick getBoundingClientRect
+      // read happens in every Chromium build; it can still be mid-flight.
+      // A double rAF (wait two full paint cycles) is the standard fix for
+      // measuring geometry after a change like this and is what actually
+      // guarantees anchor.el's rect below reflects the real, final,
+      // post-zoom layout rather than a transitional one.
+      requestAnimationFrame(function(){
+        requestAnimationFrame(function(){
+          if(anchor){
+            // This used to compute newY = oldScroll + (newRect.top -
+            // anchor.top) and call window.scrollTo(newY) directly. That
+            // assumes outer-document scroll pixels and a getBoundingClientRect()
+            // read inside #zoomScope move 1:1 — which does not hold for a
+            // nested CSS `zoom` container. Measured directly: a 4279px
+            // change in window scroll position moved a zoomed element
+            // on-screen by only ~1336px, not 4279px. That mismatch is what
+            // was sending A-/A/A+ to unrelated sections (including
+            // Glossary) instead of keeping the reader's place — the delta
+            // math was internally consistent but built on a coordinate
+            // assumption `zoom` breaks. scrollIntoView() asks the browser
+            // to place this specific element correctly and lets it handle
+            // that translation natively instead of us re-deriving it via
+            // cross-state arithmetic.
+            anchor.el.scrollIntoView({behavior: 'instant', block: 'center'});
+          } else {
+            // Fallback for the rare case nothing renders above the fold yet
+            // (e.g. still at the very top of the page) — the old ratio-based
+            // estimate is fine here since there's nothing to anchor to and
+            // the error at small scroll offsets is negligible.
+            var newY = Math.round(oldScroll * (val / oldVal));
+            window.scrollTo({top: newY, left: 0, behavior: 'instant'});
+          }
+        });
+      });
     }
     localStorage.setItem('selfFontScale', String(val));
     /* querySelectorAll rather than a single lookup, in case this ever
