@@ -1524,6 +1524,7 @@ section{scroll-margin-top:56px;}
 /* ── BANNER ──────────────────────────────────────────────────────────────── */
 .banner-section{max-width:1400px;margin:0 auto;}
 .banner-image{width:100%;height:auto;aspect-ratio:16/9;display:block;border-top:1px solid #111;border-bottom:1px solid #111;}
+.banner-image-noborderbottom{border-bottom:none;}
 
 /* ── PHIL LINES ──────────────────────────────────────────────────────────── */
 .phil-line{font-size:clamp(18px,2.8vw,26px);font-weight:300;color:var(--mid);line-height:1.9;margin:14px 0;}
@@ -3473,9 +3474,9 @@ a.src-tag:hover{opacity:.75;}
 </section>
 <!-- BANNER -->
 <div class="banner-section">
-  <img src="./assets/images/Banner.jpg" alt="You don't lose money. You lose control." class="banner-image" decoding="async">
+  <img src="./assets/images/Banner.jpg" alt="You don't lose money. You lose control." class="banner-image banner-image-noborderbottom" decoding="async">
 </div>
-<span class="continue-hint">continue</span>
+<span class="continue-hint" style="border-bottom:1px solid #111;padding-bottom:20px;">continue</span>
 <div class="divider"></div>
 
 <!-- START HERE — orientation for first-time visitors: what this is, who it's for,
@@ -3627,6 +3628,7 @@ a.src-tag:hover{opacity:.75;}
   <div id="voidLastNote" style="max-width:520px;margin:0 auto;text-align:center;"></div>
 </section>
 <span class="continue-hint">continue</span>
+<div class="divider"></div>
 <section class="section">
   <div class="cosmo-quote" style="max-width:640px;margin:0 auto;">
     <p>If you are depressed, you are living in the past.<br>
@@ -7512,7 +7514,7 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
   </div>
 </section>
 <span class="continue-hint">continue</span>
-
+<div class="divider"></div>
 
 <!-- FEEDBACK -->
 <section id="feedback" style="scroll-margin-top:56px;padding:90px 24px;background:var(--bg);border-top:1px solid #111;">
