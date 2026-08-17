@@ -8565,11 +8565,9 @@ function voidSaveResult(nodeId, node){
     if(plain.length>160) plain = plain.slice(0,157).replace(/\s+\S*$/,'') + '\u2026';
     localStorage.setItem(VOID_STORAGE_KEY, JSON.stringify({date:Date.now(), endingId:nodeId, endingLine:plain, path:voidPath.slice()}));
   }catch(e){}
-  // Intentionally NOT calling voidRenderLastNote() here. The note is meant to greet
-  // someone on a *later* visit, not echo the result they're already looking at. It's
-  // rendered once on page load (see call at bottom of file) from whatever was stored
-  // *before* this session, and stays put through any retakes in this same sitting —
-  // it'll pick up this result the next time the page loads.
+  // Refresh the note immediately so the record appears right after taking the
+  // test, not only after a page reload.
+  voidRenderLastNote();
 }
 
 function voidRenderLastNote(){
