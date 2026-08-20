@@ -839,7 +839,8 @@ body{
 [data-theme="light"] .void-response{background:var(--bg-card) !important;border-color:rgba(var(--shadow-rgb),0.32) !important;}
 [data-theme="light"] .vision-box{border-color:rgba(var(--accent-gold-rgb),0.45) !important;border-left-color:rgba(var(--accent-gold-rgb),0.9) !important;border-right-color:rgba(var(--accent-gold-rgb),0.9) !important;background:var(--bg-card) !important;}
 [data-theme="light"] .vision-pillar{border-left-color:rgba(var(--accent-gold-rgb),0.6) !important;}
-[data-theme="light"] .cosmo-quote{background:var(--bg-card) !important;border-color:rgba(var(--accent-gold-rgb),0.7) !important;}
+[data-theme="light"] .cosmo-quote{background:var(--bg-card) !important;border-color:rgba(var(--shadow-rgb),0.32) !important;border-left-color:rgba(var(--accent-gold-rgb),0.7) !important;}
+[data-theme="light"] #gratitude-recal-quote{border-color:rgba(var(--accent-gold-rgb),0.7) !important;}
 [data-theme="light"] .pull-quote{border-left-color:rgba(var(--accent-gold-rgb),0.6) !important;}
 [data-theme="light"] .symptoms-block-box{background:var(--bg-card) !important;}
 [data-theme="light"] .ipo-table{border:2px solid rgba(var(--shadow-rgb),0.4) !important;}
@@ -1541,6 +1542,7 @@ section{scroll-margin-top:56px;}
 .cosmo-quote{max-width:660px;margin:44px auto;padding:36px 32px;background:var(--bg-lift);border:1px solid rgba(var(--accent-gold-rgb),0.3);border-left:3px solid var(--gold);position:relative;text-align:left;}
 .cosmo-quote::before{content:'';position:absolute;top:-1px;left:-1px;width:18px;height:18px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);}
 .cosmo-quote::after{content:'';position:absolute;bottom:-1px;right:-1px;width:18px;height:18px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);}
+#gratitude-recal-quote::before,#gratitude-recal-quote::after{content:none;}
 .cosmo-quote p{font-family:var(--serif);font-size:clamp(18px,2.5vw,24px);font-weight:300;font-style:italic;color:var(--white);line-height:1.75;margin-bottom:14px;}
 .cosmo-quote cite{font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-style:normal;opacity:.75;display:block;}
 
@@ -6472,7 +6474,7 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
   </div>
 </div>
      
-    <div class="cosmo-quote" style="max-width:600px;margin:0 auto;border:1px solid var(--gold);border-left:1px solid var(--gold);">
+    <div class="cosmo-quote" id="gratitude-recal-quote" style="max-width:680px;margin:0 auto;border:1px solid var(--gold);border-left:1px solid var(--gold);">
       <p>&ldquo;Gratitude is not sentiment. It is a recalibration of the Default OS &mdash; the one running underneath every trade, every reaction, every decision you have ever made.&rdquo;</p>
       <cite>*SELF Framework</cite>
     </div>
