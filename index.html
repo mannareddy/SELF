@@ -1696,7 +1696,7 @@ section{scroll-margin-top:56px;}
 .watch-section{padding:80px 24px;background:var(--bg-lift);border-bottom:1px solid #111;}
 .watch-links{display:flex;flex-direction:column;align-items:center;gap:32px;margin-top:42px;}
 .watch-link-inner{display:flex;flex-direction:column;align-items:center;width:100%;max-width:440px;}
-.watch-link-inner>a:first-child{display:block;} /* thumbnail wrapper — inline <a> around a block img leaves a whitespace gap that broke the flush border with .watch-link below it */
+.watch-link-inner>a:first-child{display:block;width:100%;max-width:440px;} /* thumbnail wrapper — inline <a> around a block img leaves a whitespace gap that broke the flush border with .watch-link below it. Needs explicit width because watch-link-inner uses align-items:center, which makes flex children shrink-to-fit instead of stretching — without this the thumbnail rendered narrower than the text box below it, breaking the flush border. */
 .watch-thumb{width:100%;max-width:440px;height:220px;object-fit:cover;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.55);filter:brightness(0.85);transition:filter .3s;}
 .watch-thumb:hover{filter:brightness(1);}
 .watch-link{display:inline-flex;align-items:center;gap:12px;font-family:var(--sans);font-size:11.5px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:1.5px solid rgba(var(--accent-gold-rgb),0.55);border-top:none;padding:15px 32px;transition:all .3s;width:100%;max-width:440px;justify-content:center;}
