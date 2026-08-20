@@ -1696,6 +1696,7 @@ section{scroll-margin-top:56px;}
 .watch-section{padding:80px 24px;background:var(--bg-lift);border-bottom:1px solid #111;}
 .watch-links{display:flex;flex-direction:column;align-items:center;gap:32px;margin-top:42px;}
 .watch-link-inner{display:flex;flex-direction:column;align-items:center;width:100%;max-width:440px;}
+.watch-link-inner>a:first-child{display:block;} /* thumbnail wrapper — inline <a> around a block img leaves a whitespace gap that broke the flush border with .watch-link below it */
 .watch-thumb{width:100%;max-width:440px;height:220px;object-fit:cover;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.55);filter:brightness(0.85);transition:filter .3s;}
 .watch-thumb:hover{filter:brightness(1);}
 .watch-link{display:inline-flex;align-items:center;gap:12px;font-family:var(--sans);font-size:11.5px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:1.5px solid rgba(var(--accent-gold-rgb),0.55);border-top:none;padding:15px 32px;transition:all .3s;width:100%;max-width:440px;justify-content:center;}
@@ -3102,7 +3103,7 @@ tr.matrix-highlight{
 [data-theme="light"] .pa-binary-btn{border-color:rgba(var(--shadow-rgb),0.3);}
 .pa-skip-link{display:block;text-align:center;margin-top:14px;font-family:var(--sans);font-size:11px;letter-spacing:1px;color:var(--dim);text-decoration:underline;background:transparent;border:none;cursor:pointer;}
 .pa-skip-link:hover{color:var(--gold);}
-.pa-bar-row{margin-bottom:16px;text-align:left;max-width:560px;margin-left:auto;margin-right:auto;}
+.pa-bar-row{margin-bottom:22px;text-align:left;max-width:560px;margin-left:auto;margin-right:auto;}
 .pa-bar-top{display:flex;justify-content:space-between;font-family:var(--sans);font-size:12px;letter-spacing:.5px;margin-bottom:6px;}
 .pa-bar-name{color:var(--white);}
 .pa-bar-row.pa-bar-lead .pa-bar-name{color:var(--gold);}
@@ -3110,6 +3111,8 @@ tr.matrix-highlight{
 [data-theme="light"] .pa-bar-track{background:rgba(var(--shadow-rgb),0.15);}
 .pa-bar-fill{height:100%;background:var(--gold);transition:width 1s ease;}
 .pa-bar-row.pa-bar-lead .pa-bar-fill{background:var(--gold);}
+.pa-bar-line{font-family:var(--serif);font-size:13px;line-height:1.6;color:var(--dim);margin-top:8px;max-width:520px;}
+.pa-bar-row.pa-bar-lead .pa-bar-line{color:var(--mid);}
 
  — reusable "+" expand pattern for
    difficult words anywhere on the site (Sanskrit terms, alchemy
@@ -3302,6 +3305,7 @@ a.src-tag:hover{opacity:.75;}
         <a href="#quick-anchor" data-group="practice">Where Are You Right Now?</a>
         <a href="#ego-checklist" data-group="practice">Ego Checklist</a>
         <a href="#diagnostic" data-group="practice">Self-Diagnostic</a>
+        <a href="#pattern-assessment" data-group="practice">Pattern Test</a>
         <a href="#feedback-loop" data-group="practice">Feedback Loop</a>
       </div>
     </li>
@@ -3343,8 +3347,8 @@ a.src-tag:hover{opacity:.75;}
     <li class="nav-dropdown-wrap">
       <a href="#glossary" data-group="new">New<span class="nav-new-dot"></span><span class="nav-caret">▾</span></a>
       <div class="nav-dropdown-panel" id="newMenuPanel">
-        <a href="#go-deeper" data-group="new">Go Deeper — Redesigned</a>
-        <a href="#faq-second-arrow" data-group="new" onclick="openFaqEntry('faq-second-arrow')">The Second Arrow — New FAQ</a>
+        <a href="#master-card-5" data-group="new">Seneca — Added to Stoicism</a>
+        <a href="#pattern-assessment" data-group="new">Pattern Assessment — New Tool</a>
       </div>
     </li>
 
@@ -3413,6 +3417,7 @@ a.src-tag:hover{opacity:.75;}
         <a href="#quick-anchor">Where Are You Right Now?</a>
         <a href="#ego-checklist">Ego Checklist</a>
         <a href="#diagnostic">Self-Diagnostic</a>
+        <a href="#pattern-assessment">Pattern Test</a>
         <a href="#feedback-loop">Feedback Loop</a>
       </div>
     </li>
@@ -3433,8 +3438,8 @@ a.src-tag:hover{opacity:.75;}
         New <span class="nav-new-dot"></span><span class="mnav-caret">▾</span>
       </button>
       <div class="mnav-group-panel" id="newMenuPanelMobile">
-        <a href="#go-deeper">Go Deeper — Redesigned</a>
-        <a href="#faq-second-arrow" onclick="openFaqEntry('faq-second-arrow')">The Second Arrow — New FAQ</a>
+        <a href="#master-card-5">Seneca — Added to Stoicism</a>
+        <a href="#pattern-assessment">Pattern Assessment — New Tool</a>
       </div>
     </li>
 
@@ -10767,6 +10772,7 @@ function paRenderResults(root){
     return '<div class="pa-bar-row'+(i===0?' pa-bar-lead':'')+'">' +
       '<div class="pa-bar-top"><span class="pa-bar-name">'+r.name+'</span><span class="pa-bar-name">'+r.pct+'</span></div>' +
       '<div class="pa-bar-track"><div class="pa-bar-fill" style="width:'+r.pct+'%;"></div></div>' +
+      (i===0 ? '' : '<p class="pa-bar-line">'+r.line+'</p>') +
       '</div>';
   }).join('');
 
