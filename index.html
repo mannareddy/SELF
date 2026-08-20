@@ -3077,7 +3077,41 @@ tr.matrix-highlight{
 }
 
 /* ============================================================
-   INLINE GLOSSARY COMPONENT — reusable "+" expand pattern for
+   PATTERN ASSESSMENT — reuses .diag-* classes above for the
+   progress bar, eyebrow, frame/question, textarea, and nav.
+   Adds only what's genuinely new: a 1-5 likert row, a two-up
+   binary choice, and the results bar chart.
+   ============================================================ */
+.pa-likert-row{display:flex;justify-content:space-between;gap:10px;max-width:420px;margin:0 auto;}
+.pa-likert-btn{
+  width:52px;height:52px;border-radius:50%;border:1px solid #444;background:transparent;
+  color:var(--mid);font-family:var(--sans);font-size:16px;cursor:pointer;transition:all .25s;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.pa-likert-btn:hover{border-color:var(--gold);color:var(--gold);}
+.pa-likert-btn.selected{border-color:var(--gold);background:var(--gold);color:#111;font-weight:600;}
+[data-theme="light"] .pa-likert-btn{border-color:rgba(var(--shadow-rgb),0.3);}
+.pa-likert-labels{display:flex;justify-content:space-between;max-width:420px;margin:0 auto 18px;font-family:var(--sans);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);}
+.pa-binary-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:480px;margin:0 auto;}
+.pa-binary-btn{
+  padding:28px 16px;border:1px solid #444;background:transparent;color:var(--white);
+  font-family:var(--serif);font-size:clamp(15px,2vw,18px);cursor:pointer;transition:all .25s;text-align:center;
+}
+.pa-binary-btn:hover{border-color:var(--gold);}
+.pa-binary-btn.selected{border-color:var(--gold);background:rgba(var(--accent-gold-rgb),.08);color:var(--gold);}
+[data-theme="light"] .pa-binary-btn{border-color:rgba(var(--shadow-rgb),0.3);}
+.pa-skip-link{display:block;text-align:center;margin-top:14px;font-family:var(--sans);font-size:11px;letter-spacing:1px;color:var(--dim);text-decoration:underline;background:transparent;border:none;cursor:pointer;}
+.pa-skip-link:hover{color:var(--gold);}
+.pa-bar-row{margin-bottom:16px;text-align:left;max-width:560px;margin-left:auto;margin-right:auto;}
+.pa-bar-top{display:flex;justify-content:space-between;font-family:var(--sans);font-size:12px;letter-spacing:.5px;margin-bottom:6px;}
+.pa-bar-name{color:var(--white);}
+.pa-bar-row.pa-bar-lead .pa-bar-name{color:var(--gold);}
+.pa-bar-track{height:6px;background:#2a2a2a;width:100%;}
+[data-theme="light"] .pa-bar-track{background:rgba(var(--shadow-rgb),0.15);}
+.pa-bar-fill{height:100%;background:var(--gold);transition:width 1s ease;}
+.pa-bar-row.pa-bar-lead .pa-bar-fill{background:var(--gold);}
+
+ — reusable "+" expand pattern for
    difficult words anywhere on the site (Sanskrit terms, alchemy
    vocabulary, clinical words, Hermetic principles, etc).
    Pairs with the full #glossary reference section below.
@@ -7045,6 +7079,18 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
 <span class="continue-hint">continue</span>
 <div class="divider"></div>
 
+<!-- PATTERN ASSESSMENT — Body-to-Self progression, extends the same
+     scoring mechanism as #diagnostic (see PA_* arrays + paCompute() near
+     the bottom of the script). Results are open, no email gate. -->
+<section class="section" id="pattern-assessment" style="scroll-margin-top:56px;">
+  <span class="label">Your Pattern Map</span>
+  <p class="phil-line bright" style="margin-bottom:8px;">Not another personality type. The specific way your Default OS runs.</p>
+  <p class="phil-line dim" style="margin-bottom:36px;">Body to Self, the same order as the framework. No score to chase &mdash; just a mirror.</p>
+  <div class="diag-root" id="paRoot"></div>
+</section>
+<span class="continue-hint">continue</span>
+<div class="divider"></div>
+
 <!-- WATCH -->
 <section class="watch-section">
   <span class="label">Watch &amp; Listen</span>
@@ -10398,6 +10444,351 @@ init();
 
 })();
 
+</script>
+
+<!-- ══════════════════ PATTERN ASSESSMENT: Body-to-Self, 31 questions, open results ══════════════════ -->
+<script>
+(function(){
+
+/* ---------- Data ---------- */
+
+var PA_PATTERNS = {
+  carrier:    {name:'The Carrier',          line:'A chronic, mostly invisible load \u2014 you keep functioning long after you should have stopped to rest.'},
+  withdrawal: {name:'The Quiet Withdrawal',  line:'Distance created the moment someone gets close, before they can leave first.'},
+  ledger:     {name:'The Ledger-Keeper',     line:'Living deferred to a someday that keeps not arriving \u2014 the future self does the wanting for you.'},
+  fortress:   {name:'The Fortress',          line:'Understanding stands in for changing \u2014 insight without much that actually moves.'},
+  flatline:   {name:'The Flat Line',         line:'Contact with real feeling has quietly gone missing, underneath a composed surface.'},
+  performer:  {name:'The Performer',         line:'A self built for an audience \u2014 the public and private versions have drifted apart.'},
+  rescuer:    {name:'The Rescuer',           line:'Identity organized around being needed \u2014 helping partly to avoid your own stuff.'},
+  self:       {name:'The Witness',           line:'Less identified than most of the patterns above \u2014 closer to the observer than any role it\u2019s observing.'}
+};
+
+// 12 multiple-choice, two per layer, Body \u2192 Self order. Each option scores
+// 1/2/3 toward that question's pattern \u2014 same mechanism as LAYERS in the
+// diagnostic above, just reused for a different taxonomy.
+var PA_MC = [
+  {id:'m1', pattern:'carrier', frame:'The body keeps the score even when the mind doesn\u2019t.', q:'When you\u2019re carrying more than you\u2019re saying, where does it show up first?', opts:[
+    {label:'It doesn\u2019t \u2014 I don\u2019t let it show', score:1},
+    {label:'Somewhere physical \u2014 tension, fatigue, a low hum of tired', score:2},
+    {label:'Everywhere \u2014 sleep, appetite, patience, all of it', score:3}
+  ]},
+  {id:'m2', pattern:'carrier', frame:'Rest and recovery aren\u2019t the same thing.', q:'After a demanding stretch, what actually happens?', opts:[
+    {label:'I bounce back quickly, mostly', score:1},
+    {label:'I need real recovery time, and usually don\u2019t take it', score:2},
+    {label:'I don\u2019t remember the last time I fully recovered', score:3}
+  ]},
+  {id:'m3', pattern:'withdrawal', frame:'Breath is the thread between body and mind \u2014 also the first thing that changes when someone gets close.', q:'When someone starts to matter to you, what happens next, honestly?', opts:[
+    {label:'I stay open and let it develop', score:1},
+    {label:'I match their pace but privately brace for it to end', score:2},
+    {label:'I find a reason to create distance before they can', score:3}
+  ]},
+  {id:'m4', pattern:'withdrawal', frame:'Some withdrawals are loud. Most aren\u2019t.', q:'Your usual way of pulling back is \u2014', opts:[
+    {label:'I don\u2019t usually pull back', score:1},
+    {label:'I get quieter, busier, harder to reach', score:2},
+    {label:'I pick a fight or manufacture a reason to leave first', score:3}
+  ]},
+  {id:'m5', pattern:'ledger', frame:'The mind that\u2019s always planning is rarely just living.', q:'Your relationship to \u201csomeday\u201d is \u2014', opts:[
+    {label:'Someday is now, mostly \u2014 I don\u2019t defer much', score:1},
+    {label:'Someday is doing a lot of work I haven\u2019t examined', score:2},
+    {label:'Most of what I actually want is parked in someday', score:3}
+  ]},
+  {id:'m6', pattern:'ledger', frame:'A plan can be a bridge to a life, or a way to avoid one.', q:'When you imagine your life a year from now \u2014', opts:[
+    {label:'It looks like today, and that\u2019s fine', score:1},
+    {label:'It looks noticeably better \u2014 and today feels like the waiting room', score:2},
+    {label:'It\u2019s the only version I let myself actually enjoy thinking about', score:3}
+  ]},
+  {id:'m7', pattern:'fortress', frame:'Understanding something and being changed by it are not the same event.', q:'When something hits you emotionally, your first move is usually \u2014', opts:[
+    {label:'Feel it, more or less as it comes', score:1},
+    {label:'Analyze it first \u2014 understand it, then maybe feel it', score:2},
+    {label:'Explain it so thoroughly there\u2019s not much left to feel', score:3}
+  ]},
+  {id:'m8', pattern:'fortress', frame:'Insight can be a door, or a very well-furnished waiting room.', q:'The things you understand about yourself \u2014', opts:[
+    {label:'Tend to change what I actually do', score:1},
+    {label:'Are true, and mostly don\u2019t change much', score:2},
+    {label:'I could explain perfectly to a stranger, and nothing moves', score:3}
+  ]},
+  {id:'m9', pattern:'flatline', frame:'Memory keeps things whether you choose to or not \u2014 including the last time you actually felt something.', q:'The last time you cried, or came close, it was probably because \u2014', opts:[
+    {label:'Something recent and specific \u2014 I can name it', score:1},
+    {label:'It snuck up on me \u2014 I couldn\u2019t say exactly why', score:2},
+    {label:'I genuinely can\u2019t remember the last time', score:3}
+  ]},
+  {id:'m10', pattern:'flatline', frame:'Some people are hard to read because they\u2019re guarded. Some are hard to read because there\u2019s less to read than there used to be.', q:'\u201cYou\u2019re hard to read\u201d is something people \u2014', opts:[
+    {label:'Rarely say about me', score:1},
+    {label:'Say sometimes, and they\u2019re not wrong', score:2},
+    {label:'Say often \u2014 even I\u2019m not always sure what\u2019s underneath', score:3}
+  ]},
+  {id:'m11', pattern:'performer', frame:'The ego that says \u201cI\u201d also decides which \u201cI\u201d gets shown.', q:'The person you are in public and the person you are at home \u2014', opts:[
+    {label:'Are basically the same person', score:1},
+    {label:'Differ somewhat \u2014 everyone edits a little', score:2},
+    {label:'Feel like two different people', score:3}
+  ]},
+  {id:'m12', pattern:'rescuer', frame:'Helping someone can be generous, or it can be a place to hide.', q:'When you help people, the part you don\u2019t usually say out loud is \u2014', opts:[
+    {label:'Nothing much \u2014 I help because I want to', score:1},
+    {label:'I need it to matter more than I\u2019d admit', score:2},
+    {label:'I\u2019m not sure I\u2019d help if there were nothing in it for how I see myself', score:3}
+  ]}
+];
+
+// 12 likert statements (1\u20135), two per layer, same order.
+var PA_LIKERT = [
+  {id:'l1', pattern:'carrier', text:'People would be surprised by how tired I actually am.'},
+  {id:'l2', pattern:'carrier', text:'I keep functioning long after I should have stopped to rest.'},
+  {id:'l3', pattern:'withdrawal', text:'I\u2019m drawn to people who are slightly unavailable.'},
+  {id:'l4', pattern:'withdrawal', text:'When someone truly sees me, my instinct is to create distance.'},
+  {id:'l5', pattern:'ledger', text:'I catch myself making plans I know I won\u2019t follow through on.'},
+  {id:'l6', pattern:'ledger', text:'When I think about what I really want, the answer feels blurry.'},
+  {id:'l7', pattern:'fortress', text:'I know what my \u201cissues\u201d are \u2014 I could explain them perfectly to a stranger.'},
+  {id:'l8', pattern:'fortress', text:'There are things I understand about myself that haven\u2019t actually changed anything.'},
+  {id:'l9', pattern:'flatline', text:'I\u2019ve been told I\u2019m \u201chard to read.\u201d'},
+  {id:'l10', pattern:'flatline', text:'I often feel like I\u2019m watching my life instead of living it.'},
+  {id:'l11', pattern:'performer', text:'The person I am in public and the person I am at home feel like different people.'},
+  {id:'l12', pattern:'rescuer', text:'I feel guilty when I\u2019m not being useful to someone.'}
+];
+
+// 3 open-text \u2014 not scored, folded into the results screen verbatim.
+var PA_TEXT = [
+  {id:'t1', required:true,  prompt:'Describe a moment in the last month where you felt uncomfortable and couldn\u2019t quite explain why.', placeholder:'One sentence is enough.'},
+  {id:'t2', required:false, prompt:'What\u2019s the version of yourself you perform most often \u2014 and who is it for?', placeholder:'Optional \u2014 one sentence, or skip below.'},
+  {id:'t3', required:false, prompt:'Think about the last relationship that disappointed you. What did you need from them that you never said out loud?', placeholder:'Optional \u2014 one sentence, or skip below.'}
+];
+
+// 4 binary tie-breakers. Each side adds a small weight \u2014 note the Witness
+// pattern only scores through these, plus a bonus (see paCompute) for
+// answering everything else lightly across the board rather than heavily
+// in one direction.
+var PA_BINARY = [
+  {id:'b1', prompt:'Under pressure, you\u2019d rather:', left:{label:'Explain it', pattern:'fortress'}, right:{label:'Feel it', pattern:'self'}},
+  {id:'b2', prompt:'You\u2019d rather be:', left:{label:'Respected', pattern:'performer'}, right:{label:'Understood', pattern:'self'}},
+  {id:'b3', prompt:'Harder to deal with:', left:{label:'Being needed too much', pattern:'rescuer'}, right:{label:'Not being needed at all', pattern:'carrier'}},
+  {id:'b4', prompt:'The bigger risk, for you:', left:{label:'Staying too long', pattern:'ledger'}, right:{label:'Leaving too soon', pattern:'withdrawal'}}
+];
+
+var PA_STEPS = PA_MC.map(function(x){return {kind:'mc', item:x};})
+  .concat(PA_LIKERT.map(function(x){return {kind:'likert', item:x};}))
+  .concat(PA_TEXT.map(function(x){return {kind:'text', item:x};}))
+  .concat(PA_BINARY.map(function(x){return {kind:'binary', item:x};}));
+
+/* ---------- State ---------- */
+var paStep = -1; // -1 = intro
+var paAnswers = {}; // id -> value (score int for mc/likert, string for text, pattern key for binary)
+
+/* ---------- Render ---------- */
+function paRoot(){ return document.getElementById('paRoot'); }
+
+function paProgressBar(activeIdx){
+  var total = PA_STEPS.length, html = '<div class="diag-progress">';
+  for(var i=0;i<total;i++){
+    var cls = 'seg';
+    if(i<activeIdx) cls += ' done';
+    else if(i===activeIdx) cls += ' current';
+    html += '<div class="'+cls+'"></div>';
+  }
+  return html + '</div>';
+}
+
+function paRender(){
+  var root = paRoot();
+  if(!root) return;
+  if(paStep === -1){ paRenderIntro(root); return; }
+  if(paStep >= PA_STEPS.length){ paRenderResults(root); return; }
+  var step = PA_STEPS[paStep];
+  if(step.kind === 'mc') paRenderMC(root, step.item);
+  else if(step.kind === 'likert') paRenderLikert(root, step.item);
+  else if(step.kind === 'text') paRenderText(root, step.item);
+  else if(step.kind === 'binary') paRenderBinary(root, step.item);
+}
+
+function paRenderIntro(root){
+  root.innerHTML =
+    '<div style="text-align:center;">' +
+    '<p style="font-family:var(--serif);font-size:clamp(17px,2.4vw,22px);color:var(--white);line-height:1.85;max-width:560px;margin:0 auto 24px;">Thirty-one questions, in the same order as the framework \u2014 Body, Breath, Mind, Intellect, Memory, Ego, and what\u2019s left when none of those are running the show.</p>' +
+    '<p style="font-family:var(--sans);font-size:12px;color:var(--dim);margin-bottom:28px;">Answer the one that\u2019s true, not the one that sounds best. Results are yours to see immediately \u2014 nothing is emailed or gated.</p>' +
+    '<button class="diag-btn diag-btn-next active" style="border:1px solid var(--gold);color:var(--gold);padding:12px 32px;" onclick="paBegin()">Begin \u2192</button>' +
+    '</div>';
+}
+
+function paRenderMC(root, item){
+  var idx = paStep;
+  var existing = paAnswers[item.id];
+  var optsHtml = item.opts.map(function(o,i){
+    var selected = existing !== undefined && existing.optIdx === i;
+    return '<button class="diag-opt'+(selected?' selected':'')+'" onclick="paSelectMC('+i+')">' +
+      '<span class="diag-opt-mark"></span>' +
+      '<span class="diag-opt-text"><span class="diag-opt-label">'+o.label+'</span></span>' +
+      '</button>';
+  }).join('');
+  root.innerHTML = paProgressBar(idx) +
+    '<div class="diag-frame">'+item.frame+'</div>' +
+    '<div class="diag-question">'+item.q+'</div>' +
+    '<div class="diag-options">'+optsHtml+'</div>' +
+    paNavHtml(existing !== undefined);
+}
+
+function paRenderLikert(root, item){
+  var idx = paStep;
+  var existing = paAnswers[item.id];
+  var btns = '';
+  for(var i=1;i<=5;i++){
+    var selected = existing !== undefined && existing.score === i;
+    btns += '<button class="pa-likert-btn'+(selected?' selected':'')+'" onclick="paSelectLikert('+i+')">'+i+'</button>';
+  }
+  root.innerHTML = paProgressBar(idx) +
+    '<div class="diag-question" style="margin-bottom:22px;">'+item.text+'</div>' +
+    '<div class="pa-likert-labels"><span>Not at all true</span><span>Completely true</span></div>' +
+    '<div class="pa-likert-row">'+btns+'</div>' +
+    paNavHtml(existing !== undefined);
+}
+
+function paRenderText(root, item){
+  var idx = paStep;
+  var existing = paAnswers[item.id] || '';
+  root.innerHTML = paProgressBar(idx) +
+    '<div class="diag-question">'+item.prompt+(item.required?'':' <span style="font-size:11px;color:var(--dim);text-transform:none;letter-spacing:0;">(optional)</span>')+'</div>' +
+    '<textarea class="diag-textarea" id="paTextInput" placeholder="'+item.placeholder+'" oninput="paTextInput(this.value)">'+existing+'</textarea>' +
+    (item.required ? '' : '<button class="pa-skip-link" onclick="paSkipText()">Skip this one \u2192</button>') +
+    paNavHtml(item.required ? existing.trim().length>0 : true);
+}
+
+function paRenderBinary(root, item){
+  var idx = paStep;
+  var existing = paAnswers[item.id];
+  root.innerHTML = paProgressBar(idx) +
+    '<div class="diag-question" style="margin-bottom:24px;">'+item.prompt+'</div>' +
+    '<div class="pa-binary-row">' +
+    '<button class="pa-binary-btn'+(existing==='left'?' selected':'')+'" onclick="paSelectBinary(\'left\')">'+item.left.label+'</button>' +
+    '<button class="pa-binary-btn'+(existing==='right'?' selected':'')+'" onclick="paSelectBinary(\'right\')">'+item.right.label+'</button>' +
+    '</div>' +
+    paNavHtml(existing !== undefined);
+}
+
+function paNavHtml(nextActive){
+  return '<div class="diag-nav">' +
+    '<button class="diag-btn diag-btn-back" onclick="paGoBack()" style="'+(paStep===0?'visibility:hidden':'')+'">\u2190 Back</button>' +
+    '<button class="diag-btn diag-btn-next'+(nextActive?' active':'')+'" onclick="paGoNext()">Continue \u2192</button>' +
+    '</div>';
+}
+
+/* ---------- Selection handlers ---------- */
+window.paBegin = function(){ paStep = 0; paRender(); };
+
+window.paSelectMC = function(optIdx){
+  var item = PA_STEPS[paStep].item;
+  paAnswers[item.id] = {optIdx:optIdx, score:item.opts[optIdx].score, pattern:item.pattern};
+  paRender();
+};
+window.paSelectLikert = function(score){
+  var item = PA_STEPS[paStep].item;
+  paAnswers[item.id] = {score:score, pattern:item.pattern};
+  paRender();
+};
+window.paTextInput = function(val){
+  paAnswers[PA_STEPS[paStep].item.id] = val;
+  var nextBtn = document.querySelector('#paRoot .diag-btn-next');
+  if(nextBtn){
+    var item = PA_STEPS[paStep].item;
+    var ok = item.required ? val.trim().length>0 : true;
+    nextBtn.classList.toggle('active', ok);
+  }
+};
+window.paSkipText = function(){
+  paAnswers[PA_STEPS[paStep].item.id] = '';
+  paGoNext();
+};
+window.paSelectBinary = function(side){
+  paAnswers[PA_STEPS[paStep].item.id] = side;
+  paRender();
+};
+
+window.paGoNext = function(){
+  var item = PA_STEPS[paStep].item, kind = PA_STEPS[paStep].kind;
+  if(kind === 'text' && item.required && !(paAnswers[item.id] && paAnswers[item.id].trim().length>0)) return;
+  if(kind !== 'text' && paAnswers[item.id] === undefined) return;
+  paStep++;
+  paRender();
+  var sec = document.getElementById('pattern-assessment');
+  if(sec) sec.scrollIntoView({behavior:'instant', block:'start'});
+};
+window.paGoBack = function(){
+  if(paStep === 0){ paStep = -1; paRender(); return; }
+  paStep--;
+  paRender();
+};
+
+/* ---------- Scoring ---------- */
+function paCompute(){
+  var raw = {carrier:0, withdrawal:0, ledger:0, fortress:0, flatline:0, performer:0, rescuer:0, self:0};
+  var max = {carrier:0, withdrawal:0, ledger:0, fortress:0, flatline:0, performer:0, rescuer:0, self:0};
+
+  PA_MC.forEach(function(item){
+    var a = paAnswers[item.id];
+    if(a) raw[item.pattern] += a.score;
+    max[item.pattern] += 3;
+  });
+  PA_LIKERT.forEach(function(item){
+    var a = paAnswers[item.id];
+    if(a) raw[item.pattern] += a.score;
+    max[item.pattern] += 5;
+  });
+  PA_BINARY.forEach(function(item){
+    var a = paAnswers[item.id];
+    if(a === 'left') raw[item.left.pattern] += 2;
+    if(a === 'right') raw[item.right.pattern] += 2;
+    max[item.left.pattern] += 2;
+    max[item.right.pattern] += 2;
+  });
+
+  // Witness bonus: the less any single identification pattern dominates,
+  // the more the Witness reads as present \u2014 consistent with the framework's
+  // own claim that Self isn't one more role to identify with.
+  var idKeys = ['carrier','withdrawal','ledger','fortress','flatline','performer','rescuer'];
+  var pcts = idKeys.map(function(k){ return max[k] ? raw[k]/max[k] : 0; });
+  var avgPct = pcts.reduce(function(s,x){return s+x;},0) / pcts.length;
+  raw.self += Math.round((1-avgPct) * 6); // 0\u20136 bonus
+  max.self += 6;
+
+  var results = Object.keys(PA_PATTERNS).map(function(k){
+    var pct = max[k] ? Math.round((raw[k]/max[k])*100) : 0;
+    return {key:k, name:PA_PATTERNS[k].name, line:PA_PATTERNS[k].line, pct:pct};
+  }).sort(function(a,b){ return b.pct - a.pct; });
+
+  return results;
+}
+
+function paRenderResults(root){
+  var results = paCompute();
+  var top = results[0];
+  var t1 = paAnswers['t1'] || '';
+
+  try{
+    localStorage.setItem('self-pattern-assessment:last-result', JSON.stringify({date:new Date().toISOString(), top:top.name}));
+  }catch(e){}
+
+  var barsHtml = results.map(function(r,i){
+    return '<div class="pa-bar-row'+(i===0?' pa-bar-lead':'')+'">' +
+      '<div class="pa-bar-top"><span class="pa-bar-name">'+r.name+'</span><span class="pa-bar-name">'+r.pct+'</span></div>' +
+      '<div class="pa-bar-track"><div class="pa-bar-fill" style="width:'+r.pct+'%;"></div></div>' +
+      '</div>';
+  }).join('');
+
+  root.innerHTML =
+    '<div class="diag-result-eyebrow">Your Pattern Map</div>' +
+    '<div class="diag-result-lead">'+top.name+'</div>' +
+    '<p class="diag-result-body">'+top.line+'</p>' +
+    (t1 ? '<p class="diag-result-italic" style="max-width:560px;">\u201c'+t1.replace(/</g,'&lt;')+'\u201d</p>' : '') +
+    '<div style="margin:40px auto 0;">'+barsHtml+'</div>' +
+    '<button class="diag-restart" onclick="paRestart()">\u21bb Take it again</button>';
+}
+
+window.paRestart = function(){
+  paStep = -1;
+  paAnswers = {};
+  paRender();
+};
+
+/* ---------- Init ---------- */
+if(paRoot()) paRender();
+
+})();
 </script>
 
 <!-- ══════════════════ INTERACTIVE MASTER MATRIX: modes, expand, quiz ══════════════════ -->
