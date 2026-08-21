@@ -10739,11 +10739,24 @@ window.paGoNext = function(){
   if(kind !== 'text' && paAnswers[item.id] === undefined) return;
   paStep++;
   paRender();
-  // Scroll the widget itself (not the whole section, which has label/intro
-  // copy above it) into view — scrolling the full section pushed the actual
-  // question below the fold, forcing a manual scroll down on every step.
   var root = paRoot();
-  if(root) root.scrollIntoView({behavior:'instant', block:'start'});
+  if(!root) return;
+  root.scrollIntoView({behavior:'instant', block:'start'});
+  // Fixed top-of-root scrolling isn't enough on a subset of questions that
+  // carry a long "frame" line above the question (e.g. m3, m9) — combined
+  // with a long question, the two can run to 4+ lines and push the Continue
+  // button below the fold even with the tightened .pa-step spacing. Rather
+  // than hand-tune margins per question (fragile as copy changes), measure
+  // the actual rendered nav position after layout settles and nudge the
+  // extra distance so Continue lands just inside the viewport.
+  requestAnimationFrame(function(){
+    requestAnimationFrame(function(){
+      var nav = root.querySelector('.diag-nav');
+      if(!nav) return;
+      var overflow = nav.getBoundingClientRect().bottom - window.innerHeight;
+      if(overflow > 0) window.scrollBy({top: overflow + 24, behavior:'instant'});
+    });
+  });
 };
 window.paGoBack = function(){
   if(paStep === 0){ paStep = -1; paRender(); return; }
