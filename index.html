@@ -10609,7 +10609,9 @@ function paRenderLastNote(){
 function paRoot(){ return document.getElementById('paRoot'); }
 
 function paProgressBar(activeIdx){
-  var total = PA_STEPS.length, html = '<div class="diag-progress">';
+  var total = PA_STEPS.length, html =
+    '<div class="diag-eyebrow" style="margin-bottom:10px;">Question '+(activeIdx+1)+' of '+total+'</div>' +
+    '<div class="diag-progress">';
   for(var i=0;i<total;i++){
     var cls = 'seg';
     if(i<activeIdx) cls += ' done';
@@ -10733,22 +10735,16 @@ window.paSelectBinary = function(side){
   paRender();
 };
 
-window.paGoNext = function(){
-  var item = PA_STEPS[paStep].item, kind = PA_STEPS[paStep].kind;
-  if(kind === 'text' && item.required && !(paAnswers[item.id] && paAnswers[item.id].trim().length>0)) return;
-  if(kind !== 'text' && paAnswers[item.id] === undefined) return;
-  paStep++;
-  paRender();
+/* Scroll the widget's root into view, then measure the actual rendered
+   position of the nav (Continue/Back row) once layout has settled and
+   nudge further if it's still below the fold. Content length varies a lot
+   question to question (some pair a long italic "frame" line with a long
+   question), so a fixed scroll offset can't account for every case —
+   this applies on both Next and Back so the fix holds in either direction. */
+function paScrollFix(){
   var root = paRoot();
   if(!root) return;
   root.scrollIntoView({behavior:'instant', block:'start'});
-  // Fixed top-of-root scrolling isn't enough on a subset of questions that
-  // carry a long "frame" line above the question (e.g. m3, m9) — combined
-  // with a long question, the two can run to 4+ lines and push the Continue
-  // button below the fold even with the tightened .pa-step spacing. Rather
-  // than hand-tune margins per question (fragile as copy changes), measure
-  // the actual rendered nav position after layout settles and nudge the
-  // extra distance so Continue lands just inside the viewport.
   requestAnimationFrame(function(){
     requestAnimationFrame(function(){
       var nav = root.querySelector('.diag-nav');
@@ -10757,11 +10753,21 @@ window.paGoNext = function(){
       if(overflow > 0) window.scrollBy({top: overflow + 24, behavior:'instant'});
     });
   });
+}
+
+window.paGoNext = function(){
+  var item = PA_STEPS[paStep].item, kind = PA_STEPS[paStep].kind;
+  if(kind === 'text' && item.required && !(paAnswers[item.id] && paAnswers[item.id].trim().length>0)) return;
+  if(kind !== 'text' && paAnswers[item.id] === undefined) return;
+  paStep++;
+  paRender();
+  paScrollFix();
 };
 window.paGoBack = function(){
   if(paStep === 0){ paStep = -1; paRender(); return; }
   paStep--;
   paRender();
+  paScrollFix();
 };
 
 /* ---------- Scoring ---------- */
