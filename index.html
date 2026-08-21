@@ -6152,13 +6152,15 @@ a.src-tag:hover{opacity:.75;}
     </div>
   </div>
 
-  <div class="cosmo-quote" style="max-width:660px;margin:48px auto 0;">
+  </div>
+  <!-- Radhanath Swami quote — standalone, always visible (not gated behind
+       Expand All). Width matched to the closing pull-quote below (both
+       resolve to 900px via .pq-standalone's max-width !important). -->
+  <div class="cosmo-quote" style="max-width:900px;margin:48px auto 0;">
     <p>&ldquo;If you want to know how rich you are, try to find how many things you have that money cannot buy.&rdquo;</p>
     <cite>&mdash; Radhanath Swami</cite>
   </div>
-  <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);font-style:italic;line-height:1.9;max-width:680px;margin:24px auto 0;text-align:left;">Net worth was never the indicator. The true ledger counts what was acquired that no transaction could have purchased &mdash; the things still present after the money, the title, and the applause are gone.</p>
-
-  </div>
+  <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);font-style:italic;line-height:1.9;max-width:900px;margin:24px auto 0;text-align:left;">Net worth was never the indicator. The true ledger counts what was acquired that no transaction could have purchased &mdash; the things still present after the money, the title, and the applause are gone.</p>
   <!-- Closing pull quote — standalone, always visible -->
   <p class="pq-standalone" style="font-family:var(--serif);font-size:clamp(16px,2.2vw,20px);color:var(--gold);font-style:italic;line-height:1.9;padding:24px 28px;background:var(--bg-lift);max-width:760px;margin:24px auto 0;text-align:center;">Six different vocabularies. Six different centuries. The same person, arrived at from six different directions.</p>
 </section>
@@ -7093,7 +7095,8 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
   <span class="label">Your Pattern Map</span>
   <p class="phil-line bright" style="margin-bottom:8px;">Not another personality type. The specific way your Default OS runs.</p>
   <p class="phil-line dim" style="margin-bottom:36px;">Body to Self, the same order as the framework. No score to chase &mdash; just a mirror.</p>
-  <div class="diag-root" id="paRoot"></div>
+  <div class="diag-root" id="paRoot" style="scroll-margin-top:56px;"></div>
+  <div id="paLastNote" style="max-width:520px;margin:0 auto;text-align:center;"></div>
 </section>
 <span class="continue-hint">continue</span>
 <div class="divider"></div>
@@ -10579,6 +10582,21 @@ var PA_STEPS = PA_MC.map(function(x){return {kind:'mc', item:x};})
 var paStep = -1; // -1 = intro
 var paAnswers = {}; // id -> value (score int for mc/likert, string for text, pattern key for binary)
 
+/* Lightweight local response capture — a preview of "your own responses" on this
+   device only, not a synced history. The fuller version lives in the Web Companion.
+   Mirrors the Void Test / Maturity Quiz pattern so results are logged consistently. */
+var PA_STORAGE_KEY = 'self-pattern-assessment:last-result';
+
+function paRenderLastNote(){
+  var note = document.getElementById('paLastNote');
+  if(!note) return;
+  var stored;
+  try{ stored = JSON.parse(localStorage.getItem(PA_STORAGE_KEY)); }catch(e){ stored = null; }
+  if(!stored || !stored.top){ note.innerHTML=''; return; }
+  var when = new Date(stored.date).toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'});
+  note.innerHTML = '<p style="font-family:var(--sans);font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#555;margin-top:14px;line-height:1.7;">Last time (' + when + '): ' + stored.top + '.<br>A local preview of your own answers, saved to this device &mdash; your fuller pattern history now lives in the <a href="https://companion.42self.xyz" target="_blank" rel="noopener" style="color:var(--gold);">Web Companion</a>.</p>';
+}
+
 /* ---------- Render ---------- */
 function paRoot(){ return document.getElementById('paRoot'); }
 
@@ -10712,8 +10730,11 @@ window.paGoNext = function(){
   if(kind !== 'text' && paAnswers[item.id] === undefined) return;
   paStep++;
   paRender();
-  var sec = document.getElementById('pattern-assessment');
-  if(sec) sec.scrollIntoView({behavior:'instant', block:'start'});
+  // Scroll the widget itself (not the whole section, which has label/intro
+  // copy above it) into view — scrolling the full section pushed the actual
+  // question below the fold, forcing a manual scroll down on every step.
+  var root = paRoot();
+  if(root) root.scrollIntoView({behavior:'instant', block:'start'});
 };
 window.paGoBack = function(){
   if(paStep === 0){ paStep = -1; paRender(); return; }
@@ -10767,8 +10788,9 @@ function paRenderResults(root){
   var t1 = paAnswers['t1'] || '';
 
   try{
-    localStorage.setItem('self-pattern-assessment:last-result', JSON.stringify({date:new Date().toISOString(), top:top.name}));
+    localStorage.setItem(PA_STORAGE_KEY, JSON.stringify({date:new Date().toISOString(), top:top.name}));
   }catch(e){}
+  paRenderLastNote();
 
   var barsHtml = results.map(function(r,i){
     return '<div class="pa-bar-row'+(i===0?' pa-bar-lead':'')+'">' +
@@ -10795,6 +10817,7 @@ window.paRestart = function(){
 
 /* ---------- Init ---------- */
 if(paRoot()) paRender();
+paRenderLastNote();
 
 })();
 </script>
