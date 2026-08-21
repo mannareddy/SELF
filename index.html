@@ -803,6 +803,7 @@ body{
 [data-theme="light"] .rasa-row{border-color:rgba(var(--shadow-rgb),0.25) !important;}
 [data-theme="light"] .ego-twin-card{background:var(--bg-card-2) !important;border-color:rgba(var(--shadow-rgb),0.28) !important;}
 [data-theme="light"] .sl-stage{background:var(--bg-card-2) !important;border-color:rgba(var(--shadow-rgb),0.28) !important;}
+[data-theme="light"] .sl-stage.sl-stage-now{border-color:rgba(var(--accent-gold-rgb),0.85) !important;}
 [data-theme="light"] .sl-name{color:var(--text-body) !important;}
 [data-theme="light"] .sl-stage.danger .sl-name{color:var(--chakra-label-1) !important;}
 [data-theme="light"] .sl-name[style*="var(--gold)"]{color:var(--gold) !important;}
@@ -1861,6 +1862,7 @@ section{scroll-margin-top:56px;}
 .sl-desc{font-family:var(--serif);font-size:13px;font-weight:300;color:var(--grey);line-height:1.8;}
 .sl-stage.danger{border-color:rgba(192,57,43,0.55);}
 .sl-stage.danger .sl-num{color:#c0392b;opacity:.8;}
+.sl-stage.sl-stage-now{border-color:rgba(var(--accent-gold-rgb),0.85);}
 
 /* ── FEEDBACK LOOP CHECKLIST ─────────────────────────────────────────────── */
 .fl-item{display:flex;align-items:flex-start;gap:14px;padding:16px 14px;border-bottom:1px solid rgba(var(--accent-gold-rgb),0.28);cursor:pointer;font-family:var(--serif);font-size:clamp(15px,1.9vw,17px);color:var(--mid);line-height:1.6;transition:color .2s;}
@@ -3311,6 +3313,7 @@ a.src-tag:hover{opacity:.75;}
       <a href="#ego-checklist" data-group="practice">Daily Practice<span class="nav-caret">▾</span></a>
       <div class="nav-dropdown-panel">
         <a href="#void-test" data-group="practice">Void Test</a>
+        <a href="#portals-to-presence" data-group="practice">Portals to Presence</a>
         <a href="#self-enquiry" data-group="practice">Self-Enquiry</a>
         <a href="#quick-anchor" data-group="practice">Where Are You Right Now?</a>
         <a href="#ego-checklist" data-group="practice">Ego Checklist</a>
@@ -3357,6 +3360,9 @@ a.src-tag:hover{opacity:.75;}
     <li class="nav-dropdown-wrap">
       <a href="#glossary" data-group="new">New<span class="nav-new-dot"></span><span class="nav-caret">▾</span></a>
       <div class="nav-dropdown-panel" id="newMenuPanel">
+        <a href="#portals-to-presence" data-group="new">Portals to Presence — New Section</a>
+        <a href="#framework" data-group="new">The Hedonic Cycle — Added to the Framework</a>
+        <a href="#ego-checklist" data-group="new">Anatomy of the Ego — Added to Ego Checklist</a>
         <a href="#master-card-5" data-group="new">Seneca — Added to Stoicism</a>
         <a href="#pattern-assessment" data-group="new">Pattern Assessment — New Tool</a>
       </div>
@@ -3423,6 +3429,7 @@ a.src-tag:hover{opacity:.75;}
       </button>
       <div class="mnav-group-panel">
         <a href="#void-test">Void Test</a>
+        <a href="#portals-to-presence">Portals to Presence</a>
         <a href="#self-enquiry">Self-Enquiry</a>
         <a href="#quick-anchor">Where Are You Right Now?</a>
         <a href="#ego-checklist">Ego Checklist</a>
@@ -3448,6 +3455,9 @@ a.src-tag:hover{opacity:.75;}
         New <span class="nav-new-dot"></span><span class="mnav-caret">▾</span>
       </button>
       <div class="mnav-group-panel" id="newMenuPanelMobile">
+        <a href="#portals-to-presence">Portals to Presence — New Section</a>
+        <a href="#framework">The Hedonic Cycle — Added to the Framework</a>
+        <a href="#ego-checklist">Anatomy of the Ego — Added to Ego Checklist</a>
         <a href="#master-card-5">Seneca — Added to Stoicism</a>
         <a href="#pattern-assessment">Pattern Assessment — New Tool</a>
       </div>
@@ -3685,7 +3695,34 @@ a.src-tag:hover{opacity:.75;}
   </div>
 </section>
 <span class="continue-hint">continue</span>
-<div class="divider"></div>  
+<div class="divider"></div>
+
+<!-- PORTALS TO PRESENCE — perceptual doorways into the Now. Distinct from the
+     RRRR gap: RRRR interrupts a reaction after a trigger fires. These need no
+     trigger at all — they're available in any ordinary moment, just unnoticed. -->
+<section class="section" id="portals-to-presence" style="scroll-margin-top:56px;">
+  <span class="label">Portals to Presence</span>
+  <p class="phil-line bright" style="margin-bottom:8px;">Stillness is not somewhere else. It is already here, in plain sight.</p>
+  <p class="phil-line dim" style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;">Two doorways into the Now that need no crisis and no technique to fix anything &mdash; just attention, redirected.</p>
+
+  <div style="max-width:820px;margin:0 auto 48px;text-align:left;">
+    <h3 style="font-family:var(--serif);color:var(--white);font-size:20px;margin-bottom:10px;">The Gap</h3>
+    <p style="font-family:var(--serif);font-size:15px;font-weight:300;color:var(--grey);line-height:1.85;margin-bottom:20px;">This is not the RRRR gap &mdash; that one interrupts a reaction after something has already triggered it. This gap is always there, whether or not anything just happened. Pay attention to it, and the formless dimension underneath ordinary thinking briefly surfaces.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2px;">
+      <div class="sl-stage"><div class="sl-name" style="font-size:15px;">Between Words</div><p class="sl-desc">The brief, silent space between one word and the next in conversation.</p></div>
+      <div class="sl-stage"><div class="sl-name" style="font-size:15px;">Between Notes</div><p class="sl-desc">The space between the notes of a piano, where the music actually lives.</p></div>
+      <div class="sl-stage"><div class="sl-name" style="font-size:15px;">Between Breaths</div><p class="sl-desc">The gap between the in-breath and the out-breath.</p></div>
+    </div>
+  </div>
+
+  <div style="max-width:820px;margin:0 auto;text-align:left;">
+    <h3 style="font-family:var(--serif);color:var(--white);font-size:20px;margin-bottom:10px;">The Inner Body</h3>
+    <p style="font-family:var(--serif);font-size:15px;font-weight:300;color:var(--grey);line-height:1.85;">Feel the energy of the body from within &mdash; not what it looks like, but the aliveness underneath fluctuating emotion and thought. The moment attention moves there, mental noise slows down, sometimes stops. Every cell is alive in that presence, underneath whatever the mind happens to be narrating.</p>
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);margin-top:24px;padding:20px 24px;border:1.5px solid rgba(var(--accent-gold-rgb),0.55);background:var(--bg);">Neither of these is a technique to master. They are doors that were never locked &mdash; only unnoticed.</p>
+  </div>
+</section>
+<span class="continue-hint">continue</span>
+<div class="divider"></div>
 
 <!-- MISSION / VISION / SUPER-ORDINATE GOAL — merged, per feedback that these three
      sections overlapped heavily and repeated the same impermanence claim. -->
@@ -3716,14 +3753,14 @@ a.src-tag:hover{opacity:.75;}
 <!-- THE FRAMEWORK -->
 <section class="section-wide" id="framework">
   <span class="label">The Framework</span>
-  <p class="phil-line bright">The *SELF operating system. Seven layers.</p>
+  <p class="phil-line bright">The *SELF operating system. Eight layers.</p>
   <div class="cosmo-quote" style="max-width:660px;margin:0 auto 36px;">
     <p>&ldquo;Until you make the unconscious conscious, it will direct your life and you will call it fate.&rdquo;</p>
     <cite>&mdash; Carl Jung</cite>
   </div>
   <div style="text-align:center;margin-bottom:8px;">
     <button class="collapse-toggle-btn" onclick="sectionCollapse('framework-full-content',this)">Expand &#9660;</button>
-    <p class="section-collapse-label" style="margin-top:8px;">Tap to expand — the seven layers of the SELF OS</p>
+    <p class="section-collapse-label" style="margin-top:8px;">Tap to expand — the eight layers of the SELF OS</p>
   </div>
   <div id="framework-full-content" class="section-collapse-wrap collapsed">
   <div class="framework-grid">
@@ -3781,6 +3818,24 @@ a.src-tag:hover{opacity:.75;}
       <h3>Life vs. Life Situation</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Life vs. &ldquo;my life&rdquo;</p><div class="framework-content">
       <p>What you casually call &ldquo;my life&rdquo; is usually just your <em>life situation</em> &mdash; a mental narrative built on circumstances, full of problems and resistance, existing only in psychological time. Life itself is different: it exists only in the eternal Now, problem-free, internal, and indestructible.</p>
       <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">Situations are either accepted or acted upon &mdash; never turned into &ldquo;problems.&rdquo; The moment you say and believe &ldquo;my life,&rdquo; you&rsquo;ve split yourself from life itself. There is no such split. You don&rsquo;t have a life. You <em>are</em> life.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(96px,1fr));gap:2px;margin-top:18px;">
+        <div class="sl-stage" style="text-align:center;"><div class="sl-name" style="font-size:14px;">Past</div><p class="sl-desc">A memory, recalled Now.</p></div>
+        <div class="sl-stage sl-stage-now" style="text-align:center;"><div class="sl-name" style="font-size:14px;color:var(--gold);">Now</div><p class="sl-desc">The only place life happens.</p></div>
+        <div class="sl-stage" style="text-align:center;"><div class="sl-name" style="font-size:14px;">Future</div><p class="sl-desc">An anticipation, arriving as Now.</p></div>
+      </div>
+      <p style="margin-top:14px;font-size:13px;color:var(--grey);line-height:1.75;">The division of life into past, present, and future is mind-made. What you remember is an event that took place in the Now &mdash; and you are remembering it Now. The future, when it comes, is the Now. Life is never not &ldquo;this moment.&rdquo;</p>
+    </div></div>
+    <div class="framework-card collapsed">
+      <span class="num">08</span>
+      <h3>The Hedonic Cycle</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Why the next fix never lasts</p><div class="framework-content">
+      <p>The mind runs on a closed loop, not a straight line toward satisfaction. Four phases, repeating: a felt sense of &ldquo;not enough,&rdquo; a grasp toward some future fulfillment, a brief hit of satisfaction when it arrives, and boredom or restlessness as the hunger quietly resets to phase one.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:2px;margin-top:16px;">
+        <div class="sl-stage"><span class="sl-num">Phase 1</span><div class="sl-name" style="font-size:15px;">Not Enough</div><p class="sl-desc">The ego feels incomplete, precarious.</p></div>
+        <div class="sl-stage"><span class="sl-num">Phase 2</span><div class="sl-name" style="font-size:15px;">Seeking</div><p class="sl-desc">Greed for more stimulus, more possessions.</p></div>
+        <div class="sl-stage"><span class="sl-num">Phase 3</span><div class="sl-name" style="font-size:15px;">Satisfaction</div><p class="sl-desc">A brief hit of achievement or consumption.</p></div>
+        <div class="sl-stage danger"><span class="sl-num">Phase 4</span><div class="sl-name" style="font-size:15px;color:#c0392b;">Restlessness</div><p class="sl-desc">Hunger returns. Back to Phase 1.</p></div>
+      </div>
+      <p style="margin-top:16px;font-size:14px;color:var(--gold);font-style:italic;">When you live through the ego, the present moment is always reduced to a means to an end &mdash; even the achieved goal fails to satisfy for long.</p>
     </div></div>
   </div>
   </div>
@@ -7009,6 +7064,34 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
   <a href="#master-matrix" class="layer-marker" onclick="expandMatrixRow(6);return false;">Layer 6 of 7 &middot; See in the Master Matrix &#8599;</a>
   <p class="phil-line bright" style="margin-bottom:8px;">Is your ego currently active?</p>
   <p class="phil-line dim" style="margin-bottom:36px;">Ten warning lights. Notice which ones are flashing in your daily interactions &mdash; no need to fix anything yet, just notice.</p>
+
+  <div style="max-width:900px;margin:0 auto 44px;">
+    <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:16px;text-align:center;">What the Egoic Self Feeds On</p>
+    <div class="ego-twin" style="grid-template-columns:1fr 1fr;">
+      <div class="ego-twin-card" style="border-color:rgba(var(--accent-gold-rgb),0.45);background:rgba(var(--accent-gold-rgb),.03);">
+        <span class="tc-label" style="color:var(--gold);">Victim Identity</span>
+        <h4>Feeding on Grievance</h4>
+        <p>Feeding on past grievances and resentment, kept alive by retelling.</p>
+      </div>
+      <div class="ego-twin-card" style="border-color:rgba(var(--accent-gold-rgb),0.45);background:rgba(var(--accent-gold-rgb),.03);">
+        <span class="tc-label" style="color:var(--gold);">Conflict</span>
+        <h4>Needing an Enemy</h4>
+        <p>Needing &ldquo;enemies&rdquo; &mdash; us vs. them &mdash; to strengthen its own boundaries.</p>
+      </div>
+      <div class="ego-twin-card" style="border-color:rgba(var(--accent-gold-rgb),0.45);background:rgba(var(--accent-gold-rgb),.03);">
+        <span class="tc-label" style="color:var(--gold);">Comparison</span>
+        <h4>Superior or Inferior</h4>
+        <p>Deriving identity through superiority, inferiority, or envy &mdash; rarely taking things simply as they are.</p>
+      </div>
+      <div class="ego-twin-card" style="border-color:rgba(var(--accent-gold-rgb),0.45);background:rgba(var(--accent-gold-rgb),.03);">
+        <span class="tc-label" style="color:var(--gold);">Guilt</span>
+        <h4>The &ldquo;Bad&rdquo; Self-Image</h4>
+        <p>Personalizing past unconscious actions to construct a &ldquo;bad&rdquo; self-image.</p>
+      </div>
+    </div>
+    <p style="font-family:var(--serif);font-size:clamp(14px,1.8vw,16px);font-style:italic;color:var(--gold);line-height:1.85;margin-top:22px;padding:20px 24px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg);text-align:center;">The ego requires opposition and separateness to survive. The ten warning lights below trace what happens when it&rsquo;s running the show.</p>
+  </div>
+
   <div style="text-align:center;margin-bottom:8px;">
     <button class="collapse-toggle-btn" onclick="sectionCollapse('ego-checklist-full-content',this)">Expand &#9660;</button>
     <p class="section-collapse-label">Tap to expand — the ten warning lights</p>
@@ -7027,7 +7110,7 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
     <div class="sl-stage danger"><div class="sl-name" style="color:#c0392b;">Creates Separation</div><p class="sl-desc">Focuses purely on &ldquo;I&rdquo;, treating differing beliefs as hostile threats.</p></div>
   </div>
   </div>
-  <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;max-width:760px;margin:36px auto 0;text-align:center;">None of these make you a bad person. They make you a person currently being run by the firewall instead of standing behind it. The nine questions below go deeper into exactly where.</p>
+  <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;max-width:760px;margin:36px auto 0;padding:20px 24px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg);text-align:center;">None of these make you a bad person. They make you a person currently being run by the firewall instead of standing behind it. The nine questions below go deeper into exactly where.</p>
 </section>
 <span class="continue-hint">continue</span>
 <div class="divider"></div>
@@ -8822,6 +8905,7 @@ function updateNav(){
   var sectionIds = [
     'home','super-ordinate-goal','framework','sources','dimension','consciousness','forty-two','masters','patanjali','go-deeper',
     'ego','bodhichitta','pain-body','ego-checklist','diagnostic','feedback-loop',
+    'portals-to-presence',
     'ledger','ipo','mirror','contract','contribution',
     'glossary','faq-section','feedback','disclaimer'
   ];
@@ -8832,7 +8916,7 @@ function updateNav(){
     'framework':'traditions','super-ordinate-goal':'traditions','dimension':'traditions','consciousness':'traditions',
     'forty-two':'traditions','masters':'traditions','patanjali':'traditions','go-deeper':'traditions',
     'ego':'traditions','bodhichitta':'traditions','pain-body':'traditions','contribution':'traditions',
-    'ego-checklist':'practice','diagnostic':'practice','feedback-loop':'practice',
+    'ego-checklist':'practice','diagnostic':'practice','feedback-loop':'practice','portals-to-presence':'practice',
     'ledger':'shop-circle','ipo':'shop-circle',
     'contract':'shop-circle',
     'glossary':'resources','faq-section':'resources','feedback':'resources','disclaimer':'resources'
