@@ -2997,6 +2997,14 @@ tr.matrix-highlight{
   color:var(--white);text-align:center;line-height:1.5;margin-bottom:40px;
 }
 .diag-options{display:flex;flex-direction:column;gap:2px;margin-bottom:8px;}
+/* Pattern Test steps only — tighter vertical rhythm so more of each question
+   (and, crucially, the Continue button) fits above the fold on desktop.
+   Scoped to #paRoot.pa-step so the shared self-diagnostic widget elsewhere
+   is unaffected. */
+#paRoot.pa-step{padding-top:28px;padding-bottom:56px;}
+#paRoot.pa-step .diag-progress{margin-bottom:26px;}
+#paRoot.pa-step .diag-frame{margin-bottom:10px;}
+#paRoot.pa-step .diag-question{margin-bottom:22px;}
 .diag-opt{
   display:flex;align-items:flex-start;gap:16px;text-align:left;width:100%;
   padding:20px 22px;background:var(--bg-lift);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);
@@ -10614,8 +10622,9 @@ function paProgressBar(activeIdx){
 function paRender(){
   var root = paRoot();
   if(!root) return;
-  if(paStep === -1){ paRenderIntro(root); return; }
-  if(paStep >= PA_STEPS.length){ paRenderResults(root); return; }
+  if(paStep === -1){ root.classList.remove('pa-step'); paRenderIntro(root); return; }
+  if(paStep >= PA_STEPS.length){ root.classList.remove('pa-step'); paRenderResults(root); return; }
+  root.classList.add('pa-step');
   var step = PA_STEPS[paStep];
   if(step.kind === 'mc') paRenderMC(root, step.item);
   else if(step.kind === 'likert') paRenderLikert(root, step.item);
