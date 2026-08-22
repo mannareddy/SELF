@@ -2334,8 +2334,18 @@ h4 {
   /* 100dvh recalculates on every scroll tick on Android as the URL bar
      shows/hides, forcing continuous layout reflow on the very first
      section the user touches. Switched to a static 100vh + min-height
-     (computed once, not on every frame) to eliminate the jerk. */
-  .hero{min-height:calc(100vh - var(--nav-h));height:auto;padding:12px 16px 28px !important;justify-content:flex-start;gap:0;}
+     (computed once, not on every frame) to eliminate the jerk.
+     Plain 100vh alone is still static but browsers disagree on what it
+     means while the URL bar is visible: Chrome sizes it to the *largest*
+     viewport (bar hidden), so on first load — bar still showing — the hero
+     comes out taller than what's actually visible, pushing "continue"
+     below the fold. Opera sizes 100vh to the *current* viewport instead,
+     so the same CSS fits there. 100svh is a static value everywhere
+     (no dvh-style reflow) but always uses the *smallest* possible
+     viewport, so it fits on first paint in both. Kept as a second
+     declaration so browsers without svh support fall back to the vh line
+     above it. */
+  .hero{min-height:calc(100vh - var(--nav-h));min-height:calc(100svh - var(--nav-h));height:auto;padding:12px 16px 28px !important;justify-content:flex-start;gap:0;}
   .hero-mobile-spacer{display:block;min-height:0;}
   /* Hero 3D image adds a 4th flex child on top of a mobile layout already
      tuned to just fit one screen. Shrink it well down and drop its own
