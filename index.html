@@ -605,7 +605,10 @@ body{
   /* All gold-bordered quote/callout boxes (both themes) keep Source Serif 4
      on desktop, distinct from the Spectral used everywhere else. Covers the
      named quote/callout classes plus every inline-styled italic paragraph
-     that uses the site's gold-border quote-box pattern. */
+     that uses the site's gold-border quote-box pattern. Also fixes 16 of
+     these 24 boxes site-wide that never declared their own text-align and
+     were silently inheriting body's global center alignment — unrelated to
+     the font change itself, but caught while touching this same selector. */
   .four-stages-quote,
   .pull-quote p,
   .cosmo-quote p,
@@ -614,6 +617,7 @@ body{
   p[style*="font-style:italic"][style*="border:1.5px solid rgba(var(--accent-gold-rgb)"]{
     font-family:'Source Serif 4',Georgia,'Times New Roman',serif !important;
     font-optical-sizing:auto;
+    text-align:left !important;
   }
 }
 
