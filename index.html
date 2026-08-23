@@ -13,7 +13,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..800;1,6..72,300..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..800;1,8..60,300..800&display=swap" rel="stylesheet">
 <title>*SELF — Self-Inquiry Workbook & Guided Journal | Not a meme. A mirror.</title>
 <meta name="description" content="A self-inquiry framework, guided workbook, and free web companion for people ready to investigate who they actually are — beyond Advaita Vedanta, Jungian psychology, Stoicism, and the Enneagram.">
 <link rel="canonical" href="https://42self.xyz/">
@@ -594,11 +594,12 @@ body{
   --gloss-tint-rgb:212,175,55;    /* gloss-table th bg wash, matches --accent-gold-rgb dark default */
 }
 
-/* Newsreader (variable, optical-sizing aware) is scoped to desktop/tablet
+/* Source Serif 4 (variable, optical-sizing aware) is scoped to desktop/tablet
    only — mobile keeps the original Georgia stack, which already reads well
    at the smaller sizes mobile uses and wasn't part of the reported issue. */
 @media(min-width:641px){
-  :root{ --serif:'Newsreader',Georgia,'Times New Roman',serif; }
+  :root{ --serif:'Source Serif 4',Georgia,'Times New Roman',serif; }
+  body{ font-optical-sizing:auto; }
 }
 
 /* ── LIGHT THEME ─────────────────────────────────────────────────────────── */
