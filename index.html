@@ -3410,10 +3410,6 @@ a.src-tag:hover{opacity:.75;}
     <li class="nav-dropdown-wrap">
       <a href="#glossary" data-group="new">New<span class="nav-new-dot"></span><span class="nav-caret">▾</span></a>
       <div class="nav-dropdown-panel" id="newMenuPanel">
-        <a href="#great-forest" data-group="new">The Great Forest of Being — New Section</a>
-        <a href="#state-correspondence" data-group="new">Same State, Two Scales — Added to Consciousness</a>
-        <a href="#gloss-anandamaya" data-group="new">Anandamaya — Added to Glossary</a>
-        <a href="#vairagya" data-group="new">Vairagya — Added to Machinery of Stillness</a>
         <a href="#anatomy-of-love" data-group="new">The Anatomy of Love — New Section</a>
         <a href="#framework" data-group="new">The Four Defects of Perception — Added to Framework</a>
       </div>
@@ -3507,10 +3503,6 @@ a.src-tag:hover{opacity:.75;}
         New <span class="nav-new-dot"></span><span class="mnav-caret">▾</span>
       </button>
       <div class="mnav-group-panel" id="newMenuPanelMobile">
-        <a href="#great-forest">The Great Forest of Being — New Section</a>
-        <a href="#state-correspondence">Same State, Two Scales — Added to Consciousness</a>
-        <a href="#gloss-anandamaya">Anandamaya — Added to Glossary</a>
-        <a href="#vairagya">Vairagya — Added to Machinery of Stillness</a>
         <a href="#anatomy-of-love">The Anatomy of Love — New Section</a>
         <a href="#framework">The Four Defects of Perception — Added to Framework</a>
       </div>
@@ -9193,6 +9185,46 @@ function updateNav(){
   document.querySelectorAll('.nav-dropdown-wrap').forEach(function(wrap){
     wrap.addEventListener('mouseleave', function(){
       wrap.classList.remove('force-close');
+    });
+  });
+
+  /* Keyboard navigation for desktop dropdown panels (Traditions, New, etc.):
+     ArrowDown/ArrowUp move focus between the links inside the currently-open
+     panel instead of falling through to the browser's default behaviour,
+     which — since the panel itself never had focus, only the links inside
+     it — was scrolling the page behind the menu rather than the menu list.
+     Moving focus onto each link naturally scrolls it into view within the
+     panel's own scroll container, so the panel scrolls in place. */
+  document.querySelectorAll('.nav-dropdown-wrap').forEach(function(wrap){
+    var trigger = wrap.querySelector(':scope > a');
+    var panel = wrap.querySelector('.nav-dropdown-panel');
+    if(!trigger || !panel) return;
+    var getLinks = function(){ return Array.prototype.slice.call(panel.querySelectorAll('a')); };
+
+    trigger.addEventListener('keydown', function(e){
+      if(e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
+      var links = getLinks();
+      if(!links.length) return;
+      e.preventDefault();
+      links[e.key === 'ArrowDown' ? 0 : links.length - 1].focus();
+    });
+
+    panel.addEventListener('keydown', function(e){
+      if(e.key !== 'ArrowDown' && e.key !== 'ArrowUp' && e.key !== 'Escape') return;
+      var links = getLinks();
+      var idx = links.indexOf(document.activeElement);
+      if(e.key === 'Escape'){
+        e.preventDefault();
+        trigger.focus();
+        return;
+      }
+      if(idx === -1) return;
+      e.preventDefault();
+      if(e.key === 'ArrowDown'){
+        links[(idx + 1) % links.length].focus();
+      } else {
+        links[(idx - 1 + links.length) % links.length].focus();
+      }
     });
   });
 
