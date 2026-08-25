@@ -1359,31 +1359,33 @@ a:hover{opacity:.7;}
     padding:18px 22px;
   }
   .mnav-group-toggle[aria-expanded="true"] .mnav-caret{transform:rotate(180deg);}
-  /* Self-contained scroll area: each open group is capped to a fixed height
-     rather than growing to fit all its links. This keeps the group's own
-     scrollbar visible as a cue that there are more items inside it, instead
-     of the whole mobile nav growing tall and requiring the user to scroll
-     past unrelated groups below to see everything. */
+  /* Each open group used to be capped to its own fixed-height scroll area
+     (a nested scrollbar inside the full-screen nav panel, which itself
+     scrolls). On touch devices that nested scroll routinely swallowed the
+     gesture — a finger dragging inside a long group like Traditions or
+     Resources would scroll neither the inner list nor the outer panel all
+     the way, so later items were unreachable — and having two scrollbars
+     stacked on screen at once (one for the group, one for the whole panel)
+     read as broken rather than intentional. Groups now expand to their
+     full natural height and the single outer .mnav-panel scroll carries
+     the whole list, group included, so there's exactly one scrollbar and
+     every item in every group is always reachable. The max-height below
+     is just large enough to clear the longest group (Traditions, ~19
+     links) without clipping. */
   .mnav-group-panel{
     max-height:0;overflow:hidden;transition:max-height .35s ease;background:rgba(255,255,255,0.02);
   }
   .mnav-group.open .mnav-group-panel{
-    max-height:min(48vh,340px);
-    overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;
-    scrollbar-width:thin;scrollbar-color:rgba(var(--accent-gold-rgb),0.55) transparent;
+    max-height:1400px;
   }
-  .mnav-group-panel::-webkit-scrollbar{width:4px;}
-  .mnav-group-panel::-webkit-scrollbar-track{background:transparent;}
-  .mnav-group-panel::-webkit-scrollbar-thumb{background:rgba(var(--accent-gold-rgb),0.55);border-radius:3px;}
-  [data-theme="light"] .mnav-group-panel::-webkit-scrollbar-thumb{background:rgba(122,94,14,0.55);}
   .mnav-group-panel a{
-    display:block;font-family:var(--sans);font-size:11px;letter-spacing:1px;text-transform:none;
-    color:var(--dim);padding:13px 22px 13px 34px;border-top:1px solid #1a1a1a;text-align:left;
+    display:block;font-family:var(--sans);font-size:14.5px;letter-spacing:0.5px;text-transform:none;
+    color:var(--dim);padding:14px 22px 14px 34px;border-top:1px solid #1a1a1a;text-align:left;
   }
   .mnav-group-panel a:hover,.mnav-group-panel a:active{color:var(--gold);}
   .mnav-group-panel .new-menu-soon{
-    display:block;font-family:var(--sans);font-size:11px;letter-spacing:1px;text-transform:none;
-    color:#555;padding:13px 22px 13px 34px;border-top:1px solid #1a1a1a;font-style:italic;text-align:left;
+    display:block;font-family:var(--sans);font-size:14.5px;letter-spacing:0.5px;text-transform:none;
+    color:#555;padding:14px 22px 14px 34px;border-top:1px solid #1a1a1a;font-style:italic;text-align:left;
   }
   .mnav-list a.active{color:var(--gold);}
   body.mnav-open{overflow:hidden;}
