@@ -261,6 +261,41 @@ body{
 .self-table tr.gold-row td.gold{color:var(--gold);}
 .self-table tr.gold-row td.gold-flaw{color:var(--gold);font-style:italic;}
 
+/* Two Lenses on Existence (Quantity vs Quality) — a short 3-column
+   comparison table (row label + 2 short-phrase columns). The generic
+   mobile fallback below (.self-table{min-width:1100px} + forced
+   white-space:nowrap on every td) exists for wide multi-column tables
+   that are meant to be read via horizontal scroll; applied to this small
+   table it force-expanded it to 1100px and prevented its short phrases
+   from wrapping, cutting columns off the edge of the phone screen
+   instead. Scope it out of that fallback: fixed, balanced column widths,
+   and let its own text wrap in place so it needs no horizontal scroll on
+   mobile, while staying evenly proportioned on desktop too. */
+.self-table.qty-table{min-width:0 !important;}
+.self-table.qty-table th:first-child,
+.self-table.qty-table td.row-label{width:22%;}
+.self-table.qty-table th:not(:first-child),
+.self-table.qty-table td:not(.row-label){width:39%;}
+@media(max-width:768px){
+  .self-table.qty-table th,
+  .self-table.qty-table td{
+    white-space:normal !important;
+    font-size:12px !important;
+    padding:10px 6px !important;
+  }
+  .self-table.qty-table td.row-label{
+    white-space:nowrap !important;
+    font-size:9px !important;
+  }
+}
+@media(max-width:400px){
+  .self-table.qty-table th,
+  .self-table.qty-table td{
+    font-size:11px !important;
+    padding:8px 4px !important;
+  }
+}
+
 /* Master Matrix chakra row-striping — same red-to-violet palette already used
    by the #master-matrix SVG grid map's row strokes/fills (L1 #e74c3c through
    L7 #9b59b6), so the scrollable table and the spatial map read as one
@@ -1324,8 +1359,23 @@ a:hover{opacity:.7;}
     padding:18px 22px;
   }
   .mnav-group-toggle[aria-expanded="true"] .mnav-caret{transform:rotate(180deg);}
-  .mnav-group-panel{max-height:0;overflow:hidden;transition:max-height .35s ease;background:rgba(255,255,255,0.02);}
-  .mnav-group.open .mnav-group-panel{max-height:900px;}
+  /* Self-contained scroll area: each open group is capped to a fixed height
+     rather than growing to fit all its links. This keeps the group's own
+     scrollbar visible as a cue that there are more items inside it, instead
+     of the whole mobile nav growing tall and requiring the user to scroll
+     past unrelated groups below to see everything. */
+  .mnav-group-panel{
+    max-height:0;overflow:hidden;transition:max-height .35s ease;background:rgba(255,255,255,0.02);
+  }
+  .mnav-group.open .mnav-group-panel{
+    max-height:min(48vh,340px);
+    overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;
+    scrollbar-width:thin;scrollbar-color:rgba(var(--accent-gold-rgb),0.55) transparent;
+  }
+  .mnav-group-panel::-webkit-scrollbar{width:4px;}
+  .mnav-group-panel::-webkit-scrollbar-track{background:transparent;}
+  .mnav-group-panel::-webkit-scrollbar-thumb{background:rgba(var(--accent-gold-rgb),0.55);border-radius:3px;}
+  [data-theme="light"] .mnav-group-panel::-webkit-scrollbar-thumb{background:rgba(122,94,14,0.55);}
   .mnav-group-panel a{
     display:block;font-family:var(--sans);font-size:11px;letter-spacing:1px;text-transform:none;
     color:var(--dim);padding:13px 22px 13px 34px;border-top:1px solid #1a1a1a;text-align:left;
@@ -6697,7 +6747,7 @@ a.src-tag:hover{opacity:.75;}
   <p style="font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:600px;margin:0 auto 40px;font-style:italic;line-height:1.85;">The Four Defects of Perception, above, describe how the mind distorts what it sees. This is what it&rsquo;s chasing instead &mdash; and what it misses while it chases.</p>
 
   <div class="self-table-wrap" style="max-width:780px;margin:0 auto 40px;">
-    <table class="self-table compact" style="width:100%;">
+    <table class="self-table compact qty-table" style="width:100%;">
       <thead><tr><th></th><th style="color:var(--dim);">Quantity</th><th style="color:var(--gold);">Quality</th></tr></thead>
       <tbody>
         <tr><td class="row-label" style="text-align:left;">Target</td><td>Physical mass &amp; possessions</td><td class="gold">Meaning &amp; inherent truth</td></tr>
