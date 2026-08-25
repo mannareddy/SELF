@@ -9571,6 +9571,15 @@ function updateNav(){
         if(!isOpen){
           group.classList.add('open');
           btn.setAttribute('aria-expanded','true');
+          // Groups low in the list (New, Resources) expand below the fold
+          // with no visual cue to scroll — bring the toggle to the top of
+          // the panel's own scroll area so the newly revealed options are
+          // immediately visible instead of hidden until the user scrolls
+          // the outer panel on their own.
+          setTimeout(function(){
+            var toggleTop = btn.offsetTop;
+            panel.scrollTo({top: Math.max(toggleTop - 8, 0), behavior: 'smooth'});
+          }, 60);
         }
       });
     });
