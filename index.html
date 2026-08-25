@@ -1126,7 +1126,7 @@ a:hover{opacity:.7;}
     opacity:0;visibility:hidden;pointer-events:none;
     transition:opacity .15s ease, visibility 0s ease .18s, transform .15s ease;
     padding:6px 0;z-index:1000;
-    max-height:calc(100vh - 140px);overflow-y:auto;
+    max-height:calc(100vh - 140px);overflow-y:auto;overscroll-behavior:contain;
     scrollbar-width:thin;scrollbar-color:rgba(var(--accent-gold-rgb),0.5) transparent;
   }
   .nav-dropdown-panel::-webkit-scrollbar{width:5px;}
@@ -9279,8 +9279,14 @@ function updateNav(){
      panel instead of falling through to the browser's default behaviour,
      which — since the panel itself never had focus, only the links inside
      it — was scrolling the page behind the menu rather than the menu list.
-     Moving focus onto each link naturally scrolls it into view within the
-     panel's own scroll container, so the panel scrolls in place. */
+     focus({preventScroll:true}) stops the browser's own "scroll ancestors
+     into view" pass (which can reach past the panel to the outer page),
+     then scrollIntoView({block:'nearest'}) explicitly moves only the
+     panel's own scroll position — the outer page never moves. */
+  function focusPanelLink(link){
+    link.focus({preventScroll:true});
+    link.scrollIntoView({block:'nearest', inline:'nearest'});
+  }
   document.querySelectorAll('.nav-dropdown-wrap').forEach(function(wrap){
     var trigger = wrap.querySelector(':scope > a');
     var panel = wrap.querySelector('.nav-dropdown-panel');
@@ -9292,7 +9298,7 @@ function updateNav(){
       var links = getLinks();
       if(!links.length) return;
       e.preventDefault();
-      links[e.key === 'ArrowDown' ? 0 : links.length - 1].focus();
+      focusPanelLink(links[e.key === 'ArrowDown' ? 0 : links.length - 1]);
     });
 
     panel.addEventListener('keydown', function(e){
@@ -9307,12 +9313,30 @@ function updateNav(){
       if(idx === -1) return;
       e.preventDefault();
       if(e.key === 'ArrowDown'){
-        links[(idx + 1) % links.length].focus();
+        focusPanelLink(links[(idx + 1) % links.length]);
       } else {
-        links[(idx - 1 + links.length) % links.length].focus();
+        focusPanelLink(links[(idx - 1 + links.length) % links.length]);
       }
     });
   });
+
+  /* Mouse-wheel / trackpad scroll over an open dropdown panel: while the
+     pointer sits over a panel that actually has internal overflow, every
+     wheel tick scrolls the panel itself and nothing else. Without this,
+     hit-testing at the exact scroll boundary (or a trackpad's momentum
+     phase) can hand the remaining delta to the page behind the menu,
+     which reads as "the background is scrolling while I'm still trying
+     to browse the menu." Manually driving scrollTop and calling
+     preventDefault() removes that ambiguity entirely — user intent here
+     is unambiguous: the pointer is over the menu, so the menu scrolls. */
+  document.querySelectorAll('.nav-dropdown-panel').forEach(function(panel){
+    panel.addEventListener('wheel', function(e){
+      if(panel.scrollHeight <= panel.clientHeight) return; // nothing to scroll — let the page handle it
+      e.preventDefault();
+      panel.scrollTop += e.deltaY;
+    }, {passive:false});
+  });
+
 
   // The "New" dot only shows while #newMenuPanel actually has entries —
   // empty it out (see comment above the nav markup) and the dot hides itself.
