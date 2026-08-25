@@ -3467,7 +3467,7 @@ a.src-tag:hover{opacity:.75;}
         <a href="#portals-to-presence" data-group="new">The Artist's Eye — Added to Portals to Presence</a>
         <a href="#quantity-or-quality" data-group="new">Quantity or Quality — New Section</a>
         <a href="#anatomy-of-love" data-group="new">The Anatomy of Love — New Section</a>
-        <a href="#framework" data-group="new">The Four Defects of Perception — Added to Framework</a>
+        <a href="#framework" data-group="new" onclick="scrollToFrameworkCard(8)">The Four Defects of Perception — Added to Framework</a>
       </div>
     </li>
 
@@ -3567,7 +3567,7 @@ a.src-tag:hover{opacity:.75;}
         <a href="#portals-to-presence">The Artist's Eye — Added to Portals to Presence</a>
         <a href="#quantity-or-quality">Quantity or Quality — New Section</a>
         <a href="#anatomy-of-love">The Anatomy of Love — New Section</a>
-        <a href="#framework">The Four Defects of Perception — Added to Framework</a>
+        <a href="#framework" onclick="scrollToFrameworkCard(8)">The Four Defects of Perception — Added to Framework</a>
       </div>
     </li>
 
@@ -3882,13 +3882,13 @@ a.src-tag:hover{opacity:.75;}
   </div>
   <div id="framework-full-content" class="section-collapse-wrap collapsed">
   <div class="framework-grid">
-    <div class="framework-card collapsed">
+    <div class="framework-card collapsed" id="framework-card-1">
       <span class="num">01</span>
       <h3>The Default OS</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">The chatter beneath every reaction</p><div class="framework-content">
       <p>Stimulus. Response. Repeat. The autopilot running underneath every choice, every decision, every reaction &mdash; and most people never notice it running.</p>
       <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">In Sanskrit: <em><span class="gloss">Vritti<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Vritti">+</span><span class="gloss-pop">A fluctuation or wave of the mind-stuff (Chitta) &mdash; stirred up by the senses, rippling across an otherwise still lake of awareness.</span></span></em> &mdash; the constant stream of neutral mental chatter, images, and fleeting concepts. Raw, unfiltered data before meaning is attached.</p>
     </div></div>
-    <div class="framework-card collapsed">
+    <div class="framework-card collapsed" id="framework-card-2">
       <span class="num">02</span>
       <h3>The Arrival Fallacy</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Why the next milestone never satisfies</p><div class="framework-content">
       <p>The false belief that the next milestone will finally bring peace. The brain is wired for the chase, not the catch. Dopamine rewards effort and progress &mdash; when the goal is achieved, production drops, leaving an acute emptiness.</p>
@@ -3901,13 +3901,13 @@ a.src-tag:hover{opacity:.75;}
         <div class="sl-stage danger"><span class="sl-num">Phase 4</span><div class="sl-name" style="font-size:15px;color:#c0392b;">Restlessness</div><p class="sl-desc">Hunger returns. Back to Phase 1.</p></div>
       </div>
     </div></div>
-    <div class="framework-card collapsed">
+    <div class="framework-card collapsed" id="framework-card-3">
       <span class="num">03</span>
       <h3>The Ego</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">How desire becomes &ldquo;I&rdquo;</p><div class="framework-content">
       <p>The mask the &ldquo;I&rdquo; wears. Your name, status, achievements, wounds, the story you tell about yourself. The false self that keeps seeking outside. To know your true SELF, you first have to see through it.</p>
       <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">In Sanskrit: <em><span class="gloss">Kama<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Kama">+</span><span class="gloss-pop">Desire &mdash; wish, longing, or sensory pleasure; one of the four traditional aims of life alongside duty, prosperity, and liberation. Here, the raw craving that hardens into the next column.</span></span> &rarr; <span class="gloss">Ahamkara<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Ahamkara">+</span><span class="gloss-pop">Literally &ldquo;the I-maker&rdquo; &mdash; the function of mind that stamps &ldquo;me&rdquo; onto raw experience, manufacturing a sense of separate identity.</span></span></em> &mdash; desire collects into a constructed identity that claims ownership: &ldquo;I want this, I feel that.&rdquo; The I-Maker claiming all experience as its own.</p>
     </div></div>
-    <div class="framework-card collapsed">
+    <div class="framework-card collapsed" id="framework-card-4">
       <span class="num">04</span>
       <h3>The True &ldquo;I&rdquo;</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Sat-Chit-Ananda, explained</p><div class="framework-content">
       <p>Your pure, underlying conscious awareness. The silent observer behind every thought. The screen, not the movie &mdash; unchanged by whatever plays on it. Many traditions point to the same address.</p>
@@ -3915,7 +3915,7 @@ a.src-tag:hover{opacity:.75;}
       <p class="equation-label" style="margin-top:10px;font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.8;border-top:1px solid rgba(var(--accent-gold-rgb),0.28);padding-top:12px;"><span class="gloss">Atman<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Atman">+</span><span class="gloss-pop">The individual self, in Vedanta &mdash; held as identical to, not separate from, universal consciousness.</span></span> (Individual SELF) = <span class="gloss">Brahman<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Brahman">+</span><span class="gloss-pop">The ground of all reality in Vedanta &mdash; not a deity to petition, but the substrate everything, including you, is made of.</span></span> (Supreme Reality)</p>
       <p style="margin-top:10px;font-size:14px;color:var(--gold);font-style:italic;">In Sanskrit: <em><span class="gloss">Maya<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Maya">+</span><span class="gloss-pop">Usually translated &ldquo;illusion,&rdquo; though &ldquo;the measuring-out&rdquo; is closer &mdash; the way one undivided reality appears to us as separate things, separate selves, and passing time.</span></span> / <span class="gloss">Avidya<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Avidya">+</span><span class="gloss-pop">Literally &ldquo;not-seeing&rdquo; &mdash; the root ignorance that mistakes the temporary, changing self for the true, unchanging one.</span></span></em> &mdash; the lens of separation &mdash; is dissolved when you recognize you are not the projection, but the screen. That is who you actually are.</p>
     </div></div>
-    <div class="framework-card collapsed">
+    <div class="framework-card collapsed" id="framework-card-5">
       <span class="num">05</span>
       <h3>The Gap — RRRR Protocol</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">The RRRR practice for the gap</p><div class="framework-content">
       <p style="font-size:14px;color:var(--grey);margin-bottom:16px;">The space between trigger and response. Moving from reactive to intentional.</p>
@@ -3932,13 +3932,13 @@ a.src-tag:hover{opacity:.75;}
         <p style="font-size:15px;margin-bottom:0;"><strong style="color:var(--gold);">Respond</strong> <span style="color:var(--grey);font-size:14px;">— Choose from clarity, not the wound.</span></p>
       </div></div>
     </div>
-    <div class="framework-card collapsed">
+    <div class="framework-card collapsed" id="framework-card-6">
       <span class="num">06</span>
       <h3>Self-Realization</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Why delusion needs the dark</p><div class="framework-content">
       <p>Not expected to be achieved in one lifetime. That is not a failure &mdash; that is the point. The goal was never arrival. The question is: are you pointed in the right direction?</p>
       <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">In Sanskrit: <em><span class="gloss">Moha<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Moha">+</span><span class="gloss-pop">Delusion &mdash; the basic clouding of judgment that mistakes the false for the real.</span></span> / <span class="gloss">Vipallasa<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Vipallasa">+</span><span class="gloss-pop">A perceptual distortion, in Buddhist psychology &mdash; seeing the impermanent as permanent, the impure as pure.</span></span></em> &mdash; delusion is the ultimate end of unchecked conditioning. The loop only functions in the dark. Recognition is liberation. The architecture cannot survive awareness.</p>
     </div></div>
-    <div class="framework-card collapsed">
+    <div class="framework-card collapsed" id="framework-card-7">
       <span class="num">07</span>
       <h3>Life vs. Life Situation</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Life vs. &ldquo;my life&rdquo;</p><div class="framework-content">
       <p>What you casually call &ldquo;my life&rdquo; is usually just your <em>life situation</em> &mdash; a mental narrative built on circumstances, full of problems and resistance, existing only in psychological time. Life itself is different: it exists only in the eternal Now, problem-free, internal, and indestructible.</p>
@@ -3950,7 +3950,7 @@ a.src-tag:hover{opacity:.75;}
       </div>
       <p style="margin-top:14px;font-size:13px;color:var(--grey);line-height:1.75;">The division of life into past, present, and future is mind-made. What you remember is an event that took place in the Now &mdash; and you are remembering it Now. The future, when it comes, is the Now. Life is never not &ldquo;this moment.&rdquo;</p>
     </div></div>
-    <div class="framework-card collapsed">
+    <div class="framework-card collapsed" id="framework-card-8">
       <span class="num">08</span>
       <h3>The Four Defects of Perception</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Why the mind keeps mistaking form for content</p><div class="framework-content">
       <p>Formless truth passes through the mind like light through a prism &mdash; and comes out split into measurements, forms, and calculations. Not because the truth was ever like that. Because the prism is built with four specific defects.</p>
@@ -6744,7 +6744,7 @@ a.src-tag:hover{opacity:.75;}
 <section class="section-wide" id="quantity-or-quality" style="scroll-margin-top:56px;">
   <span class="label">Two Lenses on Existence</span>
   <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;">When the quality of life goes missing, we run after quantity to replace it.</h2>
-  <p style="font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:600px;margin:0 auto 40px;font-style:italic;line-height:1.85;"><a href="#The Four Defects of Perception" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">The Four Defects of Perception</a> above, describe how the mind distorts what it sees. This is what it&rsquo;s chasing instead &mdash; and what it misses while it chases.</p>
+  <p style="font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:600px;margin:0 auto 40px;font-style:italic;line-height:1.85;"><a href="#framework" onclick="scrollToFrameworkCard(8)" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">The Four Defects of Perception</a> above, describe how the mind distorts what it sees. This is what it&rsquo;s chasing instead &mdash; and what it misses while it chases.</p>
 
   <div class="self-table-wrap" style="max-width:680px;margin:0 auto 40px;">
     <table class="self-table compact qty-table" style="width:100%;">
@@ -9963,6 +9963,50 @@ function scrollToAscentCard(n){
     // waiting for the sibling to finish first used to produce.
     var openSibling = null;
     document.querySelectorAll('#ascent-full-content .framework-card').forEach(function(c){
+      if(c !== card && !c.classList.contains('collapsed')) openSibling = c;
+    });
+    if(openSibling && wasCardCollapsed){
+      var sibContent = openSibling.querySelector('.framework-content');
+      openSibling.classList.add('collapsed');
+      if(typeof collapseHeight==='function') collapseHeight(sibContent);
+      openThisCard();
+    } else {
+      if(openSibling){
+        openSibling.classList.add('collapsed');
+        if(typeof collapseHeight==='function') collapseHeight(openSibling.querySelector('.framework-content'));
+      }
+      openThisCard();
+    }
+  }
+
+  if(wasCollapsed){ setTimeout(openAndScroll, 350); } else { openAndScroll(); }
+}
+
+/* ── THE FRAMEWORK: click/link to a specific layer → expand the grid (if
+   collapsed), open that layer's card, scroll to it. Same accordion +
+   settle-then-scroll pattern as scrollToAscentCard, targeting
+   #framework-full-content / #framework-card-N instead. Used by the "New"
+   menu entry and the cross-reference link that point straight at "The
+   Four Defects of Perception" (card 8). ── */
+function scrollToFrameworkCard(n){
+  var wrap = document.getElementById('framework-full-content');
+  var wasCollapsed = wrap && wrap.classList.contains('collapsed');
+  if(wasCollapsed) sectionCollapse('framework-full-content');
+
+  var card = document.getElementById('framework-card-' + n);
+  if(!card) return;
+
+  function openAndScroll(){
+    if(typeof freezeTransitions==='function') freezeTransitions();
+    var content = card.querySelector('.framework-content');
+    var wasCardCollapsed = card.classList.contains('collapsed');
+    function openThisCard(){
+      card.classList.remove('collapsed');
+      if(wasCardCollapsed && typeof expandHeight==='function') expandHeight(content);
+      scrollAfterSettle(card, content, wasCardCollapsed);
+    }
+    var openSibling = null;
+    document.querySelectorAll('#framework-full-content .framework-card').forEach(function(c){
       if(c !== card && !c.classList.contains('collapsed')) openSibling = c;
     });
     if(openSibling && wasCardCollapsed){
