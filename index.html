@@ -1359,25 +1359,32 @@ a:hover{opacity:.7;}
     padding:18px 22px;
   }
   .mnav-group-toggle[aria-expanded="true"] .mnav-caret{transform:rotate(180deg);}
-  /* Each open group used to be capped to its own fixed-height scroll area
-     (a nested scrollbar inside the full-screen nav panel, which itself
-     scrolls). On touch devices that nested scroll routinely swallowed the
-     gesture — a finger dragging inside a long group like Traditions or
-     Resources would scroll neither the inner list nor the outer panel all
-     the way, so later items were unreachable — and having two scrollbars
-     stacked on screen at once (one for the group, one for the whole panel)
-     read as broken rather than intentional. Groups now expand to their
-     full natural height and the single outer .mnav-panel scroll carries
-     the whole list, group included, so there's exactly one scrollbar and
-     every item in every group is always reachable. The max-height below
-     is just large enough to clear the longest group (Traditions, ~19
-     links) without clipping. */
+  /* Self-contained scroll area per group, restored — but sized and tuned
+     to actually work on touch, which is what broke it before. The old cap
+     (min(48vh,340px)) was too tight for a 19-link group like Traditions:
+     touch scroll inside that tiny box worked, but the box only ever showed
+     ~8 items at a time and starting a swipe near its edge was too easy to
+     have the outer .mnav-panel scroll steal the gesture instead of the
+     inner list continuing, leaving later items effectively unreachable.
+     Raising the cap to 65vh gives the inner list enough room that most
+     groups need no scrolling at all, and the ones that still do (mainly
+     Traditions) have a tall enough, easy-to-grab area that swipes land
+     inside it reliably. overscroll-behavior:contain stops the inner
+     scroll from chaining into the outer panel once it hits its own end,
+     so a continued swipe there is a deliberate, separate gesture rather
+     than an accidental jump. */
   .mnav-group-panel{
     max-height:0;overflow:hidden;transition:max-height .35s ease;background:rgba(255,255,255,0.02);
   }
   .mnav-group.open .mnav-group-panel{
-    max-height:1400px;
+    max-height:65vh;
+    overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;
+    scrollbar-width:thin;scrollbar-color:rgba(var(--accent-gold-rgb),0.55) transparent;
   }
+  .mnav-group-panel::-webkit-scrollbar{width:5px;}
+  .mnav-group-panel::-webkit-scrollbar-track{background:transparent;}
+  .mnav-group-panel::-webkit-scrollbar-thumb{background:rgba(var(--accent-gold-rgb),0.55);border-radius:3px;}
+  [data-theme="light"] .mnav-group-panel::-webkit-scrollbar-thumb{background:rgba(122,94,14,0.55);}
   .mnav-group-panel a{
     display:block;font-family:var(--sans);font-size:14.5px;letter-spacing:0.5px;text-transform:none;
     color:var(--dim);padding:14px 22px 14px 34px;border-top:1px solid #1a1a1a;text-align:left;
