@@ -1359,32 +1359,21 @@ a:hover{opacity:.7;}
     padding:18px 22px;
   }
   .mnav-group-toggle[aria-expanded="true"] .mnav-caret{transform:rotate(180deg);}
-  /* Self-contained scroll area per group, restored — but sized and tuned
-     to actually work on touch, which is what broke it before. The old cap
-     (min(48vh,340px)) was too tight for a 19-link group like Traditions:
-     touch scroll inside that tiny box worked, but the box only ever showed
-     ~8 items at a time and starting a swipe near its edge was too easy to
-     have the outer .mnav-panel scroll steal the gesture instead of the
-     inner list continuing, leaving later items effectively unreachable.
-     Raising the cap to 65vh gives the inner list enough room that most
-     groups need no scrolling at all, and the ones that still do (mainly
-     Traditions) have a tall enough, easy-to-grab area that swipes land
-     inside it reliably. overscroll-behavior:contain stops the inner
-     scroll from chaining into the outer panel once it hits its own end,
-     so a continued swipe there is a deliberate, separate gesture rather
-     than an accidental jump. */
+  /* Height is driven in JS via expandHeight/collapseHeight (see the
+     accordion toggle handler), the same technique the Framework and
+     Ascent-of-Self accordions already use elsewhere on the site. Two
+     different attempts at a self-contained nested scrollbar here (a fixed
+     px cap, then a taller vh-based one) both ended up clipping the last
+     item or two of the longer groups (Traditions, Daily Practice) — nested
+     touch-scroll boxes inside an already-scrolling full-screen panel are
+     unreliable across mobile browsers regardless of how generous the cap
+     is. Expanding to the real content height and letting the single outer
+     .mnav-panel scroll carry it instead guarantees every item is always
+     reachable, at the cost of the group no longer having its own visible
+     scrollbar. */
   .mnav-group-panel{
     max-height:0;overflow:hidden;transition:max-height .35s ease;background:rgba(255,255,255,0.02);
   }
-  .mnav-group.open .mnav-group-panel{
-    max-height:65vh;
-    overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;
-    scrollbar-width:thin;scrollbar-color:rgba(var(--accent-gold-rgb),0.55) transparent;
-  }
-  .mnav-group-panel::-webkit-scrollbar{width:5px;}
-  .mnav-group-panel::-webkit-scrollbar-track{background:transparent;}
-  .mnav-group-panel::-webkit-scrollbar-thumb{background:rgba(var(--accent-gold-rgb),0.55);border-radius:3px;}
-  [data-theme="light"] .mnav-group-panel::-webkit-scrollbar-thumb{background:rgba(122,94,14,0.55);}
   .mnav-group-panel a{
     display:block;font-family:var(--sans);font-size:14.5px;letter-spacing:0.5px;text-transform:none;
     color:var(--dim);padding:14px 22px 14px 34px;border-top:1px solid #1a1a1a;text-align:left;
@@ -9541,10 +9530,18 @@ function updateNav(){
       document.body.classList.remove('mnav-open');
       // Collapse any open accordion group so re-opening the panel always
       // starts fresh, matching the desktop mega-menu's non-persistent state.
+      // Group height is now driven by an inline max-height (see the
+      // expandHeight/collapseHeight-based toggle below), which takes
+      // precedence over the CSS class's max-height:0 — so closing here has
+      // to reset that inline style directly, or a group left open would
+      // still render expanded the next time the panel is opened even
+      // though its 'open' class was removed.
       panel.querySelectorAll('.mnav-group.open').forEach(function(g){
         g.classList.remove('open');
         var t = g.querySelector('.mnav-group-toggle');
         if(t) t.setAttribute('aria-expanded','false');
+        var gp = g.querySelector('.mnav-group-panel');
+        if(gp) gp.style.maxHeight = '0px';
       });
     }
 
@@ -9553,18 +9550,42 @@ function updateNav(){
       panel.classList.contains('open') ? closeMenu() : openMenu();
     });
 
-    // Accordion group toggles — one open at a time
+    // Accordion group toggles — one open at a time. Height is driven in JS
+    // (same expandHeight/collapseHeight technique the Framework/Ascent
+    // accordions already use) rather than a fixed CSS max-height + its own
+    // overflow-y:auto. That nested-scroll-box approach kept clipping the
+    // last item or two of longer groups (Traditions, Daily Practice) no
+    // matter how generous the cap — nested touch-scroll containers inside
+    // an already-scrolling full-screen panel are unreliable across mobile
+    // browsers. Expanding to the panel's real content height and letting
+    // the single outer .mnav-panel scroll carry it, as every other
+    // accordion on the site already does, guarantees every item is
+    // reachable.
     panel.querySelectorAll('.mnav-group-toggle').forEach(function(btn){
       btn.addEventListener('click', function(){
         var group  = this.closest('.mnav-group');
         var isOpen = group.classList.contains('open');
+        var gpanel = group.querySelector('.mnav-group-panel');
         panel.querySelectorAll('.mnav-group').forEach(function(g){
-          g.classList.remove('open');
-          g.querySelector('.mnav-group-toggle').setAttribute('aria-expanded','false');
+          if(g === group) return;
+          if(g.classList.contains('open')){
+            g.classList.remove('open');
+            g.querySelector('.mnav-group-toggle').setAttribute('aria-expanded','false');
+            var sibPanel = g.querySelector('.mnav-group-panel');
+            if(typeof window.collapseHeight==='function') window.collapseHeight(sibPanel);
+            else sibPanel.style.maxHeight = '0px';
+          }
         });
         if(!isOpen){
           group.classList.add('open');
           btn.setAttribute('aria-expanded','true');
+          if(typeof window.expandHeight==='function') window.expandHeight(gpanel);
+          else gpanel.style.maxHeight = gpanel.scrollHeight + 'px';
+        } else {
+          group.classList.remove('open');
+          btn.setAttribute('aria-expanded','false');
+          if(typeof window.collapseHeight==='function') window.collapseHeight(gpanel);
+          else gpanel.style.maxHeight = '0px';
         }
       });
     });
