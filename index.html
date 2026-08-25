@@ -1369,7 +1369,15 @@ a:hover{opacity:.7;}
     max-height:0;overflow:hidden;transition:max-height .35s ease;background:rgba(255,255,255,0.02);
   }
   .mnav-group.open .mnav-group-panel{
+    /* vh sizes against Chrome's *largest* viewport (URL bar hidden), so on
+       first open — bar still visible — this computes taller than what's
+       actually on screen, cutting off the last item(s) until something
+       scrolls the page and the bar collapses. svh is stable at the
+       *smallest* viewport regardless of bar state, so it fits correctly
+       from the very first tap. Same fix as .hero above, kept as a second
+       declaration so browsers without svh support still get the vh line. */
     max-height:min(68vh,460px);
+    max-height:min(68svh,460px);
     overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;
     scrollbar-width:thin;scrollbar-color:rgba(var(--accent-gold-rgb),0.55) transparent;
   }
@@ -4744,7 +4752,7 @@ a.src-tag:hover{opacity:.75;}
         <div style="font-family:var(--sans);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);text-align:left;padding-top:2px;">Finding</div>
         <div style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.7;text-align:left;">Integration capacity in the gamma band drops sharply under anesthesia; synchronized firing alone does not reliably track the same change.</div>
         <div style="font-family:var(--sans);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);text-align:left;padding-top:2px;">Reads as</div>
-        <div style="font-family:var(--serif);font-size:14px;color:var(--gold);line-height:1.7;text-align:left;">A physical correlate of Consciousness/Awareness gap above &mdash; not proof of it, an echo of it.</div>
+        <div style="font-family:var(--serif);font-size:14px;color:var(--gold);line-height:1.7;text-align:left;">A physical correlate of the Consciousness/Awareness gap above &mdash; not proof of it, an echo of it.</div>
       </div>
     </div>
 
