@@ -6877,6 +6877,14 @@ a.src-tag:hover{opacity:.75;}
 <span class="continue-hint">continue</span>
 <div class="divider"></div>
 
+<!-- COMMON FOOD LEAD-IN -->
+<section class="section" id="common-food">
+  <span class="label">The Common Food</span>
+  <p class="phil-line">One Upanishad opens with a claim, not a prayer: nothing here is truly yours.</p>
+  <p class="phil-line dim">Food, energy, the ground under you &mdash; held in trust, not owned. Hoarding what was never yours to keep has an old name: appropriation.</p>
+</section>
+<div class="divider"></div>
+
 <!-- COSMIC LEDGER -->
   <section class="section" id="ledger">  
     <span class="label">The Cosmic Ledger</span>
@@ -8297,7 +8305,7 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
           </tr>
           <tr class="gloss-entry" id="gloss-annamaya">
             <td>Annamaya (Kosha)</td>
-            <td>The "food sheath" &mdash; the physical body itself, the most outer and dense of the traditional five layers (koshas) said to wrap the true Self.</td>
+            <td>The "food sheath" &mdash; the physical body itself, the most outer and dense of the traditional five layers (koshas) said to wrap the true Self. Not just a label: the Chandogya Upanishad traces this body to three elemental strands &mdash; fire, water, earth &mdash; interwoven in everything, including you. Their densest residue is bone, blood, flesh. Their subtlest is speech, breath, mind. The mind reading this sentence is, structurally, refined food.</td>
           </tr>
           <tr class="gloss-entry" id="gloss-prana">
             <td>Prana</td>
@@ -11595,7 +11603,7 @@ paRenderLastNote();
   // section above, so it isn't repeated here.
   var MATRIX_LEAP_DATA = [
     null, // 1-indexed
-    { mastery:'Establish physical vitality and cellular presence.' },
+    { mastery:'Establish physical vitality and cellular presence.', cosmic:'Fire, water, and earth (Tejas, Ap, Anna) interweave in every object &mdash; including this body. Densest residue: bone, blood, flesh. Subtlest residue: speech, breath, mind. Eat, and the subtlest portion of what you ate becomes the mind doing the eating.' },
     { mastery:'Process emotional currents without storing or suppressing them.' },
     { mastery:'Build cognitive power, sensory discipline, and focus.' },
     { mastery:'Bridge raw intellectual logic with deep, heartfelt wisdom.' },
@@ -11755,6 +11763,7 @@ paRenderLastNote();
       detail.querySelector('td').innerHTML =
         '<div class="matrix-detail-grid">' +
           '<div class="matrix-detail-item"><span class="mdi-label">Mastery</span><p>' + d.mastery + '</p></div>' +
+          (d.cosmic ? '<div class="matrix-detail-item"><span class="mdi-label">Cosmic Mechanics</span><p>' + d.cosmic + '</p></div>' : '') +
         '</div>';
       detail.dataset.built = '1';
     }
