@@ -1952,8 +1952,8 @@ section{scroll-margin-top:56px;}
    card's h3, never as a peer heading. */
 .ego-sub-header.nested-sub-header{margin-top:8px;}
 .ego-sub-header.nested-sub-header .ego-sub-header-text h3{
-  font-family:var(--sans);font-size:14px;font-weight:500;letter-spacing:1.5px;
-  text-transform:uppercase;color:var(--gold);opacity:.85;margin-bottom:6px;
+  font-family:var(--sans) !important;font-size:14px !important;font-weight:500 !important;letter-spacing:1.5px;
+  line-height:1.4 !important;text-transform:uppercase;color:var(--gold);opacity:.85;margin-bottom:6px;
 }
 .ego-sub-header.nested-sub-header .ego-sub-header-text p{
   font-family:var(--serif);font-size:13px;font-style:italic;letter-spacing:0;
@@ -6696,7 +6696,7 @@ a.src-tag:hover{opacity:.75;}
         </div>
         <button class="collapse-toggle-btn" onclick="sectionCollapse('katha-seven-rungs',this)">Expand &#9660;</button>
       </div>
-      <div id="katha-seven-rungs" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 52px;">
+      <div id="katha-seven-rungs" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto;">
       <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin:20px 0 24px;text-align:left;">The chariot above tells you who's driving. The Katha Upanishad also asks a quieter question: driving toward what, exactly, and past how many layers? Meditation, on this account, is not a single leap inward. It's a sequential withdrawal, rung by rung, each one subtler than the last &mdash; and the ladder does not stop at the individual mind's edge.</p>
       <div class="mobile-stack-cards" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;margin-bottom:24px;">
         <div class="sl-stage"><span class="sl-num">Ring 1</span><div class="sl-name"><span class="gloss">Artha<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Artha">+</span><span class="gloss-pop">Literally &ldquo;object&rdquo; &mdash; the outermost, grossest layer of the Katha's hierarchy: the physical things perception collides with.</span></span></div><p class="sl-desc">The grossest layer. The physical things a blind, unreflective life keeps running into.</p></div>
@@ -6847,23 +6847,39 @@ a.src-tag:hover{opacity:.75;}
       <button class="collapse-toggle-btn" onclick="sectionCollapse('food-mind',this)">Expand &#9660;</button>
     </div>
     <div id="food-mind" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 52px;scroll-margin-top:56px;">
-      <h4 id="svetaketu-fast" style="scroll-margin-top:56px;font-family:var(--serif);font-size:15px;letter-spacing:1px;color:var(--dim);text-transform:uppercase;margin:0 0 16px;text-align:left;">Svetaketu&rsquo;s Fast &mdash; The Floor</h4>
-      <p style="font-family:var(--serif);font-size:clamp(17px,2.3vw,21px);color:var(--white);line-height:1.9;margin-bottom:16px;text-align:left;">The eater/food claim above isn&rsquo;t left standing on its own. The Chandogya backs it with an experiment. Svetaketu fasted fifteen days &mdash; no solid food, water allowed, to keep <span class="gloss">Prana<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Prana">+</span><span class="gloss-pop">Vital, life-giving energy carried on the breath &mdash; itself said to be made of water, which is why water alone was allowed during the fast.</span></span> going, said to be made of water itself. He could still speak at the end of it. He simply had nothing left to say: asked to recite verses he had known cold his whole life, nothing came.</p>
+      <div class="ego-sub-header gf-sub-header nested-sub-header" style="max-width:820px;">
+        <div class="ego-sub-header-text">
+          <h3 id="svetaketu-fast" style="scroll-margin-top:56px;">Svetaketu&rsquo;s Fast</h3>
+          <p>The Floor</p>
+        </div>
+        <button class="collapse-toggle-btn" onclick="sectionCollapse('svetaketu-fast-content',this)">Expand &#9660;</button>
+      </div>
+      <div id="svetaketu-fast-content" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 52px;">
+      <p style="font-family:var(--serif);font-size:clamp(17px,2.3vw,21px);color:var(--white);line-height:1.9;margin:20px 0 16px;text-align:left;">The eater/food claim above isn&rsquo;t left standing on its own. The Chandogya backs it with an experiment. Svetaketu fasted fifteen days &mdash; no solid food, water allowed, to keep <span class="gloss">Prana<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Prana">+</span><span class="gloss-pop">Vital, life-giving energy carried on the breath &mdash; itself said to be made of water, which is why water alone was allowed during the fast.</span></span> going, said to be made of water itself. He could still speak at the end of it. He simply had nothing left to say: asked to recite verses he had known cold his whole life, nothing came.</p>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:2px;margin-bottom:24px;">
         <div class="sl-stage"><span class="sl-num">Day 1</span><div class="sl-name">16/16</div><p class="sl-desc">Full recall. Every verse on demand, without strain.</p></div>
         <div class="sl-stage"><span class="sl-num">Day 15</span><div class="sl-name">1/16</div><p class="sl-desc">A single digit of mind left. The verses aren&rsquo;t forgotten &mdash; there's simply no fuel left to hold them up.</p></div>
         <div class="sl-stage" style="border-left:2px solid var(--gold);"><span class="sl-num" style="color:var(--gold);">Day 16</span><div class="sl-name" style="color:var(--gold);">Restored</div><p class="sl-desc">One meal back, and recall returns whole &mdash; the way a single blade of grass catches a dying ember back into flame.</p></div>
       </div>
-      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:20px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg);margin-bottom:36px;">Mind is not some separate, weightless substance sitting apart from the body it happens to occupy. This is the Upanishad's proof by demonstration, not assertion: starve the food, and the mind starves with it, on a measurable sixteen-count scale &mdash; and just as measurably, it comes back.</p>
+      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:20px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg);">Mind is not some separate, weightless substance sitting apart from the body it happens to occupy. This is the Upanishad's proof by demonstration, not assertion: starve the food, and the mind starves with it, on a measurable sixteen-count scale &mdash; and just as measurably, it comes back.</p>
+      </div>
 
-      <h4 id="purity-chain" style="scroll-margin-top:56px;font-family:var(--serif);font-size:15px;letter-spacing:1px;color:var(--dim);text-transform:uppercase;margin:0 0 16px;text-align:left;">The Purity Chain &mdash; The Ceiling</h4>
-      <p style="font-family:var(--serif);font-size:clamp(17px,2.3vw,21px);color:var(--white);line-height:1.9;margin-bottom:16px;text-align:left;">Svetaketu's fast measures the floor: strip the food, the mind fails. The Chandogya also names the ceiling. Purify what you eat, and the same chain runs the other direction &mdash; toward something the fast alone can't reach.</p>
+      <div class="ego-sub-header gf-sub-header nested-sub-header" style="max-width:820px;">
+        <div class="ego-sub-header-text">
+          <h3 id="purity-chain" style="scroll-margin-top:56px;">The Purity Chain</h3>
+          <p>The Ceiling</p>
+        </div>
+        <button class="collapse-toggle-btn" onclick="sectionCollapse('purity-chain-content',this)">Expand &#9660;</button>
+      </div>
+      <div id="purity-chain-content" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto;">
+      <p style="font-family:var(--serif);font-size:clamp(17px,2.3vw,21px);color:var(--white);line-height:1.9;margin:20px 0 16px;text-align:left;">Svetaketu's fast measures the floor: strip the food, the mind fails. The Chandogya also names the ceiling. Purify what you eat, and the same chain runs the other direction &mdash; toward something the fast alone can't reach.</p>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:2px;margin-bottom:24px;">
         <div class="sl-stage"><span class="sl-num">Step 1</span><div class="sl-name">Food Purity</div><p class="sl-desc">In purity of food, purity of mind.</p></div>
         <div class="sl-stage"><span class="sl-num">Step 2</span><div class="sl-name">Mind Purity</div><p class="sl-desc">In purity of mind, memory becomes established &mdash; steady and reliable, no longer scattered.</p></div>
         <div class="sl-stage" style="border-left:2px solid var(--gold);"><span class="sl-num" style="color:var(--gold);">Step 3</span><div class="sl-name" style="color:var(--gold);">Release</div><p class="sl-desc">Established memory unties the <span class="gloss">Granthi<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Granthi">+</span><span class="gloss-pop">Literally "knot" &mdash; the psychic knots said to bind consciousness to a false, limited sense of self, loosened through purification and steady memory.</span></span> &mdash; the knots of the heart holding a smaller self in place.</p></div>
       </div>
       <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:20px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg);">Not a metaphor for self-improvement. A causal chain, stated as plainly as a recipe: what you eat becomes what you notice becomes what you remember becomes what unties you.</p>
+      </div>
     </div>
 
     <div class="ego-sub-header gf-sub-header" style="max-width:820px;">
@@ -6876,26 +6892,49 @@ a.src-tag:hover{opacity:.75;}
     <div id="bhuma-vidya" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 52px;scroll-margin-top:56px;">
       <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin:0 0 24px;text-align:left;">Narada arrives at Sanatkumara's door having memorized every scripture there is, and still miserable. Sanatkumara's answer isn't a teaching to add to the pile &mdash; it's a ladder, each rung declared &ldquo;superior&rdquo; to the one below it, that Narada has to climb one step at a time.</p>
 
-      <h4 id="bhuma-macro" style="scroll-margin-top:56px;font-family:var(--serif);font-size:15px;letter-spacing:1px;color:var(--dim);text-transform:uppercase;margin:0 0 16px;text-align:left;">The Macrocosm</h4>
-      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin:0 0 24px;text-align:left;">The first three rungs are the world outside the body.</p>
+      <div class="ego-sub-header gf-sub-header nested-sub-header" style="max-width:820px;">
+        <div class="ego-sub-header-text">
+          <h3 id="bhuma-macro" style="scroll-margin-top:56px;">The Macrocosm</h3>
+          <p>The first three rungs, outside the body</p>
+        </div>
+        <button class="collapse-toggle-btn" onclick="sectionCollapse('bhuma-macro-content',this)">Expand &#9660;</button>
+      </div>
+      <div id="bhuma-macro-content" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 52px;">
+      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin:20px 0 24px;text-align:left;">The first three rungs are the world outside the body.</p>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:2px;margin-bottom:24px;">
         <div class="sl-stage"><span class="sl-num"><span class="gloss">Tejas<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Tejas">+</span><span class="gloss-pop">Heat or fire &mdash; in Sanatkumara's ladder, the primary elemental catalyst whose intensity prepares the atmosphere for what comes next.</span></span></span><div class="sl-name">Fire</div><p class="sl-desc">The primary catalyst. Its intensity dries the air and prepares the atmosphere for everything downstream of it.</p></div>
         <div class="sl-stage"><span class="sl-num"><span class="gloss">Apah<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Apah">+</span><span class="gloss-pop">Water &mdash; the second rung of Sanatkumara's macrocosm ladder, produced by the intensity of fire.</span></span></span><div class="sl-name">Water</div><p class="sl-desc">Superior to fire &mdash; produced by fire's own intensity, the way sweat or rain follows heat.</p></div>
         <div class="sl-stage" style="border-left:2px solid var(--gold);"><span class="sl-num" style="color:var(--gold);"><span class="gloss">Akasa<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Akasa">+</span><span class="gloss-pop">Ether or space &mdash; the ultimate physical container in Sanatkumara's ladder, the precondition for all spatial distinction, pleasure, pain, and physical freedom.</span></span></span><div class="sl-name" style="color:var(--gold);">Space</div><p class="sl-desc">Superior to fire and water both &mdash; the ultimate container, the precondition for pleasure, pain, and any distinction at all. Expand the mind to space, and you grant it unlimited possession.</p></div>
       </div>
-      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--mid);line-height:1.85;padding:20px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg);max-width:820px;margin:0 auto 36px;">Three rungs, and the ladder has already left the visible world behind for something that only has edges once a mind is there to notice them. Sanatkumara isn't finished &mdash; the next six rungs turn the ladder back inward.</p>
+      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--mid);line-height:1.85;padding:20px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg);max-width:820px;margin:0 auto;">Three rungs, and the ladder has already left the visible world behind for something that only has edges once a mind is there to notice them. Sanatkumara isn't finished &mdash; the next six rungs turn the ladder back inward.</p>
+      </div>
 
-      <h4 id="bhuma-micro" style="scroll-margin-top:56px;font-family:var(--serif);font-size:15px;letter-spacing:1px;color:var(--dim);text-transform:uppercase;margin:0 0 16px;text-align:left;">The Microcosm</h4>
-      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin:0 0 24px;text-align:left;">Space, above, is meaningless without something there to notice it &mdash; so the ladder turns inward. Three more rungs climb from bare self-awareness to the life-force itself.</p>
+      <div class="ego-sub-header gf-sub-header nested-sub-header" style="max-width:820px;">
+        <div class="ego-sub-header-text">
+          <h3 id="bhuma-micro" style="scroll-margin-top:56px;">The Microcosm</h3>
+          <p>Three more rungs, from self-awareness to the life-force</p>
+        </div>
+        <button class="collapse-toggle-btn" onclick="sectionCollapse('bhuma-micro-content',this)">Expand &#9660;</button>
+      </div>
+      <div id="bhuma-micro-content" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 52px;">
+      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin:20px 0 24px;text-align:left;">Space, above, is meaningless without something there to notice it &mdash; so the ladder turns inward. Three more rungs climb from bare self-awareness to the life-force itself.</p>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:2px;margin-bottom:24px;">
         <div class="sl-stage"><span class="sl-num"><span class="gloss">Smara<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Smara">+</span><span class="gloss-pop">Self-awareness or memory of self-existence &mdash; superior to space in Sanatkumara's ladder, since space is meaningless without a consciousness there to notice it.</span></span></span><div class="sl-name">Self-Awareness</div><p class="sl-desc">Superior to space. Without consciousness of one's own existence, space itself has nothing to be spacious for. The source of all functional knowledge.</p></div>
         <div class="sl-stage"><span class="sl-num"><span class="gloss">Asa<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Asa">+</span><span class="gloss-pop">Aspiration or hope &mdash; superior to self-awareness in Sanatkumara's ladder, the hidden urge for infinity often mistaken for merely wanting a long bodily life.</span></span></span><div class="sl-name">Aspiration</div><p class="sl-desc">Superior to self-awareness. We don't just exist &mdash; we reach past ourselves. The hidden urge for infinity and eternity, usually mistaken for simply wanting a longer life.</p></div>
         <div class="sl-stage" style="border-left:2px solid var(--gold);"><span class="sl-num" style="color:var(--gold);"><span class="gloss">Prana<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Prana">+</span><span class="gloss-pop">The life principle &mdash; in Sanatkumara's ladder, superior to aspiration itself: the inscrutable borderland between the infinite and the finite, the reality of human value.</span></span></span><div class="sl-name" style="color:var(--gold);">The Life Principle</div><p class="sl-desc">Superior to aspiration &mdash; the borderland between the infinite and the finite. We revere the life in a parent or teacher, not the body that gets cremated at death.</p></div>
       </div>
-      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin:0 0 36px;text-align:left;">Prana isn't the summit either. Sanatkumara keeps climbing through Truth, Understanding, Thought, Faith, Steadfastness, and Self-Control, and the chain doesn't stop until it reaches the one thing every other rung was secretly reaching for.</p>
+      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin:0;text-align:left;">Prana isn't the summit either. Sanatkumara keeps climbing through Truth, Understanding, Thought, Faith, Steadfastness, and Self-Control, and the chain doesn't stop until it reaches the one thing every other rung was secretly reaching for.</p>
+      </div>
 
-      <h4 id="sukham-chain" style="scroll-margin-top:56px;font-family:var(--serif);font-size:15px;letter-spacing:1px;color:var(--dim);text-transform:uppercase;margin:0 0 16px;text-align:left;">The Chain to Sukham</h4>
-      <div class="mobile-stack-cards" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;margin-bottom:24px;font-size:13px;">
+      <div class="ego-sub-header gf-sub-header nested-sub-header" style="max-width:820px;">
+        <div class="ego-sub-header-text">
+          <h3 id="sukham-chain" style="scroll-margin-top:56px;">The Chain to Sukham</h3>
+          <p>Six final rungs, ending at happiness itself</p>
+        </div>
+        <button class="collapse-toggle-btn" onclick="sectionCollapse('sukham-chain-content',this)">Expand &#9660;</button>
+      </div>
+      <div id="sukham-chain-content" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto;">
+      <div class="mobile-stack-cards" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;margin:20px 0 24px;font-size:13px;">
         <div class="sl-stage" style="padding:20px 14px;overflow-wrap:break-word;"><span class="sl-num"><span class="gloss">Satya<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Satya">+</span><span class="gloss-pop">From sat, &ldquo;that which exists&rdquo; &mdash; truth not as a statement about reality but as Reality itself, prior to any claim made about it.</span></span></span><div class="sl-name" style="font-size:15px;">Truth</div><p class="sl-desc" style="font-size:13px;">Being itself &mdash; spoken truthfully only once knowledge merges with Reality.</p></div>
         <div class="sl-stage" style="padding:20px 14px;overflow-wrap:break-word;"><span class="sl-num"><span class="gloss">Vijnana<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Vijnana">+</span><span class="gloss-pop">Discriminative knowledge &mdash; the capacity to distinguish and analyze, one rung above bare Thought in Sanatkumara's ladder.</span></span></span><div class="sl-name" style="font-size:15px;">Understanding</div><p class="sl-desc" style="font-size:13px;">True knowledge, past what the senses alone deliver.</p></div>
         <div class="sl-stage" style="padding:20px 14px;overflow-wrap:break-word;"><span class="sl-num"><span class="gloss">Mati<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Mati">+</span><span class="gloss-pop">Reflective intention &mdash; thought already leaning toward Reality on its own, before Faith or effort is added to it.</span></span></span><div class="sl-name" style="font-size:15px;">Thought</div><p class="sl-desc" style="font-size:13px;">Being's own innate tendency, already moving toward Reality.</p></div>
@@ -6904,6 +6943,7 @@ a.src-tag:hover{opacity:.75;}
         <div class="sl-stage" style="padding:20px 14px;overflow-wrap:break-word;border-left:2px solid var(--gold);"><span class="sl-num" style="color:var(--gold);"><span class="gloss">Kriti<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Kriti">+</span><span class="gloss-pop">Accomplished action &mdash; doing that has stopped requiring effort, the final rung before the chain reaches Sukham itself.</span></span></span><div class="sl-name" style="color:var(--gold);font-size:15px;">Self-Control</div><p class="sl-desc" style="font-size:13px;">The spontaneous withdrawal of consciousness from external objects &mdash; no longer effortful.</p></div>
       </div>
       <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:24px 28px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg-lift);text-align:left;">The chain ends at <span class="gloss">Sukham<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Sukham">+</span><span class="gloss-pop">Happiness &mdash; in the Chandogya's Bhuma Vidya, the final rung and propelling force behind the entire chain: cosmic evolution as happiness recovering its own consciousness.</span></span> &mdash; happiness, the propelling force behind the whole cosmos. Not a reward waiting at the top of the ladder. Cosmic evolution, on this account, is simply happiness trying to recover its own consciousness &mdash; the same appetite the Drum, the Conch, and the Veena traced back to a single cause, arriving here by a completely different route.</p>
+      </div>
     </div>
 
     <div class="ego-sub-header gf-sub-header" style="max-width:820px;">
