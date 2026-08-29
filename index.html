@@ -6566,7 +6566,7 @@ a.src-tag:hover{opacity:.75;}
 
   <div style="text-align:center;margin-bottom:16px;">
     <button class="collapse-toggle-btn" onclick="sectionCollapse('patanjali-detail',this)">Expand &#9660;</button>
-    <p class="section-collapse-label">Tap to expand — the chariot, Samyama, Purusha &amp; Prakriti, and the mechanics of food</p>
+    <p class="section-collapse-label">Tap to expand — the chariot, Samyama, Purusha &amp; Prakriti, the mechanics of food, and the Map of Consciousness</p>
   </div>
   <div id="patanjali-detail" class="section-collapse-wrap collapsed">
 
@@ -6905,7 +6905,112 @@ a.src-tag:hover{opacity:.75;}
       </div>
       <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:20px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg);max-width:820px;margin-left:auto;margin-right:auto;">This is why the next limb isn't more willpower. Once the obstacle is structural, the tool that dismantles it has to be structural too &mdash; which is exactly where Pranayama picks up.</p>
     </div>
+
+    <div class="ego-sub-header gf-sub-header" style="max-width:820px;">
+      <div class="ego-sub-header-text">
+        <h3>Map of Consciousness</h3>
+        <p>Every ring above, seen from one point &mdash; the Katha's ladder and the Asmita firewall, redrawn as a single lake</p>
+      </div>
+      <button class="collapse-toggle-btn" onclick="sectionCollapse('consciousness-map',this)">Expand &#9660;</button>
+    </div>
+    <div id="consciousness-map" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 8px;">
+      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin:0 0 32px;text-align:left;">Nothing above was a separate teaching. The Katha's seven rungs, the firewall Patanjali named, and the happiness Sanatkumara's ladder ends at are one shape, drawn three different ways by three different texts. Here it is drawn once.</p>
+
+      <div style="max-width:640px;margin:0 auto;">
+        <svg viewBox="0 0 700 580" style="width:100%;height:auto;overflow:visible;" role="img" aria-label="Map of Consciousness — concentric rings from Artha at the edge to Purusha at the center, with the Asmita firewall drawn as a broken ring near the middle">
+          <style>
+            .cmap-node{cursor:pointer;}
+            .cmap-node:hover rect.cmap-hit{fill-opacity:0.06;}
+            .cmap-node:focus rect.cmap-hit{fill-opacity:0.06;}
+            .cmap-node text{pointer-events:none;}
+          </style>
+          <defs>
+            <radialGradient id="cmapCenterGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="var(--gold)" stop-opacity="0.9"/>
+              <stop offset="60%" stop-color="var(--gold)" stop-opacity="0.35"/>
+              <stop offset="100%" stop-color="var(--gold)" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+
+          <!-- concentric rings, outer (Artha) to inner (Avyakta) — dimmest at
+               the edge, brightening toward the center, matching the section's
+               own "still water shows the lakebed" image -->
+          <circle cx="350" cy="290" r="220" fill="none" stroke="var(--dim)" stroke-width="1" opacity="0.35"/>
+          <circle cx="350" cy="290" r="192" fill="none" stroke="var(--dim)" stroke-width="1" opacity="0.4"/>
+          <circle cx="350" cy="290" r="164" fill="none" stroke="var(--grey)" stroke-width="1" opacity="0.45"/>
+          <circle cx="350" cy="290" r="136" fill="none" stroke="var(--grey)" stroke-width="1" opacity="0.5"/>
+          <circle cx="350" cy="290" r="108" fill="none" stroke="var(--gold)" stroke-width="1" opacity="0.4"/>
+          <circle cx="350" cy="290" r="80" fill="none" stroke="var(--gold)" stroke-width="1" opacity="0.5"/>
+
+          <!-- Asmita: the one ring that isn't a smooth step — drawn broken,
+               in the same red used for the ego/danger states elsewhere on
+               this page -->
+          <circle cx="350" cy="290" r="52" fill="none" stroke="#c0392b" stroke-width="1.5" stroke-dasharray="5,6" opacity="0.75"/>
+
+          <!-- the center: Purusha, and Sukham arrived at by a different road -->
+          <circle cx="350" cy="290" r="34" fill="url(#cmapCenterGlow)"/>
+          <circle cx="350" cy="290" r="16" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
+
+          <!-- OUTER EDGE — Artha -->
+          <g class="cmap-node" tabindex="0" role="button" aria-label="Outer Edge — Artha, the objects the senses collide with" onclick="jumpToStillnessMap('katha-ladder','katha-ascent')" onkeypress="if(event.key==='Enter')jumpToStillnessMap('katha-ladder','katha-ascent')">
+            <title>Outer Edge — Artha</title>
+            <rect class="cmap-hit" x="8" y="30" width="220" height="70" fill="var(--gold)" fill-opacity="0" rx="4"/>
+            <line x1="150" y1="88" x2="207" y2="147" stroke="var(--dim)" stroke-width="1" opacity="0.6"/>
+            <text x="20" y="50" font-family="var(--sans)" font-size="10" letter-spacing="2" fill="var(--dim)" style="text-transform:uppercase;">Outer Edge &middot; Artha</text>
+            <text x="20" y="68" font-family="var(--serif)" font-size="13" fill="var(--grey)">Objects. What the senses</text>
+            <text x="20" y="84" font-family="var(--serif)" font-size="13" fill="var(--grey)">collide with first.</text>
+          </g>
+
+          <!-- MID-RINGS — Indriyas, Mind, Individual Intellect -->
+          <g class="cmap-node" tabindex="0" role="button" aria-label="Mid-Rings — Indriyas, the Mind, and the Individual Intellect" onclick="jumpToStillnessMap('katha-ladder','katha-ascent')" onkeypress="if(event.key==='Enter')jumpToStillnessMap('katha-ladder','katha-ascent')">
+            <title>Mid-Rings — Indriyas, Mind, Intellect</title>
+            <rect class="cmap-hit" x="8" y="470" width="235" height="70" fill="var(--gold)" fill-opacity="0" rx="4"/>
+            <line x1="160" y1="472" x2="222" y2="400" stroke="var(--grey)" stroke-width="1" opacity="0.6"/>
+            <text x="20" y="494" font-family="var(--sans)" font-size="10" letter-spacing="2" fill="var(--dim)" style="text-transform:uppercase;">Mid-Rings &middot; The Tools</text>
+            <text x="20" y="512" font-family="var(--serif)" font-size="13" fill="var(--grey)">Indriyas, Mind, Individual</text>
+            <text x="20" y="528" font-family="var(--serif)" font-size="13" fill="var(--grey)">Intellect &mdash; each superior</text>
+            <text x="20" y="544" font-family="var(--serif)" font-size="13" fill="var(--grey)">to the one before it.</text>
+          </g>
+
+          <!-- INNER RINGS — Mahat, Avyakta -->
+          <g class="cmap-node" tabindex="0" role="button" aria-label="Inner Rings — Mahat and Avyakta" onclick="jumpToStillnessMap('katha-ladder','katha-ascent')" onkeypress="if(event.key==='Enter')jumpToStillnessMap('katha-ladder','katha-ascent')">
+            <title>Inner Rings — Mahat, Avyakta</title>
+            <rect class="cmap-hit" x="480" y="440" width="212" height="70" fill="var(--gold)" fill-opacity="0" rx="4"/>
+            <line x1="490" y1="450" x2="410" y2="368" stroke="var(--gold)" stroke-width="1" opacity="0.5"/>
+            <text x="490" y="465" font-family="var(--sans)" font-size="10" letter-spacing="2" fill="var(--gold)" opacity="0.85" style="text-transform:uppercase;">Inner Rings</text>
+            <text x="490" y="483" font-family="var(--serif)" font-size="13" fill="var(--mid)">Mahat &amp; Avyakta &mdash; no</text>
+            <text x="490" y="499" font-family="var(--serif)" font-size="13" fill="var(--mid)">medium required, and</text>
+            <text x="490" y="515" font-family="var(--serif)" font-size="13" fill="var(--mid)">then no floor beneath it.</text>
+          </g>
+
+          <!-- THE FIREWALL — Asmita -->
+          <g class="cmap-node" tabindex="0" role="button" aria-label="The Firewall — Asmita" onclick="jumpToStillnessMap('asmita-firewall','asmita-firewall')" onkeypress="if(event.key==='Enter')jumpToStillnessMap('asmita-firewall','asmita-firewall')">
+            <title>The Firewall — Asmita</title>
+            <rect class="cmap-hit" x="470" y="20" width="220" height="70" fill="#c0392b" fill-opacity="0" rx="4"/>
+            <line x1="500" y1="80" x2="396" y2="256" stroke="#c0392b" stroke-width="1" opacity="0.65"/>
+            <text x="480" y="42" font-family="var(--sans)" font-size="10" letter-spacing="2" fill="#c0392b" style="text-transform:uppercase;">The Firewall &middot; Asmita</text>
+            <text x="480" y="60" font-family="var(--serif)" font-size="13" fill="var(--grey)">The one ring that isn't</text>
+            <text x="480" y="76" font-family="var(--serif)" font-size="13" fill="var(--grey)">concentric. A screen, not</text>
+            <text x="480" y="92" font-family="var(--serif)" font-size="13" fill="var(--grey)">a step.</text>
+          </g>
+
+          <!-- THE CENTER — Purusha -->
+          <g class="cmap-node" tabindex="0" role="button" aria-label="The Center — Purusha, the final abode" onclick="jumpToStillnessMap('katha-ladder','katha-ascent')" onkeypress="if(event.key==='Enter')jumpToStillnessMap('katha-ladder','katha-ascent')">
+            <title>The Center — Purusha</title>
+            <rect class="cmap-hit" x="470" y="380" width="220" height="55" fill="var(--gold)" fill-opacity="0" rx="4"/>
+            <line x1="470" y1="395" x2="378" y2="310" stroke="var(--gold)" stroke-width="1.2" opacity="0.75"/>
+            <text x="480" y="400" font-family="var(--sans)" font-size="10" letter-spacing="2" fill="var(--gold)" style="text-transform:uppercase;">The Center &middot; Purusha</text>
+            <text x="480" y="418" font-family="var(--serif)" font-size="13" fill="var(--mid)">Ring seven. The one point</text>
+            <text x="480" y="434" font-family="var(--serif)" font-size="13" fill="var(--mid)">every road above ends at.</text>
+          </g>
+        </svg>
+        <p style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#555;text-align:center;margin-top:8px;">Tap a ring to jump to its full breakdown</p>
+      </div>
+
+      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:20px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg);max-width:820px;margin:24px auto 0;">Still water shows the lakebed. This is what the lake looks like from above &mdash; and why the <a href="#sukham-chain" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">chain to Sukham</a>, climbed by an entirely different route, ends at the same center.</p>
+    </div>
   </div>
+
   <!-- Closing quote — standalone, always visible -->
   <div class="cosmo-quote" style="max-width:820px;margin:24px auto 0;">
     <p>&ldquo;And thus through pleasure and pain, through good and evil, the infinite river of souls is flowing into the ocean of perfection, of Self-realization. Glory unto those who have realized their own nature.&rdquo;</p>
@@ -10689,6 +10794,31 @@ function scrollToAscentCard(n){
   }
 
   if(wasCollapsed){ setTimeout(openAndScroll, 350); } else { openAndScroll(); }
+}
+
+/* ── MAP OF CONSCIOUSNESS (Machinery of Stillness): click a ring → expand
+   the section (patanjali-detail) if collapsed, then expand the specific
+   sub-wrap that ring belongs to (Katha Ladder or Asmita firewall) if that's
+   also collapsed, then scroll to it. Two levels of nesting, so the same
+   expand-then-scroll delay pattern runs twice in sequence rather than once. ── */
+function jumpToStillnessMap(wrapId, anchorId){
+  var outer = document.getElementById('patanjali-detail');
+  var outerWasCollapsed = outer && outer.classList.contains('collapsed');
+  if(outerWasCollapsed) sectionCollapse('patanjali-detail');
+
+  function openInner(){
+    var wrap = wrapId ? document.getElementById(wrapId) : null;
+    var innerWasCollapsed = wrap && wrap.classList.contains('collapsed');
+    if(innerWasCollapsed) sectionCollapse(wrapId);
+
+    function doScroll(){
+      var target = (anchorId && document.getElementById(anchorId)) || wrap || outer;
+      if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
+    }
+    if(innerWasCollapsed){ setTimeout(doScroll, 350); } else { doScroll(); }
+  }
+
+  if(outerWasCollapsed){ setTimeout(openInner, 350); } else { openInner(); }
 }
 
 /* ── ROSETTA STONE MAP: click a type → expand the table (if collapsed),
