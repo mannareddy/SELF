@@ -3492,7 +3492,7 @@ a.src-tag:hover{opacity:.75;}
       <div class="nav-dropdown-panel" id="newMenuPanel">
         <a href="#patanjali" data-group="new">The Machinery of Stillness — Restructured &amp; Expanded</a>
         <a href="#thought-form" data-group="new">The Thought-Form — New Section</a>
-        <a href="#glossary" data-group="new">Glossary — Theosophy &amp; Subtle Bodies Added</a>
+        <a href="#gloss-thought-form" data-group="new">Glossary — Theosophy &amp; Subtle Bodies Added</a>
       </div>
     </li>
 
@@ -3591,7 +3591,7 @@ a.src-tag:hover{opacity:.75;}
       <div class="mnav-group-panel" id="newMenuPanelMobile">
         <a href="#patanjali">The Machinery of Stillness — Restructured &amp; Expanded</a>
         <a href="#thought-form">The Thought-Form — New Section</a>
-        <a href="#glossary">Glossary — Theosophy &amp; Subtle Bodies Added</a>
+        <a href="#gloss-thought-form">Glossary — Theosophy &amp; Subtle Bodies Added</a>
       </div>
     </li>
 
@@ -4422,7 +4422,7 @@ a.src-tag:hover{opacity:.75;}
 </div>
     <div class="tradition-row">
   <div class="tradition-cell trad">Theosophy</div>
-  <div class="tradition-cell"><span class="gloss">Thought-Forms<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Thought-Forms">+</span><span class="gloss-pop">A floating form built of astral matter, coloured by a thought's quality and shaped by its nature, that drifts until it discharges its energy on a resonant mind. See The Thought-Form, below in The Architecture of Ego.</span></span> / <span class="gloss">Kama-Manas<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Kama-Manas">+</span><span class="gloss-pop">The lower, desire-driven mind &mdash; Manas (thought) fused with Kama (desire) &mdash; identified as the animating charge inside a thought-form.</span></span></div>
+  <div class="tradition-cell"><span class="gloss">Thought-Forms<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Thought-Forms">+</span><span class="gloss-pop">A floating form built of astral matter, coloured by a thought's quality and shaped by its nature, that drifts until it discharges its energy on a resonant mind. See The Thought-Form, above.</span></span> / <span class="gloss">Kama-Manas<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Kama-Manas">+</span><span class="gloss-pop">The lower, desire-driven mind &mdash; Manas (thought) fused with Kama (desire) &mdash; identified as the animating charge inside a thought-form.</span></span></div>
   <div class="tradition-cell">Every thought throws off a semi-autonomous astral form, coloured and shaped by its own quality, that drifts until it discharges itself on a mind tuned to the same frequency</div>
 </div>
   </div>
@@ -9093,7 +9093,8 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
 
     <!-- ============ CATEGORY: Sanskrit / Yogic Psychology ============ -->
     <div class="gloss-category" data-cat="sanskrit">
-      <div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;margin:36px 0 16px;">Sanskrit &amp; Yogic Psychology</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:36px 0 14px;"><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;">Sanskrit &amp; Yogic Psychology</div><button class="collapse-toggle-btn" style="margin-bottom:0;padding:7px 20px;font-size:9px;" onclick="sectionCollapse('gloss-body-sanskrit',this)">Expand &#9660;</button></div>
+      <div id="gloss-body-sanskrit" class="section-collapse-wrap collapsed gloss-cat-wrap">
       <table class="gloss-table">
         <thead><tr><th>Term</th><th>Definition</th></tr></thead>
         <tbody>
@@ -9200,10 +9201,12 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
         </tbody>
       </table>
     </div>
+    </div>
 
     <!-- ============ CATEGORY: Yogic & Sanskrit Concepts (Samkhya / Yoga Sutras / Dharma) ============ -->
     <div class="gloss-category" data-cat="yogic">
-      <div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;margin:36px 0 16px;">Yogic &amp; Sanskrit Concepts</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:36px 0 14px;"><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;">Yogic &amp; Sanskrit Concepts</div><button class="collapse-toggle-btn" style="margin-bottom:0;padding:7px 20px;font-size:9px;" onclick="sectionCollapse('gloss-body-yogic',this)">Expand &#9660;</button></div>
+      <div id="gloss-body-yogic" class="section-collapse-wrap collapsed gloss-cat-wrap">
       <table class="gloss-table">
         <thead><tr><th>Term</th><th>Definition</th></tr></thead>
         <tbody>
@@ -9330,10 +9333,12 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
         </tbody>
       </table>
     </div>
+    </div>
 
     <!-- ============ CATEGORY: The Seven Chakras ============ -->
     <div class="gloss-category" data-cat="chakra">
-      <div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;margin:36px 0 16px;">The Seven Chakras</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:36px 0 14px;"><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;">The Seven Chakras</div><button class="collapse-toggle-btn" style="margin-bottom:0;padding:7px 20px;font-size:9px;" onclick="sectionCollapse('gloss-body-chakra',this)">Expand &#9660;</button></div>
+      <div id="gloss-body-chakra" class="section-collapse-wrap collapsed gloss-cat-wrap">
       <table class="gloss-table">
         <thead><tr><th>Term</th><th>Definition</th></tr></thead>
         <tbody>
@@ -9372,10 +9377,12 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
         </tbody>
       </table>
     </div>
+    </div>
 
     <!-- ============ CATEGORY: The Four States of Consciousness ============ -->
     <div class="gloss-category" data-cat="aum">
-      <div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;margin:36px 0 16px;">The Four States (AUM)</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:36px 0 14px;"><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;">The Four States (AUM)</div><button class="collapse-toggle-btn" style="margin-bottom:0;padding:7px 20px;font-size:9px;" onclick="sectionCollapse('gloss-body-aum',this)">Expand &#9660;</button></div>
+      <div id="gloss-body-aum" class="section-collapse-wrap collapsed gloss-cat-wrap">
       <table class="gloss-table">
         <thead><tr><th>Term</th><th>Definition</th></tr></thead>
         <tbody>
@@ -9422,10 +9429,12 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
         </tbody>
       </table>
     </div>
+    </div>
 
     <!-- ============ CATEGORY: Alchemical Stages ============ -->
     <div class="gloss-category" data-cat="alchemy">
-      <div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;margin:36px 0 16px;">Alchemical Stages</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:36px 0 14px;"><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;">Alchemical Stages</div><button class="collapse-toggle-btn" style="margin-bottom:0;padding:7px 20px;font-size:9px;" onclick="sectionCollapse('gloss-body-alchemy',this)">Expand &#9660;</button></div>
+      <div id="gloss-body-alchemy" class="section-collapse-wrap collapsed gloss-cat-wrap">
       <table class="gloss-table">
         <thead><tr><th>Term</th><th>Definition</th></tr></thead>
         <tbody>
@@ -9460,10 +9469,12 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
         </tbody>
       </table>
     </div>
+    </div>
 
     <!-- ============ CATEGORY: The Seven Hermetic Principles ============ -->
     <div class="gloss-category" data-cat="hermetic">
-      <div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;margin:36px 0 16px;">The Seven Hermetic Principles</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:36px 0 14px;"><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;">The Seven Hermetic Principles</div><button class="collapse-toggle-btn" style="margin-bottom:0;padding:7px 20px;font-size:9px;" onclick="sectionCollapse('gloss-body-hermetic',this)">Expand &#9660;</button></div>
+      <div id="gloss-body-hermetic" class="section-collapse-wrap collapsed gloss-cat-wrap">
       <table class="gloss-table">
         <thead><tr><th>Term</th><th>Definition</th></tr></thead>
         <tbody>
@@ -9498,10 +9509,12 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
         </tbody>
       </table>
     </div>
+    </div>
 
     <!-- ============ CATEGORY: Theosophy & Subtle Bodies ============ -->
     <div class="gloss-category" data-cat="theosophy">
-      <div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;margin:36px 0 16px;">Theosophy &amp; Subtle Bodies</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:36px 0 14px;"><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;">Theosophy &amp; Subtle Bodies</div><button class="collapse-toggle-btn" style="margin-bottom:0;padding:7px 20px;font-size:9px;" onclick="sectionCollapse('gloss-body-theosophy',this)">Expand &#9660;</button></div>
+      <div id="gloss-body-theosophy" class="section-collapse-wrap collapsed gloss-cat-wrap">
       <table class="gloss-table">
         <thead><tr><th>Term</th><th>Definition</th></tr></thead>
         <tbody>
@@ -9524,10 +9537,12 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
         </tbody>
       </table>
     </div>
+    </div>
 
     <!-- ============ CATEGORY: Brainwave & Awareness States ============ -->
     <div class="gloss-category" data-cat="brainwave">
-      <div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;margin:36px 0 16px;">Brainwave &amp; Awareness States</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:36px 0 14px;"><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;">Brainwave &amp; Awareness States</div><button class="collapse-toggle-btn" style="margin-bottom:0;padding:7px 20px;font-size:9px;" onclick="sectionCollapse('gloss-body-brainwave',this)">Expand &#9660;</button></div>
+      <div id="gloss-body-brainwave" class="section-collapse-wrap collapsed gloss-cat-wrap">
       <table class="gloss-table">
         <thead><tr><th>Term</th><th>Definition</th></tr></thead>
         <tbody>
@@ -9562,10 +9577,12 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
         </tbody>
       </table>
     </div>
+    </div>
 
     <!-- ============ CATEGORY: Clinical / Scientific ============ -->
     <div class="gloss-category" data-cat="clinical">
-      <div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;margin:36px 0 16px;">Clinical &amp; Scientific</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:36px 0 14px;"><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;">Clinical &amp; Scientific</div><button class="collapse-toggle-btn" style="margin-bottom:0;padding:7px 20px;font-size:9px;" onclick="sectionCollapse('gloss-body-clinical',this)">Expand &#9660;</button></div>
+      <div id="gloss-body-clinical" class="section-collapse-wrap collapsed gloss-cat-wrap">
       <table class="gloss-table">
         <thead><tr><th>Term</th><th>Definition</th></tr></thead>
         <tbody>
@@ -9579,6 +9596,7 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
           </tr>
         </tbody>
       </table>
+    </div>
     </div>
 
     <p id="glossEmpty" style="display:none;text-align:center;color:var(--dim);font-family:var(--serif);font-style:italic;padding:40px 0;">No terms match that search.</p>
@@ -9600,13 +9618,27 @@ function filterGlossary(q){
     entry.style.display = match ? '' : 'none';
     if (match) anyVisible = true;
   });
-  // hide category headers with no visible entries left
+  // hide category headers with no visible entries left, and auto-expand/
+  // collapse each category's own accordion body based on whether it has
+  // a match: expanded while a search is active and matching, back to
+  // collapsed once the search box is cleared.
   document.querySelectorAll('#glossaryBody .gloss-category').forEach(function(cat){
     var visibleInCat = Array.prototype.some.call(
       cat.querySelectorAll('.gloss-entry'),
       function(e){ return e.style.display !== 'none'; }
     );
     cat.style.display = visibleInCat ? '' : 'none';
+    var wrap = cat.querySelector('.gloss-cat-wrap');
+    var btn = cat.querySelector('.collapse-toggle-btn');
+    if(wrap){
+      if(q && visibleInCat){
+        wrap.classList.remove('collapsed');
+        if(btn) btn.innerHTML = 'Collapse &#9650;';
+      } else if(!q){
+        wrap.classList.add('collapsed');
+        if(btn) btn.innerHTML = 'Expand &#9660;';
+      }
+    }
   });
   document.getElementById('glossEmpty').style.display = anyVisible ? 'none' : 'block';
 }
