@@ -2089,6 +2089,13 @@ section{scroll-margin-top:56px;}
      stack on narrow screens. */
   .ego-sub-header.gf-sub-header{grid-template-columns:1fr auto;gap:12px;align-items:center;}
   .ego-sub-header.gf-sub-header .collapse-toggle-btn{justify-self:end;padding:10px 16px;}
+  /* Glossary category headers: on desktop these sit inline (space-between)
+     via display:flex, and short titles ("The Seven Chakras") still fit
+     next to the Expand button at mobile widths while long ones ("Sanskrit
+     & Yogic Psychology") wrap the button onto its own line — same markup,
+     inconsistent result depending on title length. Force every category
+     to stack the same way on mobile instead, regardless of title length. */
+  .gloss-cat-header{flex-direction:column;align-items:flex-start !important;gap:10px !important;}
   .evo-grid{grid-template-columns:1fr !important;}
   /* Mobile-only: lengthy side-by-side comparison columns (paragraph-heavy
      text that gets squeezed into narrow half-width columns) become full-width
@@ -9093,7 +9100,7 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
 
     <!-- ============ CATEGORY: Sanskrit / Yogic Psychology ============ -->
     <div class="gloss-category" data-cat="sanskrit">
-      <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:36px 0 14px;"><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;">Sanskrit &amp; Yogic Psychology</div><button class="collapse-toggle-btn" style="margin-bottom:0;padding:7px 20px;font-size:9px;" onclick="sectionCollapse('gloss-body-sanskrit',this)">Expand &#9660;</button></div>
+      <div class="gloss-cat-header" style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:36px 0 14px;"><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;">Sanskrit &amp; Yogic Psychology</div><button class="collapse-toggle-btn" style="margin-bottom:0;padding:7px 20px;font-size:9px;" onclick="sectionCollapse('gloss-body-sanskrit',this)">Expand &#9660;</button></div>
       <div id="gloss-body-sanskrit" class="section-collapse-wrap collapsed gloss-cat-wrap">
       <table class="gloss-table">
         <thead><tr><th>Term</th><th>Definition</th></tr></thead>
@@ -9205,7 +9212,7 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
 
     <!-- ============ CATEGORY: Yogic & Sanskrit Concepts (Samkhya / Yoga Sutras / Dharma) ============ -->
     <div class="gloss-category" data-cat="yogic">
-      <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:36px 0 14px;"><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;">Yogic &amp; Sanskrit Concepts</div><button class="collapse-toggle-btn" style="margin-bottom:0;padding:7px 20px;font-size:9px;" onclick="sectionCollapse('gloss-body-yogic',this)">Expand &#9660;</button></div>
+      <div class="gloss-cat-header" style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:36px 0 14px;"><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;">Yogic &amp; Sanskrit Concepts</div><button class="collapse-toggle-btn" style="margin-bottom:0;padding:7px 20px;font-size:9px;" onclick="sectionCollapse('gloss-body-yogic',this)">Expand &#9660;</button></div>
       <div id="gloss-body-yogic" class="section-collapse-wrap collapsed gloss-cat-wrap">
       <table class="gloss-table">
         <thead><tr><th>Term</th><th>Definition</th></tr></thead>
@@ -9337,7 +9344,7 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
 
     <!-- ============ CATEGORY: The Seven Chakras ============ -->
     <div class="gloss-category" data-cat="chakra">
-      <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:36px 0 14px;"><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;">The Seven Chakras</div><button class="collapse-toggle-btn" style="margin-bottom:0;padding:7px 20px;font-size:9px;" onclick="sectionCollapse('gloss-body-chakra',this)">Expand &#9660;</button></div>
+      <div class="gloss-cat-header" style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:36px 0 14px;"><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;">The Seven Chakras</div><button class="collapse-toggle-btn" style="margin-bottom:0;padding:7px 20px;font-size:9px;" onclick="sectionCollapse('gloss-body-chakra',this)">Expand &#9660;</button></div>
       <div id="gloss-body-chakra" class="section-collapse-wrap collapsed gloss-cat-wrap">
       <table class="gloss-table">
         <thead><tr><th>Term</th><th>Definition</th></tr></thead>
@@ -9381,7 +9388,7 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
 
     <!-- ============ CATEGORY: The Four States of Consciousness ============ -->
     <div class="gloss-category" data-cat="aum">
-      <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:36px 0 14px;"><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;">The Four States (AUM)</div><button class="collapse-toggle-btn" style="margin-bottom:0;padding:7px 20px;font-size:9px;" onclick="sectionCollapse('gloss-body-aum',this)">Expand &#9660;</button></div>
+      <div class="gloss-cat-header" style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:36px 0 14px;"><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;">The Four States (AUM)</div><button class="collapse-toggle-btn" style="margin-bottom:0;padding:7px 20px;font-size:9px;" onclick="sectionCollapse('gloss-body-aum',this)">Expand &#9660;</button></div>
       <div id="gloss-body-aum" class="section-collapse-wrap collapsed gloss-cat-wrap">
       <table class="gloss-table">
         <thead><tr><th>Term</th><th>Definition</th></tr></thead>
@@ -9433,7 +9440,7 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
 
     <!-- ============ CATEGORY: Alchemical Stages ============ -->
     <div class="gloss-category" data-cat="alchemy">
-      <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:36px 0 14px;"><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;">Alchemical Stages</div><button class="collapse-toggle-btn" style="margin-bottom:0;padding:7px 20px;font-size:9px;" onclick="sectionCollapse('gloss-body-alchemy',this)">Expand &#9660;</button></div>
+      <div class="gloss-cat-header" style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:36px 0 14px;"><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;">Alchemical Stages</div><button class="collapse-toggle-btn" style="margin-bottom:0;padding:7px 20px;font-size:9px;" onclick="sectionCollapse('gloss-body-alchemy',this)">Expand &#9660;</button></div>
       <div id="gloss-body-alchemy" class="section-collapse-wrap collapsed gloss-cat-wrap">
       <table class="gloss-table">
         <thead><tr><th>Term</th><th>Definition</th></tr></thead>
@@ -9473,7 +9480,7 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
 
     <!-- ============ CATEGORY: The Seven Hermetic Principles ============ -->
     <div class="gloss-category" data-cat="hermetic">
-      <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:36px 0 14px;"><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;">The Seven Hermetic Principles</div><button class="collapse-toggle-btn" style="margin-bottom:0;padding:7px 20px;font-size:9px;" onclick="sectionCollapse('gloss-body-hermetic',this)">Expand &#9660;</button></div>
+      <div class="gloss-cat-header" style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:36px 0 14px;"><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;">The Seven Hermetic Principles</div><button class="collapse-toggle-btn" style="margin-bottom:0;padding:7px 20px;font-size:9px;" onclick="sectionCollapse('gloss-body-hermetic',this)">Expand &#9660;</button></div>
       <div id="gloss-body-hermetic" class="section-collapse-wrap collapsed gloss-cat-wrap">
       <table class="gloss-table">
         <thead><tr><th>Term</th><th>Definition</th></tr></thead>
@@ -9513,7 +9520,7 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
 
     <!-- ============ CATEGORY: Theosophy & Subtle Bodies ============ -->
     <div class="gloss-category" data-cat="theosophy">
-      <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:36px 0 14px;"><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;">Theosophy &amp; Subtle Bodies</div><button class="collapse-toggle-btn" style="margin-bottom:0;padding:7px 20px;font-size:9px;" onclick="sectionCollapse('gloss-body-theosophy',this)">Expand &#9660;</button></div>
+      <div class="gloss-cat-header" style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:36px 0 14px;"><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;">Theosophy &amp; Subtle Bodies</div><button class="collapse-toggle-btn" style="margin-bottom:0;padding:7px 20px;font-size:9px;" onclick="sectionCollapse('gloss-body-theosophy',this)">Expand &#9660;</button></div>
       <div id="gloss-body-theosophy" class="section-collapse-wrap collapsed gloss-cat-wrap">
       <table class="gloss-table">
         <thead><tr><th>Term</th><th>Definition</th></tr></thead>
@@ -9541,7 +9548,7 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
 
     <!-- ============ CATEGORY: Brainwave & Awareness States ============ -->
     <div class="gloss-category" data-cat="brainwave">
-      <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:36px 0 14px;"><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;">Brainwave &amp; Awareness States</div><button class="collapse-toggle-btn" style="margin-bottom:0;padding:7px 20px;font-size:9px;" onclick="sectionCollapse('gloss-body-brainwave',this)">Expand &#9660;</button></div>
+      <div class="gloss-cat-header" style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:36px 0 14px;"><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;">Brainwave &amp; Awareness States</div><button class="collapse-toggle-btn" style="margin-bottom:0;padding:7px 20px;font-size:9px;" onclick="sectionCollapse('gloss-body-brainwave',this)">Expand &#9660;</button></div>
       <div id="gloss-body-brainwave" class="section-collapse-wrap collapsed gloss-cat-wrap">
       <table class="gloss-table">
         <thead><tr><th>Term</th><th>Definition</th></tr></thead>
@@ -9581,7 +9588,7 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
 
     <!-- ============ CATEGORY: Clinical / Scientific ============ -->
     <div class="gloss-category" data-cat="clinical">
-      <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:36px 0 14px;"><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;">Clinical &amp; Scientific</div><button class="collapse-toggle-btn" style="margin-bottom:0;padding:7px 20px;font-size:9px;" onclick="sectionCollapse('gloss-body-clinical',this)">Expand &#9660;</button></div>
+      <div class="gloss-cat-header" style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:36px 0 14px;"><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;">Clinical &amp; Scientific</div><button class="collapse-toggle-btn" style="margin-bottom:0;padding:7px 20px;font-size:9px;" onclick="sectionCollapse('gloss-body-clinical',this)">Expand &#9660;</button></div>
       <div id="gloss-body-clinical" class="section-collapse-wrap collapsed gloss-cat-wrap">
       <table class="gloss-table">
         <thead><tr><th>Term</th><th>Definition</th></tr></thead>
