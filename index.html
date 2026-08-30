@@ -10961,6 +10961,15 @@ function resetNestedToggles(wrap){
     var subBtn=document.querySelector('[onclick*="sectionCollapse(\'' + sub.id + '\'"]');
     if(subBtn) subBtn.innerHTML=subBtn.innerHTML.replace('Collapse','Expand').replace('▲','▼').replace('&#9650;','&#9660;');
   });
+  // Glossary: a search filter left active (query text, hidden non-matching
+  // categories/entries) should not survive the section being closed and
+  // reopened — re-expanding it should always land on the same blank,
+  // fully-visible default the very first visit sees.
+  var glossSearch=wrap.querySelector('#glossSearch');
+  if(glossSearch){
+    glossSearch.value='';
+    if(typeof filterGlossary==='function') filterGlossary('');
+  }
 }
 
 /* ── ENNEAGRAM EXPAND ALL ────────────────────────────────────────────────── */
