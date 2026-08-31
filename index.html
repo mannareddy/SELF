@@ -2147,6 +2147,36 @@ section{scroll-margin-top:56px;}
   .mobile-stack-cards.sakshi-grid > div{
     padding:16px 14px !important;
   }
+  /* The Two States of Being (Automatic vs Conscious Life) — short list
+     items, not paragraph-heavy comparison text, so this stays side-by-side
+     on mobile like .sakshi-grid instead of collapsing to 1-per-row via the
+     generic .mobile-stack-cards rule above. Needs two classes to
+     out-specificity that rule. */
+  .mobile-stack-cards.states-grid{
+    grid-template-columns:1fr 1fr !important;
+    gap:6px !important;
+  }
+  .mobile-stack-cards.states-grid > div{
+    padding:14px 12px !important;
+  }
+  .mobile-stack-cards.states-grid li{
+    padding:8px 0 !important;
+  }
+}
+@media(max-width:400px){
+  .mobile-stack-cards.states-grid{
+    gap:4px !important;
+  }
+  .mobile-stack-cards.states-grid > div{
+    padding:12px 8px !important;
+  }
+  .mobile-stack-cards.states-grid div[style*="font-size:9px"]{
+    font-size:8px !important;
+    letter-spacing:1.5px !important;
+  }
+  .mobile-stack-cards.states-grid li{
+    font-size:12.5px !important;
+  }
 }
   .desktop-label{
     display:inline;
@@ -4756,7 +4786,7 @@ a.src-tag:hover{opacity:.75;}
     <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:24px 28px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg-lift);text-align:left;max-width:820px;margin:32px auto 24px;">&ldquo;When awareness is there, choices are wise. When awareness is absent, mistakes happen.&rdquo; <span style="color:var(--grey);font-style:normal;">&mdash; Bhagavad Gita</span></p>
 
         <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin:0 0 16px;text-align:left;max-width:820px;margin-left:auto;margin-right:auto;">The Two States of Being, Side by Side</p>
-    <div class="mobile-stack-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;max-width:640px;margin:0 auto 8px;text-align:left;">
+    <div class="mobile-stack-cards states-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;max-width:820px;margin:0 auto 8px;text-align:left;">
       <div style="padding:24px 26px;background:var(--bg);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);">
         <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:6px;">The Automatic Life</div>
         <ul style="margin:0;padding:0;list-style:none;">
@@ -4847,17 +4877,17 @@ a.src-tag:hover{opacity:.75;}
       <table class="self-table compact" style="min-width:560px;">
         <thead>
           <tr>
-            <th style="width:12%;text-align:center;padding-center:16px;">Altitude</th>
+            <th style="width:12%;text-align:center;">Altitude</th>
             <th style="width:22%;">What&rsquo;s There</th>
             <th style="width:66%;">What It Actually Notices</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td class="row-label" style="text-align:left;padding-left:16px;">1</td><td>Rock, crystal</td><td style="text-align:left;">Responds to pressure and temperature. Nothing that could be called a self is watching it happen.</td></tr>
-          <tr><td class="row-label" style="text-align:left;padding-left:16px;">2</td><td>Plant</td><td style="text-align:left;">Orients toward light and gravity &mdash; a functional pull toward what sustains it, with no reflection behind the pull.</td></tr>
-          <tr><td class="row-label" style="text-align:left;padding-left:16px;">3</td><td>Insect</td><td style="text-align:left;">A self, and its surroundings, held apart for the first time &mdash; enough to act with intent: defend, flee, feed.</td></tr>
-          <tr><td class="row-label" style="text-align:left;padding-left:16px;">4</td><td>Animal</td><td style="text-align:left;">Reads <em>other</em> selves well enough to anticipate them &mdash; a predator modeling what its prey will do next.</td></tr>
-          <tr class="gold-row"><td class="row-label gold" style="text-align:left;padding-left:16px;">5</td><td class="gold">Human</td><td class="bright" style="text-align:left;">Can fold back on all four altitudes at once &mdash; notice the noticing itself. The only known point on this ladder capable of watching itself climb.</td></tr>
+          <tr><td class="row-label" style="text-align:center;">1</td><td>Rock, crystal</td><td style="text-align:left;">Responds to pressure and temperature. Nothing that could be called a self is watching it happen.</td></tr>
+          <tr><td class="row-label" style="text-align:center;">2</td><td>Plant</td><td style="text-align:left;">Orients toward light and gravity &mdash; a functional pull toward what sustains it, with no reflection behind the pull.</td></tr>
+          <tr><td class="row-label" style="text-align:center;">3</td><td>Insect</td><td style="text-align:left;">A self, and its surroundings, held apart for the first time &mdash; enough to act with intent: defend, flee, feed.</td></tr>
+          <tr><td class="row-label" style="text-align:center;">4</td><td>Animal</td><td style="text-align:left;">Reads <em>other</em> selves well enough to anticipate them &mdash; a predator modeling what its prey will do next.</td></tr>
+          <tr class="gold-row"><td class="row-label gold" style="text-align:center;">5</td><td class="gold">Human</td><td class="bright" style="text-align:left;">Can fold back on all four altitudes at once &mdash; notice the noticing itself. The only known point on this ladder capable of watching itself climb.</td></tr>
         </tbody>
       </table>
     </div>
