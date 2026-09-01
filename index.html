@@ -750,12 +750,12 @@ body{
 
 /* Light: tradition table header */
 [data-theme="light"] .tradition-row.header{background:var(--bg-header) !important;}
-[data-theme="light"] .tradition-row.header .tradition-cell{color:var(--text-head-dark) !important;font-weight:700 !important;background:var(--bg-header) !important;}
+[data-theme="light"] .tradition-row.header .tradition-cell{color:var(--text-head-dark) !important;font-weight:400 !important;background:var(--bg-header) !important;}
 [data-theme="light"] .rasa-row.header{background:var(--bg-header) !important;}
-[data-theme="light"] .rasa-row.header .rasa-cell{color:var(--text-head-dark) !important;font-weight:700 !important;background:var(--bg-header) !important;}
+[data-theme="light"] .rasa-row.header .rasa-cell{color:var(--text-head-dark) !important;font-weight:400 !important;background:var(--bg-header) !important;}
 [data-theme="light"] [style*="background:#0a0a0a"]{background:var(--bg-header) !important;color:var(--text-head-dark) !important;}
 [data-theme="light"] .ipo-table-row.header{background:var(--bg-header) !important;}
-[data-theme="light"] .ipo-table-row.header .ipo-cell{color:var(--text-head-dark) !important;font-weight:700 !important;background:var(--bg-header) !important;}
+[data-theme="light"] .ipo-table-row.header .ipo-cell{color:var(--text-head-dark) !important;font-weight:400 !important;background:var(--bg-header) !important;}
 [data-theme="light"] .cognition-header-row,
 [data-theme="light"] [style*="background:#0a0a0a"] {
   background: var(--bg-header) !important;
@@ -1726,7 +1726,7 @@ section{scroll-margin-top:56px;}
 .tradition-row.header{background:#0a0a0a;}
 .tradition-cell{font-family:var(--serif);font-size:clamp(14px,1.8vw,16px);font-weight:400;color:#c9c9c9;padding:18px 20px;text-align:left;border-right:1px solid #3d3d3d;}
 .tradition-cell:last-child{border-right:none;}
-.tradition-row.header .tradition-cell{font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);padding:14px 20px;}
+.tradition-row.header .tradition-cell{font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);padding:14px 20px;font-weight:400;}
 .tradition-cell.trad{color:var(--gold);font-style:italic;}
 
 /* ── VISION SECTION ──────────────────────────────────────────────────────── */
@@ -1758,7 +1758,7 @@ section{scroll-margin-top:56px;}
 .ipo-table-row{display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid #4a4a4a;}
 .ipo-table-row:last-child{border-bottom:none;}
 .ipo-table-row.header{background:#0a0a0a;}
-.ipo-table-row.header .ipo-cell{font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);padding:16px 20px;border-right:1px solid #4a4a4a;}
+.ipo-table-row.header .ipo-cell{font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);padding:16px 20px;border-right:1px solid #4a4a4a;font-weight:400;}
 .ipo-table-row.header .ipo-cell:last-child{border-right:none;}
 .ipo-cell{font-family:var(--serif);font-size:clamp(14px,2vw,17px);font-weight:400;color:#c9c9c9;padding:20px;text-align:left;border-right:1px solid #3d3d3d;}
 .ipo-cell:last-child{border-right:none;}
@@ -2038,7 +2038,7 @@ section{scroll-margin-top:56px;}
 .rasa-row.header{background:#0a0a0a;}
 .rasa-cell{font-family:var(--serif);font-size:clamp(13px,1.7vw,15px);font-weight:400;color:#c9c9c9;padding:16px 18px;text-align:left;border-right:1px solid #3d3d3d;}
 .rasa-cell:last-child{border-right:none;}
-.rasa-row.header .rasa-cell{font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);padding:12px 18px;}
+.rasa-row.header .rasa-cell{font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);padding:12px 18px;font-weight:400;}
 .rasa-cell.type{color:var(--white);font-family:var(--sans);font-size:10px;letter-spacing:1px;}
 .rasa-cell.shadow{color:#c0392b;opacity:.85;font-style:italic;}
 .rasa-cell.light{color:var(--gold);}
@@ -3216,9 +3216,9 @@ tr.matrix-highlight{
 .diag-matrix{width:100%;border-collapse:collapse;min-width:600px;font-size:12px;}
 .diag-matrix th{
   font-family:var(--sans);font-size:8px;letter-spacing:1.5px;text-transform:uppercase;
-  color:var(--dim);background:var(--bg-lift);padding:10px 6px;border:1px solid #4a4a4a;text-align:center;
+  color:var(--dim);background:var(--bg-lift);padding:10px 6px;border:1px solid #4a4a4a;text-align:center;font-weight:400;
 }
-[data-theme="light"] .diag-matrix th{background:var(--bg-header);color:var(--text-head-dark);border-color:rgba(var(--shadow-rgb),.3);font-weight:700;}
+[data-theme="light"] .diag-matrix th{background:var(--bg-header);color:var(--text-head-dark);border-color:rgba(var(--shadow-rgb),.3);font-weight:400;}
 .diag-matrix td{
   padding:10px 6px;border:1px solid #3d3d3d;color:#c9c9c9;text-align:center;font-weight:400;
   font-family:var(--serif);transition:background .4s,color .4s;
@@ -3797,7 +3797,7 @@ a.src-tag:hover{opacity:.75;}
 </section>
 <div class="divider"></div>
   <section style="padding:90px 24px;background:var(--bg-lift);">
-  <div class="dark-night-card" style="max-width:660px;margin:0 auto;">
+  <div class="dark-night-card" style="max-width:680px;margin:0 auto;">
     <span class="label">The Dark Night</span>
     <p style="font-family:var(--sans);font-size:10px;letter-spacing:.5px;color:var(--dim);max-width:600px;margin:0 auto 28px;text-align:center;line-height:1.8;">This section speaks to existential ache, not diagnosable illness. If what you&rsquo;re carrying includes persistent depression, trauma, or thoughts of harming yourself, please treat that clinically first &mdash; see the <a href="#disclaimer" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">full note on care</a>.</p>
     <div class="pull-quote" style="margin-bottom:36px;border:1px solid rgba(var(--accent-gold-rgb),0.45);border-left:3px solid var(--gold);padding:36px 40px;">
@@ -3953,7 +3953,7 @@ a.src-tag:hover{opacity:.75;}
       </ol>
       <p style="font-size:clamp(15px,1.9vw,19px);color:var(--gold);line-height:1.9;margin-bottom:0;font-weight:700;" class="gold">The super-ordinate goal is knowing your SELF &mdash; the only gold that never depreciates.</p>
     </div>
-    <div class="cosmo-quote" style="max-width:700px;margin:0 auto;">
+    <div class="cosmo-quote" style="max-width:660px;margin:0 auto;">
       <p>&ldquo;The privilege of a lifetime is to become who you truly are.&rdquo;</p>
       <cite>&mdash; Carl Jung</cite>
     </div>
@@ -4587,7 +4587,7 @@ a.src-tag:hover{opacity:.75;}
         <div style="font-family:var(--sans);font-size:11px;color:var(--gold);letter-spacing:.5px;opacity:.75;">The Screen</div>
       </div>
     </div>
-    <div style="max-width:760px;margin:0 auto;padding:40px 36px;border:1.5px solid rgba(var(--accent-gold-rgb),0.55);background:radial-gradient(ellipse at 50% 0%,rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);text-align:left;">
+    <div style="max-width:680px;margin:0 auto;padding:40px 36px;border:1.5px solid rgba(var(--accent-gold-rgb),0.55);background:radial-gradient(ellipse at 50% 0%,rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);text-align:left;">
       <p style="font-size:clamp(17px,2.3vw,22px);color:var(--white);line-height:1.85;margin-bottom:18px;">Realization is the process of recognizing that <em style="color:var(--gold);">you are the Screen</em> &mdash; not the movie being projected upon it.</p>
       <p style="font-size:clamp(15px,2vw,19px);color:var(--mid);line-height:1.9;margin-bottom:0;">The world, your thoughts, and your emotions are the film. The screen remains unchanged by whatever plays upon it. You are that unchanging screen.</p>
     </div>
