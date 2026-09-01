@@ -296,29 +296,6 @@ body{
   }
 }
 
-/* The Two States of Being, Side by Side — a small 4-row, 2-column table
-   (Automatic Life vs Conscious Life) that read as visually cramped, with
-   no breathing room between rows on either mobile or desktop. Trimmed to
-   a narrower max-width so it doesn't stretch as wide as the multi-column
-   tables, and given extra vertical padding per row so the two columns of
-   short phrases don't run together. Scoped to .states-table only so no
-   other .self-table on the site is affected. */
-.self-table.states-table td,
-.self-table.states-table th{
-  padding-top:20px;
-  padding-bottom:20px;
-}
-.self-table.states-table tr + tr td{
-  border-top:1px solid #3d3d3d;
-}
-@media(max-width:768px){
-  .self-table.states-table td,
-  .self-table.states-table th{
-    padding-top:16px;
-    padding-bottom:16px;
-  }
-}
-
 /* Master Matrix chakra row-striping — same red-to-violet palette already used
    by the #master-matrix SVG grid map's row strokes/fills (L1 #e74c3c through
    L7 #9b59b6), so the scrollable table and the spatial map read as one
@@ -4731,7 +4708,7 @@ a.src-tag:hover{opacity:.75;}
 
   <div style="text-align:center;margin-bottom:16px;">
     <button class="collapse-toggle-btn" onclick="sectionCollapse('consciousness-detail',this)">Expand &#9660;</button>
-    <p class="section-collapse-label" style="margin-top:8px;">Tap to expand — the witness, the four stages of ego awareness, and the ceiling it sets</p>
+    <p class="section-collapse-label" style="margin-top:8px;">Tap to expand — six cards: the witness in practice, the Mandukya states, the two scales, the evolutionary ladder, the ceiling it sets, and ego awareness</p>
   </div>
   <div id="consciousness-detail" class="section-collapse-wrap collapsed">
 
@@ -4750,9 +4727,17 @@ a.src-tag:hover{opacity:.75;}
       </div>
     </div>
 
-    <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin:0 0 16px;text-align:left;max-width:820px;margin-left:auto;margin-right:auto;">Sakshi Bhava &mdash; The State of the Witness</p>
-    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--grey);line-height:1.9;max-width:820px;margin:0 auto 24px;text-align:left;">Awareness, sustained, has a name in the tradition: <span class="gloss">Sakshi Bhava<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Sakshi Bhava">+</span><span class="gloss-pop">Literally &ldquo;the witness state&rdquo; &mdash; consciously observing one&rsquo;s own thoughts, feelings, and actions as they happen, rather than being run by them.</span></span> &mdash; being conscious of what is happening right now, inside and around you. It shows up in four places at once.</p>
-    <div class="mobile-stack-cards sakshi-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:2px;max-width:820px;margin:0 auto 40px;text-align:left;">
+    <div class="ego-sub-header" style="max-width:820px;">
+      <div class="ego-sub-header-text">
+        <h3>Sakshi Bhava &mdash; The Witness in Practice</h3>
+        <p>The state of awareness, named, shown twice over, and set against the Gita's own warning about what happens without it.</p>
+      </div>
+      <button class="collapse-toggle-btn" onclick="sectionCollapse('sakshi-bhava-detail',this)">Expand &#9660;</button>
+    </div>
+    <div id="sakshi-bhava-detail" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 48px;">
+
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--grey);line-height:1.9;margin:20px 0 24px;text-align:left;">Awareness, sustained, has a name in the tradition: <span class="gloss">Sakshi Bhava<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Sakshi Bhava">+</span><span class="gloss-pop">Literally &ldquo;the witness state&rdquo; &mdash; consciously observing one&rsquo;s own thoughts, feelings, and actions as they happen, rather than being run by them.</span></span> &mdash; being conscious of what is happening right now, inside and around you. It shows up in four places at once.</p>
+    <div class="mobile-stack-cards sakshi-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:2px;margin:0 0 40px;text-align:left;">
       <div style="padding:22px 24px;background:var(--bg);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);">
         <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;margin-bottom:10px;">Thinking</div>
         <p style="font-family:var(--serif);font-size:14.5px;color:var(--mid);line-height:1.85;">Knowing what you are thinking.</p>
@@ -4771,8 +4756,8 @@ a.src-tag:hover{opacity:.75;}
       </div>
     </div>
 
-    <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin:0 0 16px;text-align:left;max-width:820px;margin-left:auto;margin-right:auto;">Same Moment, Two Ways to Live It</p>
-    <div class="mobile-stack-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;max-width:820px;margin:0 auto 24px;text-align:left;">
+    <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin:0 0 16px;text-align:left;">Same Moment, Two Ways to Live It</p>
+    <div class="mobile-stack-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin:0 0 24px;text-align:left;">
       <div style="padding:24px 26px;background:var(--bg);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);">
         <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:10px;">Conscious, Not Aware</div>
         <p style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.9;">You come home irritated, snap at someone, and scroll for an hour without knowing why any of it happened. The lights were on. Nobody was watching.</p>
@@ -4783,48 +4768,49 @@ a.src-tag:hover{opacity:.75;}
       </div>
     </div>
 
-    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:24px 28px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg-lift);text-align:left;max-width:820px;margin:32px auto 24px;">&ldquo;When awareness is there, choices are wise. When awareness is absent, mistakes happen.&rdquo; <span style="color:var(--grey);font-style:normal;">&mdash; Bhagavad Gita</span></p>
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:24px 28px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg-lift);text-align:left;margin:32px 0 24px;">&ldquo;When awareness is there, choices are wise. When awareness is absent, mistakes happen.&rdquo; <span style="color:var(--grey);font-style:normal;">&mdash; Bhagavad Gita</span></p>
 
-        <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin:0 0 16px;text-align:left;max-width:820px;margin-left:auto;margin-right:auto;">The Two States of Being, Side by Side</p>
-    <div class="self-table-wrap" style="max-width:820px;margin:0 auto 8px;">
-      <table class="self-table states-table">
-        <thead>
-          <tr>
-            <th style="width:50%;">The Automatic Life</th>
-            <th style="width:50%;color:var(--gold);opacity:.9;">The Conscious Life</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td style="color:var(--grey);">Acts automatically</td>
-            <td class="bright">Acts consciously</td>
-          </tr>
-          <tr>
-            <td style="color:var(--grey);">Lost in thought</td>
-            <td class="bright">Observing thought</td>
-          </tr>
-          <tr>
-            <td style="color:var(--grey);">Reactionary</td>
-            <td class="bright">Intentional</td>
-          </tr>
-          <tr class="gold-row">
-            <td class="row-label">Mistakes happen</td>
-            <td class="row-label gold">Choices are wise</td>
-          </tr>
-        </tbody>
-      </table>
+    <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin:0 0 16px;text-align:left;">The Two States of Being, Side by Side</p>
+    <div class="mobile-stack-cards states-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin:0 0 40px;text-align:left;">
+      <div style="padding:24px 26px;background:var(--bg);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:6px;">The Automatic Life</div>
+        <ul style="margin:0;padding:0;list-style:none;">
+          <li style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.6;padding:10px 0;border-top:1px solid #3d3d3d;">Acts automatically</li>
+          <li style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.6;padding:10px 0;border-top:1px solid #3d3d3d;">Lost in thought</li>
+          <li style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.6;padding:10px 0;border-top:1px solid #3d3d3d;">Reactionary</li>
+          <li style="font-family:var(--sans);font-size:10.5px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);padding:14px 0 0;border-top:1px solid #3d3d3d;margin-top:2px;">Mistakes happen</li>
+        </ul>
+      </div>
+      <div style="padding:24px 26px;background:var(--bg);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);border-left:2px solid var(--gold);">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;margin-bottom:6px;">The Conscious Life</div>
+        <ul style="margin:0;padding:0;list-style:none;">
+          <li style="font-family:var(--serif);font-size:14.5px;color:var(--white);line-height:1.6;padding:10px 0;border-top:1px solid rgba(var(--accent-gold-rgb),0.22);">Acts consciously</li>
+          <li style="font-family:var(--serif);font-size:14.5px;color:var(--white);line-height:1.6;padding:10px 0;border-top:1px solid rgba(var(--accent-gold-rgb),0.22);">Observing thought</li>
+          <li style="font-family:var(--serif);font-size:14.5px;color:var(--white);line-height:1.6;padding:10px 0;border-top:1px solid rgba(var(--accent-gold-rgb),0.22);">Intentional</li>
+          <li style="font-family:var(--sans);font-size:10.5px;letter-spacing:1px;text-transform:uppercase;color:var(--gold);padding:14px 0 0;border-top:1px solid rgba(var(--accent-gold-rgb),0.22);margin-top:2px;">Choices are wise</li>
+        </ul>
+      </div>
     </div>
-    <p class="table-landscape-tip">⟳ Tip: turn your phone to landscape for a wider view of this table</p>
 
-    <div class="cosmo-quote" style="max-width:820px;margin:40px auto;">
+    <div class="cosmo-quote" style="margin:0;">
       <p>&ldquo;When one withdraws the senses from sense objects, as a tortoise withdraws its limbs, one&rsquo;s wisdom becomes steady.&rdquo;</p>
       <cite>&mdash; Bhagavad Gita 2.58</cite>
     </div>
 
-    <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin:48px 0 16px;text-align:left;max-width:820px;margin-left:auto;margin-right:auto;">The Field Named in Four Movements &mdash; Mandukya Upanishad</p>
-    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--grey);line-height:1.9;max-width:820px;margin:0 auto 24px;text-align:left;"><span class="gloss">AUM<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define AUM">+</span><span class="gloss-pop">The primal sound-symbol of Vedanta &mdash; A, U, and M map to waking, dreaming, and deep sleep, and the silence after the sound is Turiya, the awareness underneath all three.</span></span> is not treated as a word here. Each sound is mapped to a state you already move through daily &mdash; and what's left when the sound stops is mapped too. Not a claim to take on faith. A structure you can check against your own last twenty-four hours.</p>
+    </div>
 
-    <div class="mobile-stack-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;max-width:820px;margin:0 auto 4px;text-align:left;">
+    <div class="ego-sub-header" style="max-width:820px;">
+      <div class="ego-sub-header-text">
+        <h3>The Field Named in Four Movements &mdash; Mandukya Upanishad</h3>
+        <p><span class="gloss">AUM<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define AUM">+</span><span class="gloss-pop">The primal sound-symbol of Vedanta &mdash; A, U, and M map to waking, dreaming, and deep sleep, and the silence after the sound is Turiya, the awareness underneath all three.</span></span> mapped onto the same day you already lived today.</p>
+      </div>
+      <button class="collapse-toggle-btn" onclick="sectionCollapse('mandukya-detail',this)">Expand &#9660;</button>
+    </div>
+    <div id="mandukya-detail" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 48px;">
+
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--grey);line-height:1.9;margin:20px 0 24px;text-align:left;">AUM is not treated as a word here. Each sound is mapped to a state you already move through daily &mdash; and what's left when the sound stops is mapped too. Not a claim to take on faith. A structure you can check against your own last twenty-four hours.</p>
+
+    <div class="mobile-stack-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin:0 0 4px;text-align:left;">
       <div style="padding:22px 24px;background:var(--bg);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);">
         <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:10px;"><span class="gloss">Jagrat<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Jagrat">+</span><span class="gloss-pop">The ordinary waking state &mdash; consciousness engaged with the external, physical world through the senses.</span></span> &middot; &ldquo;A&rdquo; of AUM</div>
         <p style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.85;">Waking. Consciousness turned outward, running on the senses. Objects, other people, the material world &mdash; all felt as separate from the one perceiving them.</p>
@@ -4843,12 +4829,20 @@ a.src-tag:hover{opacity:.75;}
       </div>
     </div>
 
-    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:24px 28px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg-lift);text-align:left;max-width:820px;margin:24px auto 0;">Three states change. One doesn't. Ask which of the four you're reading this sentence from.</p>
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:24px 28px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg-lift);text-align:left;margin:24px 0 0;">Three states change. One doesn't. Ask which of the four you're reading this sentence from.</p>
 
-    <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin:48px 0 16px;text-align:left;max-width:820px;margin-left:auto;margin-right:auto;" id="state-correspondence">Same State, Two Scales</p>
-    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--grey);line-height:1.9;max-width:820px;margin:0 auto 24px;text-align:left;">The three states above weren't only ever describing you. Strip the "bound to one body" part out of each, and what's left is the same state at a scale with nothing bound to.</p>
+    </div>
 
-    <div class="self-table-wrap" style="max-width:820px;margin:0 auto 28px;">
+    <div class="ego-sub-header" style="max-width:820px;">
+      <div class="ego-sub-header-text">
+        <h3 id="state-correspondence">Same State, Two Scales</h3>
+        <p>The three states above weren't only ever describing you. Strip the "bound to one body" part out of each, and what's left is the same state at a scale with nothing bound to.</p>
+      </div>
+      <button class="collapse-toggle-btn" onclick="sectionCollapse('same-state-detail',this)">Expand &#9660;</button>
+    </div>
+    <div id="same-state-detail" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 48px;">
+
+    <div class="self-table-wrap" style="max-width:820px;margin:20px auto 28px;">
       <table class="self-table compact" style="min-width:560px;">
         <thead>
           <tr>
@@ -4877,12 +4871,20 @@ a.src-tag:hover{opacity:.75;}
       </table>
     </div>
     <p class="table-landscape-tip">⟳ Tip: turn your phone to landscape for a wider view of this table</p>
-    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--grey);line-height:1.9;max-width:820px;margin:0 auto 40px;text-align:left;">Nothing was added going down the right column. Only the limitation was removed.</p>
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--grey);line-height:1.9;margin:0;text-align:left;">Nothing was added going down the right column. Only the limitation was removed.</p>
 
-    <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin:48px 0 16px;text-align:left;max-width:820px;margin-left:auto;margin-right:auto;">Zooming Out &mdash; The Same Question, Asked of Everything</p>
-    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--grey);line-height:1.9;max-width:820px;margin:0 auto 24px;text-align:left;">This distinction is not only personal. Across life, different forms can respond, orient, intend, or reflect. Humans can notice the noticing itself.</p>
+    </div>
 
-    <div class="self-table-wrap" style="max-width:820px;margin:0 auto 28px;">
+    <div class="ego-sub-header" style="max-width:820px;">
+      <div class="ego-sub-header-text">
+        <h3>Zooming Out &mdash; The Same Question, Asked of Everything</h3>
+        <p>This distinction is not only personal. Across life, different forms can respond, orient, intend, or reflect. Humans can notice the noticing itself.</p>
+      </div>
+      <button class="collapse-toggle-btn" onclick="sectionCollapse('zooming-out-detail',this)">Expand &#9660;</button>
+    </div>
+    <div id="zooming-out-detail" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 48px;">
+
+    <div class="self-table-wrap" style="max-width:820px;margin:20px auto 28px;">
       <table class="self-table compact" style="min-width:560px;">
         <thead>
           <tr>
@@ -4902,10 +4904,20 @@ a.src-tag:hover{opacity:.75;}
     </div>
     <p class="table-landscape-tip">⟳ Tip: turn your phone to landscape for a wider view of this table</p>
 
-    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--grey);line-height:1.9;max-width:820px;margin:0 auto 40px;text-align:left;">Altitude five is a capacity, not a permanent address. Most of most days, most people still run on altitude one or two &mdash; reacting, orienting, no one home watching it happen. The practice was never becoming capable of more. That capacity was never in question. <span style="color:var(--gold);font-style:italic;">It&rsquo;s noticing which altitude you&rsquo;re actually standing on, right now.</span></p>
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--grey);line-height:1.9;margin:0;text-align:left;">Altitude five is a capacity, not a permanent address. Most of most days, most people still run on altitude one or two &mdash; reacting, orienting, no one home watching it happen. The practice was never becoming capable of more. That capacity was never in question. <span style="color:var(--gold);font-style:italic;">It&rsquo;s noticing which altitude you&rsquo;re actually standing on, right now.</span></p>
 
-    <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin:48px 0 16px;text-align:left;max-width:820px;margin-left:auto;margin-right:auto;">The Ceiling of Contribution &mdash; Three Tiers</p>
-    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--grey);line-height:1.9;max-width:820px;margin:0 auto 24px;text-align:left;">This distinction is not only personal, either. Each person can only contribute to this world at the level of their own consciousness. A mind still running on the Default OS &mdash; reacting from fear, ego, and conditioning &mdash; can only output more of the same into the world, however well-intentioned. As that mind widens, what it can offer widens with it. Not more effort. <em style="color:var(--gold);">More ceiling.</em></p>
+    </div>
+
+    <div class="ego-sub-header" style="max-width:820px;">
+      <div class="ego-sub-header-text">
+        <h3>The Ceiling of Contribution &mdash; Three Tiers</h3>
+        <p>Each person can only contribute to this world at the level of their own consciousness. Not more effort. <em style="color:var(--gold);">More ceiling.</em></p>
+      </div>
+      <button class="collapse-toggle-btn" onclick="sectionCollapse('ceiling-detail',this)">Expand &#9660;</button>
+    </div>
+    <div id="ceiling-detail" class="section-collapse-wrap collapsed" style="max-width:850px;margin:0 auto 48px;">
+
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--grey);line-height:1.9;margin:20px 0 24px;text-align:left;">This distinction is not only personal, either. Each person can only contribute to this world at the level of their own consciousness. A mind still running on the Default OS &mdash; reacting from fear, ego, and conditioning &mdash; can only output more of the same into the world, however well-intentioned. As that mind widens, what it can offer widens with it. Not more effort. <em style="color:var(--gold);">More ceiling.</em></p>
     <div class="identity-grid" style="margin:0 auto 8px;max-width:850px;">
       <div class="identity-card">
         <span class="layer-tag">Tier 1 &mdash; Default OS</span>
@@ -4926,7 +4938,9 @@ a.src-tag:hover{opacity:.75;}
         <p class="practice">What it gives the world: what was not there before you arrived.</p>
       </div>
     </div>
-    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);font-style:italic;color:var(--gold);line-height:1.85;padding:24px 28px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg-lift);text-align:left;max-width:820px;margin:24px auto 0;">Your internal state moves from scarcity to abundance. Your external output moves with it &mdash; from taking, to sustaining, to giving. Raising consciousness was never separate from your contribution to the world. It was always the thing setting its size.</p>
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);font-style:italic;color:var(--gold);line-height:1.85;padding:24px 28px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg-lift);text-align:left;margin:24px 0 0;">Your internal state moves from scarcity to abundance. Your external output moves with it &mdash; from taking, to sustaining, to giving. Raising consciousness was never separate from your contribution to the world. It was always the thing setting its size.</p>
+
+    </div>
 
     <!-- Four Stages of Ego Awareness — folded in as the closing arc: having mapped the field, the witness, and what it's worth to the world, this is how awareness of the mechanism itself develops. -->
     <div class="ego-sub-header" style="max-width:820px;margin:48px auto 0;">
