@@ -4808,8 +4808,37 @@ a.src-tag:hover{opacity:.75;}
 
     <div class="mobile-stack-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin:0 0 4px;text-align:left;">
       <div style="padding:22px 24px;background:var(--bg);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);">
-        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:10px;"><span class="gloss">Jagrat<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Jagrat">+</span><span class="gloss-pop">The ordinary waking state &mdash; consciousness engaged with the external, physical world through the senses.</span></span> &middot; &ldquo;A&rdquo; of AUM</div>
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:10px;">
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);"><span class="gloss">Jagrat<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Jagrat">+</span><span class="gloss-pop">The ordinary waking state &mdash; consciousness engaged with the external, physical world through the senses.</span></span> &middot; &ldquo;A&rdquo; of AUM</div>
+          <span class="gloss-btn" onclick="sectionCollapse('nineteen-mouths-content',this);this.textContent=(this.textContent.trim()==='+')?'\u2212':'+';" onkeydown="if(event.key==='Enter'){sectionCollapse('nineteen-mouths-content',this);this.textContent=(this.textContent.trim()==='+')?'\u2212':'+';}" role="button" tabindex="0" aria-label="Expand the 19 mouths of waking consciousness" style="flex:0 0 auto;border:1px solid rgba(var(--accent-gold-rgb),0.45);border-radius:50%;width:16px;height:16px;line-height:14px;text-align:center;margin-left:0;padding:0;">+</span>
+        </div>
         <p style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.85;">Waking. Consciousness turned outward, running on the senses. Objects, other people, the material world &mdash; all felt as separate from the one perceiving them.</p>
+        <div id="nineteen-mouths-content" class="section-collapse-wrap collapsed" style="margin-top:16px;">
+          <p style="font-family:var(--serif);font-size:13.5px;color:var(--mid);line-height:1.85;margin:0 0 14px;">Not one undifferentiated thing &mdash; the Mandukya calls Jagrat <span class="gloss">Ekonavimsatimukha<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Ekonavimsatimukha">+</span><span class="gloss-pop">Sanskrit for &ldquo;nineteen-mouthed&rdquo; &mdash; the Mandukya Upanishad's description of Vaisvanara, the waking self, as consuming gross objects through nineteen simultaneous channels.</span></span>, nineteen-mouthed: five senses of knowledge take experience in, five organs of action put it back out, five vital energies keep the exchange running, and four functions of the psyche process what passes through.</p>
+          <div class="identity-grid" style="margin-bottom:14px;">
+            <div class="identity-card">
+              <span class="layer-tag" style="opacity:1;"><span class="gloss">Jnana Indriyas<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Jnana Indriyas">+</span><span class="gloss-pop">Sanskrit for &ldquo;organs of knowledge&rdquo; &mdash; the five senses through which the outside world is taken in.</span></span></span>
+              <h4>Senses of Knowledge</h4>
+              <p>Seeing, hearing, smelling, tasting, touching.</p>
+            </div>
+            <div class="identity-card">
+              <span class="layer-tag" style="opacity:1;"><span class="gloss">Karma Indriyas<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Karma Indriyas">+</span><span class="gloss-pop">Sanskrit for &ldquo;organs of action&rdquo; &mdash; the five outward-facing channels through which the self acts back on the world.</span></span></span>
+              <h4>Organs of Action</h4>
+              <p>Grasping, articulating, locomotion, generating, excreting.</p>
+            </div>
+            <div class="identity-card">
+              <span class="layer-tag" style="opacity:1;"><span class="gloss">Pranas<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Pranas">+</span><span class="gloss-pop">The five vital energies that keep the exchange between the senses and the organs of action running at all.</span></span></span>
+              <h4>Vital Energies</h4>
+              <p>Prana, Apana, Vyana, Samana, Udana.</p>
+            </div>
+            <div class="identity-card">
+              <span class="layer-tag" style="opacity:1;"><span class="gloss">Antahkarana<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Antahkarana">+</span><span class="gloss-pop">Sanskrit for &ldquo;the inner instrument&rdquo; &mdash; the fourfold psyche that processes what the other fifteen mouths take in and put out.</span></span></span>
+              <h4>The Psyche</h4>
+              <p>Manas (indeterminate awareness), Buddhi (logical determination), Ahamkara (ego and affirmation), Chitta (subconscious memory).</p>
+            </div>
+          </div>
+          <p style="font-family:var(--serif);font-size:13.5px;font-style:italic;color:var(--gold);line-height:1.8;padding:14px 16px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg);margin:0;">We feel secure because these nineteen media operate simultaneously to anchor us in external reality. Dream, deep sleep, and Turiya are what's left as they, one by one, stop being fed.</p>
+        </div>
       </div>
       <div style="padding:22px 24px;background:var(--bg);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);">
         <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:10px;"><span class="gloss">Svapna<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Svapna">+</span><span class="gloss-pop">The dream state &mdash; consciousness turned inward, generating its own world out of memory and imagination while the body rests.</span></span> &middot; &ldquo;U&rdquo; of AUM</div>
@@ -4826,40 +4855,6 @@ a.src-tag:hover{opacity:.75;}
     </div>
 
     <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:24px 28px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg-lift);text-align:left;margin:24px 0 0;">Three states change. One doesn't. Ask which of the four you're reading this sentence from.</p>
-
-    <div class="ego-sub-header gf-sub-header nested-sub-header" style="max-width:820px;">
-      <div class="ego-sub-header-text">
-        <h3 id="nineteen-mouths" style="scroll-margin-top:56px;">The 19 Mouths of Waking Consciousness</h3>
-        <p>Jagrat, above, isn&rsquo;t one undifferentiated thing &mdash; how the human system mathematically consumes objective experience</p>
-      </div>
-      <button class="collapse-toggle-btn" onclick="sectionCollapse('nineteen-mouths-content',this)">Expand &#9660;</button>
-    </div>
-    <div id="nineteen-mouths-content" class="section-collapse-wrap collapsed" style="max-width:820px;margin:20px auto 0;">
-      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin:0 0 24px;text-align:left;">Waking, above, is consciousness turned outward and running on the senses &mdash; but that's not a single channel. It runs through nineteen concrete ones at once: <span class="gloss">Ekonavimsatimukha<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Ekonavimsatimukha">+</span><span class="gloss-pop">Sanskrit for &ldquo;nineteen-mouthed&rdquo; &mdash; the Mandukya Upanishad's description of Vaisvanara, the waking self, as consuming gross objects through nineteen simultaneous channels.</span></span>, the Mandukya calls this same Jagrat &mdash; nineteen-mouthed. Five senses of knowledge take experience in, five organs of action put it back out, five vital energies keep the whole exchange running, and four functions of the psyche process what passes through. It's why waking reality feels so solid: nineteen doors, all open, all anchoring you to the outside at once.</p>
-      <div class="identity-grid" style="margin-bottom:24px;">
-        <div class="identity-card">
-          <span class="layer-tag" style="opacity:1;">Quadrant 1 &middot; <span class="gloss">Jnana Indriyas<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Jnana Indriyas">+</span><span class="gloss-pop">Sanskrit for &ldquo;organs of knowledge&rdquo; &mdash; the five senses through which the outside world is taken in.</span></span></span>
-          <h4>Senses of Knowledge</h4>
-          <p>Seeing, hearing, smelling, tasting, touching &mdash; the five inward-facing doors through which objective experience first arrives.</p>
-        </div>
-        <div class="identity-card">
-          <span class="layer-tag" style="opacity:1;">Quadrant 2 &middot; <span class="gloss">Karma Indriyas<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Karma Indriyas">+</span><span class="gloss-pop">Sanskrit for &ldquo;organs of action&rdquo; &mdash; the five outward-facing channels through which the self acts back on the world.</span></span></span>
-          <h4>Organs of Action</h4>
-          <p>Grasping, articulating, locomotion, generating, excreting &mdash; the five outward-facing doors through which the self answers the world back.</p>
-        </div>
-        <div class="identity-card">
-          <span class="layer-tag" style="opacity:1;">Quadrant 3 &middot; <span class="gloss">Pranas<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Pranas">+</span><span class="gloss-pop">The five vital energies that keep the exchange between the senses and the organs of action running at all.</span></span></span>
-          <h4>Vital Energies</h4>
-          <p>Prana, Apana, Vyana, Samana, Udana &mdash; the five currents that keep intake, output, circulation, digestion, and elimination all running underneath the other fourteen mouths.</p>
-        </div>
-        <div class="identity-card">
-          <span class="layer-tag" style="opacity:1;">Quadrant 4 &middot; <span class="gloss">Antahkarana<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Antahkarana">+</span><span class="gloss-pop">Sanskrit for &ldquo;the inner instrument&rdquo; &mdash; the fourfold psyche that processes what the other fifteen mouths take in and put out.</span></span></span>
-          <h4>The Psyche</h4>
-          <p>Manas (indeterminate awareness), Buddhi (logical determination), Ahamkara (ego and affirmation), Chitta (subconscious memory) &mdash; Antahkarana, broken into its four working parts.</p>
-        </div>
-      </div>
-      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:20px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg);max-width:820px;margin:0 auto;">We feel secure because these nineteen media operate simultaneously to anchor us in external reality. Every other state above &mdash; dream, deep sleep, Turiya &mdash; is what's left as these nineteen mouths, one by one, stop being fed.</p>
-    </div>
 
     </div>
 
