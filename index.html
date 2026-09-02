@@ -4809,7 +4809,7 @@ a.src-tag:hover{opacity:.75;}
 
     <p style="font-family:var(--sans);font-size:11px;letter-spacing:.3px;color:var(--dim);margin:0 0 16px;text-align:left;"><span class="gloss-btn" style="display:inline-block;border:1px solid rgba(var(--accent-gold-rgb),0.45);border-radius:50%;width:14px;height:14px;line-height:12px;text-align:center;margin:0 5px 0 0;padding:0;vertical-align:-2px;">+</span>in a circle expands more on that card, in place.</p>
 
-    <div class="mobile-stack-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin:0 0 4px;text-align:left;">
+    <div class="mobile-stack-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin:0 0 4px;text-align:left;align-items:start;">
       <div style="padding:22px 24px;background:var(--bg);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);">
         <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:10px;">
           <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);"><span class="gloss">Jagrat<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Jagrat">+</span><span class="gloss-pop">The ordinary waking state &mdash; consciousness engaged with the external, physical world through the senses.</span></span> &middot; &ldquo;A&rdquo; of AUM</div>
@@ -11414,7 +11414,10 @@ function resetNestedToggles(wrap){
   wrap.querySelectorAll('.section-collapse-wrap:not(.collapsed)').forEach(function(sub){
     sub.classList.add('collapsed');
     var subBtn=document.querySelector('[onclick*="sectionCollapse(\'' + sub.id + '\'"]');
-    if(subBtn) subBtn.innerHTML=subBtn.innerHTML.replace('Collapse','Expand').replace('▲','▼').replace('&#9650;','&#9660;');
+    if(subBtn){
+      if(subBtn.textContent.trim()==='\u2212'){ subBtn.textContent='+'; }
+      else{ subBtn.innerHTML=subBtn.innerHTML.replace('Collapse','Expand').replace('▲','▼').replace('&#9650;','&#9660;'); }
+    }
   });
   // Glossary: a search filter left active (query text, hidden non-matching
   // categories/entries) should not survive the section being closed and
