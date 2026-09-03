@@ -382,7 +382,7 @@ body{
 #masterMatrixTable td.col-meta{
   font-family:var(--sans) !important;
   font-size:9px !important;
-  font-weight:400 !important;
+  font-weight:inherit !important;
   text-transform:uppercase !important;
   letter-spacing:2px !important;
 }
@@ -407,7 +407,7 @@ body{
 #masterMatrixTable td.col-grid{
   font-family:var(--sans) !important;
   font-size:9px !important;
-  font-weight:400 !important;
+  font-weight:inherit !important;
   text-transform:uppercase !important;
   letter-spacing:2px !important;
 }
@@ -444,7 +444,7 @@ body{
   font-weight:700 !important;
 }
 #masterMatrixTable td{
-  font-weight:400 !important;
+  font-weight:300 !important;
 }
 #masterMatrixTable td.row-label,
 #masterMatrixTable td.row-label span{
@@ -717,9 +717,9 @@ body{
 [data-theme="light"] th .col-title{font-weight:inherit !important;}
 [data-theme="light"] .phil-line{font-weight:500 !important;color:var(--text-body) !important;}
 [data-theme="light"] .phil-line.dim{color:var(--grey) !important;}
-[data-theme="light"] .symptoms-block p:not(.small){color:var(--text-body) !important;font-weight:400 !important;}
+[data-theme="light"] .symptoms-block p:not(.small){color:var(--text-body) !important;font-weight:inherit !important;}
 [data-theme="light"] .symptoms-block p.gold:not(.small){color:var(--accent-gold) !important;}
-[data-theme="light"] .symptoms-block p.small{color:var(--grey) !important;font-weight:400 !important;}
+[data-theme="light"] .symptoms-block p.small{color:var(--grey) !important;font-weight:inherit !important;}
 [data-theme="light"] .faq-a-inner{color:var(--text-body) !important;font-weight:400 !important;}
 [data-theme="light"] .framework-card p{color:var(--text-mid) !important;font-weight:400 !important;}
 [data-theme="light"] .pillar-card .p-body{color:var(--text-mid) !important;font-weight:400 !important;}
@@ -1641,7 +1641,7 @@ section{scroll-margin-top:56px;}
 .symptoms-block-box{max-width:660px;margin:0 auto;padding:44px 40px;border:1.5px solid rgba(var(--accent-gold-rgb),0.55);background:var(--bg-lift);position:relative;}
 .symptoms-block-box::before{content:'';position:absolute;top:-1px;left:-1px;width:20px;height:20px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);}
 .symptoms-block-box::after{content:'';position:absolute;bottom:-1px;right:-1px;width:20px;height:20px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);}
-.symptoms-block p{font-size:clamp(18px,2.8vw,28px);font-weight:400;color:var(--mid);line-height:1.75;margin-bottom:14px;}
+.symptoms-block p{font-size:clamp(18px,2.8vw,28px);font-weight:300;color:var(--mid);line-height:1.75;margin-bottom:14px;}
 .symptoms-block p.gold{color:var(--gold);font-style:italic;}
 .symptoms-block .small{font-size:clamp(14px,1.8vw,17px);color:var(--grey);font-style:italic;line-height:1.9;}
 
@@ -3814,7 +3814,7 @@ a.src-tag:hover{opacity:.75;}
   <section style="padding:90px 24px;background:var(--bg-lift);">
   <div class="dark-night-card" style="max-width:680px;margin:0 auto;">
     <span class="label">The Dark Night</span>
-    <p style="font-family:var(--sans);font-size:11px;letter-spacing:.5px;color:var(--dim);max-width:660px;margin:0 auto 28px;text-align:center;line-height:1.8;">This section speaks to existential ache, not diagnosable illness. If what you&rsquo;re carrying includes persistent depression, trauma, or thoughts of harming yourself, please treat that clinically first &mdash; see the <a href="#disclaimer" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">full note on care</a>.</p>
+    <p style="font-family:var(--sans);font-size:10px;letter-spacing:.5px;color:var(--dim);max-width:600px;margin:0 auto 28px;text-align:center;line-height:1.8;">This section speaks to existential ache, not diagnosable illness. If what you&rsquo;re carrying includes persistent depression, trauma, or thoughts of harming yourself, please treat that clinically first &mdash; see the <a href="#disclaimer" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">full note on care</a>.</p>
     <div class="pull-quote" style="margin-bottom:36px;border:1px solid rgba(var(--accent-gold-rgb),0.45);border-left:3px solid var(--gold);padding:36px 40px;">
       <p>&ldquo;It is not a breakdown. It is a breakthrough wearing a disguise.&rdquo;</p>
       <cite>The universal initiation no tradition calls optional</cite>
@@ -3981,7 +3981,7 @@ a.src-tag:hover{opacity:.75;}
 <section class="section-wide" id="framework">
   <span class="label">The Framework</span>
   <p class="phil-line bright">The *SELF operating system. Eight layers.</p>
-  <div class="cosmo-quote" style="max-width:850px;margin:0 auto 36px;">
+  <div class="cosmo-quote" style="max-width:660px;margin:0 auto 36px;">
     <p>&ldquo;Until you make the unconscious conscious, it will direct your life and you will call it fate.&rdquo;</p>
     <cite>&mdash; Carl Jung</cite>
   </div>
@@ -4102,14 +4102,14 @@ a.src-tag:hover{opacity:.75;}
     </div>
   </div>
 
-  <div class="superordinate-box" style="border-right:4px solid var(--gold);text-align:left;position:relative;margin:32px auto 0;max-width:900px;">
+  <div class="superordinate-box" style="border-right:4px solid var(--gold);text-align:left;position:relative;margin:32px auto 0;max-width:820px;">
     <div style="position:absolute;top:-1px;left:-1px;width:18px;height:18px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);"></div>
     <div style="position:absolute;bottom:-1px;right:-1px;width:18px;height:18px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);"></div>
     <p style="font-size:clamp(15.5px,2vw,18px);color:var(--white);line-height:1.9;margin-bottom:14px;">An eye lights up an entire room and can't see itself doing it. A candle can't illuminate the sun. That's the actual shape of the problem &mdash; not that the Self is hidden somewhere far off, but that it's the one thing perception and inference were never aimed at, because both require standing apart from what they examine, and there's no standing apart from this.</p>
     <p style="font-size:clamp(15px,1.9vw,17px);color:var(--gold);line-height:1.9;margin:0;font-style:italic;">A mirror doesn't invent the face looking into it. It only clears what was fogging the glass.</p>
   </div>
 
-  <p style="font-family:var(--serif);font-size:14.5px;color:var(--dim);line-height:1.9;max-width:900px;margin:24px auto 0;text-align:left;">Nothing below asks to be taken on faith instead of checked. Test it against what you actually find when you look &mdash; that's the only lab this ever ran in.</p>
+  <p style="font-family:var(--serif);font-size:14.5px;color:var(--dim);line-height:1.9;max-width:720px;margin:24px auto 0;text-align:left;">Nothing below asks to be taken on faith instead of checked. Test it against what you actually find when you look &mdash; that's the only lab this ever ran in.</p>
 </section>
 <span class="continue-hint">continue</span>
 <div class="divider"></div>
@@ -4120,14 +4120,14 @@ a.src-tag:hover{opacity:.75;}
   <span class="label">Beneath the Screen</span>
   <p class="phil-line bright">Three grades of &ldquo;real.&rdquo; Most people only use two.</p>
 
-  <div class="cosmo-quote" style="max-width:820px;margin:0 auto 36px;">
+  <div class="cosmo-quote" style="max-width:660px;margin:0 auto 36px;">
     <p>&ldquo;What cancels a dream is waking up. Nothing has ever cancelled waking up.&rdquo;</p>
     <cite>&mdash; the logic behind Satta Traya</cite>
   </div>
 
-  <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.95;max-width:820px;margin:0 auto 28px;text-align:left;">A dream feels total while it is running. Waking up does not add anything to disprove it &mdash; it just turns out to have been resting on something steadier. Vedanta says the waking world you are in right now works the same way, one level down. Not fake. Not final either.</p>
+  <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.95;max-width:720px;margin:0 auto 28px;text-align:left;">A dream feels total while it is running. Waking up does not add anything to disprove it &mdash; it just turns out to have been resting on something steadier. Vedanta says the waking world you are in right now works the same way, one level down. Not fake. Not final either.</p>
 
-  <div style="max-width:820px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2px;text-align:left;">
+  <div style="max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2px;text-align:left;">
     <div class="sl-stage">
       <span class="sl-num"><span class="gloss">Pratibhasika<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Pratibhasika">+</span><span class="gloss-pop">The apparent order of reality &mdash; purely subjective, cancelled the moment its private condition ends.</span></span></span>
       <div class="sl-name" style="font-size:15px;">The Apparent</div>
