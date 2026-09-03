@@ -1983,6 +1983,26 @@ section{scroll-margin-top:56px;}
 .sl-stage.danger .sl-num{color:#c0392b;opacity:.8;}
 .sl-stage.sl-stage-now{border-color:rgba(var(--accent-gold-rgb),0.85);}
 
+/* ── ROOT DIAGNOSIS (5-STEP SAMSARA GRID): 2 cards on row one, 3 on row
+   two, desktop only — a fixed 6-column track with explicit spans instead
+   of the usual auto-fit reflow, since 5 items can't split 2/3 on their
+   own. Falls back to single column below the site's mobile breakpoint. ── */
+@media(min-width:641px){
+  .root-diag-grid{grid-template-columns:repeat(6,1fr) !important;}
+  .root-diag-grid .sl-stage:nth-child(1),
+  .root-diag-grid .sl-stage:nth-child(2){grid-column:span 3;}
+  .root-diag-grid .sl-stage:nth-child(3),
+  .root-diag-grid .sl-stage:nth-child(4),
+  .root-diag-grid .sl-stage:nth-child(5){grid-column:span 2;}
+}
+
+/* ── "BEFORE THE INQUIRY CAN BEGIN" (SADHANA CHATUSHTAYA) GRID: match the
+   body text / pull-quote width, and pack the 4 cards 2-per-row on desktop
+   instead of the framework-grid default (which fits 3 across at 900px). ── */
+@media(min-width:641px){
+  #qualified-seeker .framework-grid{max-width:900px;grid-template-columns:repeat(2,1fr) !important;}
+}
+
 /* ── FEEDBACK LOOP CHECKLIST ─────────────────────────────────────────────── */
 .fl-item{display:flex;align-items:flex-start;gap:14px;padding:16px 14px;border-bottom:1px solid rgba(var(--accent-gold-rgb),0.28);cursor:pointer;font-family:var(--serif);font-size:clamp(15px,1.9vw,17px);color:var(--mid);line-height:1.6;transition:color .2s;}
 .fl-item:last-child{border-bottom:none;}
@@ -4085,7 +4105,7 @@ a.src-tag:hover{opacity:.75;}
 
   <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.95;max-width:900px;margin:0 auto 28px;text-align:left;">The Veda's diagnosis of the human condition isn't circumstantial &mdash; a bad job, a bad year, a bad relationship. It's structural. <span class="gloss">Samsara<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Samsara">+</span><span class="gloss-pop">The cycle of birth, death, and rebirth &mdash; the ceaseless churn of conditioned existence every layer below the Self remains bound to.</span></span> isn't only the biological wheel of birth and death. It's a five-step engine, cycling underneath an ordinary Tuesday, that manufactures the felt sense of incompleteness fresh every day &mdash; and then hands you the bill for trying to fix it from the wrong end.</p>
 
-  <div style="max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:2px;text-align:left;">
+  <div class="root-diag-grid" style="max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:2px;text-align:left;">
     <div class="sl-stage">
       <span class="sl-num">1</span>
       <div class="sl-name" style="font-size:15px;"><span class="gloss">Avidya<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Avidya">+</span><span class="gloss-pop">Literally &ldquo;not-seeing&rdquo; &mdash; the root ignorance that mistakes the temporary, changing self for the true, unchanging one.</span></span></div>
@@ -4135,17 +4155,17 @@ a.src-tag:hover{opacity:.75;}
   <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.95;max-width:900px;margin:0 auto 28px;text-align:left;">Vedic inquiry is not withheld out of secrecy. It's withheld the way a fire is withheld from wet wood &mdash; not as punishment, but as physics. An undisciplined mind can be shown the truth directly and still not catch it, the same way a wet matchstick can be struck against the truth itself and still not light. <span class="gloss">Sadhana Chatushtaya<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Sadhana Chatushtaya">+</span><span class="gloss-pop">The &ldquo;four means of practice&rdquo; &mdash; the traditional set of qualifications said to prepare a mind for Vedantic inquiry, without which the teaching has nothing to take hold of.</span></span> is the drying process. Four qualifications, each building on the last.</p>
 
   <div class="framework-grid">
-    <div class="framework-card">
+    <div class="framework-card collapsed">
       <span class="num">01</span>
       <h3>Viveka</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Discrimination &mdash; the base of the pyramid</p><div class="framework-content">
       <p>The capacity to tell the <span class="gloss">Nitya<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Nitya">+</span><span class="gloss-pop">The eternal &mdash; what does not come and go, was not born and does not end.</span></span> from the <span class="gloss">Anitya<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Anitya">+</span><span class="gloss-pop">The ephemeral &mdash; whatever begins, changes, and ends, however long the timescale.</span></span> &mdash; the changeless from the changing. Not a mystical skill: the ordinary discernment that a promotion, a relationship, even a good decade, is not built to outlast time, and that something in you evidently is (it's the one noticing all of the above come and go).</p>
     </div></div>
-    <div class="framework-card">
+    <div class="framework-card collapsed">
       <span class="num">02</span>
       <h3>Vairagya</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Dispassion &mdash; the second tier</p><div class="framework-content">
       <p>Calm, mature renunciation of dependency on the ephemeral &mdash; not white-knuckled abstinence, and not a forced move to a cave. It's what naturally follows real Viveka: once something is clearly seen as temporary, leaning on it for permanent peace stops making sense, the way leaning a ladder against smoke stops making sense.</p>
     </div></div>
-    <div class="framework-card">
+    <div class="framework-card collapsed">
       <span class="num">03</span>
       <h3><span class="gloss">Shatsampatti<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Shatsampatti">+</span><span class="gloss-pop">Literally &ldquo;the six treasures&rdquo; &mdash; a set of six inner disciplines, traditionally grouped between Vairagya and Mumukshutvam, that stabilize the mind for inquiry.</span></span></h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">The Six Treasures &mdash; the third tier</p><div class="framework-content">
       <p>Mental and emotional discipline, in six parts:</p>
@@ -4158,7 +4178,7 @@ a.src-tag:hover{opacity:.75;}
         <div class="sl-stage"><span class="sl-num"><span class="gloss">Samadhana<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Samadhana">+</span><span class="gloss-pop">One-pointed concentration &mdash; the capacity to hold attention steady on the inquiry itself, rather than letting it scatter.</span></span></span><div class="sl-name" style="font-size:14px;">Samadhana</div><p class="sl-desc">One-pointed focus.</p></div>
       </div>
     </div></div>
-    <div class="framework-card" id="mumukshutvam-card">
+    <div class="framework-card collapsed" id="mumukshutvam-card">
       <span class="num">04</span>
       <h3><span class="gloss">Mumukshutvam<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Mumukshutvam">+</span><span class="gloss-pop">The burning desire for liberation &mdash; not curiosity about liberation, but the same intensity of wanting normally reserved for survival.</span></span></h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Burning desire for liberation &mdash; the apex</p><div class="framework-content">
       <p>Relentless, single-minded focus for <span class="gloss">Moksha<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Moksha">+</span><span class="gloss-pop">Liberation &mdash; release from the cycle of Samsara through the correct recognition of one's true nature, not through any change to circumstance.</span></span>. The first three qualifications dry the wood. This is the spark that actually needs somewhere dry to land &mdash; without it, a perfectly disciplined mind can still sit indefinitely, never striking the match.</p>
