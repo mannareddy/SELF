@@ -783,6 +783,7 @@ body{
 [data-theme="light"] .mnav-list>li>a,[data-theme="light"] .mnav-group-toggle{color:var(--gold) !important;}
 [data-theme="light"] .mnav-group-panel a{color:var(--text-nav) !important;border-color:rgba(var(--shadow-rgb),0.24) !important;}
 [data-theme="light"] .mnav-group-panel a:hover{color:var(--accent-gold) !important;}
+[data-theme="light"] .mnav-subgroup-toggle{color:var(--gold) !important;}
 [data-theme="light"] .mnav-list a.active{color:var(--accent-gold) !important;}
 
 /* Light: section backgrounds */
@@ -1211,9 +1212,18 @@ a:hover{opacity:.7;}
   .nav-dropdown-panel-l1{overflow:visible !important;}
   .nav-subgroup{position:relative;}
   .nav-group-trigger{
-    cursor:default;display:flex !important;align-items:center;justify-content:space-between;gap:8px;
+    cursor:default;display:flex !important;align-items:flex-start;justify-content:space-between;gap:8px;
   }
-  .nav-group-trigger .flyout-caret{font-size:10px;opacity:.6;}
+  /* Long headers (e.g. "The Vedantic Architecture") wrap onto two lines
+     inside the ~230–300px panel. Without an explicit flex-basis on the
+     text, the browser's anonymous-flex-item sizing for a bare text node
+     is unreliable next to a sibling <span> — the caret was being pushed
+     out past the panel edge and effectively disappearing instead of
+     wrapping cleanly under the caret. Wrapping the label text in its own
+     span with flex:1/min-width:0 lets it wrap normally within its own
+     column while the caret keeps a fixed slot on the right. */
+  .nav-group-trigger .trigger-label-text{flex:1 1 auto;min-width:0;}
+  .nav-group-trigger .flyout-caret{font-size:10px;opacity:.6;flex:0 0 auto;margin-top:2px;}
   .nav-flyout-panel{
     display:flex;flex-direction:column;
     position:absolute;top:-7px;left:100%;margin-left:1px;
@@ -1447,6 +1457,39 @@ a:hover{opacity:.7;}
     color:#555;padding:13px 22px 13px 34px;border-top:1px solid #1a1a1a;font-style:italic;text-align:left;
   }
   .mnav-list a.active{color:var(--gold);}
+
+  /* ── Nested accordion (2nd level) inside mobile group panels ──
+     Mirrors the desktop flyout hierarchy (.nav-subgroup/.nav-flyout-panel)
+     so mobile gets the same Start Here / The Predicament / etc. clustering
+     as real collapsible groups, instead of flat inert section labels. */
+  .mnav-subgroup{border-top:1px solid #1a1a1a;}
+  [data-theme="light"] .mnav-subgroup{border-top-color:rgba(var(--shadow-rgb),0.2);}
+  .mnav-subgroup:first-child{border-top:none;}
+  .mnav-subgroup-toggle{
+    display:flex;align-items:flex-start;justify-content:space-between;gap:8px;width:100%;
+    font-family:var(--sans);font-size:10.5px;letter-spacing:2px;text-transform:uppercase;
+    color:var(--gold);opacity:.7;background:none;border:none;text-align:left;cursor:pointer;
+    padding:13px 22px 13px 34px;
+  }
+  .mnav-subgroup-toggle .trigger-label-text{flex:1 1 auto;min-width:0;}
+  .mnav-subgroup-toggle .mnav-caret-sm{font-size:15px;flex:0 0 auto;margin-top:1px;}
+  .mnav-subgroup-toggle[aria-expanded="true"] .mnav-caret-sm{transform:rotate(180deg);}
+  .mnav-subgroup-panel{
+    max-height:0;overflow:hidden;transition:max-height .3s ease;background:rgba(255,255,255,0.02);
+  }
+  .mnav-subgroup.open .mnav-subgroup-panel{
+    max-height:min(46vh,380px);
+    max-height:min(46svh,380px);
+    overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;
+    scrollbar-width:thin;scrollbar-color:rgba(var(--accent-gold-rgb),0.5) transparent;
+  }
+  .mnav-subgroup-panel::-webkit-scrollbar{width:4px;}
+  .mnav-subgroup-panel::-webkit-scrollbar-track{background:transparent;}
+  .mnav-subgroup-panel::-webkit-scrollbar-thumb{background:rgba(var(--accent-gold-rgb),0.5);border-radius:3px;}
+  [data-theme="light"] .mnav-subgroup-panel::-webkit-scrollbar-thumb{background:rgba(122,94,14,0.5);}
+  .mnav-subgroup-panel a{
+    padding-left:46px;font-size:14.5px;
+  }
   body.mnav-open{overflow:hidden;position:fixed;left:0;right:0;width:100%;}
 }
 
@@ -3528,21 +3571,21 @@ a.src-tag:hover{opacity:.75;}
       <a href="#framework" data-group="traditions">Traditions<span class="nav-caret">▾</span></a>
       <div class="nav-dropdown-panel nav-dropdown-panel-l1">
         <div class="nav-subgroup">
-          <div class="nav-group-label nav-group-trigger">Start Here<span class="flyout-caret">▸</span></div>
+          <div class="nav-group-label nav-group-trigger"><span class="trigger-label-text">Start Here</span><span class="flyout-caret">▸</span></div>
           <div class="nav-flyout-panel">
             <a href="#super-ordinate-goal" data-group="traditions">The Super-Ordinate Goal</a>
             <a href="#framework" data-group="traditions">Framework</a>
           </div>
         </div>
         <div class="nav-subgroup">
-          <div class="nav-group-label nav-group-trigger">The Predicament<span class="flyout-caret">▸</span></div>
+          <div class="nav-group-label nav-group-trigger"><span class="trigger-label-text">The Predicament</span><span class="flyout-caret">▸</span></div>
           <div class="nav-flyout-panel">
             <a href="#mistaken-identity" data-group="traditions">The Root Diagnosis</a>
             <a href="#qualified-seeker" data-group="traditions">Before The Inquiry Can Begin</a>
           </div>
         </div>
         <div class="nav-subgroup">
-          <div class="nav-group-label nav-group-trigger">The Vedantic Architecture<span class="flyout-caret">▸</span></div>
+          <div class="nav-group-label nav-group-trigger"><span class="trigger-label-text">The Vedantic Architecture</span><span class="flyout-caret">▸</span></div>
           <div class="nav-flyout-panel">
             <a href="#mirror-of-the-veda" data-group="traditions">The Mirror of the Veda</a>
             <a href="#orders-of-reality" data-group="traditions">Beneath the Screen</a>
@@ -3551,7 +3594,7 @@ a.src-tag:hover{opacity:.75;}
           </div>
         </div>
         <div class="nav-subgroup">
-          <div class="nav-group-label nav-group-trigger">Ego &amp; Consciousness<span class="flyout-caret">▸</span></div>
+          <div class="nav-group-label nav-group-trigger"><span class="trigger-label-text">Ego &amp; Consciousness</span><span class="flyout-caret">▸</span></div>
           <div class="nav-flyout-panel">
             <a href="#spectrum" data-group="traditions">Ascent of Self</a>
             <a href="#dimension" data-group="traditions">Matter as Dimension</a>
@@ -3565,14 +3608,14 @@ a.src-tag:hover{opacity:.75;}
           </div>
         </div>
         <div class="nav-subgroup">
-          <div class="nav-group-label nav-group-trigger">Practice &amp; Physiology<span class="flyout-caret">▸</span></div>
+          <div class="nav-group-label nav-group-trigger"><span class="trigger-label-text">Practice &amp; Physiology</span><span class="flyout-caret">▸</span></div>
           <div class="nav-flyout-panel">
             <a href="#patanjali" data-group="traditions">The Machinery of Stillness</a>
             <a href="#pranayama" data-group="traditions">Pranayama</a>
           </div>
         </div>
         <div class="nav-subgroup">
-          <div class="nav-group-label nav-group-trigger">Relationship &amp; Attention<span class="flyout-caret">▸</span></div>
+          <div class="nav-group-label nav-group-trigger"><span class="trigger-label-text">Relationship &amp; Attention</span><span class="flyout-caret">▸</span></div>
           <div class="nav-flyout-panel">
             <a href="#great-forest" data-group="traditions">The Great Forest of Being</a>
             <a href="#anatomy-of-love" data-group="traditions">The Anatomy of Love</a>
@@ -3581,7 +3624,7 @@ a.src-tag:hover{opacity:.75;}
           </div>
         </div>
         <div class="nav-subgroup">
-          <div class="nav-group-label nav-group-trigger">Reference<span class="flyout-caret">▸</span></div>
+          <div class="nav-group-label nav-group-trigger"><span class="trigger-label-text">Reference</span><span class="flyout-caret">▸</span></div>
           <div class="nav-flyout-panel">
             <a href="#master-matrix" data-group="traditions">Master Matrix</a>
             <a href="#memory-architect" data-group="traditions">Memory Architect</a>
@@ -3686,39 +3729,81 @@ a.src-tag:hover{opacity:.75;}
         Traditions <span class="mnav-caret">▾</span>
       </button>
       <div class="mnav-group-panel">
-        <div class="nav-group-label">Start Here</div>
-        <a href="#super-ordinate-goal">The Super-Ordinate Goal</a>
-        <a href="#framework">Framework</a>
-        <div class="nav-group-label">The Predicament</div>
-        <a href="#mistaken-identity">The Root Diagnosis</a>
-        <a href="#qualified-seeker">Before The Inquiry Can Begin</a>
-        <div class="nav-group-label">The Vedantic Architecture</div>
-        <a href="#mirror-of-the-veda">The Mirror of the Veda</a>
-        <a href="#orders-of-reality">Beneath the Screen</a>
-        <a href="#neti-neti-method">Neti Neti — The Method</a>
-        <a href="#tat-tvam-asi">Tat Tvam Asi</a>
-        <div class="nav-group-label">Ego &amp; Consciousness</div>
-        <a href="#spectrum">Ascent of Self</a>
-        <a href="#dimension">Matter as Dimension</a>
-        <a href="#consciousness">Consciousness &amp; Awareness</a>
-        <a href="#physical-correlate">A Note for the Skeptics</a>
-        <a href="#ego">Ego Architecture</a>
-        <a href="#five-aggregates">The Five Aggregates</a>
-        <a href="#enneagram">The Enneagram</a>
-        <a href="#rosetta-stone">Rosetta Stone of the Ego</a>
-        <a href="#forty-two">42 — The Symbol</a>
-        <div class="nav-group-label">Practice &amp; Physiology</div>
-        <a href="#patanjali">The Machinery of Stillness</a>
-        <a href="#pranayama">Pranayama</a>
-        <div class="nav-group-label">Relationship &amp; Attention</div>
-        <a href="#great-forest">The Great Forest of Being</a>
-        <a href="#anatomy-of-love">The Anatomy of Love</a>
-        <a href="#quantity-or-quality">Quantity or Quality</a>
-        <a href="#attention-currency">The Attention Economy</a>
-        <div class="nav-group-label">Reference</div>
-        <a href="#master-matrix">Master Matrix</a>
-        <a href="#memory-architect">Memory Architect</a>
-        <a href="#go-deeper">Go Deeper</a>
+        <div class="mnav-subgroup">
+          <button class="mnav-subgroup-toggle" aria-expanded="false">
+            <span class="trigger-label-text">Start Here</span><span class="mnav-caret mnav-caret-sm">▾</span>
+          </button>
+          <div class="mnav-subgroup-panel">
+            <a href="#super-ordinate-goal">The Super-Ordinate Goal</a>
+            <a href="#framework">Framework</a>
+          </div>
+        </div>
+        <div class="mnav-subgroup">
+          <button class="mnav-subgroup-toggle" aria-expanded="false">
+            <span class="trigger-label-text">The Predicament</span><span class="mnav-caret mnav-caret-sm">▾</span>
+          </button>
+          <div class="mnav-subgroup-panel">
+            <a href="#mistaken-identity">The Root Diagnosis</a>
+            <a href="#qualified-seeker">Before The Inquiry Can Begin</a>
+          </div>
+        </div>
+        <div class="mnav-subgroup">
+          <button class="mnav-subgroup-toggle" aria-expanded="false">
+            <span class="trigger-label-text">The Vedantic Architecture</span><span class="mnav-caret mnav-caret-sm">▾</span>
+          </button>
+          <div class="mnav-subgroup-panel">
+            <a href="#mirror-of-the-veda">The Mirror of the Veda</a>
+            <a href="#orders-of-reality">Beneath the Screen</a>
+            <a href="#neti-neti-method">Neti Neti — The Method</a>
+            <a href="#tat-tvam-asi">Tat Tvam Asi</a>
+          </div>
+        </div>
+        <div class="mnav-subgroup">
+          <button class="mnav-subgroup-toggle" aria-expanded="false">
+            <span class="trigger-label-text">Ego &amp; Consciousness</span><span class="mnav-caret mnav-caret-sm">▾</span>
+          </button>
+          <div class="mnav-subgroup-panel">
+            <a href="#spectrum">Ascent of Self</a>
+            <a href="#dimension">Matter as Dimension</a>
+            <a href="#consciousness">Consciousness &amp; Awareness</a>
+            <a href="#physical-correlate">A Note for the Skeptics</a>
+            <a href="#ego">Ego Architecture</a>
+            <a href="#five-aggregates">The Five Aggregates</a>
+            <a href="#enneagram">The Enneagram</a>
+            <a href="#rosetta-stone">Rosetta Stone of the Ego</a>
+            <a href="#forty-two">42 — The Symbol</a>
+          </div>
+        </div>
+        <div class="mnav-subgroup">
+          <button class="mnav-subgroup-toggle" aria-expanded="false">
+            <span class="trigger-label-text">Practice &amp; Physiology</span><span class="mnav-caret mnav-caret-sm">▾</span>
+          </button>
+          <div class="mnav-subgroup-panel">
+            <a href="#patanjali">The Machinery of Stillness</a>
+            <a href="#pranayama">Pranayama</a>
+          </div>
+        </div>
+        <div class="mnav-subgroup">
+          <button class="mnav-subgroup-toggle" aria-expanded="false">
+            <span class="trigger-label-text">Relationship &amp; Attention</span><span class="mnav-caret mnav-caret-sm">▾</span>
+          </button>
+          <div class="mnav-subgroup-panel">
+            <a href="#great-forest">The Great Forest of Being</a>
+            <a href="#anatomy-of-love">The Anatomy of Love</a>
+            <a href="#quantity-or-quality">Quantity or Quality</a>
+            <a href="#attention-currency">The Attention Economy</a>
+          </div>
+        </div>
+        <div class="mnav-subgroup">
+          <button class="mnav-subgroup-toggle" aria-expanded="false">
+            <span class="trigger-label-text">Reference</span><span class="mnav-caret mnav-caret-sm">▾</span>
+          </button>
+          <div class="mnav-subgroup-panel">
+            <a href="#master-matrix">Master Matrix</a>
+            <a href="#memory-architect">Memory Architect</a>
+            <a href="#go-deeper">Go Deeper</a>
+          </div>
+        </div>
       </div>
     </li>
 
@@ -11601,6 +11686,13 @@ function updateNav(){
         var t = g.querySelector('.mnav-group-toggle');
         if(t) t.setAttribute('aria-expanded','false');
       });
+      // Same reset, one level deeper — nested subgroups (e.g. inside
+      // Traditions) shouldn't stay expanded either when the panel re-opens.
+      panel.querySelectorAll('.mnav-subgroup.open').forEach(function(sg){
+        sg.classList.remove('open');
+        var st = sg.querySelector('.mnav-subgroup-toggle');
+        if(st) st.setAttribute('aria-expanded','false');
+      });
     }
 
     toggle.addEventListener('click', function(e){
@@ -11618,6 +11710,13 @@ function updateNav(){
           if(g !== group && g.classList.contains('open')) hadOtherOpen = true;
           g.classList.remove('open');
           g.querySelector('.mnav-group-toggle').setAttribute('aria-expanded','false');
+          // Collapse any nested subgroup too, whichever top-level group it
+          // belongs to (including this one, if it's being closed).
+          g.querySelectorAll('.mnav-subgroup.open').forEach(function(sg){
+            sg.classList.remove('open');
+            var st = sg.querySelector('.mnav-subgroup-toggle');
+            if(st) st.setAttribute('aria-expanded','false');
+          });
         });
         if(!isOpen){
           group.classList.add('open');
@@ -11640,6 +11739,29 @@ function updateNav(){
           setTimeout(function(){
             btn.scrollIntoView({block:'start', behavior:'smooth'});
           }, delay);
+        }
+      });
+    });
+
+    // Nested accordion toggles (e.g. Start Here / The Predicament inside
+    // Traditions) — one open at a time within their own parent group panel,
+    // independent of the top-level groups.
+    panel.querySelectorAll('.mnav-subgroup-toggle').forEach(function(btn){
+      btn.addEventListener('click', function(e){
+        e.stopPropagation();
+        var subgroup   = this.closest('.mnav-subgroup');
+        var groupPanel = this.closest('.mnav-group-panel');
+        var isOpen     = subgroup.classList.contains('open');
+        groupPanel.querySelectorAll('.mnav-subgroup').forEach(function(sg){
+          sg.classList.remove('open');
+          sg.querySelector('.mnav-subgroup-toggle').setAttribute('aria-expanded','false');
+        });
+        if(!isOpen){
+          subgroup.classList.add('open');
+          btn.setAttribute('aria-expanded','true');
+          setTimeout(function(){
+            btn.scrollIntoView({block:'start', behavior:'smooth'});
+          }, 60);
         }
       });
     });
