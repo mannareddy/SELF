@@ -1123,6 +1123,24 @@ a:hover{opacity:.7;}
 }
 .nav-group-label:first-child{border-top:none;padding-top:10px;}
 
+/* Nested drill-down subgroup (mobile only) — replaces the old flat
+   "label + 25 links" list inside Traditions with a second accordion level:
+   tap a category to reveal just its links, collapsing any other open
+   category. Desktop keeps the flat .nav-dropdown-panel list untouched. */
+.mnav-subgroup-toggle{
+  display:flex;align-items:center;justify-content:space-between;width:100%;
+  font-family:var(--sans);font-size:10.5px;letter-spacing:1.8px;text-transform:uppercase;
+  color:var(--gold);opacity:.85;background:none;border:none;text-align:left;cursor:pointer;
+  padding:14px 22px;border-top:1px solid rgba(var(--accent-gold-rgb),0.18);
+}
+.mnav-subgroup:first-child .mnav-subgroup-toggle{border-top:none;}
+.mnav-subgroup-caret{font-size:14px;margin-left:8px;transition:transform .25s ease;display:inline-block;}
+.mnav-subgroup-toggle[aria-expanded="true"] .mnav-subgroup-caret{transform:rotate(180deg);}
+.mnav-subgroup-toggle[aria-expanded="true"]{opacity:1;}
+.mnav-subgroup-panel{max-height:0;overflow:hidden;transition:max-height .3s ease;}
+.mnav-subgroup.open .mnav-subgroup-panel{max-height:1200px;}
+.mnav-subgroup-panel a{padding-left:40px !important;}
+
 .nav-caret{font-size:17px;margin-left:6px;opacity:.9;position:relative;top:-1px;}
 .mnav-caret{font-size:26px;margin-left:7px;opacity:.9;transition:transform .25s ease;display:inline-block;}
 .mnav-new-badge{color:var(--gold);font-size:8px;margin-left:3px;}
@@ -1203,6 +1221,47 @@ a:hover{opacity:.7;}
     padding:11px 22px !important;font-size:10.5px !important;letter-spacing:1.5px !important;
     line-height:1.4 !important;white-space:normal !important;text-align:left !important;color:#555;font-style:italic;cursor:default;
   }
+
+  /* Nested flyout (desktop only) — mirrors the mobile drill-down: instead
+     of a flat "label + 25 links" list, Traditions' categories are rows
+     that open a second panel to the side on hover/focus, matching the
+     mobile version's Start Here / The Predicament / etc. structure. */
+  .nav-flyout-item{position:relative;}
+  .nav-flyout-label{
+    display:flex;align-items:center;justify-content:space-between;width:100%;
+    font-family:var(--sans);font-size:9.5px;letter-spacing:2px;text-transform:uppercase;
+    color:var(--gold);opacity:.7;background:none;border:none;text-align:left;cursor:default;
+    padding:11px 22px;
+  }
+  .nav-flyout-item:hover .nav-flyout-label,
+  .nav-flyout-item:focus-within .nav-flyout-label{opacity:1;background:rgba(var(--accent-gold-rgb),0.06);}
+  .nav-flyout-caret{font-size:11px;opacity:.8;}
+  .nav-flyout-panel{
+    display:flex;flex-direction:column;
+    position:absolute;top:-7px;left:100%;margin-left:1px;
+    min-width:230px;max-width:300px;background:rgba(0,0,0,0.98);border:1px solid rgba(var(--accent-gold-rgb),0.4);
+    box-shadow:0 14px 28px rgba(0,0,0,0.5);
+    opacity:0;visibility:hidden;pointer-events:none;
+    transition:opacity .15s ease, visibility 0s ease .18s, transform .15s ease;
+    padding:6px 0;z-index:1001;
+    max-height:calc(100vh - 140px);overflow-y:auto;overscroll-behavior:contain;
+    scrollbar-width:thin;scrollbar-color:rgba(var(--accent-gold-rgb),0.5) transparent;
+  }
+  .nav-flyout-panel.flip-left{left:auto;right:100%;margin-left:0;margin-right:1px;}
+  .nav-flyout-item:hover .nav-flyout-panel,
+  .nav-flyout-item:focus-within .nav-flyout-panel{
+    opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0);
+    transition:opacity .15s ease, visibility 0s ease 0s, transform .15s ease;
+  }
+  .nav-flyout-panel a{
+    border-right:none !important;justify-content:flex-start !important;
+    padding:11px 22px !important;font-size:10.5px !important;letter-spacing:1.5px !important;
+    height:auto !important;line-height:1.4 !important;white-space:normal !important;text-align:left !important;color:var(--dim);
+  }
+  .nav-flyout-panel a:hover{color:var(--gold) !important;background:rgba(var(--accent-gold-rgb),0.06);}
+  [data-theme="light"] .nav-flyout-panel{background:rgba(245,241,232,0.98) !important;border-color:rgba(var(--accent-gold-rgb),0.35) !important;}
+  [data-theme="light"] .nav-flyout-panel a{color:var(--text-nav) !important;}
+  [data-theme="light"] .nav-flyout-panel a:hover{color:var(--accent-gold) !important;background:rgba(var(--accent-gold-rgb),0.06) !important;}
 }
 
 /* ── MOBILE (≤900px): 3-column flex nav ≡ | *SELF | ☀ ── */
@@ -3488,39 +3547,67 @@ a.src-tag:hover{opacity:.75;}
     <li class="nav-dropdown-wrap">
       <a href="#framework" data-group="traditions">Traditions<span class="nav-caret">▾</span></a>
       <div class="nav-dropdown-panel">
-        <div class="nav-group-label">Start Here</div>
-        <a href="#super-ordinate-goal" data-group="traditions">The Super-Ordinate Goal</a>
-        <a href="#framework" data-group="traditions">Framework</a>
-        <div class="nav-group-label">The Predicament</div>
-        <a href="#mistaken-identity" data-group="traditions">The Root Diagnosis</a>
-        <a href="#qualified-seeker" data-group="traditions">Before The Inquiry Can Begin</a>
-        <div class="nav-group-label">The Vedantic Architecture</div>
-        <a href="#mirror-of-the-veda" data-group="traditions">The Mirror of the Veda</a>
-        <a href="#orders-of-reality" data-group="traditions">Beneath the Screen</a>
-        <a href="#neti-neti-method" data-group="traditions">Neti Neti — The Method</a>
-        <a href="#tat-tvam-asi" data-group="traditions">Tat Tvam Asi</a>
-        <div class="nav-group-label">Ego &amp; Consciousness</div>
-        <a href="#spectrum" data-group="traditions">Ascent of Self</a>
-        <a href="#dimension" data-group="traditions">Matter as Dimension</a>
-        <a href="#consciousness" data-group="traditions">Consciousness &amp; Awareness</a>
-        <a href="#physical-correlate" data-group="traditions">A Note for the Skeptics</a>
-        <a href="#ego" data-group="traditions">Ego Architecture</a>
-        <a href="#five-aggregates" data-group="traditions">The Five Aggregates</a>
-        <a href="#enneagram" data-group="traditions">The Enneagram</a>
-        <a href="#rosetta-stone" data-group="traditions">Rosetta Stone of the Ego</a>
-        <a href="#forty-two" data-group="traditions">42 — The Symbol</a>
-        <div class="nav-group-label">Practice &amp; Physiology</div>
-        <a href="#patanjali" data-group="traditions">The Machinery of Stillness</a>
-        <a href="#pranayama" data-group="traditions">Pranayama</a>
-        <div class="nav-group-label">Relationship &amp; Attention</div>
-        <a href="#great-forest" data-group="traditions">The Great Forest of Being</a>
-        <a href="#anatomy-of-love" data-group="traditions">The Anatomy of Love</a>
-        <a href="#quantity-or-quality" data-group="traditions">Quantity or Quality</a>
-        <a href="#attention-currency" data-group="traditions">The Attention Economy</a>
-        <div class="nav-group-label">Reference</div>
-        <a href="#master-matrix" data-group="traditions">Master Matrix</a>
-        <a href="#memory-architect" data-group="traditions">Memory Architect</a>
-        <a href="#go-deeper" data-group="traditions">Go Deeper</a>
+        <div class="nav-flyout-item">
+          <span class="nav-flyout-label">Start Here <span class="nav-flyout-caret">▸</span></span>
+          <div class="nav-flyout-panel">
+            <a href="#super-ordinate-goal" data-group="traditions">The Super-Ordinate Goal</a>
+            <a href="#framework" data-group="traditions">Framework</a>
+          </div>
+        </div>
+        <div class="nav-flyout-item">
+          <span class="nav-flyout-label">The Predicament <span class="nav-flyout-caret">▸</span></span>
+          <div class="nav-flyout-panel">
+            <a href="#mistaken-identity" data-group="traditions">The Root Diagnosis</a>
+            <a href="#qualified-seeker" data-group="traditions">Before The Inquiry Can Begin</a>
+          </div>
+        </div>
+        <div class="nav-flyout-item">
+          <span class="nav-flyout-label">The Vedantic Architecture <span class="nav-flyout-caret">▸</span></span>
+          <div class="nav-flyout-panel">
+            <a href="#mirror-of-the-veda" data-group="traditions">The Mirror of the Veda</a>
+            <a href="#orders-of-reality" data-group="traditions">Beneath the Screen</a>
+            <a href="#neti-neti-method" data-group="traditions">Neti Neti — The Method</a>
+            <a href="#tat-tvam-asi" data-group="traditions">Tat Tvam Asi</a>
+          </div>
+        </div>
+        <div class="nav-flyout-item">
+          <span class="nav-flyout-label">Ego &amp; Consciousness <span class="nav-flyout-caret">▸</span></span>
+          <div class="nav-flyout-panel">
+            <a href="#spectrum" data-group="traditions">Ascent of Self</a>
+            <a href="#dimension" data-group="traditions">Matter as Dimension</a>
+            <a href="#consciousness" data-group="traditions">Consciousness &amp; Awareness</a>
+            <a href="#physical-correlate" data-group="traditions">A Note for the Skeptics</a>
+            <a href="#ego" data-group="traditions">Ego Architecture</a>
+            <a href="#five-aggregates" data-group="traditions">The Five Aggregates</a>
+            <a href="#enneagram" data-group="traditions">The Enneagram</a>
+            <a href="#rosetta-stone" data-group="traditions">Rosetta Stone of the Ego</a>
+            <a href="#forty-two" data-group="traditions">42 — The Symbol</a>
+          </div>
+        </div>
+        <div class="nav-flyout-item">
+          <span class="nav-flyout-label">Practice &amp; Physiology <span class="nav-flyout-caret">▸</span></span>
+          <div class="nav-flyout-panel">
+            <a href="#patanjali" data-group="traditions">The Machinery of Stillness</a>
+            <a href="#pranayama" data-group="traditions">Pranayama</a>
+          </div>
+        </div>
+        <div class="nav-flyout-item">
+          <span class="nav-flyout-label">Relationship &amp; Attention <span class="nav-flyout-caret">▸</span></span>
+          <div class="nav-flyout-panel">
+            <a href="#great-forest" data-group="traditions">The Great Forest of Being</a>
+            <a href="#anatomy-of-love" data-group="traditions">The Anatomy of Love</a>
+            <a href="#quantity-or-quality" data-group="traditions">Quantity or Quality</a>
+            <a href="#attention-currency" data-group="traditions">The Attention Economy</a>
+          </div>
+        </div>
+        <div class="nav-flyout-item">
+          <span class="nav-flyout-label">Reference <span class="nav-flyout-caret">▸</span></span>
+          <div class="nav-flyout-panel">
+            <a href="#master-matrix" data-group="traditions">Master Matrix</a>
+            <a href="#memory-architect" data-group="traditions">Memory Architect</a>
+            <a href="#go-deeper" data-group="traditions">Go Deeper</a>
+          </div>
+        </div>
       </div>
     </li>
 
@@ -3619,39 +3706,67 @@ a.src-tag:hover{opacity:.75;}
         Traditions <span class="mnav-caret">▾</span>
       </button>
       <div class="mnav-group-panel">
-        <div class="nav-group-label">Start Here</div>
-        <a href="#super-ordinate-goal">The Super-Ordinate Goal</a>
-        <a href="#framework">Framework</a>
-        <div class="nav-group-label">The Predicament</div>
-        <a href="#mistaken-identity">The Root Diagnosis</a>
-        <a href="#qualified-seeker">Before The Inquiry Can Begin</a>
-        <div class="nav-group-label">The Vedantic Architecture</div>
-        <a href="#mirror-of-the-veda">The Mirror of the Veda</a>
-        <a href="#orders-of-reality">Beneath the Screen</a>
-        <a href="#neti-neti-method">Neti Neti — The Method</a>
-        <a href="#tat-tvam-asi">Tat Tvam Asi</a>
-        <div class="nav-group-label">Ego &amp; Consciousness</div>
-        <a href="#spectrum">Ascent of Self</a>
-        <a href="#dimension">Matter as Dimension</a>
-        <a href="#consciousness">Consciousness &amp; Awareness</a>
-        <a href="#physical-correlate">A Note for the Skeptics</a>
-        <a href="#ego">Ego Architecture</a>
-        <a href="#five-aggregates">The Five Aggregates</a>
-        <a href="#enneagram">The Enneagram</a>
-        <a href="#rosetta-stone">Rosetta Stone of the Ego</a>
-        <a href="#forty-two">42 — The Symbol</a>
-        <div class="nav-group-label">Practice &amp; Physiology</div>
-        <a href="#patanjali">The Machinery of Stillness</a>
-        <a href="#pranayama">Pranayama</a>
-        <div class="nav-group-label">Relationship &amp; Attention</div>
-        <a href="#great-forest">The Great Forest of Being</a>
-        <a href="#anatomy-of-love">The Anatomy of Love</a>
-        <a href="#quantity-or-quality">Quantity or Quality</a>
-        <a href="#attention-currency">The Attention Economy</a>
-        <div class="nav-group-label">Reference</div>
-        <a href="#master-matrix">Master Matrix</a>
-        <a href="#memory-architect">Memory Architect</a>
-        <a href="#go-deeper">Go Deeper</a>
+        <div class="mnav-subgroup">
+          <button class="mnav-subgroup-toggle" aria-expanded="false">Start Here <span class="mnav-subgroup-caret">▾</span></button>
+          <div class="mnav-subgroup-panel">
+            <a href="#super-ordinate-goal">The Super-Ordinate Goal</a>
+            <a href="#framework">Framework</a>
+          </div>
+        </div>
+        <div class="mnav-subgroup">
+          <button class="mnav-subgroup-toggle" aria-expanded="false">The Predicament <span class="mnav-subgroup-caret">▾</span></button>
+          <div class="mnav-subgroup-panel">
+            <a href="#mistaken-identity">The Root Diagnosis</a>
+            <a href="#qualified-seeker">Before The Inquiry Can Begin</a>
+          </div>
+        </div>
+        <div class="mnav-subgroup">
+          <button class="mnav-subgroup-toggle" aria-expanded="false">The Vedantic Architecture <span class="mnav-subgroup-caret">▾</span></button>
+          <div class="mnav-subgroup-panel">
+            <a href="#mirror-of-the-veda">The Mirror of the Veda</a>
+            <a href="#orders-of-reality">Beneath the Screen</a>
+            <a href="#neti-neti-method">Neti Neti — The Method</a>
+            <a href="#tat-tvam-asi">Tat Tvam Asi</a>
+          </div>
+        </div>
+        <div class="mnav-subgroup">
+          <button class="mnav-subgroup-toggle" aria-expanded="false">Ego &amp; Consciousness <span class="mnav-subgroup-caret">▾</span></button>
+          <div class="mnav-subgroup-panel">
+            <a href="#spectrum">Ascent of Self</a>
+            <a href="#dimension">Matter as Dimension</a>
+            <a href="#consciousness">Consciousness &amp; Awareness</a>
+            <a href="#physical-correlate">A Note for the Skeptics</a>
+            <a href="#ego">Ego Architecture</a>
+            <a href="#five-aggregates">The Five Aggregates</a>
+            <a href="#enneagram">The Enneagram</a>
+            <a href="#rosetta-stone">Rosetta Stone of the Ego</a>
+            <a href="#forty-two">42 — The Symbol</a>
+          </div>
+        </div>
+        <div class="mnav-subgroup">
+          <button class="mnav-subgroup-toggle" aria-expanded="false">Practice &amp; Physiology <span class="mnav-subgroup-caret">▾</span></button>
+          <div class="mnav-subgroup-panel">
+            <a href="#patanjali">The Machinery of Stillness</a>
+            <a href="#pranayama">Pranayama</a>
+          </div>
+        </div>
+        <div class="mnav-subgroup">
+          <button class="mnav-subgroup-toggle" aria-expanded="false">Relationship &amp; Attention <span class="mnav-subgroup-caret">▾</span></button>
+          <div class="mnav-subgroup-panel">
+            <a href="#great-forest">The Great Forest of Being</a>
+            <a href="#anatomy-of-love">The Anatomy of Love</a>
+            <a href="#quantity-or-quality">Quantity or Quality</a>
+            <a href="#attention-currency">The Attention Economy</a>
+          </div>
+        </div>
+        <div class="mnav-subgroup">
+          <button class="mnav-subgroup-toggle" aria-expanded="false">Reference <span class="mnav-subgroup-caret">▾</span></button>
+          <div class="mnav-subgroup-panel">
+            <a href="#master-matrix">Master Matrix</a>
+            <a href="#memory-architect">Memory Architect</a>
+            <a href="#go-deeper">Go Deeper</a>
+          </div>
+        </div>
       </div>
     </li>
 
@@ -11388,6 +11503,24 @@ function updateNav(){
     }, {passive:false});
   });
 
+  /* Flip a Traditions flyout panel to the left of its category row instead
+     of the right when it would otherwise run past the viewport edge —
+     matters most in the narrower 901–1023px "desktop site on mobile" band.
+     visibility:hidden (not display:none) keeps layout intact while closed,
+     so getBoundingClientRect() here already reflects where it would land. */
+  document.querySelectorAll('.nav-flyout-item').forEach(function(item){
+    var fp = item.querySelector('.nav-flyout-panel');
+    if(!fp) return;
+    var checkFlip = function(){
+      fp.classList.remove('flip-left');
+      if(fp.getBoundingClientRect().right > window.innerWidth - 8){
+        fp.classList.add('flip-left');
+      }
+    };
+    item.addEventListener('mouseenter', checkFlip);
+    item.addEventListener('focusin', checkFlip);
+  });
+
 
   // The "New" dot only shows while #newMenuPanel actually has entries —
   // empty it out (see comment above the nav markup) and the dot hides itself.
@@ -11552,6 +11685,13 @@ function updateNav(){
         var t = g.querySelector('.mnav-group-toggle');
         if(t) t.setAttribute('aria-expanded','false');
       });
+      // Same reset for the nested Traditions subgroups (Start Here, The
+      // Predicament, etc.) so re-opening the panel always starts collapsed.
+      panel.querySelectorAll('.mnav-subgroup.open').forEach(function(sg){
+        sg.classList.remove('open');
+        var st = sg.querySelector('.mnav-subgroup-toggle');
+        if(st) st.setAttribute('aria-expanded','false');
+      });
     }
 
     toggle.addEventListener('click', function(e){
@@ -11591,6 +11731,28 @@ function updateNav(){
           setTimeout(function(){
             btn.scrollIntoView({block:'start', behavior:'smooth'});
           }, delay);
+        }
+      });
+    });
+
+    // Nested drill-down inside Traditions — one category open at a time,
+    // independent of the outer .mnav-group accordion above it.
+    panel.querySelectorAll('.mnav-subgroup-toggle').forEach(function(btn){
+      btn.addEventListener('click', function(e){
+        e.stopPropagation();
+        var subgroup = this.closest('.mnav-subgroup');
+        var isOpen = subgroup.classList.contains('open');
+        var parentPanel = this.closest('.mnav-group-panel');
+        parentPanel.querySelectorAll('.mnav-subgroup.open').forEach(function(sg){
+          sg.classList.remove('open');
+          sg.querySelector('.mnav-subgroup-toggle').setAttribute('aria-expanded','false');
+        });
+        if(!isOpen){
+          subgroup.classList.add('open');
+          btn.setAttribute('aria-expanded','true');
+          setTimeout(function(){
+            btn.scrollIntoView({block:'start', behavior:'smooth'});
+          }, 60);
         }
       });
     });
