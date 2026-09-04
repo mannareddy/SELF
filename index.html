@@ -1021,7 +1021,7 @@ a:hover{opacity:.7;}
     width:100%;
 
     font-family:var(--sans);
-    font-size:12.5px;
+    font-size:11px;
     letter-spacing:2.5px;
     text-transform:uppercase;
 
@@ -1119,7 +1119,7 @@ a:hover{opacity:.7;}
    both breakpoints render it. */
 .nav-group-label{
   display:block;font-family:var(--sans);font-size:11px;letter-spacing:2px;text-transform:uppercase;
-  color:var(--gold);opacity:1;padding:14px 18px 6px;margin:0;
+  color:var(--gold);opacity:1;padding:14px 18px 6px;margin:0;text-align:left;
   border-top:1px solid rgba(var(--accent-gold-rgb),0.18);
 }
 .nav-group-label:first-child{border-top:none;padding-top:10px;}
@@ -1212,7 +1212,7 @@ a:hover{opacity:.7;}
   .nav-dropdown-panel-l1{overflow:visible !important;}
   .nav-subgroup{position:relative;}
   .nav-group-trigger{
-    cursor:default;display:flex !important;align-items:flex-start;justify-content:space-between;gap:8px;
+    cursor:default;display:flex !important;align-items:flex-start;justify-content:space-between;gap:8px;text-align:left;
   }
   /* Long headers (e.g. "The Vedantic Architecture") wrap onto two lines
      inside the ~230–300px panel. Without an explicit flex-basis on the
@@ -1223,7 +1223,7 @@ a:hover{opacity:.7;}
      span with flex:1/min-width:0 lets it wrap normally within its own
      column while the caret keeps a fixed slot on the right. */
   .nav-group-trigger .trigger-label-text{flex:1 1 auto;min-width:0;}
-  .nav-group-trigger .flyout-caret{font-size:10px;opacity:.6;flex:0 0 auto;margin-top:2px;}
+  .nav-group-trigger .flyout-caret{font-size:15px;opacity:.85;flex:0 0 auto;margin-top:2px;}
   .nav-flyout-panel{
     display:flex;flex-direction:column;
     position:absolute;top:-7px;left:100%;margin-left:1px;
@@ -1417,7 +1417,7 @@ a:hover{opacity:.7;}
   .mnav-list>li>a,
   .mnav-group-toggle{
     display:flex;align-items:center;justify-content:space-between;width:100%;
-    font-family:var(--sans);font-size:12.5px;letter-spacing:2px;text-transform:uppercase;
+    font-family:var(--sans);font-size:11px;letter-spacing:2px;text-transform:uppercase;
     color:var(--gold);background:none;border:none;text-align:left;cursor:pointer;
     padding:18px 22px;
   }
@@ -1472,7 +1472,7 @@ a:hover{opacity:.7;}
     padding:13px 22px 13px 34px;
   }
   .mnav-subgroup-toggle .trigger-label-text{flex:1 1 auto;min-width:0;}
-  .mnav-subgroup-toggle .mnav-caret-sm{font-size:15px;flex:0 0 auto;margin-top:1px;}
+  .mnav-subgroup-toggle .mnav-caret-sm{font-size:20px;flex:0 0 auto;margin-top:1px;}
   .mnav-subgroup-toggle[aria-expanded="true"] .mnav-caret-sm{transform:rotate(180deg);}
   .mnav-subgroup-panel{
     max-height:0;overflow:hidden;transition:max-height .3s ease;background:rgba(255,255,255,0.02);
