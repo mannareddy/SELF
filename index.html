@@ -1172,8 +1172,8 @@ a:hover{opacity:.7;}
     position:absolute;top:calc(100% + 2px);left:0;
     min-width:230px;max-width:300px;background:rgba(0,0,0,0.98);border:1px solid rgba(var(--accent-gold-rgb),0.4);
     box-shadow:0 14px 28px rgba(0,0,0,0.5);
-    opacity:0;visibility:hidden;pointer-events:none;
-    transition:opacity .15s ease, visibility 0s ease .18s, transform .15s ease;
+    opacity:0;pointer-events:none;
+    transition:opacity .15s ease, transform .15s ease;
     padding:6px 0;z-index:1000;
     max-height:calc(100vh - 140px);overflow-y:auto;overscroll-behavior:contain;
     scrollbar-width:thin;scrollbar-color:rgba(var(--accent-gold-rgb),0.5) transparent;
@@ -1184,8 +1184,8 @@ a:hover{opacity:.7;}
   [data-theme="light"] .nav-dropdown-panel::-webkit-scrollbar-thumb{background:rgba(122,94,14,0.5);}
   .nav-dropdown-wrap:hover .nav-dropdown-panel,
   .nav-dropdown-wrap:focus-within .nav-dropdown-panel{
-    opacity:1;visibility:visible;pointer-events:auto;transform:translateY(2px);
-    transition:opacity .15s ease, visibility 0s ease 0s, transform .15s ease;
+    opacity:1;pointer-events:auto;transform:translateY(2px);
+    transition:opacity .15s ease, transform .15s ease;
   }
   /* Forces the panel shut right after a link inside it is clicked, even if
      the cursor hasn't moved off the item yet (hover would otherwise keep
@@ -1229,8 +1229,8 @@ a:hover{opacity:.7;}
     position:absolute;top:-7px;left:100%;margin-left:1px;
     min-width:230px;max-width:300px;background:rgba(0,0,0,0.98);border:1px solid rgba(var(--accent-gold-rgb),0.4);
     box-shadow:0 14px 28px rgba(0,0,0,0.5);
-    opacity:0;visibility:hidden;pointer-events:none;
-    transition:opacity .15s ease, visibility 0s ease .18s;
+    opacity:0;pointer-events:none;
+    transition:opacity .15s ease;
     padding:6px 0;z-index:1001;
     max-height:calc(100vh - 140px);overflow-y:auto;overscroll-behavior:contain;
     scrollbar-width:thin;scrollbar-color:rgba(var(--accent-gold-rgb),0.5) transparent;
@@ -1240,8 +1240,8 @@ a:hover{opacity:.7;}
   .nav-flyout-panel::-webkit-scrollbar-thumb{background:rgba(var(--accent-gold-rgb),0.5);border-radius:3px;}
   .nav-subgroup:hover .nav-flyout-panel,
   .nav-subgroup:focus-within .nav-flyout-panel{
-    opacity:1;visibility:visible;pointer-events:auto;
-    transition:opacity .15s ease, visibility 0s ease 0s;
+    opacity:1;pointer-events:auto;
+    transition:opacity .15s ease;
   }
   .nav-flyout-panel a{
     border-right:none !important;justify-content:flex-start !important;
@@ -3571,21 +3571,21 @@ a.src-tag:hover{opacity:.75;}
       <a href="#framework" data-group="traditions">Traditions<span class="nav-caret">▾</span></a>
       <div class="nav-dropdown-panel nav-dropdown-panel-l1">
         <div class="nav-subgroup">
-          <div class="nav-group-label nav-group-trigger"><span class="trigger-label-text">Start Here</span><span class="flyout-caret">▸</span></div>
+          <div class="nav-group-label nav-group-trigger" tabindex="0"><span class="trigger-label-text">Start Here</span><span class="flyout-caret">▸</span></div>
           <div class="nav-flyout-panel">
             <a href="#super-ordinate-goal" data-group="traditions">The Super-Ordinate Goal</a>
             <a href="#framework" data-group="traditions">Framework</a>
           </div>
         </div>
         <div class="nav-subgroup">
-          <div class="nav-group-label nav-group-trigger"><span class="trigger-label-text">The Predicament</span><span class="flyout-caret">▸</span></div>
+          <div class="nav-group-label nav-group-trigger" tabindex="0"><span class="trigger-label-text">The Predicament</span><span class="flyout-caret">▸</span></div>
           <div class="nav-flyout-panel">
             <a href="#mistaken-identity" data-group="traditions">The Root Diagnosis</a>
             <a href="#qualified-seeker" data-group="traditions">Before The Inquiry Can Begin</a>
           </div>
         </div>
         <div class="nav-subgroup">
-          <div class="nav-group-label nav-group-trigger"><span class="trigger-label-text">The Vedantic Architecture</span><span class="flyout-caret">▸</span></div>
+          <div class="nav-group-label nav-group-trigger" tabindex="0"><span class="trigger-label-text">The Vedantic Architecture</span><span class="flyout-caret">▸</span></div>
           <div class="nav-flyout-panel">
             <a href="#mirror-of-the-veda" data-group="traditions">The Mirror of the Veda</a>
             <a href="#orders-of-reality" data-group="traditions">Beneath the Screen</a>
@@ -3594,7 +3594,7 @@ a.src-tag:hover{opacity:.75;}
           </div>
         </div>
         <div class="nav-subgroup">
-          <div class="nav-group-label nav-group-trigger"><span class="trigger-label-text">Ego &amp; Consciousness</span><span class="flyout-caret">▸</span></div>
+          <div class="nav-group-label nav-group-trigger" tabindex="0"><span class="trigger-label-text">Ego &amp; Consciousness</span><span class="flyout-caret">▸</span></div>
           <div class="nav-flyout-panel">
             <a href="#spectrum" data-group="traditions">Ascent of Self</a>
             <a href="#dimension" data-group="traditions">Matter as Dimension</a>
@@ -3608,14 +3608,14 @@ a.src-tag:hover{opacity:.75;}
           </div>
         </div>
         <div class="nav-subgroup">
-          <div class="nav-group-label nav-group-trigger"><span class="trigger-label-text">Practice &amp; Physiology</span><span class="flyout-caret">▸</span></div>
+          <div class="nav-group-label nav-group-trigger" tabindex="0"><span class="trigger-label-text">Practice &amp; Physiology</span><span class="flyout-caret">▸</span></div>
           <div class="nav-flyout-panel">
             <a href="#patanjali" data-group="traditions">The Machinery of Stillness</a>
             <a href="#pranayama" data-group="traditions">Pranayama</a>
           </div>
         </div>
         <div class="nav-subgroup">
-          <div class="nav-group-label nav-group-trigger"><span class="trigger-label-text">Relationship &amp; Attention</span><span class="flyout-caret">▸</span></div>
+          <div class="nav-group-label nav-group-trigger" tabindex="0"><span class="trigger-label-text">Relationship &amp; Attention</span><span class="flyout-caret">▸</span></div>
           <div class="nav-flyout-panel">
             <a href="#great-forest" data-group="traditions">The Great Forest of Being</a>
             <a href="#anatomy-of-love" data-group="traditions">The Anatomy of Love</a>
@@ -3624,7 +3624,7 @@ a.src-tag:hover{opacity:.75;}
           </div>
         </div>
         <div class="nav-subgroup">
-          <div class="nav-group-label nav-group-trigger"><span class="trigger-label-text">Reference</span><span class="flyout-caret">▸</span></div>
+          <div class="nav-group-label nav-group-trigger" tabindex="0"><span class="trigger-label-text">Reference</span><span class="flyout-caret">▸</span></div>
           <div class="nav-flyout-panel">
             <a href="#master-matrix" data-group="traditions">Master Matrix</a>
             <a href="#memory-architect" data-group="traditions">Memory Architect</a>
