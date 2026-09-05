@@ -11495,6 +11495,31 @@ function updateNav(){
     el.scrollIntoView({block:'nearest', inline:'nearest'});
   }
 
+  /* .nav-flyout-panel's CSS max-height (calc(100vh - 140px)) assumes the
+     flyout always opens right under the nav bar, which is only true for
+     the first subgroup. A subgroup further down the list (e.g. "Ego &
+     Consciousness") opens its flyout much lower on the page — the panel
+     can be shorter than that CSS max-height and still run off the bottom
+     of the viewport, because overflow-y:auto only kicks in once content
+     exceeds max-height, not once it exceeds the actual remaining space
+     below it. Recalculating max-height from the subgroup's real position
+     each time it opens keeps every flyout fully on-screen with its own
+     scrollbar exactly when it's actually needed. */
+  document.querySelectorAll('.nav-subgroup').forEach(function(sg){
+    var flyout = sg.querySelector('.nav-flyout-panel');
+    if(!flyout) return;
+    function sizeFlyout(){
+      var margin = 16;
+      var available = window.innerHeight - sg.getBoundingClientRect().top - margin;
+      flyout.style.maxHeight = Math.max(120, available) + 'px';
+    }
+    sg.addEventListener('mouseenter', sizeFlyout);
+    var header = sg.querySelector('.nav-group-trigger');
+    if(header) header.addEventListener('focus', sizeFlyout);
+    flyout.querySelectorAll('a').forEach(function(a){ a.addEventListener('focus', sizeFlyout); });
+    window.addEventListener('resize', sizeFlyout);
+  });
+
   /* The browser's native Tab key has the same "scrolls the outer page"
      quirk that focusPanelLink() above works around for arrow keys —
      it was just never visible before, because until the visibility:hidden
