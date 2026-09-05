@@ -11494,6 +11494,19 @@ function updateNav(){
     link.focus({preventScroll:true});
     link.scrollIntoView({block:'nearest', inline:'nearest'});
   }
+
+  /* The browser's native Tab key has the same "scrolls the outer page"
+     quirk that focusPanelLink() above works around for arrow keys —
+     it was just never visible before, because until the visibility:hidden
+     fix, Tab could never actually reach these links. Correcting the
+     scroll position on every focus (not just arrow-driven ones) covers
+     plain Tab as well. scrollIntoView with 'nearest' is a no-op when the
+     link is already fully in view, so this doesn't affect anything else. */
+  document.querySelectorAll('.nav-dropdown-panel a, .nav-flyout-panel a').forEach(function(link){
+    link.addEventListener('focus', function(){
+      link.scrollIntoView({block:'nearest', inline:'nearest'});
+    });
+  });
   document.querySelectorAll('.nav-dropdown-wrap').forEach(function(wrap){
     var trigger = wrap.querySelector(':scope > a');
     var panel = wrap.querySelector('.nav-dropdown-panel');
