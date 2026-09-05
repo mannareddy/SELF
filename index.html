@@ -775,7 +775,7 @@ body{
 /* Light: mega-menu dropdown (desktop) + hamburger/accordion (mobile) — additive, see nav CSS block below */
 [data-theme="light"] .nav-dropdown-panel{background:rgba(245,241,232,0.98) !important;border-color:rgba(var(--accent-gold-rgb),0.35) !important;}
 [data-theme="light"] .nav-dropdown-panel a{color:var(--text-nav) !important;}
-[data-theme="light"] .nav-dropdown-panel a:hover{color:var(--accent-gold) !important;background:rgba(var(--accent-gold-rgb),0.06) !important;}
+[data-theme="light"] .nav-dropdown-panel a:hover,[data-theme="light"] .nav-dropdown-panel a:focus{color:var(--accent-gold) !important;background:rgba(var(--accent-gold-rgb),0.06) !important;outline:none;}
 [data-theme="light"] .mnav-toggle{background:rgba(245,241,232,0.98) !important;border-color:rgba(var(--shadow-rgb),0.32) !important;}
 [data-theme="light"] .mnav-toggle span{background:var(--text-nav) !important;}
 [data-theme="light"] .mnav-panel{background:rgb(245,241,232) !important;}
@@ -1198,7 +1198,7 @@ a:hover{opacity:.7;}
     padding:11px 22px !important;font-size:11px !important;letter-spacing:1.5px !important;
     height:auto !important;line-height:1.4 !important;white-space:normal !important;text-align:left !important;color:var(--dim);
   }
-  .nav-dropdown-panel a:hover{color:var(--gold) !important;background:rgba(var(--accent-gold-rgb),0.06);}
+  .nav-dropdown-panel a:hover,.nav-dropdown-panel a:focus{color:var(--gold) !important;background:rgba(var(--accent-gold-rgb),0.06);outline:none;}
   .nav-dropdown-panel .new-menu-soon{
     display:block;border-right:none !important;justify-content:flex-start !important;
     padding:11px 22px !important;font-size:11px !important;letter-spacing:1.5px !important;
@@ -1252,10 +1252,10 @@ a:hover{opacity:.7;}
     padding:11px 22px !important;font-size:11px !important;letter-spacing:1.5px !important;
     height:auto !important;line-height:1.4 !important;white-space:normal !important;text-align:left !important;color:var(--dim);
   }
-  .nav-flyout-panel a:hover{color:var(--gold) !important;background:rgba(var(--accent-gold-rgb),0.06);}
+  .nav-flyout-panel a:hover,.nav-flyout-panel a:focus{color:var(--gold) !important;background:rgba(var(--accent-gold-rgb),0.06);outline:none;}
   [data-theme="light"] .nav-flyout-panel{background:rgba(245,241,232,0.98) !important;border-color:rgba(var(--accent-gold-rgb),0.35) !important;}
   [data-theme="light"] .nav-flyout-panel a{color:var(--text-nav) !important;}
-  [data-theme="light"] .nav-flyout-panel a:hover{color:var(--accent-gold) !important;background:rgba(var(--accent-gold-rgb),0.06) !important;}
+  [data-theme="light"] .nav-flyout-panel a:hover,[data-theme="light"] .nav-flyout-panel a:focus{color:var(--accent-gold) !important;background:rgba(var(--accent-gold-rgb),0.06) !important;outline:none;}
 }
 
 /* ── MOBILE (≤900px): 3-column flex nav ≡ | *SELF | ☀ ── */
@@ -11490,9 +11490,9 @@ function updateNav(){
      into view" pass (which can reach past the panel to the outer page),
      then scrollIntoView({block:'nearest'}) explicitly moves only the
      panel's own scroll position — the outer page never moves. */
-  function focusPanelLink(link){
-    link.focus({preventScroll:true});
-    link.scrollIntoView({block:'nearest', inline:'nearest'});
+  function focusPanelLink(el){
+    el.focus({preventScroll:true});
+    el.scrollIntoView({block:'nearest', inline:'nearest'});
   }
 
   /* The browser's native Tab key has the same "scrolls the outer page"
@@ -11502,15 +11502,75 @@ function updateNav(){
      scroll position on every focus (not just arrow-driven ones) covers
      plain Tab as well. scrollIntoView with 'nearest' is a no-op when the
      link is already fully in view, so this doesn't affect anything else. */
-  document.querySelectorAll('.nav-dropdown-panel a, .nav-flyout-panel a').forEach(function(link){
+  document.querySelectorAll('.nav-dropdown-panel a, .nav-flyout-panel a, .nav-group-trigger').forEach(function(link){
     link.addEventListener('focus', function(){
       link.scrollIntoView({block:'nearest', inline:'nearest'});
     });
   });
+
   document.querySelectorAll('.nav-dropdown-wrap').forEach(function(wrap){
     var trigger = wrap.querySelector(':scope > a');
     var panel = wrap.querySelector('.nav-dropdown-panel');
     if(!trigger || !panel) return;
+
+    /* Traditions is two-level: each .nav-subgroup pairs a .nav-group-trigger
+       header (a plain, non-link div) with its own nested .nav-flyout-panel
+       of real <a> links. The old script below queried panel.querySelectorAll('a')
+       for the whole panel at once, which only ever sees <a> tags — so it
+       flattened every subgroup's links into one long list and skipped the
+       headers entirely, since a header is a div, not a link. That's why
+       ArrowDown from "Traditions" jumped straight into the first subgroup's
+       links instead of landing on "Start Here" first. Panels with subgroups
+       get their own hierarchical handling; simple flat panels (Daily Practice,
+       Shop/Circle, New, Resources) keep the original flat-list behaviour. */
+    var subgroups = Array.prototype.slice.call(panel.querySelectorAll(':scope > .nav-subgroup, :scope .nav-subgroup'));
+
+    if(subgroups.length){
+      var headers = subgroups.map(function(sg){ return sg.querySelector('.nav-group-trigger'); });
+      var flyoutLinksOf = function(sg){ return Array.prototype.slice.call(sg.querySelectorAll('.nav-flyout-panel a')); };
+
+      var focusHeader = function(i){
+        focusPanelLink(headers[(i + headers.length) % headers.length]);
+      };
+
+      trigger.addEventListener('keydown', function(e){
+        if(e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
+        e.preventDefault();
+        focusHeader(e.key === 'ArrowDown' ? 0 : headers.length - 1);
+      });
+
+      headers.forEach(function(header, i){
+        header.addEventListener('keydown', function(e){
+          if(e.key === 'ArrowDown'){
+            e.preventDefault(); focusHeader(i + 1);
+          } else if(e.key === 'ArrowUp'){
+            e.preventDefault(); focusHeader(i - 1);
+          } else if(e.key === 'ArrowRight' || e.key === 'Enter'){
+            var links = flyoutLinksOf(subgroups[i]);
+            if(links.length){ e.preventDefault(); focusPanelLink(links[0]); }
+          } else if(e.key === 'Escape'){
+            e.preventDefault(); trigger.focus();
+          }
+        });
+      });
+
+      subgroups.forEach(function(sg, i){
+        var links = flyoutLinksOf(sg);
+        links.forEach(function(link, li){
+          link.addEventListener('keydown', function(e){
+            if(e.key === 'ArrowDown'){
+              e.preventDefault(); focusPanelLink(links[(li + 1) % links.length]);
+            } else if(e.key === 'ArrowUp'){
+              e.preventDefault(); focusPanelLink(links[(li - 1 + links.length) % links.length]);
+            } else if(e.key === 'ArrowLeft' || e.key === 'Escape'){
+              e.preventDefault(); focusPanelLink(headers[i]);
+            }
+          });
+        });
+      });
+      return;
+    }
+
     var getLinks = function(){ return Array.prototype.slice.call(panel.querySelectorAll('a')); };
 
     trigger.addEventListener('keydown', function(e){
