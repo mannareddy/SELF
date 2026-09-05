@@ -1214,6 +1214,10 @@ a:hover{opacity:.7;}
   .nav-group-trigger{
     cursor:default;display:flex !important;align-items:flex-start;justify-content:space-between;gap:8px;text-align:left;
   }
+  .nav-group-trigger:focus{
+    outline:1px solid var(--gold);outline-offset:-2px;background:rgba(var(--accent-gold-rgb),0.06);
+  }
+  .nav-group-trigger:focus:not(:focus-visible){outline:none;background:none;}
   /* Long headers (e.g. "The Vedantic Architecture") wrap onto two lines
      inside the ~230–300px panel. Without an explicit flex-basis on the
      text, the browser's anonymous-flex-item sizing for a bare text node
