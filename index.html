@@ -12544,6 +12544,16 @@ function resetNestedToggles(wrap){
       else{ subBtn.innerHTML=subBtn.innerHTML.replace('Collapse','Expand').replace('▲','▼').replace('&#9650;','&#9660;'); }
     }
   });
+  // Group "Expand All" buttons (The Diagnosis, The Way Out, The Upanishads,
+  // The Yoga Sutras Engine, etc.) — these live outside the .section-collapse-wrap
+  // elements they control, so the loop above never touches them. Reset any
+  // that were left on "Collapse All" back to "Expand All", same fresh state
+  // as the individual cards just re-collapsed above.
+  wrap.querySelectorAll('[onclick*="toggleGroupCards("]').forEach(function(gb){
+    if(gb.innerHTML.indexOf('Collapse')>-1){
+      gb.innerHTML=gb.innerHTML.replace('Collapse','Expand').replace('&#9650;','&#9660;');
+    }
+  });
   // Glossary: a search filter left active (query text, hidden non-matching
   // categories/entries) should not survive the section being closed and
   // reopened — re-expanding it should always land on the same blank,
