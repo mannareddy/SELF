@@ -2095,6 +2095,15 @@ section{scroll-margin-top:56px;}
   #qualified-seeker .framework-grid{max-width:900px;grid-template-columns:repeat(2,1fr) !important;}
 }
 
+/* ── NETI NETI KOSHA CARDS: each card holds a wide (680-viewBox) diagram
+   SVG whose text only stays legible with the full card width behind it.
+   Override the framework-grid default (which packs 3 across at this
+   section's width) to a single column on desktop, matching the width
+   the SVGs already get on mobile via the global single-column rule. ── */
+@media(min-width:641px){
+  #neti-neti-grid{grid-template-columns:1fr !important;}
+}
+
 /* ── FEEDBACK LOOP CHECKLIST ─────────────────────────────────────────────── */
 .fl-item{display:flex;align-items:flex-start;gap:14px;padding:16px 14px;border-bottom:1px solid rgba(var(--accent-gold-rgb),0.28);cursor:pointer;font-family:var(--serif);font-size:clamp(15px,1.9vw,17px);color:var(--mid);line-height:1.6;transition:color .2s;}
 .fl-item:last-child{border-bottom:none;}
@@ -4592,7 +4601,7 @@ a.src-tag:hover{opacity:.75;}
       <p class="section-collapse-label" style="margin-top:8px;">Tap to expand &mdash; run the test against all five sheaths</p>
     </div>
     <div id="neti-neti-full-content" class="section-collapse-wrap collapsed">
-    <div class="framework-grid" style="max-width:820px;margin:0 auto;">
+    <div class="framework-grid" id="neti-neti-grid" style="max-width:820px;margin:0 auto;">
       <div class="framework-card collapsed">
         <span class="num">01</span>
         <h3><span class="gloss">Annamaya<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Annamaya">+</span><span class="gloss-pop">The "food sheath" &mdash; the physical body itself, the most outer and dense of the five koshas.</span></span></h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">The Physical Layer</p><div class="framework-content">
