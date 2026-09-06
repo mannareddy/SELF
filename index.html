@@ -2284,6 +2284,14 @@ section{scroll-margin-top:56px;}
   #pranayama .section-collapse-wrap{
     margin-bottom:24px !important;
   }
+  /* Memory Architect (#memory-architect) uses a different spacing
+     mechanism for its four nested sub-cards — margin-top:44px on each
+     .ego-sub-header rather than margin-bottom on .section-collapse-wrap —
+     so it needs its own override here to match the same tightened
+     mobile rhythm as the sections above. */
+  #memory-architect .ego-sub-header{
+    margin-top:24px !important;
+  }
 }
   .desktop-label{
     display:inline;
