@@ -1183,7 +1183,8 @@ a:hover{opacity:.7;}
   .nav-dropdown-panel::-webkit-scrollbar-thumb{background:rgba(var(--accent-gold-rgb),0.5);border-radius:3px;}
   [data-theme="light"] .nav-dropdown-panel::-webkit-scrollbar-thumb{background:rgba(122,94,14,0.5);}
   .nav-dropdown-wrap:hover .nav-dropdown-panel,
-  .nav-dropdown-wrap:focus-within .nav-dropdown-panel{
+  .nav-dropdown-wrap:focus-within .nav-dropdown-panel,
+  .nav-dropdown-wrap.js-open .nav-dropdown-panel{
     opacity:1;pointer-events:auto;transform:translateY(2px);
     transition:opacity .15s ease, transform .15s ease;
   }
@@ -1230,7 +1231,16 @@ a:hover{opacity:.7;}
   .nav-group-trigger .flyout-caret{font-size:15px;opacity:.85;flex:0 0 auto;margin-top:2px;}
   .nav-flyout-panel{
     display:flex;flex-direction:column;
-    position:absolute;top:-1px;left:100%;margin-left:1px;
+    /* Centered on the trigger row (top:50% + translateY(-50%)) instead of
+       top-aligned to it (previously top:-1px). Top-aligning meant the
+       flyout only ever extended downward from wherever the trigger sat in
+       the parent list, so a trigger lower in a tall panel (e.g. "Ego &
+       Consciousness") produced a flyout the pointer had to travel far
+       down/away to reach — one wobble off that path and hover was lost,
+       closing the menu. Splitting the flyout evenly above/below the
+       trigger keeps every flyout item within a short, forgiving distance
+       of the pointer's starting position, whatever the flyout's height. */
+    position:absolute;top:50%;left:100%;margin-left:1px;transform:translateY(-50%);
     min-width:230px;max-width:300px;background:rgb(0,0,0);border:1px solid rgba(var(--accent-gold-rgb),0.4);
     box-shadow:0 14px 28px rgba(0,0,0,0.5);
     opacity:0;pointer-events:none;
@@ -1239,11 +1249,20 @@ a:hover{opacity:.7;}
     max-height:calc(100vh - 140px);overflow-y:auto;overscroll-behavior:contain;
     scrollbar-width:thin;scrollbar-color:rgba(var(--accent-gold-rgb),0.5) transparent;
   }
+  /* "Start Here" is the first item directly under the Traditions trigger,
+     right up against the main header row — centering its flyout (which
+     would push half of it upward) ran it into the header bar itself. It
+     keeps the original top-aligned placement; every other subgroup below
+     it still centers per the rule above. */
+  .nav-subgroup:first-child .nav-flyout-panel{
+    top:-1px;transform:none;
+  }
   .nav-flyout-panel::-webkit-scrollbar{width:5px;}
   .nav-flyout-panel::-webkit-scrollbar-track{background:transparent;}
   .nav-flyout-panel::-webkit-scrollbar-thumb{background:rgba(var(--accent-gold-rgb),0.5);border-radius:3px;}
   .nav-subgroup:hover .nav-flyout-panel,
-  .nav-subgroup:focus-within .nav-flyout-panel{
+  .nav-subgroup:focus-within .nav-flyout-panel,
+  .nav-subgroup.js-open .nav-flyout-panel{
     opacity:1;pointer-events:auto;
     transition:opacity .15s ease;
   }
@@ -12111,6 +12130,59 @@ function updateNav(){
     if(header) header.addEventListener('focus', sizeFlyout);
     flyout.querySelectorAll('a').forEach(function(a){ a.addEventListener('focus', sizeFlyout); });
     window.addEventListener('resize', sizeFlyout);
+  });
+
+  /* ── Hover-intent grace period for Traditions' two-level flyouts ──
+     Pure CSS :hover only shows a panel while the pointer is directly over
+     it (or a DOM descendant of it). The nested flyout is now offset above
+     and below its trigger row (see .nav-flyout-panel centering above), so
+     reaching it means crossing a strip of "dead" space that belongs to
+     neither the row nor the panel. Moving fast enough, the pointer can
+     cross that strip in one frame with no element ever registering
+     :hover, which drops the CSS chain and closes the menu — sometimes the
+     whole Traditions panel, not just the flyout — before the pointer ever
+     lands on the intended item. A short JS-held-open grace period bridges
+     that gap: the panel stays visible/interactive for a brief window
+     after the pointer leaves its trigger, giving a fast diagonal move time
+     to land on it before it disappears. */
+  function addHoverIntent(container, panelSelector, openClass, delay, onOpen){
+    var panel = container.querySelector(panelSelector);
+    if(!panel) return;
+    var closeTimer = null;
+    function open(){
+      clearTimeout(closeTimer);
+      container.classList.add(openClass);
+      if(onOpen) onOpen(container);
+    }
+    function scheduleClose(){
+      clearTimeout(closeTimer);
+      closeTimer = setTimeout(function(){ container.classList.remove(openClass); }, delay);
+    }
+    container.addEventListener('mouseenter', open);
+    container.addEventListener('mouseleave', scheduleClose);
+    panel.addEventListener('mouseenter', open);
+    panel.addEventListener('mouseleave', scheduleClose);
+    container._closeNow = function(){ clearTimeout(closeTimer); container.classList.remove(openClass); };
+  }
+  /* Sibling subgroups (Start Here, The Predicament, Ego & Consciousness…)
+     each hold their own grace-period timer, so moving directly from one
+     trigger to the next — without the mouse ever leaving the Traditions
+     panel — let the previous flyout's timer keep it visible for its full
+     350ms while the new one opened on top of it, showing two stacked
+     flyouts briefly. Closing every sibling immediately the moment a new
+     one opens (instead of waiting out its own timer) keeps only one
+     flyout on screen at a time, while the grace period itself still does
+     its job for the pointer's diagonal move toward the panel. */
+  var allSubgroups = Array.prototype.slice.call(document.querySelectorAll('.nav-subgroup'));
+  allSubgroups.forEach(function(sg){
+    addHoverIntent(sg, ':scope > .nav-flyout-panel', 'js-open', 350, function(opened){
+      allSubgroups.forEach(function(other){
+        if(other !== opened && other._closeNow) other._closeNow();
+      });
+    });
+  });
+  document.querySelectorAll('.nav-dropdown-wrap').forEach(function(wrap){
+    addHoverIntent(wrap, ':scope > .nav-dropdown-panel', 'js-open', 350);
   });
 
   /* :focus-within has no concept of "the mouse moved on" — only an actual
