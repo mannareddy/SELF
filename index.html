@@ -12180,7 +12180,7 @@ function updateNav(){
      its job for the pointer's diagonal move toward the panel. */
   var allSubgroups = Array.prototype.slice.call(document.querySelectorAll('.nav-subgroup'));
   allSubgroups.forEach(function(sg){
-    addHoverIntent(sg, ':scope > .nav-flyout-panel', 'js-open', 350, function(opened){
+    addHoverIntent(sg, ':scope > .nav-flyout-panel', 'js-open', 50, function(opened){
       allSubgroups.forEach(function(other){
         if(other !== opened && other._closeNow) other._closeNow();
       });
