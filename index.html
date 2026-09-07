@@ -2100,7 +2100,15 @@ section{scroll-margin-top:56px;}
    cap the card width and center it instead of stretching it edge to
    edge; the SVG still scales down proportionally inside that width. ── */
 @media(min-width:641px){
-  #neti-neti-grid{grid-template-columns:1fr !important;max-width:820px !important;}
+  #neti-neti-grid{grid-template-columns:1fr !important;max-width:600px !important;}
+}
+/* ── ROOT DIAGNOSIS WHEEL: the SVG's text sizes are fixed units inside a
+   700-wide viewBox, so they render at the same fraction of whatever
+   width the wrapping div gets. 520px kept the wheel readable on mobile
+   but left desktop text too small; widen the wrapper on larger screens
+   so the same viewBox renders bigger without touching mobile. ── */
+@media(min-width:641px){
+  #samsara-wheel-wrap{max-width:640px !important;}
 }
 /* ── NETI NETI "CONCLUSION" LINE: box the closing not-this / I-am
    statement at the bottom of each kosha card so it reads as the
@@ -4347,7 +4355,7 @@ a.src-tag:hover{opacity:.75;}
 
   <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.95;max-width:820px;margin:0 auto 28px;text-align:center;">The Veda's diagnosis of the human condition isn't circumstantial &mdash; a bad job, a bad year, a bad relationship. It's structural. <span class="gloss">Samsara<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Samsara">+</span><span class="gloss-pop">The cycle of birth, death, and rebirth &mdash; the ceaseless churn of conditioned existence every layer below the Self remains bound to.</span></span> isn't only the biological wheel of birth and death. It's a five-step engine, cycling underneath an ordinary Tuesday, that manufactures the felt sense of incompleteness fresh every day &mdash; and then hands you the bill for trying to fix it from the wrong end.</p>
 
-  <div style="max-width:520px;margin:8px auto 32px;">
+  <div id="samsara-wheel-wrap" style="max-width:520px;margin:8px auto 32px;">
     <svg viewBox="0 0 700 670" style="width:100%;height:auto;overflow:visible;" role="img" aria-label="The five-step engine of Samsara Bandhanam, arranged as a closed wheel: Ignorance (Avidya), Wrong Identification (Adhyasa), Desire and Aversion (Raga-Dvesha), Action (Karma), and Results (Phalam), each feeding into the next and looping back into ignorance">
       <defs>
         <marker id="root-diag-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
