@@ -12226,14 +12226,14 @@ function updateNav(){
      its job for the pointer's diagonal move toward the panel. */
   var allSubgroups = Array.prototype.slice.call(document.querySelectorAll('.nav-subgroup'));
   allSubgroups.forEach(function(sg){
-    addHoverIntent(sg, ':scope > .nav-flyout-panel', 'js-open', 50, function(opened){
+    addHoverIntent(sg, ':scope > .nav-flyout-panel', 'js-open', 25, function(opened){
       allSubgroups.forEach(function(other){
         if(other !== opened && other._closeNow) other._closeNow();
       });
     });
   });
   document.querySelectorAll('.nav-dropdown-wrap').forEach(function(wrap){
-    addHoverIntent(wrap, ':scope > .nav-dropdown-panel', 'js-open', 50);
+    addHoverIntent(wrap, ':scope > .nav-dropdown-panel', 'js-open', 25);
   });
 
   /* :focus-within has no concept of "the mouse moved on" — only an actual
