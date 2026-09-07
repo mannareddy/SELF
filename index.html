@@ -1266,6 +1266,12 @@ a:hover{opacity:.7;}
     opacity:1;pointer-events:auto;
     transition:opacity .15s ease;
   }
+  /* Mirrors .nav-dropdown-wrap.force-close above, one level down: forces a
+     nested flyout (e.g. "Start Here") shut the instant a link inside it is
+     clicked, even though the mouse is still technically hovering it. */
+  .nav-subgroup.force-close .nav-flyout-panel{
+    opacity:0 !important;visibility:hidden !important;pointer-events:none !important;
+  }
   .nav-flyout-panel a{
     border-right:none !important;justify-content:flex-start !important;
     padding:11px 22px !important;font-size:11px !important;letter-spacing:1.5px !important;
@@ -1466,10 +1472,25 @@ a:hover{opacity:.7;}
     overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;
     scrollbar-width:thin;scrollbar-color:rgba(var(--accent-gold-rgb),0.55) transparent;
   }
-  .mnav-group-panel::-webkit-scrollbar{width:4px;}
-  .mnav-group-panel::-webkit-scrollbar-track{background:transparent;}
+  .mnav-group-panel::-webkit-scrollbar{width:5px;}
+  /* Track set to a faint but visible fill (was transparent) so the bar
+     itself is a permanent cue that the panel scrolls, since most mobile
+     browsers auto-hide overlay scrollbar thumbs until a scroll gesture is
+     already in progress — leaving no visible affordance beforehand. */
+  .mnav-group-panel::-webkit-scrollbar-track{background:rgba(var(--accent-gold-rgb),0.12);border-radius:3px;}
   .mnav-group-panel::-webkit-scrollbar-thumb{background:rgba(var(--accent-gold-rgb),0.55);border-radius:3px;}
+  [data-theme="light"] .mnav-group-panel::-webkit-scrollbar-track{background:rgba(122,94,14,0.12);}
   [data-theme="light"] .mnav-group-panel::-webkit-scrollbar-thumb{background:rgba(122,94,14,0.55);}
+  /* "More below" fade + cue: a sticky gradient pinned to the bottom edge of
+     the scroll area. Unlike the scrollbar track (thin, easy to miss on a
+     touch screen), this is impossible not to notice, and it naturally
+     disappears once the user has scrolled to the last item because there's
+     no more scrollable area left for the sticky element to stick within. */
+  .mnav-group-panel::after{
+    content:'';display:block;position:sticky;bottom:0;left:0;right:0;
+    height:26px;margin-top:-26px;pointer-events:none;
+    background:linear-gradient(to bottom, transparent, var(--bg-page));
+  }
   .mnav-group-panel a{
     display:block;font-family:var(--sans);font-size:16px;letter-spacing:0.5px;text-transform:none;
     color:var(--dim);padding:15px 22px 15px 34px;border-top:1px solid #1a1a1a;text-align:left;cursor:pointer;
@@ -1506,10 +1527,16 @@ a:hover{opacity:.7;}
     overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;
     scrollbar-width:thin;scrollbar-color:rgba(var(--accent-gold-rgb),0.5) transparent;
   }
-  .mnav-subgroup-panel::-webkit-scrollbar{width:4px;}
-  .mnav-subgroup-panel::-webkit-scrollbar-track{background:transparent;}
+  .mnav-subgroup-panel::-webkit-scrollbar{width:5px;}
+  .mnav-subgroup-panel::-webkit-scrollbar-track{background:rgba(var(--accent-gold-rgb),0.12);border-radius:3px;}
   .mnav-subgroup-panel::-webkit-scrollbar-thumb{background:rgba(var(--accent-gold-rgb),0.5);border-radius:3px;}
+  [data-theme="light"] .mnav-subgroup-panel::-webkit-scrollbar-track{background:rgba(122,94,14,0.12);}
   [data-theme="light"] .mnav-subgroup-panel::-webkit-scrollbar-thumb{background:rgba(122,94,14,0.5);}
+  .mnav-subgroup-panel::after{
+    content:'';display:block;position:sticky;bottom:0;left:0;right:0;
+    height:22px;margin-top:-22px;pointer-events:none;
+    background:linear-gradient(to bottom, transparent, var(--bg-page));
+  }
   .mnav-subgroup-panel a{
     padding-left:46px;font-size:14.5px;
   }
@@ -12083,18 +12110,37 @@ function updateNav(){
   );
 
   /* Close a desktop dropdown panel the moment a link inside it is clicked,
-     instead of waiting for the mouse to physically leave the area. */
+     instead of waiting for the mouse to physically leave the area.
+     FIX: clicking a link inside a nested flyout (e.g. Traditions ▸ Start Here
+     ▸ "The Super-Ordinate Goal") only ever force-closed the top-level
+     .nav-dropdown-wrap. Because these are same-page anchor links, the page
+     never navigates away and the mouse never physically moves off the menu,
+     so the nested .nav-subgroup kept satisfying :hover/:focus-within (and
+     its JS .js-open class, set by addHoverIntent) and its .nav-flyout-panel
+     stayed visibly open — on top of a top-level panel that was itself only
+     hidden via opacity/visibility, not actually removed from the layout.
+     Now every ancestor .nav-subgroup between the clicked link and the top
+     wrap is force-closed too, and any hover-intent timer holding it open
+     (_closeNow) is cancelled immediately instead of waiting out its delay. */
   document.querySelectorAll('.nav-dropdown-panel a').forEach(function(a){
     a.addEventListener('click', function(){
       var wrap = a.closest('.nav-dropdown-wrap');
       if(!wrap) return;
       wrap.classList.add('force-close');
+      a.closest('.nav-dropdown-panel').querySelectorAll('.nav-subgroup').forEach(function(sg){
+        sg.classList.remove('js-open');
+        sg.classList.add('force-close');
+        if(sg._closeNow) sg._closeNow();
+      });
       a.blur();
     });
   });
   document.querySelectorAll('.nav-dropdown-wrap').forEach(function(wrap){
     wrap.addEventListener('mouseleave', function(){
       wrap.classList.remove('force-close');
+      wrap.querySelectorAll('.nav-subgroup').forEach(function(sg){
+        sg.classList.remove('force-close');
+      });
     });
   });
 
