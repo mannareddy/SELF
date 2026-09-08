@@ -1182,7 +1182,13 @@ a:hover{opacity:.7;}
   .nav-dropdown-panel::-webkit-scrollbar-track{background:transparent;}
   .nav-dropdown-panel::-webkit-scrollbar-thumb{background:rgba(var(--accent-gold-rgb),0.5);border-radius:3px;}
   [data-theme="light"] .nav-dropdown-panel::-webkit-scrollbar-thumb{background:rgba(122,94,14,0.5);}
-  .nav-dropdown-wrap:hover .nav-dropdown-panel,
+  /* Deliberately no plain `.nav-dropdown-wrap:hover` here — that fired the
+     instant the pointer crossed the trigger, which is why a fast sweep
+     across the nav bar (e.g. a touchpad glide) used to flash every menu
+     it passed over. Opening is now gated entirely through .js-open, which
+     addHoverIntent() below only applies after a short dwell — see the
+     openDelay argument on that call. :focus-within is untouched, since
+     keyboard users tabbing in should see the panel immediately. */
   .nav-dropdown-wrap:focus-within .nav-dropdown-panel,
   .nav-dropdown-wrap.js-open .nav-dropdown-panel{
     opacity:1;pointer-events:auto;transform:translateY(2px);
@@ -12263,16 +12269,29 @@ function updateNav(){
      that gap: the panel stays visible/interactive for a brief window
      after the pointer leaves its trigger, giving a fast diagonal move time
      to land on it before it disappears. */
-  function addHoverIntent(container, panelSelector, openClass, delay, onOpen){
+  function addHoverIntent(container, panelSelector, openClass, delay, onOpen, openDelay){
     var panel = container.querySelector(panelSelector);
     if(!panel) return;
     var closeTimer = null;
-    function open(){
-      clearTimeout(closeTimer);
+    var openTimer = null;
+    function reveal(){
       container.classList.add(openClass);
       if(onOpen) onOpen(container);
     }
+    function open(){
+      clearTimeout(closeTimer);
+      clearTimeout(openTimer);
+      if(openDelay){
+        // Don't commit to opening until the pointer has actually dwelled
+        // here for openDelay ms — a quick pass-through triggers mouseleave
+        // (see scheduleClose, which cancels this timer) before it ever fires.
+        openTimer = setTimeout(reveal, openDelay);
+      }else{
+        reveal();
+      }
+    }
     function scheduleClose(){
+      clearTimeout(openTimer);
       clearTimeout(closeTimer);
       closeTimer = setTimeout(function(){ container.classList.remove(openClass); }, delay);
     }
@@ -12280,7 +12299,7 @@ function updateNav(){
     container.addEventListener('mouseleave', scheduleClose);
     panel.addEventListener('mouseenter', open);
     panel.addEventListener('mouseleave', scheduleClose);
-    container._closeNow = function(){ clearTimeout(closeTimer); container.classList.remove(openClass); };
+    container._closeNow = function(){ clearTimeout(openTimer); clearTimeout(closeTimer); container.classList.remove(openClass); };
   }
   /* Sibling subgroups (Start Here, The Predicament, Ego & Consciousness…)
      each hold their own grace-period timer, so moving directly from one
@@ -12300,7 +12319,11 @@ function updateNav(){
     });
   });
   document.querySelectorAll('.nav-dropdown-wrap').forEach(function(wrap){
-    addHoverIntent(wrap, ':scope > .nav-dropdown-panel', 'js-open', 25);
+    // 220ms dwell before opening. 120ms still let a fast touchpad sweep
+    // land inside the window often enough to flash — a deliberate hover
+    // usually runs 300ms+, so this leaves real margin against quick
+    // sweeps while still reading as instant to anyone actually pausing.
+    addHoverIntent(wrap, ':scope > .nav-dropdown-panel', 'js-open', 25, undefined, 220);
   });
 
   /* :focus-within has no concept of "the mouse moved on" — only an actual
