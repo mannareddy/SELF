@@ -1461,7 +1461,8 @@ a:hover{opacity:.7;}
     pointer-events:none;z-index:1;padding-bottom:24px;
   }
   [data-theme="light"] .mnav-screen{background:rgb(245,241,232);}
-  .mnav-screen.is-active{transform:translateX(0);pointer-events:auto;z-index:2;}
+  .mnav-screen.is-active{transform:translateX(0);z-index:2;}
+  .mnav-panel.open .mnav-screen.is-active{pointer-events:auto;}
   .mnav-screen.is-prev{transform:translateX(-22%);pointer-events:none;}
 
   .mnav-screen-header{
@@ -12640,14 +12641,24 @@ function updateNav(){
       document.body.style.top = (-scrollY) + 'px';
       document.body.classList.add('mnav-open');
     }
-    function closeMenu(){
+    function closeMenu(skipScrollRestore){
       toggle.setAttribute('aria-expanded','false');
       panel.classList.remove('open');
       document.body.classList.remove('mnav-open');
       var scrollY = parseInt(document.body.dataset.mnavScrollY || '0', 10);
       document.body.style.top = '';
       delete document.body.dataset.mnavScrollY;
-      window.scrollTo(0, scrollY);
+      // Removing position:fixed never itself moved window.scrollY (the
+      // page only *looked* pinned via the negative top offset), so the
+      // page is already showing scrollY with no jump needed. Skip this
+      // extra scrollTo when a real in-page nav link triggered the close —
+      // that click's own smooth-scroll-to-target handler is about to move
+      // the page anyway, and firing an instant scrollTo here at the same
+      // moment position:fixed is removed is what froze real mobile Safari
+      // (the browser's viewport/reflow hadn't settled from unlocking yet).
+      // Only the backdrop-tap / hamburger-close paths (no navigation
+      // following) still need the restore, since nothing else will do it.
+      if(!skipScrollRestore) window.scrollTo(0, scrollY);
       // Always reopen at the root screen, matching the desktop mega-menu's
       // non-persistent state.
       resetStack();
@@ -12660,7 +12671,11 @@ function updateNav(){
 
     // Close panel when any link inside it is tapped
     panel.querySelectorAll('a').forEach(function(a){
-      a.addEventListener('click', closeMenu);
+      a.addEventListener('click', function(){
+        var href = a.getAttribute('href');
+        var isNavLink = !!href && href.charAt(0) === '#';
+        closeMenu(isNavLink);
+      });
     });
 
     // Close when tapping outside the panel (backdrop)
