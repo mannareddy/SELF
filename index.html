@@ -1183,8 +1183,7 @@ a:hover{opacity:.7;}
   .nav-dropdown-panel::-webkit-scrollbar-thumb{background:rgba(var(--accent-gold-rgb),0.5);border-radius:3px;}
   [data-theme="light"] .nav-dropdown-panel::-webkit-scrollbar-thumb{background:rgba(122,94,14,0.5);}
   .nav-dropdown-wrap:hover .nav-dropdown-panel,
-  .nav-dropdown-wrap:focus-within .nav-dropdown-panel,
-  .nav-dropdown-wrap.js-open .nav-dropdown-panel{
+  .nav-dropdown-wrap:focus-within .nav-dropdown-panel{
     opacity:1;pointer-events:auto;transform:translateY(2px);
     transition:opacity .15s ease, transform .15s ease;
   }
@@ -1231,16 +1230,7 @@ a:hover{opacity:.7;}
   .nav-group-trigger .flyout-caret{font-size:15px;opacity:.85;flex:0 0 auto;margin-top:2px;}
   .nav-flyout-panel{
     display:flex;flex-direction:column;
-    /* Centered on the trigger row (top:50% + translateY(-50%)) instead of
-       top-aligned to it (previously top:-1px). Top-aligning meant the
-       flyout only ever extended downward from wherever the trigger sat in
-       the parent list, so a trigger lower in a tall panel (e.g. "Ego &
-       Consciousness") produced a flyout the pointer had to travel far
-       down/away to reach — one wobble off that path and hover was lost,
-       closing the menu. Splitting the flyout evenly above/below the
-       trigger keeps every flyout item within a short, forgiving distance
-       of the pointer's starting position, whatever the flyout's height. */
-    position:absolute;top:50%;left:100%;margin-left:1px;transform:translateY(-50%);
+    position:absolute;top:-1px;left:100%;margin-left:1px;
     min-width:230px;max-width:300px;background:rgb(0,0,0);border:1px solid rgba(var(--accent-gold-rgb),0.4);
     box-shadow:0 14px 28px rgba(0,0,0,0.5);
     opacity:0;pointer-events:none;
@@ -1249,28 +1239,13 @@ a:hover{opacity:.7;}
     max-height:calc(100vh - 140px);overflow-y:auto;overscroll-behavior:contain;
     scrollbar-width:thin;scrollbar-color:rgba(var(--accent-gold-rgb),0.5) transparent;
   }
-  /* "Start Here" is the first item directly under the Traditions trigger,
-     right up against the main header row — centering its flyout (which
-     would push half of it upward) ran it into the header bar itself. It
-     keeps the original top-aligned placement; every other subgroup below
-     it still centers per the rule above. */
-  .nav-subgroup:first-child .nav-flyout-panel{
-    top:-1px;transform:none;
-  }
   .nav-flyout-panel::-webkit-scrollbar{width:5px;}
   .nav-flyout-panel::-webkit-scrollbar-track{background:transparent;}
   .nav-flyout-panel::-webkit-scrollbar-thumb{background:rgba(var(--accent-gold-rgb),0.5);border-radius:3px;}
   .nav-subgroup:hover .nav-flyout-panel,
-  .nav-subgroup:focus-within .nav-flyout-panel,
-  .nav-subgroup.js-open .nav-flyout-panel{
+  .nav-subgroup:focus-within .nav-flyout-panel{
     opacity:1;pointer-events:auto;
     transition:opacity .15s ease;
-  }
-  /* Mirrors .nav-dropdown-wrap.force-close above, one level down: forces a
-     nested flyout (e.g. "Start Here") shut the instant a link inside it is
-     clicked, even though the mouse is still technically hovering it. */
-  .nav-subgroup.force-close .nav-flyout-panel{
-    opacity:0 !important;visibility:hidden !important;pointer-events:none !important;
   }
   .nav-flyout-panel a{
     border-right:none !important;justify-content:flex-start !important;
@@ -1472,25 +1447,10 @@ a:hover{opacity:.7;}
     overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;
     scrollbar-width:thin;scrollbar-color:rgba(var(--accent-gold-rgb),0.55) transparent;
   }
-  .mnav-group-panel::-webkit-scrollbar{width:5px;}
-  /* Track set to a faint but visible fill (was transparent) so the bar
-     itself is a permanent cue that the panel scrolls, since most mobile
-     browsers auto-hide overlay scrollbar thumbs until a scroll gesture is
-     already in progress — leaving no visible affordance beforehand. */
-  .mnav-group-panel::-webkit-scrollbar-track{background:rgba(var(--accent-gold-rgb),0.12);border-radius:3px;}
+  .mnav-group-panel::-webkit-scrollbar{width:4px;}
+  .mnav-group-panel::-webkit-scrollbar-track{background:transparent;}
   .mnav-group-panel::-webkit-scrollbar-thumb{background:rgba(var(--accent-gold-rgb),0.55);border-radius:3px;}
-  [data-theme="light"] .mnav-group-panel::-webkit-scrollbar-track{background:rgba(122,94,14,0.12);}
   [data-theme="light"] .mnav-group-panel::-webkit-scrollbar-thumb{background:rgba(122,94,14,0.55);}
-  /* "More below" fade + cue: a sticky gradient pinned to the bottom edge of
-     the scroll area. Unlike the scrollbar track (thin, easy to miss on a
-     touch screen), this is impossible not to notice, and it naturally
-     disappears once the user has scrolled to the last item because there's
-     no more scrollable area left for the sticky element to stick within. */
-  .mnav-group-panel::after{
-    content:'';display:block;position:sticky;bottom:0;left:0;right:0;
-    height:26px;margin-top:-26px;pointer-events:none;
-    background:linear-gradient(to bottom, transparent, var(--bg-page));
-  }
   .mnav-group-panel a{
     display:block;font-family:var(--sans);font-size:16px;letter-spacing:0.5px;text-transform:none;
     color:var(--dim);padding:15px 22px 15px 34px;border-top:1px solid #1a1a1a;text-align:left;cursor:pointer;
@@ -1527,16 +1487,10 @@ a:hover{opacity:.7;}
     overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;
     scrollbar-width:thin;scrollbar-color:rgba(var(--accent-gold-rgb),0.5) transparent;
   }
-  .mnav-subgroup-panel::-webkit-scrollbar{width:5px;}
-  .mnav-subgroup-panel::-webkit-scrollbar-track{background:rgba(var(--accent-gold-rgb),0.12);border-radius:3px;}
+  .mnav-subgroup-panel::-webkit-scrollbar{width:4px;}
+  .mnav-subgroup-panel::-webkit-scrollbar-track{background:transparent;}
   .mnav-subgroup-panel::-webkit-scrollbar-thumb{background:rgba(var(--accent-gold-rgb),0.5);border-radius:3px;}
-  [data-theme="light"] .mnav-subgroup-panel::-webkit-scrollbar-track{background:rgba(122,94,14,0.12);}
   [data-theme="light"] .mnav-subgroup-panel::-webkit-scrollbar-thumb{background:rgba(122,94,14,0.5);}
-  .mnav-subgroup-panel::after{
-    content:'';display:block;position:sticky;bottom:0;left:0;right:0;
-    height:22px;margin-top:-22px;pointer-events:none;
-    background:linear-gradient(to bottom, transparent, var(--bg-page));
-  }
   .mnav-subgroup-panel a{
     padding-left:46px;font-size:14.5px;
   }
@@ -3730,7 +3684,6 @@ a.src-tag:hover{opacity:.75;}
           <div class="nav-flyout-panel">
             <a href="#patanjali" data-group="traditions">The Machinery of Stillness</a>
             <a href="#pranayama" data-group="traditions">Pranayama</a>
-            <a href="#svasthya" data-group="traditions">Svasthya</a>
           </div>
         </div>
         <div class="nav-subgroup">
@@ -3809,8 +3762,6 @@ a.src-tag:hover{opacity:.75;}
       <div class="nav-dropdown-panel" id="newMenuPanel">
         <a href="#neti-neti-method" data-group="new" onclick="expandNetiNeti();return false;">Neti Neti — The Method — Diagrams for All Five Koshas Added</a>
         <a href="#mistaken-identity" data-group="new">The Root Diagnosis — New Diagrams Added</a>
-        <a href="#svasthya" data-group="new">Svasthya — New Section Added</a>
-        <a href="#reclaiming-the-zero" data-group="new">As Outside, So Within — New Passage Added</a>
       </div>
     </li>
 
@@ -3902,7 +3853,6 @@ a.src-tag:hover{opacity:.75;}
           <div class="mnav-subgroup-panel">
             <a href="#patanjali">The Machinery of Stillness</a>
             <a href="#pranayama">Pranayama</a>
-            <a href="#svasthya">Svasthya</a>
           </div>
         </div>
         <div class="mnav-subgroup">
@@ -3966,8 +3916,6 @@ a.src-tag:hover{opacity:.75;}
       <div class="mnav-group-panel" id="newMenuPanelMobile">
         <a href="#neti-neti-method" onclick="expandNetiNeti();return false;">Neti Neti — The Method — Diagrams for All Five Koshas Added</a>
         <a href="#mistaken-identity">The Root Diagnosis — New Diagrams Added</a>
-        <a href="#svasthya">Svasthya — New Section Added</a>
-        <a href="#reclaiming-the-zero">As Outside, So Within — New Passage Added</a>
       </div>
     </li>
 
@@ -4382,32 +4330,6 @@ a.src-tag:hover{opacity:.75;}
         <div class="sl-stage" style="text-align:center;"><div class="sl-name" style="font-size:14px;">Future</div><p class="sl-desc">An anticipation, arriving as Now.</p></div>
       </div>
       <p style="margin-top:14px;font-size:13px;color:var(--grey);line-height:1.75;">The division of life into past, present, and future is mind-made. What you remember is an event that took place in the Now &mdash; and you are remembering it Now. The future, when it comes, is the Now. Life is never not &ldquo;this moment.&rdquo;</p>
-      <div class="framework-subcards">
-        <div class="framework-subcard collapsed">
-          <h4>The Alphabet and the Word</h4><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">What's given vs. what's built</p>
-          <div class="framework-subcard-content">
-          <p>Life hands you the letters &mdash; the events, the losses, the circumstances you didn't choose. It never hands you the word. <em>Meaning</em> is not found lying in the tray; it's assembled, tile by tile, out of the same raw alphabet that also spells <em>pain</em> and <em>loss</em>.</p>
-          <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">This is the dichotomy of control from a different angle: the letters on your rack are not in your hands. But the words you construct &mdash; and where you place them &mdash; are a matter of skill and practice, not luck.</p>
-          </div>
-        </div>
-        <div class="framework-subcard collapsed">
-          <h4>The Procrustean Bed</h4><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Forcing the fit vs. holding the space</p>
-          <div class="framework-subcard-content">
-          <p>Procrustes forced every guest to fit his iron bed &mdash; stretching the short, cutting the tall. Most relationships run the same operation quietly: chopping the other person down to fit a prepackaged narrative of who they should be.</p>
-          <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">The alternative isn't merging into one shape. It's responsible freedom &mdash; two distinct forms occupying a shared space, each left room to keep their own outline.</p>
-          </div>
-        </div>
-        <div class="framework-subcard collapsed">
-          <h4>Manufacturing vs. Growing a Life</h4><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Two metaphors for effort</p>
-          <div class="framework-subcard-content">
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;text-align:left;">
-            <div><div class="sl-name" style="font-size:14px;color:var(--dim);">The Manufacturing Metaphor</div><p class="sl-desc">Making money, making time, making friends &mdash; life as a machine you assemble.</p></div>
-            <div><div class="sl-name" style="font-size:14px;color:var(--gold);">The Agricultural Metaphor</div><p class="sl-desc">Growing, nurturing, flowing &mdash; life as a seed already carrying what it will become.</p></div>
-          </div>
-          <p style="margin-top:14px;font-size:13px;color:var(--grey);line-height:1.75;">The river runs independently of your preferences. Whether you fight the current or swim with it is the only real choice on offer.</p>
-          </div>
-        </div>
-      </div>
     </div></div>
     <div class="framework-card collapsed" id="four-defects-card">
       <span class="num">08</span>
@@ -4430,17 +4352,6 @@ a.src-tag:hover{opacity:.75;}
 <section class="section-wide" id="mistaken-identity" style="scroll-margin-top:56px;">
   <span class="label">The Root Diagnosis</span>
   <p class="phil-line bright">Before the cure, the actual disease.</p>
-
-  <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;align-items:center;max-width:820px;margin:0 auto 32px;">
-    <span class="sl-stage" style="padding:8px 16px;">Samsara<br><span class="sl-desc">The external world</span></span>
-    <span style="color:var(--dim);">&rarr;</span>
-    <span class="sl-stage" style="padding:8px 16px;">Loneliness<br><span class="sl-desc">Interpersonal struggle</span></span>
-    <span style="color:var(--dim);">&rarr;</span>
-    <span class="sl-stage" style="padding:8px 16px;">Self<br><span class="sl-desc">The mind, intrapersonal</span></span>
-    <span style="color:var(--dim);">&rarr;</span>
-    <span class="sl-stage sl-stage-now" style="padding:8px 16px;"><span style="color:var(--gold);">Awakening</span><br><span class="sl-desc">Liberation, conscious service</span></span>
-  </div>
-  <p style="font-family:var(--serif);font-size:14px;color:var(--mid);text-align:center;max-width:700px;margin:0 auto 28px;font-style:italic;">The arc moves from the existential reality of the world, through the isolation of the heart, into the battles of the mind, and resolves in spiritual elevation.</p>
 
   <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.95;max-width:820px;margin:0 auto 28px;text-align:center;">The Veda's diagnosis of the human condition isn't circumstantial &mdash; a bad job, a bad year, a bad relationship. It's structural. <span class="gloss">Samsara<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Samsara">+</span><span class="gloss-pop">The cycle of birth, death, and rebirth &mdash; the ceaseless churn of conditioned existence every layer below the Self remains bound to.</span></span> isn't only the biological wheel of birth and death. It's a five-step engine, cycling underneath an ordinary Tuesday, that manufactures the felt sense of incompleteness fresh every day &mdash; and then hands you the bill for trying to fix it from the wrong end.</p>
 
@@ -4777,21 +4688,6 @@ a.src-tag:hover{opacity:.75;}
       <div style="position:absolute;top:-1px;left:-1px;width:18px;height:18px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);"></div>
       <div style="position:absolute;bottom:-1px;right:-1px;width:18px;height:18px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);"></div>
       <p style="font-size:clamp(15px,1.9vw,17px);color:var(--white);line-height:1.9;margin:0;">Five negations, one remainder. What's left when every object, every composite, every changing and insentient thing has been cut away isn't a sixth, subtler object &mdash; it's the un-objectifiable Subject the whole procedure was run to isolate. Not a new sheath found. The search for one, ending.</p>
-    </div>
-
-    <!-- ZOOM OUT: the five koshas above cluster into three classical bodies.
-         Bridges the kosha-by-kosha negation above into a single map, and
-         sets up Tat Tvam Asi below. -->
-    <div style="margin:44px auto 0;max-width:820px;text-align:left;">
-      <p style="font-family:var(--sans);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:14px;">Zooming Out</p>
-      <h3 style="font-family:var(--serif);font-size:clamp(20px,3vw,26px);color:var(--white);margin-bottom:16px;">Karana, Sukshama, Sthula &mdash; the Three Bodies</h3>
-      <p style="font-family:var(--serif);font-size:clamp(15px,1.9vw,17px);color:var(--mid);line-height:1.9;margin-bottom:24px;">The five koshas above aren't five separate things stacked in a row. They cluster into three bodies.</p>
-      <div class="mobile-stack-cards" style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:24px;">
-        <div class="sl-stage"><span class="sl-num">CAUSAL &mdash; KARANA</span><div class="sl-name">Anandamaya</div><p class="sl-desc">The innermost. The seed-state everything else grows from.</p></div>
-        <div class="sl-stage"><span class="sl-num">SUBTLE &mdash; SUKSHAMA</span><div class="sl-name">Vijnanamaya, Manomaya, Pranamaya</div><p class="sl-desc">The middle. Where thought, feeling, and energy move.</p></div>
-        <div class="sl-stage"><span class="sl-num">GROSS &mdash; STHULA</span><div class="sl-name">Annamaya</div><p class="sl-desc">The outermost. What can be touched, weighed, seen in a mirror.</p></div>
-      </div>
-      <p style="font-family:var(--serif);font-size:clamp(15px,1.9vw,17px);color:var(--mid);line-height:1.9;margin:0;">In this framework, disturbance is said to move from the inside out &mdash; a thought or a knot of feeling in the subtle body, long before anything reaches the gross body at all. By the time the body is signaling that something's wrong, the traditional view holds that the disturbance has usually been circulating for a while.</p>
     </div>
   </div>
 
@@ -5511,8 +5407,6 @@ a.src-tag:hover{opacity:.75;}
       </div>
     </div>
 
-    <p style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.85;margin:24px 0 32px;padding:20px 24px;border:1.5px solid rgba(var(--accent-gold-rgb),0.4);text-align:left;">Empress Wu once asked the monk Fazang to demonstrate interdependence. He lit a single candle inside a hall of mirrors &mdash; every mirror carried the source flame, and the reflection of every other mirror's flame besides. One act doesn't stay contained to its source.</p>
-
     <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin:0 0 16px;text-align:left;">Same Moment, Two Ways to Live It</p>
     <div class="mobile-stack-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin:0 0 24px;text-align:left;">
       <div style="padding:24px 26px;background:var(--bg);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);">
@@ -6129,7 +6023,6 @@ a.src-tag:hover{opacity:.75;}
     </div>
 
     <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);margin-top:32px;padding:20px 24px;border:1.5px solid rgba(var(--accent-gold-rgb),0.55);background:var(--bg);text-align:left;">The intervention point sits between Stage 2 and Stage 3 &mdash; the gap where sustained conscious attention can feel the energy directly, without letting it harden into thought. Focus. Accept that it is there. Witness it as &ldquo;the one who observes.&rdquo; Just as wood placed in fire becomes fire, the pain-body exposed to the flame of consciousness is transmuted into presence.</p>
-    <p style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.8;margin-top:16px;">Chuang Tzu wrote of a man so afraid of his own shadow and so tired of his own footsteps that he ran faster and faster to escape them &mdash; and only ran himself to death, never once thinking to stop and sit in the shade. The pain-body works the same way: the running is what feeds it. Stillness is what it cannot survive.</p>
 
 
     <div id="thought-form" style="margin-top:32px;padding:24px 26px;background:var(--bg-lift);border:1.5px solid rgba(var(--accent-gold-rgb),0.35);border-left:3px solid var(--gold);text-align:left;scroll-margin-top:56px;">
@@ -6524,8 +6417,6 @@ a.src-tag:hover{opacity:.75;}
   </div>
 
   <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;max-width:750px;margin:24px auto 0;text-align:left;font-style:italic;">No fixation holds still. Each type below carries its own pressure-release valve and its own opening &mdash; the direction the personality is pulled apart under threat, and the direction it loosens under genuine growth. Tap a card to see both.</p>
-
-  <p style="font-family:var(--serif);font-size:14px;color:var(--gold);font-style:italic;margin-top:16px;max-width:750px;margin-left:auto;margin-right:auto;text-align:left;">Rabbi Zusya wept on his deathbed &mdash; not for failing to be Moses or Abraham, but for fear he'd be asked: &ldquo;Why weren't you Zusya?&rdquo; The Enneagram fixation is imitation. What's underneath is not.</p>
 
   <!-- ENNEAGRAM MAP — always-visible navigator. Tapping a node expands the
        card grid below (if collapsed) and scrolls to + opens that type's
@@ -7273,8 +7164,6 @@ a.src-tag:hover{opacity:.75;}
       <div style="padding:20px 28px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg);text-align:center;">
         <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--gold);font-style:italic;line-height:1.85;margin:0;">Form is empty, and emptiness is form. The paradox is fundamentally intertwined. 42 is the bridge between the Void and Being &mdash; and you are standing on it right now.</p>
       </div>
-
-      <p style="font-family:var(--serif);font-size:clamp(14px,1.8vw,17px);color:var(--dim);line-height:1.85;max-width:760px;margin:0 auto 24px;text-align:center;font-style:italic;">As outside, so within &mdash; the macrocosm and the microcosm are read as the same pattern at different scales. Not proof of anything metaphysical. A pointer: whatever structure you find repeating at every scale is worth taking seriously as a clue, not as a conclusion.</p>
 
       <!-- RECLAIMING THE ZERO -->
       <div class="mobile-stack-cards" id="reclaiming-the-zero" style="display:grid;grid-template-columns:1fr 1.3fr;gap:2px;margin-top:20px;align-items:stretch;scroll-margin-top:56px;">
@@ -9248,53 +9137,6 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
     </div>
   </div>
 </section>
-
-<!-- SVASTHYA: AYURVEDA / YOGA / TANTRA -->
-<section class="section-wide" id="svasthya" style="scroll-margin-top:56px;">
-  <span class="label">Svasthya</span>
-  <p class="phil-line bright">Established in the Self.</p>
-
-  <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.95;max-width:820px;margin:0 auto 28px;text-align:center;">
-    <span class="gloss">Svasthya<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Svasthya">+</span><span class="gloss-pop">Sanskrit: sva (self) + stha (established/abiding) &mdash; usually translated as &ldquo;health,&rdquo; but literally &ldquo;abiding in one's own self.&rdquo;</span></span>
-    is Ayurveda's own word for health &mdash; and it doesn't mean the absence of disease. It means being established in the Self, with the body and mind functioning as instruments of that abiding rather than obstacles to it. Vedanta diagnoses the mistaken identity. Yoga and Tantra work the same terrain from the body and energy upward. This isn't a separate system bolted onto *SELF &mdash; it's the same map, read through breath, posture, and subtle energy instead of pure inquiry.
-  </p>
-
-  <div class="framework-grid" style="max-width:980px;margin:0 auto;">
-
-    <div class="framework-card collapsed">
-      <span class="num">01</span>
-      <h3>The Three Gunas</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">The weather of the mind</p><div class="framework-content">
-      <p>Ayurveda and Samkhya describe all of nature, including mental states, as a shifting mixture of three qualities: <em>Sattva</em> (clarity, balance), <em>Rajas</em> (activity, restlessness), and <em>Tamas</em> (inertia, dullness). None is "bad" &mdash; they're weather, not character. The work is noticing which one is currently running the show.</p>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:2px;margin-top:18px;">
-        <div class="sl-stage"><div class="sl-name" style="font-size:14px;">Sattva</div><p class="sl-desc">Clear, light, undistorted</p></div>
-        <div class="sl-stage"><div class="sl-name" style="font-size:14px;">Rajas</div><p class="sl-desc">Driven, agitated, grasping</p></div>
-        <div class="sl-stage"><div class="sl-name" style="font-size:14px;">Tamas</div><p class="sl-desc">Heavy, dull, resistant</p></div>
-      </div>
-    </div></div>
-
-    <div class="framework-card collapsed">
-      <span class="num">02</span>
-      <h3>Prana as the Bridge</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Where breath meets attention</p><div class="framework-content">
-      <p><span class="gloss">Prana<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Prana">+</span><span class="gloss-pop">Life-force or vital energy; also refers specifically to the inhaled breath in yogic anatomy.</span></span> is the working link Yoga uses between body and mind that Vedanta's pure inquiry mostly leaves untouched. Breath is the one autonomic process you can also run manually &mdash; which makes it the practical door into the gap between trigger and reaction that the RRRR Protocol names conceptually.</p>
-      <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">Where RRRR asks you to <em>notice</em> the gap, pranayama gives you a lever to physically widen it.</p>
-    </div></div>
-
-    <div class="framework-card collapsed">
-      <span class="num">03</span>
-      <h3>The Koshas Made Practical</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Working the seven-level model from the body up</p><div class="framework-content">
-      <p>The seven-level model of existence already on this site has a companion in Vedanta's five koshas (sheaths) &mdash; annamaya (physical), pranamaya (energetic), manomaya (mental), vijnanamaya (wisdom), anandamaya (bliss). Yoga's asana and pranayama practices work primarily on the first two sheaths &mdash; not as an end in themselves, but as the ground floor that has to be reasonably stable before subtler work holds.</p>
-    </div></div>
-
-    <div class="framework-card collapsed">
-      <span class="num">04</span>
-      <h3>Tantra's Reframe: Nothing to Reject</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Transmutation over renunciation</p><div class="framework-content">
-      <p>Where some ascetic paths treat the body and senses as obstacles to transcend, Tantra's central move is different: nothing is excluded from the path. Desire, anger, and pleasure aren't enemies to suppress &mdash; they're energy to be recognized and redirected, the same way the Pain-Body section already describes turning attention itself into the transmuting agent.</p>
-      <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">This is offered as a lens, not a practice prescription &mdash; *SELF doesn't teach Tantric ritual, only borrows its core insight: what you resist, persists; what you include, transforms.</p>
-    </div></div>
-
-  </div>
-</section>
-
 <!-- ══════════════════════════ ENHANCED MASTER MATRIX ══════════════════════ -->
 <section id="master-matrix" style="padding:90px 24px;background:var(--bg);border-top:1px solid #111;overflow-x:hidden;">
   <div style="max-width:900px;margin:0 auto;">
@@ -9548,7 +9390,7 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
         are correspondence &mdash; older maps drawing the same line in a different language.
       </p>
       <p style="font-family:var(--serif);font-size:14.5px;color:var(--mid);line-height:1.85;margin:20px 0 0;text-align:left;">
-        One more correspondence, underneath the Existence Layer column: Yogic philosophy nests these same seven koshas inside three coarser bodies (<span class="gloss" style="color:var(--gold);">Sariras<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Sariras">+</span><span class="gloss-pop">Sanskrit for &ldquo;bodies&rdquo; &mdash; the physical, subtle, and causal vehicles said to house the five koshas, coarsest to subtlest.</span></span>). Annamaya alone makes up the <strong style="color:var(--gold);font-weight:400;">Physical Body</strong>. Pranamaya, Manomaya, and Vijnanamaya together make up the <strong style="color:var(--gold);font-weight:400;">Astral Body</strong> &mdash; the bridge layers, Layers 2 through 4 below. Anandamaya alone makes up the <strong style="color:var(--gold);font-weight:400;">Causal Body</strong>, said to be the one that survives the body's death. Same seven layers. One more way to group them.
+        One more correspondence, underneath the Existence Layer column: Yogic philosophy nests these same seven koshas inside three coarser bodies (<span class="gloss" style="color:var(--gold);">Sariras<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Sariras">+</span><span class="gloss-pop">Sanskrit for &ldquo;bodies&rdquo; &mdash; the physical, subtle, and causal vehicles said to house the five koshas, coarsest to subtlest.</span></span>). Annamaya alone makes up the <strong style="color:var(--gold);font-weight:400;">Physical Body</strong>. Pranamaya, Manomaya, and Vijnanamaya together make up the <strong style="color:var(--gold);font-weight:400;">Astral Body</strong> &mdash; the bridge layers, Layers 2 through 4 above. Anandamaya alone makes up the <strong style="color:var(--gold);font-weight:400;">Causal Body</strong>, said to be the one that survives the body's death. Same seven layers. One more way to group them.
       </p>
     </div>
     </div>
@@ -12110,37 +11952,18 @@ function updateNav(){
   );
 
   /* Close a desktop dropdown panel the moment a link inside it is clicked,
-     instead of waiting for the mouse to physically leave the area.
-     FIX: clicking a link inside a nested flyout (e.g. Traditions ▸ Start Here
-     ▸ "The Super-Ordinate Goal") only ever force-closed the top-level
-     .nav-dropdown-wrap. Because these are same-page anchor links, the page
-     never navigates away and the mouse never physically moves off the menu,
-     so the nested .nav-subgroup kept satisfying :hover/:focus-within (and
-     its JS .js-open class, set by addHoverIntent) and its .nav-flyout-panel
-     stayed visibly open — on top of a top-level panel that was itself only
-     hidden via opacity/visibility, not actually removed from the layout.
-     Now every ancestor .nav-subgroup between the clicked link and the top
-     wrap is force-closed too, and any hover-intent timer holding it open
-     (_closeNow) is cancelled immediately instead of waiting out its delay. */
+     instead of waiting for the mouse to physically leave the area. */
   document.querySelectorAll('.nav-dropdown-panel a').forEach(function(a){
     a.addEventListener('click', function(){
       var wrap = a.closest('.nav-dropdown-wrap');
       if(!wrap) return;
       wrap.classList.add('force-close');
-      a.closest('.nav-dropdown-panel').querySelectorAll('.nav-subgroup').forEach(function(sg){
-        sg.classList.remove('js-open');
-        sg.classList.add('force-close');
-        if(sg._closeNow) sg._closeNow();
-      });
       a.blur();
     });
   });
   document.querySelectorAll('.nav-dropdown-wrap').forEach(function(wrap){
     wrap.addEventListener('mouseleave', function(){
       wrap.classList.remove('force-close');
-      wrap.querySelectorAll('.nav-subgroup').forEach(function(sg){
-        sg.classList.remove('force-close');
-      });
     });
   });
 
@@ -12181,59 +12004,6 @@ function updateNav(){
     if(header) header.addEventListener('focus', sizeFlyout);
     flyout.querySelectorAll('a').forEach(function(a){ a.addEventListener('focus', sizeFlyout); });
     window.addEventListener('resize', sizeFlyout);
-  });
-
-  /* ── Hover-intent grace period for Traditions' two-level flyouts ──
-     Pure CSS :hover only shows a panel while the pointer is directly over
-     it (or a DOM descendant of it). The nested flyout is now offset above
-     and below its trigger row (see .nav-flyout-panel centering above), so
-     reaching it means crossing a strip of "dead" space that belongs to
-     neither the row nor the panel. Moving fast enough, the pointer can
-     cross that strip in one frame with no element ever registering
-     :hover, which drops the CSS chain and closes the menu — sometimes the
-     whole Traditions panel, not just the flyout — before the pointer ever
-     lands on the intended item. A short JS-held-open grace period bridges
-     that gap: the panel stays visible/interactive for a brief window
-     after the pointer leaves its trigger, giving a fast diagonal move time
-     to land on it before it disappears. */
-  function addHoverIntent(container, panelSelector, openClass, delay, onOpen){
-    var panel = container.querySelector(panelSelector);
-    if(!panel) return;
-    var closeTimer = null;
-    function open(){
-      clearTimeout(closeTimer);
-      container.classList.add(openClass);
-      if(onOpen) onOpen(container);
-    }
-    function scheduleClose(){
-      clearTimeout(closeTimer);
-      closeTimer = setTimeout(function(){ container.classList.remove(openClass); }, delay);
-    }
-    container.addEventListener('mouseenter', open);
-    container.addEventListener('mouseleave', scheduleClose);
-    panel.addEventListener('mouseenter', open);
-    panel.addEventListener('mouseleave', scheduleClose);
-    container._closeNow = function(){ clearTimeout(closeTimer); container.classList.remove(openClass); };
-  }
-  /* Sibling subgroups (Start Here, The Predicament, Ego & Consciousness…)
-     each hold their own grace-period timer, so moving directly from one
-     trigger to the next — without the mouse ever leaving the Traditions
-     panel — let the previous flyout's timer keep it visible for its full
-     350ms while the new one opened on top of it, showing two stacked
-     flyouts briefly. Closing every sibling immediately the moment a new
-     one opens (instead of waiting out its own timer) keeps only one
-     flyout on screen at a time, while the grace period itself still does
-     its job for the pointer's diagonal move toward the panel. */
-  var allSubgroups = Array.prototype.slice.call(document.querySelectorAll('.nav-subgroup'));
-  allSubgroups.forEach(function(sg){
-    addHoverIntent(sg, ':scope > .nav-flyout-panel', 'js-open', 25, function(opened){
-      allSubgroups.forEach(function(other){
-        if(other !== opened && other._closeNow) other._closeNow();
-      });
-    });
-  });
-  document.querySelectorAll('.nav-dropdown-wrap').forEach(function(wrap){
-    addHoverIntent(wrap, ':scope > .nav-dropdown-panel', 'js-open', 25);
   });
 
   /* :focus-within has no concept of "the mouse moved on" — only an actual
@@ -12395,7 +12165,7 @@ function updateNav(){
   })();
 
   var sectionIds = [
-    'home','super-ordinate-goal','framework','sources','dimension','consciousness','forty-two','masters','patanjali','pranayama','svasthya','great-forest','go-deeper',
+    'home','super-ordinate-goal','framework','sources','dimension','consciousness','forty-two','masters','patanjali','great-forest','go-deeper',
     'ego','bodhichitta','pain-body','ego-checklist','diagnostic','feedback-loop',
     'portals-to-presence',
     'ledger','ipo','mirror','contract','contribution',
@@ -12406,7 +12176,7 @@ function updateNav(){
   // Map each section ID to which desktop group trigger should highlight
   var groupMap = {
     'framework':'traditions','super-ordinate-goal':'traditions','dimension':'traditions','consciousness':'traditions',
-    'forty-two':'traditions','masters':'traditions','patanjali':'traditions','pranayama':'traditions','svasthya':'traditions','great-forest':'traditions','go-deeper':'traditions',
+    'forty-two':'traditions','masters':'traditions','patanjali':'traditions','great-forest':'traditions','go-deeper':'traditions',
     'ego':'traditions','bodhichitta':'traditions','pain-body':'traditions','contribution':'traditions',
     'ego-checklist':'practice','diagnostic':'practice','feedback-loop':'practice','portals-to-presence':'practice',
     'ledger':'shop-circle','ipo':'shop-circle',
