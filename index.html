@@ -1440,106 +1440,72 @@ a:hover{opacity:.7;}
   .mnav-panel.open{opacity:1;transform:translate3d(0,0,0);pointer-events:auto;}
   [data-theme="light"] .mnav-panel{background:rgb(245,241,232);}
 
-  .mnav-list{list-style:none;margin:0;padding:8px 0 48px;}
-  .mnav-list>li{border-bottom:1px solid #1a1a1a;}
-  [data-theme="light"] .mnav-list>li{border-bottom-color:rgba(var(--shadow-rgb),0.24);}
-  .mnav-list>li>a,
-  .mnav-group-toggle{
-    display:flex;align-items:center;justify-content:space-between;width:100%;
-    font-family:var(--sans);font-size:12.5px;letter-spacing:2px;text-transform:uppercase;
-    color:var(--gold);background:none;border:none;text-align:left;cursor:pointer;
-    padding:18px 22px;
+  /* ── Mobile nav: drill-down "screen stack" ──
+     Deep hierarchy (Traditions alone is 7 categories × several links each)
+     doesn't hold up as nested inline accordions on a small screen — each
+     open group pushed everything below it down the page, and a second
+     accordion nested inside the first turned into a long, confusing
+     scroll with two different kinds of collapsible wells stacked on top
+     of each other. Each level now gets its own full-width screen instead:
+     tapping a row slides the next level in from the right, Back slides
+     the previous one in from the left — the same drill-down pattern a
+     native settings app uses, and the closest mobile equivalent of how
+     the desktop mega-menu's tree actually reads (one level at a time,
+     always full-width, nothing nested inside anything else). */
+  .mnav-drill{
+    position:relative;overflow:hidden;height:100%;
   }
-  .mnav-group-toggle[aria-expanded="true"] .mnav-caret{transform:rotate(180deg);}
-  /* Self-contained scroll area: each open group is capped to a fixed height
-     rather than growing to fit all its links. This keeps the group's own
-     scrollbar visible as a cue that there are more items inside it, instead
-     of the whole mobile nav growing tall and requiring the user to scroll
-     past unrelated groups below to see everything. */
-  .mnav-group-panel{
-    max-height:0;overflow:hidden;transition:max-height .35s ease;background:rgba(255,255,255,0.02);
+  .mnav-screen{
+    position:absolute;inset:0;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;
+    background:#000;transform:translateX(100%);transition:transform .32s cubic-bezier(.22,.61,.36,1);
+    pointer-events:none;z-index:1;padding-bottom:24px;
   }
-  .mnav-group.open .mnav-group-panel{
-    /* vh sizes against Chrome's *largest* viewport (URL bar hidden), so on
-       first open — bar still visible — this computes taller than what's
-       actually on screen, cutting off the last item(s) until something
-       scrolls the page and the bar collapses. svh is stable at the
-       *smallest* viewport regardless of bar state, so it fits correctly
-       from the very first tap. Same fix as .hero above, kept as a second
-       declaration so browsers without svh support still get the vh line. */
-    max-height:min(68vh,460px);
-    max-height:min(68svh,460px);
-    overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;
-    scrollbar-width:thin;scrollbar-color:rgba(var(--accent-gold-rgb),0.55) transparent;
-  }
-  .mnav-group-panel::-webkit-scrollbar{width:5px;}
-  /* Track set to a faint but visible fill (was transparent) so the bar
-     itself is a permanent cue that the panel scrolls, since most mobile
-     browsers auto-hide overlay scrollbar thumbs until a scroll gesture is
-     already in progress — leaving no visible affordance beforehand. */
-  .mnav-group-panel::-webkit-scrollbar-track{background:rgba(var(--accent-gold-rgb),0.12);border-radius:3px;}
-  .mnav-group-panel::-webkit-scrollbar-thumb{background:rgba(var(--accent-gold-rgb),0.55);border-radius:3px;}
-  [data-theme="light"] .mnav-group-panel::-webkit-scrollbar-track{background:rgba(122,94,14,0.12);}
-  [data-theme="light"] .mnav-group-panel::-webkit-scrollbar-thumb{background:rgba(122,94,14,0.55);}
-  /* "More below" fade + cue: a sticky gradient pinned to the bottom edge of
-     the scroll area. Unlike the scrollbar track (thin, easy to miss on a
-     touch screen), this is impossible not to notice, and it naturally
-     disappears once the user has scrolled to the last item because there's
-     no more scrollable area left for the sticky element to stick within. */
-  .mnav-group-panel::after{
-    content:'';display:block;position:sticky;bottom:0;left:0;right:0;
-    height:26px;margin-top:-26px;pointer-events:none;
-    background:linear-gradient(to bottom, transparent, var(--bg-page));
-  }
-  .mnav-group-panel a{
-    display:block;font-family:var(--sans);font-size:16px;letter-spacing:0.5px;text-transform:none;
-    color:var(--dim);padding:15px 22px 15px 34px;border-top:1px solid #1a1a1a;text-align:left;cursor:pointer;
-  }
-  .mnav-group-panel a:hover,.mnav-group-panel a:active{color:var(--gold);}
-  .mnav-group-panel .new-menu-soon{
-    display:block;font-family:var(--sans);font-size:11px;letter-spacing:1px;text-transform:none;
-    color:#555;padding:13px 22px 13px 34px;border-top:1px solid #1a1a1a;font-style:italic;text-align:left;
-  }
-  .mnav-list a.active{color:var(--gold);}
+  [data-theme="light"] .mnav-screen{background:rgb(245,241,232);}
+  .mnav-screen.is-active{transform:translateX(0);pointer-events:auto;z-index:2;}
+  .mnav-screen.is-prev{transform:translateX(-22%);pointer-events:none;}
 
-  /* ── Nested accordion (2nd level) inside mobile group panels ──
-     Mirrors the desktop flyout hierarchy (.nav-subgroup/.nav-flyout-panel)
-     so mobile gets the same Start Here / The Predicament / etc. clustering
-     as real collapsible groups, instead of flat inert section labels. */
-  .mnav-subgroup{border-top:1px solid #1a1a1a;}
-  [data-theme="light"] .mnav-subgroup{border-top-color:rgba(var(--shadow-rgb),0.2);}
-  .mnav-subgroup:first-child{border-top:none;}
-  .mnav-subgroup-toggle{
-    display:flex;align-items:flex-start;justify-content:space-between;gap:8px;width:100%;
-    font-family:var(--sans);font-size:11px;letter-spacing:2px;text-transform:uppercase;
-    color:var(--gold);opacity:1;background:none;border:none;text-align:left;cursor:pointer;
-    padding:13px 22px 13px 34px;
+  .mnav-screen-header{
+    display:flex;align-items:center;gap:10px;padding:16px 20px;
+    border-bottom:1px solid #1a1a1a;position:sticky;top:0;background:#000;z-index:3;
   }
-  .mnav-subgroup-toggle .trigger-label-text{flex:1 1 auto;min-width:0;}
-  .mnav-subgroup-toggle .mnav-caret-sm{font-size:20px;flex:0 0 auto;margin-top:1px;}
-  .mnav-subgroup-toggle[aria-expanded="true"] .mnav-caret-sm{transform:rotate(180deg);}
-  .mnav-subgroup-panel{
-    max-height:0;overflow:hidden;transition:max-height .3s ease;background:rgba(255,255,255,0.02);
+  [data-theme="light"] .mnav-screen-header{background:rgb(245,241,232);border-bottom-color:rgba(var(--shadow-rgb),0.24);}
+  .mnav-back{
+    display:flex;align-items:center;gap:3px;background:none;border:none;cursor:pointer;
+    font-family:var(--sans);font-size:11.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);
+    padding:6px 8px 6px 0;flex:0 0 auto;white-space:nowrap;
   }
-  .mnav-subgroup.open .mnav-subgroup-panel{
-    max-height:min(46vh,380px);
-    max-height:min(46svh,380px);
-    overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;
-    scrollbar-width:thin;scrollbar-color:rgba(var(--accent-gold-rgb),0.5) transparent;
+  .mnav-back-arrow{font-size:19px;line-height:1;margin-top:-1px;}
+  .mnav-screen-title{
+    font-family:var(--sans);font-size:12.5px;letter-spacing:2px;text-transform:uppercase;color:var(--grey);
+    flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:right;
   }
-  .mnav-subgroup-panel::-webkit-scrollbar{width:5px;}
-  .mnav-subgroup-panel::-webkit-scrollbar-track{background:rgba(var(--accent-gold-rgb),0.12);border-radius:3px;}
-  .mnav-subgroup-panel::-webkit-scrollbar-thumb{background:rgba(var(--accent-gold-rgb),0.5);border-radius:3px;}
-  [data-theme="light"] .mnav-subgroup-panel::-webkit-scrollbar-track{background:rgba(122,94,14,0.12);}
-  [data-theme="light"] .mnav-subgroup-panel::-webkit-scrollbar-thumb{background:rgba(122,94,14,0.5);}
-  .mnav-subgroup-panel::after{
-    content:'';display:block;position:sticky;bottom:0;left:0;right:0;
-    height:22px;margin-top:-22px;pointer-events:none;
-    background:linear-gradient(to bottom, transparent, var(--bg-page));
+
+  .mnav-row-list{list-style:none;margin:0;padding:0;}
+  .mnav-row-list li{border-bottom:1px solid #1a1a1a;}
+  [data-theme="light"] .mnav-row-list li{border-bottom-color:rgba(var(--shadow-rgb),0.24);}
+  .mnav-row-list a{
+    display:block;font-family:var(--sans);font-size:16px;letter-spacing:0.5px;
+    color:var(--dim);padding:16px 20px;text-align:left;cursor:pointer;
   }
-  .mnav-subgroup-panel a{
-    padding-left:46px;font-size:14.5px;
+  .mnav-row-list a:hover,.mnav-row-list a:active{color:var(--gold);}
+  .mnav-row-list a.active{color:var(--gold);}
+  .mnav-row-list .new-menu-soon{
+    display:block;font-family:var(--sans);font-size:11px;letter-spacing:1px;color:#555;
+    padding:14px 20px;font-style:italic;
   }
+  /* Root-level and category rows — things that drill one level deeper
+     rather than landing you on a section — keep the louder uppercase
+     treatment the old top-level accordion toggle used, so it's visually
+     obvious a tap opens another screen rather than navigating away. */
+  button.mnav-row{
+    display:flex;align-items:center;justify-content:space-between;width:100%;
+    font-family:var(--sans);font-size:12.5px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);
+    background:none;border:none;border-bottom:1px solid #1a1a1a;text-align:left;cursor:pointer;padding:18px 20px;
+  }
+  [data-theme="light"] button.mnav-row{border-bottom-color:rgba(var(--shadow-rgb),0.24);}
+  button.mnav-row:active{opacity:.75;}
+  button.mnav-row .mnav-caret{font-size:17px;opacity:.7;flex:0 0 auto;margin-left:8px;}
+  button.mnav-row .nav-new-dot{margin:0 2px;}
   body.mnav-open{overflow:hidden;position:fixed;left:0;right:0;width:100%;}
 }
 
@@ -3858,154 +3824,196 @@ a.src-tag:hover{opacity:.75;}
 
 <!-- ── MOBILE FULL-SCREEN ACCORDION PANEL ── -->
 <div class="mnav-panel" id="mnavPanel" role="dialog" aria-label="Site navigation">
-  <ul class="mnav-list">
-    <li><a href="#home">Home</a></li>
-    <li><a href="#sources">Sources</a></li>
+  <div class="mnav-drill mnav-list" id="mnavDrill">
 
-    <li class="mnav-group">
-      <button class="mnav-group-toggle" aria-expanded="false">
-        Traditions <span class="mnav-caret">▾</span>
-      </button>
-      <div class="mnav-group-panel">
-        <div class="mnav-subgroup">
-          <button class="mnav-subgroup-toggle" aria-expanded="false">
-            <span class="trigger-label-text">Start Here</span><span class="mnav-caret mnav-caret-sm">▾</span>
-          </button>
-          <div class="mnav-subgroup-panel">
-            <a href="#super-ordinate-goal">The Super-Ordinate Goal</a>
-            <a href="#framework">Framework</a>
-          </div>
-        </div>
-        <div class="mnav-subgroup">
-          <button class="mnav-subgroup-toggle" aria-expanded="false">
-            <span class="trigger-label-text">The Predicament</span><span class="mnav-caret mnav-caret-sm">▾</span>
-          </button>
-          <div class="mnav-subgroup-panel">
-            <a href="#mistaken-identity">The Root Diagnosis</a>
-            <a href="#qualified-seeker">Before The Inquiry Can Begin</a>
-          </div>
-        </div>
-        <div class="mnav-subgroup">
-          <button class="mnav-subgroup-toggle" aria-expanded="false">
-            <span class="trigger-label-text">The Vedantic Architecture</span><span class="mnav-caret mnav-caret-sm">▾</span>
-          </button>
-          <div class="mnav-subgroup-panel">
-            <a href="#mirror-of-the-veda">The Mirror of the Veda</a>
-            <a href="#orders-of-reality">Beneath the Screen</a>
-            <a href="#neti-neti-method" onclick="expandNetiNeti();return false;">Neti Neti — The Method</a>
-            <a href="#tat-tvam-asi">Tat Tvam Asi</a>
-          </div>
-        </div>
-        <div class="mnav-subgroup">
-          <button class="mnav-subgroup-toggle" aria-expanded="false">
-            <span class="trigger-label-text">Ego &amp; Consciousness</span><span class="mnav-caret mnav-caret-sm">▾</span>
-          </button>
-          <div class="mnav-subgroup-panel">
-            <a href="#spectrum">Ascent of Self</a>
-            <a href="#dimension">Matter as Dimension</a>
-            <a href="#consciousness">Consciousness &amp; Awareness</a>
-            <a href="#physical-correlate">A Note for the Skeptics</a>
-            <a href="#ego">Ego Architecture</a>
-            <a href="#five-aggregates">The Five Aggregates</a>
-            <a href="#enneagram">The Enneagram</a>
-            <a href="#rosetta-stone">Rosetta Stone of the Ego</a>
-            <a href="#forty-two">42 — The Symbol</a>
-          </div>
-        </div>
-        <div class="mnav-subgroup">
-          <button class="mnav-subgroup-toggle" aria-expanded="false">
-            <span class="trigger-label-text">Practice &amp; Physiology</span><span class="mnav-caret mnav-caret-sm">▾</span>
-          </button>
-          <div class="mnav-subgroup-panel">
-            <a href="#patanjali">The Machinery of Stillness</a>
-            <a href="#pranayama">Pranayama</a>
-            <a href="#svasthya">Svasthya</a>
-          </div>
-        </div>
-        <div class="mnav-subgroup">
-          <button class="mnav-subgroup-toggle" aria-expanded="false">
-            <span class="trigger-label-text">Relationship &amp; Attention</span><span class="mnav-caret mnav-caret-sm">▾</span>
-          </button>
-          <div class="mnav-subgroup-panel">
-            <a href="#great-forest">The Great Forest of Being</a>
-            <a href="#anatomy-of-love">The Anatomy of Love</a>
-            <a href="#quantity-or-quality">Quantity or Quality</a>
-            <a href="#attention-currency">The Attention Economy</a>
-          </div>
-        </div>
-        <div class="mnav-subgroup">
-          <button class="mnav-subgroup-toggle" aria-expanded="false">
-            <span class="trigger-label-text">Reference</span><span class="mnav-caret mnav-caret-sm">▾</span>
-          </button>
-          <div class="mnav-subgroup-panel">
-            <a href="#master-matrix">Master Matrix</a>
-            <a href="#memory-architect">Memory Architect</a>
-            <a href="#go-deeper">Go Deeper</a>
-            <a href="#parables">A Few Old Doors</a>
-          </div>
-        </div>
-      </div>
-    </li>
+    <!-- ROOT ── always the resting screen when the panel opens -->
+    <div class="mnav-screen is-active" data-screen="root">
+      <ul class="mnav-row-list" style="border-top:1px solid #1a1a1a;">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#sources">Sources</a></li>
+      </ul>
+      <button class="mnav-row" type="button" data-target="traditions">Traditions <span class="mnav-caret">›</span></button>
+      <button class="mnav-row" type="button" data-target="daily-practice">Daily Practice <span class="mnav-caret">›</span></button>
+      <button class="mnav-row" type="button" data-target="shop-circle">Shop / Circle <span class="mnav-caret">›</span></button>
+      <button class="mnav-row" type="button" data-target="new">New <span class="nav-new-dot"></span> <span class="mnav-caret">›</span></button>
+      <button class="mnav-row" type="button" data-target="resources">Resources <span class="mnav-caret">›</span></button>
+      <div class="mnav-geo" id="geoBadge"></div>
+    </div>
 
-    <li class="mnav-group">
-      <button class="mnav-group-toggle" aria-expanded="false">
-        Daily Practice <span class="mnav-caret">▾</span>
-      </button>
-      <div class="mnav-group-panel">
-        <a href="#void-test">Void Test</a>
-        <a href="#portals-to-presence">Portals to Presence</a>
-        <a href="#full-attention">How to Pay Full Attention</a>
-        <a href="#self-enquiry">Self-Enquiry</a>
-        <a href="#practice-paradox">The Practice Paradox</a>
-        <a href="#quick-anchor">Where Are You Right Now?</a>
-        <a href="#ego-checklist">Ego Checklist</a>
-        <a href="#diagnostic">Self-Diagnostic</a>
-        <a href="#feedback-loop">Feedback Loop</a>
-        <a href="#pattern-assessment">Pattern Test</a>
+    <!-- TRADITIONS ── category list, one level deep -->
+    <div class="mnav-screen" data-screen="traditions" data-back="root">
+      <div class="mnav-screen-header">
+        <button class="mnav-back" type="button" data-back="root"><span class="mnav-back-arrow">‹</span> Menu</button>
+        <span class="mnav-screen-title">Traditions</span>
       </div>
-    </li>
+      <button class="mnav-row" type="button" data-target="trad-start-here">Start Here <span class="mnav-caret">›</span></button>
+      <button class="mnav-row" type="button" data-target="trad-predicament">The Predicament <span class="mnav-caret">›</span></button>
+      <button class="mnav-row" type="button" data-target="trad-vedantic">The Vedantic Architecture <span class="mnav-caret">›</span></button>
+      <button class="mnav-row" type="button" data-target="trad-ego-consciousness">Ego &amp; Consciousness <span class="mnav-caret">›</span></button>
+      <button class="mnav-row" type="button" data-target="trad-practice-physiology">Practice &amp; Physiology <span class="mnav-caret">›</span></button>
+      <button class="mnav-row" type="button" data-target="trad-relationship-attention">Relationship &amp; Attention <span class="mnav-caret">›</span></button>
+      <button class="mnav-row" type="button" data-target="trad-reference">Reference <span class="mnav-caret">›</span></button>
+    </div>
 
-    <li class="mnav-group">
-      <button class="mnav-group-toggle" aria-expanded="false">
-        Shop / Circle <span class="mnav-caret">▾</span>
-      </button>
-      <div class="mnav-group-panel">
-        <a href="#faq-workbook" onclick="openFaqEntry('faq-workbook')">Get the Workbook ↗</a>
-        <a href="https://companion.42self.xyz" target="_blank" rel="noopener" style="opacity:.9;">Web Companion <span style="font-family:var(--sans);font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:2px 6px;margin-left:8px;">Live</span></a>
-        <a href="#contract">Contract <span style="font-family:var(--sans);font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim);border:1px solid var(--dim);padding:2px 6px;margin-left:8px;">Launching Soon</span></a>
+    <!-- TRADITIONS ▸ leaf screens -->
+    <div class="mnav-screen" data-screen="trad-start-here" data-back="traditions">
+      <div class="mnav-screen-header">
+        <button class="mnav-back" type="button" data-back="traditions"><span class="mnav-back-arrow">‹</span> Traditions</button>
+        <span class="mnav-screen-title">Start Here</span>
       </div>
-    </li>
+      <ul class="mnav-row-list">
+        <li><a href="#super-ordinate-goal">The Super-Ordinate Goal</a></li>
+        <li><a href="#framework">Framework</a></li>
+      </ul>
+    </div>
 
-    <li class="mnav-group">
-      <button class="mnav-group-toggle" aria-expanded="false">
-        New <span class="nav-new-dot"></span><span class="mnav-caret">▾</span>
-      </button>
-      <div class="mnav-group-panel" id="newMenuPanelMobile">
-        <a href="#neti-neti-method" onclick="expandNetiNeti();return false;">Neti Neti — The Method — Diagrams for All Five Koshas Added</a>
-        <a href="#mistaken-identity">The Root Diagnosis — New Diagrams Added</a>
-        <a href="#svasthya" onclick="expandSvasthya();return false;">Svasthya — New Section Added</a>
-        <a href="#reclaiming-the-zero" onclick="expandOutsideSoWithin();return false;">As Outside, So Within — New Passage Added</a>
-        <a href="#procrustean-bed-detail" onclick="expandProcrusteanBed();return false;">The Procrustean Bed — Added to Anatomy of Love</a>
+    <div class="mnav-screen" data-screen="trad-predicament" data-back="traditions">
+      <div class="mnav-screen-header">
+        <button class="mnav-back" type="button" data-back="traditions"><span class="mnav-back-arrow">‹</span> Traditions</button>
+        <span class="mnav-screen-title">The Predicament</span>
       </div>
-    </li>
+      <ul class="mnav-row-list">
+        <li><a href="#mistaken-identity">The Root Diagnosis</a></li>
+        <li><a href="#qualified-seeker">Before The Inquiry Can Begin</a></li>
+      </ul>
+    </div>
 
-    <li class="mnav-group">
-      <button class="mnav-group-toggle" aria-expanded="false">
-        Resources <span class="mnav-caret">▾</span>
-      </button>
-      <div class="mnav-group-panel">
-        <a href="#faq-section">FAQ</a>
-        <a href="#feedback">Feedback</a>
-        <a href="#disclaimer">Disclaimer</a>
-        <a href="#glossary">Glossary</a>
-        <a href="https://x.com/muraliannareddy" target="_blank" rel="noopener" style="border-top:1px solid rgba(var(--accent-gold-rgb),0.25);margin-top:4px;padding-top:10px;">X (Twitter)</a>
-        <a href="https://t.me/+v6py4dWGU6g2MTU9" target="_blank" rel="noopener">Telegram</a>
-        <a href="https://www.youtube.com/channel/UCdQDrBMeE_uhDpqWY9QKlgw" target="_blank" rel="noopener">YouTube</a>
-        <a href="https://www.instagram.com/muralireddy_79/" target="_blank" rel="noopener">Instagram</a>
+    <div class="mnav-screen" data-screen="trad-vedantic" data-back="traditions">
+      <div class="mnav-screen-header">
+        <button class="mnav-back" type="button" data-back="traditions"><span class="mnav-back-arrow">‹</span> Traditions</button>
+        <span class="mnav-screen-title">The Vedantic Architecture</span>
       </div>
-    </li>
-  </ul>
-  <div class="mnav-geo" id="geoBadge"></div>
+      <ul class="mnav-row-list">
+        <li><a href="#mirror-of-the-veda">The Mirror of the Veda</a></li>
+        <li><a href="#orders-of-reality">Beneath the Screen</a></li>
+        <li><a href="#neti-neti-method" onclick="expandNetiNeti();return false;">Neti Neti — The Method</a></li>
+        <li><a href="#tat-tvam-asi">Tat Tvam Asi</a></li>
+      </ul>
+    </div>
+
+    <div class="mnav-screen" data-screen="trad-ego-consciousness" data-back="traditions">
+      <div class="mnav-screen-header">
+        <button class="mnav-back" type="button" data-back="traditions"><span class="mnav-back-arrow">‹</span> Traditions</button>
+        <span class="mnav-screen-title">Ego &amp; Consciousness</span>
+      </div>
+      <ul class="mnav-row-list">
+        <li><a href="#spectrum">Ascent of Self</a></li>
+        <li><a href="#dimension">Matter as Dimension</a></li>
+        <li><a href="#consciousness">Consciousness &amp; Awareness</a></li>
+        <li><a href="#physical-correlate">A Note for the Skeptics</a></li>
+        <li><a href="#ego">Ego Architecture</a></li>
+        <li><a href="#five-aggregates">The Five Aggregates</a></li>
+        <li><a href="#enneagram">The Enneagram</a></li>
+        <li><a href="#rosetta-stone">Rosetta Stone of the Ego</a></li>
+        <li><a href="#forty-two">42 — The Symbol</a></li>
+      </ul>
+    </div>
+
+    <div class="mnav-screen" data-screen="trad-practice-physiology" data-back="traditions">
+      <div class="mnav-screen-header">
+        <button class="mnav-back" type="button" data-back="traditions"><span class="mnav-back-arrow">‹</span> Traditions</button>
+        <span class="mnav-screen-title">Practice &amp; Physiology</span>
+      </div>
+      <ul class="mnav-row-list">
+        <li><a href="#patanjali">The Machinery of Stillness</a></li>
+        <li><a href="#pranayama">Pranayama</a></li>
+        <li><a href="#svasthya">Svasthya</a></li>
+      </ul>
+    </div>
+
+    <div class="mnav-screen" data-screen="trad-relationship-attention" data-back="traditions">
+      <div class="mnav-screen-header">
+        <button class="mnav-back" type="button" data-back="traditions"><span class="mnav-back-arrow">‹</span> Traditions</button>
+        <span class="mnav-screen-title">Relationship &amp; Attention</span>
+      </div>
+      <ul class="mnav-row-list">
+        <li><a href="#great-forest">The Great Forest of Being</a></li>
+        <li><a href="#anatomy-of-love">The Anatomy of Love</a></li>
+        <li><a href="#quantity-or-quality">Quantity or Quality</a></li>
+        <li><a href="#attention-currency">The Attention Economy</a></li>
+      </ul>
+    </div>
+
+    <div class="mnav-screen" data-screen="trad-reference" data-back="traditions">
+      <div class="mnav-screen-header">
+        <button class="mnav-back" type="button" data-back="traditions"><span class="mnav-back-arrow">‹</span> Traditions</button>
+        <span class="mnav-screen-title">Reference</span>
+      </div>
+      <ul class="mnav-row-list">
+        <li><a href="#master-matrix">Master Matrix</a></li>
+        <li><a href="#memory-architect">Memory Architect</a></li>
+        <li><a href="#go-deeper">Go Deeper</a></li>
+        <li><a href="#parables">A Few Old Doors</a></li>
+      </ul>
+    </div>
+
+    <!-- DAILY PRACTICE — flat, one level under root -->
+    <div class="mnav-screen" data-screen="daily-practice" data-back="root">
+      <div class="mnav-screen-header">
+        <button class="mnav-back" type="button" data-back="root"><span class="mnav-back-arrow">‹</span> Menu</button>
+        <span class="mnav-screen-title">Daily Practice</span>
+      </div>
+      <ul class="mnav-row-list">
+        <li><a href="#void-test">Void Test</a></li>
+        <li><a href="#portals-to-presence">Portals to Presence</a></li>
+        <li><a href="#full-attention">How to Pay Full Attention</a></li>
+        <li><a href="#self-enquiry">Self-Enquiry</a></li>
+        <li><a href="#practice-paradox">The Practice Paradox</a></li>
+        <li><a href="#quick-anchor">Where Are You Right Now?</a></li>
+        <li><a href="#ego-checklist">Ego Checklist</a></li>
+        <li><a href="#diagnostic">Self-Diagnostic</a></li>
+        <li><a href="#feedback-loop">Feedback Loop</a></li>
+        <li><a href="#pattern-assessment">Pattern Test</a></li>
+      </ul>
+    </div>
+
+    <!-- SHOP / CIRCLE -->
+    <div class="mnav-screen" data-screen="shop-circle" data-back="root">
+      <div class="mnav-screen-header">
+        <button class="mnav-back" type="button" data-back="root"><span class="mnav-back-arrow">‹</span> Menu</button>
+        <span class="mnav-screen-title">Shop / Circle</span>
+      </div>
+      <ul class="mnav-row-list">
+        <li><a href="#faq-workbook" onclick="openFaqEntry('faq-workbook')">Get the Workbook ↗</a></li>
+        <li><a href="https://companion.42self.xyz" target="_blank" rel="noopener" style="opacity:.9;">Web Companion <span style="font-family:var(--sans);font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:2px 6px;margin-left:8px;">Live</span></a></li>
+        <li><a href="#contract">Contract <span style="font-family:var(--sans);font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim);border:1px solid var(--dim);padding:2px 6px;margin-left:8px;">Launching Soon</span></a></li>
+      </ul>
+    </div>
+
+    <!-- NEW ── hand-curated, no auto-detection (see desktop panel comment) -->
+    <div class="mnav-screen" data-screen="new" data-back="root">
+      <div class="mnav-screen-header">
+        <button class="mnav-back" type="button" data-back="root"><span class="mnav-back-arrow">‹</span> Menu</button>
+        <span class="mnav-screen-title">New</span>
+      </div>
+      <ul class="mnav-row-list" id="newMenuPanelMobile">
+        <li><a href="#neti-neti-method" onclick="expandNetiNeti();return false;">Neti Neti — The Method — Diagrams for All Five Koshas Added</a></li>
+        <li><a href="#mistaken-identity">The Root Diagnosis — New Diagrams Added</a></li>
+        <li><a href="#svasthya" onclick="expandSvasthya();return false;">Svasthya — New Section Added</a></li>
+        <li><a href="#reclaiming-the-zero" onclick="expandOutsideSoWithin();return false;">As Outside, So Within — New Passage Added</a></li>
+        <li><a href="#procrustean-bed-detail" onclick="expandProcrusteanBed();return false;">The Procrustean Bed — Added to Anatomy of Love</a></li>
+      </ul>
+    </div>
+
+    <!-- RESOURCES -->
+    <div class="mnav-screen" data-screen="resources" data-back="root">
+      <div class="mnav-screen-header">
+        <button class="mnav-back" type="button" data-back="root"><span class="mnav-back-arrow">‹</span> Menu</button>
+        <span class="mnav-screen-title">Resources</span>
+      </div>
+      <ul class="mnav-row-list">
+        <li><a href="#faq-section">FAQ</a></li>
+        <li><a href="#feedback">Feedback</a></li>
+        <li><a href="#disclaimer">Disclaimer</a></li>
+        <li><a href="#glossary">Glossary</a></li>
+        <li><a href="https://x.com/muraliannareddy" target="_blank" rel="noopener" style="border-top:1px solid rgba(var(--accent-gold-rgb),0.25);margin-top:4px;padding-top:10px;">X (Twitter)</a></li>
+        <li><a href="https://t.me/+v6py4dWGU6g2MTU9" target="_blank" rel="noopener">Telegram</a></li>
+        <li><a href="https://www.youtube.com/channel/UCdQDrBMeE_uhDpqWY9QKlgw" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://www.instagram.com/muralireddy_79/" target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+    </div>
+
+  </div>
 </div>
 
 <div class="a11y-fontsize" role="group" aria-label="Adjust text size">
@@ -4784,12 +4792,12 @@ a.src-tag:hover{opacity:.75;}
          sets up Tat Tvam Asi below. -->
     <div style="margin:44px auto 0;max-width:820px;text-align:left;">
       <p style="font-family:var(--sans);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:14px;">Zooming Out</p>
-      <h3 style="font-family:var(--serif);font-size:clamp(20px,3vw,26px);color:var(--white);margin-bottom:16px;">Karana, Sukshama, Sthula &mdash; the Three Bodies</h3>
+      <h3 style="font-family:var(--serif);font-size:clamp(20px,3vw,26px);color:var(--white);margin-bottom:16px;"><span class="gloss">Karana<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Karana">+</span><span class="gloss-pop">Sanskrit for &ldquo;causal&rdquo; &mdash; the innermost, seed-state body, corresponding to the Anandamaya kosha.</span></span>, <span class="gloss">Sukshama<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Sukshama">+</span><span class="gloss-pop">Sanskrit for &ldquo;subtle&rdquo; &mdash; the middle body of thought, feeling, and energy, spanning the Vijnanamaya, Manomaya, and Pranamaya koshas.</span></span>, <span class="gloss">Sthula<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Sthula">+</span><span class="gloss-pop">Sanskrit for &ldquo;gross&rdquo; &mdash; the outermost, physical body, corresponding to the Annamaya kosha.</span></span> &mdash; the Three Bodies</h3>
       <p style="font-family:var(--serif);font-size:clamp(15px,1.9vw,17px);color:var(--mid);line-height:1.9;margin-bottom:24px;">The five koshas above aren't five separate things stacked in a row. They cluster into three bodies.</p>
       <div class="mobile-stack-cards" style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:24px;">
-        <div class="sl-stage"><span class="sl-num">CAUSAL &mdash; KARANA</span><div class="sl-name">Anandamaya</div><p class="sl-desc">The innermost. The seed-state everything else grows from.</p></div>
-        <div class="sl-stage"><span class="sl-num">SUBTLE &mdash; SUKSHAMA</span><div class="sl-name">Vijnanamaya, Manomaya, Pranamaya</div><p class="sl-desc">The middle. Where thought, feeling, and energy move.</p></div>
-        <div class="sl-stage"><span class="sl-num">GROSS &mdash; STHULA</span><div class="sl-name">Annamaya</div><p class="sl-desc">The outermost. What can be touched, weighed, seen in a mirror.</p></div>
+        <div class="sl-stage"><span class="sl-num">CAUSAL &mdash; <span class="gloss">KARANA<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Karana">+</span><span class="gloss-pop">Sanskrit for &ldquo;causal&rdquo;.</span></span></span><div class="sl-name">Anandamaya</div><p class="sl-desc">The innermost. The seed-state everything else grows from.</p></div>
+        <div class="sl-stage"><span class="sl-num">SUBTLE &mdash; <span class="gloss">SUKSHAMA<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Sukshama">+</span><span class="gloss-pop">Sanskrit for &ldquo;subtle&rdquo;.</span></span></span><div class="sl-name">Vijnanamaya, Manomaya, Pranamaya</div><p class="sl-desc">The middle. Where thought, feeling, and energy move.</p></div>
+        <div class="sl-stage"><span class="sl-num">GROSS &mdash; <span class="gloss">STHULA<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Sthula">+</span><span class="gloss-pop">Sanskrit for &ldquo;gross&rdquo;.</span></span></span><div class="sl-name">Annamaya</div><p class="sl-desc">The outermost. What can be touched, weighed, seen in a mirror.</p></div>
       </div>
       <p style="font-family:var(--serif);font-size:clamp(15px,1.9vw,17px);color:var(--mid);line-height:1.9;margin:0;">In this framework, disturbance is said to move from the inside out &mdash; a thought or a knot of feeling in the subtle body, long before anything reaches the gross body at all. By the time the body is signaling that something's wrong, the traditional view holds that the disturbance has usually been circulating for a while.</p>
     </div>
@@ -12559,7 +12567,63 @@ function updateNav(){
   (function(){
     var toggle = document.getElementById('mnavToggle');
     var panel  = document.getElementById('mnavPanel');
+    var drill  = document.getElementById('mnavDrill');
     if(!toggle || !panel) return;
+
+    /* ── Drill-down screen stack ──
+       Each .mnav-screen is a full-width "page". A tiny stack of screen
+       ids tracks how the user got to wherever they currently are, so Back
+       always returns to the right parent even though several screens
+       (the 7 Traditions categories, the 4 flat top-level menus) all lead
+       different numbers of levels deep. render() is the only place that
+       touches classes: whatever's on top of the stack is .is-active,
+       whatever's directly beneath it is parked off to the left as
+       .is-prev (ready to slide back in on Back), and everything else is
+       simply not represented in the DOM by a state class, which leaves
+       it at its default transform (fully off-screen right) — correct
+       either way, since anything further back than the immediate parent
+       was never visible anyway. */
+    var screens = drill ? Array.prototype.slice.call(drill.querySelectorAll('.mnav-screen')) : [];
+    var screenById = {};
+    screens.forEach(function(s){ screenById[s.dataset.screen] = s; });
+    var stack = ['root'];
+
+    function render(){
+      var current = stack[stack.length - 1];
+      var prev = stack[stack.length - 2];
+      screens.forEach(function(s){
+        var id = s.dataset.screen;
+        s.classList.remove('is-active', 'is-prev');
+        if(id === current) s.classList.add('is-active');
+        else if(id === prev) s.classList.add('is-prev');
+      });
+      if(drill) drill.scrollTop = 0;
+      var activeScreen = screenById[current];
+      if(activeScreen) activeScreen.scrollTop = 0;
+    }
+    function pushScreen(id){
+      if(!screenById[id]) return;
+      stack.push(id);
+      render();
+    }
+    function popTo(id){
+      var idx = stack.indexOf(id);
+      if(idx === -1){ stack = ['root']; } else { stack = stack.slice(0, idx + 1); }
+      render();
+    }
+    function resetStack(){
+      stack = ['root'];
+      render();
+    }
+
+    if(drill){
+      drill.querySelectorAll('[data-target]').forEach(function(btn){
+        btn.addEventListener('click', function(){ pushScreen(btn.dataset.target); });
+      });
+      drill.querySelectorAll('.mnav-back[data-back]').forEach(function(btn){
+        btn.addEventListener('click', function(){ popTo(btn.dataset.back); });
+      });
+    }
 
     function openMenu(){
       toggle.setAttribute('aria-expanded','true');
@@ -12584,91 +12648,14 @@ function updateNav(){
       document.body.style.top = '';
       delete document.body.dataset.mnavScrollY;
       window.scrollTo(0, scrollY);
-      // Collapse any open accordion group so re-opening the panel always
-      // starts fresh, matching the desktop mega-menu's non-persistent state.
-      panel.querySelectorAll('.mnav-group.open').forEach(function(g){
-        g.classList.remove('open');
-        var t = g.querySelector('.mnav-group-toggle');
-        if(t) t.setAttribute('aria-expanded','false');
-      });
-      // Same reset, one level deeper — nested subgroups (e.g. inside
-      // Traditions) shouldn't stay expanded either when the panel re-opens.
-      panel.querySelectorAll('.mnav-subgroup.open').forEach(function(sg){
-        sg.classList.remove('open');
-        var st = sg.querySelector('.mnav-subgroup-toggle');
-        if(st) st.setAttribute('aria-expanded','false');
-      });
+      // Always reopen at the root screen, matching the desktop mega-menu's
+      // non-persistent state.
+      resetStack();
     }
 
     toggle.addEventListener('click', function(e){
       e.stopPropagation();
       panel.classList.contains('open') ? closeMenu() : openMenu();
-    });
-
-    // Accordion group toggles — one open at a time
-    panel.querySelectorAll('.mnav-group-toggle').forEach(function(btn){
-      btn.addEventListener('click', function(){
-        var group  = this.closest('.mnav-group');
-        var isOpen = group.classList.contains('open');
-        var hadOtherOpen = false;
-        panel.querySelectorAll('.mnav-group').forEach(function(g){
-          if(g !== group && g.classList.contains('open')) hadOtherOpen = true;
-          g.classList.remove('open');
-          g.querySelector('.mnav-group-toggle').setAttribute('aria-expanded','false');
-          // Collapse any nested subgroup too, whichever top-level group it
-          // belongs to (including this one, if it's being closed).
-          g.querySelectorAll('.mnav-subgroup.open').forEach(function(sg){
-            sg.classList.remove('open');
-            var st = sg.querySelector('.mnav-subgroup-toggle');
-            if(st) st.setAttribute('aria-expanded','false');
-          });
-        });
-        if(!isOpen){
-          group.classList.add('open');
-          btn.setAttribute('aria-expanded','true');
-          // Groups low in the list (New, Resources) expand below the fold
-          // with no visual cue to scroll — bring the toggle to the top of
-          // the panel's own scroll area so the newly revealed options are
-          // immediately visible instead of hidden until the user scrolls
-          // the outer panel on their own.
-          // If another group was already open, its collapse is still
-          // running (.mnav-group-panel's own 350ms max-height transition)
-          // when this handler fires. Measuring/scrolling immediately reads
-          // that stale, still-mostly-expanded layout, so the panel lands in
-          // the wrong place and only part of the newly opened group is
-          // visible — exactly the "partial menu" bug this fixes. Waiting
-          // out the same 350ms the CSS transition takes (plus a small
-          // buffer) before scrolling guarantees the layout has already
-          // settled, so the target position is correct either way.
-          var delay = hadOtherOpen ? 380 : 60;
-          setTimeout(function(){
-            btn.scrollIntoView({block:'start', behavior:'smooth'});
-          }, delay);
-        }
-      });
-    });
-
-    // Nested accordion toggles (e.g. Start Here / The Predicament inside
-    // Traditions) — one open at a time within their own parent group panel,
-    // independent of the top-level groups.
-    panel.querySelectorAll('.mnav-subgroup-toggle').forEach(function(btn){
-      btn.addEventListener('click', function(e){
-        e.stopPropagation();
-        var subgroup   = this.closest('.mnav-subgroup');
-        var groupPanel = this.closest('.mnav-group-panel');
-        var isOpen     = subgroup.classList.contains('open');
-        groupPanel.querySelectorAll('.mnav-subgroup').forEach(function(sg){
-          sg.classList.remove('open');
-          sg.querySelector('.mnav-subgroup-toggle').setAttribute('aria-expanded','false');
-        });
-        if(!isOpen){
-          subgroup.classList.add('open');
-          btn.setAttribute('aria-expanded','true');
-          setTimeout(function(){
-            btn.scrollIntoView({block:'start', behavior:'smooth'});
-          }, 60);
-        }
-      });
     });
 
     // Close panel when any link inside it is tapped
