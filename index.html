@@ -3827,6 +3827,7 @@ a.src-tag:hover{opacity:.75;}
         <a href="#mistaken-identity" data-group="new">The Root Diagnosis — New Diagrams Added</a>
         <a href="#svasthya" data-group="new" onclick="expandSvasthya();return false;">Svasthya — New Section Added</a>
         <a href="#reclaiming-the-zero" data-group="new" onclick="expandOutsideSoWithin();return false;">As Outside, So Within — New Passage Added</a>
+        <a href="#procrustean-bed-detail" data-group="new" onclick="expandProcrusteanBed();return false;">The Procrustean Bed — Added to Anatomy of Love</a>
       </div>
     </li>
 
@@ -3984,6 +3985,7 @@ a.src-tag:hover{opacity:.75;}
         <a href="#mistaken-identity">The Root Diagnosis — New Diagrams Added</a>
         <a href="#svasthya" onclick="expandSvasthya();return false;">Svasthya — New Section Added</a>
         <a href="#reclaiming-the-zero" onclick="expandOutsideSoWithin();return false;">As Outside, So Within — New Passage Added</a>
+        <a href="#procrustean-bed-detail" onclick="expandProcrusteanBed();return false;">The Procrustean Bed — Added to Anatomy of Love</a>
       </div>
     </li>
 
@@ -8918,7 +8920,7 @@ a.src-tag:hover{opacity:.75;}
     </div>
     <button class="collapse-toggle-btn" onclick="sectionCollapse('three-listening-detail',this)">Expand &#9660;</button>
   </div>
-  <div id="three-listening-detail" class="section-collapse-wrap collapsed" style="max-width:850px;margin:0 auto 24px;">
+  <div id="three-listening-detail" class="section-collapse-wrap collapsed" style="max-width:850px;margin:0 auto 48px;">
 
     <div class="mobile-stack-cards" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:2px;margin:20px 0 24px;text-align:left;">
       <div style="padding:22px 24px;background:var(--bg);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);">
@@ -8944,7 +8946,7 @@ a.src-tag:hover{opacity:.75;}
     </div>
     <button class="collapse-toggle-btn" onclick="sectionCollapse('procrustean-bed-detail',this)">Expand &#9660;</button>
   </div>
-  <div id="procrustean-bed-detail" class="section-collapse-wrap collapsed" style="max-width:850px;margin:0 auto 24px;">
+  <div id="procrustean-bed-detail" class="section-collapse-wrap collapsed" style="max-width:850px;margin:0 auto 48px;scroll-margin-top:56px;">
 
     <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin:20px 0 0;text-align:left;">Procrustes forced every guest to fit his iron bed &mdash; stretching the short, cutting the tall. Most relationships run the same operation quietly: chopping the other person down to fit a prepackaged narrative of who they should be.</p>
     <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:24px 28px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg-lift);text-align:left;margin:20px 0 0;">The alternative isn't merging into one shape. It's responsible freedom &mdash; two distinct forms occupying a shared space, each left room to keep their own outline.</p>
@@ -14853,6 +14855,17 @@ paRenderLastNote();
         var target = document.getElementById('reclaiming-the-zero');
         if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
       }, 350);
+    }, 350);
+  };
+
+  window.expandProcrusteanBed = function(){
+    // Anatomy of Love has no section-level gate, but this particular
+    // sub-widget is its own collapse-wrap like the two above it.
+    var wrap = document.getElementById('procrustean-bed-detail');
+    if(wrap && wrap.classList.contains('collapsed')) sectionCollapse('procrustean-bed-detail');
+    setTimeout(function(){
+      var target = document.getElementById('procrustean-bed-detail');
+      if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
     }, 350);
   };
 
