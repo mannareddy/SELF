@@ -12154,12 +12154,30 @@ function updateNav(){
       var wrap = a.closest('.nav-dropdown-wrap');
       if(!wrap) return;
       wrap.classList.add('force-close');
+      wrap.classList.remove('js-open');
+      if(wrap._closeNow) wrap._closeNow();
       a.closest('.nav-dropdown-panel').querySelectorAll('.nav-subgroup').forEach(function(sg){
         sg.classList.remove('js-open');
         sg.classList.add('force-close');
         if(sg._closeNow) sg._closeNow();
       });
       a.blur();
+      /* Anchor-link clicks jump-scroll the page under a stationary cursor.
+         Some browsers never dispatch a real mouseleave in that case (the
+         pointer never actually moved), so the mouseleave listener below —
+         the only other place force-close gets cleared — can simply never
+         fire. Left uncleared, force-close's !important CSS keeps the panel
+         invisible even once the mouse genuinely re-enters it later, which
+         reads as "the menu won't open again" the next time it's tried.
+         Also blurring whatever holds focus kills any :focus-within keeping
+         the panel open independent of hover, and clearing force-close on a
+         short delay (rather than instantly) guarantees the reset happens
+         either way, without waiting on a mouse event that may not come. */
+      if(document.activeElement && document.activeElement !== document.body) document.activeElement.blur();
+      setTimeout(function(){
+        wrap.classList.remove('force-close');
+        wrap.querySelectorAll('.nav-subgroup').forEach(function(sg){ sg.classList.remove('force-close'); });
+      }, 400);
     });
   });
   document.querySelectorAll('.nav-dropdown-wrap').forEach(function(wrap){
