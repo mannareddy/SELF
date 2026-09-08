@@ -12486,7 +12486,7 @@ function updateNav(){
      to browse the menu." Manually driving scrollTop and calling
      preventDefault() removes that ambiguity entirely — user intent here
      is unambiguous: the pointer is over the menu, so the menu scrolls. */
-  document.querySelectorAll('.nav-dropdown-panel').forEach(function(panel){
+  document.querySelectorAll('.nav-dropdown-panel, .nav-flyout-panel').forEach(function(panel){
     panel.addEventListener('wheel', function(e){
       if(panel.scrollHeight <= panel.clientHeight) return; // nothing to scroll — let the page handle it
       e.preventDefault();
