@@ -1705,7 +1705,7 @@ section{scroll-margin-top:56px;}
 #themeToggleMobile{display:none;}
 
 /* ── HERO ─────────────────────────────────────────────────────────────────── */
-.hero{min-height:calc(100vh - var(--nav-h));display:flex;flex-direction:column;justify-content:space-evenly;align-items:center;padding:8px 24px 32px;gap:16px;position:relative;background:radial-gradient(ellipse at 50% 35%,rgba(var(--accent-gold-rgb),.05) 0%,transparent 68%);}
+.hero{min-height:calc(100vh - var(--nav-h));display:flex;flex-direction:column;justify-content:space-between;align-items:center;padding:8px 24px 14px;gap:16px;position:relative;background:radial-gradient(ellipse at 50% 35%,rgba(var(--accent-gold-rgb),.05) 0%,transparent 68%);}
 .hero-3d-visual{display:block;width:min(250px,40vw);height:auto;max-width:none;margin:-10px auto 18px;}
 .hero-mobile-spacer{display:none;}
 .hero-3d-visual.hero-3d-light{display:none;}
@@ -1728,6 +1728,8 @@ section{scroll-margin-top:56px;}
 .hero-ca-link:hover .hero-ca-arrow{opacity:.9;}
 .hero-continue-mobile{display:inline-flex;align-items:center;gap:9px;padding:24px 0 0 !important;font-size:11px;color:var(--gold);letter-spacing:3px;animation:hero-arrow-glow 3.5s ease-in-out infinite !important;}
 .hero-continue-mobile::after{display:inline-block;margin-top:0;font-size:21px !important;color:var(--gold) !important;}
+.hero-arrow-only::after{content:none !important;}
+.hero-arrow-only svg{display:block;}
 @media(min-width:641px){
   .hero-continue-mobile{padding-top:10px !important;}
 }
@@ -2722,7 +2724,7 @@ h4 {
      viewport, so it fits on first paint in both. Kept as a second
      declaration so browsers without svh support fall back to the vh line
      above it. */
-  .hero{min-height:calc(100vh - var(--nav-h));min-height:calc(100svh - var(--nav-h));height:auto;padding:12px 16px 28px !important;justify-content:flex-start;gap:0;}
+  .hero{min-height:calc(100vh - var(--nav-h));min-height:calc(100svh - var(--nav-h));height:auto;padding:12px 16px 12px !important;justify-content:flex-start;gap:0;}
   .hero-mobile-spacer{display:block;min-height:0;}
   /* Hero 3D image adds a 4th flex child on top of a mobile layout already
      tuned to just fit one screen. Shrink it well down and drop its own
@@ -2765,8 +2767,8 @@ h4 {
     .hero-mobile-spacer{flex-grow:0.1 !important;}
     .hero-mobile-spacer-2{flex-grow:0.25 !important;}
     .hero-mobile-spacer-3{flex-grow:0.15 !important;}
-    .hero-mobile-spacer-4{flex-grow:0.35 !important;}
-    .hero-mobile-spacer-5{flex-grow:0.065 !important;}
+    .hero-mobile-spacer-4{flex-grow:0.395 !important;}
+    .hero-mobile-spacer-5{flex-grow:0.02 !important;}
     .hero-3d-visual{width:min(240px,62vw) !important;}
     .hero-question{font-size:17px !important;margin-bottom:6px !important;}
     .hero-question-box{padding:22px 24px !important;margin-bottom:0 !important;}
@@ -4062,9 +4064,11 @@ a.src-tag:hover{opacity:.75;}
       <p style="font-family:var(--serif);font-size:clamp(11px,1.4vw,14px);color:var(--dim);line-height:1.5;margin-bottom:0;">Outward, the answer keeps changing. Inward is the one place you haven&rsquo;t asked.</p>
     </div>
   </div>
-  <div class="hero-mobile-spacer hero-mobile-spacer-4" style="flex:1.75 1 0;"></div>
-  <span class="continue-hint hero-continue-mobile" style="padding-top:4px !important;">continue</span>
-  <div class="hero-mobile-spacer hero-mobile-spacer-5" style="flex:0.05 1 0;"></div>
+  <div class="hero-mobile-spacer hero-mobile-spacer-4" style="flex:1.79 1 0;"></div>
+  <span class="continue-hint hero-continue-mobile hero-arrow-only" style="padding-top:4px !important;" aria-label="Scroll to continue">
+    <svg viewBox="0 0 60 96" width="19" height="30" fill="none" stroke="var(--gold)" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M20 4 H40 V48 H54 L30 90 L6 48 H20 Z"/></svg>
+  </span>
+  <div class="hero-mobile-spacer hero-mobile-spacer-5" style="flex:0.01 1 0;"></div>
 </section>
 <!-- BANNER -->
 <div class="banner-section">
