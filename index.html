@@ -40,6 +40,15 @@ gtag('config','G-XC5FG6W949');
 img,svg,video{max-width:100%;height:auto;}
 html{
 scroll-behavior:smooth;
+/* Browser scroll anchoring is disabled globally: this page fully manages
+   its own scroll/animation timing (freezeTransitions, expandHeight /
+   collapseHeight, scrollAfterSettle). Native anchoring only fights that —
+   e.g. collapsing one framework-card while expanding a sibling shifts the
+   section's total height, and even with overflow-anchor:none on the card
+   elements themselves, the browser still hunts for a stable anchor further
+   out, landing on the next section's header (reads as an unwanted jump,
+   e.g. Framework card 06 opening scrolling to The Root Diagnosis below it). */
+overflow-anchor:none;
 background:var(--bg);   /* add this line */
 /* overflow-x:hidden here (in addition to body's own) is required — iOS
    Safari in particular will still let the page rubber-band/scroll
@@ -4512,23 +4521,35 @@ a.src-tag:hover{opacity:.75;}
       <div style="border-top:1px solid rgba(var(--accent-gold-rgb),0.28);margin-top:16px;padding-top:16px;">
         <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">What Gets Reached For Instead Of The Gap</p>
         <div style="display:flex;flex-direction:column;gap:12px;">
-          <div style="border:1px solid rgba(192,57,43,0.45);padding:14px 16px;">
-            <p style="margin:0 0 4px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#c0392b;">The Excuse</p>
-            <p style="margin:0 0 8px;font-size:14px;font-style:italic;color:var(--white);">&ldquo;This is just who I am.&rdquo;</p>
-            <p style="margin:0 0 4px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);">The Gap</p>
-            <p style="margin:0;font-size:13px;color:var(--grey);line-height:1.6;">A pattern, not a sentence &mdash; it was built, so it can be noticed while it's firing.</p>
+          <div class="mobile-stack-cards" style="display:grid;grid-template-columns:1fr 1fr;border:1px solid rgba(192,57,43,0.45);">
+            <div style="padding:14px 16px;border-right:1px solid rgba(192,57,43,0.3);">
+              <p style="margin:0 0 4px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#c0392b;">The Excuse</p>
+              <p style="margin:0;font-size:14px;font-style:italic;color:var(--white);">&ldquo;This is just who I am.&rdquo;</p>
+            </div>
+            <div style="padding:14px 16px;">
+              <p style="margin:0 0 4px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);">The Gap</p>
+              <p style="margin:0;font-size:13px;color:var(--grey);line-height:1.6;">A pattern, not a sentence &mdash; it was built, so it can be noticed while it's firing.</p>
+            </div>
           </div>
-          <div style="border:1px solid rgba(192,57,43,0.45);padding:14px 16px;">
-            <p style="margin:0 0 4px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#c0392b;">The Excuse</p>
-            <p style="margin:0 0 8px;font-size:14px;font-style:italic;color:var(--white);">&ldquo;It's my <span class="gloss">prārabdh karma<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define prārabdh karma">+</span><span class="gloss-pop">The destiny allotted at birth based on past karmas.</span></span>.&rdquo;</p>
-            <p style="margin:0 0 4px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);">The Gap</p>
-            <p style="margin:0;font-size:13px;color:var(--grey);line-height:1.6;">The hand dealt isn't in question. What you do with this specific moment of it is.</p>
+          <div class="mobile-stack-cards" style="display:grid;grid-template-columns:1fr 1fr;border:1px solid rgba(192,57,43,0.45);">
+            <div style="padding:14px 16px;border-right:1px solid rgba(192,57,43,0.3);">
+              <p style="margin:0 0 4px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#c0392b;">The Excuse</p>
+              <p style="margin:0;font-size:14px;font-style:italic;color:var(--white);">&ldquo;It's my <span class="gloss">prārabdh karma<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define prārabdh karma">+</span><span class="gloss-pop">The destiny allotted at birth based on past karmas.</span></span>.&rdquo;</p>
+            </div>
+            <div style="padding:14px 16px;">
+              <p style="margin:0 0 4px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);">The Gap</p>
+              <p style="margin:0;font-size:13px;color:var(--grey);line-height:1.6;">The hand dealt isn't in question. What you do with this specific moment of it is.</p>
+            </div>
           </div>
-          <div style="border:1px solid rgba(192,57,43,0.45);padding:14px 16px;">
-            <p style="margin:0 0 4px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#c0392b;">The Excuse</p>
-            <p style="margin:0 0 8px;font-size:14px;font-style:italic;color:var(--white);">&ldquo;Time will sort it out.&rdquo;</p>
-            <p style="margin:0 0 4px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);">The Gap</p>
-            <p style="margin:0;font-size:13px;color:var(--grey);line-height:1.6;">Time only passes. The response inside this gap is the only thing actually doing anything.</p>
+          <div class="mobile-stack-cards" style="display:grid;grid-template-columns:1fr 1fr;border:1px solid rgba(192,57,43,0.45);">
+            <div style="padding:14px 16px;border-right:1px solid rgba(192,57,43,0.3);">
+              <p style="margin:0 0 4px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#c0392b;">The Excuse</p>
+              <p style="margin:0;font-size:14px;font-style:italic;color:var(--white);">&ldquo;Time will sort it out.&rdquo;</p>
+            </div>
+            <div style="padding:14px 16px;">
+              <p style="margin:0 0 4px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);">The Gap</p>
+              <p style="margin:0;font-size:13px;color:var(--grey);line-height:1.6;">Time only passes. The response inside this gap is the only thing actually doing anything.</p>
+            </div>
           </div>
         </div>
         <p style="margin-top:14px;font-size:13px;color:var(--grey);line-height:1.75;">Each excuse points somewhere outside the gap &mdash; character, fate, the calendar &mdash; anywhere but the one place a response is actually available: right here, between the trigger and the reaction.</p>
