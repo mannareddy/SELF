@@ -2140,7 +2140,6 @@ section{scroll-margin-top:56px;}
    instead of the framework-grid default (which fits 3 across at 900px). ── */
 @media(min-width:641px){
   #qualified-seeker .framework-grid{max-width:900px;grid-template-columns:repeat(2,1fr) !important;}
-  #framework .framework-grid{grid-template-columns:1fr !important;max-width:760px;gap:16px;}
 }
 
 /* ── NETI NETI KOSHA CARDS: each card holds a wide (680-viewBox) diagram
@@ -4509,12 +4508,18 @@ a.src-tag:hover{opacity:.75;}
       <p>The false belief that the next milestone will finally bring peace. The brain is wired for the chase, not the catch. Dopamine rewards effort and progress &mdash; when the goal is achieved, production drops, leaving an acute emptiness.</p>
       <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">In Sanskrit: <em><span class="gloss">Bhava<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Bhava">+</span><span class="gloss-pop">The felt, energetic weight a thought or state carries &mdash; not the thought itself, but the charge riding on it.</span></span></em> &mdash; the somatic and energetic weight attached to thoughts. Nostalgia for the past. Anxiety about the future. Feeling lost after an achievement is not failure.<br><span style="color:var(--grey);font-style:normal;">It is a symptom of an identity built on outcomes rather than essence.</span></p>
       <p style="margin-top:14px;padding-top:14px;border-top:1px solid rgba(var(--accent-gold-rgb),0.28);font-size:14px;color:var(--grey);line-height:1.8;"><span class="src-tag src-trad" style="margin-bottom:6px;">Traditional Source</span><br>Maitreyi asked Yajnavalkya the same question in older clothing: if she owned the whole earth's wealth, would that make her immortal? His answer was one word &mdash; no. Wealth can make you comfortable. It was never going to make you complete &mdash; the same gap dopamine's post-goal crash reopens on a shorter, modern timescale.</p>
-      <p style="margin-top:16px;font-size:14px;color:var(--grey);">It isn&rsquo;t a one-off failure &mdash; it&rsquo;s a closed loop, not a straight line toward satisfaction. Four phases, repeating:</p>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:2px;margin-top:12px;">
-        <div class="sl-stage"><span class="sl-num">Phase 1</span><div class="sl-name" style="font-size:15px;">Not Enough</div><p class="sl-desc">The ego feels incomplete, precarious.</p></div>
-        <div class="sl-stage"><span class="sl-num">Phase 2</span><div class="sl-name" style="font-size:15px;">Seeking</div><p class="sl-desc">Greed for more stimulus, more possessions.</p></div>
-        <div class="sl-stage"><span class="sl-num">Phase 3</span><div class="sl-name" style="font-size:15px;">Satisfaction</div><p class="sl-desc">A brief hit of achievement or consumption.</p></div>
-        <div class="sl-stage danger"><span class="sl-num">Phase 4</span><div class="sl-name" style="font-size:15px;color:#c0392b;">Restlessness</div><p class="sl-desc">Hunger returns. Back to Phase 1.</p></div>
+      <div class="framework-subcards" style="margin-top:20px;">
+        <div class="framework-subcard collapsed">
+          <h4>The Four-Phase Loop</h4><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">It isn't a one-off failure — it's a closed loop, not a straight line toward satisfaction</p>
+          <div class="framework-subcard-content">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:2px;margin-top:12px;">
+            <div class="sl-stage"><span class="sl-num">Phase 1</span><div class="sl-name" style="font-size:15px;">Not Enough</div><p class="sl-desc">The ego feels incomplete, precarious.</p></div>
+            <div class="sl-stage"><span class="sl-num">Phase 2</span><div class="sl-name" style="font-size:15px;">Seeking</div><p class="sl-desc">Greed for more stimulus, more possessions.</p></div>
+            <div class="sl-stage"><span class="sl-num">Phase 3</span><div class="sl-name" style="font-size:15px;">Satisfaction</div><p class="sl-desc">A brief hit of achievement or consumption.</p></div>
+            <div class="sl-stage danger"><span class="sl-num">Phase 4</span><div class="sl-name" style="font-size:15px;color:#c0392b;">Restlessness</div><p class="sl-desc">Hunger returns. Back to Phase 1.</p></div>
+          </div>
+          </div>
+        </div>
       </div>
     </div></div>
     <div class="framework-card collapsed">
@@ -4545,48 +4550,52 @@ a.src-tag:hover{opacity:.75;}
           <p style="font-size:15px;margin-bottom:0;"><strong style="color:var(--gold);">Release</strong> <span style="color:var(--grey);font-size:14px;">— Reset from clarity.</span></p>
         </div>
         <div class="rrrr-v2-col">
-          <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">V2 — Process Emotion</p>
+          <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">V2 — Process the Emotion</p>
           <p style="font-size:15px;margin-bottom:6px;"><strong style="color:var(--gold);">Recognize</strong> <span style="color:var(--grey);font-size:14px;">— Notice without judgment.</span></p>
           <p style="font-size:15px;margin-bottom:6px;"><strong style="color:var(--gold);">Reflect</strong> <span style="color:var(--grey);font-size:14px;">— What is the deeper trigger?</span></p>
           <p style="font-size:15px;margin-bottom:6px;"><strong style="color:var(--gold);">Reframe</strong> <span style="color:var(--grey);font-size:14px;">— Shift from victim to witness.</span></p>
           <p style="font-size:15px;margin-bottom:0;"><strong style="color:var(--gold);">Respond</strong> <span style="color:var(--grey);font-size:14px;">— Choose from clarity, not the wound.</span></p>
         </div>
       </div>
-      <div style="border-top:1px solid rgba(var(--accent-gold-rgb),0.28);margin-top:20px;padding-top:16px;">
-        <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">What Gets Reached For Instead Of The Gap</p>
-        <div style="display:flex;flex-direction:column;gap:12px;">
-          <div class="mobile-stack-cards excuse-gap-row" style="display:grid;grid-template-columns:1fr 1fr;border:1px solid rgba(192,57,43,0.45);">
-            <div class="excuse-col" style="padding:14px 16px;border-right:1px solid rgba(192,57,43,0.3);">
-              <p style="margin:0 0 4px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#c0392b;">The Excuse</p>
-              <p style="margin:0;font-size:14px;font-style:italic;color:var(--white);">&ldquo;This is just who I am.&rdquo;</p>
+      <div class="framework-subcards" style="margin-top:20px;">
+        <div class="framework-subcard collapsed">
+          <h4>What Gets Reached For Instead Of The Gap</h4><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Three excuses, and the gap underneath each one</p>
+          <div class="framework-subcard-content">
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <div class="mobile-stack-cards excuse-gap-row" style="display:grid;grid-template-columns:1fr 1fr;border:1px solid rgba(192,57,43,0.45);">
+              <div class="excuse-col" style="padding:14px 16px;border-right:1px solid rgba(192,57,43,0.3);">
+                <p style="margin:0 0 4px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#c0392b;">The Excuse</p>
+                <p style="margin:0;font-size:14px;font-style:italic;color:var(--white);">&ldquo;This is just who I am.&rdquo;</p>
+              </div>
+              <div class="gap-col" style="padding:14px 16px;">
+                <p style="margin:0 0 4px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);">The Gap</p>
+                <p style="margin:0;font-size:13px;color:var(--grey);line-height:1.6;">A pattern, not a sentence &mdash; it was built, so it can be noticed while it's firing.</p>
+              </div>
             </div>
-            <div class="gap-col" style="padding:14px 16px;">
-              <p style="margin:0 0 4px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);">The Gap</p>
-              <p style="margin:0;font-size:13px;color:var(--grey);line-height:1.6;">A pattern, not a sentence &mdash; it was built, so it can be noticed while it's firing.</p>
+            <div class="mobile-stack-cards excuse-gap-row" style="display:grid;grid-template-columns:1fr 1fr;border:1px solid rgba(192,57,43,0.45);">
+              <div class="excuse-col" style="padding:14px 16px;border-right:1px solid rgba(192,57,43,0.3);">
+                <p style="margin:0 0 4px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#c0392b;">The Excuse</p>
+                <p style="margin:0;font-size:14px;font-style:italic;color:var(--white);">&ldquo;It's my <span class="gloss">prārabdh karma<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define prārabdh karma">+</span><span class="gloss-pop">The destiny allotted at birth based on past karmas.</span></span>.&rdquo;</p>
+              </div>
+              <div class="gap-col" style="padding:14px 16px;">
+                <p style="margin:0 0 4px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);">The Gap</p>
+                <p style="margin:0;font-size:13px;color:var(--grey);line-height:1.6;">The hand dealt isn't in question. What you do with this specific moment of it is.</p>
+              </div>
+            </div>
+            <div class="mobile-stack-cards excuse-gap-row" style="display:grid;grid-template-columns:1fr 1fr;border:1px solid rgba(192,57,43,0.45);">
+              <div class="excuse-col" style="padding:14px 16px;border-right:1px solid rgba(192,57,43,0.3);">
+                <p style="margin:0 0 4px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#c0392b;">The Excuse</p>
+                <p style="margin:0;font-size:14px;font-style:italic;color:var(--white);">&ldquo;Time will sort it out.&rdquo;</p>
+              </div>
+              <div class="gap-col" style="padding:14px 16px;">
+                <p style="margin:0 0 4px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);">The Gap</p>
+                <p style="margin:0;font-size:13px;color:var(--grey);line-height:1.6;">Time only passes. The response inside this gap is the only thing actually doing anything.</p>
+              </div>
             </div>
           </div>
-          <div class="mobile-stack-cards excuse-gap-row" style="display:grid;grid-template-columns:1fr 1fr;border:1px solid rgba(192,57,43,0.45);">
-            <div class="excuse-col" style="padding:14px 16px;border-right:1px solid rgba(192,57,43,0.3);">
-              <p style="margin:0 0 4px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#c0392b;">The Excuse</p>
-              <p style="margin:0;font-size:14px;font-style:italic;color:var(--white);">&ldquo;It's my <span class="gloss">prārabdh karma<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define prārabdh karma">+</span><span class="gloss-pop">The destiny allotted at birth based on past karmas.</span></span>.&rdquo;</p>
-            </div>
-            <div class="gap-col" style="padding:14px 16px;">
-              <p style="margin:0 0 4px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);">The Gap</p>
-              <p style="margin:0;font-size:13px;color:var(--grey);line-height:1.6;">The hand dealt isn't in question. What you do with this specific moment of it is.</p>
-            </div>
-          </div>
-          <div class="mobile-stack-cards excuse-gap-row" style="display:grid;grid-template-columns:1fr 1fr;border:1px solid rgba(192,57,43,0.45);">
-            <div class="excuse-col" style="padding:14px 16px;border-right:1px solid rgba(192,57,43,0.3);">
-              <p style="margin:0 0 4px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#c0392b;">The Excuse</p>
-              <p style="margin:0;font-size:14px;font-style:italic;color:var(--white);">&ldquo;Time will sort it out.&rdquo;</p>
-            </div>
-            <div class="gap-col" style="padding:14px 16px;">
-              <p style="margin:0 0 4px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);">The Gap</p>
-              <p style="margin:0;font-size:13px;color:var(--grey);line-height:1.6;">Time only passes. The response inside this gap is the only thing actually doing anything.</p>
-            </div>
+          <p style="margin-top:14px;font-size:13px;color:var(--grey);line-height:1.75;">Each excuse points somewhere outside the gap &mdash; character, fate, the calendar &mdash; anywhere but the one place a response is actually available: right here, between the trigger and the reaction.</p>
           </div>
         </div>
-        <p style="margin-top:14px;font-size:13px;color:var(--grey);line-height:1.75;">Each excuse points somewhere outside the gap &mdash; character, fate, the calendar &mdash; anywhere but the one place a response is actually available: right here, between the trigger and the reaction.</p>
       </div>
     </div></div>
     <div class="framework-card collapsed">
