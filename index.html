@@ -2332,6 +2332,15 @@ section{scroll-margin-top:56px;}
     border-right:none !important;
     border-bottom:1px solid rgba(192,57,43,0.3);
   }
+  /* RRRR Protocol card (V1/V2 columns): the divider between the two only
+     makes sense once they stack into one column on mobile — on desktop,
+     where they sit side by side, this same border was floating above V2
+     with nothing matching it above V1, reading as a stray misaligned
+     line. Scope it to this breakpoint only. */
+  .rrrr-v2-col{
+    border-top:1px solid rgba(var(--accent-gold-rgb),0.28);
+    padding-top:16px;
+  }
   /* Sakshi Bhava four-card grid — stays 2-per-row on mobile instead of
      collapsing to 1-per-row like other .mobile-stack-cards grids, since
      each card is a single short line, not paragraph-heavy comparison
@@ -4518,7 +4527,7 @@ a.src-tag:hover{opacity:.75;}
           <p style="font-size:15px;margin-bottom:6px;"><strong style="color:var(--gold);">Return</strong> <span style="color:var(--grey);font-size:14px;">— Breathe. Walk away.</span></p>
           <p style="font-size:15px;margin-bottom:0;"><strong style="color:var(--gold);">Release</strong> <span style="color:var(--grey);font-size:14px;">— Reset from clarity.</span></p>
         </div>
-        <div style="border-top:1px solid rgba(var(--accent-gold-rgb),0.28);padding-top:16px;">
+        <div class="rrrr-v2-col">
           <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">V2 — Process the Emotion</p>
           <p style="font-size:15px;margin-bottom:6px;"><strong style="color:var(--gold);">Recognize</strong> <span style="color:var(--grey);font-size:14px;">— Notice without judgment.</span></p>
           <p style="font-size:15px;margin-bottom:6px;"><strong style="color:var(--gold);">Reflect</strong> <span style="color:var(--grey);font-size:14px;">— What is the deeper trigger?</span></p>
@@ -13096,6 +13105,7 @@ function updateNav(){
     card.addEventListener('click', function(e){
       if(e.target.tagName === 'A') return;
       freezeTransitions();
+      pinScroll(this);
       var wrap = this.closest('.section-collapse-wrap');
       var isOpening = this.classList.contains('collapsed');
       var self = this;
@@ -13139,6 +13149,7 @@ function updateNav(){
       if(e.target.tagName === 'A') return;
       e.stopPropagation();
       freezeTransitions();
+      pinScroll(this);
       var group = this.closest('.framework-subcards');
       var isOpening = this.classList.contains('collapsed');
       var self = this;
@@ -13173,6 +13184,7 @@ function updateNav(){
     card.addEventListener('click', function(e){
       if(e.target.tagName === 'A') return;
       freezeTransitions();
+      pinScroll(this);
       var grid = this.closest('.pillar-grid');
       var isOpening = !this.classList.contains('open');
       var self = this;
@@ -13594,6 +13606,38 @@ function toggleFoundation(btn){
    visible on mobile and in dark theme where the flash reads as a bright
    flicker against the dark background. Pulled out here so any interaction
    that reflows the layout can borrow the same fix. ── */
+/* ── PIN SCROLL DURING ACCORDION REFLOW ────────────────────────────────
+   Opening a framework/pillar/subcard accordion item can simultaneously
+   collapse a sibling that sits earlier in the DOM (e.g. Card 05 closing
+   while Card 06 opens). Native scroll anchoring is disabled site-wide
+   (see the html{overflow-anchor:none} comment above) so nothing
+   compensates for that — the whole section gets shorter above the
+   reader's fixed scrollY, and the page appears to jump forward to
+   whatever content now lands in the viewport (e.g. Framework card 06
+   opening looked like it jumped down to The Root Diagnosis section,
+   when really the shared section just got shorter as sibling card 05
+   collapsed above it). Holding the clicked element's own position in
+   the viewport fixed for the duration of the open/close animation keeps
+   the reader looking at the card they actually clicked. ── */
+function pinScroll(el){
+  if(!el) return;
+  var pinTop = el.getBoundingClientRect().top;
+  var until = Date.now() + 500;
+  function tick(){
+    var delta = el.getBoundingClientRect().top - pinTop;
+    // scrollBy(x,y) inherits the page's scroll-behavior:smooth, so each
+    // per-frame correction was itself kicking off a smooth-scroll toward
+    // a target that had already moved again by the next frame — the
+    // corrections visibly overshot and settled back, reading as the page
+    // being dragged up and then pulled down. Passing behavior:'auto'
+    // explicitly makes each correction land instantly instead, so the
+    // held position looks solid rather than chased.
+    if(Math.abs(delta) > 0.5) window.scrollBy({top: delta, left: 0, behavior: 'auto'});
+    if(Date.now() < until) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+window.pinScroll = pinScroll;
 function freezeTransitions(){
   var html = document.documentElement;
   html.classList.add('theme-swap');
