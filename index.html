@@ -2332,14 +2332,31 @@ section{scroll-margin-top:56px;}
     border-right:none !important;
     border-bottom:1px solid rgba(192,57,43,0.3);
   }
-  /* RRRR Protocol card (V1/V2 columns): the divider between the two only
-     makes sense once they stack into one column on mobile — on desktop,
-     where they sit side by side, this same border was floating above V2
-     with nothing matching it above V1, reading as a stray misaligned
-     line. Scope it to this breakpoint only. */
-  .rrrr-v2-col{
-    border-top:1px solid rgba(var(--accent-gold-rgb),0.28);
-    padding-top:16px;
+  /* RRRR Protocol card (card 05): unlike every other .mobile-stack-cards
+     grid on the page, the V1/V2 columns and the excuse/gap rows below them
+     are short label+line pairs, not paragraph-heavy comparison text — they
+     read fine at two-per-row even on a real phone width, and the generic
+     collapse-to-1fr rule above was only ever meant for the longer prose
+     grids. Scope card 05 out of that rule and tighten spacing/padding so
+     two columns still fit inside the narrower mobile card padding. */
+  .rrrr-card .mobile-stack-cards{
+    grid-template-columns:1fr 1fr !important;
+    gap:14px !important;
+  }
+  .rrrr-card .rrrr-v2-col{
+    border-top:none;
+    padding-top:0;
+  }
+  .rrrr-card .mobile-stack-cards.excuse-gap-row{
+    border-width:1px !important;
+  }
+  .rrrr-card .mobile-stack-cards.excuse-gap-row .excuse-col{
+    border-right:1px solid rgba(192,57,43,0.3) !important;
+    border-bottom:none !important;
+    padding:10px 12px !important;
+  }
+  .rrrr-card .mobile-stack-cards.excuse-gap-row .gap-col{
+    padding:10px 12px !important;
   }
   /* Sakshi Bhava four-card grid — stays 2-per-row on mobile instead of
      collapsing to 1-per-row like other .mobile-stack-cards grids, since
@@ -4515,7 +4532,7 @@ a.src-tag:hover{opacity:.75;}
       <p style="margin-top:14px;padding-top:14px;border-top:1px solid rgba(var(--accent-gold-rgb),0.28);font-size:14px;color:var(--grey);line-height:1.8;"><span class="src-tag src-trad" style="margin-bottom:6px;">Traditional Source</span><br>That equation has a Sanskrit name: <span class="gloss">Aham Brahmasmi<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Aham Brahmasmi">+</span><span class="gloss-pop">Word by word &mdash; <em>Aham</em> (&ldquo;I,&rdquo; the individual self), <em>Brahman</em> (the ultimate, unchanging reality), <em>Asmi</em> (&ldquo;am,&rdquo; &ldquo;exist&rdquo;). One of the four Mahavakyas &mdash; &ldquo;great sayings&rdquo; &mdash; found in the Brihadaranyaka Upanishad of the Yajur Veda.</span></span> &mdash; &ldquo;I am Brahman,&rdquo; or &ldquo;I am the divine absolute.&rdquo; Not an ego claim &mdash; the name, the body, the story from Card 03 is not what's speaking here. It describes the enlightened recognition that your deepest essence was never separate from universal consciousness to begin with, the same non-duality <a href="#tat-tvam-asi" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">Tat Tvam Asi</a> states from the teacher's side, spoken here from the individual's.</p>
       <p style="margin-top:10px;font-size:14px;color:var(--gold);font-style:italic;">In Sanskrit: <em><span class="gloss">Maya<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Maya">+</span><span class="gloss-pop">Usually translated &ldquo;illusion,&rdquo; though &ldquo;the measuring-out&rdquo; is closer &mdash; the way one undivided reality appears to us as separate things, separate selves, and passing time.</span></span> / <span class="gloss">Avidya<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Avidya">+</span><span class="gloss-pop">Literally &ldquo;not-seeing&rdquo; &mdash; the root ignorance that mistakes the temporary, changing self for the true, unchanging one.</span></span></em> &mdash; the lens of separation &mdash; is dissolved when you recognize you are not the projection, but the screen. That is who you actually are.</p>
     </div></div>
-    <div class="framework-card collapsed">
+    <div class="framework-card collapsed rrrr-card">
       <span class="num">05</span>
       <h3>The Gap — RRRR Protocol</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">The RRRR practice for the gap</p><div class="framework-content">
       <p style="font-size:14px;color:var(--grey);margin-bottom:16px;">The space between trigger and response. Moving from reactive to intentional.</p>
@@ -4528,7 +4545,7 @@ a.src-tag:hover{opacity:.75;}
           <p style="font-size:15px;margin-bottom:0;"><strong style="color:var(--gold);">Release</strong> <span style="color:var(--grey);font-size:14px;">— Reset from clarity.</span></p>
         </div>
         <div class="rrrr-v2-col">
-          <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">V2 — Process the Emotion</p>
+          <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">V2 — Process Emotion</p>
           <p style="font-size:15px;margin-bottom:6px;"><strong style="color:var(--gold);">Recognize</strong> <span style="color:var(--grey);font-size:14px;">— Notice without judgment.</span></p>
           <p style="font-size:15px;margin-bottom:6px;"><strong style="color:var(--gold);">Reflect</strong> <span style="color:var(--grey);font-size:14px;">— What is the deeper trigger?</span></p>
           <p style="font-size:15px;margin-bottom:6px;"><strong style="color:var(--gold);">Reframe</strong> <span style="color:var(--grey);font-size:14px;">— Shift from victim to witness.</span></p>
