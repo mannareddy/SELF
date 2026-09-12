@@ -1534,8 +1534,10 @@ a:hover{opacity:.7;}
 .mnav-geo{
   text-align:center;font-family:var(--sans);font-size:9px;letter-spacing:2px;
   text-transform:uppercase;color:var(--dim);padding:14px 0 6px;
+  border-top:1px solid #1a1a1a;margin-top:8px;
 }
 .mnav-geo:empty{display:none;}
+[data-theme="light"] .mnav-geo{border-top-color:rgba(var(--shadow-rgb),0.24);}
 
 /* ── FONT-SIZE ACCESSIBILITY CONTROL ───────────────────────────────────────
    Nearly all type on this page is set in px, not rem, so scaling html's
@@ -3830,9 +3832,16 @@ a.src-tag:hover{opacity:.75;}
     <li class="nav-dropdown-wrap">
       <a href="#glossary" data-group="new">New<span class="nav-new-dot"></span><span class="nav-caret">▾</span></a>
       <div class="nav-dropdown-panel" id="newMenuPanel">
-        <a href="#attention-currency" data-group="new">Attention &amp; Focus — Section Updated</a>
-        <a href="#matrix-of-logic" data-group="new">Shiva Sutras &middot; Logic &amp; Knowing — New Section Added</a>
-        <a href="#trap-of-maya" data-group="new">Shiva Sutras &middot; Self &amp; Energy — New Section Added</a>
+        <a href="#mansion-metaphor" data-group="new">The Mansion Metaphor</a>
+        <a href="#attention-training" data-group="new">States of Awareness</a>
+        <a href="#redirection" data-group="new">The Anatomy of Redirection</a>
+        <a href="#law-of-practice" data-group="new">The Law of Practice</a>
+        <a href="#matrix-of-logic" data-group="new">The Matrix of Logic</a>
+        <a href="#bondage-of-knowing" data-group="new">The Bondage of &ldquo;Knowing&rdquo;</a>
+        <a href="#trap-of-maya" data-group="new">The Trap of Maya</a>
+        <a href="#theater-of-self" data-group="new">The Theater of the Self</a>
+        <a href="#spectrum-of-energy" data-group="new">The Spectrum of Energy</a>
+        <a href="#mechanics-of-mantra" data-group="new">The Mechanics of Mantra</a>
       </div>
     </li>
 
@@ -4034,9 +4043,16 @@ a.src-tag:hover{opacity:.75;}
         <span class="mnav-screen-title">New</span>
       </div>
       <ul class="mnav-row-list" id="newMenuPanelMobile">
-        <li><a href="#attention-currency">Attention &amp; Focus — Section Updated</a></li>
-        <li><a href="#matrix-of-logic">Shiva Sutras &middot; Logic &amp; Knowing — New Section Added</a></li>
-        <li><a href="#trap-of-maya">Shiva Sutras &middot; Self &amp; Energy — New Section Added</a></li>
+        <li><a href="#mansion-metaphor">The Mansion Metaphor</a></li>
+        <li><a href="#attention-training">States of Awareness</a></li>
+        <li><a href="#redirection">The Anatomy of Redirection</a></li>
+        <li><a href="#law-of-practice">The Law of Practice</a></li>
+        <li><a href="#matrix-of-logic">The Matrix of Logic</a></li>
+        <li><a href="#bondage-of-knowing">The Bondage of &ldquo;Knowing&rdquo;</a></li>
+        <li><a href="#trap-of-maya">The Trap of Maya</a></li>
+        <li><a href="#theater-of-self">The Theater of the Self</a></li>
+        <li><a href="#spectrum-of-energy">The Spectrum of Energy</a></li>
+        <li><a href="#mechanics-of-mantra">The Mechanics of Mantra</a></li>
       </ul>
     </div>
 
@@ -5273,7 +5289,7 @@ a.src-tag:hover{opacity:.75;}
     <div class="self-table-wrap">
       <table class="self-table compact" style="min-width:480px;">
         <thead>
-          <tr><th>Tarka</th><th>Kutarka</th><th>Vitarka</th></tr>
+          <tr><th><span class="gloss">Tarka<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Tarka">+</span><span class="gloss-pop">Standard reasoning, debate, and analysis &mdash; useful, but it shifts every time a new fact arrives.</span></span></th><th><span class="gloss">Kutarka<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Kutarka">+</span><span class="gloss-pop">Fault-finding aimed at good intentions, twisted purely to win an argument &mdash; breeds paranoia, destruction, and ignorance.</span></span></th><th><span class="gloss">Vitarka<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Vitarka">+</span><span class="gloss-pop">Thought without the need to win anything &mdash; asking unanswerable questions like &ldquo;Who am I?&rdquo; that exhaust the ego and open onto Self-knowledge.</span></span></th></tr>
         </thead>
         <tbody>
           <tr><td>Standard reasoning, debate, analysis</td><td>Fault-finding aimed at good intentions, twisted to win</td><td class="bright">Thought without the need to win anything</td></tr>
@@ -5292,9 +5308,12 @@ a.src-tag:hover{opacity:.75;}
 <span class="continue-hint">continue</span>
 <div class="divider"></div>
 
+<span class="continue-hint">continue</span>
+<div class="divider"></div>
+
 <section class="section" id="bondage-of-knowing" style="scroll-margin-top:56px;">
   <span class="label">The Bondage of &ldquo;Knowing&rdquo;</span>
-  <p class="phil-line bright" style="margin-bottom:8px;"><em>Jnanam bandhah</em> &mdash; limited knowledge creates bondage.</p>
+  <p class="phil-line bright" style="margin-bottom:8px;"><em><span class="gloss">Jnanam bandhah<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Jnanam bandhah">+</span><span class="gloss-pop">A Shiva Sutra: limited knowledge itself creates bondage &mdash; the instant something is called &ldquo;known,&rdquo; its living, changing range narrows to fit a fixed, past-based definition.</span></span></em> &mdash; limited knowledge creates bondage.</p>
   <p class="phil-line dim" style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;">The moment something gets labeled, the mind stops looking at it.</p>
 
   <div style="max-width:820px;margin:0 auto;text-align:left;">
@@ -5305,7 +5324,7 @@ a.src-tag:hover{opacity:.75;}
   </div>
 
   <div style="max-width:820px;margin:36px auto 0;text-align:left;">
-    <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:16px;"><em>Vismayo yoga bhumikah</em> &mdash; Wonder is the Foundation</p>
+    <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:16px;"><em><span class="gloss">Vismayo yoga bhumikah<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Vismayo yoga bhumikah">+</span><span class="gloss-pop">A Shiva Sutra: wonder is the foundation for union &mdash; knowledge held with amazement stays open; knowledge held as settled certainty closes the door to reality.</span></span></em> &mdash; Wonder is the Foundation</p>
     <p class="phil-line dim" style="max-width:680px;margin:0 auto;">Knowledge without wonder doesn't sharpen life &mdash; it dulls it. Saying &ldquo;I know&rdquo; closes a door. Looking at the same thing with amazement, known or unknown, keeps it open.</p>
   </div>
 
@@ -5313,6 +5332,9 @@ a.src-tag:hover{opacity:.75;}
     <p>SELF isn't handing you the answer. That would just be one more door closing.</p>
   </div>
 </section>
+<span class="continue-hint">continue</span>
+<div class="divider"></div>
+
 <span class="continue-hint">continue</span>
 <div class="divider"></div>
 
@@ -6207,7 +6229,7 @@ a.src-tag:hover{opacity:.75;}
 
   <div style="max-width:820px;margin:0 auto;text-align:left;">
     <div class="sl-stage" style="border-left:2px solid var(--gold);">
-      <div class="sl-name" style="color:var(--gold);">Aviveko maya sausuptam</div>
+      <div class="sl-name" style="color:var(--gold);"><span class="gloss">Aviveko maya sausuptam<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Aviveko maya sausuptam">+</span><span class="gloss-pop">A Shiva Sutra: lack of discrimination is like deep sleep &mdash; failing to tell the passing (opinion, reputation) apart from the real is itself a kind of unconsciousness.</span></span></div>
       <p class="sl-desc">&ldquo;Lack of discrimination is like deep sleep.&rdquo; A life spent tracking what others think is a life spent watching bubbles &mdash; each one convincing while it lasts, gone without a trace by the time the next one forms. Recognizing the bubble as a bubble, rather than the ground, is what the sutra calls the dawn of discrimination.</p>
     </div>
   </div>
@@ -6219,10 +6241,13 @@ a.src-tag:hover{opacity:.75;}
 <span class="continue-hint">continue</span>
 <div class="divider"></div>
 
+<span class="continue-hint">continue</span>
+<div class="divider"></div>
+
 <section class="section" id="theater-of-self" style="scroll-margin-top:56px;">
   <span class="label">The Theater of the Self</span>
   <p class="phil-line bright" style="margin-bottom:8px;">Most days, you feel like a small actor on a very large stage.</p>
-  <p class="phil-line dim" style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;"><em>Nartaka atma. Rango&rsquo;ntaratma.</em> The Self is the dancer. The inner Self is the stage.</p>
+  <p class="phil-line dim" style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;"><em><span class="gloss">Nartaka atma. Rango&rsquo;ntaratma.<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Nartaka atma, Rango'ntaratma">+</span><span class="gloss-pop">A Shiva Sutra: the Self is the dancer, the inner Self is the stage &mdash; reversing the usual sense of scale. The world doesn't contain you; you contain the stage it plays out on.</span></span></em> The Self is the dancer. The inner Self is the stage.</p>
 
   <div style="max-width:820px;margin:0 auto;text-align:left;">
     <div class="sl-stage" style="border-left:2px solid var(--gold);">
@@ -6239,6 +6264,9 @@ a.src-tag:hover{opacity:.75;}
     <p>The dancer remains untouched by any single dance.</p>
   </div>
 </section>
+<span class="continue-hint">continue</span>
+<div class="divider"></div>
+
 <span class="continue-hint">continue</span>
 <div class="divider"></div>
 
@@ -6965,6 +6993,9 @@ a.src-tag:hover{opacity:.75;}
 <span class="continue-hint">continue</span>
 <div class="divider"></div>
 
+<span class="continue-hint">continue</span>
+<div class="divider"></div>
+
 <section class="section" id="attention-training" style="scroll-margin-top:56px;">
   <span class="label">States of Awareness</span>
   <p class="phil-line bright" style="margin-bottom:8px;">Untrained awareness bounds after every pigeon.</p>
@@ -6990,6 +7021,9 @@ a.src-tag:hover{opacity:.75;}
     <p>Mastery isn't the absence of appetite. It's a dog that still wants the food and waits anyway.</p>
   </div>
 </section>
+<span class="continue-hint">continue</span>
+<div class="divider"></div>
+
 <span class="continue-hint">continue</span>
 <div class="divider"></div>
 
@@ -9198,6 +9232,28 @@ a.src-tag:hover{opacity:.75;}
 <span class="continue-hint">continue</span>
 <div class="divider"></div>
 
+<section class="section" id="mechanics-of-mantra" style="scroll-margin-top:56px;">
+  <span class="label">The Mechanics of Mantra</span>
+  <p class="phil-line bright" style="margin-bottom:8px;">Ten compliments and one insult walk into a room.</p>
+  <p class="phil-line dim" style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;">The insult is the one still playing at 2am. That loop is a mantra too &mdash; just one nobody chose on purpose.</p>
+
+  <div style="max-width:820px;margin:0 auto;text-align:left;">
+    <div class="mobile-stack-cards" style="display:grid;grid-template-columns:repeat(2,1fr);gap:2px;">
+      <div class="sl-stage"><div class="sl-name">The Process</div><p class="sl-desc">The mind clings to negativity by default &mdash; one bad line replayed over nine good ones. Left unchosen, this repetition runs the show.</p></div>
+      <div class="sl-stage" style="border-left:2px solid var(--gold);"><div class="sl-name" style="color:var(--gold);">The Solution</div><p class="sl-desc"><em><span class="gloss">Chittam mantrah<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Chittam mantrah">+</span><span class="gloss-pop">A Shiva Sutra: the mind becomes the mantra &mdash; whatever sound or thought the mind repeats is what it eventually turns into.</span></span></em> &mdash; the mind becomes whatever it repeats. Immerse it in a sound chosen on purpose, and there's no room left for the loop that wasn't.</p></div>
+    </div>
+  </div>
+
+  <div class="pull-quote" style="margin:40px auto 0;border:1.5px solid rgba(var(--accent-gold-rgb),0.55);border-left:3px solid var(--gold);padding:28px 32px;max-width:820px;">
+    <p>The mind is repeating something either way. The only real choice is which.</p>
+  </div>
+</section>
+<span class="continue-hint">continue</span>
+<div class="divider"></div>
+
+<span class="continue-hint">continue</span>
+<div class="divider"></div>
+
 <!-- PRANAYAMA — Layer 2: Breath. The fourth limb of Ashtanga Yoga, paired with
      modern respiratory physiology: nasal breathing, the Bohr Effect, resonance
      breathing, and the nasal cycle's parallel to Ida/Pingala. -->
@@ -9398,7 +9454,7 @@ a.src-tag:hover{opacity:.75;}
 <section class="section" id="spectrum-of-energy" style="scroll-margin-top:56px;">
   <span class="label">The Spectrum of Energy</span>
   <p class="phil-line bright" style="margin-bottom:8px;">Same energy, two directions.</p>
-  <p class="phil-line dim" style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;"><em>Shakti chakra sandhane vishvasamharah</em> &mdash; attend to where the energy sits, and the story on top of it loses its grip.</p>
+  <p class="phil-line dim" style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;"><em><span class="gloss">Shakti chakra sandhane vishvasamharah<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Shakti chakra sandhane vishvasamharah">+</span><span class="gloss-pop">A Shiva Sutra: focusing on the energy centers dissolves the illusory world &mdash; sustained attention on the body's energy centers is what loosens Maya's grip.</span></span></em> &mdash; attend to where the energy sits, and the story on top of it loses its grip.</p>
 
   <div style="max-width:820px;margin:0 auto;text-align:left;">
     <div class="self-table-wrap">
@@ -9423,6 +9479,9 @@ a.src-tag:hover{opacity:.75;}
     <p>Same center, same energy, either direction. Nothing here to import from outside &mdash; only a direction to notice.</p>
   </div>
 </section>
+<span class="continue-hint">continue</span>
+<div class="divider"></div>
+
 <span class="continue-hint">continue</span>
 <div class="divider"></div>
 
@@ -9741,25 +9800,6 @@ a.src-tag:hover{opacity:.75;}
 <span class="continue-hint">continue</span>
 <div class="divider"></div>
 
-<section class="section" id="mechanics-of-mantra" style="scroll-margin-top:56px;">
-  <span class="label">The Mechanics of Mantra</span>
-  <p class="phil-line bright" style="margin-bottom:8px;">Ten compliments and one insult walk into a room.</p>
-  <p class="phil-line dim" style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;">The insult is the one still playing at 2am. That loop is a mantra too &mdash; just one nobody chose on purpose.</p>
-
-  <div style="max-width:820px;margin:0 auto;text-align:left;">
-    <div class="mobile-stack-cards" style="display:grid;grid-template-columns:repeat(2,1fr);gap:2px;">
-      <div class="sl-stage"><div class="sl-name">The Process</div><p class="sl-desc">The mind clings to negativity by default &mdash; one bad line replayed over nine good ones. Left unchosen, this repetition runs the show.</p></div>
-      <div class="sl-stage" style="border-left:2px solid var(--gold);"><div class="sl-name" style="color:var(--gold);">The Solution</div><p class="sl-desc"><em>Chittam mantrah</em> &mdash; the mind becomes whatever it repeats. Immerse it in a sound chosen on purpose, and there's no room left for the loop that wasn't.</p></div>
-    </div>
-  </div>
-
-  <div class="pull-quote" style="margin:40px auto 0;border:1.5px solid rgba(var(--accent-gold-rgb),0.55);border-left:3px solid var(--gold);padding:28px 32px;max-width:820px;">
-    <p>The mind is repeating something either way. The only real choice is which.</p>
-  </div>
-</section>
-<span class="continue-hint">continue</span>
-<div class="divider"></div>
-
 <section class="section" id="redirection" style="scroll-margin-top:56px;">
   <span class="label">The Anatomy of Redirection</span>
   <p class="phil-line bright" style="margin-bottom:8px;">A couple argues on the subway. Your awareness is already halfway into their fight.</p>
@@ -9779,6 +9819,9 @@ a.src-tag:hover{opacity:.75;}
 <span class="continue-hint">continue</span>
 <div class="divider"></div>
 
+<span class="continue-hint">continue</span>
+<div class="divider"></div>
+
 <section class="section" id="law-of-practice" style="scroll-margin-top:56px;">
   <span class="label">The Law of Practice</span>
   <p class="phil-line bright" style="margin-bottom:8px;">Whatever gets rehearsed is what you become good at.</p>
@@ -9795,6 +9838,9 @@ a.src-tag:hover{opacity:.75;}
     <p>No one drugs a child for failing to play a piano they were never taught. Focus is a skill too &mdash; it has to be taught, and practiced, on purpose.</p>
   </div>
 </section>
+<span class="continue-hint">continue</span>
+<div class="divider"></div>
+
 <span class="continue-hint">continue</span>
 <div class="divider"></div>
 
@@ -11849,6 +11895,42 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
           <tr class="gloss-entry" id="gloss-unity-consciousness">
             <td>Unity Consciousness</td>
             <td>Traditionally described as the seventh and final state of consciousness &mdash; every object keeps its own shape and boundary, but is directly experienced as the same Self doing the perceiving.</td>
+          </tr>
+          <tr class="gloss-entry" id="gloss-tarka">
+            <td>Tarka</td>
+            <td>Standard reasoning, debate, and analysis, in the Shiva Sutras' scheme of logic &mdash; useful, but it shifts every time a new fact arrives.</td>
+          </tr>
+          <tr class="gloss-entry" id="gloss-kutarka">
+            <td>Kutarka</td>
+            <td>Fault-finding aimed at good intentions and twisted purely to win an argument &mdash; the Shiva Sutras' &ldquo;wrong logic,&rdquo; which breeds paranoia, destruction, and ignorance.</td>
+          </tr>
+          <tr class="gloss-entry" id="gloss-vitarka">
+            <td>Vitarka</td>
+            <td>Thought without the need to win anything &mdash; the Shiva Sutras' &ldquo;special logic,&rdquo; asking unanswerable questions like &ldquo;Who am I?&rdquo; that exhaust the ego and open onto Self-knowledge.</td>
+          </tr>
+          <tr class="gloss-entry" id="gloss-jnanam-bandhah">
+            <td>Jnanam Bandhah</td>
+            <td>A Shiva Sutra: limited knowledge itself creates bondage &mdash; the instant something is called &ldquo;known,&rdquo; its living, changing range narrows to fit a fixed, past-based definition.</td>
+          </tr>
+          <tr class="gloss-entry" id="gloss-vismayo-yoga-bhumikah">
+            <td>Vismayo Yoga Bhumikah</td>
+            <td>A Shiva Sutra: wonder is the foundation for union &mdash; knowledge held with amazement stays open; knowledge held as settled certainty closes the door to reality.</td>
+          </tr>
+          <tr class="gloss-entry" id="gloss-aviveko-maya-sausuptam">
+            <td>Aviveko Maya Sausuptam</td>
+            <td>A Shiva Sutra: lack of discrimination is like deep sleep &mdash; failing to tell the passing (opinion, reputation) apart from the real is itself a kind of unconsciousness.</td>
+          </tr>
+          <tr class="gloss-entry" id="gloss-nartaka-atma">
+            <td>Nartaka Atma / Rango&rsquo;ntaratma</td>
+            <td>A Shiva Sutra: the Self is the dancer, the inner Self is the stage &mdash; reversing the usual sense of scale. The world doesn't contain you; you contain the stage it plays out on.</td>
+          </tr>
+          <tr class="gloss-entry" id="gloss-shakti-chakra-sandhane">
+            <td>Shakti Chakra Sandhane Vishvasamharah</td>
+            <td>A Shiva Sutra: focusing on the energy centers dissolves the illusory world &mdash; sustained attention on the body's energy centers is what loosens Maya's grip.</td>
+          </tr>
+          <tr class="gloss-entry" id="gloss-chittam-mantrah">
+            <td>Chittam Mantrah</td>
+            <td>A Shiva Sutra: the mind becomes the mantra &mdash; whatever sound or thought the mind repeats is what it eventually turns into.</td>
           </tr>
         </tbody>
       </table>
