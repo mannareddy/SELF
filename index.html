@@ -1190,6 +1190,13 @@ a:hover{opacity:.7;}
     transform:translate(-50%,-50%);
     margin:0 !important;
   }
+  /* Since the logo is now taken out of flex flow (see above), nav-left and
+     nav-right split the bar exactly 50/50 with nothing reserved for it —
+     their innermost edges land exactly on the 50% mark, directly under the
+     logo's ~44px footprint. Reserve a matching gutter on each side so the
+     boundary item ("Daily Practice" / "Shop / Circle") never renders behind it. */
+  .nav-left{padding-right:34px;}
+  .nav-right{padding-left:34px;}
 
   .nav-dropdown-wrap{position:relative;}
 
