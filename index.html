@@ -1078,6 +1078,20 @@ a:hover{opacity:.7;}
 /* Reserve space so nav items don't go under theme button */
 .nav-right{padding-right:44px;}
 
+/* Narrow "desktop" band (tablets, phones in desktop-site mode) — the centered
+   logo sits at a fixed 50% regardless of how much text nav-left/nav-right
+   carry, so on this band the base 12.5px/2.5px letter-spacing sizing runs
+   "Daily Practice" (the longest item) past the halfway mark and under the
+   logo. Shrinking just this band keeps the roomier look on real desktop
+   monitors (≥1350px) while guaranteeing every item clears the logo below it. */
+@media(min-width:901px) and (max-width:1350px){
+  .nav-left li a,.nav-right li a{
+    font-size:10px;
+    letter-spacing:0.8px;
+    padding:0 7px;
+  }
+}
+
 /* Mobile nav — content/visual adaptations (font size, theme icon swap,
    hiding low-priority items). Equal left/right distribution from the base
    rules is kept all the way down to 520px; see below. */
