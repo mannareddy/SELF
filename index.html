@@ -13703,6 +13703,17 @@ function updateNav(){
         didExpand = true;
       }
 
+      // Also open any collapsed .framework-card that is the target itself,
+      // or an ancestor of it (e.g. a nav link pointing at a subsection that
+      // lives inside a card collapsed by default) — reuse the existing
+      // accordion click handler rather than re-implementing its open/
+      // sibling-close logic here.
+      var fcAncestor = target.classList.contains('framework-card') ? target : target.closest('.framework-card');
+      if(fcAncestor && fcAncestor.classList.contains('collapsed')){
+        fcAncestor.click();
+        didExpand = true;
+      }
+
       // Delay scroll slightly if we just expanded so max-height transition registers
       var delay = didExpand ? 60 : 0;
       setTimeout(function(){
