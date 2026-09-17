@@ -1086,7 +1086,7 @@ a:hover{opacity:.7;}
    monitors (≥1350px) while guaranteeing every item clears the logo below it. */
 @media(min-width:901px) and (max-width:1350px){
   .nav-left li a,.nav-right li a{
-    font-size:10px;
+    font-size:12.5px;
     letter-spacing:0.8px;
     padding:0 7px;
   }
@@ -1232,8 +1232,8 @@ a:hover{opacity:.7;}
      keyboard users tabbing in should see the panel immediately. */
   .nav-dropdown-wrap:focus-within .nav-dropdown-panel,
   .nav-dropdown-wrap.js-open .nav-dropdown-panel{
-    opacity:1;pointer-events:auto;transform:translateY(2px);
-    transition:opacity .15s ease, transform .15s ease;
+    opacity:1;pointer-events:auto;
+    transition:opacity .15s ease;
   }
   /* Forces the panel shut right after a link inside it is clicked, even if
      the cursor hasn't moved off the item yet (hover would otherwise keep
@@ -1257,7 +1257,15 @@ a:hover{opacity:.7;}
      Each category header (.nav-group-trigger) opens its own .nav-flyout-panel
      to the right of the first-level panel on hover/focus, same mechanism as
      the top-level trigger → panel. */
-  .nav-dropdown-panel-l1{overflow:visible !important;}
+  /* Was overflow:visible !important so the level-2 .nav-flyout-panel (an
+     absolutely-positioned descendant) wouldn't be clipped by this panel's
+     own scroll box — but that also killed vertical scrolling for THE PATH
+     and TRADITIONS themselves, which both run well past the viewport
+     height. Flyouts are now positioned with position:fixed, computed in
+     pixels by JS (see positionFlyout below), so they no longer depend on
+     this panel staying unclipped — it can scroll normally like any other
+     .nav-dropdown-panel. */
+  .nav-dropdown-panel-l1{overflow-y:auto !important;overflow-x:hidden !important;}
   .nav-subgroup{position:relative;}
   .nav-group-trigger{
     cursor:default;display:flex !important;align-items:flex-start;justify-content:space-between;gap:8px;text-align:left;
@@ -1278,31 +1286,23 @@ a:hover{opacity:.7;}
   .nav-group-trigger .flyout-caret{font-size:15px;opacity:.85;flex:0 0 auto;margin-top:2px;}
   .nav-flyout-panel{
     display:flex;flex-direction:column;
-    /* Centered on the trigger row (top:50% + translateY(-50%)) instead of
-       top-aligned to it (previously top:-1px). Top-aligning meant the
-       flyout only ever extended downward from wherever the trigger sat in
-       the parent list, so a trigger lower in a tall panel (e.g. "Ego &
-       Consciousness") produced a flyout the pointer had to travel far
-       down/away to reach — one wobble off that path and hover was lost,
-       closing the menu. Splitting the flyout evenly above/below the
-       trigger keeps every flyout item within a short, forgiving distance
-       of the pointer's starting position, whatever the flyout's height. */
-    position:absolute;top:50%;left:100%;margin-left:1px;transform:translateY(-50%);
+    /* position:fixed instead of absolute-relative-to-trigger: top/left are
+       now set in pixels by positionFlyout() (see JS below), which centers
+       the flyout on its trigger row like before but clamps it so it never
+       renders above the top of the viewport or below the bottom — the old
+       top:50%/translateY(-50%) centering had no such clamp, so a flyout
+       taller than the space above its trigger simply had its top portion
+       rendered off-screen with no way to scroll up into it. Being fixed
+       (rather than absolute inside the scrolling .nav-dropdown-panel-l1)
+       also means this is never clipped by that panel's own scrollbar. */
+    position:fixed;top:0;left:0;
     min-width:230px;max-width:300px;background:rgb(0,0,0);border:1px solid rgba(var(--accent-gold-rgb),0.4);
     box-shadow:0 14px 28px rgba(0,0,0,0.5);
     opacity:0;pointer-events:none;
     transition:opacity .15s ease;
     padding:0;z-index:5001;
-    max-height:calc(100vh - 140px);overflow-y:auto;overscroll-behavior:contain;
+    max-height:calc(100vh - 16px);overflow-y:auto;overscroll-behavior:contain;
     scrollbar-width:thin;scrollbar-color:rgba(var(--accent-gold-rgb),0.5) transparent;
-  }
-  /* "Start Here" is the first item directly under the Traditions trigger,
-     right up against the main header row — centering its flyout (which
-     would push half of it upward) ran it into the header bar itself. It
-     keeps the original top-aligned placement; every other subgroup below
-     it still centers per the rule above. */
-  .nav-subgroup:first-child .nav-flyout-panel{
-    top:-1px;transform:none;
   }
   .nav-flyout-panel::-webkit-scrollbar{width:5px;}
   .nav-flyout-panel::-webkit-scrollbar-track{background:transparent;}
@@ -3735,9 +3735,9 @@ a.src-tag:hover{opacity:.75;}
     <li class="nav-dropdown-wrap">
       <a href="#framework" data-group="path">The Path<span class="nav-caret">▾</span></a>
       <div class="nav-dropdown-panel nav-dropdown-panel-l1">
-        <div class="nav-path-intro" style="padding:14px 18px 16px;border-bottom:1px solid rgba(var(--accent-gold-rgb),0.25);margin-bottom:6px;font-family:var(--serif);font-size:12.5px;line-height:1.7;color:var(--dim);max-width:280px;text-align:left;">Traditions is organized by subject. Daily Practice is organized by exercise. This is organized by sequence &mdash; <span class="gloss">Samanvaya<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Samanvaya">+</span><span class="gloss-pop">Harmony &mdash; reconciling every scriptural text so they all point to one non-dual reality, rather than contradicting each other.</span></span> &rarr; <span class="gloss">Avirodha<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Avirodha">+</span><span class="gloss-pop">Non-Conflict &mdash; clearing away rival theories through logic, not by asserting louder.</span></span> &rarr; <span class="gloss">Sadhana<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Sadhana">+</span><span class="gloss-pop">Spiritual practice &mdash; the discipline that turns understanding into lived realization.</span></span> &rarr; <span class="gloss">Phala<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Phala">+</span><span class="gloss-pop">Result &mdash; not a reward added on top, but liberation actually lived out, not merely believed.</span></span> &mdash; the order Shankaracharya's own commentary argues understanding has to unfold in, not just a subject list to browse in any order.</div>
+        <div class="nav-path-intro" style="padding:10px 18px;border-bottom:1px solid rgba(var(--accent-gold-rgb),0.25);margin-bottom:6px;font-family:var(--sans);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim);text-align:left;"><span class="gloss">Why This Order<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Why this order">+</span><span class="gloss-pop">Traditions is organized by subject. Daily Practice is organized by exercise. This is organized by sequence &mdash; Samanvaya &rarr; Avirodha &rarr; Sadhana &rarr; Phala &mdash; the order Shankaracharya's own commentary argues understanding has to unfold in, not just a subject list to browse in any order.</span></span></div>
         <div class="nav-subgroup">
-          <div class="nav-group-label nav-group-trigger" tabindex="0"><span class="trigger-label-text"><span style="display:block;">I. Samanvaya</span><span style="display:block;opacity:.6;font-size:.78em;margin-top:2px;">&mdash; Harmony</span></span><span class="flyout-caret">▸</span></div>
+          <div class="nav-group-label nav-group-trigger" tabindex="0"><span class="trigger-label-text"><span style="display:block;" class="gloss">I. Samanvaya<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Samanvaya">+</span><span class="gloss-pop">Harmony &mdash; reconciling every scriptural text so they all point to one non-dual reality, rather than contradicting each other.</span></span><span style="display:block;opacity:.6;font-size:.78em;margin-top:2px;">&mdash; Harmony</span></span><span class="flyout-caret">▸</span></div>
           <div class="nav-flyout-panel">
             <a href="#start-here" data-group="path">What Is *SELF</a>
             <a href="#super-ordinate-goal" data-group="path">The Super-Ordinate Goal</a>
@@ -3751,7 +3751,7 @@ a.src-tag:hover{opacity:.75;}
           </div>
         </div>
         <div class="nav-subgroup">
-          <div class="nav-group-label nav-group-trigger" tabindex="0"><span class="trigger-label-text"><span style="display:block;">II. Avirodha</span><span style="display:block;opacity:.6;font-size:.78em;margin-top:2px;">&mdash; Non-Conflict</span></span><span class="flyout-caret">▸</span></div>
+          <div class="nav-group-label nav-group-trigger" tabindex="0"><span class="trigger-label-text"><span style="display:block;" class="gloss">II. Avirodha<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Avirodha">+</span><span class="gloss-pop">Non-Conflict &mdash; clearing away rival theories through logic, not by asserting louder.</span></span><span style="display:block;opacity:.6;font-size:.78em;margin-top:2px;">&mdash; Non-Conflict</span></span><span class="flyout-caret">▸</span></div>
           <div class="nav-flyout-panel">
             <a href="#mistaken-identity" data-group="path">The Root Diagnosis</a>
             <a href="#qualified-seeker" data-group="path">Before The Inquiry Can Begin</a>
@@ -3766,7 +3766,7 @@ a.src-tag:hover{opacity:.75;}
           </div>
         </div>
         <div class="nav-subgroup">
-          <div class="nav-group-label nav-group-trigger" tabindex="0"><span class="trigger-label-text"><span style="display:block;">III. Sadhana</span><span style="display:block;opacity:.6;font-size:.78em;margin-top:2px;">&mdash; Practice</span></span><span class="flyout-caret">▸</span></div>
+          <div class="nav-group-label nav-group-trigger" tabindex="0"><span class="trigger-label-text"><span style="display:block;" class="gloss">III. Sadhana<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Sadhana">+</span><span class="gloss-pop">Spiritual practice &mdash; the discipline that turns understanding into lived realization.</span></span><span style="display:block;opacity:.6;font-size:.78em;margin-top:2px;">&mdash; Practice</span></span><span class="flyout-caret">▸</span></div>
           <div class="nav-flyout-panel">
             <a href="#portals-to-presence" data-group="path">Portals to Presence</a>
             <a href="#full-attention" data-group="path">How to Pay Full Attention</a>
@@ -3780,7 +3780,7 @@ a.src-tag:hover{opacity:.75;}
           </div>
         </div>
         <div class="nav-subgroup">
-          <div class="nav-group-label nav-group-trigger" tabindex="0"><span class="trigger-label-text"><span style="display:block;">IV. Phala</span><span style="display:block;opacity:.6;font-size:.78em;margin-top:2px;">&mdash; Result</span></span><span class="flyout-caret">▸</span></div>
+          <div class="nav-group-label nav-group-trigger" tabindex="0"><span class="trigger-label-text"><span style="display:block;" class="gloss">IV. Phala<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Phala">+</span><span class="gloss-pop">Result &mdash; not a reward added on top, but liberation actually lived out, not merely believed.</span></span><span style="display:block;opacity:.6;font-size:.78em;margin-top:2px;">&mdash; Result</span></span><span class="flyout-caret">▸</span></div>
           <div class="nav-flyout-panel">
             <a href="#great-forest" data-group="path">The Great Forest of Being</a>
             <a href="#anatomy-of-love" data-group="path">The Anatomy of Love</a>
@@ -3997,7 +3997,7 @@ a.src-tag:hover{opacity:.75;}
         <button class="mnav-back" type="button" data-back="root"><span class="mnav-back-arrow">‹</span> Menu</button>
         <span class="mnav-screen-title">The Path</span>
       </div>
-      <p class="nav-path-intro" style="padding:4px 20px 14px;margin:0;font-family:var(--serif);font-size:13px;line-height:1.7;color:var(--dim);text-align:left;">Traditions is organized by subject. Daily Practice is organized by exercise. This is organized by sequence &mdash; <span class="gloss">Samanvaya<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Samanvaya">+</span><span class="gloss-pop">Harmony &mdash; reconciling every scriptural text so they all point to one non-dual reality, rather than contradicting each other.</span></span> &rarr; <span class="gloss">Avirodha<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Avirodha">+</span><span class="gloss-pop">Non-Conflict &mdash; clearing away rival theories through logic, not by asserting louder.</span></span> &rarr; <span class="gloss">Sadhana<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Sadhana">+</span><span class="gloss-pop">Spiritual practice &mdash; the discipline that turns understanding into lived realization.</span></span> &rarr; <span class="gloss">Phala<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Phala">+</span><span class="gloss-pop">Result &mdash; not a reward added on top, but liberation actually lived out, not merely believed.</span></span> &mdash; the order Shankaracharya's own commentary argues understanding has to unfold in, not just a subject list to browse in any order.</p>
+      <div class="nav-path-intro" style="padding:10px 20px;margin:0;border-bottom:1px solid rgba(var(--accent-gold-rgb),0.2);font-family:var(--sans);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim);text-align:left;"><span class="gloss">Why This Order<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Why this order">+</span><span class="gloss-pop">Traditions is organized by subject. Daily Practice is organized by exercise. This is organized by sequence &mdash; Samanvaya &rarr; Avirodha &rarr; Sadhana &rarr; Phala &mdash; the order Shankaracharya's own commentary argues understanding has to unfold in, not just a subject list to browse in any order.</span></span></div>
       <button class="mnav-row" type="button" data-target="path-harmony"><span style="display:flex;align-items:baseline;"><span style="display:inline-block;min-width:150px;">I. Samanvaya</span><span style="opacity:.6;font-size:.85em;">&mdash; Harmony</span></span> <span class="mnav-caret">›</span></button>
       <button class="mnav-row" type="button" data-target="path-nonconflict"><span style="display:flex;align-items:baseline;"><span style="display:inline-block;min-width:150px;">II. Avirodha</span><span style="opacity:.6;font-size:.85em;">&mdash; Non-Conflict</span></span> <span class="mnav-caret">›</span></button>
       <button class="mnav-row" type="button" data-target="path-practice"><span style="display:flex;align-items:baseline;"><span style="display:inline-block;min-width:150px;">III. Sadhana</span><span style="opacity:.6;font-size:.85em;">&mdash; Practice</span></span> <span class="mnav-caret">›</span></button>
@@ -13814,29 +13814,52 @@ function updateNav(){
     el.scrollIntoView({block:'nearest', inline:'nearest'});
   }
 
-  /* .nav-flyout-panel's CSS max-height (calc(100vh - 140px)) assumes the
-     flyout always opens right under the nav bar, which is only true for
-     the first subgroup. A subgroup further down the list (e.g. "Ego &
-     Consciousness") opens its flyout much lower on the page — the panel
-     can be shorter than that CSS max-height and still run off the bottom
-     of the viewport, because overflow-y:auto only kicks in once content
-     exceeds max-height, not once it exceeds the actual remaining space
-     below it. Recalculating max-height from the subgroup's real position
-     each time it opens keeps every flyout fully on-screen with its own
-     scrollbar exactly when it's actually needed. */
+  /* .nav-flyout-panel is position:fixed with its top/left computed here in
+     pixels, rather than left in CSS as top:50%/translateY(-50%) relative to
+     the trigger. That centered-on-trigger placement had no floor or
+     ceiling: a subgroup low in a tall list (e.g. "Ego & Consciousness")
+     centered its flyout half above/half below the trigger with no regard
+     for the viewport, so a flyout taller than the space actually available
+     above the trigger simply rendered its top items above y=0 — invisible,
+     and with no scroll gesture that could reach them, since it was the
+     flyout's own position that was off-screen, not an internal overflow.
+     Positioning it here — centered on the trigger the same as before, but
+     clamped between a top and bottom margin — keeps every item reachable
+     while still starting the flyout close to wherever the pointer is. */
   document.querySelectorAll('.nav-subgroup').forEach(function(sg){
     var flyout = sg.querySelector('.nav-flyout-panel');
     if(!flyout) return;
-    function sizeFlyout(){
-      var margin = 16;
-      var available = window.innerHeight - sg.getBoundingClientRect().top - margin;
-      flyout.style.maxHeight = Math.max(120, available) + 'px';
+    var header = sg.querySelector('.nav-group-trigger') || sg;
+    function positionFlyout(){
+      var margin = 8;
+      var maxH = Math.max(120, window.innerHeight - margin * 2);
+      flyout.style.maxHeight = maxH + 'px';
+      var subRect = sg.getBoundingClientRect();
+      flyout.style.left = Math.round(subRect.right + 1) + 'px';
+      var headerRect = header.getBoundingClientRect();
+      var naturalH = Math.min(flyout.scrollHeight || maxH, maxH);
+      var centerY = headerRect.top + headerRect.height / 2;
+      var top = centerY - naturalH / 2;
+      top = Math.max(margin, Math.min(top, window.innerHeight - margin - naturalH));
+      flyout.style.top = Math.round(top) + 'px';
     }
-    sg.addEventListener('mouseenter', sizeFlyout);
-    var header = sg.querySelector('.nav-group-trigger');
-    if(header) header.addEventListener('focus', sizeFlyout);
-    flyout.querySelectorAll('a').forEach(function(a){ a.addEventListener('focus', sizeFlyout); });
-    window.addEventListener('resize', sizeFlyout);
+    sg.addEventListener('mouseenter', positionFlyout);
+    header.addEventListener('focus', positionFlyout);
+    flyout.querySelectorAll('a').forEach(function(a){ a.addEventListener('focus', positionFlyout); });
+    window.addEventListener('resize', positionFlyout);
+    sg._positionFlyout = positionFlyout;
+  });
+  /* The outer .nav-dropdown-panel-l1 (THE PATH / TRADITIONS) now scrolls
+     internally (see its CSS above). Scrolling it moves a subgroup's
+     trigger without firing resize or mouseenter, so a flyout left open
+     mid-scroll would otherwise stay pinned to its old, now-wrong pixel
+     position. Reposition whichever flyout is currently open as its own
+     panel scrolls. */
+  document.querySelectorAll('.nav-dropdown-panel-l1').forEach(function(panel){
+    panel.addEventListener('scroll', function(){
+      var openSg = panel.querySelector('.nav-subgroup.js-open, .nav-subgroup:hover, .nav-subgroup:focus-within');
+      if(openSg && openSg._positionFlyout) openSg._positionFlyout();
+    }, {passive:true});
   });
 
   /* ── Hover-intent grace period for Traditions' two-level flyouts ──
