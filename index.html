@@ -13830,9 +13830,15 @@ function updateNav(){
     var flyout = sg.querySelector('.nav-flyout-panel');
     if(!flyout) return;
     var header = sg.querySelector('.nav-group-trigger') || sg;
-    function positionFlyout(){
+        function positionFlyout(){
       var margin = 8;
-      var maxH = Math.max(120, window.innerHeight - margin * 2);
+      // Clamp to below the fixed nav bar, not just the raw viewport edge —
+      // otherwise a flyout for a trigger near the top of a tall panel
+      // (e.g. "Start Here", "The Vedantic Architecture") centers upward
+      // and renders behind .site-nav instead of stopping at its bottom edge.
+      var navEl = document.querySelector('.site-nav');
+      var topFloor = navEl ? Math.max(margin, navEl.getBoundingClientRect().bottom + margin) : margin;
+      var maxH = Math.max(120, window.innerHeight - topFloor - margin);
       flyout.style.maxHeight = maxH + 'px';
       var subRect = sg.getBoundingClientRect();
       flyout.style.left = Math.round(subRect.right + 1) + 'px';
@@ -13840,7 +13846,7 @@ function updateNav(){
       var naturalH = Math.min(flyout.scrollHeight || maxH, maxH);
       var centerY = headerRect.top + headerRect.height / 2;
       var top = centerY - naturalH / 2;
-      top = Math.max(margin, Math.min(top, window.innerHeight - margin - naturalH));
+      top = Math.max(topFloor, Math.min(top, window.innerHeight - margin - naturalH));
       flyout.style.top = Math.round(top) + 'px';
     }
     sg.addEventListener('mouseenter', positionFlyout);
