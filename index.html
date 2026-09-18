@@ -21,6 +21,18 @@
      the kind of mismatch that shows up on desktop but not on mobile
      browsers that don't run the same forced-dark pass. -->
 <meta name="color-scheme" content="dark light">
+<!-- Opts the page out of Dark Reader (and compatible extensions) entirely.
+     Those extensions rewrite computed colors after the page loads using
+     their own per-element heuristics — which is why a light-themed toggle
+     can come out with an inconsistent, patchy recolor (some elements
+     darkened more than others) even though this page's own CSS is
+     correct. Crucially, extensions don't read the color-scheme meta tag
+     above (that's a native-browser signal only), so it doesn't stop them.
+     This tag is Dark Reader's own documented opt-out mechanism for sites
+     that already manage their own theming. It has no effect on browsers
+     or on genuine native dark-mode features — only on that specific class
+     of extension. -->
+<meta name="darkreader-lock">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..800;1,6..72,300..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..800;1,8..60,300..800&display=swap" rel="stylesheet">
@@ -1848,17 +1860,18 @@ section{scroll-margin-top:56px;}
 .framework-card p{font-family:var(--serif);font-size:16.5px;font-weight:400;color:var(--grey);line-height:1.88;}
 .framework-card::after{content:'Collapse ▲';position:absolute;top:32px;right:28px;font-size:10px;font-family:var(--sans);letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);opacity:.7;transition:all .3s;}
 .framework-card.collapsed::after{content:'Expand ▼';}
-/* Desktop: force a strict 4-per-row layout instead of the auto-fit above
-   (which settles at 3 per row on typical desktop widths). Cards get
-   narrower, so padding and type scale down a step to keep them from
-   feeling cramped or forcing awkward wraps in the collapse/expand label. */
+/* Desktop: force a strict 3-per-row layout instead of the auto-fit above.
+   This used to force 4-per-row, but on typical desktop widths a 4th
+   column didn't reliably fit — the last card in each row (and the last
+   overall, e.g. card 8 of 8) ran past the edge of the viewport instead of
+   wrapping. 3-per-row leaves each card enough width to actually fit. */
 @media(min-width:1100px){
-  .framework-grid{grid-template-columns:repeat(4,1fr);}
-  .framework-card{padding:28px 22px;}
-  .framework-card .num{font-size:9px;margin-bottom:14px;}
-  .framework-card h3{font-size:clamp(17px,1.6vw,20px);margin-bottom:10px;}
-  .framework-card p{font-size:14.5px;line-height:1.75;}
-  .framework-card::after{top:24px;right:20px;font-size:9px;}
+  .framework-grid{grid-template-columns:repeat(3,1fr);}
+  .framework-card{padding:32px 26px;}
+  .framework-card .num{font-size:9.5px;margin-bottom:16px;}
+  .framework-card h3{font-size:clamp(18px,1.4vw,21px);margin-bottom:10px;}
+  .framework-card p{font-size:15px;line-height:1.8;}
+  .framework-card::after{top:26px;right:22px;font-size:9px;}
 }
 
 /* ── FRAMEWORK SUBCARDS: nested one level inside a framework-card (e.g. card
