@@ -11,6 +11,16 @@
 </script>  
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Tells browsers this page fully manages its own light/dark theming (via
+     data-theme + the ☾ toggle), so desktop Chrome's "Automatically darken
+     web content when in dark mode" — enabled by default on many machines —
+     doesn't apply its own heuristic recoloring on top of it. Without this,
+     that feature force-recolors elements independently of each other,
+     which is why the page background can look shifted off the real
+     #f5f1e8 while some cards get a different, inconsistent tint — exactly
+     the kind of mismatch that shows up on desktop but not on mobile
+     browsers that don't run the same forced-dark pass. -->
+<meta name="color-scheme" content="dark light">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..800;1,6..72,300..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..800;1,8..60,300..800&display=swap" rel="stylesheet">
@@ -40,6 +50,12 @@ gtag('config','G-XC5FG6W949');
 img,svg,video{max-width:100%;height:auto;}
 html{
 scroll-behavior:smooth;
+/* Matches the meta color-scheme declaration above to the page's actual
+   active theme (dark by default, light once data-theme="light" is set),
+   so native browser chrome — scrollbars, form control chrome, etc. — and
+   any remaining forced-dark heuristics track the real theme instead of
+   guessing from page colors alone. */
+color-scheme:dark;
 /* Browser scroll anchoring is disabled globally: this page fully manages
    its own scroll/animation timing (freezeTransitions, expandHeight /
    collapseHeight, scrollAfterSettle). Native anchoring only fights that —
@@ -707,6 +723,7 @@ body{
   --gloss-tint-rgb:180,140,30;
 }
 [data-theme="light"] body{background:var(--bg-page) !important;color:var(--text-body) !important;font-weight:400;}
+[data-theme="light"]{color-scheme:light;}
 
 /* Light: boost body text weight/brightness across all text elements */
 [data-theme="light"] p,[data-theme="light"] li,[data-theme="light"] span:not(.label):not(.ec-type):not(.p-num):not(.num):not(.layer-tag):not(.s-sub):not(.ds-subtitle):not(.rasa-cell):not(.tradition-cell):not(.col-title):not(.gloss-btn){color:var(--text-body) !important;font-weight:400 !important;}
