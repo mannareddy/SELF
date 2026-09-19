@@ -6911,8 +6911,12 @@ a.src-tag:hover{opacity:.75;}
   <div id="physical-correlate-detail" class="section-collapse-wrap collapsed">
 
     <div id="angle-one" class="angle-card">
-    <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.75;max-width:850px;margin:0 auto 18px;text-align:left;">Angle One &mdash; Neuroscience</p>
-    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;max-width:850px;margin:0 auto 28px;text-align:left;">Researchers can measure how much a brain&rsquo;s regions are <em>integrating</em> information, not just firing together. Tracked through general anesthesia, that capacity collapses sharply in the gamma band as consciousness fades &mdash; while synchronized firing in the same regions barely changes. What&rsquo;s lost isn&rsquo;t activity. It&rsquo;s binding &mdash; the difference between a field that&rsquo;s merely <em>on</em> and one <em>gathered into one experience.</em></p>
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;max-width:850px;margin:0 auto;">
+      <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.75;margin:0;text-align:left;">Angle One &mdash; Neuroscience</p>
+      <button class="collapse-toggle-btn" onclick="sectionCollapse('angle-one-content',this)" style="margin-bottom:0;">Expand &#9660;</button>
+    </div>
+    <div id="angle-one-content" class="section-collapse-wrap collapsed" style="max-width:850px;margin:0 auto;">
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;max-width:850px;margin:18px auto 28px;text-align:left;">Researchers can measure how much a brain&rsquo;s regions are <em>integrating</em> information, not just firing together. Tracked through general anesthesia, that capacity collapses sharply in the gamma band as consciousness fades &mdash; while synchronized firing in the same regions barely changes. What&rsquo;s lost isn&rsquo;t activity. It&rsquo;s binding &mdash; the difference between a field that&rsquo;s merely <em>on</em> and one <em>gathered into one experience.</em></p>
 
     <div style="max-width:850px;margin:0 auto 28px;padding:28px 26px;background:var(--bg-lift);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);text-align:left;">
       <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:16px;">What the Research Found</div>
@@ -6932,12 +6936,19 @@ a.src-tag:hover{opacity:.75;}
 
     <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);font-style:italic;color:var(--gold);line-height:1.85;max-width:850px;margin:24px auto 0;text-align:left;">A dropping integration score can tell you the field stopped binding itself into one experience. It can't tell you what that experience was like while it lasted, or what it means that it's gone. That reading has never been biology's to give.</p>
     </div>
+    </div>
 
     <!-- THE MASTER AND THE EMISSARY — second angle, same expand block -->
     <div id="hemispheres" class="angle-card" style="scroll-margin-top:56px;">
-      <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.75;max-width:850px;margin:0 auto 18px;text-align:left;">Angle Two &mdash; Psychiatry</p>
-      <h2 style="font-size:clamp(20px,3vw,28px);font-weight:300;color:var(--white);max-width:850px;margin:0 auto 16px;line-height:1.5;text-align:left;">The mind that watches and the mind that grabs are not the same organ.</h2>
-      <p style="font-size:clamp(14px,1.8vw,17px);color:var(--grey);max-width:850px;margin:0 auto 32px;font-style:italic;line-height:1.85;text-align:left;">Psychiatrist Iain McGilchrist&rsquo;s reading of hemispheric asymmetry gives the Witness/Ego split above a second, independent vocabulary &mdash; not proof, but another lens pointed at the same divide.</p>
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;max-width:850px;margin:0 auto;">
+        <div style="flex:1;min-width:220px;">
+          <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.75;margin:0 0 18px;text-align:left;">Angle Two &mdash; Psychiatry</p>
+          <h2 style="font-size:clamp(20px,3vw,28px);font-weight:300;color:var(--white);margin:0 0 16px;line-height:1.5;text-align:left;">The mind that watches and the mind that grabs are not the same organ.</h2>
+        </div>
+        <button class="collapse-toggle-btn" onclick="sectionCollapse('hemispheres-content',this)" style="margin-bottom:0;">Expand &#9660;</button>
+      </div>
+      <div id="hemispheres-content" class="section-collapse-wrap collapsed" style="max-width:850px;margin:0 auto;">
+      <p style="font-size:clamp(14px,1.8vw,17px);color:var(--grey);max-width:850px;margin:18px auto 32px;font-style:italic;line-height:1.85;text-align:left;">Psychiatrist Iain McGilchrist&rsquo;s reading of hemispheric asymmetry gives the Witness/Ego split above a second, independent vocabulary &mdash; not proof, but another lens pointed at the same divide.</p>
 
       <div class="identity-grid" style="margin-bottom:36px;max-width:850px;">
         <div class="identity-card">
@@ -6955,6 +6966,7 @@ a.src-tag:hover{opacity:.75;}
       </div>
 
       <p style="font-family:var(--serif);font-size:clamp(16px,2.1vw,19px);color:var(--mid);line-height:1.9;max-width:850px;margin:0 auto;text-align:left;">Neither hemisphere is the villain. The Emissary&rsquo;s narrow grip is exactly what lets you read this sentence, hold a job, plan a week. The imbalance McGilchrist describes isn&rsquo;t having an Emissary &mdash; it&rsquo;s a mind, or a civilization, where the Emissary has stopped reporting back to the Master it was built to serve.</p>
+      </div>
     </div>
 
     <!-- ANGLE THREE — NEUROSCIENCE (COGNITIVE FLEXIBILITY) — third angle, same expand block.
@@ -6962,9 +6974,15 @@ a.src-tag:hover{opacity:.75;}
          looser "hybrid synapse-wave theory of consciousness" framing it sometimes gets
          packaged with — that framing overclaims beyond what these specific findings show. -->
     <div id="mixed-selectivity" class="angle-card" style="scroll-margin-top:56px;">
-      <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.75;max-width:850px;margin:0 auto 18px;text-align:left;">Angle Three &mdash; Neuroscience (Cognitive Flexibility)</p>
-      <h2 style="font-size:clamp(20px,3vw,30px);font-weight:300;color:var(--white);max-width:850px;margin:0 auto 16px;line-height:1.5;text-align:center;">The same neuron plays different roles depending on what room it's in.</h2>
-      <p style="font-size:clamp(14px,1.8vw,17px);color:var(--grey);max-width:850px;margin:0 auto 32px;font-style:italic;line-height:1.85;text-align:left;">A third, independent echo &mdash; this one of the Mansion Metaphor below, not the Witness/Ego split. Not a metaphysical claim either: a plain summary of a well-established finding about how the prefrontal cortex actually works.</p>
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;max-width:850px;margin:0 auto;">
+        <div style="flex:1;min-width:220px;">
+          <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.75;margin:0 0 18px;text-align:left;">Angle Three &mdash; Neuroscience (Cognitive Flexibility)</p>
+          <h2 style="font-size:clamp(20px,3vw,30px);font-weight:300;color:var(--white);margin:0 0 16px;line-height:1.5;text-align:left;">The same neuron plays different roles depending on what room it's in.</h2>
+        </div>
+        <button class="collapse-toggle-btn" onclick="sectionCollapse('mixed-selectivity-content',this)" style="margin-bottom:0;">Expand &#9660;</button>
+      </div>
+      <div id="mixed-selectivity-content" class="section-collapse-wrap collapsed" style="max-width:850px;margin:0 auto;">
+      <p style="font-size:clamp(14px,1.8vw,17px);color:var(--grey);max-width:850px;margin:18px auto 32px;font-style:italic;line-height:1.85;text-align:left;">A third, independent echo &mdash; this one of the Mansion Metaphor below, not the Witness/Ego split. Not a metaphysical claim either: a plain summary of a well-established finding about how the prefrontal cortex actually works.</p>
 
       <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;max-width:850px;margin:0 auto 28px;text-align:left;">The traditional picture held that each cortical neuron has one fixed job &mdash; the &ldquo;grandmother cell&rdquo; that fires for one thing and one thing only. If that were true, the brain's capacity for cognition would run out fast: any complex task recruits <span style="color:var(--gold);">30&ndash;40% of prefrontal neurons at once</span>, which would exhaust a one-job-per-neuron system after only a handful of learned tasks. What's actually found is <em>mixed selectivity</em>: the same neuron's firing means different things depending on context &mdash; not a fixed compartment, a room that becomes something else depending on who's standing in it.</p>
 
@@ -6983,15 +7001,22 @@ a.src-tag:hover{opacity:.75;}
       <p style="font-family:var(--sans);font-size:10.5px;letter-spacing:1px;color:var(--dim);line-height:1.7;max-width:850px;margin:24px auto 0;text-align:left;">Sources: Rigotti, M., Barak, O., Warden, M.R., Wang, X.-J., Daw, N.D., Miller, E.K. &amp; Fusi, S. (2013). &ldquo;The importance of mixed selectivity in complex cognitive tasks.&rdquo; <em>Nature</em> 497, 585&ndash;590. <a href="https://doi.org/10.1038/nature12160" target="_blank" rel="noopener" style="color:var(--dim);text-decoration:underline;">doi.org/10.1038/nature12160</a> &middot; Miller, E.K., Brincat, S.L. &amp; Roy, J.E. (2024). &ldquo;Cognition is an emergent property.&rdquo; <em>Current Opinion in Behavioral Sciences</em> 57, 101388. <a href="https://doi.org/10.1016/j.cobeha.2024.101388" target="_blank" rel="noopener" style="color:var(--dim);text-decoration:underline;">doi.org/10.1016/j.cobeha.2024.101388</a></p>
 
       <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);font-style:italic;color:var(--gold);line-height:1.85;max-width:850px;margin:24px auto 0;text-align:left;">This shows the same neuron takes on different roles depending on context. It doesn't show there's someone moving between the rooms, or explain why any of it is experienced from the inside at all. That reading has never been neuroscience's to give either.</p>
+      </div>
     </div>
 
     <!-- ANGLE FOUR — PSYCHOLOGY (1926) — the "commonsense self" as an unfinished tendency,
          and the hormic vs. mechanist models of mind. Same pattern as Angles One–Three: a plain
          summary of a published position, not a metaphysical claim, closed with an honest limit. -->
     <div id="commonsense-self" class="angle-card" style="scroll-margin-top:56px;">
-      <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.75;max-width:850px;margin:0 auto 18px;text-align:left;">Angle Four &mdash; Psychology (1926)</p>
-      <h2 style="font-size:clamp(20px,3vw,28px);font-weight:300;color:var(--white);max-width:850px;margin:0 auto 16px;line-height:1.5;text-align:left;">The unified self isn&rsquo;t a finished fact. Even clinical psychology, with no stake in liberation, only ever finds a tendency toward one.</h2>
-      <p style="font-size:clamp(14px,1.8vw,17px);color:var(--grey);max-width:850px;margin:0 auto 32px;font-style:italic;line-height:1.85;text-align:left;">Working from clinical observation rather than scripture, psychologist Graham Wallas reached a conclusion close to Adhyasa from the opposite direction &mdash; and separately, described a model of mind that reads like a plainer version of why the koshas pull against each other rather than taking turns.</p>
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;max-width:850px;margin:0 auto;">
+        <div style="flex:1;min-width:220px;">
+          <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.75;margin:0 0 18px;text-align:left;">Angle Four &mdash; Psychology (1926)</p>
+          <h2 style="font-size:clamp(20px,3vw,28px);font-weight:300;color:var(--white);margin:0 0 16px;line-height:1.5;text-align:left;">The unified self isn&rsquo;t a finished fact. Even clinical psychology, with no stake in liberation, only ever finds a tendency toward one.</h2>
+        </div>
+        <button class="collapse-toggle-btn" onclick="sectionCollapse('commonsense-self-content',this)" style="margin-bottom:0;">Expand &#9660;</button>
+      </div>
+      <div id="commonsense-self-content" class="section-collapse-wrap collapsed" style="max-width:850px;margin:0 auto;">
+      <p style="font-size:clamp(14px,1.8vw,17px);color:var(--grey);max-width:850px;margin:18px auto 32px;font-style:italic;line-height:1.85;text-align:left;">Working from clinical observation rather than scripture, psychologist Graham Wallas reached a conclusion close to Adhyasa from the opposite direction &mdash; and separately, described a model of mind that reads like a plainer version of why the koshas pull against each other rather than taking turns.</p>
 
       <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;max-width:850px;margin:0 auto 28px;text-align:left;">Wallas described the self we assume &mdash; one continuous person, fully assembled, running the whole show &mdash; as &ldquo;an imperfect, improvable tendency toward unity,&rdquo; filled with arbitrary limits on what it can actually control. He also rejected the older model of mind as an engine: instinct as the boiler, the sole driving force; reason as an inert piston, merely &ldquo;a slave to the passions.&rdquo; In its place, a <span class="gloss">hormic<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define hormic">+</span><span class="gloss-pop">From the Greek horm&eacute;, drive. Wallas's term for a mind made of several partly-independent elements, each carrying its own initiative, rather than one central engine directing inert parts.</span></span> model: several partly-independent elements, each carrying its own drive, imperfectly cooperating rather than mechanically unified.</p>
 
@@ -7010,15 +7035,22 @@ a.src-tag:hover{opacity:.75;}
 
       <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);font-style:italic;color:var(--gold);line-height:1.85;max-width:850px;margin:24px auto 0;text-align:left;">This shows one discipline, arriving from clinical observation, giving up on a single unified driver of the mind. It doesn&rsquo;t confirm Adhyasa or the koshas specifically &mdash; it shows the seam is visible from more than one direction. That's a different thing from proof.</p>
       <p style="font-family:var(--sans);font-size:10.5px;letter-spacing:1px;color:var(--dim);line-height:1.7;max-width:850px;margin:24px auto 0;text-align:left;">Source: Wallas, G. (1926). <em>The Art of Thought</em>. Solis Press.</p>
+      </div>
     </div>
 
     <!-- ANGLE FIVE — PSYCHOLOGY (1926) — the layered-not-stacked nervous system, and thought
          concluding without discharging into action (the wiring behind Sakshin, described in
          plain mechanism rather than tradition). -->
     <div id="thought-without-action" class="angle-card" style="scroll-margin-top:56px;">
-      <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.75;max-width:850px;margin:0 auto 18px;text-align:left;">Angle Five &mdash; Psychology (1926)</p>
-      <h2 style="font-size:clamp(20px,3vw,28px);font-weight:300;color:var(--white);max-width:850px;margin:0 auto 16px;line-height:1.5;text-align:left;">Nothing in the nervous system got replaced on the way up. It got built on top of &mdash; and a thought can finish without ever reaching muscle.</h2>
-      <p style="font-size:clamp(14px,1.8vw,17px);color:var(--grey);max-width:850px;margin:0 auto 32px;font-style:italic;line-height:1.85;text-align:left;">Two more of Wallas&rsquo;s observations, both about how the layers actually behave in time &mdash; one about why they overlap instead of taking turns, one about why witnessing a thought isn&rsquo;t a special power.</p>
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;max-width:850px;margin:0 auto;">
+        <div style="flex:1;min-width:220px;">
+          <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.75;margin:0 0 18px;text-align:left;">Angle Five &mdash; Psychology (1926)</p>
+          <h2 style="font-size:clamp(20px,3vw,28px);font-weight:300;color:var(--white);margin:0 0 16px;line-height:1.5;text-align:left;">Nothing in the nervous system got replaced on the way up. It got built on top of &mdash; and a thought can finish without ever reaching muscle.</h2>
+        </div>
+        <button class="collapse-toggle-btn" onclick="sectionCollapse('thought-without-action-content',this)" style="margin-bottom:0;">Expand &#9660;</button>
+      </div>
+      <div id="thought-without-action-content" class="section-collapse-wrap collapsed" style="max-width:850px;margin:0 auto;">
+      <p style="font-size:clamp(14px,1.8vw,17px);color:var(--grey);max-width:850px;margin:18px auto 32px;font-style:italic;line-height:1.85;text-align:left;">Two more of Wallas&rsquo;s observations, both about how the layers actually behave in time &mdash; one about why they overlap instead of taking turns, one about why witnessing a thought isn&rsquo;t a special power.</p>
 
       <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;max-width:850px;margin:0 auto 28px;text-align:left;">Wallas compared the nervous system to the British Constitution: an ancient monarchy, a responsive parliament, and a newer specialized civil service, all still technically holding office at once &mdash; overlapping, sharing duties, occasionally at odds. No layer was fully retired when the next arrived. He also traced the &ldquo;primitive cycle&rdquo; of action &mdash; stimulus, spinal cord, lower brain, upper brain, muscle &mdash; and showed the upper brain can short-circuit it in either direction: thought without any outside stimulus at all, and thought that concludes with no muscular output whatsoever. A completed realization, held, before anything moves.</p>
 
@@ -7036,15 +7068,22 @@ a.src-tag:hover{opacity:.75;}
 
       <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);font-style:italic;color:var(--gold);line-height:1.85;max-width:850px;margin:24px auto 0;text-align:left;">This shows the upper brain is wired to hold a completed thought without acting on it. It doesn&rsquo;t show what that held moment is <em>like</em> from the inside, or that watching it is anything beyond neurology doing what it was already built to do. That reading has never been Wallas&rsquo;s to give either.</p>
       <p style="font-family:var(--sans);font-size:10.5px;letter-spacing:1px;color:var(--dim);line-height:1.7;max-width:850px;margin:24px auto 0;text-align:left;">Source: Wallas, G. (1926). <em>The Art of Thought</em>. Solis Press.</p>
+      </div>
     </div>
 
     <!-- ANGLE SIX — SYSTEMS PHILOSOPHY (BOHM) — proprioception of thought, a secular
          vocabulary for the same gap Sakshin points at, from a physicist rather than a
          psychologist or a text. Closes the angle set on the same honest limit as the rest. -->
     <div id="proprioception-of-thought" class="angle-card" style="scroll-margin-top:56px;">
-      <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.75;max-width:850px;margin:0 auto 18px;text-align:left;">Angle Six &mdash; Systems Philosophy</p>
-      <h2 style="font-size:clamp(20px,3vw,28px);font-weight:300;color:var(--white);max-width:850px;margin:0 auto 16px;line-height:1.5;text-align:left;">The body can sense itself moving without looking. The mind, mostly, still can't.</h2>
-      <p style="font-size:clamp(14px,1.8vw,17px);color:var(--grey);max-width:850px;margin:0 auto 32px;font-style:italic;line-height:1.85;text-align:left;">Physicist David Bohm's account of thought gives Sakshin a sixth, independent vocabulary &mdash; this one from neither a tradition nor a clinic, but from someone who spent a career studying how systems fail.</p>
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;max-width:850px;margin:0 auto;">
+        <div style="flex:1;min-width:220px;">
+          <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.75;margin:0 0 18px;text-align:left;">Angle Six &mdash; Systems Philosophy</p>
+          <h2 style="font-size:clamp(20px,3vw,28px);font-weight:300;color:var(--white);margin:0 0 16px;line-height:1.5;text-align:left;">The body can sense itself moving without looking. The mind, mostly, still can't.</h2>
+        </div>
+        <button class="collapse-toggle-btn" onclick="sectionCollapse('proprioception-content',this)" style="margin-bottom:0;">Expand &#9660;</button>
+      </div>
+      <div id="proprioception-content" class="section-collapse-wrap collapsed" style="max-width:850px;margin:0 auto;">
+      <p style="font-size:clamp(14px,1.8vw,17px);color:var(--grey);max-width:850px;margin:18px auto 32px;font-style:italic;line-height:1.85;text-align:left;">Physicist David Bohm's account of thought gives Sakshin a sixth, independent vocabulary &mdash; this one from neither a tradition nor a clinic, but from someone who spent a career studying how systems fail.</p>
 
       <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;max-width:850px;margin:0 auto 28px;text-align:left;">A body can scratch an itch or walk downstairs without looking at its own feet &mdash; <span class="gloss">proprioception<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define proprioception">+</span><span class="gloss-pop">The physical sense of where one's own body is in space, moment to moment, without needing to look.</span></span>, immediate and non-intellectual, tells it where it is. Bohm's diagnosis: thought has no equivalent. It moves, reacts, and hardens into reflex, and almost never senses its own movement while doing it &mdash; mistaking the sensation of thinking, plus the feeling it produces, for direct contact with reality itself. The felt certainty and the actual fact quietly swap places, and nothing internal flags the swap.</p>
 
@@ -7064,6 +7103,7 @@ a.src-tag:hover{opacity:.75;}
 
       <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);font-style:italic;color:var(--gold);line-height:1.85;max-width:850px;margin:24px auto 0;text-align:left;">This shows a physicist, working from systems failure rather than scripture or clinic, arriving at the same missing faculty from a third direction. It doesn't confirm Sakshin is what he's describing, or that naming the gap is the same as closing it. That reading was never proprioception's to give either.</p>
       <p style="font-family:var(--sans);font-size:10.5px;letter-spacing:1px;color:var(--dim);line-height:1.7;max-width:850px;margin:24px auto 0;text-align:left;">Source: Bohm, D. (1994). <em>Thought as a System</em>. Routledge.</p>
+      </div>
     </div>
 
   </div>
@@ -7107,7 +7147,7 @@ a.src-tag:hover{opacity:.75;}
     </div>
   </div>
 
-  <div class="superordinate-box" style="border-right:4px solid var(--gold);text-align:left;position:relative;margin:32px auto 0;max-width:900px;">
+  <div class="superordinate-box" style="border-right:4px solid var(--gold);text-align:left;position:relative;margin:32px auto 0;max-width:820px;">
     <div style="position:absolute;top:-1px;left:-1px;width:18px;height:18px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);"></div>
     <div style="position:absolute;bottom:-1px;right:-1px;width:18px;height:18px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);"></div>
     <p style="font-size:clamp(15.5px,2vw,18px);color:var(--white);line-height:1.9;margin:0;">None of the four is conscious by itself. All four run on borrowed light &mdash; the soul's own consciousness, passing through them the way current passes through a wire. That's the whole reason the intellect can be retrained at all: it's not a fixed processor, just the part of the circuit currently closest to the switch.</p>
@@ -9749,7 +9789,7 @@ a.src-tag:hover{opacity:.75;}
         </div>
         <button class="collapse-toggle-btn" onclick="sectionCollapse('dharma-gravity-content',this)">Expand &#9660;</button>
       </div>
-      <div id="dharma-gravity-content" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto;">
+      <div id="dharma-gravity-content" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 52px;">
 
       <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin:0 0 24px;text-align:left;">Vaisvanara, above, already dissolves the wall between digestion and the sacred. <span class="gloss">Rita<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Rita">+</span><span class="gloss-pop">Cosmic order &mdash; the underlying rightness that dharma expresses at the level of a single life. What gravity is to falling bodies, Rita is to conduct.</span></span> dissolves the next one: the wall between physics and ethics. <span class="gloss">Dharma<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Dharma">+</span><span class="gloss-pop">Right action or duty &mdash; the personal-scale expression of Rita, cosmic order, at the level of a single life.</span></span> is not a list of rules handed down from outside. It's what Rita looks like at the scale of one person's choices &mdash; and choices, on this account, are forces with a direction, exactly like gravity.</p>
       <div class="mobile-stack-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:24px;text-align:left;">
