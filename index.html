@@ -2475,6 +2475,16 @@ section{scroll-margin-top:56px;}
     padding:10px 10px !important;
     font-size:13px !important;
   }
+  /* Four Powers of the Mother table — the min-width:640px table forces
+     narrow columns on mobile, so each cell's short phrases wrap word-by-word;
+     at the desktop line-height:1.75 those wrapped lines look sparse and
+     overly tall. Tighten line-height and padding so cells read as compact
+     stacked lines instead. */
+  .four-powers-table td,
+  .four-powers-table th{
+    padding:9px 10px !important;
+    line-height:1.35 !important;
+  }
 }
 @media(max-width:400px){
   .states-table th,
@@ -8527,7 +8537,6 @@ a.src-tag:hover{opacity:.75;}
           <p style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.85;margin:0;">Not suppression — expulsion. The mind's fixed preferences, the vital's desire and pride and greed, the body's laziness and inertia, shown the door one at a time until each plane is actually clear, not just quiet.</p>
         </div>
       </div>
-      <div style="text-align:center;color:var(--gold);opacity:.25;font-size:16px;">↓</div>
       <div style="padding:22px 28px;background:radial-gradient(ellipse at 50% 0%,rgba(var(--accent-gold-rgb),.08) 0%,transparent 65%);border:1px solid var(--gold);text-align:left;">
         <div style="font-family:var(--serif);font-size:18px;color:var(--gold);margin-bottom:6px;">Absolute Surrender</div>
         <p style="font-family:var(--serif);font-size:14.5px;color:var(--mid);line-height:1.85;margin:0;">Giving over what one is, has, and does, on every plane, to the Divine Shakti entirely. Not a fourth step after the other two succeed — the current that has to run underneath both the whole time, or aspiration curdles into strain and rejection curdles into self-punishment.</p>
@@ -8561,7 +8570,7 @@ a.src-tag:hover{opacity:.75;}
     <h3 id="four-powers-of-the-mother" style="scroll-margin-top:56px;font-family:var(--serif);font-size:clamp(20px,3vw,26px);font-weight:300;color:var(--white);text-align:center;max-width:700px;margin:0 auto 16px;">The Four Powers of the Mother</h3>
     <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--grey);font-style:italic;line-height:1.9;max-width:700px;margin:0 auto 28px;text-align:center;">One Shakti, sent down as four personalities to intervene, govern, and lead the terrestrial evolution — each with a different temperament, a different pace, and a different way of meeting failure.</p>
     <div style="max-width:960px;margin:0 auto;overflow-x:auto;">
-    <table style="width:100%;min-width:640px;border-collapse:collapse;font-family:var(--serif);outline:1.5px solid rgba(var(--accent-gold-rgb),0.55);outline-offset:-1px;">
+    <table class="four-powers-table" style="width:100%;min-width:640px;border-collapse:collapse;font-family:var(--serif);outline:1.5px solid rgba(var(--accent-gold-rgb),0.55);outline-offset:-1px;">
       <thead>
         <tr style="background:rgba(var(--accent-gold-rgb),.10);">
           <th style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);font-weight:400;padding:12px 14px;border:1.5px solid rgba(var(--accent-gold-rgb),0.55);text-align:center;"></th>
