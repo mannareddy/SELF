@@ -1095,6 +1095,13 @@ a:hover{opacity:.7;}
   box-shadow:0 0 12px 4px rgba(var(--accent-gold-rgb),0.45),0 0 28px 8px rgba(var(--accent-gold-rgb),0.2);
   margin:0 6px;animation:navLogoGlow 3s ease-in-out infinite;flex-shrink:0;
   text-decoration:none;
+  /* .nav-dropdown-wrap (Shop/Circle etc.) is position:relative for its
+     dropdown panel, and sits later in the DOM than this absolutely-
+     positioned logo. With both at the default z-index:auto, the later
+     DOM element wins the paint order — so the dropdown's border-left
+     divider was rendering on top of the logo instead of behind it.
+     Explicit z-index puts the logo above it regardless of DOM order. */
+  position:relative;z-index:5;
 }
 .nav-logo-center img{width:100%;height:100%;object-fit:cover;display:block;}
 /* Light theme: the desktop logo (SELF_Origin_1000x1000.png) is a black-bg/
