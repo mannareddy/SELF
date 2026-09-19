@@ -2418,6 +2418,12 @@ section{scroll-margin-top:56px;}
   .mobile-stack-cards.sakshi-grid > div{
     padding:16px 14px !important;
   }
+  /* Triple Labour top row (Vigilant Aspiration / Integral Rejection) —
+     stays borders-touching with no gap on mobile too, instead of the
+     generic 10px gap other .mobile-stack-cards grids get above. */
+  .mobile-stack-cards.triple-labour-grid{
+    gap:0 !important;
+  }
   /* The Two States of Being (Automatic vs Conscious Life) table. A real
      <table> keeps the two columns aligned automatically at every width,
      so mobile just needs tighter padding/font-size — no grid rules
@@ -8350,15 +8356,16 @@ a.src-tag:hover{opacity:.75;}
     <!-- THE TRIPLE LABOUR -->
     <p style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.75;text-align:center;margin:52px 0 8px;">The Method, Not Just The Map</p>
     <h3 id="triple-labour" style="scroll-margin-top:56px;font-family:var(--serif);font-size:clamp(20px,3vw,26px);font-weight:300;color:var(--white);text-align:center;max-width:700px;margin:0 auto 28px;">The Triple Labour</h3>
-    <div style="display:flex;flex-direction:column;gap:2px;max-width:700px;margin:0 auto 20px;">
-      <div style="padding:22px 28px;background:var(--bg-lift);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);text-align:left;">
-        <div style="font-family:var(--serif);font-size:18px;color:var(--white);margin-bottom:6px;">Vigilant Aspiration</div>
-        <p style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.85;margin:0;">The mind's will, the heart's seeking, the vital's assent — kept awake and pointed at one thing, so the physical consciousness itself gradually becomes plastic enough to change.</p>
-      </div>
-      <div style="text-align:center;color:var(--gold);opacity:.25;font-size:16px;">↓</div>
-      <div style="padding:22px 28px;background:var(--bg-lift);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);text-align:left;">
-        <div style="font-family:var(--serif);font-size:18px;color:var(--white);margin-bottom:6px;">Integral Rejection</div>
-        <p style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.85;margin:0;">Not suppression — expulsion. The mind's fixed preferences, the vital's desire and pride and greed, the body's laziness and inertia, shown the door one at a time until each plane is actually clear, not just quiet.</p>
+    <div style="max-width:700px;margin:0 auto 20px;">
+      <div class="mobile-stack-cards triple-labour-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:0;">
+        <div style="padding:22px 28px;background:var(--bg-lift);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);text-align:left;">
+          <div style="font-family:var(--serif);font-size:18px;color:var(--white);margin-bottom:6px;">Vigilant Aspiration</div>
+          <p style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.85;margin:0;">The mind's will, the heart's seeking, the vital's assent — kept awake and pointed at one thing, so the physical consciousness itself gradually becomes plastic enough to change.</p>
+        </div>
+        <div style="padding:22px 28px;background:var(--bg-lift);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);text-align:left;">
+          <div style="font-family:var(--serif);font-size:18px;color:var(--white);margin-bottom:6px;">Integral Rejection</div>
+          <p style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.85;margin:0;">Not suppression — expulsion. The mind's fixed preferences, the vital's desire and pride and greed, the body's laziness and inertia, shown the door one at a time until each plane is actually clear, not just quiet.</p>
+        </div>
       </div>
       <div style="text-align:center;color:var(--gold);opacity:.25;font-size:16px;">↓</div>
       <div style="padding:22px 28px;background:radial-gradient(ellipse at 50% 0%,rgba(var(--accent-gold-rgb),.08) 0%,transparent 65%);border:1px solid var(--gold);text-align:left;">
