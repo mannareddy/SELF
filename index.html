@@ -965,6 +965,12 @@ body{
 [data-theme="light"] [style*="border:2px solid var(--gold)"]{border-color:rgba(var(--accent-gold-rgb),0.55) !important;}
 [data-theme="light"] [style*="border-left:2px solid var(--gold)"]{border-left-color:rgba(var(--accent-gold-rgb),0.6) !important;} 
 [data-theme="light"] [style*="border-right:1px solid #1a1a1a"]{border-right-color:rgba(var(--shadow-rgb),0.28) !important;}
+/* The first nav-right dropdown (Shop/Circle) sits right beside the centered
+   logo — its hardcoded #1a1a1a divider reads as a stray black line cutting
+   through the logo area on cream. Scoped to .nav-dropdown-wrap so it doesn't
+   also catch #themeToggleBtn, which reuses this exact border-left value but
+   is meant to stay black (its own background is black in both themes). */
+[data-theme="light"] .nav-dropdown-wrap[style*="border-left:1px solid #1a1a1a"]{border-left-color:rgba(var(--shadow-rgb),0.28) !important;}
 /* ── LIGHT THEME: CSS-class border-color fixes (class-defined borders are not
    caught by the inline [style*=] attribute selectors above) ─────────────── */
 [data-theme="light"] .why-card{border-color:rgba(var(--shadow-rgb),0.28) !important;}
@@ -1091,13 +1097,15 @@ a:hover{opacity:.7;}
   text-decoration:none;
 }
 .nav-logo-center img{width:100%;height:100%;object-fit:cover;display:block;}
-/* Light theme: the desktop logo (SELF_Origin_1000x1000.png) has a dark
-   square background, which reads as a heavy black box floating on the
-   cream nav bar. Screen-blending it makes the dark background pixels
-   transparent (so the cream shows through) while keeping the gold mark
-   itself visible — no color inversion, so the mark's own color is kept. */
+/* Light theme: the desktop logo (SELF_Origin_1000x1000.png) is a black-bg/
+   white-mark asset — the inverse of the mobile FooterSeal (white-bg/black-
+   mark). Inverting it first flips it to white-bg/black-mark, matching
+   FooterSeal's native colors, then multiply-blending it dissolves the
+   (now white) square into the cream nav bar while leaving the mark dark
+   — the same net result mobile already gets in light theme. */
 [data-theme="light"] .nav-logo-center img{
-  mix-blend-mode:screen;
+  filter:invert(1);
+  mix-blend-mode:multiply;
 }
 @keyframes navLogoGlow{
   0%,100%{opacity:0.85;}
