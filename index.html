@@ -1091,6 +1091,14 @@ a:hover{opacity:.7;}
   text-decoration:none;
 }
 .nav-logo-center img{width:100%;height:100%;object-fit:cover;display:block;}
+/* Light theme: the desktop logo (SELF_Origin_1000x1000.png) has a dark
+   square background, which reads as a heavy black box floating on the
+   cream nav bar. Screen-blending it makes the dark background pixels
+   transparent (so the cream shows through) while keeping the gold mark
+   itself visible — no color inversion, so the mark's own color is kept. */
+[data-theme="light"] .nav-logo-center img{
+  mix-blend-mode:screen;
+}
 @keyframes navLogoGlow{
   0%,100%{opacity:0.85;}
   50%{opacity:1;}
