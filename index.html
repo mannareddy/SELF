@@ -1880,6 +1880,17 @@ section{scroll-margin-top:56px;}
 .angle-card:last-child{margin-bottom:0;}
 .angle-card > *{max-width:none !important;}
 @media (max-width:600px){.angle-card{padding:26px 20px;}}
+/* ── RESEARCH-FOUND GRID — the Method/Finding/Reads-as (and similar) label+description
+   pairs inside angle-card boxes. Desktop keeps label and description side by side;
+   below 600px it stacks label above description so long descriptions can't get
+   clipped by the fixed 100px label column. ── */
+.rf-grid{display:grid;grid-template-columns:100px 1fr;gap:16px 20px;align-items:start;}
+@media (max-width:600px){
+  .rf-grid{grid-template-columns:1fr;gap:0;}
+  .rf-grid > div:nth-child(odd){padding-top:0;margin:18px 0 6px;}
+  .rf-grid > div:first-child{margin-top:0;}
+  .rf-grid > div:nth-child(even){margin-bottom:0;}
+}
 [data-theme="light"] .angle-card{border-color:rgba(var(--shadow-rgb),0.28) !important;}
 .framework-card:hover{border-color:rgba(var(--accent-gold-rgb),0.6);}
 .framework-content{overflow:hidden;transition:max-height .4s cubic-bezier(0,1,.25,1),opacity .3s ease;opacity:1;}
@@ -6923,7 +6934,7 @@ a.src-tag:hover{opacity:.75;}
 
     <div style="max-width:850px;margin:0 auto 28px;padding:28px 26px;background:var(--bg-lift);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);text-align:left;">
       <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:16px;">What the Research Found</div>
-      <div style="display:grid;grid-template-columns:100px 1fr;gap:16px 20px;align-items:start;">
+      <div class="rf-grid">
         <div style="font-family:var(--sans);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);text-align:left;padding-top:2px;">Method</div>
         <div style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.7;text-align:left;">EEG recorded across conscious and anesthetized states, measuring <span class="gloss">information integration<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define information integration">+</span><span class="gloss-pop">A measure of how much different regions of the brain are combining what they're processing into one unified picture, rather than just being separately active.</span></span> rather than raw activity.</div>
         <div style="font-family:var(--sans);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);text-align:left;padding-top:2px;">Finding</div>
@@ -6991,7 +7002,7 @@ a.src-tag:hover{opacity:.75;}
 
       <div style="max-width:850px;margin:0 auto 28px;padding:28px 26px;background:var(--bg-lift);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);text-align:left;">
         <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:16px;">What the Research Found</div>
-        <div style="display:grid;grid-template-columns:100px 1fr;gap:16px 20px;align-items:start;">
+        <div class="rf-grid">
           <div style="font-family:var(--sans);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);text-align:left;padding-top:2px;">Method</div>
           <div style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.7;text-align:left;">Recordings from prefrontal neurons during tasks requiring the same object to be tracked under different contexts (e.g., its order in a sequence), compared against what a fixed, single-purpose neuron model would predict.</div>
           <div style="font-family:var(--sans);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);text-align:left;padding-top:2px;">Finding</div>
@@ -7059,7 +7070,7 @@ a.src-tag:hover{opacity:.75;}
 
       <div style="max-width:850px;margin:0 auto 28px;padding:28px 26px;background:var(--bg-lift);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);text-align:left;">
         <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:16px;">Where This Lands</div>
-        <div style="display:grid;grid-template-columns:100px 1fr;gap:16px 20px;align-items:start;">
+        <div class="rf-grid">
           <div style="font-family:var(--sans);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);text-align:left;padding-top:2px;">Overlap</div>
           <div style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.7;text-align:left;">Explains why a &ldquo;higher&rdquo; layer can be fully awake while a &ldquo;lower&rdquo; one still runs a given moment &mdash; shared jurisdiction, not regression.</div>
           <div style="font-family:var(--sans);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);text-align:left;padding-top:2px;">Bypass</div>
@@ -7092,7 +7103,7 @@ a.src-tag:hover{opacity:.75;}
 
       <div style="max-width:850px;margin:0 auto 28px;padding:28px 26px;background:var(--bg-lift);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);text-align:left;">
         <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:16px;">Two Kinds of Self-Perception</div>
-        <div style="display:grid;grid-template-columns:100px 1fr;gap:16px 20px;align-items:start;">
+        <div class="rf-grid">
           <div style="font-family:var(--sans);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);text-align:left;padding-top:2px;">Bodily</div>
           <div style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.7;text-align:left;">Immediate, wired-in feedback on where a limb is and what it's doing &mdash; no separate act of attention required.</div>
           <div style="font-family:var(--sans);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);text-align:left;padding-top:2px;">Cognitive</div>
