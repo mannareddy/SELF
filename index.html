@@ -1875,6 +1875,12 @@ section{scroll-margin-top:56px;}
 /* ── FRAMEWORK GRID ──────────────────────────────────────────────────────── */
 .framework-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:2px;margin:48px auto 0;text-align:left;}
 .framework-card{padding:38px 32px;background:var(--bg-lift);border:1px solid rgba(var(--accent-gold-rgb),0.3);transition:border-color .3s;cursor:pointer;position:relative;}
+/* ── ANGLE CARD — wraps each numbered angle in "A Note for the Skeptics" ── */
+.angle-card{max-width:850px;margin:0 auto 40px;padding:36px 34px;background:var(--bg-lift);border:1.5px solid rgba(var(--accent-gold-rgb),0.32);}
+.angle-card:last-child{margin-bottom:0;}
+.angle-card > *{max-width:none !important;}
+@media (max-width:600px){.angle-card{padding:26px 20px;}}
+[data-theme="light"] .angle-card{border-color:rgba(var(--shadow-rgb),0.28) !important;}
 .framework-card:hover{border-color:rgba(var(--accent-gold-rgb),0.6);}
 .framework-content{overflow:hidden;transition:max-height .4s cubic-bezier(0,1,.25,1),opacity .3s ease;opacity:1;}
 .framework-card.collapsed .framework-content{max-height:0;opacity:0;}
@@ -2216,7 +2222,9 @@ section{scroll-margin-top:56px;}
   text-transform:none;color:var(--grey);
 }
 
-.sl-stage{padding:22px 16px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);text-align:left;background:var(--bg-lift);position:relative;}
+.sl-stage{padding:22px 16px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);text-align:left;background:var(--bg-lift);position:relative;display:flex;flex-direction:column;height:100%;}
+.sl-stage .sl-desc{flex:1;margin-top:8px;margin-bottom:0;}
+.sl-stage .sl-name{margin-top:6px;}
 .sl-num{font-family:var(--sans);font-size:9px;letter-spacing:3px;color:var(--gold);opacity:.6;margin-bottom:8px;display:block;}
 .sl-name{font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:6px;}
 .sl-desc{font-family:var(--serif);font-size:13px;font-weight:400;color:var(--grey);line-height:1.8;}
@@ -4014,6 +4022,7 @@ a.src-tag:hover{opacity:.75;}
         <a href="#physical-correlate" data-group="new">A Note for the Skeptics — Angle Six Added</a>
         <a href="#sanatana-dharma" data-group="new">Sanatana-Dharma — New Subsection Added</a>
         <a href="#godasa-gosvami" data-group="new">Godasa vs Gosvami — New Subsection Added</a>
+        <a href="#dasein" data-group="new">Dasein — New Subsection Added</a>
       </div>
     </li>
 
@@ -4333,6 +4342,7 @@ a.src-tag:hover{opacity:.75;}
         <li><a href="#physical-correlate">A Note for the Skeptics — Angle Six Added</a></li>
         <li><a href="#sanatana-dharma">Sanatana-Dharma — New Subsection Added</a></li>
         <li><a href="#godasa-gosvami">Godasa vs Gosvami — New Subsection Added</a></li>
+        <li><a href="#dasein">Dasein — New Subsection Added</a></li>
       </ul>
     </div>
 
@@ -6900,6 +6910,7 @@ a.src-tag:hover{opacity:.75;}
   </div>
   <div id="physical-correlate-detail" class="section-collapse-wrap collapsed">
 
+    <div id="angle-one" class="angle-card">
     <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.75;max-width:850px;margin:0 auto 18px;text-align:left;">Angle One &mdash; Neuroscience</p>
     <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;max-width:850px;margin:0 auto 28px;text-align:left;">Researchers can measure how much a brain&rsquo;s regions are <em>integrating</em> information, not just firing together. Tracked through general anesthesia, that capacity collapses sharply in the gamma band as consciousness fades &mdash; while synchronized firing in the same regions barely changes. What&rsquo;s lost isn&rsquo;t activity. It&rsquo;s binding &mdash; the difference between a field that&rsquo;s merely <em>on</em> and one <em>gathered into one experience.</em></p>
 
@@ -6920,9 +6931,10 @@ a.src-tag:hover{opacity:.75;}
     <p style="font-family:var(--sans);font-size:10.5px;letter-spacing:1px;color:var(--dim);line-height:1.7;max-width:850px;margin:24px auto 0;text-align:left;">Source: Lee, U., Kim, S., Noh, G.J., Choi, B.M. &amp; Mashour, G.A. (2008). &ldquo;Propofol Induction Reduces the Capacity for Neural Information Integration: Implications for the Mechanism of Consciousness and General Anesthesia.&rdquo; <em>Nature Precedings</em>. <a href="https://doi.org/10.1038/npre.2008.1244.2" target="_blank" rel="noopener" style="color:var(--dim);text-decoration:underline;">doi.org/10.1038/npre.2008.1244.2</a> &middot; Open access, CC&nbsp;BY&nbsp;3.0.</p>
 
     <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);font-style:italic;color:var(--gold);line-height:1.85;max-width:850px;margin:24px auto 0;text-align:left;">A dropping integration score can tell you the field stopped binding itself into one experience. It can't tell you what that experience was like while it lasted, or what it means that it's gone. That reading has never been biology's to give.</p>
+    </div>
 
     <!-- THE MASTER AND THE EMISSARY — second angle, same expand block -->
-    <div id="hemispheres" style="scroll-margin-top:56px;margin-top:48px;padding-top:44px;border-top:1px solid rgba(var(--accent-gold-rgb),0.22);">
+    <div id="hemispheres" class="angle-card" style="scroll-margin-top:56px;">
       <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.75;max-width:850px;margin:0 auto 18px;text-align:left;">Angle Two &mdash; Psychiatry</p>
       <h2 style="font-size:clamp(20px,3vw,28px);font-weight:300;color:var(--white);max-width:850px;margin:0 auto 16px;line-height:1.5;text-align:left;">The mind that watches and the mind that grabs are not the same organ.</h2>
       <p style="font-size:clamp(14px,1.8vw,17px);color:var(--grey);max-width:850px;margin:0 auto 32px;font-style:italic;line-height:1.85;text-align:left;">Psychiatrist Iain McGilchrist&rsquo;s reading of hemispheric asymmetry gives the Witness/Ego split above a second, independent vocabulary &mdash; not proof, but another lens pointed at the same divide.</p>
@@ -6949,7 +6961,7 @@ a.src-tag:hover{opacity:.75;}
          Cites the actual peer-reviewed source (Rigotti et al. 2013, Nature) rather than the
          looser "hybrid synapse-wave theory of consciousness" framing it sometimes gets
          packaged with — that framing overclaims beyond what these specific findings show. -->
-    <div id="mixed-selectivity" style="scroll-margin-top:56px;margin-top:48px;padding-top:44px;border-top:1px solid rgba(var(--accent-gold-rgb),0.22);">
+    <div id="mixed-selectivity" class="angle-card" style="scroll-margin-top:56px;">
       <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.75;max-width:850px;margin:0 auto 18px;text-align:left;">Angle Three &mdash; Neuroscience (Cognitive Flexibility)</p>
       <h2 style="font-size:clamp(20px,3vw,30px);font-weight:300;color:var(--white);max-width:850px;margin:0 auto 16px;line-height:1.5;text-align:center;">The same neuron plays different roles depending on what room it's in.</h2>
       <p style="font-size:clamp(14px,1.8vw,17px);color:var(--grey);max-width:850px;margin:0 auto 32px;font-style:italic;line-height:1.85;text-align:left;">A third, independent echo &mdash; this one of the Mansion Metaphor below, not the Witness/Ego split. Not a metaphysical claim either: a plain summary of a well-established finding about how the prefrontal cortex actually works.</p>
@@ -6976,7 +6988,7 @@ a.src-tag:hover{opacity:.75;}
     <!-- ANGLE FOUR — PSYCHOLOGY (1926) — the "commonsense self" as an unfinished tendency,
          and the hormic vs. mechanist models of mind. Same pattern as Angles One–Three: a plain
          summary of a published position, not a metaphysical claim, closed with an honest limit. -->
-    <div id="commonsense-self" style="scroll-margin-top:56px;margin-top:48px;padding-top:44px;border-top:1px solid rgba(var(--accent-gold-rgb),0.22);">
+    <div id="commonsense-self" class="angle-card" style="scroll-margin-top:56px;">
       <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.75;max-width:850px;margin:0 auto 18px;text-align:left;">Angle Four &mdash; Psychology (1926)</p>
       <h2 style="font-size:clamp(20px,3vw,28px);font-weight:300;color:var(--white);max-width:850px;margin:0 auto 16px;line-height:1.5;text-align:left;">The unified self isn&rsquo;t a finished fact. Even clinical psychology, with no stake in liberation, only ever finds a tendency toward one.</h2>
       <p style="font-size:clamp(14px,1.8vw,17px);color:var(--grey);max-width:850px;margin:0 auto 32px;font-style:italic;line-height:1.85;text-align:left;">Working from clinical observation rather than scripture, psychologist Graham Wallas reached a conclusion close to Adhyasa from the opposite direction &mdash; and separately, described a model of mind that reads like a plainer version of why the koshas pull against each other rather than taking turns.</p>
@@ -7003,7 +7015,7 @@ a.src-tag:hover{opacity:.75;}
     <!-- ANGLE FIVE — PSYCHOLOGY (1926) — the layered-not-stacked nervous system, and thought
          concluding without discharging into action (the wiring behind Sakshin, described in
          plain mechanism rather than tradition). -->
-    <div id="thought-without-action" style="scroll-margin-top:56px;margin-top:48px;padding-top:44px;border-top:1px solid rgba(var(--accent-gold-rgb),0.22);">
+    <div id="thought-without-action" class="angle-card" style="scroll-margin-top:56px;">
       <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.75;max-width:850px;margin:0 auto 18px;text-align:left;">Angle Five &mdash; Psychology (1926)</p>
       <h2 style="font-size:clamp(20px,3vw,28px);font-weight:300;color:var(--white);max-width:850px;margin:0 auto 16px;line-height:1.5;text-align:left;">Nothing in the nervous system got replaced on the way up. It got built on top of &mdash; and a thought can finish without ever reaching muscle.</h2>
       <p style="font-size:clamp(14px,1.8vw,17px);color:var(--grey);max-width:850px;margin:0 auto 32px;font-style:italic;line-height:1.85;text-align:left;">Two more of Wallas&rsquo;s observations, both about how the layers actually behave in time &mdash; one about why they overlap instead of taking turns, one about why witnessing a thought isn&rsquo;t a special power.</p>
@@ -7029,7 +7041,7 @@ a.src-tag:hover{opacity:.75;}
     <!-- ANGLE SIX — SYSTEMS PHILOSOPHY (BOHM) — proprioception of thought, a secular
          vocabulary for the same gap Sakshin points at, from a physicist rather than a
          psychologist or a text. Closes the angle set on the same honest limit as the rest. -->
-    <div id="proprioception-of-thought" style="scroll-margin-top:56px;margin-top:48px;padding-top:44px;border-top:1px solid rgba(var(--accent-gold-rgb),0.22);">
+    <div id="proprioception-of-thought" class="angle-card" style="scroll-margin-top:56px;">
       <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.75;max-width:850px;margin:0 auto 18px;text-align:left;">Angle Six &mdash; Systems Philosophy</p>
       <h2 style="font-size:clamp(20px,3vw,28px);font-weight:300;color:var(--white);max-width:850px;margin:0 auto 16px;line-height:1.5;text-align:left;">The body can sense itself moving without looking. The mind, mostly, still can't.</h2>
       <p style="font-size:clamp(14px,1.8vw,17px);color:var(--grey);max-width:850px;margin:0 auto 32px;font-style:italic;line-height:1.85;text-align:left;">Physicist David Bohm's account of thought gives Sakshin a sixth, independent vocabulary &mdash; this one from neither a tradition nor a clinic, but from someone who spent a career studying how systems fail.</p>
@@ -7066,6 +7078,12 @@ a.src-tag:hover{opacity:.75;}
 
   <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.95;max-width:820px;margin:0 auto 32px;text-align:center;">The glossary already has each piece on its own — Manas, Buddhi, Chitta, Ahamkara keep surfacing separately throughout this page. Here they are as one instrument, the <span class="gloss">Antahkarana<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Antahkarana">+</span><span class="gloss-pop">Literally &ldquo;the inner instrument&rdquo; &mdash; the collective term in Vedanta for mind, intellect, memory, and ego-sense together, running as one apparatus powered by the soul's consciousness.</span></span> &mdash; because the ego section right after this one only makes sense once you can see all four parts working at once.</p>
 
+  <div style="text-align:center;margin-bottom:8px;">
+    <button class="collapse-toggle-btn" onclick="sectionCollapse('antahkaran-content',this)">Expand &#9660;</button>
+    <p class="section-collapse-label" style="margin-top:8px;">Tap to expand &mdash; the four parts of the inner instrument, and how they run on borrowed light</p>
+  </div>
+  <div id="antahkaran-content" class="section-collapse-wrap collapsed">
+
   <div style="max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2px;text-align:left;">
     <div class="sl-stage">
       <span class="sl-num">Registers</span>
@@ -7093,6 +7111,8 @@ a.src-tag:hover{opacity:.75;}
     <div style="position:absolute;top:-1px;left:-1px;width:18px;height:18px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);"></div>
     <div style="position:absolute;bottom:-1px;right:-1px;width:18px;height:18px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);"></div>
     <p style="font-size:clamp(15.5px,2vw,18px);color:var(--white);line-height:1.9;margin:0;">None of the four is conscious by itself. All four run on borrowed light &mdash; the soul's own consciousness, passing through them the way current passes through a wire. That's the whole reason the intellect can be retrained at all: it's not a fixed processor, just the part of the circuit currently closest to the switch.</p>
+  </div>
+
   </div>
 </section>
 <span class="continue-hint">continue</span>
@@ -8726,6 +8746,45 @@ a.src-tag:hover{opacity:.75;}
           <p style="font-family:var(--serif);font-size:14.5px;color:var(--mid);line-height:1.9;margin:0;">The 0 beside our 42 was never a hole. It is the seed &mdash; hollow and swelling at once, holding the value that hasn&rsquo;t declared itself yet.</p>
         </div>
       </div>
+      </div>
+    </div>
+
+    <!-- DASEIN — THE ONE FOR WHOM BEING IS A QUESTION (Heidegger) — pairs the
+         leap-into-being read of 42 above with a phenomenological account of what
+         that leap actually lands on: an entity whose own being is never settled. -->
+    <div class="ego-sub-header gf-sub-header" style="max-width:760px;">
+      <div class="ego-sub-header-text">
+        <h3 id="dasein" style="scroll-margin-top:56px;">Dasein &mdash; The One For Whom Being Is a Question</h3>
+        <p>Heidegger's name for what's already standing on the 0&ndash;42 bridge above</p>
+      </div>
+      <button class="collapse-toggle-btn" onclick="sectionCollapse('dasein-content',this)">Expand &#9660;</button>
+    </div>
+    <div id="dasein-content" class="section-collapse-wrap collapsed" style="max-width:760px;margin:0 auto 52px;">
+      <div style="margin-top:20px;text-align:left;">
+
+      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;text-align:left;margin:0 0 28px;">42 marks the leap from non-being into being. Fair question: being <em>what</em>? Martin Heidegger spent <em>Being and Time</em> on one entity that makes the question unavoidable &mdash; the one asking it. He calls it <span class="gloss">Dasein<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Dasein">+</span><span class="gloss-pop">German for &ldquo;being-there.&rdquo; Heidegger's term for the human way of existing &mdash; not a fixed thing, but an entity whose own being is always at issue for it.</span></span>, literally &ldquo;being-there&rdquo; &mdash; not a soul, not a mind, not a body with add-ons. A rock simply is. Dasein has to <em>be</em> its being, moment to moment, whether it notices or not.</p>
+
+      <div class="mobile-stack-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:2px;">
+        <div style="padding:24px 26px;background:var(--bg-lift);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);text-align:left;">
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:10px;">Facticity</div>
+          <p style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.8;margin:0;">The thrown part. Body, era, language, the circumstances nobody voted on. Already decided before any choosing starts.</p>
+        </div>
+        <div style="padding:24px 26px;background:var(--bg);border:1px solid var(--gold);text-align:left;">
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;margin-bottom:10px;">Projection</div>
+          <p style="font-family:var(--serif);font-size:14px;color:var(--mid);line-height:1.8;margin:0;">The open part. Always already reaching toward a next possibility, never a finished, closed fact.</p>
+        </div>
+      </div>
+      <p style="font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);text-align:center;margin:10px 0 28px;">Stretched between both at once &mdash; what Heidegger calls Ecstasis</p>
+
+      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;text-align:left;margin:0 0 24px;">That stretch is never restful. Heidegger's word for the pressure it generates is <span class="gloss">Sorge<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Sorge">+</span><span class="gloss-pop">German for &ldquo;care&rdquo; &mdash; not an emotion here, but the structural fact of having to carry the burden of one's own unfinished existence.</span></span>, Care &mdash; not a feeling, a structure. Something is always at stake for Dasein, because its own being is never handed to it as a finished fact. Compare it to what runs elsewhere on this page: the <span class="gloss">Antahkarana<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Antahkarana">+</span><span class="gloss-pop">Literally &ldquo;the inner instrument&rdquo; &mdash; the collective term in Vedanta for mind, intellect, memory, and ego-sense together, running as one apparatus powered by the soul's consciousness. See <a href="#antahkaran" style="color:var(--gold);">the full breakdown &rarr;</a></span></span> names the machinery; Sorge names the pressure that keeps the machinery running at all.</p>
+
+      <div style="padding:24px 28px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg);text-align:left;margin-bottom:2px;">
+        <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.75;margin-bottom:14px;">Where the Two Vocabularies Diverge</p>
+        <p style="font-family:var(--serif);font-size:14px;color:var(--grey);line-height:1.9;margin:0;">Vedanta's diagnosis: the felt separateness is a superimposition &mdash; <span class="gloss">Adhyasa<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Adhyasa">+</span><span class="gloss-pop">Superimposition &mdash; mistaking the attributes of one thing for those of another, the way dim light lets a rope be mistaken for a snake. Here, the attributes of a limited body-mind get superimposed onto the limitless Self.</span></span> &mdash; over a Self that was never actually finite. Heidegger doesn't take that step. Dasein's being stays ungrounded, resting on no bedrock, right through to the end. No metaphysical rescue is offered or assumed here &mdash; only a second, careful description of the same restlessness, arrived at from a different direction.</p>
+      </div>
+
+      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);font-style:italic;color:var(--gold);line-height:1.9;text-align:left;margin:28px 0 0;">42 is the leap into being. Sorge is what it feels like from the inside to have already made it, with no way to hand the burden back.</p>
+      <p style="font-family:var(--sans);font-size:10.5px;letter-spacing:1px;color:var(--dim);line-height:1.7;text-align:left;margin:24px 0 0;">Source: Heidegger, M. (1927). <em>Being and Time</em>. &middot; Reading informed by Graeme Nicholson's commentary.</p>
       </div>
     </div>
 
