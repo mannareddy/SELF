@@ -529,12 +529,6 @@ body{
 .chakra-label-7{color:#9b59b6;}
 
 
-
-
-
-
-
-
 /* Light theme: same hues, background wash tuned down since the base is
    already pale (mirrors the existing gold-row light-theme pattern below). */
 [data-theme="light"] #masterMatrixTable tr.chakra-row-1{background:rgba(var(--chakra-label-1-rgb),.10) !important;}
@@ -5118,6 +5112,56 @@ a.src-tag:hover{opacity:.75;}
 </section>
 <span class="continue-hint">continue</span>
 
+<!-- CANON MAP -->
+<section class="section-wide" id="canon-map" style="scroll-margin-top:56px;">
+  <span class="label">Where This Sits In The Canon</span>
+  <p class="phil-line bright">Nothing here was invented for this project. It's a distillation, four layers deep.</p>
+
+  <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.95;max-width:820px;margin:0 auto 28px;text-align:center;">Easy to mistake any one teaching for a standalone opinion. It isn't. Here's the actual lineage &mdash; the same conclusion, distilled down to four progressively more usable forms.</p>
+
+  <div style="max-width:960px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2px;text-align:left;">
+    <div class="sl-stage">
+      <span class="sl-num">01</span>
+      <div class="sl-name" style="font-size:15px;">The Vedas</div>
+      <p class="sl-desc">The eternal, vast body of revealed knowledge &mdash; too immense for one lifetime to work through directly, even in translation.</p>
+    </div>
+    <div class="sl-stage">
+      <span class="sl-num">02</span>
+      <div class="sl-name" style="font-size:15px;">The Upanishads</div>
+      <p class="sl-desc">The philosophical cream, drawn off the ritual portions &mdash; the part asking what's actually real, not how to correctly perform a rite.</p>
+    </div>
+    <div class="sl-stage">
+      <span class="sl-num">03</span>
+      <div class="sl-name" style="font-size:15px;"><span class="gloss">Brahma Sutras<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Brahma Sutras">+</span><span class="gloss-pop">Vedanta &mdash; the codified philosophical conclusions of the Upanishads, systematized into a single coherent argument by Sage Ved Vyas.</span></span></div>
+      <p class="sl-desc">Ved Vyas's own codification of the Upanishads into one airtight argument &mdash; written in a sutra shorthand almost no one outside a trained lineage can read unassisted.</p>
+    </div>
+    <div class="sl-stage" style="border-color:var(--gold);">
+      <span class="sl-num" style="color:var(--gold);">04</span>
+      <div class="sl-name" style="font-size:15px;color:var(--gold);">The Bhagavad Gita</div>
+      <p class="sl-desc">The <span class="gloss">Gitopanishad<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Gitopanishad">+</span><span class="gloss-pop">Literally &ldquo;the Upanishad sung as a song&rdquo; &mdash; a traditional epithet for the Gita, marking it as carrying the same authority as the Upanishads themselves.</span></span> &mdash; the same conclusion, made universally accessible: spoken aloud on a battlefield, in dialogue, and folded into the epic Mahabharat instead of sealed off as ritual scripture.</p>
+    </div>
+  </div>
+
+  <!-- PRASTHANA TRAYI -->
+  <div id="prasthana-trayi" style="max-width:900px;margin:52px auto 0;text-align:left;scroll-margin-top:56px;">
+    <p style="font-family:var(--sans);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:14px;">Why The Fourth Layer Can Be Trusted</p>
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--mid);line-height:1.9;margin-bottom:24px;">The funnel above shows descent — one thing distilled into four. It doesn't show why anyone should trust the distillation. That answer is a separate structure: <span class="gloss">Shankaracharya<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Shankaracharya">+</span><span class="gloss-pop">8th-century philosopher-monk whose commentaries systematized Advaita Vedanta; his Brahma-Sutra-Bhasya is the reference point for this section.</span></span>'s commentary on the Brahma Sutras doesn't just add a fourth opinion — it cross-checks three independent canons against each other and shows they all converge on the same non-dual reality.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2px;">
+      <div class="sl-stage"><span class="sl-num">Revelation</span><div class="sl-name" style="font-size:15px;"><span class="gloss">Sruti-prasthana<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Sruti-prasthana">+</span><span class="gloss-pop">The canon of direct revelation &mdash; the Upanishads themselves, heard rather than composed.</span></span></div><p class="sl-desc">The Upanishads &mdash; the raw revelation, unmediated.</p></div>
+      <div class="sl-stage" style="border-color:var(--gold);"><span class="sl-num" style="color:var(--gold);">Remembrance</span><div class="sl-name" style="font-size:15px;color:var(--gold);"><span class="gloss">Smrti-prasthana<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Smrti-prasthana">+</span><span class="gloss-pop">The canon of remembered teaching &mdash; the Bhagavad Gita, revelation restated in dialogue.</span></span></div><p class="sl-desc">The Bhagavad Gita &mdash; the same content, restated.</p></div>
+      <div class="sl-stage"><span class="sl-num">Logic</span><div class="sl-name" style="font-size:15px;"><span class="gloss">Nyaya-prasthana<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Nyaya-prasthana">+</span><span class="gloss-pop">The canon of logical proof &mdash; the Brahma Sutras, which argue the revelation into a single airtight structure.</span></span></div><p class="sl-desc">The Brahma Sutras &mdash; the same content, argued.</p></div>
+    </div>
+    <p style="font-family:var(--serif);font-size:14.5px;color:var(--gold);font-style:italic;line-height:1.85;margin-top:20px;">Three canons, three different jobs — one heard, one told as a story, one proven by logic. Vedanta, quite literally &ldquo;the end of the Veda,&rdquo; is the single point all three were always pointing at. A claim resting on independent confirmation across all three isn't scripture asking to be taken on faith alone. It's scripture that already passed its own cross-examination.</p>
+  </div>
+
+  <div class="superordinate-box" style="border-right:4px solid var(--gold);text-align:left;position:relative;margin:32px auto 0;max-width:820px;">
+    <div style="position:absolute;top:-1px;left:-1px;width:18px;height:18px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);"></div>
+    <div style="position:absolute;bottom:-1px;right:-1px;width:18px;height:18px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);"></div>
+    <p style="font-size:clamp(15.5px,2vw,18px);color:var(--white);line-height:1.9;margin:0;">Same author, same realization, four attempts at the right altitude for a listener to actually receive it. That's the whole function of this page too &mdash; not a fifth, competing layer, but one more attempt at translation, aimed at whatever altitude you happen to be standing at right now.</p>
+  </div>
+</section>
+<span class="continue-hint">continue</span>
+
 <!-- THE DISEASE IS MISTAKEN IDENTITY (SAMSARA BANDHANAM) -->
 <section class="section-wide" id="mistaken-identity" style="scroll-margin-top:56px;">
   <span class="label">The Root Diagnosis</span>
@@ -5341,55 +5385,59 @@ a.src-tag:hover{opacity:.75;}
 <span class="continue-hint">continue</span>
 <div class="divider"></div>
 
-<!-- CANON MAP -->
-<section class="section-wide" id="canon-map" style="scroll-margin-top:56px;">
-  <span class="label">Where This Sits In The Canon</span>
-  <p class="phil-line bright">Nothing above was invented for this project. It's a distillation, four layers deep.</p>
 
-  <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.95;max-width:820px;margin:0 auto 28px;text-align:center;">Easy to mistake any one teaching for a standalone opinion. It isn't. Here's the actual lineage &mdash; the same conclusion, distilled down to four progressively more usable forms.</p>
+<section class="section" id="matrix-of-logic" style="scroll-margin-top:56px;">
+  <span class="label">Shiva Sutras</span>
+  <p class="phil-line bright" style="margin-bottom:8px;">Not all thinking is trying to win an argument.</p>
+  <p class="phil-line dim" style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;">The tradition names three kinds of logic. Only one of them goes anywhere.</p>
 
-  <div style="max-width:960px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2px;text-align:left;">
-    <div class="sl-stage">
-      <span class="sl-num">01</span>
-      <div class="sl-name" style="font-size:15px;">The Vedas</div>
-      <p class="sl-desc">The eternal, vast body of revealed knowledge &mdash; too immense for one lifetime to work through directly, even in translation.</p>
+  <div style="max-width:820px;margin:0 auto;text-align:left;">
+    <div class="self-table-wrap">
+      <table class="self-table compact" style="min-width:480px;">
+        <thead>
+          <tr><th><span class="gloss">Tarka<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Tarka">+</span><span class="gloss-pop">Standard reasoning, debate, and analysis &mdash; useful, but it shifts every time a new fact arrives.</span></span></th><th><span class="gloss">Kutarka<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Kutarka">+</span><span class="gloss-pop">Fault-finding aimed at good intentions, twisted purely to win an argument &mdash; breeds paranoia, destruction, and ignorance.</span></span></th><th><span class="gloss">Vitarka<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Vitarka">+</span><span class="gloss-pop">Thought without the need to win anything &mdash; asking unanswerable questions like &ldquo;Who am I?&rdquo; that exhaust the ego and open onto Self-knowledge.</span></span></th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Standard reasoning, debate, analysis</td><td>Fault-finding aimed at good intentions, twisted to win</td><td class="bright">Thought without the need to win anything</td></tr>
+          <tr><td>Useful, but shifts with every new fact</td><td>Creates paranoia, destruction, ignorance</td><td class="bright">Asks what can't be settled &mdash; &ldquo;Who am I?&rdquo;</td></tr>
+          <tr class="gold-row"><td class="gold">Normal logic</td><td class="gold">Wrong logic</td><td class="gold">Special logic</td></tr>
+        </tbody>
+      </table>
     </div>
-    <div class="sl-stage">
-      <span class="sl-num">02</span>
-      <div class="sl-name" style="font-size:15px;">The Upanishads</div>
-      <p class="sl-desc">The philosophical cream, drawn off the ritual portions &mdash; the part asking what's actually real, not how to correctly perform a rite.</p>
-    </div>
-    <div class="sl-stage">
-      <span class="sl-num">03</span>
-      <div class="sl-name" style="font-size:15px;"><span class="gloss">Brahma Sutras<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Brahma Sutras">+</span><span class="gloss-pop">Vedanta &mdash; the codified philosophical conclusions of the Upanishads, systematized into a single coherent argument by Sage Ved Vyas.</span></span></div>
-      <p class="sl-desc">Ved Vyas's own codification of the Upanishads into one airtight argument &mdash; written in a sutra shorthand almost no one outside a trained lineage can read unassisted.</p>
-    </div>
-    <div class="sl-stage" style="border-color:var(--gold);">
-      <span class="sl-num" style="color:var(--gold);">04</span>
-      <div class="sl-name" style="font-size:15px;color:var(--gold);">The Bhagavad Gita</div>
-      <p class="sl-desc">The <span class="gloss">Gitopanishad<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Gitopanishad">+</span><span class="gloss-pop">Literally &ldquo;the Upanishad sung as a song&rdquo; &mdash; a traditional epithet for the Gita, marking it as carrying the same authority as the Upanishads themselves.</span></span> &mdash; the same conclusion, made universally accessible: spoken aloud on a battlefield, in dialogue, and folded into the epic Mahabharat instead of sealed off as ritual scripture.</p>
-    </div>
+    <p class="table-landscape-tip">⟳ Tip: turn your phone to landscape for a wider view of this table</p>
   </div>
 
-  <!-- PRASTHANA TRAYI -->
-  <div id="prasthana-trayi" style="max-width:900px;margin:52px auto 0;text-align:left;scroll-margin-top:56px;">
-    <p style="font-family:var(--sans);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:14px;">Why The Fourth Layer Can Be Trusted</p>
-    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--mid);line-height:1.9;margin-bottom:24px;">The funnel above shows descent — one thing distilled into four. It doesn't show why anyone should trust the distillation. That answer is a separate structure: <span class="gloss">Shankaracharya<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Shankaracharya">+</span><span class="gloss-pop">8th-century philosopher-monk whose commentaries systematized Advaita Vedanta; his Brahma-Sutra-Bhasya is the reference point for this section.</span></span>'s commentary on the Brahma Sutras doesn't just add a fourth opinion — it cross-checks three independent canons against each other and shows they all converge on the same non-dual reality.</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2px;">
-      <div class="sl-stage"><span class="sl-num">Revelation</span><div class="sl-name" style="font-size:15px;"><span class="gloss">Sruti-prasthana<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Sruti-prasthana">+</span><span class="gloss-pop">The canon of direct revelation &mdash; the Upanishads themselves, heard rather than composed.</span></span></div><p class="sl-desc">The Upanishads &mdash; the raw revelation, unmediated.</p></div>
-      <div class="sl-stage" style="border-color:var(--gold);"><span class="sl-num" style="color:var(--gold);">Remembrance</span><div class="sl-name" style="font-size:15px;color:var(--gold);"><span class="gloss">Smrti-prasthana<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Smrti-prasthana">+</span><span class="gloss-pop">The canon of remembered teaching &mdash; the Bhagavad Gita, revelation restated in dialogue.</span></span></div><p class="sl-desc">The Bhagavad Gita &mdash; the same content, restated.</p></div>
-      <div class="sl-stage"><span class="sl-num">Logic</span><div class="sl-name" style="font-size:15px;"><span class="gloss">Nyaya-prasthana<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Nyaya-prasthana">+</span><span class="gloss-pop">The canon of logical proof &mdash; the Brahma Sutras, which argue the revelation into a single airtight structure.</span></span></div><p class="sl-desc">The Brahma Sutras &mdash; the same content, argued.</p></div>
-    </div>
-    <p style="font-family:var(--serif);font-size:14.5px;color:var(--gold);font-style:italic;line-height:1.85;margin-top:20px;">Three canons, three different jobs — one heard, one told as a story, one proven by logic. Vedanta, quite literally &ldquo;the end of the Veda,&rdquo; is the single point all three were always pointing at. A claim resting on independent confirmation across all three isn't scripture asking to be taken on faith alone. It's scripture that already passed its own cross-examination.</p>
-  </div>
-
-  <div class="superordinate-box" style="border-right:4px solid var(--gold);text-align:left;position:relative;margin:32px auto 0;max-width:820px;">
-    <div style="position:absolute;top:-1px;left:-1px;width:18px;height:18px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);"></div>
-    <div style="position:absolute;bottom:-1px;right:-1px;width:18px;height:18px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);"></div>
-    <p style="font-size:clamp(15.5px,2vw,18px);color:var(--white);line-height:1.9;margin:0;">Same author, same realization, four attempts at the right altitude for a listener to actually receive it. That's the whole function of this page too &mdash; not a fifth, competing layer, but one more attempt at translation, aimed at whatever altitude you happen to be standing at right now.</p>
+  <div class="pull-quote" style="margin:40px auto 0;border:1.5px solid rgba(var(--accent-gold-rgb),0.55);border-left:3px solid var(--gold);padding:28px 32px;max-width:820px;">
+    <p>&ldquo;Who am I?&rdquo; has no side to argue. That's exactly what lets it exhaust the ego instead of feeding it.</p>
   </div>
 </section>
 <span class="continue-hint">continue</span>
+<div class="divider"></div>
+
+<section class="section" id="bondage-of-knowing" style="scroll-margin-top:56px;">
+  <span class="label">The Bondage of &ldquo;Knowing&rdquo;</span>
+  <p class="phil-line bright" style="margin-bottom:8px;"><em><span class="gloss">Jnanam bandhah<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Jnanam bandhah">+</span><span class="gloss-pop">A Shiva Sutra: limited knowledge itself creates bondage &mdash; the instant something is called &ldquo;known,&rdquo; its living, changing range narrows to fit a fixed, past-based definition.</span></span></em> &mdash; limited knowledge creates bondage.</p>
+  <p class="phil-line dim" style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;">The moment something gets labeled, the mind stops looking at it.</p>
+
+  <div style="max-width:820px;margin:0 auto;text-align:left;">
+    <div class="sl-stage" style="border-left:2px solid var(--gold);">
+      <div class="sl-name" style="color:var(--gold);">The Lens of Knowledge</div>
+      <p class="sl-desc">Reality stays in a state of constant, vast newness &mdash; until the ego reaches for a label. The instant something is called &ldquo;known,&rdquo; the range of what it could be shrinks to fit a rigid, past-based definition. That's the bondage: not ignorance, but a definition that stopped updating.</p>
+    </div>
+  </div>
+
+  <div style="max-width:820px;margin:36px auto 0;text-align:left;">
+    <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:16px;"><em><span class="gloss">Vismayo yoga bhumikah<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Vismayo yoga bhumikah">+</span><span class="gloss-pop">A Shiva Sutra: wonder is the foundation for union &mdash; knowledge held with amazement stays open; knowledge held as settled certainty closes the door to reality.</span></span></em> &mdash; Wonder is the Foundation</p>
+    <p class="phil-line dim" style="max-width:680px;margin:0 auto;">Knowledge without wonder doesn't sharpen life &mdash; it dulls it. Saying &ldquo;I know&rdquo; closes a door. Looking at the same thing with amazement, known or unknown, keeps it open.</p>
+  </div>
+
+  <div class="pull-quote" style="margin:40px auto 0;border:1.5px solid rgba(var(--accent-gold-rgb),0.55);border-left:3px solid var(--gold);padding:28px 32px;max-width:820px;">
+    <p>SELF isn't handing you the answer. That would just be one more door closing.</p>
+  </div>
+  <p style="text-align:center;margin-top:24px;font-family:var(--serif);font-size:14px;color:var(--dim);font-style:italic;">The Veda maps this same shrinking as a five-step engine &mdash; <a href="#mistaken-identity" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">The Root Diagnosis</a>.</p>
+</section>
+<span class="continue-hint">continue</span>
+<div class="divider"></div>
 
 <!-- TWO PATHS TO TRUTH -->
 <section class="section-wide" id="two-paths-truth" style="scroll-margin-top:56px;">
@@ -5735,6 +5783,94 @@ a.src-tag:hover{opacity:.75;}
 </section>
 <span class="continue-hint">continue</span>
 <div class="divider"></div>
+<!-- THE LADDER OF INTENTION (GUNAS) -->
+<section class="section-wide" id="ladder-of-intention" style="scroll-margin-top:56px;">
+  <span class="label">Same Action, Different Fuel</span>
+  <p class="phil-line bright">The doing tells you nothing. The reason tells you everything.</p>
+
+  <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.95;max-width:820px;margin:0 auto 28px;text-align:center;">Two people write the same check to the same cause. One is closing a reputational gap. One doesn't remember doing it by evening. Vedanta calls the underlying fuel the <span class="gloss">guṇas<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define guṇas">+</span><span class="gloss-pop">The three modes of material nature — the qualities that color every thought and action, whether or not the person acting is aware of them.</span></span> — four rungs, base to apex.</p>
+
+  <div style="text-align:center;margin-bottom:8px;">
+    <button class="collapse-toggle-btn" onclick="sectionCollapse('ladder-of-intention-full-content',this)">Expand &#9660;</button>
+    <p class="section-collapse-label" style="margin-top:8px;">Tap to expand — the four rungs, base to apex</p>
+  </div>
+  <div id="ladder-of-intention-full-content" class="section-collapse-wrap collapsed">
+  <div class="framework-grid">
+    <div class="framework-card collapsed">
+      <span class="num">01</span>
+      <h3><span class="gloss">Tāmasic<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Tāmasic">+</span><span class="gloss-pop">Of the mode of ignorance — one of the three modes of material nature.</span></span></h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Self-gratification at someone else's expense — the base of the ladder</p><div class="framework-content">
+      <p>Driven by self-gratification, at the expense of someone else. Corner-cutting that lands on another person, dressed up as ordinary business. Nothing subtle here — just the willingness to let someone else absorb the cost.</p>
+    </div></div>
+    <div class="framework-card collapsed">
+      <span class="num">02</span>
+      <h3><span class="gloss">Rājasic<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Rājasic">+</span><span class="gloss-pop">Of the mode of passion — one of the three modes of material nature.</span></span></h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Legal, fair, and still for the ego — the second rung</p><div class="framework-content">
+      <p>Legal. Fair. Correctly executed. Nothing wrong on paper. The motive is prestige, ego, or accumulation — not harm to anyone, just nothing given away either. Most of what gets called "success" lives here.</p>
+    </div></div>
+    <div class="framework-card collapsed">
+      <span class="num">03</span>
+      <h3><span class="gloss">Sāttvic<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Sāttvic">+</span><span class="gloss-pop">Of the mode of goodness — one of the three modes of material nature.</span></span></h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Done for someone else — the third rung</p><div class="framework-content">
+      <p>Compassion, generosity, contribution as the actual motive — not the marketing around it. The action serves someone other than the one performing it, and means it.</p>
+    </div></div>
+    <div class="framework-card collapsed" id="gunatit-card">
+      <span class="num">04</span>
+      <h3><span class="gloss">Guṇātīt<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Guṇātīt">+</span><span class="gloss-pop">Transcendental to the three modes of material nature.</span></span></h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Beyond the need to be seen as good — the apex</p><div class="framework-content">
+      <p>The action offered without a claim on the result. Not "beyond good" — beyond the need to be recognized as good. The rarest rung, and the only one with no audience built in.</p>
+    </div></div>
+  </div>
+  </div>
+
+  <div class="superordinate-box" style="border-right:4px solid var(--gold);text-align:left;position:relative;margin:32px auto 0;max-width:900px;">
+    <div style="position:absolute;top:-1px;left:-1px;width:18px;height:18px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);"></div>
+    <div style="position:absolute;bottom:-1px;right:-1px;width:18px;height:18px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);"></div>
+    <p style="font-size:clamp(15.5px,2vw,18px);color:var(--white);line-height:1.9;margin:0;">You already know which rung a given action sits on — that's what the ease or discomfort around it is telling you. Take one thing you did today that you'd call good. Check it against all four rungs. Where does it actually land?</p>
+  </div>
+</section>
+<span class="continue-hint">continue</span>
+<div class="divider"></div>
+
+<!-- DESTINY VS FREE WILL -->
+<section class="section-wide" id="destiny-and-free-will" style="scroll-margin-top:56px;">
+  <span class="label">The Fatalist's Objection</span>
+  <p class="phil-line bright">If the gunas are running the show, doesn't that make the whole idea of karma pointless?</p>
+
+  <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.95;max-width:820px;margin:0 auto 32px;text-align:center;">Fair objection. If everything were predetermined, there'd be no one left to hold responsible for anything &mdash; the Law of Karma would collapse into nonsense the moment it was stated. The resolution rests on a distinction the fatalist reading collapses into one thing: the hand you're dealt, and how you play it.</p>
+
+  <div style="max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;text-align:left;">
+    <div class="sl-stage" style="padding:26px 24px;">
+      <span class="sl-num"><span class="gloss">Prarabdha<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Prarabdha">+</span><span class="gloss-pop">The portion of accumulated karma that has already begun to bear fruit in this lifetime &mdash; the destiny allotted at birth, fixed and no longer subject to revision.</span></span></span>
+      <div class="sl-name" style="font-size:15px;margin-bottom:12px;">Destiny &mdash; The Cards Dealt</div>
+      <p class="sl-desc">The body, the family, the raw circumstances a life opens with. Fixed &mdash; the result of past actions already in motion, no longer subject to a vote. Not a life sentence. A starting hand.</p>
+    </div>
+    <div class="sl-stage" style="border-color:var(--gold);padding:26px 24px;">
+      <span class="sl-num" style="color:var(--gold);"><span class="gloss">Purushartha<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Purushartha">+</span><span class="gloss-pop">Self-effort &mdash; the present-moment exertion of will entirely within a person's own control, regardless of what destiny has dealt.</span></span></span>
+      <div class="sl-name" style="font-size:15px;color:var(--gold);margin-bottom:12px;">Free Will &mdash; How It's Played</div>
+      <p class="sl-desc">Entirely in your control, in the present moment, regardless of the hand. A skilled player wins with a weak hand. A careless one loses a strong one. Today's effort is also tomorrow's Prarabdha &mdash; the deck currently being reshuffled.</p>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin:32px 0 8px;">
+    <button class="collapse-toggle-btn" onclick="sectionCollapse('three-karmas-detail',this)">Expand &#9660;</button>
+    <p class="section-collapse-label">Tap to expand &mdash; the three karmas Prarabdha is only one third of</p>
+  </div>
+  <div id="three-karmas-detail" class="section-collapse-wrap collapsed" style="max-width:900px;margin:0 auto;">
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin:20px 0 24px;text-align:left;">Prarabdha, above, is only one third of the full ledger. The deck metaphor holds for all three &mdash; it's just that most of the deck is sitting somewhere other than the hand currently being played.</p>
+    <div style="max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2px;text-align:left;">
+      <div class="sl-stage"><span class="sl-num"><span class="gloss">Sanchita<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Sanchita">+</span><span class="gloss-pop">Literally &ldquo;accumulated&rdquo; &mdash; the vast storehouse of karma from every past action across every past life, unripened and still in reserve.</span></span></span><div class="sl-name">The Full Deck</div><p class="sl-desc">Every card ever earned, across every hand ever played before this one. The total accumulated stock &mdash; almost all of it still sitting in the box, unripened.</p></div>
+      <div class="sl-stage" style="border-color:var(--gold);"><span class="sl-num" style="color:var(--gold);">Prarabdha</span><div class="sl-name" style="color:var(--gold);">The Hand Dealt</div><p class="sl-desc">Already covered above: the specific cards drawn from that deck for exactly this life. Fixed for the round &mdash; fixed, not sourceless.</p></div>
+      <div class="sl-stage"><span class="sl-num"><span class="gloss">Agami<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Agami">+</span><span class="gloss-pop">Also called Kriyamana &mdash; the new karma being generated right now, through present free will, feeding back into the Sanchita store for a future life.</span></span></span><div class="sl-name">The Discard Pile</div><p class="sl-desc">Every card played right now, present tense, going straight back into the deck for some future hand. This is the &ldquo;today's effort is tomorrow's Prarabdha&rdquo; line above, named in full.</p></div>
+    </div>
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:20px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg);max-width:900px;margin:20px auto 0;">Only one of the three karmas is ever actually being written. The other two are either already filed, or not yet due &mdash; which is exactly why the present moment carries more weight than either the past or the future ever will.</p>
+  </div>
+
+  <div class="superordinate-box" style="border-right:4px solid var(--gold);text-align:left;position:relative;margin:32px auto 0;max-width:820px;">
+    <div style="position:absolute;top:-1px;left:-1px;width:18px;height:18px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);"></div>
+    <div style="position:absolute;bottom:-1px;right:-1px;width:18px;height:18px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);"></div>
+    <p style="font-size:clamp(15.5px,2vw,18px);color:var(--white);line-height:1.9;margin:0;">Karma was never a claim that the future is written. It's a claim that the pen never leaves your hand &mdash; only the paper you were handed to write on was already chosen before you sat down.</p>
+  </div>
+</section>
+<span class="continue-hint">continue</span>
+<div class="divider"></div>
+
 <!-- SPECTRUM OF CONSCIOUSNESS -->
 <section class="section-wide" id="spectrum">
   <span class="label">The Ascent of Self</span>
@@ -5945,58 +6081,6 @@ a.src-tag:hover{opacity:.75;}
 <span class="continue-hint">continue</span>
 <div class="divider"></div>
 
-<section class="section" id="matrix-of-logic" style="scroll-margin-top:56px;">
-  <span class="label">Shiva Sutras</span>
-  <p class="phil-line bright" style="margin-bottom:8px;">Not all thinking is trying to win an argument.</p>
-  <p class="phil-line dim" style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;">The tradition names three kinds of logic. Only one of them goes anywhere.</p>
-
-  <div style="max-width:820px;margin:0 auto;text-align:left;">
-    <div class="self-table-wrap">
-      <table class="self-table compact" style="min-width:480px;">
-        <thead>
-          <tr><th><span class="gloss">Tarka<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Tarka">+</span><span class="gloss-pop">Standard reasoning, debate, and analysis &mdash; useful, but it shifts every time a new fact arrives.</span></span></th><th><span class="gloss">Kutarka<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Kutarka">+</span><span class="gloss-pop">Fault-finding aimed at good intentions, twisted purely to win an argument &mdash; breeds paranoia, destruction, and ignorance.</span></span></th><th><span class="gloss">Vitarka<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Vitarka">+</span><span class="gloss-pop">Thought without the need to win anything &mdash; asking unanswerable questions like &ldquo;Who am I?&rdquo; that exhaust the ego and open onto Self-knowledge.</span></span></th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Standard reasoning, debate, analysis</td><td>Fault-finding aimed at good intentions, twisted to win</td><td class="bright">Thought without the need to win anything</td></tr>
-          <tr><td>Useful, but shifts with every new fact</td><td>Creates paranoia, destruction, ignorance</td><td class="bright">Asks what can't be settled &mdash; &ldquo;Who am I?&rdquo;</td></tr>
-          <tr class="gold-row"><td class="gold">Normal logic</td><td class="gold">Wrong logic</td><td class="gold">Special logic</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="table-landscape-tip">⟳ Tip: turn your phone to landscape for a wider view of this table</p>
-  </div>
-
-  <div class="pull-quote" style="margin:40px auto 0;border:1.5px solid rgba(var(--accent-gold-rgb),0.55);border-left:3px solid var(--gold);padding:28px 32px;max-width:820px;">
-    <p>&ldquo;Who am I?&rdquo; has no side to argue. That's exactly what lets it exhaust the ego instead of feeding it.</p>
-  </div>
-</section>
-<span class="continue-hint">continue</span>
-<div class="divider"></div>
-
-<section class="section" id="bondage-of-knowing" style="scroll-margin-top:56px;">
-  <span class="label">The Bondage of &ldquo;Knowing&rdquo;</span>
-  <p class="phil-line bright" style="margin-bottom:8px;"><em><span class="gloss">Jnanam bandhah<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Jnanam bandhah">+</span><span class="gloss-pop">A Shiva Sutra: limited knowledge itself creates bondage &mdash; the instant something is called &ldquo;known,&rdquo; its living, changing range narrows to fit a fixed, past-based definition.</span></span></em> &mdash; limited knowledge creates bondage.</p>
-  <p class="phil-line dim" style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;">The moment something gets labeled, the mind stops looking at it.</p>
-
-  <div style="max-width:820px;margin:0 auto;text-align:left;">
-    <div class="sl-stage" style="border-left:2px solid var(--gold);">
-      <div class="sl-name" style="color:var(--gold);">The Lens of Knowledge</div>
-      <p class="sl-desc">Reality stays in a state of constant, vast newness &mdash; until the ego reaches for a label. The instant something is called &ldquo;known,&rdquo; the range of what it could be shrinks to fit a rigid, past-based definition. That's the bondage: not ignorance, but a definition that stopped updating.</p>
-    </div>
-  </div>
-
-  <div style="max-width:820px;margin:36px auto 0;text-align:left;">
-    <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:16px;"><em><span class="gloss">Vismayo yoga bhumikah<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Vismayo yoga bhumikah">+</span><span class="gloss-pop">A Shiva Sutra: wonder is the foundation for union &mdash; knowledge held with amazement stays open; knowledge held as settled certainty closes the door to reality.</span></span></em> &mdash; Wonder is the Foundation</p>
-    <p class="phil-line dim" style="max-width:680px;margin:0 auto;">Knowledge without wonder doesn't sharpen life &mdash; it dulls it. Saying &ldquo;I know&rdquo; closes a door. Looking at the same thing with amazement, known or unknown, keeps it open.</p>
-  </div>
-
-  <div class="pull-quote" style="margin:40px auto 0;border:1.5px solid rgba(var(--accent-gold-rgb),0.55);border-left:3px solid var(--gold);padding:28px 32px;max-width:820px;">
-    <p>SELF isn't handing you the answer. That would just be one more door closing.</p>
-  </div>
-  <p style="text-align:center;margin-top:24px;font-family:var(--serif);font-size:14px;color:var(--dim);font-style:italic;">The Veda maps this same shrinking as a five-step engine &mdash; <a href="#mistaken-identity" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">The Root Diagnosis</a>.</p>
-</section>
-<span class="continue-hint">continue</span>
-<div class="divider"></div>
 
 <!-- THE PRACTICE PARADOX -->
 <section class="section" id="practice-paradox" style="scroll-margin-top:56px;">
@@ -9386,222 +9470,6 @@ a.src-tag:hover{opacity:.75;}
 <span class="continue-hint">continue</span>
 <div class="divider"></div>
 
-<!-- THE LADDER OF INTENTION (GUNAS) -->
-<section class="section-wide" id="ladder-of-intention" style="scroll-margin-top:56px;">
-  <span class="label">Same Action, Different Fuel</span>
-  <p class="phil-line bright">The doing tells you nothing. The reason tells you everything.</p>
-
-  <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.95;max-width:820px;margin:0 auto 28px;text-align:center;">Two people write the same check to the same cause. One is closing a reputational gap. One doesn't remember doing it by evening. Vedanta calls the underlying fuel the <span class="gloss">guṇas<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define guṇas">+</span><span class="gloss-pop">The three modes of material nature — the qualities that color every thought and action, whether or not the person acting is aware of them.</span></span> — four rungs, base to apex.</p>
-
-  <div style="text-align:center;margin-bottom:8px;">
-    <button class="collapse-toggle-btn" onclick="sectionCollapse('ladder-of-intention-full-content',this)">Expand &#9660;</button>
-    <p class="section-collapse-label" style="margin-top:8px;">Tap to expand — the four rungs, base to apex</p>
-  </div>
-  <div id="ladder-of-intention-full-content" class="section-collapse-wrap collapsed">
-  <div class="framework-grid">
-    <div class="framework-card collapsed">
-      <span class="num">01</span>
-      <h3><span class="gloss">Tāmasic<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Tāmasic">+</span><span class="gloss-pop">Of the mode of ignorance — one of the three modes of material nature.</span></span></h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Self-gratification at someone else's expense — the base of the ladder</p><div class="framework-content">
-      <p>Driven by self-gratification, at the expense of someone else. Corner-cutting that lands on another person, dressed up as ordinary business. Nothing subtle here — just the willingness to let someone else absorb the cost.</p>
-    </div></div>
-    <div class="framework-card collapsed">
-      <span class="num">02</span>
-      <h3><span class="gloss">Rājasic<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Rājasic">+</span><span class="gloss-pop">Of the mode of passion — one of the three modes of material nature.</span></span></h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Legal, fair, and still for the ego — the second rung</p><div class="framework-content">
-      <p>Legal. Fair. Correctly executed. Nothing wrong on paper. The motive is prestige, ego, or accumulation — not harm to anyone, just nothing given away either. Most of what gets called "success" lives here.</p>
-    </div></div>
-    <div class="framework-card collapsed">
-      <span class="num">03</span>
-      <h3><span class="gloss">Sāttvic<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Sāttvic">+</span><span class="gloss-pop">Of the mode of goodness — one of the three modes of material nature.</span></span></h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Done for someone else — the third rung</p><div class="framework-content">
-      <p>Compassion, generosity, contribution as the actual motive — not the marketing around it. The action serves someone other than the one performing it, and means it.</p>
-    </div></div>
-    <div class="framework-card collapsed" id="gunatit-card">
-      <span class="num">04</span>
-      <h3><span class="gloss">Guṇātīt<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Guṇātīt">+</span><span class="gloss-pop">Transcendental to the three modes of material nature.</span></span></h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Beyond the need to be seen as good — the apex</p><div class="framework-content">
-      <p>The action offered without a claim on the result. Not "beyond good" — beyond the need to be recognized as good. The rarest rung, and the only one with no audience built in.</p>
-    </div></div>
-  </div>
-  </div>
-
-  <div class="superordinate-box" style="border-right:4px solid var(--gold);text-align:left;position:relative;margin:32px auto 0;max-width:900px;">
-    <div style="position:absolute;top:-1px;left:-1px;width:18px;height:18px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);"></div>
-    <div style="position:absolute;bottom:-1px;right:-1px;width:18px;height:18px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);"></div>
-    <p style="font-size:clamp(15.5px,2vw,18px);color:var(--white);line-height:1.9;margin:0;">You already know which rung a given action sits on — that's what the ease or discomfort around it is telling you. Take one thing you did today that you'd call good. Check it against all four rungs. Where does it actually land?</p>
-  </div>
-</section>
-<span class="continue-hint">continue</span>
-<div class="divider"></div>
-
-<!-- DESTINY VS FREE WILL -->
-<section class="section-wide" id="destiny-and-free-will" style="scroll-margin-top:56px;">
-  <span class="label">The Fatalist's Objection</span>
-  <p class="phil-line bright">If the gunas are running the show, doesn't that make the whole idea of karma pointless?</p>
-
-  <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.95;max-width:820px;margin:0 auto 32px;text-align:center;">Fair objection. If everything were predetermined, there'd be no one left to hold responsible for anything &mdash; the Law of Karma would collapse into nonsense the moment it was stated. The resolution rests on a distinction the fatalist reading collapses into one thing: the hand you're dealt, and how you play it.</p>
-
-  <div style="max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;text-align:left;">
-    <div class="sl-stage" style="padding:26px 24px;">
-      <span class="sl-num"><span class="gloss">Prarabdha<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Prarabdha">+</span><span class="gloss-pop">The portion of accumulated karma that has already begun to bear fruit in this lifetime &mdash; the destiny allotted at birth, fixed and no longer subject to revision.</span></span></span>
-      <div class="sl-name" style="font-size:15px;margin-bottom:12px;">Destiny &mdash; The Cards Dealt</div>
-      <p class="sl-desc">The body, the family, the raw circumstances a life opens with. Fixed &mdash; the result of past actions already in motion, no longer subject to a vote. Not a life sentence. A starting hand.</p>
-    </div>
-    <div class="sl-stage" style="border-color:var(--gold);padding:26px 24px;">
-      <span class="sl-num" style="color:var(--gold);"><span class="gloss">Purushartha<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Purushartha">+</span><span class="gloss-pop">Self-effort &mdash; the present-moment exertion of will entirely within a person's own control, regardless of what destiny has dealt.</span></span></span>
-      <div class="sl-name" style="font-size:15px;color:var(--gold);margin-bottom:12px;">Free Will &mdash; How It's Played</div>
-      <p class="sl-desc">Entirely in your control, in the present moment, regardless of the hand. A skilled player wins with a weak hand. A careless one loses a strong one. Today's effort is also tomorrow's Prarabdha &mdash; the deck currently being reshuffled.</p>
-    </div>
-  </div>
-
-  <div style="text-align:center;margin:32px 0 8px;">
-    <button class="collapse-toggle-btn" onclick="sectionCollapse('three-karmas-detail',this)">Expand &#9660;</button>
-    <p class="section-collapse-label">Tap to expand &mdash; the three karmas Prarabdha is only one third of</p>
-  </div>
-  <div id="three-karmas-detail" class="section-collapse-wrap collapsed" style="max-width:900px;margin:0 auto;">
-    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin:20px 0 24px;text-align:left;">Prarabdha, above, is only one third of the full ledger. The deck metaphor holds for all three &mdash; it's just that most of the deck is sitting somewhere other than the hand currently being played.</p>
-    <div style="max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2px;text-align:left;">
-      <div class="sl-stage"><span class="sl-num"><span class="gloss">Sanchita<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Sanchita">+</span><span class="gloss-pop">Literally &ldquo;accumulated&rdquo; &mdash; the vast storehouse of karma from every past action across every past life, unripened and still in reserve.</span></span></span><div class="sl-name">The Full Deck</div><p class="sl-desc">Every card ever earned, across every hand ever played before this one. The total accumulated stock &mdash; almost all of it still sitting in the box, unripened.</p></div>
-      <div class="sl-stage" style="border-color:var(--gold);"><span class="sl-num" style="color:var(--gold);">Prarabdha</span><div class="sl-name" style="color:var(--gold);">The Hand Dealt</div><p class="sl-desc">Already covered above: the specific cards drawn from that deck for exactly this life. Fixed for the round &mdash; fixed, not sourceless.</p></div>
-      <div class="sl-stage"><span class="sl-num"><span class="gloss">Agami<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Agami">+</span><span class="gloss-pop">Also called Kriyamana &mdash; the new karma being generated right now, through present free will, feeding back into the Sanchita store for a future life.</span></span></span><div class="sl-name">The Discard Pile</div><p class="sl-desc">Every card played right now, present tense, going straight back into the deck for some future hand. This is the &ldquo;today's effort is tomorrow's Prarabdha&rdquo; line above, named in full.</p></div>
-    </div>
-    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:20px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg);max-width:900px;margin:20px auto 0;">Only one of the three karmas is ever actually being written. The other two are either already filed, or not yet due &mdash; which is exactly why the present moment carries more weight than either the past or the future ever will.</p>
-  </div>
-
-  <div class="superordinate-box" style="border-right:4px solid var(--gold);text-align:left;position:relative;margin:32px auto 0;max-width:820px;">
-    <div style="position:absolute;top:-1px;left:-1px;width:18px;height:18px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);"></div>
-    <div style="position:absolute;bottom:-1px;right:-1px;width:18px;height:18px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);"></div>
-    <p style="font-size:clamp(15.5px,2vw,18px);color:var(--white);line-height:1.9;margin:0;">Karma was never a claim that the future is written. It's a claim that the pen never leaves your hand &mdash; only the paper you were handed to write on was already chosen before you sat down.</p>
-  </div>
-</section>
-<span class="continue-hint">continue</span>
-<div class="divider"></div>
-
-<!-- THE MASTERS — East and West, converging on the same destination -->
-<section class="section-wide" id="masters" style="scroll-margin-top:56px;">
-  <span class="label">The Masters at a Glance</span>
-  <h2>Six teachers. Two hemispheres. One destination.</h2>
-  <p class="sub" style="max-width:900px;margin:0 auto;">The <a href="#subtilization" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">path of subtilization</a> was never the property of one tradition. East and West independently arrived at the same <a href="#spectrum" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">map</a> &mdash;By holding different lanterns. See the full coordinate-by-coordinate reference in <a href="#master-matrix" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">the Master Matrix</a>.</p>
-
-  <!-- MASTERS AT A GLANCE MAP — always-visible navigator, two rows of
-       three (Eastern / Western lineage). Tapping a node expands the grid
-       (if collapsed) and scrolls to + flashes that teacher's card. -->
-  <div style="max-width:460px;margin:32px auto 36px;">
-    <svg viewBox="0 0 420 250" style="width:100%;height:auto;overflow:visible;" role="img" aria-label="Masters at a Glance map — tap a teacher to jump to their card">
-      <style>
-        .masters-map-node{cursor:pointer;}
-        .masters-map-node:hover circle.masters-node-bg{fill:rgba(var(--accent-gold-rgb),.14);stroke:var(--gold);}
-        .masters-map-node:focus circle.masters-node-bg{fill:rgba(var(--accent-gold-rgb),.14);stroke:var(--gold);}
-        .masters-map-node text{pointer-events:none;}
-      </style>
-      <text x="210" y="16" text-anchor="middle" font-family="var(--sans)" font-size="9" letter-spacing="2" fill="var(--dim)" opacity="0.7" style="text-transform:uppercase;">Eastern Lineage</text>
-      <g class="masters-map-node" tabindex="0" role="button" aria-label="Srila Prabhupada — Bhakti Yoga, ISKCON" onclick="scrollToMasterCard(1)" onkeypress="if(event.key==='Enter')scrollToMasterCard(1)">
-        <title>Srila Prabhupada</title>
-        <circle class="masters-node-bg" cx="70" cy="60" r="24" fill="var(--bg-lift)" stroke="var(--dim)" stroke-width="1.5"/>
-        <text x="70" y="66" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--dim)">1</text>
-        <text x="70" y="100" text-anchor="middle" font-family="var(--sans)" font-size="10.5" fill="var(--white)">Prabhupada</text>
-      </g>
-      <g class="masters-map-node" tabindex="0" role="button" aria-label="Gurudev Sri Sri Ravi Shankar — The Art of Living" onclick="scrollToMasterCard(2)" onkeypress="if(event.key==='Enter')scrollToMasterCard(2)">
-        <title>Sri Sri Ravi Shankar</title>
-        <circle class="masters-node-bg" cx="210" cy="60" r="24" fill="var(--bg-lift)" stroke="var(--dim)" stroke-width="1.5"/>
-        <text x="210" y="66" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--dim)">2</text>
-        <text x="210" y="100" text-anchor="middle" font-family="var(--sans)" font-size="10.5" fill="var(--white)">Sri Sri Ravi Shankar</text>
-      </g>
-      <g class="masters-map-node" tabindex="0" role="button" aria-label="The Buddha — The Middle Way" onclick="scrollToMasterCard(3)" onkeypress="if(event.key==='Enter')scrollToMasterCard(3)">
-        <title>The Buddha</title>
-        <circle class="masters-node-bg" cx="350" cy="60" r="24" fill="var(--bg-lift)" stroke="var(--dim)" stroke-width="1.5"/>
-        <text x="350" y="66" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--dim)">3</text>
-        <text x="350" y="100" text-anchor="middle" font-family="var(--sans)" font-size="10.5" fill="var(--white)">The Buddha</text>
-      </g>
-      <text x="210" y="148" text-anchor="middle" font-family="var(--sans)" font-size="9" letter-spacing="2" fill="var(--dim)" opacity="0.7" style="text-transform:uppercase;">Western Lineage</text>
-      <g class="masters-map-node" tabindex="0" role="button" aria-label="Socrates — The Examined Life" onclick="scrollToMasterCard(4)" onkeypress="if(event.key==='Enter')scrollToMasterCard(4)">
-        <title>Socrates</title>
-        <circle class="masters-node-bg" cx="70" cy="192" r="24" fill="var(--bg-lift)" stroke="var(--dim)" stroke-width="1.5"/>
-        <text x="70" y="198" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--dim)">4</text>
-        <text x="70" y="232" text-anchor="middle" font-family="var(--sans)" font-size="10.5" fill="var(--white)">Socrates</text>
-      </g>
-      <g class="masters-map-node" tabindex="0" role="button" aria-label="Marcus Aurelius — Stoicism" onclick="scrollToMasterCard(5)" onkeypress="if(event.key==='Enter')scrollToMasterCard(5)">
-        <title>Marcus Aurelius</title>
-        <circle class="masters-node-bg" cx="210" cy="192" r="24" fill="var(--bg-lift)" stroke="var(--dim)" stroke-width="1.5"/>
-        <text x="210" y="198" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--dim)">5</text>
-        <text x="210" y="232" text-anchor="middle" font-family="var(--sans)" font-size="10.5" fill="var(--white)">Marcus Aurelius</text>
-      </g>
-      <g class="masters-map-node" tabindex="0" role="button" aria-label="Eckhart Tolle — Present-Moment Teaching" onclick="scrollToMasterCard(6)" onkeypress="if(event.key==='Enter')scrollToMasterCard(6)">
-        <title>Eckhart Tolle</title>
-        <circle class="masters-node-bg" cx="350" cy="192" r="24" fill="var(--bg-lift)" stroke="var(--dim)" stroke-width="1.5"/>
-        <text x="350" y="198" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--dim)">6</text>
-        <text x="350" y="232" text-anchor="middle" font-family="var(--sans)" font-size="10.5" fill="var(--white)">Eckhart Tolle</text>
-      </g>
-    </svg>
-    <p style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#555;text-align:center;margin-top:8px;">Tap a teacher to jump to their card</p>
-  </div>
-
-  <div style="text-align:center;margin-top:36px;margin-bottom:8px;">
-    <button class="collapse-toggle-btn" onclick="sectionCollapse('masters-full-content',this)">Expand &#9660;</button>
-    <p class="section-collapse-label">Section collapsed by default — tap to expand all six masters</p>
-  </div>
-  <div id="masters-full-content" class="section-collapse-wrap collapsed">
-  <p style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.7;text-align:left;max-width:980px;margin:40px auto 16px;">The Eastern Lineage</p>
-  <div class="masters-grid">
-    <div class="identity-card" id="master-card-1">
-      <span class="layer-tag">Bhakti Yoga &middot; ISKCON</span>
-      <h4>Srila Prabhupada</h4>
-      <p>Taught through a systematic methodology requiring authoritative intellect, and logical deduction &mdash; treating the science of the soul with the same rigor as any verifiable discipline, not as private feeling.</p>
-      <p class="practice">Metaphor: The physics of the soul. Knowledge as verifiable science.</p>
-    </div>
-    <div class="identity-card" id="master-card-2">
-      <span class="layer-tag">The Art of Living</span>
-      <h4>Gurudev Sri Sri Ravi Shankar</h4>
-      <p>Taught through breath, silence, and present-moment awareness &mdash; moving practitioners from a localized, defended ego toward an experience of infinite, expanding consciousness.</p>
-      <p class="practice">Metaphor: The expanding space. Localized ego dissolving into the room it was always inside of.</p>
-    </div>
-    <div class="identity-card" id="master-card-3">
-      <span class="layer-tag">Buddhism &middot; The Middle Way</span>
-      <h4>The Buddha</h4>
-      <p>Taught through direct observation of suffering itself &mdash; not a revealed doctrine handed down, but a method anyone could verify by examining their own mind closely enough.</p>
-      <p class="practice">Metaphor: The raft. A teaching built to be used and then set down, not worshipped as the destination.</p>
-    </div>
-  </div>
-
-  <p style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.7;text-align:left;max-width:980px;margin:40px auto 16px;">The Western Lineage</p>
-  <div class="masters-grid">
-    <div class="identity-card" id="master-card-4">
-      <span class="layer-tag">Classical Greek &middot; The Examined Life</span>
-      <h4>Socrates</h4>
-      <p>Taught through relentless question, not doctrine &mdash; stripping away every inherited assumption until only what could survive scrutiny remained. The unexamined life, in his accounting, was not worth living.</p>
-      <p class="practice">Metaphor: The midwife. Drawing out a truth the student already carried, rather than installing a new one.</p>
-    </div>
-    <div class="identity-card" id="master-card-5">
-      <span class="layer-tag">Stoicism &middot; Roman Imperial Period</span>
-      <h4>Marcus Aurelius</h4>
-      <p>Taught through private discipline rather than public doctrine &mdash; an emperor writing nightly reminders to himself that status, applause, and even the empire were never the territory a person actually governs.</p>
-      <p class="practice">Metaphor: The citadel. An inner fortress no circumstance is permitted to breach.</p>
-      <div style="margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.08);">
-        <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:8px;">A second Stoic voice</p>
-        <p>Seneca taught the same discipline turned toward a different target: not the emperor's power but the ordinary day. His warning was that most people live as if life were a rehearsal for a better one that starts once conditions are right &mdash; and that the waiting never actually ends, because every arrival just reveals the next thing to wait for.</p>
-        <p class="practice">Metaphor: The rounded whole. A single day, lived and closed on its own terms, is a complete life &mdash; not a fragment of an unfinished one.</p>
-        <p style="text-align:left;margin-top:10px;"><a class="src-tag src-trad" href="#sources">Traditional Source</a> &mdash; Seneca, <em style="color:var(--dim);">Letters from a Stoic</em>, Letter I: &ldquo;begin at once to live, and count each separate day as a separate life.&rdquo;</p>
-      </div>
-    </div>
-    <div class="identity-card" id="master-card-6">
-      <span class="layer-tag">Contemporary &middot; Present-Moment Teaching</span>
-      <h4>Eckhart Tolle</h4>
-      <p>Taught through the dissolution of psychological time &mdash; locating suffering not in circumstance itself, but in the mind's compulsive narration of past and future as the only moment that has ever existed.</p>
-      <p class="practice">Metaphor: The vertical dimension. Depth available in this instant, not a destination reached later.</p>
-    </div>
-  </div>
-
-  </div>
-  <!-- Radhanath Swami quote — standalone, always visible (not gated behind
-       Expand All). Width matched to the closing pull-quote below (both
-       resolve to 900px via .pq-standalone's max-width !important). -->
-  <div class="cosmo-quote" style="max-width:900px;margin:48px auto 0;">
-    <p>&ldquo;If you want to know how rich you are, try to find how many things you have that money cannot buy.&rdquo;</p>
-    <cite>&mdash; Radhanath Swami</cite>
-  </div>
-  <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);font-style:italic;line-height:1.9;max-width:900px;margin:24px auto 0;text-align:left;">Net worth was never the indicator. The true ledger counts what was acquired that no transaction could have purchased &mdash; the things still present after the money, the title, and the applause are gone.</p>
-  <!-- Closing pull quote — standalone, always visible -->
-  <p class="pq-standalone" style="font-family:var(--serif);font-size:clamp(16px,2.2vw,20px);color:var(--gold);font-style:italic;line-height:1.9;padding:24px 28px;background:var(--bg-lift);max-width:900px;margin:24px auto 0;text-align:center;">Six different vocabularies. Six different centuries. The same person, arrived at from six different directions.</p>
-</section>
-<span class="continue-hint">continue</span>
-<div class="divider"></div>
 
 <!-- FOUR YOGAS -->
 <section class="section-wide" id="four-yogas" style="scroll-margin-top:56px;">
@@ -11503,6 +11371,135 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
   </div>
   </div>
 </section>
+
+<!-- THE MASTERS — East and West, converging on the same destination -->
+<section class="section-wide" id="masters" style="scroll-margin-top:56px;">
+  <span class="label">The Masters at a Glance</span>
+  <h2>Six teachers. Two hemispheres. One destination.</h2>
+  <p class="sub" style="max-width:900px;margin:0 auto;">The <a href="#subtilization" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">path of subtilization</a> was never the property of one tradition. East and West independently arrived at the same <a href="#spectrum" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">map</a> &mdash;By holding different lanterns. See the full coordinate-by-coordinate reference in <a href="#master-matrix" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">the Master Matrix</a>.</p>
+
+  <!-- MASTERS AT A GLANCE MAP — always-visible navigator, two rows of
+       three (Eastern / Western lineage). Tapping a node expands the grid
+       (if collapsed) and scrolls to + flashes that teacher's card. -->
+  <div style="max-width:460px;margin:32px auto 36px;">
+    <svg viewBox="0 0 420 250" style="width:100%;height:auto;overflow:visible;" role="img" aria-label="Masters at a Glance map — tap a teacher to jump to their card">
+      <style>
+        .masters-map-node{cursor:pointer;}
+        .masters-map-node:hover circle.masters-node-bg{fill:rgba(var(--accent-gold-rgb),.14);stroke:var(--gold);}
+        .masters-map-node:focus circle.masters-node-bg{fill:rgba(var(--accent-gold-rgb),.14);stroke:var(--gold);}
+        .masters-map-node text{pointer-events:none;}
+      </style>
+      <text x="210" y="16" text-anchor="middle" font-family="var(--sans)" font-size="9" letter-spacing="2" fill="var(--dim)" opacity="0.7" style="text-transform:uppercase;">Eastern Lineage</text>
+      <g class="masters-map-node" tabindex="0" role="button" aria-label="Srila Prabhupada — Bhakti Yoga, ISKCON" onclick="scrollToMasterCard(1)" onkeypress="if(event.key==='Enter')scrollToMasterCard(1)">
+        <title>Srila Prabhupada</title>
+        <circle class="masters-node-bg" cx="70" cy="60" r="24" fill="var(--bg-lift)" stroke="var(--dim)" stroke-width="1.5"/>
+        <text x="70" y="66" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--dim)">1</text>
+        <text x="70" y="100" text-anchor="middle" font-family="var(--sans)" font-size="10.5" fill="var(--white)">Prabhupada</text>
+      </g>
+      <g class="masters-map-node" tabindex="0" role="button" aria-label="Gurudev Sri Sri Ravi Shankar — The Art of Living" onclick="scrollToMasterCard(2)" onkeypress="if(event.key==='Enter')scrollToMasterCard(2)">
+        <title>Sri Sri Ravi Shankar</title>
+        <circle class="masters-node-bg" cx="210" cy="60" r="24" fill="var(--bg-lift)" stroke="var(--dim)" stroke-width="1.5"/>
+        <text x="210" y="66" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--dim)">2</text>
+        <text x="210" y="100" text-anchor="middle" font-family="var(--sans)" font-size="10.5" fill="var(--white)">Sri Sri Ravi Shankar</text>
+      </g>
+      <g class="masters-map-node" tabindex="0" role="button" aria-label="The Buddha — The Middle Way" onclick="scrollToMasterCard(3)" onkeypress="if(event.key==='Enter')scrollToMasterCard(3)">
+        <title>The Buddha</title>
+        <circle class="masters-node-bg" cx="350" cy="60" r="24" fill="var(--bg-lift)" stroke="var(--dim)" stroke-width="1.5"/>
+        <text x="350" y="66" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--dim)">3</text>
+        <text x="350" y="100" text-anchor="middle" font-family="var(--sans)" font-size="10.5" fill="var(--white)">The Buddha</text>
+      </g>
+      <text x="210" y="148" text-anchor="middle" font-family="var(--sans)" font-size="9" letter-spacing="2" fill="var(--dim)" opacity="0.7" style="text-transform:uppercase;">Western Lineage</text>
+      <g class="masters-map-node" tabindex="0" role="button" aria-label="Socrates — The Examined Life" onclick="scrollToMasterCard(4)" onkeypress="if(event.key==='Enter')scrollToMasterCard(4)">
+        <title>Socrates</title>
+        <circle class="masters-node-bg" cx="70" cy="192" r="24" fill="var(--bg-lift)" stroke="var(--dim)" stroke-width="1.5"/>
+        <text x="70" y="198" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--dim)">4</text>
+        <text x="70" y="232" text-anchor="middle" font-family="var(--sans)" font-size="10.5" fill="var(--white)">Socrates</text>
+      </g>
+      <g class="masters-map-node" tabindex="0" role="button" aria-label="Marcus Aurelius — Stoicism" onclick="scrollToMasterCard(5)" onkeypress="if(event.key==='Enter')scrollToMasterCard(5)">
+        <title>Marcus Aurelius</title>
+        <circle class="masters-node-bg" cx="210" cy="192" r="24" fill="var(--bg-lift)" stroke="var(--dim)" stroke-width="1.5"/>
+        <text x="210" y="198" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--dim)">5</text>
+        <text x="210" y="232" text-anchor="middle" font-family="var(--sans)" font-size="10.5" fill="var(--white)">Marcus Aurelius</text>
+      </g>
+      <g class="masters-map-node" tabindex="0" role="button" aria-label="Eckhart Tolle — Present-Moment Teaching" onclick="scrollToMasterCard(6)" onkeypress="if(event.key==='Enter')scrollToMasterCard(6)">
+        <title>Eckhart Tolle</title>
+        <circle class="masters-node-bg" cx="350" cy="192" r="24" fill="var(--bg-lift)" stroke="var(--dim)" stroke-width="1.5"/>
+        <text x="350" y="198" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--dim)">6</text>
+        <text x="350" y="232" text-anchor="middle" font-family="var(--sans)" font-size="10.5" fill="var(--white)">Eckhart Tolle</text>
+      </g>
+    </svg>
+    <p style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#555;text-align:center;margin-top:8px;">Tap a teacher to jump to their card</p>
+  </div>
+
+  <div style="text-align:center;margin-top:36px;margin-bottom:8px;">
+    <button class="collapse-toggle-btn" onclick="sectionCollapse('masters-full-content',this)">Expand &#9660;</button>
+    <p class="section-collapse-label">Section collapsed by default — tap to expand all six masters</p>
+  </div>
+  <div id="masters-full-content" class="section-collapse-wrap collapsed">
+  <p style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.7;text-align:left;max-width:980px;margin:40px auto 16px;">The Eastern Lineage</p>
+  <div class="masters-grid">
+    <div class="identity-card" id="master-card-1">
+      <span class="layer-tag">Bhakti Yoga &middot; ISKCON</span>
+      <h4>Srila Prabhupada</h4>
+      <p>Taught through a systematic methodology requiring authoritative intellect, and logical deduction &mdash; treating the science of the soul with the same rigor as any verifiable discipline, not as private feeling.</p>
+      <p class="practice">Metaphor: The physics of the soul. Knowledge as verifiable science.</p>
+    </div>
+    <div class="identity-card" id="master-card-2">
+      <span class="layer-tag">The Art of Living</span>
+      <h4>Gurudev Sri Sri Ravi Shankar</h4>
+      <p>Taught through breath, silence, and present-moment awareness &mdash; moving practitioners from a localized, defended ego toward an experience of infinite, expanding consciousness.</p>
+      <p class="practice">Metaphor: The expanding space. Localized ego dissolving into the room it was always inside of.</p>
+    </div>
+    <div class="identity-card" id="master-card-3">
+      <span class="layer-tag">Buddhism &middot; The Middle Way</span>
+      <h4>The Buddha</h4>
+      <p>Taught through direct observation of suffering itself &mdash; not a revealed doctrine handed down, but a method anyone could verify by examining their own mind closely enough.</p>
+      <p class="practice">Metaphor: The raft. A teaching built to be used and then set down, not worshipped as the destination.</p>
+    </div>
+  </div>
+
+  <p style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.7;text-align:left;max-width:980px;margin:40px auto 16px;">The Western Lineage</p>
+  <div class="masters-grid">
+    <div class="identity-card" id="master-card-4">
+      <span class="layer-tag">Classical Greek &middot; The Examined Life</span>
+      <h4>Socrates</h4>
+      <p>Taught through relentless question, not doctrine &mdash; stripping away every inherited assumption until only what could survive scrutiny remained. The unexamined life, in his accounting, was not worth living.</p>
+      <p class="practice">Metaphor: The midwife. Drawing out a truth the student already carried, rather than installing a new one.</p>
+    </div>
+    <div class="identity-card" id="master-card-5">
+      <span class="layer-tag">Stoicism &middot; Roman Imperial Period</span>
+      <h4>Marcus Aurelius</h4>
+      <p>Taught through private discipline rather than public doctrine &mdash; an emperor writing nightly reminders to himself that status, applause, and even the empire were never the territory a person actually governs.</p>
+      <p class="practice">Metaphor: The citadel. An inner fortress no circumstance is permitted to breach.</p>
+      <div style="margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.08);">
+        <p style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:8px;">A second Stoic voice</p>
+        <p>Seneca taught the same discipline turned toward a different target: not the emperor's power but the ordinary day. His warning was that most people live as if life were a rehearsal for a better one that starts once conditions are right &mdash; and that the waiting never actually ends, because every arrival just reveals the next thing to wait for.</p>
+        <p class="practice">Metaphor: The rounded whole. A single day, lived and closed on its own terms, is a complete life &mdash; not a fragment of an unfinished one.</p>
+        <p style="text-align:left;margin-top:10px;"><a class="src-tag src-trad" href="#sources">Traditional Source</a> &mdash; Seneca, <em style="color:var(--dim);">Letters from a Stoic</em>, Letter I: &ldquo;begin at once to live, and count each separate day as a separate life.&rdquo;</p>
+      </div>
+    </div>
+    <div class="identity-card" id="master-card-6">
+      <span class="layer-tag">Contemporary &middot; Present-Moment Teaching</span>
+      <h4>Eckhart Tolle</h4>
+      <p>Taught through the dissolution of psychological time &mdash; locating suffering not in circumstance itself, but in the mind's compulsive narration of past and future as the only moment that has ever existed.</p>
+      <p class="practice">Metaphor: The vertical dimension. Depth available in this instant, not a destination reached later.</p>
+    </div>
+  </div>
+
+  </div>
+  <!-- Radhanath Swami quote — standalone, always visible (not gated behind
+       Expand All). Width matched to the closing pull-quote below (both
+       resolve to 900px via .pq-standalone's max-width !important). -->
+  <div class="cosmo-quote" style="max-width:900px;margin:48px auto 0;">
+    <p>&ldquo;If you want to know how rich you are, try to find how many things you have that money cannot buy.&rdquo;</p>
+    <cite>&mdash; Radhanath Swami</cite>
+  </div>
+  <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);font-style:italic;line-height:1.9;max-width:900px;margin:24px auto 0;text-align:left;">Net worth was never the indicator. The true ledger counts what was acquired that no transaction could have purchased &mdash; the things still present after the money, the title, and the applause are gone.</p>
+  <!-- Closing pull quote — standalone, always visible -->
+  <p class="pq-standalone" style="font-family:var(--serif);font-size:clamp(16px,2.2vw,20px);color:var(--gold);font-style:italic;line-height:1.9;padding:24px 28px;background:var(--bg-lift);max-width:900px;margin:24px auto 0;text-align:center;">Six different vocabularies. Six different centuries. The same person, arrived at from six different directions.</p>
+</section>
+<span class="continue-hint">continue</span>
+<div class="divider"></div>
 
 <!-- ══════════════════════════ ENHANCED MASTER MATRIX ══════════════════════ -->
 <section id="master-matrix" style="padding:90px 24px;background:var(--bg);border-top:1px solid #111;overflow-x:hidden;">
