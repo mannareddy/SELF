@@ -598,22 +598,46 @@ body{
 .three-bodies-table th,
 .three-bodies-table td{text-align:left;}
 @media (max-width:600px){
-  .three-bodies-table th,
+  /* The table's own min-width:560px (set inline, for desktop's fixed column
+     ratios) was wider than most phone screens, so the third column sat off
+     to the right of the visible viewport with no visible scroll affordance —
+     it looked missing rather than merely scrollable. Let it shrink to fit
+     instead, same as every other cell already wraps to multiple lines. */
+  .three-bodies-table{min-width:0 !important;}
+  /* th (column headers, e.g. "Sukshma Sarira") and td (data cells) use very
+     different font sizes by design (10px uppercase label vs 13.5px serif
+     body) — forcing both to one size previously made the header text bigger
+     than intended, which is what pushed "Sukshma Sarira" into a mid-word
+     wrap. Shrink each from its own baseline instead of equalizing them. */
+  .three-bodies-table th{
+    font-size:8.5px !important;
+    letter-spacing:0.5px !important;
+    padding:8px 5px !important;
+    line-height:1.4 !important;
+  }
   .three-bodies-table td{
     font-size:12px !important;
-    padding:9px 10px !important;
-    line-height:1.5 !important;
+    padding:8px 7px !important;
+    line-height:1.55 !important;
   }
-  /* First column ("Composition"/"Koshas"/"State"/"Karmic Role") was clipping
-     at the 16% desktop width once mobile font-size kicked in — widen it and
-     tighten its letter-spacing so labels like "Karmic Role" fit on one line. */
-  .three-bodies-table col:first-child{width:26%;}
-  .three-bodies-table col:not(:first-child){width:24.67%;}
+  /* Label column ("Composition"/"Koshas"/"State"/"Karmic Role") only needs
+     room for short words, so it's narrower on mobile than desktop, freeing
+     width for the three data columns (which is also what lets the header
+     text above have a shot at fitting on one line). "Composition" has no
+     space to wrap on, though — at the narrower width it was overflowing
+     its cell and visually overlapping the text next to it, rather than
+     wrapping, since a single word with no break point can't drop to a
+     second line on its own. overflow-wrap forces a mid-word break instead
+     of letting it spill into the next column. */
+  .three-bodies-table col:first-child{width:16%;}
+  .three-bodies-table col:not(:first-child){width:28%;}
   .three-bodies-table th:first-child,
   .three-bodies-table td:first-child{
-    letter-spacing:0.5px !important;
-    padding-left:8px !important;
-    padding-right:6px !important;
+    letter-spacing:0.3px !important;
+    padding-left:6px !important;
+    padding-right:3px !important;
+    overflow-wrap:break-word;
+    word-break:break-word;
   }
 }
   /* Table wrappers — full frame border */
