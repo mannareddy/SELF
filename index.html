@@ -593,6 +593,18 @@ body{
     padding:10px 8px;
   }
 }
+/* Three Bodies table — same left-alignment fix as elsewhere (cells were
+   inheriting body{text-align:center}), plus tighter mobile sizing. */
+.three-bodies-table th,
+.three-bodies-table td{text-align:left;}
+@media (max-width:600px){
+  .three-bodies-table th,
+  .three-bodies-table td{
+    font-size:12px !important;
+    padding:9px 10px !important;
+    line-height:1.5 !important;
+  }
+}
   /* Table wrappers — full frame border */
  .self-table-wrap{
   width:100%;
@@ -3852,7 +3864,6 @@ a.src-tag:hover{opacity:.75;}
             <a href="#necessity-of-maya" data-group="path">The Necessity of Maya</a>
             <a href="#destiny-and-free-will" data-group="path">Destiny vs Free Will</a>
             <a href="#physical-correlate" data-group="path">A Note for the Skeptics</a>
-            <a href="#proprioception-of-thought" data-group="path">Proprioception of Thought</a>
           </div>
         </div>
         <div class="nav-subgroup">
@@ -3939,7 +3950,6 @@ a.src-tag:hover{opacity:.75;}
             <a href="#dimension" data-group="traditions">Matter as Dimension</a>
             <a href="#consciousness" data-group="traditions">Consciousness &amp; Awareness</a>
             <a href="#physical-correlate" data-group="traditions">A Note for the Skeptics</a>
-            <a href="#proprioception-of-thought" data-group="traditions">Proprioception of Thought</a>
             <a href="#antahkaran" data-group="traditions">The Fourfold Mind</a>
             <a href="#ego" data-group="traditions">Ego Architecture</a>
             <a href="#sublimation" data-group="traditions">The Law of Sublimation</a>
@@ -4140,7 +4150,6 @@ a.src-tag:hover{opacity:.75;}
         <li><a href="#necessity-of-maya">The Necessity of Maya</a></li>
         <li><a href="#destiny-and-free-will">Destiny vs Free Will</a></li>
         <li><a href="#physical-correlate">A Note for the Skeptics</a></li>
-        <li><a href="#proprioception-of-thought">Proprioception of Thought</a></li>
       </ul>
     </div>
 
@@ -4261,7 +4270,6 @@ a.src-tag:hover{opacity:.75;}
         <li><a href="#dimension">Matter as Dimension</a></li>
         <li><a href="#consciousness">Consciousness &amp; Awareness</a></li>
         <li><a href="#physical-correlate">A Note for the Skeptics</a></li>
-        <li><a href="#proprioception-of-thought">Proprioception of Thought</a></li>
         <li><a href="#antahkaran">The Fourfold Mind</a></li>
         <li><a href="#ego">Ego Architecture</a></li>
         <li><a href="#sublimation">The Law of Sublimation</a></li>
@@ -6707,39 +6715,45 @@ a.src-tag:hover{opacity:.75;}
     <div id="three-bodies-detail" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 48px;">
       <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--grey);line-height:1.9;margin:20px 0 24px;text-align:left;">Waking, dream, and deep sleep, above, describe what each state feels like from inside it. Vedanta also names what's actually running each one &mdash; three <span class="gloss">Sarira<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Sarira">+</span><span class="gloss-pop">Literally &ldquo;body&rdquo; &mdash; the three nested vehicles (gross, subtle, causal) consciousness is said to operate through, each one wrapped in the next.</span></span>, nested inside each other the way the nineteen mouths above were nested inside waking alone. The five Koshas, scattered across this page as separate glosses, are these three bodies sorted into their layers.</p>
       <div style="overflow-x:auto;max-width:820px;margin:0 auto 24px;">
-      <table style="width:100%;border-collapse:collapse;min-width:560px;">
+      <table class="three-bodies-table" style="width:100%;border-collapse:collapse;min-width:560px;table-layout:fixed;border:1.5px solid rgba(var(--accent-gold-rgb),0.35);">
+        <colgroup>
+          <col style="width:16%;">
+          <col style="width:28%;">
+          <col style="width:28%;">
+          <col style="width:28%;">
+        </colgroup>
         <thead>
           <tr>
-            <th style="font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);text-align:left;padding:10px 14px;border-bottom:1.5px solid rgba(var(--accent-gold-rgb),0.35);"></th>
-            <th style="font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--grey);text-align:left;padding:10px 14px;border-bottom:1.5px solid rgba(var(--accent-gold-rgb),0.35);"><span class="gloss">Sthula Sarira<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Sthula Sarira">+</span><span class="gloss-pop">The gross body &mdash; made of the five elements, the vehicle for the waking state.</span></span><br><span style="opacity:.65;font-weight:400;text-transform:none;letter-spacing:0;">Gross Body</span></th>
-            <th style="font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--mid);text-align:left;padding:10px 14px;border-bottom:1.5px solid rgba(var(--accent-gold-rgb),0.35);"><span class="gloss">Sukshma Sarira<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Sukshma Sarira">+</span><span class="gloss-pop">The subtle body &mdash; the Antahkarana plus the Pranas and subtle senses, the vehicle for the dream state.</span></span><br><span style="opacity:.65;font-weight:400;text-transform:none;letter-spacing:0;">Subtle Body</span></th>
+            <th style="font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);text-align:left;padding:10px 14px;border-bottom:1.5px solid rgba(var(--accent-gold-rgb),0.35);border-right:1px solid rgba(var(--accent-gold-rgb),0.25);"></th>
+            <th style="font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--grey);text-align:left;padding:10px 14px;border-bottom:1.5px solid rgba(var(--accent-gold-rgb),0.35);border-right:1px solid rgba(var(--accent-gold-rgb),0.25);"><span class="gloss">Sthula Sarira<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Sthula Sarira">+</span><span class="gloss-pop">The gross body &mdash; made of the five elements, the vehicle for the waking state.</span></span><br><span style="opacity:.65;font-weight:400;text-transform:none;letter-spacing:0;">Gross Body</span></th>
+            <th style="font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--mid);text-align:left;padding:10px 14px;border-bottom:1.5px solid rgba(var(--accent-gold-rgb),0.35);border-right:1px solid rgba(var(--accent-gold-rgb),0.25);"><span class="gloss">Sukshma Sarira<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Sukshma Sarira">+</span><span class="gloss-pop">The subtle body &mdash; the Antahkarana plus the Pranas and subtle senses, the vehicle for the dream state.</span></span><br><span style="opacity:.65;font-weight:400;text-transform:none;letter-spacing:0;">Subtle Body</span></th>
             <th style="font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);text-align:left;padding:10px 14px;border-bottom:1.5px solid rgba(var(--accent-gold-rgb),0.55);"><span class="gloss">Karana Sarira<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Karana Sarira">+</span><span class="gloss-pop">The causal body &mdash; undifferentiated ignorance itself, the seed-store vehicle for deep sleep.</span></span><br><span style="opacity:.65;font-weight:400;text-transform:none;letter-spacing:0;">Causal Body</span></th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td style="font-family:var(--sans);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);padding:12px 14px;border-top:1px solid rgba(var(--accent-gold-rgb),0.2);">Composition</td>
-            <td style="font-family:var(--serif);font-size:13.5px;color:var(--grey);padding:12px 14px;border-top:1px solid rgba(var(--accent-gold-rgb),0.2);">The five gross elements</td>
-            <td style="font-family:var(--serif);font-size:13.5px;color:var(--mid);padding:12px 14px;border-top:1px solid rgba(var(--accent-gold-rgb),0.2);">Nineteen elements, incl. the Antahkarana</td>
-            <td style="font-family:var(--serif);font-size:13.5px;color:var(--gold);padding:12px 14px;border-top:1px solid rgba(var(--accent-gold-rgb),0.2);">Primal ignorance (Avidya) alone</td>
+            <td style="font-family:var(--sans);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);text-align:left;vertical-align:top;padding:12px 14px;border-top:1px solid rgba(var(--accent-gold-rgb),0.2);border-right:1px solid rgba(var(--accent-gold-rgb),0.25);">Composition</td>
+            <td style="font-family:var(--serif);font-size:13.5px;color:var(--grey);text-align:left;vertical-align:top;padding:12px 14px;border-top:1px solid rgba(var(--accent-gold-rgb),0.2);border-right:1px solid rgba(var(--accent-gold-rgb),0.25);">The five gross elements</td>
+            <td style="font-family:var(--serif);font-size:13.5px;color:var(--mid);text-align:left;vertical-align:top;padding:12px 14px;border-top:1px solid rgba(var(--accent-gold-rgb),0.2);border-right:1px solid rgba(var(--accent-gold-rgb),0.25);">Nineteen elements, incl. the Antahkarana</td>
+            <td style="font-family:var(--serif);font-size:13.5px;color:var(--gold);text-align:left;vertical-align:top;padding:12px 14px;border-top:1px solid rgba(var(--accent-gold-rgb),0.2);">Primal ignorance (Avidya) alone</td>
           </tr>
           <tr>
-            <td style="font-family:var(--sans);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);padding:12px 14px;border-top:1px solid rgba(var(--accent-gold-rgb),0.2);">Koshas</td>
-            <td style="font-family:var(--serif);font-size:13.5px;color:var(--grey);padding:12px 14px;border-top:1px solid rgba(var(--accent-gold-rgb),0.2);">Annamaya</td>
-            <td style="font-family:var(--serif);font-size:13.5px;color:var(--mid);padding:12px 14px;border-top:1px solid rgba(var(--accent-gold-rgb),0.2);">Pranamaya, Manomaya, Vijnanamaya</td>
-            <td style="font-family:var(--serif);font-size:13.5px;color:var(--gold);padding:12px 14px;border-top:1px solid rgba(var(--accent-gold-rgb),0.2);">Anandamaya</td>
+            <td style="font-family:var(--sans);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);text-align:left;vertical-align:top;padding:12px 14px;border-top:1px solid rgba(var(--accent-gold-rgb),0.2);border-right:1px solid rgba(var(--accent-gold-rgb),0.25);">Koshas</td>
+            <td style="font-family:var(--serif);font-size:13.5px;color:var(--grey);text-align:left;vertical-align:top;padding:12px 14px;border-top:1px solid rgba(var(--accent-gold-rgb),0.2);border-right:1px solid rgba(var(--accent-gold-rgb),0.25);">Annamaya</td>
+            <td style="font-family:var(--serif);font-size:13.5px;color:var(--mid);text-align:left;vertical-align:top;padding:12px 14px;border-top:1px solid rgba(var(--accent-gold-rgb),0.2);border-right:1px solid rgba(var(--accent-gold-rgb),0.25);">Pranamaya, Manomaya, Vijnanamaya</td>
+            <td style="font-family:var(--serif);font-size:13.5px;color:var(--gold);text-align:left;vertical-align:top;padding:12px 14px;border-top:1px solid rgba(var(--accent-gold-rgb),0.2);">Anandamaya</td>
           </tr>
           <tr>
-            <td style="font-family:var(--sans);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);padding:12px 14px;border-top:1px solid rgba(var(--accent-gold-rgb),0.2);">State</td>
-            <td style="font-family:var(--serif);font-size:13.5px;color:var(--grey);padding:12px 14px;border-top:1px solid rgba(var(--accent-gold-rgb),0.2);">Jagrat &middot; Waking</td>
-            <td style="font-family:var(--serif);font-size:13.5px;color:var(--mid);padding:12px 14px;border-top:1px solid rgba(var(--accent-gold-rgb),0.2);">Svapna &middot; Dream</td>
-            <td style="font-family:var(--serif);font-size:13.5px;color:var(--gold);padding:12px 14px;border-top:1px solid rgba(var(--accent-gold-rgb),0.2);">Prajna &middot; Deep Sleep</td>
+            <td style="font-family:var(--sans);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);text-align:left;vertical-align:top;padding:12px 14px;border-top:1px solid rgba(var(--accent-gold-rgb),0.2);border-right:1px solid rgba(var(--accent-gold-rgb),0.25);">State</td>
+            <td style="font-family:var(--serif);font-size:13.5px;color:var(--grey);text-align:left;vertical-align:top;padding:12px 14px;border-top:1px solid rgba(var(--accent-gold-rgb),0.2);border-right:1px solid rgba(var(--accent-gold-rgb),0.25);">Jagrat &middot; Waking</td>
+            <td style="font-family:var(--serif);font-size:13.5px;color:var(--mid);text-align:left;vertical-align:top;padding:12px 14px;border-top:1px solid rgba(var(--accent-gold-rgb),0.2);border-right:1px solid rgba(var(--accent-gold-rgb),0.25);">Svapna &middot; Dream</td>
+            <td style="font-family:var(--serif);font-size:13.5px;color:var(--gold);text-align:left;vertical-align:top;padding:12px 14px;border-top:1px solid rgba(var(--accent-gold-rgb),0.2);">Prajna &middot; Deep Sleep</td>
           </tr>
           <tr>
-            <td style="font-family:var(--sans);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);padding:12px 14px;border-top:1px solid rgba(var(--accent-gold-rgb),0.2);">Karmic Role</td>
-            <td style="font-family:var(--serif);font-size:13.5px;color:var(--grey);padding:12px 14px;border-top:1px solid rgba(var(--accent-gold-rgb),0.2);">Where <a href="#destiny-and-free-will" style="color:var(--grey);text-decoration:none;border-bottom:1px dotted var(--dim);">Prarabdha</a> is actually lived out</td>
-            <td style="font-family:var(--serif);font-size:13.5px;color:var(--mid);padding:12px 14px;border-top:1px solid rgba(var(--accent-gold-rgb),0.2);">Carries the desires and thoughts that transmigrate</td>
-            <td style="font-family:var(--serif);font-size:13.5px;color:var(--gold);padding:12px 14px;border-top:1px solid rgba(var(--accent-gold-rgb),0.2);">The blueprint; stores unmanifest <a href="#destiny-and-free-will" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">Sanchita</a> seeds</td>
+            <td style="font-family:var(--sans);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);text-align:left;vertical-align:top;padding:12px 14px;border-top:1px solid rgba(var(--accent-gold-rgb),0.2);border-right:1px solid rgba(var(--accent-gold-rgb),0.25);">Karmic Role</td>
+            <td style="font-family:var(--serif);font-size:13.5px;color:var(--grey);text-align:left;vertical-align:top;padding:12px 14px;border-top:1px solid rgba(var(--accent-gold-rgb),0.2);border-right:1px solid rgba(var(--accent-gold-rgb),0.25);">Where <a href="#destiny-and-free-will" style="color:var(--grey);text-decoration:none;border-bottom:1px dotted var(--dim);">Prarabdha</a> is actually lived out</td>
+            <td style="font-family:var(--serif);font-size:13.5px;color:var(--mid);text-align:left;vertical-align:top;padding:12px 14px;border-top:1px solid rgba(var(--accent-gold-rgb),0.2);border-right:1px solid rgba(var(--accent-gold-rgb),0.25);">Carries the desires and thoughts that transmigrate</td>
+            <td style="font-family:var(--serif);font-size:13.5px;color:var(--gold);text-align:left;vertical-align:top;padding:12px 14px;border-top:1px solid rgba(var(--accent-gold-rgb),0.2);">The blueprint; stores unmanifest <a href="#destiny-and-free-will" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">Sanchita</a> seeds</td>
           </tr>
         </tbody>
       </table>
