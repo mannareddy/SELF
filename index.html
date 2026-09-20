@@ -604,6 +604,17 @@ body{
     padding:9px 10px !important;
     line-height:1.5 !important;
   }
+  /* First column ("Composition"/"Koshas"/"State"/"Karmic Role") was clipping
+     at the 16% desktop width once mobile font-size kicked in — widen it and
+     tighten its letter-spacing so labels like "Karmic Role" fit on one line. */
+  .three-bodies-table col:first-child{width:26%;}
+  .three-bodies-table col:not(:first-child){width:24.67%;}
+  .three-bodies-table th:first-child,
+  .three-bodies-table td:first-child{
+    letter-spacing:0.5px !important;
+    padding-left:8px !important;
+    padding-right:6px !important;
+  }
 }
   /* Table wrappers — full frame border */
  .self-table-wrap{
