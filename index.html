@@ -11443,7 +11443,7 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
     <p class="section-collapse-label">Section collapsed by default — tap to expand all six masters</p>
   </div>
   <div id="masters-full-content" class="section-collapse-wrap collapsed">
-  <p style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.7;text-align:left;max-width:900px;margin:40px auto 16px;">The Eastern Lineage</p>
+  <p style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.7;text-align:left;max-width:980px;margin:40px auto 16px;">The Eastern Lineage</p>
   <div class="masters-grid">
     <div class="identity-card" id="master-card-1">
       <span class="layer-tag">Bhakti Yoga &middot; ISKCON</span>
@@ -11465,7 +11465,7 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
     </div>
   </div>
 
-  <p style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.7;text-align:left;max-width:900px;margin:40px auto 16px;">The Western Lineage</p>
+  <p style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.7;text-align:left;max-width:980px;margin:40px auto 16px;">The Western Lineage</p>
   <div class="masters-grid">
     <div class="identity-card" id="master-card-4">
       <span class="layer-tag">Classical Greek &middot; The Examined Life</span>
@@ -14543,7 +14543,7 @@ function updateNav(){
       // (e.g. "Start Here", "The Vedantic Architecture") centers upward
       // and renders behind .site-nav instead of stopping at its bottom edge.
       var navEl = document.querySelector('.site-nav');
-      var topFloor = navEl ? Math.max(margin, navEl.getBoundingClientRect().bottom + margin) : margin;
+      var topFloor = navEl ? Math.max(0, navEl.getBoundingClientRect().bottom) : margin;
       var maxH = Math.max(120, window.innerHeight - topFloor - margin);
       flyout.style.maxHeight = maxH + 'px';
       var subRect = sg.getBoundingClientRect();
