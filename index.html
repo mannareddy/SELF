@@ -1086,6 +1086,46 @@ a:hover{opacity:.7;}
 .site-nav.scrolled{background:rgba(0,0,0,0.98);}
 .progress-bar{position:absolute;bottom:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,rgba(var(--accent-gold-rgb),.4) 0%,var(--gold) 100%);transition:width .1s linear;pointer-events:none;}
 
+/* ── Scroll-spy bar ── sticks directly under the main nav, shows the
+   Traditions group currently in view, and opens a mini-TOC scoped to
+   just that group. Fixed (not sticky) so it never fights the site's
+   existing scroll-margin-top offsets on anchor jumps. */
+.scroll-spy-bar{
+  position:fixed;top:var(--nav-h);left:0;right:0;z-index:900;
+  background:rgba(0,0,0,0.94);border-bottom:1px solid rgba(var(--accent-gold-rgb),0.3);
+  font-family:var(--sans);
+}
+.spy-bar-main{
+  display:flex;align-items:center;gap:8px;width:100%;max-width:1100px;margin:0 auto;
+  background:none;border:none;cursor:pointer;padding:8px 20px;color:var(--white);text-align:left;
+}
+.spy-bar-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);}
+.spy-bar-group{font-size:12px;letter-spacing:1px;color:var(--gold);flex:1;}
+.spy-bar-caret{font-size:12px;color:var(--dim);transition:transform .2s ease;}
+.spy-bar-caret.open{transform:rotate(180deg);}
+.spy-mini-toc{
+  display:none;max-width:1100px;margin:0 auto;max-height:min(60vh,420px);overflow-y:auto;
+  border-top:1px solid rgba(var(--accent-gold-rgb),0.18);
+}
+.spy-mini-toc.open{display:block;}
+.spy-mini-toc a{
+  display:block;padding:10px 20px 10px 32px;font-size:13px;color:var(--grey);text-decoration:none;
+  border-bottom:1px solid rgba(var(--accent-gold-rgb),0.1);
+}
+.spy-mini-toc a:active,.spy-mini-toc a.spy-current{color:var(--gold);}
+.spy-mini-toc a.spy-current{background:rgba(var(--accent-gold-rgb),0.06);}
+[data-theme="light"] .scroll-spy-bar{background:rgba(250,248,244,0.96);border-bottom-color:rgba(var(--shadow-rgb),0.22);}
+[data-theme="light"] .spy-bar-main{color:var(--ink);}
+[data-theme="light"] .spy-mini-toc{border-top-color:rgba(var(--shadow-rgb),0.15);}
+[data-theme="light"] .spy-mini-toc a{color:var(--grey);border-bottom-color:rgba(var(--shadow-rgb),0.08);}
+body.spy-bar-visible{padding-top:calc(var(--nav-h) + 34px);}
+body.spy-bar-visible .site-nav{position:fixed;}
+@media (max-width:900px){
+  .spy-bar-label{display:none;}
+  .spy-bar-main{padding:9px 16px;}
+  .spy-mini-toc a{padding:11px 16px 11px 28px;}
+}
+
 /* Nav left / right halves */
 .nav-left,.nav-right{display:flex;align-items:center;height:var(--nav-h);list-style:none;margin:0;padding:0;flex:1;}
 .nav-left{
@@ -3876,6 +3916,7 @@ a.src-tag:hover{opacity:.75;}
   <!-- Left: Home · Framework▾ · Ego & Practice▾ -->
   <ul class="nav-left">
     <li><a href="#home" id="nav-home">Home</a></li>
+    <li id="continuePill" style="display:none;"><a href="#" id="continuePillLink" style="display:flex;align-items:center;gap:6px;font-family:var(--sans);font-size:10.5px;letter-spacing:1px;color:var(--gold);border:1px solid rgba(var(--accent-gold-rgb),0.4);border-radius:20px;padding:5px 12px;white-space:nowrap;"><span style="opacity:.7;">Continue:</span><span id="continuePillTitle" style="max-width:140px;overflow:hidden;text-overflow:ellipsis;"></span></a></li>
 
     <li class="nav-dropdown-wrap">
       <a href="#framework" data-group="path">The Path<span class="nav-caret">▾</span></a>
@@ -3997,6 +4038,19 @@ a.src-tag:hover{opacity:.75;}
   <button id="themeToggleBtn" onclick="toggleTheme()" title="Toggle light/dark theme" aria-label="Toggle theme">&#9788;</button>
 </nav>
 
+<!-- ── SCROLL-SPY BAR — tracks which Traditions group is currently in
+     view, sticks under the main nav, and expands into a mini table of
+     contents for just that group. Hidden until the observer below finds
+     a tracked section in view; hidden again outside tracked content. -->
+<div class="scroll-spy-bar" id="scrollSpyBar" style="display:none;">
+  <button class="spy-bar-main" id="spyBarToggle" type="button" aria-expanded="false">
+    <span class="spy-bar-label">You're in</span>
+    <span class="spy-bar-group" id="spyBarGroup">—</span>
+    <span class="spy-bar-caret" id="spyBarCaret">▾</span>
+  </button>
+  <div class="spy-mini-toc" id="spyMiniToc"></div>
+</div>
+
 <!-- ── MOBILE FULL-SCREEN ACCORDION PANEL ── -->
 <div class="mnav-panel" id="mnavPanel" role="dialog" aria-label="Site navigation">
   <div class="mnav-drill mnav-list" id="mnavDrill">
@@ -4004,6 +4058,7 @@ a.src-tag:hover{opacity:.75;}
     <!-- ROOT ── always the resting screen when the panel opens -->
     <div class="mnav-screen is-active" data-screen="root">
       <ul class="mnav-row-list" style="border-top:1px solid #1a1a1a;">
+        <li id="continuePillMobile" style="display:none;"><a href="#" id="continuePillMobileLink" style="color:var(--gold);"><span style="opacity:.7;">Continue:</span> <span id="continuePillMobileTitle"></span></a></li>
         <li><a href="#home">Home</a></li>
         <li><a href="#sources">Sources</a></li>
       </ul>
@@ -17129,5 +17184,215 @@ paRenderLastNote();
 </script>
 </div><!-- /#zoomScope -->
 <div id="glossPortal" class="gloss-portal" role="tooltip"></div>
+<script>
+(function(){
+  var TRADITIONS_GROUPS = [
+    {name:"Start Here", sections:[
+      {id:"start-here",title:"What Is *SELF"},
+      {id:"super-ordinate-goal",title:"The Super-Ordinate Goal"},
+      {id:"framework",title:"Framework"},
+      {id:"canon-map",title:"Where This Sits In The Canon"},
+      {id:"prasthana-trayi",title:"The Foundation of Vedanta"}
+    ]},
+    {name:"The Predicament", sections:[
+      {id:"mistaken-identity",title:"The Root Diagnosis"},
+      {id:"threefold-miseries",title:"The Threefold Miseries"},
+      {id:"godasa-gosvami",title:"Godasa vs Gosvami"},
+      {id:"qualified-seeker",title:"Before The Inquiry Can Begin"},
+      {id:"knowledge-not-action",title:"Why It Can't Be Earned"},
+      {id:"matrix-of-logic",title:"Shiva Sutras \u00b7 Logic & Knowing"},
+      {id:"bondage-of-knowing",title:"The Bondage of \u201cKnowing\u201d"},
+      {id:"dark-night-section",title:"The Dark Night"}
+    ]},
+    {name:"The Vedantic Architecture", sections:[
+      {id:"two-paths-truth",title:"Two Paths to Truth"},
+      {id:"mirror-of-the-veda",title:"The Mirror of the Veda"},
+      {id:"kena-upanishad",title:"Kena Upanishad \u00b7 Known By Whom?"},
+      {id:"orders-of-reality",title:"Beneath the Screen"},
+      {id:"neti-neti-method",title:"Neti Neti \u2014 The Method"},
+      {id:"sakshin",title:"Sakshin \u00b7 The Witness"},
+      {id:"chidabhasa",title:"Chidabhasa \u00b7 The Reflection Mechanism"},
+      {id:"tat-tvam-asi",title:"Tat Tvam Asi"},
+      {id:"necessity-of-maya",title:"The Necessity of Maya"},
+      {id:"argument-from-design",title:"The Argument From Design"},
+      {id:"ladder-of-intention",title:"The Ladder of Intention"},
+      {id:"destiny-and-free-will",title:"Destiny vs Free Will"}
+    ]},
+    {name:"Ego & Consciousness", sections:[
+      {id:"spectrum",title:"Ascent of Self"},
+      {id:"stairway-of-ascension",title:"The Stairway of Ascension"},
+      {id:"triple-labour",title:"The Triple Labour"},
+      {id:"evolution-of-the-worker",title:"The Evolution of the Worker"},
+      {id:"four-powers-of-the-mother",title:"The Four Powers of the Mother"},
+      {id:"dimension",title:"Matter as Dimension"},
+      {id:"consciousness",title:"Consciousness & Awareness"},
+      {id:"physical-correlate",title:"A Note for the Skeptics"},
+      {id:"antahkaran",title:"The Fourfold Mind"},
+      {id:"ego",title:"Ego Architecture"},
+      {id:"sublimation",title:"The Law of Sublimation"},
+      {id:"five-aggregates",title:"The Five Aggregates"},
+      {id:"enneagram",title:"The Enneagram"},
+      {id:"descent-into-psyche",title:"The Descent into the Psyche"},
+      {id:"rosetta-stone",title:"Rosetta Stone of the Ego"},
+      {id:"forty-two",title:"42 \u2014 The Symbol"},
+      {id:"subtilization",title:"The Path of Subtilization"}
+    ]},
+    {name:"Practice & Physiology", sections:[
+      {id:"four-yogas",title:"The Four Yogas"},
+      {id:"yajna-ecosystem",title:"Karm Yog & Yaj\u00f1a"},
+      {id:"patanjali",title:"The Machinery of Stillness"},
+      {id:"sanatana-dharma",title:"Sanatana-Dharma"},
+      {id:"pranayama",title:"Pranayama"},
+      {id:"svasthya",title:"Svasthya"}
+    ]},
+    {name:"Relationship & Attention", sections:[
+      {id:"great-forest",title:"The Great Forest of Being"},
+      {id:"anatomy-of-love",title:"The Anatomy of Love"},
+      {id:"compassionate-detachment",title:"Compassionate Detachment"},
+      {id:"quantity-or-quality",title:"Quantity or Quality"},
+      {id:"attention-currency",title:"The Attention Economy"}
+    ]},
+    {name:"Reference", sections:[
+      {id:"masters",title:"The Masters at a Glance"},
+      {id:"master-matrix",title:"Master Matrix"},
+      {id:"memory-architect",title:"Memory Architect"},
+      {id:"go-deeper",title:"Go Deeper"},
+      {id:"parables",title:"A Few Old Doors"}
+    ]}
+  ];
+
+  var idToInfo = {};
+  TRADITIONS_GROUPS.forEach(function(g, gi){
+    g.sections.forEach(function(s){ idToInfo[s.id] = {groupIndex: gi, title: s.title}; });
+  });
+
+  var bar = document.getElementById('scrollSpyBar');
+  var barGroup = document.getElementById('spyBarGroup');
+  var barToggle = document.getElementById('spyBarToggle');
+  var barCaret = document.getElementById('spyBarCaret');
+  var miniToc = document.getElementById('spyMiniToc');
+  if(!bar || !barGroup || !barToggle || !miniToc) return;
+
+  var currentGroupIndex = -1;
+  var currentSectionId = null;
+
+  function renderMiniToc(gi){
+    var g = TRADITIONS_GROUPS[gi];
+    var html = '';
+    g.sections.forEach(function(s){
+      if(!document.getElementById(s.id)) return;
+      var cls = (s.id === currentSectionId) ? ' class="spy-current"' : '';
+      html += '<a href="#'+s.id+'"'+cls+'>'+s.title+'</a>';
+    });
+    miniToc.innerHTML = html;
+  }
+
+  function updateBar(gi, sectionId){
+    if(gi === -1){
+      bar.style.display = 'none';
+      document.body.classList.remove('spy-bar-visible');
+      currentGroupIndex = -1; currentSectionId = null;
+      return;
+    }
+    bar.style.display = '';
+    document.body.classList.add('spy-bar-visible');
+    barGroup.textContent = TRADITIONS_GROUPS[gi].name;
+    if(gi !== currentGroupIndex){
+      renderMiniToc(gi);
+    } else if(sectionId !== currentSectionId){
+      var links = miniToc.querySelectorAll('a');
+      for(var i=0;i<links.length;i++){
+        links[i].classList.toggle('spy-current', links[i].getAttribute('href') === '#'+sectionId);
+      }
+    }
+    currentGroupIndex = gi;
+    currentSectionId = sectionId;
+  }
+
+  barToggle.addEventListener('click', function(){
+    var isOpen = miniToc.classList.toggle('open');
+    barToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    if(barCaret) barCaret.classList.toggle('open', isOpen);
+  });
+  miniToc.addEventListener('click', function(e){
+    if(e.target && e.target.tagName === 'A'){
+      miniToc.classList.remove('open');
+      if(barCaret) barCaret.classList.remove('open');
+      barToggle.setAttribute('aria-expanded','false');
+    }
+  });
+
+  var observedIds = Object.keys(idToInfo).filter(function(id){ return document.getElementById(id); });
+  var navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 44;
+
+  var saveTimer = null;
+  function saveProgress(id, title){
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(function(){
+      try{ localStorage.setItem('selfSiteProgress', JSON.stringify({id:id, title:title, ts:Date.now()})); }catch(e){}
+    }, 500);
+  }
+
+  function scanAndUpdate(){
+    var refLine = navH + 60;
+    var best = null, bestDist = Infinity;
+    for(var i=0;i<observedIds.length;i++){
+      var id = observedIds[i];
+      var el = document.getElementById(id);
+      if(!el) continue;
+      var rect = el.getBoundingClientRect();
+      if(rect.top <= refLine){
+        var dist = refLine - rect.top;
+        if(dist < bestDist){ bestDist = dist; best = id; }
+      }
+    }
+    if(best && idToInfo[best]){
+      var info = idToInfo[best];
+      updateBar(info.groupIndex, best);
+      saveProgress(best, info.title);
+    } else {
+      updateBar(-1, null);
+    }
+  }
+
+  if('IntersectionObserver' in window){
+    var observer = new IntersectionObserver(scanAndUpdate, {rootMargin: '-'+navH+'px 0px -70% 0px', threshold:[0,1]});
+    observedIds.forEach(function(id){
+      var el = document.getElementById(id);
+      if(el) observer.observe(el);
+    });
+    scanAndUpdate();
+  }
+
+  try{
+    var saved = JSON.parse(localStorage.getItem('selfSiteProgress') || 'null');
+    if(saved && saved.id && document.getElementById(saved.id)){
+      var pill = document.getElementById('continuePill');
+      var pillLink = document.getElementById('continuePillLink');
+      var pillTitle = document.getElementById('continuePillTitle');
+      var pillM = document.getElementById('continuePillMobile');
+      var pillMLink = document.getElementById('continuePillMobileLink');
+      var pillMTitle = document.getElementById('continuePillMobileTitle');
+      if(pill && pillLink && pillTitle){
+        pillTitle.textContent = saved.title;
+        pillLink.setAttribute('href', '#'+saved.id);
+        pill.style.display = '';
+      }
+      if(pillM && pillMLink && pillMTitle){
+        pillMTitle.textContent = saved.title;
+        pillMLink.setAttribute('href', '#'+saved.id);
+        pillM.style.display = '';
+      }
+      [pillLink, pillMLink].forEach(function(l){
+        if(!l) return;
+        l.addEventListener('click', function(){
+          if(pill) pill.style.display='none';
+          if(pillM) pillM.style.display='none';
+        });
+      });
+    }
+  }catch(e){}
+})();
+</script>
 </body>
 </html>
