@@ -1086,46 +1086,6 @@ a:hover{opacity:.7;}
 .site-nav.scrolled{background:rgba(0,0,0,0.98);}
 .progress-bar{position:absolute;bottom:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,rgba(var(--accent-gold-rgb),.4) 0%,var(--gold) 100%);transition:width .1s linear;pointer-events:none;}
 
-/* ── Scroll-spy bar ── sticks directly under the main nav, shows the
-   Traditions group currently in view, and opens a mini-TOC scoped to
-   just that group. Fixed (not sticky) so it never fights the site's
-   existing scroll-margin-top offsets on anchor jumps. */
-.scroll-spy-bar{
-  position:fixed;top:var(--nav-h);left:0;right:0;z-index:900;
-  background:rgba(0,0,0,0.94);border-bottom:1px solid rgba(var(--accent-gold-rgb),0.3);
-  font-family:var(--sans);
-}
-.spy-bar-main{
-  display:flex;align-items:center;gap:8px;width:100%;max-width:1100px;margin:0 auto;
-  background:none;border:none;cursor:pointer;padding:8px 20px;color:var(--white);text-align:left;
-}
-.spy-bar-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);}
-.spy-bar-group{font-size:12px;letter-spacing:1px;color:var(--gold);flex:1;}
-.spy-bar-caret{font-size:12px;color:var(--dim);transition:transform .2s ease;}
-.spy-bar-caret.open{transform:rotate(180deg);}
-.spy-mini-toc{
-  display:none;max-width:1100px;margin:0 auto;max-height:min(60vh,420px);overflow-y:auto;
-  border-top:1px solid rgba(var(--accent-gold-rgb),0.18);
-}
-.spy-mini-toc.open{display:block;}
-.spy-mini-toc a{
-  display:block;padding:10px 20px 10px 32px;font-size:13px;color:var(--grey);text-decoration:none;
-  border-bottom:1px solid rgba(var(--accent-gold-rgb),0.1);
-}
-.spy-mini-toc a:active,.spy-mini-toc a.spy-current{color:var(--gold);}
-.spy-mini-toc a.spy-current{background:rgba(var(--accent-gold-rgb),0.06);}
-[data-theme="light"] .scroll-spy-bar{background:rgba(250,248,244,0.96);border-bottom-color:rgba(var(--shadow-rgb),0.22);}
-[data-theme="light"] .spy-bar-main{color:var(--ink);}
-[data-theme="light"] .spy-mini-toc{border-top-color:rgba(var(--shadow-rgb),0.15);}
-[data-theme="light"] .spy-mini-toc a{color:var(--grey);border-bottom-color:rgba(var(--shadow-rgb),0.08);}
-body.spy-bar-visible{padding-top:calc(var(--nav-h) + 34px);}
-body.spy-bar-visible .site-nav{position:fixed;}
-@media (max-width:900px){
-  .spy-bar-label{display:none;}
-  .spy-bar-main{padding:9px 16px;}
-  .spy-mini-toc a{padding:11px 16px 11px 28px;}
-}
-
 /* Nav left / right halves */
 .nav-left,.nav-right{display:flex;align-items:center;height:var(--nav-h);list-style:none;margin:0;padding:0;flex:1;}
 .nav-left{
@@ -1686,16 +1646,15 @@ body.spy-bar-visible .site-nav{position:fixed;}
      rather than landing you on a section — keep the louder uppercase
      treatment the old top-level accordion toggle used, so it's visually
      obvious a tap opens another screen rather than navigating away. */
-  button.mnav-row, a.mnav-row{
+  button.mnav-row{
     display:flex;align-items:center;justify-content:space-between;width:100%;
     font-family:var(--sans);font-size:12.5px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);
     background:none;border:none;border-bottom:1px solid #1a1a1a;text-align:left;cursor:pointer;padding:18px 20px;
-    text-decoration:none;box-sizing:border-box;
   }
-  [data-theme="light"] button.mnav-row, [data-theme="light"] a.mnav-row{border-bottom-color:rgba(var(--shadow-rgb),0.24);}
-  button.mnav-row:active, a.mnav-row:active{opacity:.75;}
-  button.mnav-row .mnav-caret, a.mnav-row .mnav-caret{font-size:17px;opacity:.7;flex:0 0 auto;margin-left:8px;}
-  button.mnav-row .nav-new-dot, a.mnav-row .nav-new-dot{margin:0 2px;}
+  [data-theme="light"] button.mnav-row{border-bottom-color:rgba(var(--shadow-rgb),0.24);}
+  button.mnav-row:active{opacity:.75;}
+  button.mnav-row .mnav-caret{font-size:17px;opacity:.7;flex:0 0 auto;margin-left:8px;}
+  button.mnav-row .nav-new-dot{margin:0 2px;}
   body.mnav-open{overflow:hidden;position:fixed;left:0;right:0;width:100%;}
 }
 
@@ -3916,29 +3875,167 @@ a.src-tag:hover{opacity:.75;}
   <!-- Left: Home · Framework▾ · Ego & Practice▾ -->
   <ul class="nav-left">
     <li><a href="#home" id="nav-home">Home</a></li>
-    <li id="continuePill" style="display:none;"><a href="#" id="continuePillLink" style="display:flex;align-items:center;gap:6px;font-family:var(--sans);font-size:10.5px;letter-spacing:1px;color:var(--gold);border:1px solid rgba(var(--accent-gold-rgb),0.4);border-radius:20px;padding:5px 12px;white-space:nowrap;"><span style="opacity:.7;">Continue:</span><span id="continuePillTitle" style="max-width:140px;overflow:hidden;text-overflow:ellipsis;"></span></a></li>
 
     <li class="nav-dropdown-wrap">
       <a href="#framework" data-group="path">The Path<span class="nav-caret">▾</span></a>
       <div class="nav-dropdown-panel nav-dropdown-panel-l1">
         <div class="nav-path-intro" style="padding:10px 18px;border-bottom:1px solid rgba(var(--accent-gold-rgb),0.25);margin-bottom:6px;font-family:var(--sans);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim);text-align:left;"><span class="gloss">Why This Order<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Why this order">+</span><span class="gloss-pop">Traditions is organized by subject. Daily Practice is organized by exercise. This is organized by sequence &mdash; Samanvaya &rarr; Avirodha &rarr; Sadhana &rarr; Phala &mdash; the order Shankaracharya's own commentary argues understanding has to unfold in, not just a subject list to browse in any order.</span></span></div>
-        <a href="#start-here" data-group="path" class="nav-group-label">I. Samanvaya — Harmony</a>
-        <a href="#mistaken-identity" data-group="path" class="nav-group-label">II. Avirodha — Non-Conflict</a>
-        <a href="#portals-to-presence" data-group="path" class="nav-group-label">III. Sadhana — Practice</a>
-        <a href="#great-forest" data-group="path" class="nav-group-label">IV. Phala — Result</a>
+        <div class="nav-subgroup">
+          <div class="nav-group-label nav-group-trigger" tabindex="0"><span class="trigger-label-text"><span style="display:block;" class="gloss">I. Samanvaya<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Samanvaya">+</span><span class="gloss-pop">Harmony &mdash; reconciling every scriptural text so they all point to one non-dual reality, rather than contradicting each other.</span></span><span style="display:block;opacity:.6;font-size:.78em;margin-top:2px;">&mdash; Harmony</span></span><span class="flyout-caret">▸</span></div>
+          <div class="nav-flyout-panel">
+            <a href="#start-here" data-group="path">What Is *SELF</a>
+            <a href="#super-ordinate-goal" data-group="path">The Super-Ordinate Goal</a>
+            <a href="#framework" data-group="path">Framework</a>
+            <a href="#canon-map" data-group="path">Where This Sits In The Canon</a>
+            <a href="#mirror-of-the-veda" data-group="path">The Mirror of the Veda</a>
+            <a href="#kena-upanishad" data-group="path">Kena Upanishad &middot; Known By Whom?</a>
+            <a href="#two-paths-truth" data-group="path">Two Paths to Truth</a>
+            <a href="#orders-of-reality" data-group="path">Beneath the Screen</a>
+            <a href="#ladder-of-intention" data-group="path">The Ladder of Intention</a>
+          </div>
+        </div>
+        <div class="nav-subgroup">
+          <div class="nav-group-label nav-group-trigger" tabindex="0"><span class="trigger-label-text"><span style="display:block;" class="gloss">II. Avirodha<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Avirodha">+</span><span class="gloss-pop">Non-Conflict &mdash; clearing away rival theories through logic, not by asserting louder.</span></span><span style="display:block;opacity:.6;font-size:.78em;margin-top:2px;">&mdash; Non-Conflict</span></span><span class="flyout-caret">▸</span></div>
+          <div class="nav-flyout-panel">
+            <a href="#mistaken-identity" data-group="path">The Root Diagnosis</a>
+            <a href="#godasa-gosvami" data-group="path">Godasa vs Gosvami</a>
+            <a href="#qualified-seeker" data-group="path">Before The Inquiry Can Begin</a>
+            <a href="#knowledge-not-action" data-group="path">Why It Can't Be Earned</a>
+            <a href="#matrix-of-logic" data-group="path">Shiva Sutras &middot; Logic &amp; Knowing</a>
+            <a href="#bondage-of-knowing" data-group="path">The Bondage of &ldquo;Knowing&rdquo;</a>
+            <a href="#argument-from-design" data-group="path">The Argument From Design</a>
+            <a href="#sakshin" data-group="path">Sakshin &middot; The Witness</a>
+            <a href="#necessity-of-maya" data-group="path">The Necessity of Maya</a>
+            <a href="#destiny-and-free-will" data-group="path">Destiny vs Free Will</a>
+            <a href="#physical-correlate" data-group="path">A Note for the Skeptics</a>
+          </div>
+        </div>
+        <div class="nav-subgroup">
+          <div class="nav-group-label nav-group-trigger" tabindex="0"><span class="trigger-label-text"><span style="display:block;" class="gloss">III. Sadhana<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Sadhana">+</span><span class="gloss-pop">Spiritual practice &mdash; the discipline that turns understanding into lived realization.</span></span><span style="display:block;opacity:.6;font-size:.78em;margin-top:2px;">&mdash; Practice</span></span><span class="flyout-caret">▸</span></div>
+          <div class="nav-flyout-panel">
+            <a href="#portals-to-presence" data-group="path">Portals to Presence</a>
+            <a href="#full-attention" data-group="path">How to Pay Full Attention</a>
+            <a href="#interrupting-the-reaction" data-group="path">Interrupting the Reaction</a>
+            <a href="#four-yogas" data-group="path">The Four Yogas</a>
+            <a href="#yajna-ecosystem" data-group="path">Karm Yog &amp; Yajña</a>
+            <a href="#sublimation" data-group="path">The Law of Sublimation</a>
+            <a href="#triple-labour" data-group="path">The Triple Labour</a>
+            <a href="#evolution-of-the-worker" data-group="path">The Evolution of the Worker</a>
+            <a href="#patanjali" data-group="path">The Machinery of Stillness</a>
+            <a href="#pranayama" data-group="path">Pranayama</a>
+            <a href="#svasthya" data-group="path">Svasthya</a>
+          </div>
+        </div>
+        <div class="nav-subgroup">
+          <div class="nav-group-label nav-group-trigger" tabindex="0"><span class="trigger-label-text"><span style="display:block;" class="gloss">IV. Phala<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Phala">+</span><span class="gloss-pop">Result &mdash; not a reward added on top, but liberation actually lived out, not merely believed.</span></span><span style="display:block;opacity:.6;font-size:.78em;margin-top:2px;">&mdash; Result</span></span><span class="flyout-caret">▸</span></div>
+          <div class="nav-flyout-panel">
+            <a href="#great-forest" data-group="path">The Great Forest of Being</a>
+            <a href="#anatomy-of-love" data-group="path">The Anatomy of Love</a>
+            <a href="#compassionate-detachment" data-group="path">Compassionate Detachment</a>
+            <a href="#ledger" data-group="path">The Cosmic Ledger</a>
+            <a href="#masters" data-group="path">The Masters at a Glance</a>
+            <a href="#go-deeper" data-group="path">Go Deeper</a>
+          </div>
+        </div>
       </div>
     </li>
 
     <li class="nav-dropdown-wrap">
       <a href="#framework" data-group="traditions">Traditions<span class="nav-caret">▾</span></a>
       <div class="nav-dropdown-panel nav-dropdown-panel-l1">
-        <a href="#start-here" data-group="traditions" class="nav-group-label">Start Here</a>
-        <a href="#mistaken-identity" data-group="traditions" class="nav-group-label">The Predicament</a>
-        <a href="#two-paths-truth" data-group="traditions" class="nav-group-label">The Vedantic Architecture</a>
-        <a href="#spectrum" data-group="traditions" class="nav-group-label">Ego &amp; Consciousness</a>
-        <a href="#four-yogas" data-group="traditions" class="nav-group-label">Practice &amp; Physiology</a>
-        <a href="#great-forest" data-group="traditions" class="nav-group-label">Relationship &amp; Attention</a>
-        <a href="#masters" data-group="traditions" class="nav-group-label">Reference</a>
+        <div class="nav-subgroup">
+          <div class="nav-group-label nav-group-trigger" tabindex="0"><span class="trigger-label-text">Start Here</span><span class="flyout-caret">▸</span></div>
+          <div class="nav-flyout-panel">
+            <a href="#start-here" data-group="traditions">What Is *SELF</a>
+            <a href="#super-ordinate-goal" data-group="traditions">The Super-Ordinate Goal</a>
+            <a href="#framework" data-group="traditions">Framework</a>
+            <a href="#canon-map" data-group="traditions">Where This Sits In The Canon</a>
+            <a href="#prasthana-trayi" data-group="traditions">The Foundation of Vedanta</a>
+          </div>
+        </div>
+        <div class="nav-subgroup">
+          <div class="nav-group-label nav-group-trigger" tabindex="0"><span class="trigger-label-text">The Predicament</span><span class="flyout-caret">▸</span></div>
+          <div class="nav-flyout-panel">
+            <a href="#mistaken-identity" data-group="traditions">The Root Diagnosis</a>
+            <a href="#threefold-miseries" data-group="traditions">The Threefold Miseries</a>
+            <a href="#godasa-gosvami" data-group="traditions">Godasa vs Gosvami</a>
+            <a href="#qualified-seeker" data-group="traditions">Before The Inquiry Can Begin</a>
+            <a href="#knowledge-not-action" data-group="traditions">Why It Can't Be Earned</a>
+            <a href="#matrix-of-logic" data-group="traditions">Shiva Sutras &middot; Logic &amp; Knowing</a>
+            <a href="#bondage-of-knowing" data-group="traditions">The Bondage of &ldquo;Knowing&rdquo;</a>
+            <a href="#dark-night-section" data-group="traditions">The Dark Night</a>
+          </div>
+        </div>
+        <div class="nav-subgroup">
+          <div class="nav-group-label nav-group-trigger" tabindex="0"><span class="trigger-label-text">The Vedantic Architecture</span><span class="flyout-caret">▸</span></div>
+          <div class="nav-flyout-panel">
+            <a href="#two-paths-truth" data-group="traditions">Two Paths to Truth</a>
+            <a href="#mirror-of-the-veda" data-group="traditions">The Mirror of the Veda</a>
+            <a href="#kena-upanishad" data-group="traditions">Kena Upanishad &middot; Known By Whom?</a>
+            <a href="#orders-of-reality" data-group="traditions">Beneath the Screen</a>
+            <a href="#neti-neti-method" data-group="traditions" onclick="expandNetiNeti();return false;">Neti Neti — The Method</a>
+            <a href="#sakshin" data-group="traditions">Sakshin &middot; The Witness</a>
+            <a href="#chidabhasa" data-group="traditions">Chidabhasa &middot; The Reflection Mechanism</a>
+            <a href="#tat-tvam-asi" data-group="traditions">Tat Tvam Asi</a>
+            <a href="#necessity-of-maya" data-group="traditions">The Necessity of Maya</a>
+            <a href="#argument-from-design" data-group="traditions">The Argument From Design</a>
+            <a href="#ladder-of-intention" data-group="traditions">The Ladder of Intention</a>
+            <a href="#destiny-and-free-will" data-group="traditions">Destiny vs Free Will</a>
+          </div>
+        </div>
+        <div class="nav-subgroup">
+          <div class="nav-group-label nav-group-trigger" tabindex="0"><span class="trigger-label-text">Ego &amp; Consciousness</span><span class="flyout-caret">▸</span></div>
+          <div class="nav-flyout-panel">
+            <a href="#spectrum" data-group="traditions">Ascent of Self</a>
+            <a href="#stairway-of-ascension" data-group="traditions">The Stairway of Ascension</a>
+            <a href="#triple-labour" data-group="traditions">The Triple Labour</a>
+            <a href="#evolution-of-the-worker" data-group="traditions">The Evolution of the Worker</a>
+            <a href="#four-powers-of-the-mother" data-group="traditions">The Four Powers of the Mother</a>
+            <a href="#dimension" data-group="traditions">Matter as Dimension</a>
+            <a href="#consciousness" data-group="traditions">Consciousness &amp; Awareness</a>
+            <a href="#physical-correlate" data-group="traditions">A Note for the Skeptics</a>
+            <a href="#antahkaran" data-group="traditions">The Fourfold Mind</a>
+            <a href="#ego" data-group="traditions">Ego Architecture</a>
+            <a href="#sublimation" data-group="traditions">The Law of Sublimation</a>
+            <a href="#five-aggregates" data-group="traditions">The Five Aggregates</a>
+            <a href="#enneagram" data-group="traditions">The Enneagram</a>
+            <a href="#descent-into-psyche" data-group="traditions">The Descent into the Psyche</a>
+            <a href="#rosetta-stone" data-group="traditions">Rosetta Stone of the Ego</a>
+            <a href="#forty-two" data-group="traditions">42 — The Symbol</a>
+            <a href="#subtilization" data-group="traditions">The Path of Subtilization</a>
+          </div>
+        </div>
+        <div class="nav-subgroup">
+          <div class="nav-group-label nav-group-trigger" tabindex="0"><span class="trigger-label-text">Practice &amp; Physiology</span><span class="flyout-caret">▸</span></div>
+          <div class="nav-flyout-panel">
+            <a href="#four-yogas" data-group="traditions">The Four Yogas</a>
+            <a href="#yajna-ecosystem" data-group="traditions">Karm Yog &amp; Yajña</a>
+            <a href="#patanjali" data-group="traditions">The Machinery of Stillness</a>
+            <a href="#sanatana-dharma" data-group="traditions">Sanatana-Dharma</a>
+            <a href="#pranayama" data-group="traditions">Pranayama</a>
+            <a href="#svasthya" data-group="traditions">Svasthya</a>
+          </div>
+        </div>
+        <div class="nav-subgroup">
+          <div class="nav-group-label nav-group-trigger" tabindex="0"><span class="trigger-label-text">Relationship &amp; Attention</span><span class="flyout-caret">▸</span></div>
+          <div class="nav-flyout-panel">
+            <a href="#great-forest" data-group="traditions">The Great Forest of Being</a>
+            <a href="#anatomy-of-love" data-group="traditions">The Anatomy of Love</a>
+            <a href="#compassionate-detachment" data-group="traditions">Compassionate Detachment</a>
+            <a href="#quantity-or-quality" data-group="traditions">Quantity or Quality</a>
+            <a href="#attention-currency" data-group="traditions">The Attention Economy</a>
+          </div>
+        </div>
+        <div class="nav-subgroup">
+          <div class="nav-group-label nav-group-trigger" tabindex="0"><span class="trigger-label-text">Reference</span><span class="flyout-caret">▸</span></div>
+          <div class="nav-flyout-panel">
+            <a href="#masters" data-group="traditions">The Masters at a Glance</a>
+            <a href="#master-matrix" data-group="traditions">Master Matrix</a>
+            <a href="#memory-architect" data-group="traditions">Memory Architect</a>
+            <a href="#go-deeper" data-group="traditions">Go Deeper</a>
+            <a href="#parables" data-group="traditions">A Few Old Doors</a>
+          </div>
+        </div>
       </div>
     </li>
 
@@ -3984,31 +4081,26 @@ a.src-tag:hover{opacity:.75;}
     <!-- ── "NEW" MENU — hand-curated, no auto-detection ──────────────────
          To flag something as new: add one <a> line inside #newMenuPanel
          below (and the matching line inside #newMenuPanelMobile further
-         down for the mobile accordion). Label by PARENT SECTION, not by
-         the sub-item that changed — "Section Name — New Section Created"
-         for a brand-new top-level section, or "Section Name — Existing
-         Section Updated" when it's new content inside a section that
-         already existed. The href can still point at the exact new
-         subsection anchor so the click lands on the new content, even
-         though the visible label names the section it lives in. Remove
-         the line once it's no longer worth calling out (there's no
-         expiry — it stays until you take it out). For something not
-         live yet, use a <span class="new-menu-soon">Label — Coming
-         Soon</span> instead of an <a> — it renders muted and unclickable,
-         so this same menu can double as a heads-up for features still in
-         progress. The gold dot on the "New" trigger itself (and the
-         mobile "New" accordion toggle) only shows while these panels
-         actually have entries — empty both out and the dot hides itself. -->
+         down for the mobile accordion) with a short label saying WHAT
+         changed, pointing at the relevant section. Remove the line once
+         it's no longer worth calling out (there's no expiry — it stays
+         until you take it out). For something not live yet, use a
+         <span class="new-menu-soon">Label — Coming Soon</span> instead
+         of an <a> — it renders muted and unclickable, so this same menu
+         can double as a heads-up for features still in progress. The
+         gold dot on the "New" trigger itself (and the mobile "New"
+         accordion toggle) only shows while these panels actually have
+         entries — empty both out and the dot hides itself. -->
     <li class="nav-dropdown-wrap">
       <a href="#glossary" data-group="new">New<span class="nav-new-dot"></span><span class="nav-caret">▾</span></a>
       <div class="nav-dropdown-panel" id="newMenuPanel">
-        <a href="#parables" data-group="new">A Few Old Doors — Existing Section Updated</a>
-        <a href="#three-bodies" data-group="new">Consciousness &amp; Awareness — Existing Section Updated</a>
-        <a href="#tyranny-of-i" data-group="new">Ego Architecture — Existing Section Updated</a>
-        <a href="#pancha-klesha" data-group="new">The Machinery of Stillness — Existing Section Updated</a>
-        <a href="#destiny-and-free-will" data-group="new">Destiny vs Free Will — Existing Section Updated</a>
-        <a href="#three-granthis" data-group="new">Pranayama — Existing Section Updated</a>
-        <a href="#compassionate-detachment" data-group="new">Compassionate Detachment — Existing Section Updated</a>
+        <a href="#parables" data-group="new">The Two Birds — New Parable Added</a>
+        <a href="#three-bodies" data-group="new">The Three Bodies (Sarira) — New Subsection Added</a>
+        <a href="#tyranny-of-i" data-group="new">The Tyranny of the &ldquo;I&rdquo; — New Section Added</a>
+        <a href="#pancha-klesha" data-group="new">Kleshas &amp; Antarayas — New Cards Added</a>
+        <a href="#destiny-and-free-will" data-group="new">Karma Mechanics — New Subsection Added</a>
+        <a href="#three-granthis" data-group="new">The Three Granthis — New Subsection Added</a>
+        <a href="#compassionate-detachment" data-group="new">The Four Brahma Viharas — New Subsection Added</a>
       </div>
     </li>
 
@@ -4038,22 +4130,6 @@ a.src-tag:hover{opacity:.75;}
   <button id="themeToggleBtn" onclick="toggleTheme()" title="Toggle light/dark theme" aria-label="Toggle theme">&#9788;</button>
 </nav>
 
-<!-- ── SCROLL-SPY BAR — tracks which Traditions group (or, if the visitor
-     arrived via a Path chapter link, which Path chapter) is currently in
-     view, sticks under the main nav, and expands into a mini table of
-     contents scoped to whichever sequence is active. Hidden until the
-     observer below finds a tracked section in view; hidden again outside
-     tracked content. See PATH_GROUPS / TRADITIONS_GROUPS in the script
-     near the end of the document for the two sequences it can show. -->
-<div class="scroll-spy-bar" id="scrollSpyBar" style="display:none;">
-  <button class="spy-bar-main" id="spyBarToggle" type="button" aria-expanded="false">
-    <span class="spy-bar-label" id="spyBarLabel">You're in</span>
-    <span class="spy-bar-group" id="spyBarGroup">—</span>
-    <span class="spy-bar-caret" id="spyBarCaret">▾</span>
-  </button>
-  <div class="spy-mini-toc" id="spyMiniToc"></div>
-</div>
-
 <!-- ── MOBILE FULL-SCREEN ACCORDION PANEL ── -->
 <div class="mnav-panel" id="mnavPanel" role="dialog" aria-label="Site navigation">
   <div class="mnav-drill mnav-list" id="mnavDrill">
@@ -4061,7 +4137,6 @@ a.src-tag:hover{opacity:.75;}
     <!-- ROOT ── always the resting screen when the panel opens -->
     <div class="mnav-screen is-active" data-screen="root">
       <ul class="mnav-row-list" style="border-top:1px solid #1a1a1a;">
-        <li id="continuePillMobile" style="display:none;"><a href="#" id="continuePillMobileLink" style="color:var(--gold);"><span style="opacity:.7;">Continue:</span> <span id="continuePillMobileTitle"></span></a></li>
         <li><a href="#home">Home</a></li>
         <li><a href="#sources">Sources</a></li>
       </ul>
@@ -4081,10 +4156,83 @@ a.src-tag:hover{opacity:.75;}
         <span class="mnav-screen-title">The Path</span>
       </div>
       <div class="nav-path-intro" style="padding:10px 20px;margin:0;border-bottom:1px solid rgba(var(--accent-gold-rgb),0.2);font-family:var(--sans);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim);text-align:left;"><span class="gloss">Why This Order<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Why this order">+</span><span class="gloss-pop">Traditions is organized by subject. Daily Practice is organized by exercise. This is organized by sequence &mdash; Samanvaya &rarr; Avirodha &rarr; Sadhana &rarr; Phala &mdash; the order Shankaracharya's own commentary argues understanding has to unfold in, not just a subject list to browse in any order.</span></span></div>
-      <a class="mnav-row" href="#start-here"><span>I. Samanvaya <span style="opacity:.6;font-size:.85em;">&mdash; Harmony</span></span></a>
-      <a class="mnav-row" href="#mistaken-identity"><span>II. Avirodha <span style="opacity:.6;font-size:.85em;">&mdash; Non-Conflict</span></span></a>
-      <a class="mnav-row" href="#portals-to-presence"><span>III. Sadhana <span style="opacity:.6;font-size:.85em;">&mdash; Practice</span></span></a>
-      <a class="mnav-row" href="#great-forest"><span>IV. Phala <span style="opacity:.6;font-size:.85em;">&mdash; Result</span></span></a>
+      <button class="mnav-row" type="button" data-target="path-harmony"><span style="display:flex;align-items:baseline;"><span style="display:inline-block;min-width:150px;">I. Samanvaya</span><span style="opacity:.6;font-size:.85em;">&mdash; Harmony</span></span> <span class="mnav-caret">›</span></button>
+      <button class="mnav-row" type="button" data-target="path-nonconflict"><span style="display:flex;align-items:baseline;"><span style="display:inline-block;min-width:150px;">II. Avirodha</span><span style="opacity:.6;font-size:.85em;">&mdash; Non-Conflict</span></span> <span class="mnav-caret">›</span></button>
+      <button class="mnav-row" type="button" data-target="path-practice"><span style="display:flex;align-items:baseline;"><span style="display:inline-block;min-width:150px;">III. Sadhana</span><span style="opacity:.6;font-size:.85em;">&mdash; Practice</span></span> <span class="mnav-caret">›</span></button>
+      <button class="mnav-row" type="button" data-target="path-result"><span style="display:flex;align-items:baseline;"><span style="display:inline-block;min-width:150px;">IV. Phala</span><span style="opacity:.6;font-size:.85em;">&mdash; Result</span></span> <span class="mnav-caret">›</span></button>
+    </div>
+
+    <div class="mnav-screen" data-screen="path-harmony" data-back="path">
+      <div class="mnav-screen-header">
+        <button class="mnav-back" type="button" data-back="path"><span class="mnav-back-arrow">‹</span> The Path</button>
+        <span class="mnav-screen-title">I. Samanvaya</span>
+      </div>
+      <ul class="mnav-row-list">
+        <li><a href="#start-here">What Is *SELF</a></li>
+        <li><a href="#super-ordinate-goal">The Super-Ordinate Goal</a></li>
+        <li><a href="#framework">Framework</a></li>
+        <li><a href="#canon-map">Where This Sits In The Canon</a></li>
+        <li><a href="#mirror-of-the-veda">The Mirror of the Veda</a></li>
+        <li><a href="#kena-upanishad">Kena Upanishad &middot; Known By Whom?</a></li>
+        <li><a href="#two-paths-truth">Two Paths to Truth</a></li>
+        <li><a href="#orders-of-reality">Beneath the Screen</a></li>
+        <li><a href="#ladder-of-intention">The Ladder of Intention</a></li>
+      </ul>
+    </div>
+
+    <div class="mnav-screen" data-screen="path-nonconflict" data-back="path">
+      <div class="mnav-screen-header">
+        <button class="mnav-back" type="button" data-back="path"><span class="mnav-back-arrow">‹</span> The Path</button>
+        <span class="mnav-screen-title">II. Avirodha</span>
+      </div>
+      <ul class="mnav-row-list">
+        <li><a href="#mistaken-identity">The Root Diagnosis</a></li>
+        <li><a href="#godasa-gosvami">Godasa vs Gosvami</a></li>
+        <li><a href="#qualified-seeker">Before The Inquiry Can Begin</a></li>
+        <li><a href="#knowledge-not-action">Why It Can't Be Earned</a></li>
+        <li><a href="#matrix-of-logic">Shiva Sutras &middot; Logic &amp; Knowing</a></li>
+        <li><a href="#bondage-of-knowing">The Bondage of &ldquo;Knowing&rdquo;</a></li>
+        <li><a href="#argument-from-design">The Argument From Design</a></li>
+        <li><a href="#sakshin">Sakshin &middot; The Witness</a></li>
+        <li><a href="#necessity-of-maya">The Necessity of Maya</a></li>
+        <li><a href="#destiny-and-free-will">Destiny vs Free Will</a></li>
+        <li><a href="#physical-correlate">A Note for the Skeptics</a></li>
+      </ul>
+    </div>
+
+    <div class="mnav-screen" data-screen="path-practice" data-back="path">
+      <div class="mnav-screen-header">
+        <button class="mnav-back" type="button" data-back="path"><span class="mnav-back-arrow">‹</span> The Path</button>
+        <span class="mnav-screen-title">III. Sadhana</span>
+      </div>
+      <ul class="mnav-row-list">
+        <li><a href="#portals-to-presence">Portals to Presence</a></li>
+        <li><a href="#full-attention">How to Pay Full Attention</a></li>
+        <li><a href="#interrupting-the-reaction">Interrupting the Reaction</a></li>
+        <li><a href="#four-yogas">The Four Yogas</a></li>
+        <li><a href="#yajna-ecosystem">Karm Yog &amp; Yajña</a></li>
+        <li><a href="#sublimation">The Law of Sublimation</a></li>
+        <li><a href="#triple-labour">The Triple Labour</a></li>
+        <li><a href="#evolution-of-the-worker">The Evolution of the Worker</a></li>
+        <li><a href="#patanjali">The Machinery of Stillness</a></li>
+        <li><a href="#pranayama">Pranayama</a></li>
+        <li><a href="#svasthya">Svasthya</a></li>
+      </ul>
+    </div>
+
+    <div class="mnav-screen" data-screen="path-result" data-back="path">
+      <div class="mnav-screen-header">
+        <button class="mnav-back" type="button" data-back="path"><span class="mnav-back-arrow">‹</span> The Path</button>
+        <span class="mnav-screen-title">IV. Phala</span>
+      </div>
+      <ul class="mnav-row-list">
+        <li><a href="#great-forest">The Great Forest of Being</a></li>
+        <li><a href="#anatomy-of-love">The Anatomy of Love</a></li>
+        <li><a href="#compassionate-detachment">Compassionate Detachment</a></li>
+        <li><a href="#ledger">The Cosmic Ledger</a></li>
+        <li><a href="#masters">The Masters at a Glance</a></li>
+        <li><a href="#go-deeper">Go Deeper</a></li>
+      </ul>
     </div>
 
     <!-- TRADITIONS ── category list, one level deep -->
@@ -4093,16 +4241,137 @@ a.src-tag:hover{opacity:.75;}
         <button class="mnav-back" type="button" data-back="root"><span class="mnav-back-arrow">‹</span> Menu</button>
         <span class="mnav-screen-title">Traditions</span>
       </div>
-      <a class="mnav-row" href="#start-here">Start Here</a>
-      <a class="mnav-row" href="#mistaken-identity">The Predicament</a>
-      <a class="mnav-row" href="#two-paths-truth">The Vedantic Architecture</a>
-      <a class="mnav-row" href="#spectrum">Ego &amp; Consciousness</a>
-      <a class="mnav-row" href="#four-yogas">Practice &amp; Physiology</a>
-      <a class="mnav-row" href="#great-forest">Relationship &amp; Attention</a>
-      <a class="mnav-row" href="#masters">Reference</a>
+      <button class="mnav-row" type="button" data-target="trad-start-here">Start Here <span class="mnav-caret">›</span></button>
+      <button class="mnav-row" type="button" data-target="trad-predicament">The Predicament <span class="mnav-caret">›</span></button>
+      <button class="mnav-row" type="button" data-target="trad-vedantic">The Vedantic Architecture <span class="mnav-caret">›</span></button>
+      <button class="mnav-row" type="button" data-target="trad-ego-consciousness">Ego &amp; Consciousness <span class="mnav-caret">›</span></button>
+      <button class="mnav-row" type="button" data-target="trad-practice-physiology">Practice &amp; Physiology <span class="mnav-caret">›</span></button>
+      <button class="mnav-row" type="button" data-target="trad-relationship-attention">Relationship &amp; Attention <span class="mnav-caret">›</span></button>
+      <button class="mnav-row" type="button" data-target="trad-reference">Reference <span class="mnav-caret">›</span></button>
     </div>
 
     <!-- TRADITIONS ▸ leaf screens -->
+    <div class="mnav-screen" data-screen="trad-start-here" data-back="traditions">
+      <div class="mnav-screen-header">
+        <button class="mnav-back" type="button" data-back="traditions"><span class="mnav-back-arrow">‹</span> Traditions</button>
+        <span class="mnav-screen-title">Start Here</span>
+      </div>
+      <ul class="mnav-row-list">
+        <li><a href="#start-here">What Is *SELF</a></li>
+        <li><a href="#super-ordinate-goal">The Super-Ordinate Goal</a></li>
+        <li><a href="#framework">Framework</a></li>
+        <li><a href="#canon-map">Where This Sits In The Canon</a></li>
+        <li><a href="#prasthana-trayi">The Foundation of Vedanta</a></li>
+      </ul>
+    </div>
+
+    <div class="mnav-screen" data-screen="trad-predicament" data-back="traditions">
+      <div class="mnav-screen-header">
+        <button class="mnav-back" type="button" data-back="traditions"><span class="mnav-back-arrow">‹</span> Traditions</button>
+        <span class="mnav-screen-title">The Predicament</span>
+      </div>
+      <ul class="mnav-row-list">
+        <li><a href="#mistaken-identity">The Root Diagnosis</a></li>
+        <li><a href="#threefold-miseries">The Threefold Miseries</a></li>
+        <li><a href="#godasa-gosvami">Godasa vs Gosvami</a></li>
+        <li><a href="#qualified-seeker">Before The Inquiry Can Begin</a></li>
+        <li><a href="#knowledge-not-action">Why It Can't Be Earned</a></li>
+        <li><a href="#matrix-of-logic">Shiva Sutras &middot; Logic &amp; Knowing</a></li>
+        <li><a href="#bondage-of-knowing">The Bondage of &ldquo;Knowing&rdquo;</a></li>
+        <li><a href="#dark-night-section">The Dark Night</a></li>
+      </ul>
+    </div>
+
+    <div class="mnav-screen" data-screen="trad-vedantic" data-back="traditions">
+      <div class="mnav-screen-header">
+        <button class="mnav-back" type="button" data-back="traditions"><span class="mnav-back-arrow">‹</span> Traditions</button>
+        <span class="mnav-screen-title">The Vedantic Architecture</span>
+      </div>
+      <ul class="mnav-row-list">
+        <li><a href="#two-paths-truth">Two Paths to Truth</a></li>
+        <li><a href="#mirror-of-the-veda">The Mirror of the Veda</a></li>
+        <li><a href="#kena-upanishad">Kena Upanishad &middot; Known By Whom?</a></li>
+        <li><a href="#orders-of-reality">Beneath the Screen</a></li>
+        <li><a href="#neti-neti-method" onclick="expandNetiNeti();return false;">Neti Neti — The Method</a></li>
+        <li><a href="#sakshin">Sakshin &middot; The Witness</a></li>
+        <li><a href="#chidabhasa">Chidabhasa &middot; The Reflection Mechanism</a></li>
+        <li><a href="#tat-tvam-asi">Tat Tvam Asi</a></li>
+        <li><a href="#necessity-of-maya">The Necessity of Maya</a></li>
+        <li><a href="#argument-from-design">The Argument From Design</a></li>
+        <li><a href="#ladder-of-intention">The Ladder of Intention</a></li>
+        <li><a href="#destiny-and-free-will">Destiny vs Free Will</a></li>
+      </ul>
+    </div>
+
+    <div class="mnav-screen" data-screen="trad-ego-consciousness" data-back="traditions">
+      <div class="mnav-screen-header">
+        <button class="mnav-back" type="button" data-back="traditions"><span class="mnav-back-arrow">‹</span> Traditions</button>
+        <span class="mnav-screen-title">Ego &amp; Consciousness</span>
+      </div>
+      <ul class="mnav-row-list">
+        <li><a href="#spectrum">Ascent of Self</a></li>
+        <li><a href="#stairway-of-ascension">The Stairway of Ascension</a></li>
+        <li><a href="#triple-labour">The Triple Labour</a></li>
+        <li><a href="#evolution-of-the-worker">The Evolution of the Worker</a></li>
+        <li><a href="#four-powers-of-the-mother">The Four Powers of the Mother</a></li>
+        <li><a href="#dimension">Matter as Dimension</a></li>
+        <li><a href="#consciousness">Consciousness &amp; Awareness</a></li>
+        <li><a href="#physical-correlate">A Note for the Skeptics</a></li>
+        <li><a href="#antahkaran">The Fourfold Mind</a></li>
+        <li><a href="#ego">Ego Architecture</a></li>
+        <li><a href="#sublimation">The Law of Sublimation</a></li>
+        <li><a href="#five-aggregates">The Five Aggregates</a></li>
+        <li><a href="#enneagram">The Enneagram</a></li>
+        <li><a href="#descent-into-psyche">The Descent into the Psyche</a></li>
+        <li><a href="#rosetta-stone">Rosetta Stone of the Ego</a></li>
+        <li><a href="#forty-two">42 — The Symbol</a></li>
+        <li><a href="#subtilization">The Path of Subtilization</a></li>
+      </ul>
+    </div>
+
+    <div class="mnav-screen" data-screen="trad-practice-physiology" data-back="traditions">
+      <div class="mnav-screen-header">
+        <button class="mnav-back" type="button" data-back="traditions"><span class="mnav-back-arrow">‹</span> Traditions</button>
+        <span class="mnav-screen-title">Practice &amp; Physiology</span>
+      </div>
+      <ul class="mnav-row-list">
+        <li><a href="#four-yogas">The Four Yogas</a></li>
+        <li><a href="#yajna-ecosystem">Karm Yog &amp; Yajña</a></li>
+        <li><a href="#patanjali">The Machinery of Stillness</a></li>
+        <li><a href="#sanatana-dharma">Sanatana-Dharma</a></li>
+        <li><a href="#pranayama">Pranayama</a></li>
+        <li><a href="#svasthya">Svasthya</a></li>
+      </ul>
+    </div>
+
+    <div class="mnav-screen" data-screen="trad-relationship-attention" data-back="traditions">
+      <div class="mnav-screen-header">
+        <button class="mnav-back" type="button" data-back="traditions"><span class="mnav-back-arrow">‹</span> Traditions</button>
+        <span class="mnav-screen-title">Relationship &amp; Attention</span>
+      </div>
+      <ul class="mnav-row-list">
+        <li><a href="#great-forest">The Great Forest of Being</a></li>
+        <li><a href="#anatomy-of-love">The Anatomy of Love</a></li>
+        <li><a href="#compassionate-detachment">Compassionate Detachment</a></li>
+        <li><a href="#quantity-or-quality">Quantity or Quality</a></li>
+        <li><a href="#attention-currency">The Attention Economy</a></li>
+      </ul>
+    </div>
+
+    <div class="mnav-screen" data-screen="trad-reference" data-back="traditions">
+      <div class="mnav-screen-header">
+        <button class="mnav-back" type="button" data-back="traditions"><span class="mnav-back-arrow">‹</span> Traditions</button>
+        <span class="mnav-screen-title">Reference</span>
+      </div>
+      <ul class="mnav-row-list">
+        <li><a href="#masters">The Masters at a Glance</a></li>
+        <li><a href="#master-matrix">Master Matrix</a></li>
+        <li><a href="#memory-architect">Memory Architect</a></li>
+        <li><a href="#go-deeper">Go Deeper</a></li>
+        <li><a href="#parables">A Few Old Doors</a></li>
+      </ul>
+    </div>
+
     <!-- DAILY PRACTICE — flat, one level under root -->
     <div class="mnav-screen" data-screen="daily-practice" data-back="root">
       <div class="mnav-screen-header">
@@ -4146,13 +4415,13 @@ a.src-tag:hover{opacity:.75;}
         <span class="mnav-screen-title">New</span>
       </div>
       <ul class="mnav-row-list" id="newMenuPanelMobile">
-        <li><a href="#parables">A Few Old Doors — Existing Section Updated</a></li>
-        <li><a href="#three-bodies">Consciousness &amp; Awareness — Existing Section Updated</a></li>
-        <li><a href="#tyranny-of-i">Ego Architecture — Existing Section Updated</a></li>
-        <li><a href="#pancha-klesha">The Machinery of Stillness — Existing Section Updated</a></li>
-        <li><a href="#destiny-and-free-will">Destiny vs Free Will — Existing Section Updated</a></li>
-        <li><a href="#three-granthis">Pranayama — Existing Section Updated</a></li>
-        <li><a href="#compassionate-detachment">Compassionate Detachment — Existing Section Updated</a></li>
+        <li><a href="#parables">The Two Birds — New Parable Added</a></li>
+        <li><a href="#three-bodies">The Three Bodies (Sarira) — New Subsection Added</a></li>
+        <li><a href="#tyranny-of-i">The Tyranny of the &ldquo;I&rdquo; — New Section Added</a></li>
+        <li><a href="#pancha-klesha">Kleshas &amp; Antarayas — New Cards Added</a></li>
+        <li><a href="#destiny-and-free-will">Karma Mechanics — New Subsection Added</a></li>
+        <li><a href="#three-granthis">The Three Granthis — New Subsection Added</a></li>
+        <li><a href="#compassionate-detachment">The Four Brahma Viharas — New Subsection Added</a></li>
       </ul>
     </div>
 
@@ -17187,317 +17456,5 @@ paRenderLastNote();
 </script>
 </div><!-- /#zoomScope -->
 <div id="glossPortal" class="gloss-portal" role="tooltip"></div>
-<script>
-(function(){
-  var TRADITIONS_GROUPS = [
-    {name:"Start Here", sections:[
-      {id:"start-here",title:"What Is *SELF"},
-      {id:"super-ordinate-goal",title:"The Super-Ordinate Goal"},
-      {id:"framework",title:"Framework"},
-      {id:"canon-map",title:"Where This Sits In The Canon"},
-      {id:"prasthana-trayi",title:"The Foundation of Vedanta"}
-    ]},
-    {name:"The Predicament", sections:[
-      {id:"mistaken-identity",title:"The Root Diagnosis"},
-      {id:"threefold-miseries",title:"The Threefold Miseries"},
-      {id:"godasa-gosvami",title:"Godasa vs Gosvami"},
-      {id:"qualified-seeker",title:"Before The Inquiry Can Begin"},
-      {id:"knowledge-not-action",title:"Why It Can't Be Earned"},
-      {id:"matrix-of-logic",title:"Shiva Sutras \u00b7 Logic & Knowing"},
-      {id:"bondage-of-knowing",title:"The Bondage of \u201cKnowing\u201d"},
-      {id:"dark-night-section",title:"The Dark Night"}
-    ]},
-    {name:"The Vedantic Architecture", sections:[
-      {id:"two-paths-truth",title:"Two Paths to Truth"},
-      {id:"mirror-of-the-veda",title:"The Mirror of the Veda"},
-      {id:"kena-upanishad",title:"Kena Upanishad \u00b7 Known By Whom?"},
-      {id:"orders-of-reality",title:"Beneath the Screen"},
-      {id:"neti-neti-method",title:"Neti Neti \u2014 The Method"},
-      {id:"sakshin",title:"Sakshin \u00b7 The Witness"},
-      {id:"chidabhasa",title:"Chidabhasa \u00b7 The Reflection Mechanism"},
-      {id:"tat-tvam-asi",title:"Tat Tvam Asi"},
-      {id:"necessity-of-maya",title:"The Necessity of Maya"},
-      {id:"argument-from-design",title:"The Argument From Design"},
-      {id:"ladder-of-intention",title:"The Ladder of Intention"},
-      {id:"destiny-and-free-will",title:"Destiny vs Free Will"}
-    ]},
-    {name:"Ego & Consciousness", sections:[
-      {id:"spectrum",title:"Ascent of Self"},
-      {id:"stairway-of-ascension",title:"The Stairway of Ascension"},
-      {id:"triple-labour",title:"The Triple Labour"},
-      {id:"evolution-of-the-worker",title:"The Evolution of the Worker"},
-      {id:"four-powers-of-the-mother",title:"The Four Powers of the Mother"},
-      {id:"dimension",title:"Matter as Dimension"},
-      {id:"consciousness",title:"Consciousness & Awareness"},
-      {id:"physical-correlate",title:"A Note for the Skeptics"},
-      {id:"antahkaran",title:"The Fourfold Mind"},
-      {id:"ego",title:"Ego Architecture"},
-      {id:"sublimation",title:"The Law of Sublimation"},
-      {id:"five-aggregates",title:"The Five Aggregates"},
-      {id:"enneagram",title:"The Enneagram"},
-      {id:"descent-into-psyche",title:"The Descent into the Psyche"},
-      {id:"rosetta-stone",title:"Rosetta Stone of the Ego"},
-      {id:"forty-two",title:"42 \u2014 The Symbol"},
-      {id:"subtilization",title:"The Path of Subtilization"}
-    ]},
-    {name:"Practice & Physiology", sections:[
-      {id:"four-yogas",title:"The Four Yogas"},
-      {id:"yajna-ecosystem",title:"Karm Yog & Yaj\u00f1a"},
-      {id:"patanjali",title:"The Machinery of Stillness"},
-      {id:"sanatana-dharma",title:"Sanatana-Dharma"},
-      {id:"pranayama",title:"Pranayama"},
-      {id:"svasthya",title:"Svasthya"}
-    ]},
-    {name:"Relationship & Attention", sections:[
-      {id:"great-forest",title:"The Great Forest of Being"},
-      {id:"anatomy-of-love",title:"The Anatomy of Love"},
-      {id:"compassionate-detachment",title:"Compassionate Detachment"},
-      {id:"quantity-or-quality",title:"Quantity or Quality"},
-      {id:"attention-currency",title:"The Attention Economy"}
-    ]},
-    {name:"Reference", sections:[
-      {id:"masters",title:"The Masters at a Glance"},
-      {id:"master-matrix",title:"Master Matrix"},
-      {id:"memory-architect",title:"Memory Architect"},
-      {id:"go-deeper",title:"Go Deeper"},
-      {id:"parables",title:"A Few Old Doors"}
-    ]}
-  ];
-
-  // ── PATH_GROUPS — the same content, re-sliced into the Path's own
-  // curated reading sequence (Samanvaya / Avirodha / Sadhana / Phala),
-  // which does not follow the document's physical order. A few ids here
-  // (sakshin, necessity-of-maya, argument-from-design) are nested inside
-  // a section — orders-of-reality — that Path visits separately, earlier,
-  // as its own stop in chapter I; that's Path re-slicing existing content
-  // at a finer grain than the physical sections, by design, not a bug. ──
-  var PATH_GROUPS = [
-    {name:"I. Samanvaya — Harmony", sections:[
-      {id:"start-here",title:"What Is *SELF"},
-      {id:"super-ordinate-goal",title:"The Super-Ordinate Goal"},
-      {id:"framework",title:"Framework"},
-      {id:"canon-map",title:"Where This Sits In The Canon"},
-      {id:"mirror-of-the-veda",title:"The Mirror of the Veda"},
-      {id:"kena-upanishad",title:"Kena Upanishad \u00b7 Known By Whom?"},
-      {id:"two-paths-truth",title:"Two Paths to Truth"},
-      {id:"orders-of-reality",title:"Beneath the Screen"},
-      {id:"ladder-of-intention",title:"The Ladder of Intention"}
-    ]},
-    {name:"II. Avirodha — Non-Conflict", sections:[
-      {id:"mistaken-identity",title:"The Root Diagnosis"},
-      {id:"godasa-gosvami",title:"Godasa vs Gosvami"},
-      {id:"qualified-seeker",title:"Before The Inquiry Can Begin"},
-      {id:"knowledge-not-action",title:"Why It Can't Be Earned"},
-      {id:"matrix-of-logic",title:"Shiva Sutras \u00b7 Logic & Knowing"},
-      {id:"bondage-of-knowing",title:"The Bondage of \u201cKnowing\u201d"},
-      {id:"argument-from-design",title:"The Argument From Design"},
-      {id:"sakshin",title:"Sakshin \u00b7 The Witness"},
-      {id:"necessity-of-maya",title:"The Necessity of Maya"},
-      {id:"destiny-and-free-will",title:"Destiny vs Free Will"},
-      {id:"physical-correlate",title:"A Note for the Skeptics"}
-    ]},
-    {name:"III. Sadhana — Practice", sections:[
-      {id:"portals-to-presence",title:"Portals to Presence"},
-      {id:"full-attention",title:"How to Pay Full Attention"},
-      {id:"interrupting-the-reaction",title:"Interrupting the Reaction"},
-      {id:"four-yogas",title:"The Four Yogas"},
-      {id:"yajna-ecosystem",title:"Karm Yog & Yaj\u00f1a"},
-      {id:"sublimation",title:"The Law of Sublimation"},
-      {id:"triple-labour",title:"The Triple Labour"},
-      {id:"evolution-of-the-worker",title:"The Evolution of the Worker"},
-      {id:"patanjali",title:"The Machinery of Stillness"},
-      {id:"pranayama",title:"Pranayama"},
-      {id:"svasthya",title:"Svasthya"}
-    ]},
-    {name:"IV. Phala — Result", sections:[
-      {id:"great-forest",title:"The Great Forest of Being"},
-      {id:"anatomy-of-love",title:"The Anatomy of Love"},
-      {id:"compassionate-detachment",title:"Compassionate Detachment"},
-      {id:"ledger",title:"The Cosmic Ledger"},
-      {id:"masters",title:"The Masters at a Glance"},
-      {id:"go-deeper",title:"Go Deeper"}
-    ]}
-  ];
-
-  var tradIdToInfo = {};
-  TRADITIONS_GROUPS.forEach(function(g, gi){
-    g.sections.forEach(function(s){ tradIdToInfo[s.id] = {groupIndex: gi, title: s.title}; });
-  });
-  var pathIdToInfo = {};
-  PATH_GROUPS.forEach(function(g, gi){
-    g.sections.forEach(function(s){ pathIdToInfo[s.id] = {groupIndex: gi, title: s.title}; });
-  });
-
-  // Which sequence the mini-TOC currently reflects. Defaults to Traditions;
-  // switches to Path the moment the visitor clicks a Path nav link (desktop
-  // or mobile), and back the moment they click a Traditions link. Persisted
-  // per-tab via sessionStorage so a manual refresh doesn't lose it, since
-  // this is a single-page document navigated by in-page anchor jumps.
-  var spyMode = 'traditions';
-  try{
-    var savedMode = sessionStorage.getItem('spySeqMode');
-    if(savedMode === 'path' || savedMode === 'traditions') spyMode = savedMode;
-  }catch(e){}
-  function setSpyMode(mode){
-    if(mode !== 'path' && mode !== 'traditions') return;
-    if(mode === spyMode) return;
-    spyMode = mode;
-    currentGroupIndex = -1; currentSectionId = null; // force a re-render on next scan
-    try{ sessionStorage.setItem('spySeqMode', mode); }catch(e){}
-  }
-  document.addEventListener('click', function(e){
-    var a = e.target && e.target.closest ? e.target.closest('a[data-group]') : null;
-    if(!a) return;
-    var grp = a.getAttribute('data-group');
-    if(grp === 'path' || grp === 'traditions'){
-      setSpyMode(grp);
-      // Re-scan once the browser's own anchor-jump scroll has settled, so
-      // the bar reflects the new sequence immediately rather than waiting
-      // for the next natural scroll event to fire the observer.
-      setTimeout(function(){ if(typeof scanAndUpdate === 'function') scanAndUpdate(); }, 350);
-    }
-  });
-
-  function activeGroups(){ return spyMode === 'path' ? PATH_GROUPS : TRADITIONS_GROUPS; }
-  function activeIdToInfo(){ return spyMode === 'path' ? pathIdToInfo : tradIdToInfo; }
-
-  var bar = document.getElementById('scrollSpyBar');
-  var barLabel = document.getElementById('spyBarLabel');
-  var barGroup = document.getElementById('spyBarGroup');
-  var barToggle = document.getElementById('spyBarToggle');
-  var barCaret = document.getElementById('spyBarCaret');
-  var miniToc = document.getElementById('spyMiniToc');
-  if(!bar || !barGroup || !barToggle || !miniToc) return;
-
-  var currentGroupIndex = -1;
-  var currentSectionId = null;
-
-  function renderMiniToc(gi){
-    var g = activeGroups()[gi];
-    var html = '';
-    g.sections.forEach(function(s){
-      if(!document.getElementById(s.id)) return;
-      var cls = (s.id === currentSectionId) ? ' class="spy-current"' : '';
-      html += '<a href="#'+s.id+'"'+cls+'>'+s.title+'</a>';
-    });
-    miniToc.innerHTML = html;
-  }
-
-  function updateBar(gi, sectionId){
-    if(gi === -1){
-      bar.style.display = 'none';
-      document.body.classList.remove('spy-bar-visible');
-      currentGroupIndex = -1; currentSectionId = null;
-      return;
-    }
-    bar.style.display = '';
-    document.body.classList.add('spy-bar-visible');
-    if(barLabel) barLabel.textContent = (spyMode === 'path') ? 'Reading' : "You're in";
-    barGroup.textContent = activeGroups()[gi].name;
-    if(gi !== currentGroupIndex){
-      renderMiniToc(gi);
-    } else if(sectionId !== currentSectionId){
-      var links = miniToc.querySelectorAll('a');
-      for(var i=0;i<links.length;i++){
-        links[i].classList.toggle('spy-current', links[i].getAttribute('href') === '#'+sectionId);
-      }
-    }
-    currentGroupIndex = gi;
-    currentSectionId = sectionId;
-  }
-
-  barToggle.addEventListener('click', function(){
-    var isOpen = miniToc.classList.toggle('open');
-    barToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    if(barCaret) barCaret.classList.toggle('open', isOpen);
-  });
-  miniToc.addEventListener('click', function(e){
-    if(e.target && e.target.tagName === 'A'){
-      miniToc.classList.remove('open');
-      if(barCaret) barCaret.classList.remove('open');
-      barToggle.setAttribute('aria-expanded','false');
-    }
-  });
-
-  // Observed set is the union of every id either sequence tracks — a few
-  // Path-only stops (portals-to-presence, full-attention, interrupting-
-  // the-reaction, ledger) weren't watched before this existed.
-  var observedIdSet = {};
-  Object.keys(tradIdToInfo).forEach(function(id){ observedIdSet[id] = true; });
-  Object.keys(pathIdToInfo).forEach(function(id){ observedIdSet[id] = true; });
-  var observedIds = Object.keys(observedIdSet).filter(function(id){ return document.getElementById(id); });
-  var navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 44;
-
-  var saveTimer = null;
-  function saveProgress(id, title){
-    clearTimeout(saveTimer);
-    saveTimer = setTimeout(function(){
-      try{ localStorage.setItem('selfSiteProgress', JSON.stringify({id:id, title:title, ts:Date.now()})); }catch(e){}
-    }, 500);
-  }
-
-  function scanAndUpdate(){
-    var refLine = navH + 60;
-    var best = null, bestDist = Infinity;
-    var idMap = activeIdToInfo();
-    for(var i=0;i<observedIds.length;i++){
-      var id = observedIds[i];
-      if(!idMap[id]) continue; // not part of the currently active sequence
-      var el = document.getElementById(id);
-      if(!el) continue;
-      var rect = el.getBoundingClientRect();
-      if(rect.top <= refLine){
-        var dist = refLine - rect.top;
-        if(dist < bestDist){ bestDist = dist; best = id; }
-      }
-    }
-    if(best && idMap[best]){
-      var info = idMap[best];
-      updateBar(info.groupIndex, best);
-      saveProgress(best, info.title);
-    } else {
-      updateBar(-1, null);
-    }
-  }
-
-  if('IntersectionObserver' in window){
-    var observer = new IntersectionObserver(scanAndUpdate, {rootMargin: '-'+navH+'px 0px -70% 0px', threshold:[0,1]});
-    observedIds.forEach(function(id){
-      var el = document.getElementById(id);
-      if(el) observer.observe(el);
-    });
-    scanAndUpdate();
-  }
-
-  try{
-    var saved = JSON.parse(localStorage.getItem('selfSiteProgress') || 'null');
-    if(saved && saved.id && document.getElementById(saved.id)){
-      var pill = document.getElementById('continuePill');
-      var pillLink = document.getElementById('continuePillLink');
-      var pillTitle = document.getElementById('continuePillTitle');
-      var pillM = document.getElementById('continuePillMobile');
-      var pillMLink = document.getElementById('continuePillMobileLink');
-      var pillMTitle = document.getElementById('continuePillMobileTitle');
-      if(pill && pillLink && pillTitle){
-        pillTitle.textContent = saved.title;
-        pillLink.setAttribute('href', '#'+saved.id);
-        pill.style.display = '';
-      }
-      if(pillM && pillMLink && pillMTitle){
-        pillMTitle.textContent = saved.title;
-        pillMLink.setAttribute('href', '#'+saved.id);
-        pillM.style.display = '';
-      }
-      [pillLink, pillMLink].forEach(function(l){
-        if(!l) return;
-        l.addEventListener('click', function(){
-          if(pill) pill.style.display='none';
-          if(pillM) pillM.style.display='none';
-        });
-      });
-    }
-  }catch(e){}
-})();
-</script>
 </body>
 </html>
