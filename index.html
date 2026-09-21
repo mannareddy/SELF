@@ -4038,13 +4038,16 @@ a.src-tag:hover{opacity:.75;}
   <button id="themeToggleBtn" onclick="toggleTheme()" title="Toggle light/dark theme" aria-label="Toggle theme">&#9788;</button>
 </nav>
 
-<!-- ── SCROLL-SPY BAR — tracks which Traditions group is currently in
+<!-- ── SCROLL-SPY BAR — tracks which Traditions group (or, if the visitor
+     arrived via a Path chapter link, which Path chapter) is currently in
      view, sticks under the main nav, and expands into a mini table of
-     contents for just that group. Hidden until the observer below finds
-     a tracked section in view; hidden again outside tracked content. -->
+     contents scoped to whichever sequence is active. Hidden until the
+     observer below finds a tracked section in view; hidden again outside
+     tracked content. See PATH_GROUPS / TRADITIONS_GROUPS in the script
+     near the end of the document for the two sequences it can show. -->
 <div class="scroll-spy-bar" id="scrollSpyBar" style="display:none;">
   <button class="spy-bar-main" id="spyBarToggle" type="button" aria-expanded="false">
-    <span class="spy-bar-label">You're in</span>
+    <span class="spy-bar-label" id="spyBarLabel">You're in</span>
     <span class="spy-bar-group" id="spyBarGroup">—</span>
     <span class="spy-bar-caret" id="spyBarCaret">▾</span>
   </button>
@@ -17261,12 +17264,105 @@ paRenderLastNote();
     ]}
   ];
 
-  var idToInfo = {};
+  // ── PATH_GROUPS — the same content, re-sliced into the Path's own
+  // curated reading sequence (Samanvaya / Avirodha / Sadhana / Phala),
+  // which does not follow the document's physical order. A few ids here
+  // (sakshin, necessity-of-maya, argument-from-design) are nested inside
+  // a section — orders-of-reality — that Path visits separately, earlier,
+  // as its own stop in chapter I; that's Path re-slicing existing content
+  // at a finer grain than the physical sections, by design, not a bug. ──
+  var PATH_GROUPS = [
+    {name:"I. Samanvaya — Harmony", sections:[
+      {id:"start-here",title:"What Is *SELF"},
+      {id:"super-ordinate-goal",title:"The Super-Ordinate Goal"},
+      {id:"framework",title:"Framework"},
+      {id:"canon-map",title:"Where This Sits In The Canon"},
+      {id:"mirror-of-the-veda",title:"The Mirror of the Veda"},
+      {id:"kena-upanishad",title:"Kena Upanishad \u00b7 Known By Whom?"},
+      {id:"two-paths-truth",title:"Two Paths to Truth"},
+      {id:"orders-of-reality",title:"Beneath the Screen"},
+      {id:"ladder-of-intention",title:"The Ladder of Intention"}
+    ]},
+    {name:"II. Avirodha — Non-Conflict", sections:[
+      {id:"mistaken-identity",title:"The Root Diagnosis"},
+      {id:"godasa-gosvami",title:"Godasa vs Gosvami"},
+      {id:"qualified-seeker",title:"Before The Inquiry Can Begin"},
+      {id:"knowledge-not-action",title:"Why It Can't Be Earned"},
+      {id:"matrix-of-logic",title:"Shiva Sutras \u00b7 Logic & Knowing"},
+      {id:"bondage-of-knowing",title:"The Bondage of \u201cKnowing\u201d"},
+      {id:"argument-from-design",title:"The Argument From Design"},
+      {id:"sakshin",title:"Sakshin \u00b7 The Witness"},
+      {id:"necessity-of-maya",title:"The Necessity of Maya"},
+      {id:"destiny-and-free-will",title:"Destiny vs Free Will"},
+      {id:"physical-correlate",title:"A Note for the Skeptics"}
+    ]},
+    {name:"III. Sadhana — Practice", sections:[
+      {id:"portals-to-presence",title:"Portals to Presence"},
+      {id:"full-attention",title:"How to Pay Full Attention"},
+      {id:"interrupting-the-reaction",title:"Interrupting the Reaction"},
+      {id:"four-yogas",title:"The Four Yogas"},
+      {id:"yajna-ecosystem",title:"Karm Yog & Yaj\u00f1a"},
+      {id:"sublimation",title:"The Law of Sublimation"},
+      {id:"triple-labour",title:"The Triple Labour"},
+      {id:"evolution-of-the-worker",title:"The Evolution of the Worker"},
+      {id:"patanjali",title:"The Machinery of Stillness"},
+      {id:"pranayama",title:"Pranayama"},
+      {id:"svasthya",title:"Svasthya"}
+    ]},
+    {name:"IV. Phala — Result", sections:[
+      {id:"great-forest",title:"The Great Forest of Being"},
+      {id:"anatomy-of-love",title:"The Anatomy of Love"},
+      {id:"compassionate-detachment",title:"Compassionate Detachment"},
+      {id:"ledger",title:"The Cosmic Ledger"},
+      {id:"masters",title:"The Masters at a Glance"},
+      {id:"go-deeper",title:"Go Deeper"}
+    ]}
+  ];
+
+  var tradIdToInfo = {};
   TRADITIONS_GROUPS.forEach(function(g, gi){
-    g.sections.forEach(function(s){ idToInfo[s.id] = {groupIndex: gi, title: s.title}; });
+    g.sections.forEach(function(s){ tradIdToInfo[s.id] = {groupIndex: gi, title: s.title}; });
+  });
+  var pathIdToInfo = {};
+  PATH_GROUPS.forEach(function(g, gi){
+    g.sections.forEach(function(s){ pathIdToInfo[s.id] = {groupIndex: gi, title: s.title}; });
   });
 
+  // Which sequence the mini-TOC currently reflects. Defaults to Traditions;
+  // switches to Path the moment the visitor clicks a Path nav link (desktop
+  // or mobile), and back the moment they click a Traditions link. Persisted
+  // per-tab via sessionStorage so a manual refresh doesn't lose it, since
+  // this is a single-page document navigated by in-page anchor jumps.
+  var spyMode = 'traditions';
+  try{
+    var savedMode = sessionStorage.getItem('spySeqMode');
+    if(savedMode === 'path' || savedMode === 'traditions') spyMode = savedMode;
+  }catch(e){}
+  function setSpyMode(mode){
+    if(mode !== 'path' && mode !== 'traditions') return;
+    if(mode === spyMode) return;
+    spyMode = mode;
+    currentGroupIndex = -1; currentSectionId = null; // force a re-render on next scan
+    try{ sessionStorage.setItem('spySeqMode', mode); }catch(e){}
+  }
+  document.addEventListener('click', function(e){
+    var a = e.target && e.target.closest ? e.target.closest('a[data-group]') : null;
+    if(!a) return;
+    var grp = a.getAttribute('data-group');
+    if(grp === 'path' || grp === 'traditions'){
+      setSpyMode(grp);
+      // Re-scan once the browser's own anchor-jump scroll has settled, so
+      // the bar reflects the new sequence immediately rather than waiting
+      // for the next natural scroll event to fire the observer.
+      setTimeout(function(){ if(typeof scanAndUpdate === 'function') scanAndUpdate(); }, 350);
+    }
+  });
+
+  function activeGroups(){ return spyMode === 'path' ? PATH_GROUPS : TRADITIONS_GROUPS; }
+  function activeIdToInfo(){ return spyMode === 'path' ? pathIdToInfo : tradIdToInfo; }
+
   var bar = document.getElementById('scrollSpyBar');
+  var barLabel = document.getElementById('spyBarLabel');
   var barGroup = document.getElementById('spyBarGroup');
   var barToggle = document.getElementById('spyBarToggle');
   var barCaret = document.getElementById('spyBarCaret');
@@ -17277,7 +17373,7 @@ paRenderLastNote();
   var currentSectionId = null;
 
   function renderMiniToc(gi){
-    var g = TRADITIONS_GROUPS[gi];
+    var g = activeGroups()[gi];
     var html = '';
     g.sections.forEach(function(s){
       if(!document.getElementById(s.id)) return;
@@ -17296,7 +17392,8 @@ paRenderLastNote();
     }
     bar.style.display = '';
     document.body.classList.add('spy-bar-visible');
-    barGroup.textContent = TRADITIONS_GROUPS[gi].name;
+    if(barLabel) barLabel.textContent = (spyMode === 'path') ? 'Reading' : "You're in";
+    barGroup.textContent = activeGroups()[gi].name;
     if(gi !== currentGroupIndex){
       renderMiniToc(gi);
     } else if(sectionId !== currentSectionId){
@@ -17322,7 +17419,13 @@ paRenderLastNote();
     }
   });
 
-  var observedIds = Object.keys(idToInfo).filter(function(id){ return document.getElementById(id); });
+  // Observed set is the union of every id either sequence tracks — a few
+  // Path-only stops (portals-to-presence, full-attention, interrupting-
+  // the-reaction, ledger) weren't watched before this existed.
+  var observedIdSet = {};
+  Object.keys(tradIdToInfo).forEach(function(id){ observedIdSet[id] = true; });
+  Object.keys(pathIdToInfo).forEach(function(id){ observedIdSet[id] = true; });
+  var observedIds = Object.keys(observedIdSet).filter(function(id){ return document.getElementById(id); });
   var navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 44;
 
   var saveTimer = null;
@@ -17336,8 +17439,10 @@ paRenderLastNote();
   function scanAndUpdate(){
     var refLine = navH + 60;
     var best = null, bestDist = Infinity;
+    var idMap = activeIdToInfo();
     for(var i=0;i<observedIds.length;i++){
       var id = observedIds[i];
+      if(!idMap[id]) continue; // not part of the currently active sequence
       var el = document.getElementById(id);
       if(!el) continue;
       var rect = el.getBoundingClientRect();
@@ -17346,8 +17451,8 @@ paRenderLastNote();
         if(dist < bestDist){ bestDist = dist; best = id; }
       }
     }
-    if(best && idToInfo[best]){
-      var info = idToInfo[best];
+    if(best && idMap[best]){
+      var info = idMap[best];
       updateBar(info.groupIndex, best);
       saveProgress(best, info.title);
     } else {
