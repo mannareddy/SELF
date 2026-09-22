@@ -1874,6 +1874,42 @@ section{scroll-margin-top:56px;}
   .hero-continue-mobile{padding-top:10px !important;}
 }
 
+/* ── HERO — TABLET ────────────────────────────────────────────────────────
+   Tablets (≈641–1024px wide) fall between the phone layout (≤640px, which
+   uses the explicit .hero-mobile-spacer flex-grow system above) and the
+   desktop layout (.hero{justify-content:space-between} distributing a
+   handful of items across min-height:100vh). On a tablet in portrait —
+   narrow but very tall — that desktop space-between stretch turns into
+   large, uneven gaps between the logo, the intro line, the question box,
+   and the continue arrow (the arrow can end up pushed below the fold
+   entirely). Landscape tablets are shorter, so the existing max-height
+   compaction rules above mostly already handle them, but they're included
+   here too with a touch more breathing room than a laptop window gets.
+   This block swaps space-between for a centered stack with a fixed,
+   deliberate gap so spacing stays consistent regardless of how tall the
+   viewport happens to be. */
+@media(min-width:641px) and (max-width:1024px) and (orientation:portrait){
+  .hero{
+    justify-content:center !important;
+    gap:36px !important;
+    padding:48px 40px !important;
+  }
+  .hero-3d-visual{width:min(300px,42vw) !important;margin:0 !important;}
+  .hero-question{margin-bottom:0 !important;}
+  .hero-question-box{margin-bottom:0 !important;max-width:640px !important;}
+  .hero-continue-mobile{padding-top:12px !important;margin-top:0 !important;}
+}
+@media(min-width:641px) and (max-width:1366px) and (orientation:landscape){
+  .hero{
+    justify-content:center !important;
+    gap:22px !important;
+  }
+  .hero-3d-visual{width:min(200px,24vw) !important;margin:0 !important;}
+  .hero-question{margin-bottom:0 !important;}
+  .hero-question-box{margin-bottom:0 !important;}
+  .hero-continue-mobile{padding-top:8px !important;margin-top:0 !important;}
+}
+
 /* ── BANNER ──────────────────────────────────────────────────────────────── */
 .banner-section{max-width:1400px;margin:0 auto;}
 .banner-image{width:100%;height:auto;aspect-ratio:16/9;display:block;border-top:1px solid #111;border-bottom:1px solid #111;}
