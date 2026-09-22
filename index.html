@@ -1909,12 +1909,15 @@ section{scroll-margin-top:56px;}
     min-height:auto !important;
     justify-content:flex-start !important;
     gap:24px !important;
-    padding:28px 40px 40px !important;
+    /* Extra bottom padding beyond what the content itself needs — pushes
+       the banner section further down so it stays fully off the first
+       screen instead of peeking in under the continue arrow. */
+    padding:28px 40px 130px !important;
   }
   .hero-3d-visual{width:min(200px,24vw) !important;margin:0 !important;}
   .hero-question{margin-bottom:0 !important;}
   .hero-question-box{margin-bottom:0 !important;}
-  .hero-continue-mobile{padding-top:8px !important;margin-top:0 !important;}
+  .hero-continue-mobile{padding-top:8px !important;margin-top:16px !important;}
 }
 
 /* ── BANNER ──────────────────────────────────────────────────────────────── */
