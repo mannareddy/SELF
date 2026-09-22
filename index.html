@@ -1882,17 +1882,22 @@ section{scroll-margin-top:56px;}
    narrow but very tall — that desktop space-between stretch turns into
    large, uneven gaps between the logo, the intro line, the question box,
    and the continue arrow (the arrow can end up pushed below the fold
-   entirely). Landscape tablets are shorter, so the existing max-height
-   compaction rules above mostly already handle them, but they're included
-   here too with a touch more breathing room than a laptop window gets.
-   This block swaps space-between for a centered stack with a fixed,
-   deliberate gap so spacing stays consistent regardless of how tall the
-   viewport happens to be. */
+   entirely).
+   First pass here centered the content instead, but that just traded
+   uneven internal gaps for two large, empty voids above and below the
+   whole block (the .hero was still forced to min-height:100vh, so
+   centering a short stack inside a full-screen-tall box always leaves
+   dead space top and bottom). Fix: stop forcing the hero to fill the
+   viewport at all on tablets — let it size to its own content, top-
+   anchored just under the nav, with fixed padding/gaps. The next
+   section (banner) then starts right after instead of the page holding
+   a mostly-empty full-height hero. */
 @media(min-width:641px) and (max-width:1024px) and (orientation:portrait){
   .hero{
-    justify-content:center !important;
-    gap:36px !important;
-    padding:48px 40px !important;
+    min-height:auto !important;
+    justify-content:flex-start !important;
+    gap:40px !important;
+    padding:56px 40px 64px !important;
   }
   .hero-3d-visual{width:min(300px,42vw) !important;margin:0 !important;}
   .hero-question{margin-bottom:0 !important;}
@@ -1901,8 +1906,10 @@ section{scroll-margin-top:56px;}
 }
 @media(min-width:641px) and (max-width:1366px) and (orientation:landscape){
   .hero{
-    justify-content:center !important;
-    gap:22px !important;
+    min-height:auto !important;
+    justify-content:flex-start !important;
+    gap:24px !important;
+    padding:28px 40px 40px !important;
   }
   .hero-3d-visual{width:min(200px,24vw) !important;margin:0 !important;}
   .hero-question{margin-bottom:0 !important;}
