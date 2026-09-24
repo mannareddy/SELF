@@ -3901,9 +3901,12 @@ a.src-tag:hover{opacity:.75;}
 .src-research::before{background:#6fa8dc;}
 .src-synth{color:var(--grey);border-color:#333;}
 .src-synth::before{background:var(--grey);}
+.src-applied{color:#8fbc8f;border-color:rgba(143,188,143,0.5);}
+.src-applied::before{background:#8fbc8f;}
 [data-theme="light"] .src-trad{color:var(--accent-gold);border-color:rgba(var(--accent-gold-rgb),0.5);}
 [data-theme="light"] .src-research{color:var(--text-research-blue);border-color:rgba(var(--text-research-blue-rgb),0.5);}
 [data-theme="light"] .src-synth{color:var(--grey);border-color:rgba(var(--shadow-rgb),0.25);}
+[data-theme="light"] .src-applied{color:#4a7a4a;border-color:rgba(74,122,74,0.5);}
 
 </style>
 </head>
@@ -6482,9 +6485,10 @@ a.src-tag:hover{opacity:.75;}
     <span class="src-tag src-trad">Traditional Source</span>
     <span class="src-tag src-research">Modern Research</span>
     <span class="src-tag src-synth">42SELF Interpretation</span>
+    <span class="src-tag src-applied">Applied Framework</span>
   </div>
   <div style="font-family:var(--sans);font-size:13px;color:var(--grey);line-height:1.9;max-width:640px;margin:16px auto 0;font-style:normal;">
-    You'll see these three tags throughout the site, wherever a specific claim is made. <span style="color:#c9a84c;">Traditional Source</span> means it's drawn directly from a named tradition or text. <span style="color:#6fa8dc;">Modern Research</span> means it's a plain summary of published science. <span style="color:var(--grey);">42SELF Interpretation</span> means it's our own synthesis &mdash; not a claim the underlying tradition or study makes on its own. Every tag links back to this key.
+    You'll see these tags throughout the site, wherever a specific claim is made. <span style="color:#c9a84c;">Traditional Source</span> means it's drawn directly from a named tradition or text. <span style="color:#6fa8dc;">Modern Research</span> means it's a plain summary of published science. <span style="color:var(--grey);">42SELF Interpretation</span> means it's our own synthesis &mdash; not a claim the underlying tradition or study makes on its own. <span style="color:#8fbc8f;">Applied Framework</span> means it's adapted from a secular, practical model &mdash; not ancient or scientific, just a structure we found useful and folded into the site's own language. Every tag links back to this key.
   </div>
   <button id="foundationToggle" onclick="toggleFoundation(this)" style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);background:transparent;border:1.5px solid rgba(var(--accent-gold-rgb),0.55);padding:10px 24px;cursor:pointer;margin:20px auto 0;display:block;transition:border-color .25s;" aria-expanded="false">Show Traditions &#9660;</button>
   <div id="foundationContent" class="foundation-content collapsed">
@@ -11287,8 +11291,8 @@ a.src-tag:hover{opacity:.75;}
 
 <!-- THE ARCHITECTURE OF INSPIRATION — where the currency spent above gets
      paid outward. Adapted from an external leadership framework, not a
-     traditional source, so it's tagged src-research (relabeled "Applied
-     Framework") rather than src-trad. -->
+     traditional source, so it's tagged src-applied ("Applied Framework")
+     — see the fourth tag added to the Sources key. -->
 <section class="section" id="architecture-of-inspiration" style="scroll-margin-top:56px;">
   <span class="label">Relationship &amp; Attention</span>
   <p class="phil-line bright" style="margin-bottom:8px;">Inspiration is not a trait. It is a system.</p>
@@ -11309,7 +11313,7 @@ a.src-tag:hover{opacity:.75;}
   <div class="pull-quote" style="margin:40px auto 0;border:1.5px solid rgba(var(--accent-gold-rgb),0.55);border-left:3px solid var(--gold);padding:28px 32px;max-width:820px;">
     <p>To genuinely inspire everyone around you, stop trying to be &ldquo;inspiring.&rdquo; It was never the goal &mdash; only the byproduct of focus on the present, excellence in the craft, and an empathetic dedication to whoever's in the room.</p>
   </div>
-  <p style="text-align:center;margin-top:20px;"><span class="src-tag src-research">Applied Framework</span></p>
+  <p style="text-align:center;margin-top:20px;"><a class="src-tag src-applied" href="#sources">Applied Framework</a></p>
 </section>
 <span class="continue-hint">continue</span>
 <div class="divider"></div>
