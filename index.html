@@ -4130,25 +4130,48 @@ a.src-tag:hover{opacity:.75;}
       </div>
     </li>
 
-    <!-- ── "NEW" MENU — hand-curated, no auto-detection ──────────────────
-         To flag something as new: add one <a> line inside #newMenuPanel
-         below (and the matching line inside #newMenuPanelMobile further
-         down for the mobile accordion) with a short label saying WHAT
-         changed, pointing at the relevant section. Remove the line once
-         it's no longer worth calling out (there's no expiry — it stays
-         until you take it out). For something not live yet, use a
-         <span class="new-menu-soon">Label — Coming Soon</span> instead
-         of an <a> — it renders muted and unclickable, so this same menu
-         can double as a heads-up for features still in progress. The
-         gold dot on the "New" trigger itself (and the mobile "New"
-         accordion toggle) only shows while these panels actually have
-         entries — empty both out and the dot hides itself. -->
+    <!-- ── "NEW" MENU — hand-curated, grouped by existing site section ────
+         Entries are grouped under a group-label div (desktop) / li (mobile)
+         naming the EXISTING section the change lives in, in the site's own
+         top-to-bottom page order — not a flat list. To flag something as
+         new: find the matching group below and add one <a> line under it
+         inside #newMenuPanel (and the matching <li><a> under the matching
+         group inside #newMenuPanelMobile further down) with a short label
+         saying WHAT changed. If the change doesn't belong to any existing
+         group, add a new group-label block in the right page-order position
+         in both panels. Remove the line (and the whole group block, if it
+         was the group's only entry) once it's no longer worth calling out
+         (there's no expiry — it stays until you take it out). For something
+         not live yet, use a <span class="new-menu-soon">Label — Coming
+         Soon</span> instead of an <a> — it renders muted and unclickable,
+         so this same menu can double as a heads-up for features still in
+         progress. The gold dot on the "New" trigger itself (and the mobile
+         "New" accordion toggle) only shows while these panels actually have
+         at least one <a> entry — empty both out and the dot hides itself;
+         the group-label divs/lis alone don't count. -->
     <li class="nav-dropdown-wrap">
       <a href="#glossary" data-group="new">New<span class="nav-new-dot"></span><span class="nav-caret">▾</span></a>
       <div class="nav-dropdown-panel" id="newMenuPanel">
-        <a href="#ear-of-the-ear" data-group="new">The Ear of the Ear &middot; Kena Upanishad — New Card Added</a>
+        <div style="padding:12px 22px 6px;font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.7;">Emotional Self-Management</div>
+        <a href="#open-cage-of-repentance" data-group="new">The Open Cage of Repentance &middot; New Card Added</a>
+
+        <div style="padding:14px 22px 6px;margin-top:2px;border-top:1px solid rgba(var(--accent-gold-rgb),0.25);font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.7;">Framework</div>
         <a href="#courier-and-wife" data-group="new">The Courier and the Wife &middot; Default OS — New Card Added</a>
+        <a href="#blueprint-and-house" data-group="new">The Blueprint and the House &middot; Life vs. Life Situation — New Card Added</a>
+
+        <div style="padding:14px 22px 6px;margin-top:2px;border-top:1px solid rgba(var(--accent-gold-rgb),0.25);font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.7;">Two Geographies of Liberation</div>
+        <a href="#shattering-the-illusion-of-time" data-group="new">What &ldquo;The Present Moment&rdquo; Means &middot; New Card Added</a>
+
+        <div style="padding:14px 22px 6px;margin-top:2px;border-top:1px solid rgba(var(--accent-gold-rgb),0.25);font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.7;">Consciousness &amp; Awareness</div>
+        <a href="#ear-of-the-ear" data-group="new">The Ear of the Ear &middot; Kena Upanishad — New Card Added</a>
+
+        <div style="padding:14px 22px 6px;margin-top:2px;border-top:1px solid rgba(var(--accent-gold-rgb),0.25);font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.7;">A Few Old Doors</div>
         <a href="#three-new-parables" data-group="new">Three New Parables &middot; Sufi, Zen &amp; Modern — New Section Added</a>
+
+        <div style="padding:14px 22px 6px;margin-top:2px;border-top:1px solid rgba(var(--accent-gold-rgb),0.25);font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.7;">FAQ</div>
+        <a href="#faq-singsapa-leaves" data-group="new">Why Doesn&rsquo;t This Cover Everything? &middot; New FAQ Added</a>
+
+        <div style="padding:14px 22px 6px;margin-top:2px;border-top:1px solid rgba(var(--accent-gold-rgb),0.25);font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.7;">Glossary</div>
         <a href="#dense-forest-of-words" data-group="new">The Dense Forest of Words &middot; A Warning About This Glossary — New Section Added</a>
       </div>
     </li>
@@ -4468,9 +4491,26 @@ a.src-tag:hover{opacity:.75;}
         <span class="mnav-screen-title">New</span>
       </div>
       <ul class="mnav-row-list" id="newMenuPanelMobile">
-        <li><a href="#ear-of-the-ear">The Ear of the Ear &middot; Kena Upanishad — New Card Added</a></li>
+        <li style="border-bottom:none;padding:14px 16px 4px;font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.7;">Emotional Self-Management</li>
+        <li><a href="#open-cage-of-repentance">The Open Cage of Repentance &middot; New Card Added</a></li>
+
+        <li style="border-bottom:none;padding:18px 16px 4px;font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.7;">Framework</li>
         <li><a href="#courier-and-wife">The Courier and the Wife &middot; Default OS — New Card Added</a></li>
+        <li><a href="#blueprint-and-house">The Blueprint and the House &middot; Life vs. Life Situation — New Card Added</a></li>
+
+        <li style="border-bottom:none;padding:18px 16px 4px;font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.7;">Two Geographies of Liberation</li>
+        <li><a href="#shattering-the-illusion-of-time">What &ldquo;The Present Moment&rdquo; Means &middot; New Card Added</a></li>
+
+        <li style="border-bottom:none;padding:18px 16px 4px;font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.7;">Consciousness &amp; Awareness</li>
+        <li><a href="#ear-of-the-ear">The Ear of the Ear &middot; Kena Upanishad — New Card Added</a></li>
+
+        <li style="border-bottom:none;padding:18px 16px 4px;font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.7;">A Few Old Doors</li>
         <li><a href="#three-new-parables">Three New Parables &middot; Sufi, Zen &amp; Modern — New Section Added</a></li>
+
+        <li style="border-bottom:none;padding:18px 16px 4px;font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.7;">FAQ</li>
+        <li><a href="#faq-singsapa-leaves">Why Doesn&rsquo;t This Cover Everything? &middot; New FAQ Added</a></li>
+
+        <li style="border-bottom:none;padding:18px 16px 4px;font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.7;">Glossary</li>
         <li><a href="#dense-forest-of-words">The Dense Forest of Words &middot; A Warning About This Glossary — New Section Added</a></li>
       </ul>
     </div>
@@ -4938,6 +4978,13 @@ a.src-tag:hover{opacity:.75;}
     <p style="margin-top:0;margin-bottom:14px;"><span class="src-tag src-trad">Traditional Explanation</span></p>
     <p class="phil-line dim" style="margin-bottom:16px;max-width:820px;margin-left:auto;margin-right:auto;text-align:left;">The tradition this comes from describes the body as running on an electrical polarity &mdash; top/bottom and left/right &mdash; and treats a stuck emotion as a local disruption to that polarity, with the tapping and crossed postures meant to restore it. That's the framework's own account of why it might work, not a claim this site is making. Nobody has established that literal electrical polarity is the mechanism; what's better supported is that any of several plainer things could be doing the work here &mdash; focused attention on the feeling, the rhythm of repeated touch, or simply pausing to name a feeling honestly out loud. The steps above are worth trying regardless of which explanation is right.</p>
 
+    <div id="open-cage-of-repentance" style="max-width:820px;margin:40px auto 0;scroll-margin-top:56px;text-align:left;">
+      <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin:0 0 16px;">A Related Lens &middot; The Open Cage of Repentance</p>
+      <p style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.9;margin-bottom:16px;">Step 4's guilt line above &mdash; &ldquo;I forgive myself, I couldn&rsquo;t have done differently&rdquo; &mdash; is doing more than it looks like. In Zen, repentance is pictured as a birdcage. Most people either leave the door shut, trapping the bird, or leave the cage empty, pretending nothing needs holding. The instruction is neither: paint a cage with an open door, and simply wait in it.</p>
+      <p style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.9;margin-bottom:16px;">Not shutting yourself off from what you did. Not staying locked inside the guilt either. Just enough structure to hold the feeling honestly, with the door already open the entire time.</p>
+      <p style="font-family:var(--serif);font-size:14.5px;color:var(--gold);font-style:italic;line-height:1.9;">The forgiveness in Step 4 isn't a trick to make the feeling go away faster. It's the open door.</p>
+    </div>
+
     </div>
 
     <p style="font-family:var(--serif);font-size:13px;color:var(--dim);line-height:1.8;max-width:820px;margin:32px auto 8px;font-style:italic;">This is light fingertip tapping and slow breathing, not needles &mdash; there's no wrong way to do this that causes harm. The worst case is nothing changes, not that something goes wrong.</p>
@@ -5250,6 +5297,14 @@ a.src-tag:hover{opacity:.75;}
             <div><div class="sl-name" style="font-size:14px;color:var(--gold);">The Agricultural Metaphor</div><p class="sl-desc">Growing, nurturing, flowing &mdash; life as a seed already carrying what it will become.</p></div>
           </div>
           <p style="margin-top:14px;font-size:13px;color:var(--grey);line-height:1.75;">The river runs independently of your preferences. Whether you fight the current or swim with it is the only real choice on offer.</p>
+          </div>
+        </div>
+        <div id="blueprint-and-house" class="framework-subcard collapsed" style="scroll-margin-top:56px;">
+          <h4>The Blueprint and the House</h4><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Paper and fire, seen as one process</p>
+          <div class="framework-subcard-content">
+          <p style="margin-top:0;">A blueprint shows paper and fire as two separate things &mdash; a wall here, a hearth there, fixed and labeled, sitting apart on the page. That's the conceptual world: separate entities, filed and named.</p>
+          <p style="margin-top:12px;">A house actually being lived in doesn't work that way. Light a fire near paper long enough and there's no clean seam left between them &mdash; paper is fire, fire is paper, one continuous event. Living was never going to happen on the blueprint. It only happens in the burning.</p>
+          <p style="margin-top:12px;color:var(--gold);font-style:italic;">Most of a life is spent re-checking the blueprint instead of stepping into the house that's already on fire.</p>
           </div>
         </div>
       </div>
@@ -6534,6 +6589,35 @@ a.src-tag:hover{opacity:.75;}
     <p style="font-size:clamp(16px,2.2vw,21px);color:var(--gold);font-style:italic;line-height:1.8;margin-bottom:16px;text-wrap:balance;">Opposite directions. Same instrument.</p>
     <p style="font-size:clamp(14px,1.9vw,18px);color:var(--grey);line-height:1.9;text-wrap:balance;">Not breath. Not distance. Not ritual. Concentrated awareness &mdash; aimed far, or aimed close. The rocket is useless either way. The mind was always the ship.</p>
   </div>
+
+  <div id="shattering-the-illusion-of-time" class="ego-sub-header" style="max-width:820px;scroll-margin-top:56px;">
+    <div class="ego-sub-header-text">
+      <h3>What &ldquo;The Present Moment&rdquo; Actually Means</h3>
+      <p>Zen's own account of the Internal Journey row above &mdash; not a mood, a specific claim about time</p>
+    </div>
+    <button class="collapse-toggle-btn" onclick="sectionCollapse('present-moment-detail',this)">Expand &#9660;</button>
+  </div>
+  <div id="present-moment-detail" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 48px;text-align:left;">
+
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--grey);line-height:1.9;margin:20px 0 20px;">The ordinary picture of time is a single heavy line, the past pushing into the future through a thin seam called &ldquo;now.&rdquo; <span class="gloss">Dainin Katagiri<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Dainin Katagiri">+</span><span class="gloss-pop">A 20th-century Zen teacher who brought Soto Zen practice to the American Midwest, known for grounding abstract teaching in the texture of ordinary daily life.</span></span>, working from older Zen sources, describes something else: a single moment already contains 65 <span class="gloss">ksanas<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define ksana">+</span><span class="gloss-pop">Sanskrit/Pali for &ldquo;instant&rdquo; &mdash; the shortest conceivable unit of time in classical Buddhist thought, used here to argue that a moment isn't a slice of a line but a complete, self-contained event.</span></span> &mdash; instants, each one complete in itself, each one already finished before the next arises. Not a bridge between what came before and what comes after. A sealed bubble, with nothing to hold onto and nothing that needs to be let go of.</p>
+
+    <div class="mobile-stack-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin:0 0 28px;">
+      <div style="padding:20px 18px;background:var(--bg);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:10px;">The Habit</div>
+        <p style="font-family:var(--serif);font-size:13.5px;color:var(--grey);line-height:1.8;">Read this instant as evidence for a story about yesterday, or a rehearsal for tomorrow.</p>
+      </div>
+      <div style="padding:20px 18px;background:var(--bg);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);border-left:2px solid var(--gold);">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.85;margin-bottom:10px;">The Claim</div>
+        <p style="font-family:var(--serif);font-size:13.5px;color:var(--mid);line-height:1.8;">This instant was never carrying that weight. It arose, complete, and is already gone.</p>
+      </div>
+    </div>
+
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--grey);line-height:1.9;margin-bottom:24px;">A cheap plastic bowl never breaks &mdash; and no one cherishes it. A fragile china bowl gets held carefully, admired, kept for years, precisely because it exists in a dangerous situation, always fading. Life and death are the same &mdash; &ldquo;just going, just coming.&rdquo; Nothing here escapes that danger. The instruction isn't to escape it either: it's to take the best possible care of what's fragile, right in the middle of its fading, and let it bloom anyway.</p>
+
+    <p class="pq-standalone" style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:24px 28px;background:var(--bg-lift);text-align:left;margin:0;">&ldquo;And what is it, the heart? It is the sound of the pine breeze there in the sumi painting.&rdquo; <span style="color:var(--grey);font-style:normal;">&mdash; Ikky&#363; Zenji</span><br><span style="display:block;margin-top:14px;color:var(--grey);font-style:normal;font-size:14.5px;">Mind is not a frantic machine chasing the next instant. It's the rhythm underneath this one &mdash; already complete, the way a breeze is already whole inside a painting that isn't moving at all.</span></p>
+
+  </div>
+
 </section>
 <span class="continue-hint">continue</span>
 <div class="divider"></div>
@@ -13210,6 +13294,13 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
         <span>What makes this different from other spiritual projects?</span><span class="faq-icon">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner">Two things. First: we don&rsquo;t ask you to believe. We ask you to notice. The framework is testable in real-time &mdash; in your reactions, your trades, your relationships. Second: once the token relaunches, it puts skin in the game &mdash; you hold it, the chart moves, and philosophy becomes immediate. That friction is the whole point.</div></div>
+    </div>
+
+    <div class="faq-item closed" data-cat="philosophy" id="faq-singsapa-leaves">
+      <button class="faq-q" onclick="faqToggle(this)">
+        <span>Why doesn&rsquo;t this cover every teaching, in full?</span><span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">The Buddha once gathered a few leaves in his hand and asked his monks: are there more leaves here, or in the forest? In the forest, they said. He replied that what he knew was like the forest &mdash; but what he taught was only the leaves in his hand. Not because the rest wasn&rsquo;t true. Because a person facing an emergency doesn&rsquo;t need the whole forest &mdash; only what's basic to living and curing the suffering in front of them. This site works the same way: a handful of leaves, picked for what's usable right now, not a claim to hold the whole forest.</div></div>
     </div>
 
     <div class="faq-item closed" data-cat="philosophy">
