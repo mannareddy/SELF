@@ -1343,6 +1343,7 @@ a:hover{opacity:.7;}
     opacity:0 !important;visibility:hidden !important;pointer-events:none !important;
   }
   .nav-dropdown-panel a{
+    display:block !important;
     border-right:none !important;justify-content:flex-start !important;
     padding:11px 22px !important;font-size:11px !important;letter-spacing:1.5px !important;
     height:auto !important;line-height:1.4 !important;white-space:normal !important;text-align:left !important;color:var(--dim);
@@ -1353,6 +1354,11 @@ a:hover{opacity:.7;}
     padding:11px 22px !important;font-size:11px !important;letter-spacing:1.5px !important;
     line-height:1.4 !important;white-space:normal !important;text-align:left !important;color:#555;font-style:italic;cursor:default;
   }
+  /* Gold section-name prefix inlined at the start of each "New" menu entry
+     (e.g. "Framework —") so one line carries both the group and the change,
+     instead of a separate header row per group — keeps the panel short
+     enough to avoid scrolling on mobile. */
+  .new-menu-tag{color:var(--gold);opacity:.75;font-weight:500;}
 
   /* ── Nested flyout submenus (2nd level) — used by the Traditions menu ──
      Each category header (.nav-group-trigger) opens its own .nav-flyout-panel
@@ -4130,49 +4136,40 @@ a.src-tag:hover{opacity:.75;}
       </div>
     </li>
 
-    <!-- ── "NEW" MENU — hand-curated, grouped by existing site section ────
-         Entries are grouped under a group-label div (desktop) / li (mobile)
-         naming the EXISTING section the change lives in, in the site's own
-         top-to-bottom page order — not a flat list. To flag something as
-         new: find the matching group below and add one <a> line under it
-         inside #newMenuPanel (and the matching <li><a> under the matching
-         group inside #newMenuPanelMobile further down) with a short label
-         saying WHAT changed. If the change doesn't belong to any existing
-         group, add a new group-label block in the right page-order position
-         in both panels. Remove the line (and the whole group block, if it
-         was the group's only entry) once it's no longer worth calling out
-         (there's no expiry — it stays until you take it out). For something
+    <!-- ── "NEW" MENU — hand-curated, one line per change ──────────────────
+         Each entry is a single <a> whose text starts with the EXISTING
+         site section the change lives in, as a small gold prefix span,
+         followed by an em dash and what changed — e.g. "Framework —
+         Default OS · Life vs. Life Situation — Cards Updated". No separate
+         group-label row: that used to cost a whole extra line per group
+         and pushed the panel into scrolling on mobile. Entries stay in the
+         site's own top-to-bottom page order (not alphabetical, not a flat
+         list) so the prefixes still read as a loose table of contents.
+         To flag something as new: add one <a> line in the right page-order
+         spot inside #newMenuPanel (and the matching line inside
+         #newMenuPanelMobile further down). If a section already has an
+         entry and picks up another change, fold it into that SAME line
+         instead of adding a second row — join the card/topic names with
+         " &middot; " and end with one short past-tense verdict ("— Cards
+         Updated", "— Cards Added"), href pointing at whichever the reader
+         should land on first. Remove a line once it's no longer worth
+         calling out (no expiry — it stays until taken out). For something
          not live yet, use a <span class="new-menu-soon">Label — Coming
          Soon</span> instead of an <a> — it renders muted and unclickable,
          so this same menu can double as a heads-up for features still in
          progress. The gold dot on the "New" trigger itself (and the mobile
-         "New" accordion toggle) only shows while these panels actually have
-         at least one <a> entry — empty both out and the dot hides itself;
-         the group-label divs/lis alone don't count. -->
+         "New" accordion toggle) only shows while these panels actually
+         have at least one <a> entry. -->
     <li class="nav-dropdown-wrap">
       <a href="#glossary" data-group="new">New<span class="nav-new-dot"></span><span class="nav-caret">▾</span></a>
       <div class="nav-dropdown-panel" id="newMenuPanel">
-        <div style="padding:12px 22px 6px;font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.7;">Emotional Self-Management</div>
-        <a href="#open-cage-of-repentance" data-group="new">The Open Cage of Repentance &middot; New Card Added</a>
-
-        <div style="padding:14px 22px 6px;margin-top:2px;border-top:1px solid rgba(var(--accent-gold-rgb),0.25);font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.7;">Framework</div>
-        <a href="#courier-and-wife" data-group="new">The Courier and the Wife &middot; Default OS — New Card Added</a>
-        <a href="#blueprint-and-house" data-group="new">The Blueprint and the House &middot; Life vs. Life Situation — New Card Added</a>
-
-        <div style="padding:14px 22px 6px;margin-top:2px;border-top:1px solid rgba(var(--accent-gold-rgb),0.25);font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.7;">Two Geographies of Liberation</div>
-        <a href="#shattering-the-illusion-of-time" data-group="new">What &ldquo;The Present Moment&rdquo; Means &middot; New Card Added</a>
-
-        <div style="padding:14px 22px 6px;margin-top:2px;border-top:1px solid rgba(var(--accent-gold-rgb),0.25);font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.7;">Consciousness &amp; Awareness</div>
-        <a href="#ear-of-the-ear" data-group="new">The Ear of the Ear &middot; Kena Upanishad — New Card Added</a>
-
-        <div style="padding:14px 22px 6px;margin-top:2px;border-top:1px solid rgba(var(--accent-gold-rgb),0.25);font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.7;">A Few Old Doors</div>
-        <a href="#three-new-parables" data-group="new">Three New Parables &middot; Sufi, Zen &amp; Modern — New Section Added</a>
-
-        <div style="padding:14px 22px 6px;margin-top:2px;border-top:1px solid rgba(var(--accent-gold-rgb),0.25);font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.7;">FAQ</div>
-        <a href="#faq-singsapa-leaves" data-group="new">Why Doesn&rsquo;t This Cover Everything? &middot; New FAQ Added</a>
-
-        <div style="padding:14px 22px 6px;margin-top:2px;border-top:1px solid rgba(var(--accent-gold-rgb),0.25);font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.7;">Glossary</div>
-        <a href="#dense-forest-of-words" data-group="new">The Dense Forest of Words &middot; A Warning About This Glossary — New Section Added</a>
+        <a href="#open-cage-of-repentance" data-group="new"><span class="new-menu-tag">Emotional Self-Management —</span> The Open Cage of Repentance &middot; New Card Added</a>
+        <a href="#courier-and-wife" data-group="new"><span class="new-menu-tag">Framework —</span> Default OS &middot; Life vs. Life Situation — Cards Updated</a>
+        <a href="#shattering-the-illusion-of-time" data-group="new"><span class="new-menu-tag">Two Geographies of Liberation —</span> What &ldquo;The Present Moment&rdquo; Means &middot; New Card Added</a>
+        <a href="#ear-of-the-ear" data-group="new"><span class="new-menu-tag">Consciousness &amp; Awareness —</span> The Ear of the Ear &middot; Kena Upanishad — New Card Added</a>
+        <a href="#three-new-parables" data-group="new"><span class="new-menu-tag">A Few Old Doors —</span> Three New Parables &middot; Sufi, Zen &amp; Modern — New Section Added</a>
+        <a href="#faq-singsapa-leaves" data-group="new"><span class="new-menu-tag">FAQ —</span> Why Doesn&rsquo;t This Cover Everything? &middot; New FAQ Added</a>
+        <a href="#dense-forest-of-words" data-group="new"><span class="new-menu-tag">Glossary —</span> The Dense Forest of Words &middot; A Warning About This Glossary — New Section Added</a>
       </div>
     </li>
 
@@ -4491,27 +4488,13 @@ a.src-tag:hover{opacity:.75;}
         <span class="mnav-screen-title">New</span>
       </div>
       <ul class="mnav-row-list" id="newMenuPanelMobile">
-        <li style="border-bottom:none;padding:14px 16px 4px;font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.7;">Emotional Self-Management</li>
-        <li><a href="#open-cage-of-repentance">The Open Cage of Repentance &middot; New Card Added</a></li>
-
-        <li style="border-bottom:none;padding:18px 16px 4px;font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.7;">Framework</li>
-        <li><a href="#courier-and-wife">The Courier and the Wife &middot; Default OS — New Card Added</a></li>
-        <li><a href="#blueprint-and-house">The Blueprint and the House &middot; Life vs. Life Situation — New Card Added</a></li>
-
-        <li style="border-bottom:none;padding:18px 16px 4px;font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.7;">Two Geographies of Liberation</li>
-        <li><a href="#shattering-the-illusion-of-time">What &ldquo;The Present Moment&rdquo; Means &middot; New Card Added</a></li>
-
-        <li style="border-bottom:none;padding:18px 16px 4px;font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.7;">Consciousness &amp; Awareness</li>
-        <li><a href="#ear-of-the-ear">The Ear of the Ear &middot; Kena Upanishad — New Card Added</a></li>
-
-        <li style="border-bottom:none;padding:18px 16px 4px;font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.7;">A Few Old Doors</li>
-        <li><a href="#three-new-parables">Three New Parables &middot; Sufi, Zen &amp; Modern — New Section Added</a></li>
-
-        <li style="border-bottom:none;padding:18px 16px 4px;font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.7;">FAQ</li>
-        <li><a href="#faq-singsapa-leaves">Why Doesn&rsquo;t This Cover Everything? &middot; New FAQ Added</a></li>
-
-        <li style="border-bottom:none;padding:18px 16px 4px;font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.7;">Glossary</li>
-        <li><a href="#dense-forest-of-words">The Dense Forest of Words &middot; A Warning About This Glossary — New Section Added</a></li>
+        <li><a href="#open-cage-of-repentance"><span class="new-menu-tag">Emotional Self-Management —</span> The Open Cage of Repentance &middot; New Card Added</a></li>
+        <li><a href="#courier-and-wife"><span class="new-menu-tag">Framework —</span> Default OS &middot; Life vs. Life Situation — Cards Updated</a></li>
+        <li><a href="#shattering-the-illusion-of-time"><span class="new-menu-tag">Two Geographies of Liberation —</span> What &ldquo;The Present Moment&rdquo; Means &middot; New Card Added</a></li>
+        <li><a href="#ear-of-the-ear"><span class="new-menu-tag">Consciousness &amp; Awareness —</span> The Ear of the Ear &middot; Kena Upanishad — New Card Added</a></li>
+        <li><a href="#three-new-parables"><span class="new-menu-tag">A Few Old Doors —</span> Three New Parables &middot; Sufi, Zen &amp; Modern — New Section Added</a></li>
+        <li><a href="#faq-singsapa-leaves"><span class="new-menu-tag">FAQ —</span> Why Doesn&rsquo;t This Cover Everything? &middot; New FAQ Added</a></li>
+        <li><a href="#dense-forest-of-words"><span class="new-menu-tag">Glossary —</span> The Dense Forest of Words &middot; A Warning About This Glossary — New Section Added</a></li>
       </ul>
     </div>
 
@@ -6542,6 +6525,15 @@ a.src-tag:hover{opacity:.75;}
   <h2 style="font-size:clamp(22px,3.5vw,32px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 20px;line-height:1.5;">One says home is a place you have never been. The other says you are already standing in it.</h2>
   <p style="font-size:clamp(15px,2vw,18px);color:var(--grey);max-width:680px;margin:0 auto 36px;line-height:1.9;">Vedic cosmology and Zen mindfulness both begin by naming the same ache &mdash; birth, aging, and death as friction no one asked for. They part ways completely on where the exit is.</p>
 
+  <div class="ego-sub-header" style="max-width:820px;">
+    <div class="ego-sub-header-text">
+      <h3>The Cosmic Journey vs. The Internal Journey</h3>
+      <p>The comparison table and the two-directions summary</p>
+    </div>
+    <button class="collapse-toggle-btn" onclick="sectionCollapse('two-geographies-summary',this)">Expand &#9660;</button>
+  </div>
+  <div id="two-geographies-summary" class="section-collapse-wrap collapsed">
+
   <div class="self-table-wrap" style="max-width:820px;margin:20px auto 28px;">
     <table class="self-table compact" style="min-width:640px;">
       <thead>
@@ -6588,6 +6580,8 @@ a.src-tag:hover{opacity:.75;}
     <p style="font-size:clamp(17px,2.4vw,23px);font-weight:300;color:var(--mid);line-height:1.9;margin-bottom:18px;text-wrap:balance;">One path travels outward &mdash; across dimensions, toward a sky beyond birth and death.<br>The other travels inward &mdash; zero distance, toward the exact coordinates of here.</p>
     <p style="font-size:clamp(16px,2.2vw,21px);color:var(--gold);font-style:italic;line-height:1.8;margin-bottom:16px;text-wrap:balance;">Opposite directions. Same instrument.</p>
     <p style="font-size:clamp(14px,1.9vw,18px);color:var(--grey);line-height:1.9;text-wrap:balance;">Not breath. Not distance. Not ritual. Concentrated awareness &mdash; aimed far, or aimed close. The rocket is useless either way. The mind was always the ship.</p>
+  </div>
+
   </div>
 
   <div id="shattering-the-illusion-of-time" class="ego-sub-header" style="max-width:820px;scroll-margin-top:56px;">
