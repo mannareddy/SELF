@@ -6542,9 +6542,10 @@ a.src-tag:hover{opacity:.75;}
   <p style="font-size:clamp(15px,2vw,18px);color:var(--grey);max-width:700px;margin:0 auto 36px;line-height:1.9;">In 1902, a young seeker climbed <span class="gloss">Arunachala<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Arunachala">+</span><span class="gloss-pop">The sacred hill in Tiruvannamalai, South India, where Ramana Maharshi lived from age sixteen until his death in 1950 &mdash; revered in the tradition as Shiva himself in the form of a mountain.</span></span> to ask <span class="gloss">Ramana Maharshi<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Ramana Maharshi">+</span><span class="gloss-pop">1879&ndash;1950. A South Indian sage who taught almost entirely through silence and through one recurring instruction &mdash; trace the &ldquo;I&rdquo;-thought back to its source. His recorded answers to a disciple's questions were later published as <em>Nan Y&#257;r?</em> (&ldquo;Who am I?&rdquo;).</span></span> fourteen questions about the nature of the mind. The answers, later published as <em>Nan Y&#257;r?</em>, don't add a new philosophy to what's already on this site &mdash; they give the Jnana path above an actual set of hands and feet.</p>
 
   <div style="text-align:center;margin:0 0 28px;">
-    <button class="collapse-toggle-btn" onclick="toggleGroupCards('atma-vichara-group',this)">Expand All 5 Cards &#9660;</button>
+    <button class="collapse-toggle-btn" onclick="sectionCollapse('atma-vichara-group',this)">Expand &#9660;</button>
+    <p class="section-collapse-label" style="margin-top:8px;">Tap to expand &mdash; five cards, from the geography of the &ldquo;I&rdquo;-thought to non-attachment and surrender</p>
   </div>
-  <div id="atma-vichara-group">
+  <div id="atma-vichara-group" class="section-collapse-wrap collapsed">
   <div class="ego-sub-header" style="max-width:820px;">
     <div class="ego-sub-header-text">
       <h3>The Geography of Consciousness</h3>
@@ -6568,28 +6569,28 @@ a.src-tag:hover{opacity:.75;}
     <button class="collapse-toggle-btn" onclick="sectionCollapse('vichara-steps-detail',this)">Expand &#9660;</button>
   </div>
   <div id="vichara-steps-detail" class="section-collapse-wrap collapsed" style="max-width:820px;margin:20px auto 48px;">
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;text-align:left;">
-    <div class="stage-item">
+  <div class="mobile-stack-cards" style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;text-align:left;">
+    <div class="stage-item" style="margin-bottom:0;">
       <div class="stage-num-col"><span class="s-n">01</span></div>
       <div class="stage-body-col"><div class="s-title">A Thought Arises</div><span class="s-sub">It Doesn't Matter Which</span><p class="s-text">Any thought at all. It makes no difference how many arise, or how urgent each one feels.</p></div>
     </div>
-    <div class="stage-item">
+    <div class="stage-item" style="margin-bottom:0;">
       <div class="stage-num-col"><span class="s-n">02</span></div>
       <div class="stage-body-col"><div class="s-title">Do Not Pursue It</div><span class="s-sub">Intercept, Don't Follow</span><p class="s-text">The thought is not argued with, elaborated, or acted on. It is simply not followed downstream.</p></div>
     </div>
-    <div class="stage-item">
+    <div class="stage-item" style="margin-bottom:0;">
       <div class="stage-num-col"><span class="s-n">03</span></div>
       <div class="stage-body-col"><div class="s-title">Ask: To Whom Has This Arisen?</div><span class="s-sub">The Turn</span><p class="s-text">Instead of following the thought's content, the question turns back onto the one experiencing it.</p></div>
     </div>
-    <div class="stage-item">
+    <div class="stage-item" style="margin-bottom:0;">
       <div class="stage-num-col"><span class="s-n">04</span></div>
       <div class="stage-body-col"><div class="s-title">The Inevitable Answer: &ldquo;To Me&rdquo;</div><span class="s-sub">Every Thought's Common Root</span><p class="s-text">Every single thought, traced back, resolves to the same claimant. There is no thought without an &ldquo;I&rdquo; underneath it.</p></div>
     </div>
-    <div class="stage-item">
+    <div class="stage-item" style="margin-bottom:0;">
       <div class="stage-num-col"><span class="s-n">05</span></div>
       <div class="stage-body-col"><div class="s-title">Ask: Who Am I?</div><span class="s-sub">The Question With No Side to Argue</span><p class="s-text">Not answered conceptually. Held as a question with nothing to elaborate and nowhere else to go.</p></div>
     </div>
-    <div class="stage-item" style="border-color:rgba(var(--accent-gold-rgb),0.85);">
+    <div class="stage-item" style="border-color:rgba(var(--accent-gold-rgb),0.85);margin-bottom:0;">
       <div class="stage-num-col"><span class="s-n" style="color:var(--gold);">06</span></div>
       <div class="stage-body-col"><div class="s-title" style="color:var(--gold);">Resolution</div><span class="s-sub">The Mind Returns to Its Source</span><p class="s-text">The thought becomes quiescent. Repeated, this is the entire method &mdash; not one insight, but a return practiced every time a thought pulls outward.</p></div>
     </div>
@@ -6676,9 +6677,10 @@ a.src-tag:hover{opacity:.75;}
   <p style="font-size:clamp(15px,2vw,18px);color:var(--grey);max-width:700px;margin:0 auto 24px;line-height:1.9;">Somewhere between the 8th and 14th centuries, an anonymous author took Shankaracharya's non-dualism and stripped it of every remaining trace of doctrine, deity, and gradual path. The result, the <span class="gloss">Ashtavakra Gita<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Ashtavakra Gita">+</span><span class="gloss-pop">A dialogue between the sage Ashtavakra and King Janaka, of uncertain date (roughly 8th&ndash;14th century C.E.), considered one of the most radical statements of Advaita &mdash; it offers no ritual, no deity, and no gradual path, only direct pointing.</span></span>, doesn't argue for non-dualism the way the Brahma-Sutra-Bhasya does above. It simply talks as though the reader is already free, and waits to see what that does.</p>
 
   <div style="text-align:center;margin:0 0 28px;">
-    <button class="collapse-toggle-btn" onclick="toggleGroupCards('ashtavakra-group',this)">Expand All 4 Cards &#9660;</button>
+    <button class="collapse-toggle-btn" onclick="sectionCollapse('ashtavakra-group',this)">Expand &#9660;</button>
+    <p class="section-collapse-label" style="margin-top:8px;">Tap to expand &mdash; four cards, from the myth of Ashtavakra to the clear space the five renunciations lead to</p>
   </div>
-  <div id="ashtavakra-group">
+  <div id="ashtavakra-group" class="section-collapse-wrap collapsed">
   <div class="ego-sub-header" style="max-width:820px;">
     <div class="ego-sub-header-text">
       <h3>The Myth of Ashtavakra</h3>
@@ -6715,24 +6717,24 @@ a.src-tag:hover{opacity:.75;}
     <button class="collapse-toggle-btn" onclick="sectionCollapse('dissolution-arc-detail',this)">Expand &#9660;</button>
   </div>
   <div id="dissolution-arc-detail" class="section-collapse-wrap collapsed" style="max-width:820px;margin:20px auto 48px;">
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;text-align:left;">
-    <div class="stage-item">
+  <div class="mobile-stack-cards" style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;text-align:left;">
+    <div class="stage-item" style="margin-bottom:0;">
       <div class="stage-num-col"><span class="s-n">01</span></div>
       <div class="stage-body-col"><div class="s-title">Give Up the Body</div><span class="s-sub">&ldquo;You Are Not Your Body&rdquo;</span><p class="s-text">The starting renunciation, and the easiest one to state without yet meaning it.</p></div>
     </div>
-    <div class="stage-item">
+    <div class="stage-item" style="margin-bottom:0;">
       <div class="stage-num-col"><span class="s-n">02</span></div>
       <div class="stage-body-col"><div class="s-title">Give Up the Senses</div><span class="s-sub">&ldquo;Shun the Poison of the Senses&rdquo;</span><p class="s-text">Not sensory deprivation &mdash; refusing to let the senses' pull count as evidence of who you are.</p></div>
     </div>
-    <div class="stage-item">
+    <div class="stage-item" style="margin-bottom:0;">
       <div class="stage-num-col"><span class="s-n">03</span></div>
       <div class="stage-body-col"><div class="s-title">Give Up the Mind</div><span class="s-sub">&ldquo;Give Up Identifying With the Mind's Inconstancy&rdquo;</span><p class="s-text">The mind keeps changing its verdict. Ceasing to treat its latest verdict as you is the third renunciation.</p></div>
     </div>
-    <div class="stage-item">
+    <div class="stage-item" style="margin-bottom:0;">
       <div class="stage-num-col"><span class="s-n">04</span></div>
       <div class="stage-body-col"><div class="s-title">Give Up Practice</div><span class="s-sub">&ldquo;Give Up Your Attachment to Meditation and Service&rdquo;</span><p class="s-text">Even the discipline that got you this far becomes something to release &mdash; a raft, not a residence.</p></div>
     </div>
-    <div class="stage-item" style="border-color:rgba(var(--accent-gold-rgb),0.85);">
+    <div class="stage-item" style="border-color:rgba(var(--accent-gold-rgb),0.85);margin-bottom:0;">
       <div class="stage-num-col"><span class="s-n" style="color:var(--gold);">05</span></div>
       <div class="stage-body-col"><div class="s-title" style="color:var(--gold);">Give Up Detachment</div><span class="s-sub">&ldquo;Give Up Giving Up! Reject Nothing, Accept Nothing.&rdquo;</span><p class="s-text">The final turn: non-attachment itself, held as an achievement or identity, is one more thing to be free of. Nothing left to renounce, because there's no longer anyone renouncing.</p></div>
     </div>
@@ -6749,7 +6751,7 @@ a.src-tag:hover{opacity:.75;}
   </div>
   <div id="cidakasa-clear-space-detail" class="section-collapse-wrap collapsed" style="max-width:660px;margin:20px auto 0;">
   <p style="font-family:var(--serif);font-size:clamp(15px,1.9vw,17px);color:var(--mid);line-height:1.9;text-align:left;margin-bottom:16px;">Not a state reached after the fifth renunciation, but what was already the case underneath all five &mdash; described here in the text's own words rather than explained around.</p>
-  <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.9;padding:24px 28px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg-lift);text-align:center;margin:0;">It is easy.<br>You are the clear space of awareness,<br>pure and still,<br>in whom there is no birth,<br>no striving,<br>no &ldquo;I.&rdquo;</p>
+  <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:2.1;padding:24px 28px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg-lift);text-align:left;margin:0;">It is easy.<br>You are the clear space of awareness,<br>pure and still,<br>in whom there is no birth,<br>no striving,<br>no &ldquo;I.&rdquo;</p>
   </div>
   </div>
 
