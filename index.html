@@ -2291,6 +2291,20 @@ section{scroll-margin-top:56px;}
 .stage-body-col .s-sub{font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:block;}
 .stage-body-col .s-text{font-family:var(--serif);font-size:15.5px;font-weight:400;color:var(--grey);line-height:1.85;}
 .surrender-arrow{text-align:center;padding:8px 0;color:var(--gold);opacity:.3;font-size:18px;display:block;}
+/* ── CIDAKASA CLEAR-SPACE QUOTE — cascading diagonal line layout so the
+   verse's short lines visually fill the whole box instead of clustering
+   at the left. Each line steps further right than the last. Flattened
+   back to a plain left-aligned stack on mobile in the responsive block
+   below, since the stagger only reads well at wider widths. */
+.cida-clear-quote{font-family:var(--serif);font-style:italic;color:var(--gold);}
+.cida-clear-quote p{margin:0 0 20px;line-height:1.7;}
+.cida-clear-quote p:last-child{margin-bottom:0;}
+.cida-line-1{margin-left:0;}
+.cida-line-2{margin-left:8%;}
+.cida-line-3{margin-left:20%;}
+.cida-line-4{margin-left:30%;}
+.cida-line-5{margin-left:42%;}
+.cida-line-6{margin-left:54%;}
 
 /* ── ARCHITECTURE OF EGO ─────────────────────────────────────────────────── */
 .ego-arch-section{padding:90px 24px;background:var(--bg);}
@@ -2536,6 +2550,10 @@ section{scroll-margin-top:56px;}
     grid-template-columns:1fr !important;
     gap:10px !important;
   }
+  /* Cidakasa quote's desktop diagonal stagger (.cida-line-1..6) wraps
+     awkwardly at narrow widths, so flatten it back to a plain left-aligned
+     stack below 640px. */
+  .cida-clear-quote p{margin-left:0 !important;}
   .dialectic-grid > div:nth-child(2){
     padding:6px 0 !important;
   }
@@ -6751,7 +6769,14 @@ a.src-tag:hover{opacity:.75;}
   </div>
   <div id="cidakasa-clear-space-detail" class="section-collapse-wrap collapsed" style="max-width:660px;margin:20px auto 0;">
   <p style="font-family:var(--serif);font-size:clamp(15px,1.9vw,17px);color:var(--mid);line-height:1.9;text-align:left;max-width:660px;margin:0 auto 16px;">Not a state reached after the fifth renunciation, but what was already the case underneath all five &mdash; described here in the text's own words rather than explained around.</p>
-  <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:2.1;padding:24px 28px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg-lift);text-align:center;max-width:660px;margin:0 auto;">It is easy.<br>You are the clear space of awareness,<br>pure and still,<br>in whom there is no birth,<br>no striving,<br>no &ldquo;I.&rdquo;</p>
+  <div class="cida-clear-quote" style="font-size:clamp(15px,2vw,18px);padding:32px 28px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg-lift);max-width:660px;margin:0 auto;">
+    <p class="cida-line-1">It is easy.</p>
+    <p class="cida-line-2">You are the clear space of awareness,</p>
+    <p class="cida-line-3">pure and still,</p>
+    <p class="cida-line-4">in whom there is no birth,</p>
+    <p class="cida-line-5">no striving,</p>
+    <p class="cida-line-6">no &ldquo;I.&rdquo;</p>
+  </div>
   </div>
   </div>
 
