@@ -2644,6 +2644,8 @@ section{scroll-margin-top:56px;}
   #great-forest .section-collapse-wrap,
   #anatomy-of-love .section-collapse-wrap,
   #forty-two .section-collapse-wrap,
+  #atma-vichara .section-collapse-wrap,
+  #ashtavakra-gita .section-collapse-wrap,
   #pranayama .section-collapse-wrap{
     margin-bottom:24px !important;
   }
@@ -6807,10 +6809,11 @@ a.src-tag:hover{opacity:.75;}
   <h2 style="font-size:clamp(22px,3.5vw,32px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 20px;line-height:1.5;">One says home is a place you have never been. The other says you are already standing in it.</h2>
   <p style="font-size:clamp(15px,2vw,18px);color:var(--grey);max-width:680px;margin:0 auto 36px;line-height:1.9;">Vedic cosmology and Zen mindfulness both begin by naming the same ache &mdash; birth, aging, and death as friction no one asked for. They part ways completely on where the exit is.</p>
 
-  <div style="text-align:center;margin:0 0 8px;">
-    <button class="collapse-toggle-btn" onclick="toggleGroupCards('two-geographies-group',this)">Expand All 2 Cards &#9660;</button>
+  <div style="text-align:center;margin:0 0 28px;">
+    <button class="collapse-toggle-btn" onclick="sectionCollapse('two-geographies-group',this)">Expand &#9660;</button>
+    <p class="section-collapse-label" style="margin-top:8px;">Tap to expand &mdash; two cards, the cosmic journey compared with the internal journey</p>
   </div>
-  <div id="two-geographies-group">
+  <div id="two-geographies-group" class="section-collapse-wrap collapsed">
   <div class="ego-sub-header" style="max-width:820px;">
     <div class="ego-sub-header-text">
       <h3>The Cosmic Journey vs. The Internal Journey</h3>
