@@ -2372,6 +2372,14 @@ section{scroll-margin-top:56px;}
   text-transform:none;color:var(--grey);
 }
 
+/* Svasthya card bodies: the body copy used to inherit its look from
+   .framework-card p. Now that each card is an ego-style header + collapse
+   wrap, plain paragraphs directly inside the wrap get the same prose scale
+   as the other sections' explainer text. Inline-styled callouts and the
+   .sl-stage grids keep their own styles. */
+.sv-body > p:not([style]){font-family:var(--serif);font-size:clamp(15px,2vw,17px);font-weight:400;color:var(--mid);line-height:1.9;margin:0 0 20px;text-align:left;}
+.sv-body > p:not([style]):last-child{margin-bottom:0;}
+
 .sl-stage{padding:22px 16px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);text-align:left;background:var(--bg-lift);position:relative;display:flex;flex-direction:column;height:100%;}
 .sl-stage .sl-desc{flex:1;margin-top:8px;margin-bottom:0;}
 .sl-stage .sl-name{margin-top:6px;}
@@ -2663,6 +2671,7 @@ section{scroll-margin-top:56px;}
      without touching the desktop spacing (inline styles are untouched,
      this just overrides them at narrow widths). */
   #consciousness .section-collapse-wrap,
+  #svasthya .section-collapse-wrap,
   #ego .section-collapse-wrap,
   #patanjali .section-collapse-wrap,
   #great-forest .section-collapse-wrap,
@@ -12770,130 +12779,309 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
 
   <div style="text-align:center;margin-bottom:8px;">
     <button class="collapse-toggle-btn" onclick="sectionCollapse('svasthya-full-content',this)">Expand &#9660;</button>
-    <p class="section-collapse-label" style="margin-top:8px;">Tap to expand — Ayurveda, Yoga, and Tantra read through the same map</p>
+    <p class="section-collapse-label" style="margin-top:8px;">Tap to expand — thirteen cards in four groups: the foundations, what health means, how illness arises, the kitchen pharmacy</p>
   </div>
   <div id="svasthya-full-content" class="section-collapse-wrap collapsed">
-  <div class="framework-grid" style="max-width:980px;margin:0 auto;">
-
-    <div class="framework-card collapsed">
-      <span class="num">01</span>
-      <h3>The Three Gunas</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">The weather of the mind</p><div class="framework-content">
+    <p style="font-family:var(--sans);font-size:15px;font-weight:700;letter-spacing:6px;text-transform:uppercase;color:var(--gold);opacity:1;text-align:center;margin:40px 0 10px;">The Foundations</p>
+  <p style="font-family:var(--serif);font-size:13px;font-style:italic;color:var(--dim);text-align:center;margin:0 0 28px;">The map the rest stands on &mdash; gunas, prana, koshas, and Tantra&rsquo;s one move</p>
+  <div style="text-align:center;margin:0 0 28px;">
+    <button class="collapse-toggle-btn" onclick="toggleGroupCards('sv-group-foundations',this)">Expand All 4 Cards &#9660;</button>
+  </div>
+  <div id="sv-group-foundations">
+<div class="ego-sub-header gf-sub-header" style="max-width:820px;">
+  <div class="ego-sub-header-text">
+    <h3>The Three Gunas</h3>
+    <p>The weather of the mind</p>
+  </div>
+  <button class="collapse-toggle-btn" onclick="sectionCollapse('sv-gunas-content',this)">Expand &#9660;</button>
+</div>
+<div id="sv-gunas-content" class="section-collapse-wrap collapsed sv-body" style="max-width:820px;margin:0 auto 40px;">
       <p>Ayurveda and Samkhya describe all of nature, including mental states, as a shifting mixture of three qualities: <em>Sattva</em> (clarity, balance), <em>Rajas</em> (activity, restlessness), and <em>Tamas</em> (inertia, dullness). None is "bad" &mdash; they're weather, not character. The work is noticing which one is currently running the show.</p>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:2px;margin-top:18px;">
         <div class="sl-stage"><div class="sl-name" style="font-size:14px;">Sattva</div><p class="sl-desc">Clear, light, undistorted</p></div>
         <div class="sl-stage"><div class="sl-name" style="font-size:14px;">Rajas</div><p class="sl-desc">Driven, agitated, grasping</p></div>
         <div class="sl-stage"><div class="sl-name" style="font-size:14px;">Tamas</div><p class="sl-desc">Heavy, dull, resistant</p></div>
       </div>
-    </div></div>
+    
+</div>
 
-    <div class="framework-card collapsed">
-      <span class="num">02</span>
-      <h3>Prana as the Bridge</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Where breath meets attention</p><div class="framework-content">
+<div class="ego-sub-header gf-sub-header" style="max-width:820px;">
+  <div class="ego-sub-header-text">
+    <h3>Prana as the Bridge</h3>
+    <p>Where breath meets attention</p>
+  </div>
+  <button class="collapse-toggle-btn" onclick="sectionCollapse('sv-prana-content',this)">Expand &#9660;</button>
+</div>
+<div id="sv-prana-content" class="section-collapse-wrap collapsed sv-body" style="max-width:820px;margin:0 auto 40px;">
       <p><span class="gloss">Prana<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Prana">+</span><span class="gloss-pop">Life-force or vital energy; also refers specifically to the inhaled breath in yogic anatomy.</span></span> is the working link Yoga uses between body and mind that Vedanta's pure inquiry mostly leaves untouched. Breath is the one autonomic process you can also run manually &mdash; which makes it the practical door into the gap between trigger and reaction that the RRRR Protocol names conceptually.</p>
       <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">Where RRRR asks you to <em>notice</em> the gap, pranayama gives you a lever to physically widen it.</p>
-    </div></div>
+    
+</div>
 
-    <div class="framework-card collapsed">
-      <span class="num">03</span>
-      <h3>The Koshas Made Practical</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Working the seven-level model from the body up</p><div class="framework-content">
+<div class="ego-sub-header gf-sub-header" style="max-width:820px;">
+  <div class="ego-sub-header-text">
+    <h3>The Koshas Made Practical</h3>
+    <p>Working the seven-level model from the body up</p>
+  </div>
+  <button class="collapse-toggle-btn" onclick="sectionCollapse('sv-koshas-content',this)">Expand &#9660;</button>
+</div>
+<div id="sv-koshas-content" class="section-collapse-wrap collapsed sv-body" style="max-width:820px;margin:0 auto 40px;">
       <p>The seven-level model of existence already on this site has a companion in Vedanta's five koshas (sheaths) &mdash; annamaya (physical), pranamaya (energetic), manomaya (mental), vijnanamaya (wisdom), anandamaya (bliss). Yoga's asana and pranayama practices work primarily on the first two sheaths &mdash; not as an end in themselves, but as the ground floor that has to be reasonably stable before subtler work holds.</p>
-    </div></div>
+    
+</div>
 
-    <div class="framework-card collapsed">
-      <span class="num">04</span>
-      <h3>Tantra's Reframe: Nothing to Reject</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Transmutation over renunciation</p><div class="framework-content">
+<div class="ego-sub-header gf-sub-header" style="max-width:820px;">
+  <div class="ego-sub-header-text">
+    <h3>Tantra's Reframe: Nothing to Reject</h3>
+    <p>Transmutation over renunciation</p>
+  </div>
+  <button class="collapse-toggle-btn" onclick="sectionCollapse('sv-tantra-content',this)">Expand &#9660;</button>
+</div>
+<div id="sv-tantra-content" class="section-collapse-wrap collapsed sv-body" style="max-width:820px;margin:0 auto 40px;">
       <p>Where some ascetic paths treat the body and senses as obstacles to transcend, Tantra's central move is different: nothing is excluded from the path. Desire, anger, and pleasure aren't enemies to suppress &mdash; they're energy to be recognized and redirected, the same way the Pain-Body section already describes turning attention itself into the transmuting agent.</p>
       <p style="margin-top:12px;font-size:14px;color:var(--gold);font-style:italic;">This is offered as a lens, not a practice prescription &mdash; *SELF doesn't teach Tantric ritual, only borrows its core insight: what you resist, persists; what you include, transforms.</p>
-    </div></div>
+    
+</div>
 
-    <div class="framework-card collapsed">
-      <span class="num">05</span>
-      <h3>The Quadrant of Health</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Where &ldquo;not sick&rdquo; stops being the finish line</p><div class="framework-content">
+  </div>
+
+  <p style="font-family:var(--sans);font-size:15px;font-weight:700;letter-spacing:6px;text-transform:uppercase;color:var(--gold);opacity:1;text-align:center;margin:40px 0 10px;">What Health Means</p>
+  <p style="font-family:var(--serif);font-size:13px;font-style:italic;color:var(--dim);text-align:center;margin:0 0 28px;">Not the absence of disease &mdash; a direction, and a form of wealth</p>
+  <div style="text-align:center;margin:0 0 28px;">
+    <button class="collapse-toggle-btn" onclick="toggleGroupCards('sv-group-meaning',this)">Expand All 2 Cards &#9660;</button>
+  </div>
+  <div id="sv-group-meaning">
+<div class="ego-sub-header gf-sub-header" style="max-width:820px;">
+  <div class="ego-sub-header-text">
+    <h3>The Quadrant of Health</h3>
+    <p>Where &ldquo;not sick&rdquo; stops being the finish line</p>
+  </div>
+  <button class="collapse-toggle-btn" onclick="sectionCollapse('sv-quadrant-content',this)">Expand &#9660;</button>
+</div>
+<div id="sv-quadrant-content" class="section-collapse-wrap collapsed sv-body" style="max-width:820px;margin:0 auto 40px;">
       <p>Svasthya, above, already said health isn&rsquo;t the absence of disease. Modern yoga therapy draws the same line as four stops on one climb, not two &mdash; and most people only ever walk between the first two.</p>
-      <div class="framework-subcards" style="margin-top:20px;">
-        <div class="framework-subcard collapsed">
-          <h4>The Four Stops</h4><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Sick man to towards divinity</p>
-          <div class="framework-subcard-content">
+      
+<div class="ego-sub-header gf-sub-header nested-sub-header" style="max-width:820px;margin-top:20px;">
+  <div class="ego-sub-header-text">
+    <h3>The Four Stops</h3>
+    <p>Sick man to towards divinity</p>
+  </div>
+  <button class="collapse-toggle-btn" onclick="sectionCollapse('sv-quadrant-sub1',this)">Expand &#9660;</button>
+</div>
+<div id="sv-quadrant-sub1" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 20px;">
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:2px;margin-top:12px;">
         <div class="sl-stage"><span class="sl-num">I</span><div class="sl-name">Sick Man</div><p class="sl-desc">Ill health. Survival only &mdash; the animal level, nothing above it.</p></div>
         <div class="sl-stage"><span class="sl-num">II</span><div class="sl-name">Normal Man</div><p class="sl-desc">No diagnosis, but still run by the fear of death. Where most people file &ldquo;healthy&rdquo; and stop looking.</p></div>
         <div class="sl-stage"><span class="sl-num">III</span><div class="sl-name">Super Man</div><p class="sl-desc">Wellbeing actively built &mdash; a state pursued on purpose, not just an absence nobody disturbed.</p></div>
         <div class="sl-stage" style="border-left:2px solid var(--gold);"><span class="sl-num" style="color:var(--gold);">IV</span><div class="sl-name" style="color:var(--gold);">Towards Divinity</div><p class="sl-desc">Self-realization. The far edge of the same climb, not a different one.</p></div>
       </div>
-          </div>
-        </div>
-      </div>
+          
+</div>
       <p style="margin-top:16px;font-size:14px;color:var(--gold);font-style:italic;">Health was never a checkbox. It&rsquo;s a direction &mdash; and most people stop reporting for duty the moment nothing hurts.</p>
-    </div></div>
+    
+</div>
 
-    <div class="framework-card collapsed">
-      <span class="num">06</span>
-      <h3>Two Kinds of Illness</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Vyadhi, traced to its address</p><div class="framework-content">
+<div class="ego-sub-header gf-sub-header" style="max-width:820px;">
+  <div class="ego-sub-header-text">
+    <h3>Health Is a Form of Wealth</h3>
+    <p>Where the body sits among the four aims of life</p>
+  </div>
+  <button class="collapse-toggle-btn" onclick="sectionCollapse('sv-wealth-content',this)">Expand &#9660;</button>
+</div>
+<div id="sv-wealth-content" class="section-collapse-wrap collapsed sv-body" style="max-width:820px;margin:0 auto 40px;">
+      <p>Indian thought names four aims of a human life, the Purusharthas, and puts them in order. Health isn&rsquo;t a separate project beside them. It sits inside the second one.</p>
+      
+<div class="ego-sub-header gf-sub-header nested-sub-header" style="max-width:820px;margin-top:20px;">
+  <div class="ego-sub-header-text">
+    <h3>The Four Aims</h3>
+    <p>Dharma, artha, kama, moksha</p>
+  </div>
+  <button class="collapse-toggle-btn" onclick="sectionCollapse('sv-wealth-sub1',this)">Expand &#9660;</button>
+</div>
+<div id="sv-wealth-sub1" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 20px;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:2px;margin-top:12px;">
+        <div class="sl-stage"><span class="sl-num">1 &middot; Dharma</span><div class="sl-name">Foundation</div><p class="sl-desc">The ethical ground: values and principles. Nothing above it stands without it.</p></div>
+        <div class="sl-stage"><span class="sl-num">2 &middot; Artha</span><div class="sl-name">Wealth</div><p class="sl-desc">Resources in four forms: knowledge, health, contentment, material wealth.</p></div>
+        <div class="sl-stage"><span class="sl-num">3 &middot; Kama</span><div class="sl-name">Desire</div><p class="sl-desc">Fulfilment held without gripping the outcome &mdash; desire that inspires giving and discovery.</p></div>
+        <div class="sl-stage"><span class="sl-num">4 &middot; Moksha</span><div class="sl-name">Liberation</div><p class="sl-desc">Pure bliss: the state of desiring nothing more.</p></div>
+      </div>
+      <p style="margin-top:16px;font-size:14px;color:var(--gold);font-style:italic;">Notice what counts as wealth: contentment is on the list, and money is meant to be mastered as energy, not served. Health, as the second rung, is part of the foundation for liberation, not a detour from it. Svasthya, again, but as an order of operations.</p>
+          
+</div>
+      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:20px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg);margin-top:20px;">Two word-traps here. Purushartha also appears on this site as <em>self-effort</em> in the Destiny section, and Artha as <em>object of the senses</em> in the Katha map. Same roots, different uses; context decides.</p>
+    
+</div>
+
+  </div>
+
+  <p style="font-family:var(--sans);font-size:15px;font-weight:700;letter-spacing:6px;text-transform:uppercase;color:var(--gold);opacity:1;text-align:center;margin:40px 0 10px;">How Illness Arises</p>
+  <p style="font-family:var(--serif);font-size:13px;font-style:italic;color:var(--dim);text-align:center;margin:0 0 28px;">From mind to body &mdash; two kinds of illness, the chain, the doshas, the fire</p>
+  <div style="text-align:center;margin:0 0 28px;">
+    <button class="collapse-toggle-btn" onclick="toggleGroupCards('sv-group-illness',this)">Expand All 4 Cards &#9660;</button>
+  </div>
+  <div id="sv-group-illness">
+<div class="ego-sub-header gf-sub-header" style="max-width:820px;">
+  <div class="ego-sub-header-text">
+    <h3>Two Kinds of Illness</h3>
+    <p>Vyadhi, traced to its address</p>
+  </div>
+  <button class="collapse-toggle-btn" onclick="sectionCollapse('sv-two-illnesses-content',this)">Expand &#9660;</button>
+</div>
+<div id="sv-two-illnesses-content" class="section-collapse-wrap collapsed sv-body" style="max-width:820px;margin:0 auto 40px;">
       <p>Patanjali named <a href="#nine-obstacles" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">illness</a> first among the nine obstacles and moved on without saying where it actually comes from. The yoga-therapy tradition splits <span class="gloss">Vyadhi<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Vyadhi">+</span><span class="gloss-pop">Illness or bodily disturbance &mdash; already named earlier as the first of Patanjali's nine obstacles to practice.</span></span> into two separate addresses before it ever reaches a diagnosis.</p>
-      <div class="framework-subcards" style="margin-top:20px;">
-        <div class="framework-subcard collapsed">
-          <h4>The Four Addresses</h4><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Anadhija, Adhija, Sara, Samanya</p>
-          <div class="framework-subcard-content">
+      
+<div class="ego-sub-header gf-sub-header nested-sub-header" style="max-width:820px;margin-top:20px;">
+  <div class="ego-sub-header-text">
+    <h3>The Four Addresses</h3>
+    <p>Anadhija, Adhija, Sara, Samanya</p>
+  </div>
+  <button class="collapse-toggle-btn" onclick="sectionCollapse('sv-two-illnesses-sub1',this)">Expand &#9660;</button>
+</div>
+<div id="sv-two-illnesses-sub1" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 20px;">
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:2px;margin-top:12px;">
         <div class="sl-stage"><span class="sl-num"><span class="gloss">Anadhija<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Anadhija">+</span><span class="gloss-pop">Illness not generated by mental agitation &mdash; infection, injury, contagion, anything arriving from outside the mind.</span></span></span><div class="sl-name">Not From the Mind</div><p class="sl-desc">Infection, injury, contagion &mdash; what medicine alone was always built to treat.</p></div>
-        <div class="sl-stage"><span class="sl-num"><span class="gloss">Adhija<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Adhija">+</span><span class="gloss-pop">Illness generated by Adhi, mental agitation &mdash; the psychosomatic branch, traced stage by stage in Card 07.</span></span></span><div class="sl-name">From the Mind</div><p class="sl-desc">Mental agitation, translated downward until the body is the one holding it.</p></div>
+        <div class="sl-stage"><span class="sl-num"><span class="gloss">Adhija<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Adhija">+</span><span class="gloss-pop">Illness generated by Adhi, mental agitation &mdash; the psychosomatic branch, traced stage by stage in &ldquo;How a Thought Becomes an Ulcer.&rdquo;</span></span></span><div class="sl-name">From the Mind</div><p class="sl-desc">Mental agitation, translated downward until the body is the one holding it.</p></div>
         <div class="sl-stage"><span class="sl-num"><span class="gloss">Sara<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Sara">+</span><span class="gloss-pop">The essential or constitutional subtype of Adhija Vyadhi &mdash; deep-rooted, present from early on.</span></span></span><div class="sl-name">Deep-Rooted</div><p class="sl-desc">Constitutional. Present early, and rarely traced to one triggering week.</p></div>
-        <div class="sl-stage" style="border-left:2px solid var(--gold);"><span class="sl-num" style="color:var(--gold);"><span class="gloss">Samanya<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Samanya">+</span><span class="gloss-pop">The ordinary subtype of Adhija Vyadhi &mdash; manufactured by everyday stress rather than constitution.</span></span></span><div class="sl-name" style="color:var(--gold);">Ordinary</div><p class="sl-desc">The everyday, stress-manufactured kind &mdash; what Card 07 traces stage by stage.</p></div>
+        <div class="sl-stage" style="border-left:2px solid var(--gold);"><span class="sl-num" style="color:var(--gold);"><span class="gloss">Samanya<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Samanya">+</span><span class="gloss-pop">The ordinary subtype of Adhija Vyadhi &mdash; manufactured by everyday stress rather than constitution.</span></span></span><div class="sl-name" style="color:var(--gold);">Ordinary</div><p class="sl-desc">The everyday, stress-manufactured kind &mdash; what &ldquo;How a Thought Becomes an Ulcer&rdquo; traces stage by stage.</p></div>
       </div>
-          </div>
-        </div>
-      </div>
+          
+</div>
       <p style="margin-top:16px;font-size:14px;color:var(--gold);font-style:italic;">A cough and an ulcer can look identical on a chart. One arrived from outside. The other was built, meal by meal, thought by thought, from in here.</p>
-    </div></div>
+    
+</div>
 
-    <div class="framework-card collapsed">
-      <span class="num">07</span>
-      <h3>How a Thought Becomes an Ulcer</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Samanya Vyadhi, traced stage by stage</p><div class="framework-content">
-      <p>Card 02 already named Prana as the working link between mind and body. This is that link shown breaking down &mdash; the actual mechanism behind the &ldquo;ordinary&rdquo; illness named in Card 06.</p>
-      <div class="framework-subcards" style="margin-top:20px;">
-        <div class="framework-subcard collapsed">
-          <h4>The Four Stages</h4><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Manomaya to Annamaya</p>
-          <div class="framework-subcard-content">
+<div class="ego-sub-header gf-sub-header" style="max-width:820px;">
+  <div class="ego-sub-header-text">
+    <h3>How a Thought Becomes an Ulcer</h3>
+    <p>Samanya Vyadhi, traced stage by stage</p>
+  </div>
+  <button class="collapse-toggle-btn" onclick="sectionCollapse('sv-thought-ulcer-content',this)">Expand &#9660;</button>
+</div>
+<div id="sv-thought-ulcer-content" class="section-collapse-wrap collapsed sv-body" style="max-width:820px;margin:0 auto 40px;">
+      <p>Prana was already named as the working link between mind and body. This is that link shown breaking down &mdash; the actual mechanism behind the &ldquo;ordinary&rdquo; illness named in &ldquo;Two Kinds of Illness.&rdquo;</p>
+      
+<div class="ego-sub-header gf-sub-header nested-sub-header" style="max-width:820px;margin-top:20px;">
+  <div class="ego-sub-header-text">
+    <h3>The Four Stages</h3>
+    <p>Manomaya to Annamaya</p>
+  </div>
+  <button class="collapse-toggle-btn" onclick="sectionCollapse('sv-thought-ulcer-sub1',this)">Expand &#9660;</button>
+</div>
+<div id="sv-thought-ulcer-sub1" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 20px;">
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:2px;margin-top:12px;">
         <div class="sl-stage"><span class="sl-num">Manomaya</span><div class="sl-name">Mind in Overdrive</div><p class="sl-desc">Speed. Insomnia, restlessness, indecision &mdash; the mind racing fast enough to generate its own friction.</p></div>
         <div class="sl-stage"><span class="sl-num">Pranamaya</span><div class="sl-name">Erratic Energy</div><p class="sl-desc">The same speed forces breath haphazard, unsettling the <a href="#nadis" style="color:var(--mid);text-decoration:none;border-bottom:1px dotted var(--dim);">Nadis</a> covered a few sections back.</p></div>
         <div class="sl-stage"><span class="sl-num">Digestion</span><div class="sl-name">Under, Over, or Wrong</div><p class="sl-desc"><span class="gloss">Ajeernatvam<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Ajeernatvam">+</span><span class="gloss-pop">Under-digestion &mdash; too little energy to process food, leaving it stagnant.</span></span>, <span class="gloss">Atijeernatvam<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Atijeernatvam">+</span><span class="gloss-pop">Over-digestion &mdash; hyperactive energy burning through nourishment too quickly.</span></span>, or <span class="gloss">Kujeernatvam<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Kujeernatvam">+</span><span class="gloss-pop">Wrong digestion &mdash; chaotic energy digesting irregularly, generating toxins.</span></span> &mdash; energy no longer metabolizes food cleanly, in one of three directions.</p></div>
         <div class="sl-stage danger"><span class="sl-num" style="color:#c0392b;">Annamaya</span><div class="sl-name" style="color:#c0392b;">Physical Manifestation</div><p class="sl-desc">Gastritis &rarr; tissue erosion &rarr; ulcer. Medicine treats the ulcer. It rarely asks what was racing upstream.</p></div>
       </div>
-          </div>
-        </div>
-      </div>
-      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:20px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg);margin-top:20px;">The Gita's own definition of the practice: <em>samatvam yoga uchyate</em> &mdash; equanimity is yoga. Not a pose. A speed control. Card 02&rsquo;s Prana bridge and the <a href="#nadis" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">Nadi</a> work covered earlier are the actual levers for turning the speed down before Stage 3 ever starts.</p>
-    </div></div>
+          
+</div>
+      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:20px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg);margin-top:20px;">The Gita's own definition of the practice: <em>samatvam yoga uchyate</em> &mdash; equanimity is yoga. Not a pose. A speed control. The Prana bridge and the <a href="#nadis" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">Nadi</a> work covered earlier are the actual levers for turning the speed down before Stage 3 ever starts.</p>
+    
+</div>
 
-    <div class="framework-card collapsed">
-      <span class="num">08</span>
-      <h3>The Three Doshas</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Vata, Pitta, Kapha &mdash; the body&rsquo;s working patterns</p><div class="framework-content">
-      <p>Ayurveda reads body and mind through three biological energies, the doshas. They aren&rsquo;t organs or substances but patterns of function, each built from two of the five elements. Don&rsquo;t confuse them with the three gunas in Card 01: the gunas are qualities of mind-nature; the doshas are how the body-mind actually runs.</p>
-      <div class="framework-subcards" style="margin-top:20px;">
-        <div class="framework-subcard collapsed">
-          <h4>The Three Profiles</h4><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Vata, Pitta, Kapha &mdash; what each governs and how it tips</p>
-          <div class="framework-subcard-content">
+<div class="ego-sub-header gf-sub-header" style="max-width:820px;">
+  <div class="ego-sub-header-text">
+    <h3>The Three Doshas</h3>
+    <p>Vata, Pitta, Kapha &mdash; the body&rsquo;s working patterns</p>
+  </div>
+  <button class="collapse-toggle-btn" onclick="sectionCollapse('sv-doshas-content',this)">Expand &#9660;</button>
+</div>
+<div id="sv-doshas-content" class="section-collapse-wrap collapsed sv-body" style="max-width:820px;margin:0 auto 40px;">
+      <p>Ayurveda reads body and mind through three biological energies, the doshas. They aren&rsquo;t organs or substances but patterns of function, each built from two of the five elements. Don&rsquo;t confuse them with the three gunas (&ldquo;The Three Gunas&rdquo;): the gunas are qualities of mind-nature; the doshas are how the body-mind actually runs.</p>
+      
+<div class="ego-sub-header gf-sub-header nested-sub-header" style="max-width:820px;margin-top:20px;">
+  <div class="ego-sub-header-text">
+    <h3>The Three Profiles</h3>
+    <p>Vata, Pitta, Kapha &mdash; what each governs and how it tips</p>
+  </div>
+  <button class="collapse-toggle-btn" onclick="sectionCollapse('sv-doshas-sub1',this)">Expand &#9660;</button>
+</div>
+<div id="sv-doshas-sub1" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 20px;">
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:2px;margin-top:12px;">
           <div class="sl-stage"><span class="sl-num">Air + Ether</span><div class="sl-name">Vata</div><p class="sl-desc"><strong>Governs:</strong> movement, breath, the nervous system.<br><strong>Qualities:</strong> dry, light, cold, rough, mobile.<br><strong>Balanced:</strong> creativity, flexibility.<br><strong>Out of balance:</strong> anxiety, dry skin.</p></div>
           <div class="sl-stage"><span class="sl-num">Fire + Water</span><div class="sl-name">Pitta</div><p class="sl-desc"><strong>Governs:</strong> digestion, metabolism, body temperature.<br><strong>Qualities:</strong> hot, sharp, light, oily, liquid.<br><strong>Balanced:</strong> intelligence, strong digestion.<br><strong>Out of balance:</strong> anger, inflammation.</p></div>
           <div class="sl-stage"><span class="sl-num">Earth + Water</span><div class="sl-name">Kapha</div><p class="sl-desc"><strong>Governs:</strong> structure, immunity, body fluids.<br><strong>Qualities:</strong> heavy, slow, cool, oily, stable.<br><strong>Balanced:</strong> calmness, strength.<br><strong>Out of balance:</strong> lethargy, weight gain.</p></div>
         </div>
-          <p style="margin-top:16px;font-size:14px;color:var(--gold);font-style:italic;">Everyone carries all three, in different proportions, and they shift with food, season, age, and the state of the mind. Weather, not a verdict. The &ldquo;mind in overdrive&rdquo; of Card 07 reads closest to Vata moving too fast.</p>
-          </div>
-        </div>
-      </div>
+          <p style="margin-top:16px;font-size:14px;color:var(--gold);font-style:italic;">Everyone carries all three, in different proportions, and they shift with food, season, age, and the state of the mind. Weather, not a verdict. The &ldquo;mind in overdrive&rdquo; stage of &ldquo;How a Thought Becomes an Ulcer&rdquo; reads closest to Vata moving too fast.</p>
+          
+</div>
       <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:20px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg);margin-top:20px;">These are traditional descriptions, offered as a vocabulary for noticing tendencies, not as a diagnosis or a label to wear.</p>
-    </div></div>
+    
+</div>
 
-    <div class="framework-card collapsed">
-      <span class="num">09</span>
-      <h3>Same Herb, Different Preparation</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">The extraction spectrum &mdash; heat, force, and burden</p><div class="framework-content">
+<div class="ego-sub-header gf-sub-header" style="max-width:820px;">
+  <div class="ego-sub-header-text">
+    <h3>The Agni Engine</h3>
+    <p>Digesting everything that arrives</p>
+  </div>
+  <button class="collapse-toggle-btn" onclick="sectionCollapse('sv-agni-content',this)">Expand &#9660;</button>
+</div>
+<div id="sv-agni-content" class="section-collapse-wrap collapsed sv-body" style="max-width:820px;margin:0 auto 40px;">
+      <p>&ldquo;How a Thought Becomes an Ulcer&rdquo; traced how an overdriven mind ends in a gut problem. Ayurveda explains why the route exists: <span class="gloss">Agni<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Agni">+</span><span class="gloss-pop">Digestive fire &mdash; the capacity to transform what is taken in, whether food, medicine, or experience.</span></span> isn&rsquo;t only the stomach&rsquo;s fire. It is the transforming capacity applied to <em>every</em> input &mdash; food, emotions, sense impressions, experiences. What it digests cleanly becomes strength; what it doesn&rsquo;t becomes weight.</p>
+      
+<div class="ego-sub-header gf-sub-header nested-sub-header" style="max-width:820px;margin-top:20px;">
+  <div class="ego-sub-header-text">
+    <h3>The Four Moments</h3>
+    <p>Input, filter, clear, unclear</p>
+  </div>
+  <button class="collapse-toggle-btn" onclick="sectionCollapse('sv-agni-sub1',this)">Expand &#9660;</button>
+</div>
+<div id="sv-agni-sub1" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 20px;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:2px;margin-top:12px;">
+        <div class="sl-stage"><span class="sl-num">Input</span><div class="sl-name">What Arrives</div><p class="sl-desc">Food, emotions, senses, experiences &mdash; all treated as things to be digested.</p></div>
+        <div class="sl-stage"><span class="sl-num">Filter</span><div class="sl-name">The Fire</div><p class="sl-desc">Agni: metabolism, absorption, and mental processing in one function.</p></div>
+        <div class="sl-stage"><span class="sl-num">Clear</span><div class="sl-name"><span class="gloss">Ojas<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Ojas">+</span><span class="gloss-pop">Vitality &mdash; the refined essence left when digestion is clean; felt as radiance, resilience, and a rested mind.</span></span></div><p class="sl-desc">The result of clean digestion: vigor, radiance, a rested mind.</p></div>
+        <div class="sl-stage"><span class="sl-num">Unclear</span><div class="sl-name"><span class="gloss">Ama<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Ama">+</span><span class="gloss-pop">Undigested residue &mdash; what is left when something was taken in but not fully processed.</span></span></div><p class="sl-desc">The result of poor digestion: heaviness, toxicity, stagnation &mdash; from unprocessed food or unresolved emotion alike.</p></div>
+      </div>
+          
+</div>
+<div class="ego-sub-header gf-sub-header nested-sub-header" style="max-width:820px;margin-top:20px;">
+  <div class="ego-sub-header-text">
+    <h3>Three States of the Fire</h3>
+    <p>Smoldering, flaring, unstable &mdash; and the mood each carries</p>
+  </div>
+  <button class="collapse-toggle-btn" onclick="sectionCollapse('sv-agni-sub2',this)">Expand &#9660;</button>
+</div>
+<div id="sv-agni-sub2" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 20px;">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:2px;margin-top:12px;">
+          <div class="sl-stage"><span class="sl-num">Slow &middot; Manda</span><div class="sl-name">Smoldering</div><p class="sl-desc">Weak, sluggish digestion. Mood: depression, feeling stuck and depleted. Kapha&rsquo;s tendency.</p></div>
+          <div class="sl-stage"><span class="sl-num">Sharp &middot; Tikshna</span><div class="sl-name">Flaring</div><p class="sl-desc">Overactive, aggressive digestion. Mood: irritability, impatience. Pitta&rsquo;s tendency.</p></div>
+          <div class="sl-stage"><span class="sl-num">Irregular &middot; Vishama</span><div class="sl-name">Unstable</div><p class="sl-desc">Gas and erratic digestion. Mood: anxiety, restlessness. Vata&rsquo;s tendency.</p></div>
+        </div>
+          <p style="margin-top:16px;font-size:14px;color:var(--gold);font-style:italic;">These are the under-, over- and wrong-digestion of &ldquo;How a Thought Becomes an Ulcer,&rdquo; now with the mood each one carries and the dosha from &ldquo;The Three Doshas&rdquo; it follows. The tradition runs the chain both ways: a steadier gut steadies the mind, as a calmer mind steadies the gut.</p>
+          
+</div>
+      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:20px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg);margin-top:20px;">Unresolved emotion is as hard to digest as unprocessed food. Undigested experience reads like a close cousin of what this framework calls samskara: the residue that stays after the moment has passed.</p>
+    
+</div>
+
+  </div>
+
+  <p style="font-family:var(--sans);font-size:15px;font-weight:700;letter-spacing:6px;text-transform:uppercase;color:var(--gold);opacity:1;text-align:center;margin:40px 0 10px;">The Kitchen Pharmacy</p>
+  <p style="font-family:var(--serif);font-size:13px;font-style:italic;color:var(--dim);text-align:center;margin:0 0 28px;">Same herb, different preparation &mdash; and the questions before any remedy</p>
+  <div style="text-align:center;margin:0 0 28px;">
+    <button class="collapse-toggle-btn" onclick="toggleGroupCards('sv-group-pharmacy',this)">Expand All 3 Cards &#9660;</button>
+  </div>
+  <div id="sv-group-pharmacy">
+<div class="ego-sub-header gf-sub-header" style="max-width:820px;">
+  <div class="ego-sub-header-text">
+    <h3>Same Herb, Different Preparation</h3>
+    <p>The extraction spectrum &mdash; heat, force, and burden</p>
+  </div>
+  <button class="collapse-toggle-btn" onclick="sectionCollapse('sv-herb-forms-content',this)">Expand &#9660;</button>
+</div>
+<div id="sv-herb-forms-content" class="section-collapse-wrap collapsed sv-body" style="max-width:820px;margin:0 auto 40px;">
       <p>Classical Ayurvedic pharmaceutics, systematised in texts such as the Charaka Samhita and the Sharangdhara Samhita (roughly the 13th century), treats <em>how</em> a plant is prepared as part of the medicine itself. One herb, five forms, laid along a single gradient:</p>
-      <div class="framework-subcards" style="margin-top:20px;">
-        <div class="framework-subcard collapsed">
-          <h4>The Five Forms</h4><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Swarasa, kalka, hima, phanta, kwatha</p>
-          <div class="framework-subcard-content">
+      
+<div class="ego-sub-header gf-sub-header nested-sub-header" style="max-width:820px;margin-top:20px;">
+  <div class="ego-sub-header-text">
+    <h3>The Five Forms</h3>
+    <p>Swarasa, kalka, hima, phanta, kwatha</p>
+  </div>
+  <button class="collapse-toggle-btn" onclick="sectionCollapse('sv-herb-forms-sub1',this)">Expand &#9660;</button>
+</div>
+<div id="sv-herb-forms-sub1" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 20px;">
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:2px;margin-top:12px;">
         <div class="sl-stage"><span class="sl-num">Swarasa</span><div class="sl-name">Fresh Juice</div><p class="sl-desc">Pressed raw. The heaviest to digest.</p></div>
         <div class="sl-stage"><span class="sl-num">Kalka</span><div class="sl-name">Paste</div><p class="sl-desc">Crushed whole. High raw potency, still heavy.</p></div>
@@ -12902,43 +13090,63 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
         <div class="sl-stage"><span class="sl-num">Kwatha</span><div class="sl-name">Decoction</div><p class="sl-desc">Boiled down. Strongest extraction, lightest on digestion.</p></div>
       </div>
       <p style="margin-top:16px;font-size:14px;color:var(--gold);font-style:italic;">As heat rises, extraction force rises and digestive burden falls. Raw is not the same as gentle &mdash; and the strongest isn&rsquo;t always the heaviest.</p>
-          </div>
-        </div>
-      </div>
+          
+</div>
       <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:20px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg);margin-top:20px;">Read it as a lens on practice, not only on herbs: the same insight, taken raw or prepared, lands differently in the same person. Preparation is part of the teaching.</p>
-    </div></div>
+    
+</div>
 
-    <div class="framework-card collapsed">
-      <span class="num">10</span>
-      <h3>Six Questions Before Any Remedy</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Why there is no universal formula</p><div class="framework-content">
+<div class="ego-sub-header gf-sub-header" style="max-width:820px;">
+  <div class="ego-sub-header-text">
+    <h3>Six Questions Before Any Remedy</h3>
+    <p>Why there is no universal formula</p>
+  </div>
+  <button class="collapse-toggle-btn" onclick="sectionCollapse('sv-six-questions-content',this)">Expand &#9660;</button>
+</div>
+<div id="sv-six-questions-content" class="section-collapse-wrap collapsed sv-body" style="max-width:820px;margin:0 auto 40px;">
       <p>The tradition won&rsquo;t pick a preparation until six things are asked. Two people with the same complaint can leave with different answers &mdash; that is the design, not an inconsistency.</p>
-      <div class="framework-subcards" style="margin-top:20px;">
-        <div class="framework-subcard collapsed">
-          <h4>The Six Questions</h4><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Herb, dosha, agni, stage, medium, person &mdash; and the carrier</p>
-          <div class="framework-subcard-content">
+      
+<div class="ego-sub-header gf-sub-header nested-sub-header" style="max-width:820px;margin-top:20px;">
+  <div class="ego-sub-header-text">
+    <h3>The Six Questions</h3>
+    <p>Herb, dosha, agni, stage, medium, person &mdash; and the carrier</p>
+  </div>
+  <button class="collapse-toggle-btn" onclick="sectionCollapse('sv-six-questions-sub1',this)">Expand &#9660;</button>
+</div>
+<div id="sv-six-questions-sub1" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 20px;">
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:2px;margin-top:12px;">
           <div class="sl-stage"><span class="sl-num">1</span><div class="sl-name">The Herb</div><p class="sl-desc">Are its active principles volatile or stable? That decides cold steeping or boiling.</p></div>
-          <div class="sl-stage"><span class="sl-num">2</span><div class="sl-name">The <span class="gloss">Dosha<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Dosha">+</span><span class="gloss-pop">One of three biological energies in Ayurveda &mdash; Vata, Pitta, Kapha &mdash; patterns of function governing body and mind. Introduced in Card 08.</span></span></div><p class="sl-desc">Vata leans toward oils and warmth; Pitta toward cooling liquids; Kapha toward dry powders. Card 08 introduces the three.</p></div>
+          <div class="sl-stage"><span class="sl-num">2</span><div class="sl-name">The <span class="gloss">Dosha<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Dosha">+</span><span class="gloss-pop">One of three biological energies in Ayurveda &mdash; Vata, Pitta, Kapha &mdash; patterns of function governing body and mind. Introduced in &ldquo;The Three Doshas.&rdquo;</span></span></div><p class="sl-desc">Vata leans toward oils and warmth; Pitta toward cooling liquids; Kapha toward dry powders. &ldquo;The Three Doshas&rdquo; introduces them.</p></div>
           <div class="sl-stage"><span class="sl-num">3</span><div class="sl-name">The <span class="gloss">Agni<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Agni">+</span><span class="gloss-pop">Digestive fire &mdash; the capacity to transform what is taken in, whether food, medicine, or experience.</span></span></div><p class="sl-desc">A weak digestive fire needs light preparations; a strong one can take heavy ones.</p></div>
           <div class="sl-stage"><span class="sl-num">4</span><div class="sl-name">The Stage</div><p class="sl-desc">Acute states call for fast, water-based forms; long-standing ones allow slow, building fats.</p></div>
           <div class="sl-stage"><span class="sl-num">5</span><div class="sl-name">The Medium</div><p class="sl-desc">Water-soluble and fat-soluble principles need different carriers.</p></div>
           <div class="sl-stage"><span class="sl-num">6</span><div class="sl-name">The Person</div><p class="sl-desc">Will they take it, and willingly? Palatability counts, because healing is partly psychological.</p></div>
         </div>
           <p style="margin-top:16px;font-size:14px;color:var(--gold);font-style:italic;">The <span class="gloss">Anupana<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Anupana">+</span><span class="gloss-pop">The carrier a remedy is taken with &mdash; honey, ghee, milk, warm water &mdash; chosen because it changes where the medicine acts.</span></span> principle adds one more layer: the carrier steers the remedy &mdash; honey toward Kapha, ghee toward Pitta, sesame oil toward Vata. The vehicle changes the destination.</p>
-          </div>
-        </div>
-      </div>
+          
+</div>
       <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:20px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg);margin-top:20px;">Sixth on the list, and rarely skipped by honest clinicians: a remedy you cannot bear to take is not yet medicine. The same goes for any practice on this site. If it only works when you force it, it needs re-preparing, not more willpower.</p>
-    </div></div>
+    
+</div>
 
-    <div class="framework-card collapsed">
-      <span class="num">11</span>
-      <h3>The Kitchen Rules</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Freshness, timing, and knowing your limits</p><div class="framework-content">
+<div class="ego-sub-header gf-sub-header" style="max-width:820px;">
+  <div class="ego-sub-header-text">
+    <h3>The Kitchen Rules</h3>
+    <p>Freshness, timing, and knowing your limits</p>
+  </div>
+  <button class="collapse-toggle-btn" onclick="sectionCollapse('sv-kitchen-rules-content',this)">Expand &#9660;</button>
+</div>
+<div id="sv-kitchen-rules-content" class="section-collapse-wrap collapsed sv-body" style="max-width:820px;margin:0 auto 40px;">
       <p>Traditional kitchen guidance reduces to a few habits. They are stated here as the tradition states them; this site shares the logic, not doses or prescriptions.</p>
-      <div class="framework-subcards" style="margin-top:20px;">
-        <div class="framework-subcard collapsed">
-          <h4>The Five Rules</h4><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Fresh, heat, vessel, grain, limits</p>
-          <div class="framework-subcard-content">
+      
+<div class="ego-sub-header gf-sub-header nested-sub-header" style="max-width:820px;margin-top:20px;">
+  <div class="ego-sub-header-text">
+    <h3>The Five Rules</h3>
+    <p>Fresh, heat, vessel, grain, limits</p>
+  </div>
+  <button class="collapse-toggle-btn" onclick="sectionCollapse('sv-kitchen-rules-sub1',this)">Expand &#9660;</button>
+</div>
+<div id="sv-kitchen-rules-sub1" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 20px;">
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:2px;margin-top:12px;">
         <div class="sl-stage"><span class="sl-num">Fresh</span><div class="sl-name">Take It Fresh</div><p class="sl-desc">Decoctions are meant to be made and used within hours. Re-warmed leftovers are said to leave <span class="gloss">Ama<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Ama">+</span><span class="gloss-pop">Undigested residue &mdash; what is left when something was taken in but not fully processed.</span></span>.</p></div>
         <div class="sl-stage"><span class="sl-num">Heat</span><div class="sl-name">Spare the Honey</div><p class="sl-desc">Honey is added after cooling, never to something boiling hot.</p></div>
@@ -12946,65 +13154,14 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
         <div class="sl-stage"><span class="sl-num">Grain</span><div class="sl-name">Coarse, Not Dust</div><p class="sl-desc">Coarse powders filter cleanly and resist charring; fine dust does not.</p></div>
         <div class="sl-stage danger"><span class="sl-num" style="color:#c0392b;">Limits</span><div class="sl-name" style="color:#c0392b;">Consult First</div><p class="sl-desc">Never replace prescribed medication with a home remedy without speaking to a physician.</p></div>
       </div>
-          </div>
-        </div>
-      </div>
-      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:20px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg);margin-top:20px;">The arc under all ten cards: raw nature, transformed by method, calibrated to one person, then assimilated by their own fire. Ayurveda&rsquo;s aim isn&rsquo;t to silence the symptom but to prepare what is raw into something this body can actually use. Svasthya, again: not the absence of disturbance, but the capacity to digest what arrives.</p>
-    </div></div>
-
-    <div class="framework-card collapsed">
-      <span class="num">12</span>
-      <h3>The Agni Engine</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Digesting everything that arrives</p><div class="framework-content">
-      <p>Card 07 traced how an overdriven mind ends in a gut problem. Ayurveda explains why the route exists: <span class="gloss">Agni<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Agni">+</span><span class="gloss-pop">Digestive fire &mdash; the capacity to transform what is taken in, whether food, medicine, or experience.</span></span> isn&rsquo;t only the stomach&rsquo;s fire. It is the transforming capacity applied to <em>every</em> input &mdash; food, emotions, sense impressions, experiences. What it digests cleanly becomes strength; what it doesn&rsquo;t becomes weight.</p>
-      <div class="framework-subcards" style="margin-top:20px;">
-        <div class="framework-subcard collapsed">
-          <h4>The Four Moments</h4><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Input, filter, clear, unclear</p>
-          <div class="framework-subcard-content">
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:2px;margin-top:12px;">
-        <div class="sl-stage"><span class="sl-num">Input</span><div class="sl-name">What Arrives</div><p class="sl-desc">Food, emotions, senses, experiences &mdash; all treated as things to be digested.</p></div>
-        <div class="sl-stage"><span class="sl-num">Filter</span><div class="sl-name">The Fire</div><p class="sl-desc">Agni: metabolism, absorption, and mental processing in one function.</p></div>
-        <div class="sl-stage"><span class="sl-num">Clear</span><div class="sl-name"><span class="gloss">Ojas<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Ojas">+</span><span class="gloss-pop">Vitality &mdash; the refined essence left when digestion is clean; felt as radiance, resilience, and a rested mind.</span></span></div><p class="sl-desc">The result of clean digestion: vigor, radiance, a rested mind.</p></div>
-        <div class="sl-stage"><span class="sl-num">Unclear</span><div class="sl-name"><span class="gloss">Ama<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Ama">+</span><span class="gloss-pop">Undigested residue &mdash; what is left when something was taken in but not fully processed.</span></span></div><p class="sl-desc">The result of poor digestion: heaviness, toxicity, stagnation &mdash; from unprocessed food or unresolved emotion alike.</p></div>
-      </div>
-          </div>
-        </div>
-        <div class="framework-subcard collapsed">
-          <h4>Three States of the Fire</h4><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Smoldering, flaring, unstable &mdash; and the mood each carries</p>
-          <div class="framework-subcard-content">
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:2px;margin-top:12px;">
-          <div class="sl-stage"><span class="sl-num">Slow &middot; Manda</span><div class="sl-name">Smoldering</div><p class="sl-desc">Weak, sluggish digestion. Mood: depression, feeling stuck and depleted. Kapha&rsquo;s tendency.</p></div>
-          <div class="sl-stage"><span class="sl-num">Sharp &middot; Tikshna</span><div class="sl-name">Flaring</div><p class="sl-desc">Overactive, aggressive digestion. Mood: irritability, impatience. Pitta&rsquo;s tendency.</p></div>
-          <div class="sl-stage"><span class="sl-num">Irregular &middot; Vishama</span><div class="sl-name">Unstable</div><p class="sl-desc">Gas and erratic digestion. Mood: anxiety, restlessness. Vata&rsquo;s tendency.</p></div>
-        </div>
-          <p style="margin-top:16px;font-size:14px;color:var(--gold);font-style:italic;">These are the under-, over- and wrong-digestion of Card 07, now with the mood each one carries and the dosha of Card 08 it follows. The tradition runs the chain both ways: a steadier gut steadies the mind, as a calmer mind steadies the gut.</p>
-          </div>
-        </div>
-      </div>
-      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:20px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg);margin-top:20px;">Unresolved emotion is as hard to digest as unprocessed food. Undigested experience reads like a close cousin of what this framework calls samskara: the residue that stays after the moment has passed.</p>
-    </div></div>
-
-    <div class="framework-card collapsed">
-      <span class="num">13</span>
-      <h3>Health Is a Form of Wealth</h3><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Where the body sits among the four aims of life</p><div class="framework-content">
-      <p>Indian thought names four aims of a human life, the Purusharthas, and puts them in order. Health isn&rsquo;t a separate project beside them. It sits inside the second one.</p>
-      <div class="framework-subcards" style="margin-top:20px;">
-        <div class="framework-subcard collapsed">
-          <h4>The Four Aims</h4><p class="section-collapse-label" style="margin-top:0;margin-bottom:8px;">Dharma, artha, kama, moksha</p>
-          <div class="framework-subcard-content">
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:2px;margin-top:12px;">
-        <div class="sl-stage"><span class="sl-num">1 &middot; Dharma</span><div class="sl-name">Foundation</div><p class="sl-desc">The ethical ground: values and principles. Nothing above it stands without it.</p></div>
-        <div class="sl-stage"><span class="sl-num">2 &middot; Artha</span><div class="sl-name">Wealth</div><p class="sl-desc">Resources in four forms: knowledge, health, contentment, material wealth.</p></div>
-        <div class="sl-stage"><span class="sl-num">3 &middot; Kama</span><div class="sl-name">Desire</div><p class="sl-desc">Fulfilment held without gripping the outcome &mdash; desire that inspires giving and discovery.</p></div>
-        <div class="sl-stage"><span class="sl-num">4 &middot; Moksha</span><div class="sl-name">Liberation</div><p class="sl-desc">Pure bliss: the state of desiring nothing more.</p></div>
-      </div>
-      <p style="margin-top:16px;font-size:14px;color:var(--gold);font-style:italic;">Notice what counts as wealth: contentment is on the list, and money is meant to be mastered as energy, not served. Health, as the second rung, is part of the foundation for liberation, not a detour from it. Svasthya, again, but as an order of operations.</p>
-          </div>
-        </div>
-      </div>
-      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:20px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg);margin-top:20px;">Two word-traps here. Purushartha also appears on this site as <em>self-effort</em> in the Destiny section, and Artha as <em>object of the senses</em> in the Katha map. Same roots, different uses; context decides.</p>
-    </div></div>
+          
+</div>
+      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:20px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg);margin-top:20px;">The arc under all of these cards: raw nature, transformed by method, calibrated to one person, then assimilated by their own fire. Ayurveda&rsquo;s aim isn&rsquo;t to silence the symptom but to prepare what is raw into something this body can actually use. Svasthya, again: not the absence of disturbance, but the capacity to digest what arrives.</p>
+    
+</div>
 
   </div>
+
   </div>
 </section>
 
