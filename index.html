@@ -12820,10 +12820,10 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
         <div class="sl-stage"><span class="sl-num">III</span><div class="sl-name">Super Man</div><p class="sl-desc">Wellbeing actively built &mdash; a state pursued on purpose, not just an absence nobody disturbed.</p></div>
         <div class="sl-stage" style="border-left:2px solid var(--gold);"><span class="sl-num" style="color:var(--gold);">IV</span><div class="sl-name" style="color:var(--gold);">Towards Divinity</div><p class="sl-desc">Self-realization. The far edge of the same climb, not a different one.</p></div>
       </div>
-      <p style="margin-top:16px;font-size:14px;color:var(--gold);font-style:italic;">Health was never a checkbox. It&rsquo;s a direction &mdash; and most people stop reporting for duty the moment nothing hurts.</p>
           </div>
         </div>
       </div>
+      <p style="margin-top:16px;font-size:14px;color:var(--gold);font-style:italic;">Health was never a checkbox. It&rsquo;s a direction &mdash; and most people stop reporting for duty the moment nothing hurts.</p>
     </div></div>
 
     <div class="framework-card collapsed">
@@ -12840,10 +12840,10 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
         <div class="sl-stage"><span class="sl-num"><span class="gloss">Sara<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Sara">+</span><span class="gloss-pop">The essential or constitutional subtype of Adhija Vyadhi &mdash; deep-rooted, present from early on.</span></span></span><div class="sl-name">Deep-Rooted</div><p class="sl-desc">Constitutional. Present early, and rarely traced to one triggering week.</p></div>
         <div class="sl-stage" style="border-left:2px solid var(--gold);"><span class="sl-num" style="color:var(--gold);"><span class="gloss">Samanya<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Samanya">+</span><span class="gloss-pop">The ordinary subtype of Adhija Vyadhi &mdash; manufactured by everyday stress rather than constitution.</span></span></span><div class="sl-name" style="color:var(--gold);">Ordinary</div><p class="sl-desc">The everyday, stress-manufactured kind &mdash; what Card 07 traces stage by stage.</p></div>
       </div>
-      <p style="margin-top:16px;font-size:14px;color:var(--gold);font-style:italic;">A cough and an ulcer can look identical on a chart. One arrived from outside. The other was built, meal by meal, thought by thought, from in here.</p>
           </div>
         </div>
       </div>
+      <p style="margin-top:16px;font-size:14px;color:var(--gold);font-style:italic;">A cough and an ulcer can look identical on a chart. One arrived from outside. The other was built, meal by meal, thought by thought, from in here.</p>
     </div></div>
 
     <div class="framework-card collapsed">
@@ -16877,6 +16877,12 @@ function updateNav(){
      open so later content changes (gloss popups, orientation change) don't
      get clipped. ── */
   function isStillOpen(el){
+    // A nested subcard's body must also check the subcard's OWN state. Without
+    // this, a quick double-click (open then close within the 550ms release
+    // window) left the subcard collapsed but with max-height:none pinned on
+    // its body: opacity 0 + full height = a tall blank box.
+    var sc = el.closest('.framework-subcard');
+    if(sc && el.classList.contains('framework-subcard-content') && sc.classList.contains('collapsed')) return false;
     var fc = el.closest('.framework-card');
     if(fc) return !fc.classList.contains('collapsed');
     var pc = el.closest('.pillar-card');
