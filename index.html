@@ -6,6 +6,7 @@
   var t=localStorage.getItem('selfTheme');
   if(t==='light') document.documentElement.setAttribute('data-theme','light');
   document.documentElement.setAttribute('data-fontscale','100');
+  if(/SamsungBrowser/i.test(navigator.userAgent)) document.documentElement.classList.add('is-samsung');
   document.documentElement.style.visibility='hidden';
 })();
 </script>  
@@ -1556,6 +1557,29 @@ a:hover{opacity:.7;}
   [data-theme="light"] .nav-logo-center img{
     filter:none;
     mix-blend-mode:multiply;
+  }
+  /* Samsung Internet: mix-blend-mode on an image inside an element with a
+     running box-shadow animation paints wrong there (white square, mark
+     cropped) while Chrome is fine. Samsung-only fallback: no blend mode, no
+     animation. Dark theme keeps invert(1) alone, which turns the seal's
+     white background black -- the same near-black as the nav bar. Light
+     theme shows the seal as-is, a small white badge with the amber glow. */
+  html.is-samsung .nav-logo-center picture{
+    animation:none !important;
+    overflow:hidden;isolation:isolate;
+    background:#000;
+    box-shadow:0 0 8px rgba(var(--accent-gold-rgb),0.4), 0 0 22px rgba(var(--accent-gold-rgb),0.18);
+  }
+  html.is-samsung .nav-logo-center img{
+    mix-blend-mode:normal !important;
+    filter:invert(1) !important;
+  }
+  html.is-samsung[data-theme="light"] .nav-logo-center picture{
+    background:#fff;
+    box-shadow:0 0 8px rgba(138,106,18,0.35), 0 0 20px rgba(138,106,18,0.16);
+  }
+  html.is-samsung[data-theme="light"] .nav-logo-center img{
+    filter:none !important;
   }
 
   /* Right division: theme toggle in-flow. margin-left:auto is what pushes
@@ -16668,6 +16692,8 @@ function updateNav(){
       resetStack();
     }
 
+    window.closeMobileNav = closeMenu;
+
     toggle.addEventListener('click', function(e){
       e.stopPropagation();
       panel.classList.contains('open') ? closeMenu() : openMenu();
@@ -16690,6 +16716,28 @@ function updateNav(){
          !toggle.contains(e.target)){
         closeMenu();
       }
+    });
+  })();
+
+  /* ── LOGO = HOME, WITHOUT A RELOAD ──────────────────────────────────
+     The floating logo is a plain link to the site root, so tapping it
+     reloaded the whole page. If the mobile menu was open, the old page
+     (menu overlay and all) stayed on screen until the new one painted,
+     which showed up as a brief flash of the half-faded menu over the
+     hero. Handle it in-page instead: close the menu if open, drop any
+     #hash, scroll to the top. Modified clicks (new tab etc.) still use
+     the real link. */
+  (function(){
+    var logo = document.querySelector('.nav-logo-center');
+    if(!logo) return;
+    logo.addEventListener('click', function(e){
+      if(e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button > 0) return;
+      e.preventDefault();
+      if(document.body.classList.contains('mnav-open') && typeof window.closeMobileNav === 'function'){
+        window.closeMobileNav(true);
+      }
+      try{ history.replaceState(null, '', location.pathname + location.search); }catch(_){}
+      requestAnimationFrame(function(){ window.scrollTo(0, 0); });
     });
   })();
 
