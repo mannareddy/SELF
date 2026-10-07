@@ -9432,7 +9432,7 @@ a.src-tag:hover{opacity:.75;}
   <p class="sub" style="font-size:clamp(15px,2vw,19px);color:var(--grey);line-height:1.85;text-align:left;max-width:none;margin:0;">Early Buddhism took a different route to the same discovery as the Pain-Body above and the Enneagram below &mdash; not by naming the mask, but by taking the whole self apart into its moving parts. The formal name for this model is <span class="gloss">Nama Rupa<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Nama Rupa">+</span><span class="gloss-pop">Pāli/Sanskrit for &ldquo;name and form&rdquo; &mdash; the mind-and-body compound, shorthand for a person considered as five interacting processes rather than one fixed thing.</span></span> &mdash; five aggregates, temporarily bundled together, mistaken for one solid person.</p>
 
   <div style="text-align:center;margin:36px 0 28px;">
-    <button id="nrMasterBtn" class="collapse-toggle-btn" onclick="toggleNamaRupa(this)">Expand &#9660;</button>
+    <button id="nrMasterBtn" class="collapse-toggle-btn" onclick="sectionCollapse('nr-full-content',this)">Expand &#9660;</button>
     <p class="section-collapse-label" style="margin-top:8px;">Tap to expand — the five aggregates, and the 51 mental factors behind the Formations</p>
   </div>
   <div id="nr-full-content" class="section-collapse-wrap collapsed" style="max-width:none;margin:0;">
@@ -18434,23 +18434,6 @@ function toggleGroupCards(groupId,btn){
     btn.innerHTML=btn.innerHTML.replace('Expand','Collapse').replace('&#9660;','&#9650;');
   } else {
     btn.innerHTML=btn.innerHTML.replace('Collapse','Expand').replace('&#9650;','&#9660;');
-  }
-}
-
-/* ── NAMA RUPA MASTER TOGGLE ──
-   Opens/closes the whole section. Opening also opens both nested cards;
-   closing goes through sectionCollapse(), whose resetNestedToggles() puts
-   the nested cards and their buttons back to Expand. ── */
-function toggleNamaRupa(btn){
-  var outer=document.getElementById('nr-full-content');
-  if(!outer) return;
-  var expanding=outer.classList.contains('collapsed');
-  sectionCollapse('nr-full-content',btn);
-  if(expanding){
-    ['aggregates-card-content','mental-factors-content'].forEach(function(id){
-      var w=document.getElementById(id);
-      if(w && w.classList.contains('collapsed')) sectionCollapse(id);
-    });
   }
 }
 
