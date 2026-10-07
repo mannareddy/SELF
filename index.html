@@ -9431,10 +9431,12 @@ a.src-tag:hover{opacity:.75;}
   <h2 style="margin:0 auto 20px;">You Are Not a Thing. You Are Five Things, Happening.</h2>
   <p class="sub" style="font-size:clamp(15px,2vw,19px);color:var(--grey);line-height:1.85;text-align:left;max-width:none;margin:0;">Early Buddhism took a different route to the same discovery as the Pain-Body above and the Enneagram below &mdash; not by naming the mask, but by taking the whole self apart into its moving parts. The formal name for this model is <span class="gloss">Nama Rupa<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Nama Rupa">+</span><span class="gloss-pop">Pāli/Sanskrit for &ldquo;name and form&rdquo; &mdash; the mind-and-body compound, shorthand for a person considered as five interacting processes rather than one fixed thing.</span></span> &mdash; five aggregates, temporarily bundled together, mistaken for one solid person.</p>
 
-  <div style="text-align:center;margin:36px 0 0;">
+  <div style="text-align:center;margin:36px 0 28px;">
     <button id="nrMasterBtn" class="collapse-toggle-btn" onclick="toggleNamaRupa(this)">Expand &#9660;</button>
+    <p class="section-collapse-label" style="margin-top:8px;">Tap to expand — the five aggregates, and the 51 mental factors behind the Formations</p>
   </div>
-  <div class="ego-sub-header gf-sub-header" style="max-width:none;margin-top:12px;">
+  <div id="nr-full-content" class="section-collapse-wrap collapsed" style="max-width:none;margin:0;">
+  <div class="ego-sub-header gf-sub-header" style="max-width:820px;margin:20px auto 8px 0;">
     <div class="ego-sub-header-text">
       <h3 id="aggregates-card" style="scroll-margin-top:56px;">The Five Aggregates</h3>
       <p>Form &middot; Feeling &middot; Perception &middot; Formations &middot; Consciousness</p>
@@ -9475,7 +9477,7 @@ a.src-tag:hover{opacity:.75;}
   <p style="font-family:var(--sans);font-size:11px;color:var(--dim);letter-spacing:.5px;line-height:1.8;max-width:none;margin:20px auto 0;text-align:left;">A different cut than the <a href="#master-matrix" onclick="expandMatrixToTable();return false;" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">Panchakosha</a><span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Panchakosha">+</span><span class="gloss-pop">Sanskrit for the &ldquo;five sheaths&rdquo; &mdash; the older Vedantic model of the self as layers to see through, from the physical body down to the bliss sheath wrapping the innermost Self.</span> in the Master Matrix &mdash;Existence Layer Column where the sheaths describe layers to see through; the aggregates describe parts that were never one thing to begin with.</p>
   </div>
   </div>
-  <div class="ego-sub-header gf-sub-header" style="max-width:none;margin-top:36px;">
+  <div class="ego-sub-header gf-sub-header" style="max-width:820px;margin:36px auto 8px 0;">
     <div class="ego-sub-header-text">
       <h3 id="mental-factors" style="scroll-margin-top:56px;">What Runs Inside &mdash; 51 Mental Factors</h3>
       <p>The Abhidharma list behind the Formations aggregate</p>
@@ -9497,6 +9499,7 @@ a.src-tag:hover{opacity:.75;}
       <p style="font-family:var(--sans);font-size:11px;color:var(--dim);letter-spacing:.5px;line-height:1.8;margin:16px 0 0;text-align:left;">List from Asanga&rsquo;s Abhidharmasamuccaya, as summarised by Alexander Berzin (studybuddhism.com). Schools count differently: the Sarvastivada Abhidharmakosa lists 46.</p>
     </div>
   </div>
+  </div><!-- /nr-full-content -->
 </section>
 <span class="continue-hint">continue</span>
 <div class="divider"></div>
@@ -18434,34 +18437,22 @@ function toggleGroupCards(groupId,btn){
   }
 }
 
-/* ── NAMA RUPA MASTER TOGGLE ── */
+/* ── NAMA RUPA MASTER TOGGLE ──
+   Opens/closes the whole section. Opening also opens both nested cards;
+   closing goes through sectionCollapse(), whose resetNestedToggles() puts
+   the nested cards and their buttons back to Expand. ── */
 function toggleNamaRupa(btn){
-  var ids=['aggregates-card-content','mental-factors-content'];
-  var expanding=btn.innerHTML.indexOf('Expand')>-1;
-  ids.forEach(function(id){
-    var w=document.getElementById(id);
-    if(w && w.classList.contains('collapsed')===expanding) sectionCollapse(id);
-  });
-}
-(function(){
-  var ids=['aggregates-card-content','mental-factors-content'];
-  function init(){
-    var btn=document.getElementById('nrMasterBtn');
-    if(!btn) return;
-    function sync(){
-      var anyCollapsed=ids.some(function(id){
-        var w=document.getElementById(id);
-        return w && w.classList.contains('collapsed');
-      });
-      btn.innerHTML=anyCollapsed?'Expand &#9660;':'Collapse &#9650;';
-    }
-    ids.forEach(function(id){
+  var outer=document.getElementById('nr-full-content');
+  if(!outer) return;
+  var expanding=outer.classList.contains('collapsed');
+  sectionCollapse('nr-full-content',btn);
+  if(expanding){
+    ['aggregates-card-content','mental-factors-content'].forEach(function(id){
       var w=document.getElementById(id);
-      if(w) new MutationObserver(sync).observe(w,{attributes:true,attributeFilter:['class']});
+      if(w && w.classList.contains('collapsed')) sectionCollapse(id);
     });
   }
-  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
-})();
+}
 
 /* ── ENNEAGRAM EXPAND ALL ────────────────────────────────────────────────── */
 function toggleEnn(btn){
