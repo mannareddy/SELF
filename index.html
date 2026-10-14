@@ -19819,7 +19819,7 @@ function toggleFoundation(btn){
 function pinScroll(el){
   if(!el) return;
   var pinTop = el.getBoundingClientRect().top;
-  var until = Date.now() + 500;
+  var until = Date.now() + 600;
   function tick(){
     var delta = el.getBoundingClientRect().top - pinTop;
     // scrollBy(x,y) inherits the page's scroll-behavior:smooth, so each
@@ -19828,8 +19828,11 @@ function pinScroll(el){
     // corrections visibly overshot and settled back, reading as the page
     // being dragged up and then pulled down. Passing behavior:'auto'
     // explicitly makes each correction land instantly instead, so the
-    // held position looks solid rather than chased.
-    if(Math.abs(delta) > 0.5) window.scrollBy({top: delta, left: 0, behavior: 'auto'});
+    // held position looks solid rather than chased. NOTE: 'auto' is not
+    // instant — it defers to the CSS scroll-behavior (smooth on desktop,
+    // see html{scroll-behavior:smooth}), so it must be 'instant'. Mobile
+    // overrides scroll-behavior to auto, which is why only desktop jerked.
+    if(Math.abs(delta) > 0.5) window.scrollBy({top: delta, left: 0, behavior: 'instant'});
     if(Date.now() < until) requestAnimationFrame(tick);
   }
   requestAnimationFrame(tick);
