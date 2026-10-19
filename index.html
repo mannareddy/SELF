@@ -2459,14 +2459,14 @@ section{scroll-margin-top:56px;}
   #neti-neti-grid{display:flex !important;flex-direction:column;gap:10px;max-width:820px !important;margin:0 auto;}
   /* One-row header: number, name and subtitle sit together on the left, the Expand toggle stays at the right,
      so a closed card is a slim bar instead of a tall box with empty space. Expanded content drops below. */
-  #neti-neti-grid .framework-card{display:flex;flex-wrap:wrap;align-items:baseline;column-gap:16px;padding:18px 26px;}
+  #neti-neti-grid .framework-card{display:flex;flex-wrap:wrap;align-items:baseline;column-gap:16px;padding:30px 26px;}
   #neti-neti-grid .framework-card .num{margin:0;padding:0;}
   #neti-neti-grid .framework-card h3{margin:0;font-size:clamp(19px,1.6vw,23px);}
   #neti-neti-grid .framework-card > .section-collapse-label{margin:0 !important;}
   #neti-neti-grid .framework-card > .framework-content{flex:0 0 100%;margin-left:0;}
   #neti-neti-grid .framework-card:not(.collapsed) > .framework-content{margin-top:16px;}
-  #neti-neti-grid .framework-card::after{top:50%;right:26px;transform:translateY(-50%);}
-  #neti-neti-grid .framework-card:not(.collapsed)::after{top:30px;transform:none;}
+  #neti-neti-grid .framework-card::after{top:50%;right:auto;left:68%;transform:translateY(-50%);}
+  #neti-neti-grid .framework-card:not(.collapsed)::after{top:40px;transform:none;}
 }
 /* ── ROOT DIAGNOSIS WHEEL: the SVG's text sizes are fixed units inside a
    700-wide viewBox, so they render at the same fraction of whatever
