@@ -1319,11 +1319,12 @@ a:hover{opacity:.7;}
     transition:opacity .15s ease, transform .15s ease;
     padding:0;z-index:5000;
     max-height:calc(100vh - 140px);overflow-y:auto;overscroll-behavior:contain;
-    scrollbar-width:thin;scrollbar-color:rgba(var(--accent-gold-rgb),0.5) transparent;
+    scrollbar-width:auto;scrollbar-color:rgba(var(--accent-gold-rgb),0.65) rgba(var(--accent-gold-rgb),0.10);
   }
-  .nav-dropdown-panel::-webkit-scrollbar{width:5px;}
-  .nav-dropdown-panel::-webkit-scrollbar-track{background:transparent;}
-  .nav-dropdown-panel::-webkit-scrollbar-thumb{background:rgba(var(--accent-gold-rgb),0.5);border-radius:3px;}
+  .nav-dropdown-panel::-webkit-scrollbar{width:12px;}
+  .nav-dropdown-panel::-webkit-scrollbar-track{background:rgba(var(--accent-gold-rgb),0.10);}
+  .nav-dropdown-panel::-webkit-scrollbar-thumb{background:rgba(var(--accent-gold-rgb),0.65);border-radius:6px;min-height:48px;}
+  .nav-dropdown-panel::-webkit-scrollbar-thumb:hover{background:rgba(var(--accent-gold-rgb),0.9);}
   [data-theme="light"] .nav-dropdown-panel::-webkit-scrollbar-thumb{background:rgba(122,94,14,0.5);}
   /* Deliberately no plain `.nav-dropdown-wrap:hover` here — that fired the
      instant the pointer crossed the trigger, which is why a fast sweep
@@ -1410,11 +1411,12 @@ a:hover{opacity:.7;}
     transition:opacity .15s ease;
     padding:0;z-index:5001;
     max-height:calc(100vh - 16px);overflow-y:auto;overscroll-behavior:contain;
-    scrollbar-width:thin;scrollbar-color:rgba(var(--accent-gold-rgb),0.5) transparent;
+    scrollbar-width:auto;scrollbar-color:rgba(var(--accent-gold-rgb),0.65) rgba(var(--accent-gold-rgb),0.10);
   }
-  .nav-flyout-panel::-webkit-scrollbar{width:5px;}
-  .nav-flyout-panel::-webkit-scrollbar-track{background:transparent;}
-  .nav-flyout-panel::-webkit-scrollbar-thumb{background:rgba(var(--accent-gold-rgb),0.5);border-radius:3px;}
+  .nav-flyout-panel::-webkit-scrollbar{width:12px;}
+  .nav-flyout-panel::-webkit-scrollbar-track{background:rgba(var(--accent-gold-rgb),0.10);}
+  .nav-flyout-panel::-webkit-scrollbar-thumb{background:rgba(var(--accent-gold-rgb),0.65);border-radius:6px;min-height:48px;}
+  .nav-flyout-panel::-webkit-scrollbar-thumb:hover{background:rgba(var(--accent-gold-rgb),0.9);}
   .nav-subgroup:hover .nav-flyout-panel,
   .nav-subgroup:focus-within .nav-flyout-panel,
   .nav-subgroup.js-open .nav-flyout-panel{
@@ -19342,7 +19344,9 @@ function updateNav(){
       var maxH = Math.max(120, window.innerHeight - topFloor - margin);
       flyout.style.maxHeight = maxH + 'px';
       var subRect = sg.getBoundingClientRect();
-      flyout.style.left = Math.round(subRect.right + 1) + 'px';
+      var parentPanel = sg.closest('.nav-dropdown-panel');
+      var leftEdge = parentPanel ? parentPanel.getBoundingClientRect().right : subRect.right;
+      flyout.style.left = Math.round(leftEdge - 1) + 'px';
       var headerRect = header.getBoundingClientRect();
       var naturalH = Math.min(flyout.scrollHeight || maxH, maxH);
       var centerY = headerRect.top + headerRect.height / 2;
@@ -19425,7 +19429,7 @@ function updateNav(){
      its job for the pointer's diagonal move toward the panel. */
   var allSubgroups = Array.prototype.slice.call(document.querySelectorAll('.nav-subgroup'));
   allSubgroups.forEach(function(sg){
-    addHoverIntent(sg, ':scope > .nav-flyout-panel', 'js-open', 25, function(opened){
+    addHoverIntent(sg, ':scope > .nav-flyout-panel', 'js-open', 350, function(opened){
       allSubgroups.forEach(function(other){
         if(other !== opened && other._closeNow) other._closeNow();
       });
@@ -19436,7 +19440,11 @@ function updateNav(){
     // land inside the window often enough to flash — a deliberate hover
     // usually runs 300ms+, so this leaves real margin against quick
     // sweeps while still reading as instant to anyone actually pausing.
-    addHoverIntent(wrap, ':scope > .nav-dropdown-panel', 'js-open', 25, undefined, 220);
+    addHoverIntent(wrap, ':scope > .nav-dropdown-panel', 'js-open', 350, function(opened){
+      document.querySelectorAll('.nav-dropdown-wrap').forEach(function(other){
+        if(other !== opened && other._closeNow) other._closeNow();
+      });
+    }, 220);
   });
 
   /* :focus-within has no concept of "the mouse moved on" — only an actual
@@ -19567,6 +19575,122 @@ function updateNav(){
       }
     });
   });
+
+  /* ── Keyboard control for a menu that is only HOVERED ──
+     The arrow-key handlers above only work once focus is already inside a
+     panel, which a plain mouse hover never does. This document-level
+     handler lets the keyboard take over an open menu: ArrowUp/Down move
+     through the items (starting from the one under the pointer), Left/Right
+     step between a category and its flyout, Home/End jump to the first/last
+     item, PageUp/PageDown move a screenful, Escape closes everything.
+     Moving focus into the menu also pins it open (:focus-within), so
+     drifting off the menu with the mouse no longer closes it. */
+  (function(){
+    function focusItem(el){
+      if(!el) return;
+      el.focus({preventScroll:true});
+      el.scrollIntoView({block:'nearest', inline:'nearest'});
+    }
+    function toArr(list){ return Array.prototype.slice.call(list); }
+    function pageMove(items, idx, dir, container){
+      var h = container.clientHeight * 0.85;
+      var start = items[idx].getBoundingClientRect().top;
+      var j = idx;
+      while(j + dir >= 0 && j + dir < items.length &&
+            Math.abs(items[j + dir].getBoundingClientRect().top - start) <= h){ j += dir; }
+      if(j === idx && idx + dir >= 0 && idx + dir < items.length) j = idx + dir;
+      return j;
+    }
+    function closeAllMenus(){
+      var wraps = toArr(document.querySelectorAll('.nav-dropdown-wrap'));
+      wraps.forEach(function(w){
+        w.classList.add('force-close'); w.classList.remove('js-open');
+        if(w._closeNow) w._closeNow();
+        toArr(w.querySelectorAll('.nav-subgroup')).forEach(function(sg){
+          sg.classList.add('force-close'); sg.classList.remove('js-open');
+          if(sg._closeNow) sg._closeNow();
+        });
+      });
+      if(document.activeElement && document.activeElement !== document.body) document.activeElement.blur();
+      setTimeout(function(){
+        wraps.forEach(function(w){
+          w.classList.remove('force-close');
+          toArr(w.querySelectorAll('.nav-subgroup')).forEach(function(sg){ sg.classList.remove('force-close'); });
+        });
+      }, 400);
+    }
+    function openContext(){
+      var wrap = document.querySelector('.nav-dropdown-wrap.js-open');
+      var sg = document.querySelector('.nav-subgroup.js-open');
+      if(!wrap && sg) wrap = sg.closest('.nav-dropdown-wrap');
+      if(!wrap) return null;
+      if(sg && !wrap.contains(sg)) sg = null;
+      var panel = wrap.querySelector(':scope > .nav-dropdown-panel');
+      if(!panel) return null;
+      return {wrap:wrap, panel:panel, sg:sg, hasSub:!!panel.querySelector('.nav-subgroup')};
+    }
+    function handleFocused(e, active){
+      var k = e.key;
+      if(k !== 'Home' && k !== 'End' && k !== 'PageDown' && k !== 'PageUp') return;
+      var flyout = active.closest('.nav-flyout-panel');
+      var container = flyout || active.closest('.nav-dropdown-panel');
+      var items = (!flyout && container.querySelector('.nav-subgroup'))
+        ? toArr(container.querySelectorAll('.nav-group-trigger'))
+        : toArr(container.querySelectorAll('a'));
+      var idx = items.indexOf(active);
+      if(idx < 0) return;
+      e.preventDefault();
+      var j = k === 'Home' ? 0 : k === 'End' ? items.length - 1 : pageMove(items, idx, k === 'PageDown' ? 1 : -1, container);
+      focusItem(items[j]);
+    }
+    function handleHovered(e, ctx){
+      var k = e.key;
+      if(k === 'Escape'){ e.preventDefault(); closeAllMenus(); return; }
+      var flyout = ctx.sg ? ctx.sg.querySelector('.nav-flyout-panel') : null;
+      if(k === 'ArrowLeft'){
+        if(flyout){ e.preventDefault(); focusItem(ctx.sg.querySelector('.nav-group-trigger')); }
+        return;
+      }
+      if(k === 'ArrowRight'){
+        var first = flyout && flyout.querySelector('a');
+        if(first){ e.preventDefault(); focusItem(first); }
+        return;
+      }
+      var container = flyout || ctx.panel;
+      var items = flyout ? toArr(flyout.querySelectorAll('a'))
+                : ctx.hasSub ? toArr(ctx.panel.querySelectorAll('.nav-group-trigger'))
+                : toArr(ctx.panel.querySelectorAll('a'));
+      var n = items.length;
+      if(!n) return;
+      var cur = -1;
+      items.forEach(function(el, i){ if(el.matches(':hover')) cur = i; });
+      var j;
+      if(k === 'ArrowDown') j = cur < 0 ? 0 : (cur + 1) % n;
+      else if(k === 'ArrowUp') j = cur < 0 ? n - 1 : (cur - 1 + n) % n;
+      else if(k === 'Home') j = 0;
+      else if(k === 'End') j = n - 1;
+      else if(k === 'PageDown') j = cur < 0 ? 0 : pageMove(items, cur, 1, container);
+      else j = cur < 0 ? n - 1 : pageMove(items, cur, -1, container);
+      e.preventDefault();
+      focusItem(items[j]);
+    }
+    document.addEventListener('keydown', function(e){
+      if(window.innerWidth <= 900 || e.ctrlKey || e.metaKey || e.altKey) return;
+      var t = e.target;
+      if(t && (/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName) || t.isContentEditable)) return;
+      var k = e.key;
+      if(['ArrowDown','ArrowUp','ArrowLeft','ArrowRight','Home','End','PageDown','PageUp','Escape'].indexOf(k) < 0) return;
+      var active = document.activeElement;
+      var inPanel = active && active.closest && active.closest('.nav-dropdown-panel, .nav-flyout-panel');
+      if(inPanel){ handleFocused(e, active); return; }
+      if(k === 'Escape' && active && active.closest && active.closest('.nav-dropdown-wrap')){
+        e.preventDefault(); closeAllMenus(); return;
+      }
+      var ctx = openContext();
+      if(ctx) handleHovered(e, ctx);
+    });
+  })();
+
 
   /* Mouse-wheel / trackpad scroll over an open dropdown panel: while the
      pointer sits over a panel that actually has internal overflow, every
