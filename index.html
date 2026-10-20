@@ -4322,7 +4322,7 @@ a.src-tag:hover{opacity:.75;}
     <li class="nav-dropdown-wrap">
       <a href="#glossary" data-group="new">New<span class="nav-new-dot"></span><span class="nav-caret">▾</span></a>
       <div class="nav-dropdown-panel" id="newMenuPanel">
-        <a href="#architecture-of-to-be" data-group="new"><span class="new-menu-tag">42 &mdash;</span> Sat &middot; Chit &middot; Ananda Spelled Out &middot; Jiva and Res &middot; Six Times Nine Added</a>
+        <a href="#architecture-of-to-be" data-group="new" data-expand="to-be-content jiva-three-words jiva-and-res six-times-nine"><span class="new-menu-tag">42 &mdash;</span> Sat &middot; Chit &middot; Ananda Spelled Out &middot; Jiva and Res &middot; Six Times Nine Added</a>
         <a href="#dussehra-diwali" data-group="new"><span class="new-menu-tag">Dussehra Before Diwali &mdash;</span> Ravana&rsquo;s Ten Heads &middot; The Navel &middot; The Lamp Added</a>
         <a href="#displacement-not-willpower" data-group="new"><span class="new-menu-tag">Displacement, Not Willpower &mdash;</span> Gita 2.59 &middot; Pratipaksha Bhavana (Yoga Sutra II.33) Added</a>
         <a href="#divine-demonic" data-group="new"><span class="new-menu-tag">Gita 16 &mdash;</span> Divine and Demonic Endowments &middot; Three Lists of the Enemy Added</a>
@@ -4675,7 +4675,7 @@ a.src-tag:hover{opacity:.75;}
         <span class="mnav-screen-title">New</span>
       </div>
       <ul class="mnav-row-list" id="newMenuPanelMobile">
-        <li><a href="#architecture-of-to-be"><span class="new-menu-tag">42 &mdash;</span> Sat &middot; Chit &middot; Ananda Spelled Out &middot; Jiva and Res &middot; Six Times Nine Added</a></li>
+        <li><a href="#architecture-of-to-be" data-expand="to-be-content jiva-three-words jiva-and-res six-times-nine"><span class="new-menu-tag">42 &mdash;</span> Sat &middot; Chit &middot; Ananda Spelled Out &middot; Jiva and Res &middot; Six Times Nine Added</a></li>
         <li><a href="#dussehra-diwali"><span class="new-menu-tag">Dussehra Before Diwali &mdash;</span> Ravana&rsquo;s Ten Heads &middot; The Navel &middot; The Lamp Added</a></li>
         <li><a href="#displacement-not-willpower"><span class="new-menu-tag">Displacement, Not Willpower &mdash;</span> Gita 2.59 &middot; Pratipaksha Bhavana (Yoga Sutra II.33) Added</a></li>
         <li><a href="#divine-demonic"><span class="new-menu-tag">Gita 16 &mdash;</span> Divine and Demonic Endowments &middot; Three Lists of the Enemy Added</a></li>
@@ -21024,23 +21024,33 @@ function toggleTheme(){
     if(sub){ sub.click(); any = true; }
     return any;
   }
-  function goTo(id){
+  function goTo(id, extra){
     var target = document.getElementById(id);
     if(!target) return;
     var menuOpen = document.body.classList.contains('mnav-open');
     var didExpand = expandAncestors(target);
+    /* Optional data-expand="id id ..." on a link: also open these collapsed
+       wraps (a card's own content, its new sub-blocks) so the link lands on
+       the content it advertises, not just the card header. */
+    if(extra){
+      extra.split(/\s+/).forEach(function(w){
+        var el = document.getElementById(w);
+        if(el && el.classList.contains('collapsed')){ sectionCollapse(w); didExpand = true; }
+      });
+    }
     var run = function(){ target.scrollIntoView({behavior:'smooth', block:'start'}); };
-    var wait = (didExpand ? (target.closest('.framework-subcard') ? 700 : 300) : 0) + (menuOpen ? 400 : 0);
+    var wait = (didExpand ? (target.closest('.framework-subcard') ? 700 : (extra ? 500 : 300)) : 0) + (menuOpen ? 400 : 0);
     if(wait){ setTimeout(run, wait); } else { run(); }
   }
   document.querySelectorAll('a[href^="#"]').forEach(function(a){
     var id = a.getAttribute('href').slice(1);
     var target = id && document.getElementById(id);
-    if(!target || (!target.closest('.section-collapse-wrap.collapsed') && !target.closest('.framework-card.collapsed') && !target.closest('.framework-subcard.collapsed'))) return;
+    var extraIds = a.getAttribute('data-expand');
+    if(!target || (!extraIds && !target.closest('.section-collapse-wrap.collapsed') && !target.closest('.framework-card.collapsed') && !target.closest('.framework-subcard.collapsed'))) return;
     a.addEventListener('click', function(e){
       e.preventDefault();
       history.pushState ? history.pushState(null,'','#'+id) : (location.hash = id);
-      goTo(id);
+      goTo(id, extraIds);
     });
   });
   // Direct load with a hash pointing at hidden content (shared/bookmarked link)
