@@ -2422,6 +2422,10 @@ section{scroll-margin-top:56px;}
   text-transform:none;color:var(--grey);
 }
 
+/* Root Diagnosis: all card content reads left-aligned, like the other sections */
+#mistaken-identity .section-collapse-wrap :not(button):not(.collapse-toggle-btn){text-align:left !important;}
+#mistaken-identity .section-collapse-wrap .section-collapse-label{text-align:left !important;}
+
 /* Svasthya card bodies: the body copy used to inherit its look from
    .framework-card p. Now that each card is an ego-style header + collapse
    wrap, plain paragraphs directly inside the wrap get the same prose scale
@@ -5393,6 +5397,11 @@ a.src-tag:hover{opacity:.75;}
     </svg>
   </div>
 
+  <div style="text-align:center;margin:32px 0 16px;">
+    <button class="collapse-toggle-btn" onclick="sectionCollapse('root-diag-group',this)">Expand &#9660;</button>
+    <p class="section-collapse-label" style="margin-top:8px;">Tap to expand &mdash; four cards: the five-step engine, the swing, the anatomy of dissatisfaction, and loosening the grip</p>
+  </div>
+  <div id="root-diag-group" class="section-collapse-wrap collapsed">
   <div id="five-step-engine" class="ego-sub-header gf-sub-header" style="max-width:900px;margin:40px auto 8px;scroll-margin-top:56px;"><div class="ego-sub-header-text"><h3>The Five-Step Engine</h3><p>Avidya &middot; adhyasa &middot; raga-dvesha &middot; karma &middot; phalam</p></div><button class="collapse-toggle-btn" onclick="sectionCollapse('mistaken-identity-full-content',this)">Expand &#9660;</button></div>
   <div id="mistaken-identity-full-content" class="section-collapse-wrap collapsed" style="max-width:900px;margin:0 auto 24px;">
   <div class="framework-grid" id="root-diag-grid" style="max-width:900px;margin:0 auto;">
@@ -5562,6 +5571,7 @@ a.src-tag:hover{opacity:.75;}
       <div class="sl-stage" style="border-color:var(--gold);"><span class="sl-num" style="color:var(--gold);"><span class="gloss">Gosvami<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Gosvami">+</span><span class="gloss-pop">Literally &ldquo;master of the senses&rdquo; &mdash; someone who accepts servitude to the Divine and, through that acceptance, gains actual command of their own senses.</span></span></span><div class="sl-name" style="font-size:15px;color:var(--gold);">The True Master</div><p class="sl-desc">Accepts servitude to something higher &mdash; and that acceptance is exactly what hands back command of the senses it was supposedly giving up. Control was never available by demanding it directly.</p></div>
     </div>
     <p style="font-family:var(--serif);font-size:14.5px;color:var(--gold);font-style:italic;line-height:1.85;margin-top:20px;">Which is also the same shape as <a href="#destiny-and-free-will" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">Purushartha</a> and <a href="#four-yogas" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">Sharanagati</a> elsewhere on this page, in blunter language: the one demanding mastery ends up owned by what it was chasing. The one offering service ends up free.</p>
+  </div>
   </div>
   </div>
 </section>
