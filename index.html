@@ -21505,6 +21505,28 @@ function toggleTheme(){
     if(!scope) return null;
     var vh = window.innerHeight;
     var mid = vh / 2;
+    // Tall wrappers (whole sections, big cards that carry an id) are poor
+    // anchors: their centre can sit near mid-screen by coincidence, and after
+    // the text re-wraps at the new size that centre is nowhere near the
+    // paragraph the reader was on. Only compact elements are used.
+    var maxH = vh * 0.6;
+    // overflow-clipped ancestors (cards/sections collapsed by height or
+    // max-height rather than the .collapsed class) still report real rects
+    // for their hidden children. A node is only a valid anchor if it
+    // actually overlaps every clipping ancestor it sits in.
+    var clipCache = new Map();
+    function clippedOut(el, rect){
+      for(var p = el.parentElement; p && p !== scope; p = p.parentElement){
+        var info = clipCache.get(p);
+        if(info === undefined){
+          var cs = getComputedStyle(p);
+          info = (cs.overflowY !== 'visible' || cs.overflowX !== 'visible') ? p.getBoundingClientRect() : null;
+          clipCache.set(p, info);
+        }
+        if(info && (info.height < 1 || rect.bottom <= info.top + 0.5 || rect.top >= info.bottom - 0.5)) return true;
+      }
+      return false;
+    }
     var nodes = scope.querySelectorAll(
       '[id],p,li,h1,h2,h3,h4,h5,h6,blockquote,td,th,dt,dd,figure,img'
     );
@@ -21535,6 +21557,7 @@ function toggleTheme(){
       if(closedFaq && closedFaq !== el) continue;
       var rect = el.getBoundingClientRect();
       if(rect.width === 0 && rect.height === 0) continue; // not actually rendered
+      if(rect.height > maxH) continue; // tall wrapper, see maxH above
       var center = rect.top + rect.height / 2;
       var dist = Math.abs(center - mid);
       // Track the best match overall (fallback) and separately the best
@@ -21542,7 +21565,7 @@ function toggleTheme(){
       // off-screen node could technically have a "closer" center on a very
       // tall page.
       if(dist < bestDist){ bestDist = dist; best = el; bestRect = rect; }
-      if(rect.bottom > 0 && rect.top < vh && dist < bestOnscreenDist){
+      if(rect.bottom > 0 && rect.top < vh && dist < bestOnscreenDist && !clippedOut(el, rect)){
         bestOnscreenDist = dist; bestOnscreen = el; bestOnscreenRect = rect;
       }
     }
