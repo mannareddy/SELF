@@ -4301,12 +4301,13 @@ a.src-tag:hover{opacity:.75;}
          followed by an em dash and what changed — e.g. "Framework —
          Default OS · Life vs. Life Situation — Cards Updated". No separate
          group-label row: that used to cost a whole extra line per group
-         and pushed the panel into scrolling on mobile. Entries stay in the
-         site's own top-to-bottom page order (not alphabetical, not a flat
-         list) so the prefixes still read as a loose table of contents.
-         To flag something as new: add one <a> line in the right page-order
-         spot inside #newMenuPanel (and the matching line inside
-         #newMenuPanelMobile further down). If a section already has an
+         and pushed the panel into scrolling on mobile. Entries are sorted
+         NEWEST FIRST: the most recent additions sit at the top, older ones
+         below, so a reader can tell at a glance which are the latest.
+         To flag something as new: add one <a> line at the TOP of
+         #newMenuPanel (and the matching line at the top of
+         #newMenuPanelMobile further down). Several lines added in the same
+         round go above the older ones together. If a section already has an
          entry and picks up another change, fold it into that SAME line
          instead of adding a second row — join the card/topic names with
          " &middot; " and end with one short past-tense verdict ("— Cards
@@ -4322,11 +4323,11 @@ a.src-tag:hover{opacity:.75;}
     <li class="nav-dropdown-wrap">
       <a href="#glossary" data-group="new">New<span class="nav-new-dot"></span><span class="nav-caret">▾</span></a>
       <div class="nav-dropdown-panel" id="newMenuPanel">
-        <a href="#four-levels-of-the-word" data-group="new" data-expand="mantra-group four-levels-detail vak-reverse-detail stotra-bija-detail"><span class="new-menu-tag">Mantra &mdash;</span> Four Levels of the Word &middot; Chanting Runs the Ladder Backwards &middot; A Hymn Describes, A Seed Is Compressed Added</a>
-        <a href="#spanda-pulse" data-group="new" data-expand="consciousness-detail spanda-detail"><span class="new-menu-tag">Kashmir Shaivism &mdash;</span> Awareness That Pulses Added</a>
-        <a href="#stillness-waves" data-group="new"><span class="new-menu-tag">Machinery of Stillness &mdash;</span> Noise Into Clarity Added</a>
-        <a href="#full-attention-unbroken" data-group="new"><span class="new-menu-tag">Full Attention &mdash;</span> Unbroken, Not Restarted Added</a>
         <a href="#pause-pipeline" data-group="new"><span class="new-menu-tag">Interrupting the Reaction &mdash;</span> Five Steps, One Pause &middot; A Worn Path Added</a>
+        <a href="#full-attention-unbroken" data-group="new"><span class="new-menu-tag">Full Attention &mdash;</span> Unbroken, Not Restarted Added</a>
+        <a href="#stillness-waves" data-group="new"><span class="new-menu-tag">Machinery of Stillness &mdash;</span> Noise Into Clarity Added</a>
+        <a href="#spanda-pulse" data-group="new" data-expand="consciousness-detail spanda-detail"><span class="new-menu-tag">Kashmir Shaivism &mdash;</span> Awareness That Pulses Added</a>
+        <a href="#four-levels-of-the-word" data-group="new" data-expand="mantra-group four-levels-detail vak-reverse-detail stotra-bija-detail"><span class="new-menu-tag">Mantra &mdash;</span> Four Levels of the Word &middot; Chanting Runs the Ladder Backwards &middot; A Hymn Describes, A Seed Is Compressed Added</a>
       </div>
     </li>
 
@@ -4669,11 +4670,11 @@ a.src-tag:hover{opacity:.75;}
         <span class="mnav-screen-title">New</span>
       </div>
       <ul class="mnav-row-list" id="newMenuPanelMobile">
-        <li><a href="#four-levels-of-the-word" data-expand="mantra-group four-levels-detail vak-reverse-detail stotra-bija-detail"><span class="new-menu-tag">Mantra &mdash;</span> Four Levels of the Word &middot; Chanting Runs the Ladder Backwards &middot; A Hymn Describes, A Seed Is Compressed Added</a></li>
-        <li><a href="#spanda-pulse" data-expand="consciousness-detail spanda-detail"><span class="new-menu-tag">Kashmir Shaivism &mdash;</span> Awareness That Pulses Added</a></li>
-        <li><a href="#stillness-waves"><span class="new-menu-tag">Machinery of Stillness &mdash;</span> Noise Into Clarity Added</a></li>
-        <li><a href="#full-attention-unbroken"><span class="new-menu-tag">Full Attention &mdash;</span> Unbroken, Not Restarted Added</a></li>
         <li><a href="#pause-pipeline"><span class="new-menu-tag">Interrupting the Reaction &mdash;</span> Five Steps, One Pause &middot; A Worn Path Added</a></li>
+        <li><a href="#full-attention-unbroken"><span class="new-menu-tag">Full Attention &mdash;</span> Unbroken, Not Restarted Added</a></li>
+        <li><a href="#stillness-waves"><span class="new-menu-tag">Machinery of Stillness &mdash;</span> Noise Into Clarity Added</a></li>
+        <li><a href="#spanda-pulse" data-expand="consciousness-detail spanda-detail"><span class="new-menu-tag">Kashmir Shaivism &mdash;</span> Awareness That Pulses Added</a></li>
+        <li><a href="#four-levels-of-the-word" data-expand="mantra-group four-levels-detail vak-reverse-detail stotra-bija-detail"><span class="new-menu-tag">Mantra &mdash;</span> Four Levels of the Word &middot; Chanting Runs the Ladder Backwards &middot; A Hymn Describes, A Seed Is Compressed Added</a></li>
       </ul>
     </div>
 
