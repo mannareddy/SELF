@@ -6885,6 +6885,11 @@ a.src-tag:hover{opacity:.75;}
   <p class="phil-line dim" style="margin-bottom:8px;max-width:820px;margin-left:auto;margin-right:auto;text-align:left;">Five concrete daily disciplines &mdash; where the doorways above ask for nothing but noticing, these ask for a little repetition.</p>
   <p class="phil-line dim" style="margin-bottom:36px;max-width:820px;margin-left:auto;margin-right:auto;text-align:left;">Under all five is the same three-part motion: notice where it went, return it without penalty, hold it a little past comfortable.</p>
   <div style="max-width:820px;margin:0 auto;text-align:left;">
+    <div style="text-align:center;margin-bottom:8px;">
+      <button class="collapse-toggle-btn" onclick="sectionCollapse('full-attention-full-content',this)">Expand &#9660;</button>
+      <p class="section-collapse-label" style="margin-top:8px;">Tap to expand &mdash; five disciplines, everyday cues, and the unbroken stream</p>
+    </div>
+    <div id="full-attention-full-content" class="section-collapse-wrap collapsed">
     <div class="framework-subcards fa-cards">
       <div id="five-disciplines" class="framework-subcard collapsed" style="scroll-margin-top:56px;">
         <h4>The Five Disciplines</h4>
@@ -6895,6 +6900,7 @@ a.src-tag:hover{opacity:.75;}
       <div class="sl-stage"><span class="sl-num">3</span><div class="sl-name">The Anchor of Breath</div><p class="sl-desc">Slow, even breath &mdash; inhale and exhale each lasting five to six seconds, repeated for two to five minutes. The physiology behind the number is in Pranayama, below.</p></div>
       <div class="sl-stage"><span class="sl-num">4</span><div class="sl-name">The Daily Check-In</div><p class="sl-desc">Pause and ask: what am I doing right now? Why am I doing it? Is this aligned with my <span class="gloss">dharma<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define dharma">+</span><span class="gloss-pop">Right action or duty &mdash; the personal-scale expression of Rita, cosmic order, at the level of a single life.</span></span>?</p></div>
       <div class="sl-stage" style="border-left:2px solid var(--gold);"><span class="sl-num" style="color:var(--gold);">5</span><div class="sl-name" style="color:var(--gold);">The Pause Protocol</div><p class="sl-desc">The RRRR Protocol in miniature: observe before speaking or reacting &mdash; replacing an automatic reaction with a conscious response.</p></div>
+    </div>
     </div>
         </div>
       </div>
@@ -6959,6 +6965,11 @@ a.src-tag:hover{opacity:.75;}
   <p class="phil-line dim" style="margin-bottom:36px;max-width:820px;margin-left:auto;margin-right:auto;text-align:left;">Same gap between trigger and response, worked from two different doors. Neither is the advanced one &mdash; they're just entry points, and which one is open depends on the moment.</p>
 
   <div style="max-width:820px;margin:0 auto;text-align:left;">
+    <div style="text-align:center;margin-bottom:8px;">
+      <button class="collapse-toggle-btn" onclick="sectionCollapse('interrupting-full-content',this)">Expand &#9660;</button>
+      <p class="section-collapse-label" style="margin-top:8px;">Tap to expand &mdash; two doors, and what to do when the feeling will not settle</p>
+    </div>
+    <div id="interrupting-full-content" class="section-collapse-wrap collapsed">
     <div class="framework-subcards fa-cards">
       <div class="framework-subcard collapsed" style="scroll-margin-top:56px;">
         <h4>Somatic &middot; Impulsive</h4>
@@ -6990,7 +7001,7 @@ a.src-tag:hover{opacity:.75;}
         </div>
       </div>
       <div id="gita-weather-verse" class="framework-subcard collapsed" style="scroll-margin-top:56px;">
-        <h4>Feelings Are Weather &middot; Traditional Source, Bhagavad Gita 2.14</h4>
+        <h4>Feelings Are Weather</h4>
         <div class="framework-subcard-content">
         <p class="sl-desc">Both doors work better once the feeling is classed correctly. Gita 2.14 describes what contact with the senses does: heat and cold, pleasure and pain arrive and then leave. Its instruction is <span class="gloss">Titiksha<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Titiksha">+</span><span class="gloss-pop">Forbearance &mdash; the capacity to endure the unavoidable pairs of opposites (heat/cold, praise/blame) without agitation or complaint.</span></span>, endurance, which is a different thing from suppressing. The rising reaction is real, and it is weather: it has a shape and a duration, and it is not a verdict on you.</p>
         <figure style="margin:20px 0 24px;"><img src="./assets/images/gita-emotions-like-weather.webp" alt="A slide titled The Illusion of Emotional Permanence. A sine wave inside a glowing circle swings between Pleasure / Heat above the centre line and Pain / Cold below it. Left box: contact with the senses produces cold and heat, pleasure and pain; they come and go; they are impermanent. Bottom insight: the law of impermanence applies to the mind, reacting to sensory distractions gives them power, endure them patiently as passing weather, and elevate, not degrade, oneself by one's own mind." width="1376" height="735" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></figure>
@@ -7073,6 +7084,7 @@ a.src-tag:hover{opacity:.75;}
         <p style="font-family:var(--sans);font-size:10.5px;letter-spacing:1px;color:var(--dim);line-height:1.7;margin:20px 0 24px;text-align:left;">Honest limit: the one-day window and the Friday-night slot are teaching examples. Use whatever interval keeps it from festering or exploding. If the other person is not safe to approach, skip the telling and take it to someone else.</p>
         </div>
       </div>
+    </div>
     </div>
   </div>
 
@@ -21269,6 +21281,12 @@ function resetNestedToggles(wrap){
     c.classList.add('collapsed');
     var fc=c.querySelector('.framework-content');
     if(fc) fc.style.maxHeight='';
+  });
+  // Daily-practice subcards (How to Pay Full Attention / Interrupting the Reaction)
+  wrap.querySelectorAll('.fa-cards .framework-subcard:not(.collapsed)').forEach(function(c){
+    c.classList.add('collapsed');
+    var sc=c.querySelector('.framework-subcard-content');
+    if(sc) sc.style.maxHeight='';
   });
   // Self-Enquiry pillar cards: 'open' is their expanded state
   wrap.querySelectorAll('.pillar-card.open').forEach(function(c){
