@@ -21221,6 +21221,19 @@ function updateNav(){
      closes any other open card in the SAME section (#framework-full-content
      or #ascent-full-content), but the two sections stay independent of each
      other. ── */
+  /* When a framework card closes, close any sub-cards left open inside it, so
+     reopening the card always starts with every sub-card collapsed. Runs
+     after the card's own collapse animation so the shrink isn't doubled. */
+  function resetSubcards(card){
+    setTimeout(function(){
+      if(!card.classList.contains('collapsed')) return;
+      card.querySelectorAll('.framework-subcard:not(.collapsed)').forEach(function(sc){
+        sc.classList.add('collapsed');
+        var c = sc.querySelector('.framework-subcard-content');
+        if(c) c.style.maxHeight = '0px';
+      });
+    }, 450);
+  }
   document.querySelectorAll('.framework-card').forEach(function(card){
     var content = card.querySelector('.framework-content');
     card.addEventListener('click', function(e){
@@ -21244,6 +21257,7 @@ function updateNav(){
         var sibContent = openSibling.querySelector('.framework-content');
         openSibling.classList.add('collapsed');
         collapseHeight(sibContent);
+        resetSubcards(openSibling);
         // Sibling collapse and self-expand fire in the same tick — waiting
         // for the sibling to finish first (as this used to) reads as two
         // separate motions: the clicked card visibly slides up while the
@@ -21256,6 +21270,7 @@ function updateNav(){
       } else {
         this.classList.toggle('collapsed');
         collapseHeight(content);
+        if(this.classList.contains('collapsed')) resetSubcards(this);
       }
     });
   });
