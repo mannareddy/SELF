@@ -6711,6 +6711,19 @@ a.src-tag:hover{opacity:.75;}
 
   <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.95;max-width:820px;margin:0 auto 32px;text-align:center;">Fair objection. If everything were predetermined, there'd be no one left to hold responsible for anything &mdash; the Law of Karma would collapse into nonsense the moment it was stated. The resolution rests on a distinction the fatalist reading collapses into one thing: the hand you're dealt, and how you play it.</p>
 
+  <div style="text-align:center;margin:32px 0 28px;">
+    <button class="collapse-toggle-btn" onclick="sectionCollapse('destiny-group',this)">Expand &#9660;</button>
+    <p class="section-collapse-label" style="margin-top:8px;">Tap to expand &mdash; four cards, from the hand dealt to the brain&rsquo;s head start</p>
+  </div>
+  <div id="destiny-group" class="section-collapse-wrap collapsed">
+  <div class="ego-sub-header gf-sub-header" style="max-width:900px;margin:0 auto 8px;scroll-margin-top:56px;text-align:left;">
+    <div class="ego-sub-header-text">
+      <h3>The Hand and How It&rsquo;s Played</h3>
+      <p>Prarabdha and Purushartha &mdash; what is fixed, and what stays yours</p>
+    </div>
+    <button class="collapse-toggle-btn" onclick="sectionCollapse('destiny-hand-detail',this)">Expand &#9660;</button>
+  </div>
+  <div id="destiny-hand-detail" class="section-collapse-wrap collapsed" style="max-width:900px;margin:0 auto 40px;text-align:left;"><div style="height:24px;"></div>
   <div style="max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;text-align:left;">
     <div class="sl-stage" style="padding:26px 24px;">
       <span class="sl-num"><span class="gloss">Prarabdha<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Prarabdha">+</span><span class="gloss-pop">The portion of accumulated karma that has already begun to bear fruit in this lifetime &mdash; the destiny allotted at birth, fixed and no longer subject to revision.</span></span></span>
@@ -6723,12 +6736,16 @@ a.src-tag:hover{opacity:.75;}
       <p class="sl-desc">Entirely in your control, in the present moment, regardless of the hand. A skilled player wins with a weak hand. A careless one loses a strong one. Today's effort is also tomorrow's Prarabdha &mdash; the deck currently being reshuffled.</p>
     </div>
   </div>
-
-  <div style="text-align:center;margin:32px 0 8px;">
-    <button class="collapse-toggle-btn" onclick="sectionCollapse('three-karmas-detail',this)">Expand &#9660;</button>
-    <p class="section-collapse-label">Tap to expand &mdash; the three karmas Prarabdha is only one third of</p>
   </div>
-  <div id="three-karmas-detail" class="section-collapse-wrap collapsed" style="max-width:900px;margin:0 auto;">
+
+  <div class="ego-sub-header gf-sub-header" style="max-width:900px;margin:0 auto 8px;scroll-margin-top:56px;text-align:left;">
+    <div class="ego-sub-header-text">
+      <h3>The Three Karmas</h3>
+      <p>Sanchita, Prarabdha and Agami &mdash; the full ledger, not just one third</p>
+    </div>
+    <button class="collapse-toggle-btn" onclick="sectionCollapse('three-karmas-detail',this)">Expand &#9660;</button>
+  </div>
+  <div id="three-karmas-detail" class="section-collapse-wrap collapsed" style="max-width:900px;margin:0 auto 40px;text-align:left;"><div style="height:24px;"></div>
     <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin:20px 0 24px;text-align:left;">Prarabdha, above, is only one third of the full ledger. The deck metaphor holds for all three &mdash; it's just that most of the deck is sitting somewhere other than the hand currently being played.</p>
     <div style="max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2px;text-align:left;">
       <div class="sl-stage"><span class="sl-num"><span class="gloss">Sanchita<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Sanchita">+</span><span class="gloss-pop">Literally &ldquo;accumulated&rdquo; &mdash; the vast storehouse of karma from every past action across every past life, unripened and still in reserve.</span></span></span><div class="sl-name">The Full Deck</div><p class="sl-desc">Every card ever earned, across every hand ever played before this one. The total accumulated stock &mdash; almost all of it still sitting in the box, unripened.</p></div>
@@ -6736,9 +6753,16 @@ a.src-tag:hover{opacity:.75;}
       <div class="sl-stage"><span class="sl-num"><span class="gloss">Agami<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Agami">+</span><span class="gloss-pop">Also called Kriyamana &mdash; the new karma being generated right now, through present free will, feeding back into the Sanchita store for a future life.</span></span></span><div class="sl-name">The Discard Pile</div><p class="sl-desc">Every card played right now, present tense, going straight back into the deck for some future hand. This is the &ldquo;today's effort is tomorrow's Prarabdha&rdquo; line above, named in full.</p></div>
     </div>
     <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:20px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg);max-width:900px;margin:20px auto 0;">Only one of the three karmas is ever actually being written. The other two are either already filed, or not yet due &mdash; which is exactly why the present moment carries more weight than either the past or the future ever will.</p>
+  </div>
 
-    <div id="karma-on-recognition" style="max-width:900px;margin:44px auto 0;text-align:left;scroll-margin-top:56px;">
-      <p style="font-family:var(--sans);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:14px;">When the Dreamer Wakes</p>
+  <div id="karma-on-recognition" class="ego-sub-header gf-sub-header" style="max-width:900px;margin:0 auto 8px;scroll-margin-top:56px;text-align:left;">
+    <div class="ego-sub-header-text">
+      <h3>When the Dreamer Wakes</h3>
+      <p>What knowing who you are does to each of the three karmas</p>
+    </div>
+    <button class="collapse-toggle-btn" onclick="sectionCollapse('karma-recognition-detail',this)">Expand &#9660;</button>
+  </div>
+  <div id="karma-recognition-detail" class="section-collapse-wrap collapsed" style="max-width:900px;margin:0 auto 40px;text-align:left;"><div style="height:24px;"></div>
       <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin:0 0 20px;">Classical Advaita adds one claim about these three, and it changes how the ledger reads. Knowing who you are, it says, does not treat all three alike.</p>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2px;">
         <div class="sl-stage"><span class="sl-num">Sanchita</span><div class="sl-name">Dissolves</div><p class="sl-desc">Actions in a dream are not paid off on waking. They simply have no one left to belong to. The vast stock goes the same way &mdash; not worked through, seen through.</p></div>
@@ -6746,17 +6770,16 @@ a.src-tag:hover{opacity:.75;}
         <div class="sl-stage"><span class="sl-num">Agami</span><div class="sl-name">Does Not Cling</div><p class="sl-desc">Nothing clings to space. Action still happens through the knower, and it leaves no residue on him.</p></div>
       </div>
       <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;font-size:clamp(14.5px,1.9vw,17px);margin:20px 0 0;">A tradition's claim, not a promise &mdash; and not a license. It describes seeing through the doer, not skipping the work of seeing. The same standing is named under <a href="#kaivalya" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">Jivanmukti</a>. For now, one question is enough: how much of what you carry today is weight for a doer you have never actually located?</p>
-    </div>
   </div>
 
-  <div id="libet-readiness" class="ego-sub-header" style="max-width:900px;margin:48px auto 8px;scroll-margin-top:56px;text-align:left;">
+  <div id="libet-readiness" class="ego-sub-header gf-sub-header" style="max-width:900px;margin:0 auto 8px;scroll-margin-top:56px;text-align:left;">
     <div class="ego-sub-header-text">
       <h3>Does the Brain Decide Before You Do?</h3>
       <p>The best-known laboratory challenge to the &ldquo;how it&rsquo;s played&rdquo; card above, and how far it goes</p>
     </div>
     <button class="collapse-toggle-btn" onclick="sectionCollapse('libet-detail',this)">Expand &#9660;</button>
   </div>
-  <div id="libet-detail" class="section-collapse-wrap collapsed" style="max-width:900px;margin:0 auto 32px;text-align:left;">
+  <div id="libet-detail" class="section-collapse-wrap collapsed" style="max-width:900px;margin:0 auto 40px;text-align:left;"><div style="height:24px;"></div>
     <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin:20px 0;"><a class="src-tag src-research" href="#sources">Modern Research</a> In 1983 Benjamin Libet asked people to flex a wrist whenever they felt like it and to note the clock position at the moment they felt the urge. A slow build-up of electrical activity over the motor areas, the readiness potential, began roughly a third of a second before the reported urge. A 2008 brain-imaging study by Soon and colleagues went further: patterns in frontal and parietal cortex carried some information about a simple left-or-right button choice up to about ten seconds before people said they had chosen, though the guesses were only modestly better than a coin flip.</p>
     <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin:0 0 20px;">Read one way, this says the &ldquo;I decided&rdquo; arrives after the brain has already begun. It sits close to a line the Gita draws in 3.27: that the self deluded by ego thinks &ldquo;I am the doer&rdquo; while the gunas carry out the action.</p>
     <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin:0 0 20px;"><strong style="color:var(--white);font-weight:400;">What this does not show.</strong> Schurger, Sitt and Dehaene (2012) argued that the readiness potential may be what random fluctuations in brain activity look like when averaged backward from a movement, not a decision already made. The tasks were arbitrary flicks and button presses with nothing at stake, so they say little about deliberated choices such as a career or a promise. Libet himself held that people keep the power to veto an act. Nothing here shows free will is an illusion, and nothing here confirms the Gita&rsquo;s claim either. Laying them side by side is a reading, not a finding.</p>
@@ -6764,10 +6787,11 @@ a.src-tag:hover{opacity:.75;}
     <p style="font-family:var(--sans);font-size:10.5px;letter-spacing:1px;color:var(--dim);line-height:1.7;margin:0;">Source: Libet, B., Gleason, C.A., Wright, E.W. &amp; Pearl, D.K. (1983). Time of conscious intention to act in relation to onset of cerebral activity (readiness-potential). <em>Brain</em>, 106(3), 623&ndash;642. Soon, C.S., Brass, M., Heinze, H.-J. &amp; Haynes, J.-D. (2008). Unconscious determinants of free decisions in the human brain. <em>Nature Neuroscience</em>, 11(5), 543&ndash;545. Schurger, A., Sitt, J.D. &amp; Dehaene, S. (2012). An accumulator model for spontaneous neural activity prior to self-initiated movement. <em>PNAS</em>, 109(42), E2904&ndash;E2913.</p>
   </div>
 
-  <div class="superordinate-box" style="border-right:4px solid var(--gold);text-align:left;position:relative;margin:32px auto 0;max-width:900px;">
+  <div class="superordinate-box" style="border-right:4px solid var(--gold);text-align:left;position:relative;margin:8px auto 0;max-width:900px;">
     <div style="position:absolute;top:-1px;left:-1px;width:18px;height:18px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);"></div>
     <div style="position:absolute;bottom:-1px;right:-1px;width:18px;height:18px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);"></div>
     <p style="font-size:clamp(15.5px,2vw,18px);color:var(--white);line-height:1.9;margin:0;">Karma was never a claim that the future is written. It's a claim that the pen never leaves your hand &mdash; only the paper you were handed to write on was already chosen before you sat down.</p>
+  </div>
   </div>
 </section>
 <span class="continue-hint">continue</span>
