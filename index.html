@@ -2148,6 +2148,21 @@ section{scroll-margin-top:56px;}
 .fa-cards .framework-subcard::after{top:24px;}
 .fa-cards .framework-subcard-content::before{content:"";display:block;height:14px;}
 @media(max-width:600px){.fa-cards .framework-subcard{padding:20px 18px;}.fa-cards .framework-subcard::after{right:16px;}}
+/* Interrupting the Reaction: group headings inside the one card list (the list stays a single
+   accordion, so only one card is open at a time), plus larger Expand / Collapse controls. */
+.fa-group-head{display:flex;flex-direction:column;gap:4px;margin:40px 0 6px;padding:0 2px 10px;border-bottom:1px solid rgba(var(--accent-gold-rgb),0.25);cursor:default;text-align:left;}
+.fa-group-head:first-child{margin-top:22px;}
+.fa-group-name{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.9;}
+.fa-group-sub{font-family:var(--serif);font-size:14px;font-style:italic;line-height:1.6;color:var(--grey);}
+[data-theme="light"] .fa-group-name{color:var(--accent-gold) !important;}
+#interrupting-the-reaction .framework-subcard::after{font-size:12px;letter-spacing:1.2px;top:25px;opacity:.9;}
+#interrupting-the-reaction .fa-cards .framework-subcard h4{padding-right:112px;}
+#interrupting-the-reaction .collapse-toggle-btn{font-size:12px;}
+@media(max-width:600px){
+  #interrupting-the-reaction .fa-cards .framework-subcard h4{padding-right:104px;}
+  .fa-group-head{margin-top:32px;}
+  .fa-group-name{letter-spacing:3px;}
+}
 @media(max-width:640px){
   #framework-full-content .framework-card{padding:22px 18px;}
   #framework-full-content .framework-card .num,
@@ -7411,10 +7426,11 @@ a.src-tag:hover{opacity:.75;}
   <div style="max-width:820px;margin:0 auto;text-align:left;">
     <div style="text-align:center;margin-bottom:8px;">
       <button class="collapse-toggle-btn" onclick="sectionCollapse('interrupting-full-content',this)">Expand &#9660;</button>
-      <p class="section-collapse-label" style="margin-top:8px;">Tap to expand &mdash; nineteen cards: the two doors, how a reaction forms, speech, and holding a feeling that will not settle</p>
+      <p class="section-collapse-label" style="margin-top:8px;">Tap to expand &mdash; nineteen cards in five groups, from the two doors to the longer view</p>
     </div>
     <div id="interrupting-full-content" class="section-collapse-wrap collapsed">
     <div class="framework-subcards fa-cards">
+      <div class="fa-group-head"><div class="fa-group-name">The Two Doors</div><div class="fa-group-sub">Body first when it is about to happen, understanding first when it has passed, and the preparation before either</div></div>
       <div class="framework-subcard collapsed" style="scroll-margin-top:56px;">
         <h4>Somatic &middot; Impulsive</h4>
         <div class="framework-subcard-content">
@@ -7438,6 +7454,7 @@ a.src-tag:hover{opacity:.75;}
         <p class="sl-desc">The doors above are for when it is already happening, or just did. If you can see the difficult person coming &mdash; a tense meeting, a family dinner, an inbox you are dreading &mdash; name them in advance, so the rudeness lands as ordinary instead of as news. <a href="#marcus-citadel" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">Morning Armor &rarr;</a></p>
         </div>
       </div>
+      <div class="fa-group-head"><div class="fa-group-name">How a Reaction Works</div><div class="fa-group-sub">The split mind, the chain behind a reaction, why it repeats, and the Buddha&rsquo;s two instructions</div></div>
       <div id="argument-inside" class="framework-subcard collapsed" style="scroll-margin-top:56px;">
         <h4>The Argument Inside</h4>
         <div class="framework-subcard-content">
@@ -7499,6 +7516,7 @@ a.src-tag:hover{opacity:.75;}
         <p style="font-family:var(--sans);font-size:10.5px;letter-spacing:1px;color:var(--dim);line-height:1.7;margin:20px 0 24px;text-align:left;">Honest limit: naming is a start, not a cure. Some pulls loosen as soon as they are seen; others return daily. A heavy or lasting low mood, or a pull to numb it, is a matter for a doctor or therapist, not only for noticing.</p>
         </div>
       </div>
+      <div class="fa-group-head"><div class="fa-group-name">Speech</div><div class="fa-group-sub">A checkpoint before speaking, and where a sentence comes from</div></div>
       <div id="speech-gates" class="framework-subcard collapsed" style="scroll-margin-top:56px;">
         <h4>Five Gates Before the Word</h4>
         <div class="framework-subcard-content">
@@ -7518,6 +7536,7 @@ a.src-tag:hover{opacity:.75;}
         <p style="font-family:var(--sans);font-size:10.5px;letter-spacing:1px;color:var(--dim);line-height:1.7;margin:20px 0 24px;text-align:left;">Honest limit: the three are a lens on a moment, not a ranking of people. Everyone speaks from all of them in a day. The question is which one is speaking now.</p>
         </div>
       </div>
+      <div class="fa-group-head"><div class="fa-group-name">When the Feeling Will Not Settle</div><div class="fa-group-sub">Hold it, go below the storm, refill first, look at the roots, and the order they come in</div></div>
       <div id="mother-and-baby" class="framework-subcard collapsed" style="scroll-margin-top:56px;">
         <h4>Hold It, Don&rsquo;t Fight It</h4>
         <div class="framework-subcard-content">
@@ -7563,6 +7582,7 @@ a.src-tag:hover{opacity:.75;}
         <p style="font-family:var(--sans);font-size:10.5px;letter-spacing:1px;color:var(--dim);line-height:1.7;margin:20px 0 24px;text-align:left;">Honest limit: a teaching order, not a law. In practice the four overlap and loop back, and a flash of courage can arrive before any peace.</p>
         </div>
       </div>
+      <div class="fa-group-head"><div class="fa-group-name">The Longer View</div><div class="fa-group-sub">Anger that outlasts the moment, and the reactor and the responder side by side</div></div>
       <div id="anger-across-days" class="framework-subcard collapsed" style="scroll-margin-top:56px;">
         <h4>Anger, Across Days</h4>
         <div class="framework-subcard-content">
