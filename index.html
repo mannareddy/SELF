@@ -2780,6 +2780,17 @@ section{scroll-margin-top:56px;}
     letter-spacing:0.5px !important;
   }
 }
+/* Rosetta Stone (mobile): tighter, even rhythm between the table card, Same Mountain, and the closing quote */
+@media(max-width:640px){
+  #rosetta-stone #rosetta-group > .ego-sub-header{margin-top:8px !important;}
+  #rosetta-stone #rasa-table-wrap{margin-bottom:0 !important;}
+  #rosetta-stone #rasa-table-wrap .table-landscape-tip{margin:12px 0 4px;}
+  #rosetta-stone #rosetta-group > .ego-sub-header + .section-collapse-wrap{margin-bottom:0 !important;}
+  #rosetta-stone #rosetta-group > .ego-sub-header:not(:first-child){margin-top:24px !important;}
+  #rosetta-stone #rosetta-group,
+  #rosetta-stone #attunement-detail{margin-bottom:0 !important;}
+  #rosetta-stone .rasa-closing{margin-top:24px !important;}
+}
 @media(max-width:640px){
   /* Sections whose top-level cards use generous inline margin-bottom
      (40-52px) tuned for desktop: Consciousness & Awareness, Ego
@@ -12157,8 +12168,8 @@ a.src-tag:hover{opacity:.75;}
       <div class="rasa-row" id="rasa-row-6"><div class="rasa-cell type">6 — Skeptic</div><div class="rasa-cell">Unprepared · Doubt</div><div class="rasa-cell shadow">Anxiety (Bhayanaka)</div><div class="rasa-cell light">Courage (Vira) · Faith</div></div>
       <div class="rasa-row" id="rasa-row-7"><div class="rasa-cell type">7 — Enthusiast</div><div class="rasa-cell">Pain/Sadness · Gluttony</div><div class="rasa-cell shadow">Distraction (Hasya)</div><div class="rasa-cell light">Absorption · Work</div></div>
     </div>
+    <p class="table-landscape-tip">⟳ Tip: turn your phone to landscape for a wider view of this table</p>
   </div>
-  <p class="table-landscape-tip">⟳ Tip: turn your phone to landscape for a wider view of this table</p>
 
   <!-- SAME MOUNTAIN, DIFFERENT MOOD — Heidegger on attunement; sits between the table and the closing text. -->
   <div class="ego-sub-header gf-sub-header" style="max-width:900px;margin:0 auto 8px;text-align:left;"><div class="ego-sub-header-text"><h3>Same Mountain, Different Mood</h3><p>Why the emotional weather decides which landscape you can see</p></div><button class="collapse-toggle-btn" onclick="sectionCollapse('attunement-detail',this)">Expand &#9660;</button></div>
