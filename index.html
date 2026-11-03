@@ -4118,6 +4118,33 @@ a.src-tag:hover{opacity:.75;}
 [data-theme="light"] .src-synth{color:var(--grey);border-color:rgba(var(--shadow-rgb),0.25);}
 [data-theme="light"] .src-applied{color:#4a7a4a;border-color:rgba(74,122,74,0.5);}
 
+
+/* ── UNIFIED SECTION HEADERS ─────────────────────────────────────────────
+   Every section's title (.sec-title) and its one-line description (.sec-sub)
+   is centred, and all titles share one font, size and weight. The classes
+   are added in the markup right after each section's .label eyebrow, so a
+   new section only needs class="sec-title" on its heading to match. */
+section .sec-title.sec-title{
+  font-family:var(--serif) !important;
+  font-size:clamp(22px,3.5vw,36px) !important;
+  font-weight:300 !important;
+  line-height:1.5 !important;
+  font-style:normal !important;
+  letter-spacing:normal !important;
+  text-transform:none !important;
+  color:var(--white) !important;
+  text-align:center !important;
+  max-width:820px !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+}
+[data-theme="light"] section .sec-title.sec-title{color:var(--text-body) !important;}
+section .sec-sub.sec-sub{
+  text-align:center !important;
+  max-width:720px !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+}
 </style>
 </head>
 <body>
@@ -4867,8 +4894,8 @@ a.src-tag:hover{opacity:.75;}
 <!-- THE BOUNDARIES OF CONTROL — Epictetus -->
 <section class="section">
   <span class="label">What Was Never Yours to Lose</span>
-  <p class="phil-line">The chart moves. The price moves. The world moves.</p>
-  <p class="phil-line dim">None of it was ever yours to govern.</p>
+  <p class="phil-line sec-title">The chart moves. The price moves. The world moves.</p>
+  <p class="phil-line dim sec-sub">None of it was ever yours to govern.</p>
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:2px;max-width:760px;margin:36px auto 0;">
     <div class="sl-stage" style="border-left:2px solid var(--gold);"><span class="sl-num" style="color:var(--gold);">In Your Power</span><div class="sl-name" style="color:var(--gold);">Thoughts</div><p class="sl-desc">The one territory that answers only to you.</p></div>
     <div class="sl-stage" style="border-left:2px solid var(--gold);"><span class="sl-num" style="color:var(--gold);">In Your Power</span><div class="sl-name" style="color:var(--gold);">Reactions</div><p class="sl-desc">How you meet what happens, not what happens.</p></div>
@@ -4992,7 +5019,7 @@ a.src-tag:hover{opacity:.75;}
 <!-- THE FRAMEWORK -->
 <section class="section-wide" id="framework">
   <span class="label">The Framework</span>
-  <p class="phil-line bright">The *SELF operating system. Eight layers.</p>
+  <p class="phil-line bright sec-title">The *SELF operating system. Eight layers.</p>
   <div class="cosmo-quote" style="max-width:660px;margin:0 auto 36px;">
     <p>&ldquo;Until you make the unconscious conscious, it will direct your life and you will call it fate.&rdquo;</p>
     <cite>&mdash; Carl Jung</cite>
@@ -5434,7 +5461,7 @@ a.src-tag:hover{opacity:.75;}
 <!-- CANON MAP -->
 <section class="section-wide" id="canon-map" style="scroll-margin-top:56px;">
   <span class="label">Where This Sits In The Canon</span>
-  <p class="phil-line bright">Nothing here was invented for this project. It's a distillation, four layers deep.</p>
+  <p class="phil-line bright sec-title">Nothing here was invented for this project. It's a distillation, four layers deep.</p>
 
   <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.95;max-width:820px;margin:0 auto 28px;text-align:center;">Easy to mistake any one teaching for a standalone opinion. It isn't. Here's the actual lineage &mdash; the same conclusion, distilled down to four progressively more usable forms.</p>
 
@@ -5496,7 +5523,7 @@ a.src-tag:hover{opacity:.75;}
 <!-- THE DISEASE IS MISTAKEN IDENTITY (SAMSARA BANDHANAM) -->
 <section class="section-wide" id="mistaken-identity" style="scroll-margin-top:56px;">
   <span class="label">The Root Diagnosis</span>
-  <p class="phil-line bright">Before the cure, the actual disease.</p>
+  <p class="phil-line bright sec-title">Before the cure, the actual disease.</p>
 
   <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.95;max-width:820px;margin:0 auto 28px;text-align:center;">The Veda's diagnosis of the human condition isn't circumstantial &mdash; a bad job, a bad year, a bad relationship. It's structural. <span class="gloss">Samsara<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Samsara">+</span><span class="gloss-pop">The cycle of birth, death, and rebirth &mdash; the ceaseless churn of conditioned existence every layer below the Self remains bound to.</span></span> isn't only the biological wheel of birth and death. It's a five-step engine, cycling underneath an ordinary Tuesday, that manufactures the felt sense of incompleteness fresh every day &mdash; and then hands you the bill for trying to fix it from the wrong end.</p>
 
@@ -5740,7 +5767,7 @@ a.src-tag:hover{opacity:.75;}
 <!-- FORGING THE QUALIFIED SEEKER (SADHANA CHATUSHTAYA) -->
 <section class="section-wide" id="qualified-seeker" style="scroll-margin-top:56px;">
   <span class="label">Before The Inquiry Can Begin</span>
-  <p class="phil-line bright">A wet matchstick cannot catch a spark.</p>
+  <p class="phil-line bright sec-title">A wet matchstick cannot catch a spark.</p>
 
   <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.95;max-width:820px;margin:0 auto 28px;text-align:center;">Vedic inquiry is not withheld out of secrecy. It's withheld the way a fire is withheld from wet wood &mdash; not as punishment, but as physics. An undisciplined mind can be shown the truth directly and still not catch it, the same way a wet matchstick can be struck against the truth itself and still not light. <span class="gloss">Sadhana Chatushtaya<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Sadhana Chatushtaya">+</span><span class="gloss-pop">The &ldquo;four means of practice&rdquo; &mdash; the traditional set of qualifications said to prepare a mind for Vedantic inquiry, without which the teaching has nothing to take hold of.</span></span> is the drying process. Four qualifications, each building on the last.</p>
 
@@ -5830,7 +5857,7 @@ a.src-tag:hover{opacity:.75;}
 <!-- KNOWLEDGE, NOT ACTION -->
 <section class="section-wide" id="knowledge-not-action" style="scroll-margin-top:56px;">
   <span class="label">Why It Can't Be Earned</span>
-  <p class="phil-line bright">Everything else in life responds to effort. This is the one exception.</p>
+  <p class="phil-line bright sec-title">Everything else in life responds to effort. This is the one exception.</p>
 
   <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.95;max-width:820px;margin:0 auto 32px;text-align:center;">Before inquiry can even start, it helps to be clear about what kind of thing it's chasing. Liberation gets talked about like an achievement &mdash; something earned through enough practice, enough merit, enough time. Vedanta's classical argument says that framing is a category error, and it makes the case on two separate fronts.</p>
 
@@ -5917,8 +5944,8 @@ a.src-tag:hover{opacity:.75;}
      anywhere else on the site. -->
 <section class="section" id="excavating-the-self" style="scroll-margin-top:56px;">
   <span class="label">Vivekachudamani</span>
-  <p class="phil-line bright" style="margin-bottom:8px;">Debris doesn't clear itself by being told to.</p>
-  <p class="phil-line dim" style="margin-bottom:36px;max-width:700px;margin-left:auto;margin-right:auto;">So what does the clearing actually consist of? Sankaracharya gives it a deliberately unglamorous image: buried treasure, not lightning.</p>
+  <p class="phil-line bright sec-title" style="margin-bottom:8px;">Debris doesn't clear itself by being told to.</p>
+  <p class="phil-line dim sec-sub" style="margin-bottom:36px;max-width:700px;margin-left:auto;margin-right:auto;">So what does the clearing actually consist of? Sankaracharya gives it a deliberately unglamorous image: buried treasure, not lightning.</p>
 
   <div style="max-width:820px;margin:0 auto;text-align:left;">
     <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin-bottom:28px;">The Self isn't hiding &mdash; it's covered, the way a treasure is covered by the earth sitting on top of it. Nobody digs it up by standing over the spot and saying its name. Four things have to happen, in order, none of them optional:</p>
@@ -5948,8 +5975,8 @@ a.src-tag:hover{opacity:.75;}
 
 <section class="section" id="matrix-of-logic" style="scroll-margin-top:56px;">
   <span class="label">Shiva Sutras</span>
-  <p class="phil-line bright" style="margin-bottom:8px;">Not all thinking is trying to win an argument.</p>
-  <p class="phil-line dim" style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;">The tradition names three kinds of logic. Only one of them goes anywhere.</p>
+  <p class="phil-line bright sec-title" style="margin-bottom:8px;">Not all thinking is trying to win an argument.</p>
+  <p class="phil-line dim sec-sub" style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;">The tradition names three kinds of logic. Only one of them goes anywhere.</p>
 
   <div style="max-width:820px;margin:0 auto;text-align:left;">
     <div class="self-table-wrap">
@@ -5976,8 +6003,8 @@ a.src-tag:hover{opacity:.75;}
 
 <section class="section" id="bondage-of-knowing" style="scroll-margin-top:56px;">
   <span class="label">The Bondage of &ldquo;Knowing&rdquo;</span>
-  <p class="phil-line bright" style="margin-bottom:8px;"><em><span class="gloss">Jnanam bandhah<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Jnanam bandhah">+</span><span class="gloss-pop">A Shiva Sutra: limited knowledge itself creates bondage &mdash; the instant something is called &ldquo;known,&rdquo; its living, changing range narrows to fit a fixed, past-based definition.</span></span></em> &mdash; limited knowledge creates bondage.</p>
-  <p class="phil-line dim" style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;">The moment something gets labeled, the mind stops looking at it.</p>
+  <p class="phil-line bright sec-title" style="margin-bottom:8px;"><em><span class="gloss">Jnanam bandhah<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Jnanam bandhah">+</span><span class="gloss-pop">A Shiva Sutra: limited knowledge itself creates bondage &mdash; the instant something is called &ldquo;known,&rdquo; its living, changing range narrows to fit a fixed, past-based definition.</span></span></em> &mdash; limited knowledge creates bondage.</p>
+  <p class="phil-line dim sec-sub" style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;">The moment something gets labeled, the mind stops looking at it.</p>
 
   <div style="max-width:820px;margin:0 auto;text-align:left;">
     <div class="sl-stage" style="border-left:2px solid var(--gold);">
@@ -6010,7 +6037,7 @@ a.src-tag:hover{opacity:.75;}
 <!-- TWO PATHS TO TRUTH -->
 <section class="section-wide" id="two-paths-truth" style="scroll-margin-top:56px;">
   <span class="label">Two Paths to Truth</span>
-  <p class="phil-line bright">Every claim about reality gets built one of exactly two ways.</p>
+  <p class="phil-line bright sec-title">Every claim about reality gets built one of exactly two ways.</p>
 
   <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.95;max-width:900px;margin:0 auto 32px;text-align:left;">One climbs up from the senses. The other comes down from a source that was never theorized at all. Worth seeing plainly which one this tradition leans its weight on, and why, before anything downstream depends on it.</p>
 
@@ -6067,9 +6094,9 @@ a.src-tag:hover{opacity:.75;}
 <!-- MIRROR OF THE VEDA -->
 <section class="section-wide" id="mirror-of-the-veda" style="scroll-margin-top:56px;">
   <span class="label">Before Going Further</span>
-  <p class="phil-line bright">Why point at a text instead of just thinking this through?</p>
+  <p class="phil-line bright sec-title">Why point at a text instead of just thinking this through?</p>
 
-  <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.95;max-width:820px;margin:0 auto 28px;text-align:center;">Fair question. Two tools of knowing carry you through almost everything else in life. Neither was built to reach the one thing doing all the knowing.</p>
+  <p class="sec-sub" style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.95;max-width:820px;margin:0 auto 28px;text-align:center;">Fair question. Two tools of knowing carry you through almost everything else in life. Neither was built to reach the one thing doing all the knowing.</p>
 
   <div style="max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2px;text-align:left;">
     <div class="sl-stage">
@@ -6124,7 +6151,7 @@ a.src-tag:hover{opacity:.75;}
 <!-- ORDERS OF REALITY -->
 <section class="section-wide" id="orders-of-reality" style="scroll-margin-top:56px;">
   <span class="label">Beneath the Screen</span>
-  <p class="phil-line bright">Three grades of &ldquo;real.&rdquo; Most people only use two.</p>
+  <p class="phil-line bright sec-title">Three grades of &ldquo;real.&rdquo; Most people only use two.</p>
 
   <div class="cosmo-quote" style="max-width:820px;margin:0 auto 36px;">
     <p>&ldquo;What cancels a dream is waking up. Nothing has ever cancelled waking up.&rdquo;</p>
@@ -6263,8 +6290,8 @@ a.src-tag:hover{opacity:.75;}
 <section class="section-wide" id="neti-neti" style="scroll-margin-top:56px;">
   <span class="label">Vedanta &middot; The Method, Not Just The Map</span>
   <div id="neti-neti-method" style="max-width:820px;margin:0 auto 28px;text-align:left;">
-    <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:820px;margin:0 0 16px;line-height:1.4;text-align:left;"><span class="gloss">Neti Neti<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Neti Neti">+</span><span class="gloss-pop">Sanskrit for &ldquo;not this, not this&rdquo; &mdash; the Upanishadic method of negation, systematically ruling out every object of experience as a candidate for the true Self, until only the un-negatable witness remains.</span></span> &mdash; Not This, Not This</h2>
-    <p style="font-size:clamp(15px,2vw,18px);color:var(--grey);font-style:italic;line-height:1.85;margin:0 0 20px;">Whatever can be looked at is not the one looking.</p>
+    <h2 class="sec-title" style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:820px;margin:0 0 16px;line-height:1.4;text-align:left;"><span class="gloss">Neti Neti<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Neti Neti">+</span><span class="gloss-pop">Sanskrit for &ldquo;not this, not this&rdquo; &mdash; the Upanishadic method of negation, systematically ruling out every object of experience as a candidate for the true Self, until only the un-negatable witness remains.</span></span> &mdash; Not This, Not This</h2>
+    <p class="sec-sub" style="font-size:clamp(15px,2vw,18px);color:var(--grey);font-style:italic;line-height:1.85;margin:0 0 20px;">Whatever can be looked at is not the one looking.</p>
     <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--mid);line-height:1.9;margin-bottom:16px;">The <a href="#master-matrix" onclick="expandMatrixToTable();return false;" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">Master Matrix</a> already maps the five koshas &mdash; what each sheath is made of, and what it corresponds to elsewhere. This is the other half: the actual procedure for using that map to locate what none of the sheaths are. The tool is <span class="gloss">Neti Neti<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Neti Neti">+</span><span class="gloss-pop">Sanskrit for &ldquo;not this, not this&rdquo; &mdash; the Upanishadic method of negation, systematically ruling out every object of experience as a candidate for the true Self, until only the un-negatable witness remains.</span></span> &mdash; not this, not this &mdash; applied as a four-question test to each layer in turn:</p>
   </div>
   <div style="text-align:center;margin:0 0 28px;">
@@ -6878,7 +6905,7 @@ a.src-tag:hover{opacity:.75;}
 <section class="section-wide" id="tat-tvam-asi" style="scroll-margin-top:56px;">
   <span class="label">The Equation of Instruction</span>
   <div style="max-width:820px;margin:0 auto 28px;text-align:left;">
-    <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:820px;margin:0 0 16px;line-height:1.4;text-align:left;">Tat Tvam Asi</h2>
+    <h2 class="sec-title" style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:820px;margin:0 0 16px;line-height:1.4;text-align:left;">Tat Tvam Asi</h2>
     <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--mid);line-height:1.9;margin-bottom:20px;">At some point a teacher in this tradition says a sentence that sounds absurd on its face: &ldquo;<span class="gloss">Tat Tvam Asi<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Tat Tvam Asi">+</span><span class="gloss-pop">Sanskrit for &ldquo;That thou art&rdquo; &mdash; one of the four traditional Mahavakyas, or &ldquo;great sentences,&rdquo; equating the individual with the absolute. Resolved not by literal reading but by the method of implied meaning.</span></span> &mdash; That thou art.&rdquo; Told to a king, &ldquo;you are a beggar&rdquo; would just be false. This isn't that kind of sentence.</p>
   </div>
   <div style="text-align:center;margin:0 0 28px;">
@@ -6990,8 +7017,8 @@ a.src-tag:hover{opacity:.75;}
 <section class="section-wide" id="maya-section" style="scroll-margin-top:56px;">
   <span class="label">Vedanta &middot; The Measure and the Veil</span>
   <div id="maya" style="max-width:820px;margin:0 auto 28px;text-align:left;">
-    <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:820px;margin:0 0 16px;line-height:1.4;text-align:left;">Maya</h2>
-    <p style="font-size:clamp(15px,2vw,18px);color:var(--grey);font-style:italic;line-height:1.85;margin:0 0 20px;">The most translated word on this page, and the least understood.</p>
+    <h2 class="sec-title" style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:820px;margin:0 0 16px;line-height:1.4;text-align:left;">Maya</h2>
+    <p class="sec-sub" style="font-size:clamp(15px,2vw,18px);color:var(--grey);font-style:italic;line-height:1.85;margin:0 0 20px;">The most translated word on this page, and the least understood.</p>
     <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--mid);line-height:1.9;margin:0 0 16px;"><a href="#tat-tvam-asi" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">Tat Tvam Asi</a>, above, ends on a recognition: set aside creatorship and limitation, and what is left is one. That leaves the obvious question of why it ever looked like two. The rope and the snake in <a href="#orders-of-reality" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">Beneath the Screen</a> gave the picture, and the three-answers card gave the theory. Maya is the tradition&rsquo;s word for the working part, and this is where the page keeps everything it says about it.</p>
     <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--mid);line-height:1.9;margin:0 0 8px;">&ldquo;Illusion&rdquo; is the one-word answer everyone has heard. The cards below take the word apart in the order a question would: what the word itself measures, why a complete reality allows it, how it works, what it produces in a running life, how different schools use it, and what it can and cannot be called, with a few older and narrower strands after that. Then the trap it sets in an ordinary day, and the places elsewhere on the page where it turns up. Open the section below, then each card on its own.</p>
   </div>
@@ -7340,8 +7367,8 @@ a.src-tag:hover{opacity:.75;}
 <section class="section-wide" id="argument-from-design" style="scroll-margin-top:56px;">
   <span class="label">The Rival Cosmology</span>
   <div style="max-width:820px;margin:0 auto 28px;text-align:left;">
-    <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:820px;margin:0 0 16px;line-height:1.4;text-align:left;">The Argument From Design</h2>
-    <p style="font-size:clamp(15px,2vw,18px);color:var(--grey);font-style:italic;line-height:1.85;margin:0;">One rival account says the world needs no one home: blind matter, unfolding on its own. Two cards. One rules it out; the other shows the Upanishad absorbing it.</p>
+    <h2 class="sec-title" style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:820px;margin:0 0 16px;line-height:1.4;text-align:left;">The Argument From Design</h2>
+    <p class="sec-sub" style="font-size:clamp(15px,2vw,18px);color:var(--grey);font-style:italic;line-height:1.85;margin:0;">One rival account says the world needs no one home: blind matter, unfolding on its own. Two cards. One rules it out; the other shows the Upanishad absorbing it.</p>
   </div>
   <div style="text-align:center;margin:0 0 28px;">
     <button class="collapse-toggle-btn" onclick="sectionCollapse('argument-full-content',this)">Expand &#9660;</button>
@@ -7397,8 +7424,8 @@ a.src-tag:hover{opacity:.75;}
      after the Orders of Reality and the Argument from Design have set out what Ishvara is. -->
 <section class="section-wide" id="the-gods-seen-whole" style="scroll-margin-top:56px;">
   <span class="label">Vedanta &middot; The Personal Face of the Absolute</span>
-  <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;">If the ground of everything has no face, why does the tradition keep so many gods?</h2>
-  <p style="font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:820px;margin:0 auto 40px;font-style:italic;line-height:1.85;">The answer on offer is not that the One became many. It is that a heart needs something it can meet &mdash; and the faces are how the formless gets met.</p>
+  <h2 class="sec-title" style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;">If the ground of everything has no face, why does the tradition keep so many gods?</h2>
+  <p class="sec-sub" style="font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:820px;margin:0 auto 40px;font-style:italic;line-height:1.85;">The answer on offer is not that the One became many. It is that a heart needs something it can meet &mdash; and the faces are how the formless gets met.</p>
   <p style="font-family:var(--serif);font-size:clamp(16px,2.1vw,19px);color:var(--mid);line-height:1.9;max-width:820px;margin:0 auto 40px;text-align:left;">Everything on the page above works at the level of Brahman and Ishvara. This section steps down one rung, to the deities themselves: why the One shows up as many, how the three great acts fit together, and three figures who carry the teaching &mdash; one of a forgotten power, one of two kinds of perfection, and one whose feared face is the protective one.</p>
 
   <div style="text-align:center;margin-bottom:16px;">
@@ -7450,7 +7477,7 @@ a.src-tag:hover{opacity:.75;}
 <!-- THE LADDER OF INTENTION (GUNAS) -->
 <section class="section-wide" id="ladder-of-intention" style="scroll-margin-top:56px;">
   <span class="label">Same Action, Different Fuel</span>
-  <p class="phil-line bright">The doing tells you nothing. The reason tells you everything.</p>
+  <p class="phil-line bright sec-title">The doing tells you nothing. The reason tells you everything.</p>
 
   <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.95;max-width:820px;margin:0 auto 28px;text-align:center;">Two people write the same check to the same cause. One is closing a reputational gap. One doesn't remember doing it by evening. Vedanta calls the underlying fuel the <span class="gloss">guṇas<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define guṇas">+</span><span class="gloss-pop">The three modes of material nature — the qualities that color every thought and action, whether or not the person acting is aware of them.</span></span> — four rungs, base to apex.</p>
 
@@ -7507,7 +7534,7 @@ a.src-tag:hover{opacity:.75;}
 <!-- DESTINY VS FREE WILL -->
 <section class="section-wide" id="destiny-and-free-will" style="scroll-margin-top:56px;">
   <span class="label">The Fatalist's Objection</span>
-  <p class="phil-line bright">If the gunas are running the show, doesn't that make the whole idea of karma pointless?</p>
+  <p class="phil-line bright sec-title">If the gunas are running the show, doesn't that make the whole idea of karma pointless?</p>
 
   <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.95;max-width:820px;margin:0 auto 32px;text-align:center;">Fair objection. If everything were predetermined, there'd be no one left to hold responsible for anything &mdash; the Law of Karma would collapse into nonsense the moment it was stated. The resolution rests on a distinction the fatalist reading collapses into one thing: the hand you're dealt, and how you play it.</p>
 
@@ -7633,8 +7660,8 @@ a.src-tag:hover{opacity:.75;}
 <!-- SPECTRUM OF CONSCIOUSNESS -->
 <section class="section-wide" id="spectrum">
   <span class="label">The Ascent of Self</span>
-  <p class="phil-line bright">Seven layers. Seven stages of a single life. One universal pattern.</p>
-  <p class="phil-line dim" style="text-align:left;max-width:640px;margin-left:auto;margin-right:auto;">Nature, consciousness, and human life all move through the same sequence — from the density of raw survival to the clarity of pure being.</p>
+  <p class="phil-line bright sec-title">Seven layers. Seven stages of a single life. One universal pattern.</p>
+  <p class="phil-line dim sec-sub" style="text-align:left;max-width:640px;margin-left:auto;margin-right:auto;">Nature, consciousness, and human life all move through the same sequence — from the density of raw survival to the clarity of pure being.</p>
   <div class="cosmo-quote" style="max-width:660px;margin:0 auto 36px;text-align:left;">
     <p>&ldquo;As above, so below.&rdquo;</p>
     <cite>—The Hermetic Principle of Correspondence</cite>
@@ -7808,8 +7835,8 @@ a.src-tag:hover{opacity:.75;}
      trigger at all — they're available in any ordinary moment, just unnoticed. -->
 <section class="section" id="portals-to-presence" style="scroll-margin-top:56px;">
   <span class="label">Portals to Presence</span>
-  <p class="phil-line bright" style="margin-bottom:8px;">Stillness is not somewhere else. It is already here, in plain sight.</p>
-  <p class="phil-line dim" style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;text-align:left;">Four doorways into the Now that need no crisis and no technique to fix anything &mdash; just attention, redirected.</p>
+  <p class="phil-line bright sec-title" style="margin-bottom:8px;">Stillness is not somewhere else. It is already here, in plain sight.</p>
+  <p class="phil-line dim sec-sub" style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;text-align:left;">Four doorways into the Now that need no crisis and no technique to fix anything &mdash; just attention, redirected.</p>
 
   <div style="max-width:820px;margin:0 auto 48px;text-align:left;">
     <h3 style="font-family:var(--serif);color:var(--white);font-size:20px;margin-bottom:10px;">The Gap</h3>
@@ -7866,8 +7893,8 @@ a.src-tag:hover{opacity:.75;}
      techniques" whiplash of stacking both under one heading. -->
 <section class="section" id="full-attention" style="scroll-margin-top:56px;">
   <span class="label">Daily Practice</span>
-  <p class="phil-line bright" style="margin-bottom:8px;">How to Pay Full Attention</p>
-  <p class="phil-line dim" style="margin-bottom:8px;max-width:820px;margin-left:auto;margin-right:auto;text-align:left;">Five concrete daily disciplines &mdash; where the doorways above ask for nothing but noticing, these ask for a little repetition.</p>
+  <p class="phil-line bright sec-title" style="margin-bottom:8px;">How to Pay Full Attention</p>
+  <p class="phil-line dim sec-sub" style="margin-bottom:8px;max-width:820px;margin-left:auto;margin-right:auto;text-align:left;">Five concrete daily disciplines &mdash; where the doorways above ask for nothing but noticing, these ask for a little repetition.</p>
   <p class="phil-line dim" style="margin-bottom:36px;max-width:820px;margin-left:auto;margin-right:auto;text-align:left;">Under all five is the same three-part motion: notice where it went, return it without penalty, hold it a little past comfortable.</p>
   <div style="max-width:820px;margin:0 auto;text-align:left;">
     <div style="text-align:center;margin-bottom:8px;">
@@ -8016,8 +8043,8 @@ a.src-tag:hover{opacity:.75;}
      existing version rather than restating it. -->
 <section class="section" id="interrupting-the-reaction" style="scroll-margin-top:56px;">
   <span class="label">Daily Practice</span>
-  <p class="phil-line bright" style="margin-bottom:8px;">Interrupting the Reaction</p>
-  <p class="phil-line dim" style="margin-bottom:36px;max-width:820px;margin-left:auto;margin-right:auto;text-align:left;">Same gap between trigger and response, worked from two different doors. Neither is the advanced one &mdash; they're just entry points, and which one is open depends on the moment.</p>
+  <p class="phil-line bright sec-title" style="margin-bottom:8px;">Interrupting the Reaction</p>
+  <p class="phil-line dim sec-sub" style="margin-bottom:36px;max-width:820px;margin-left:auto;margin-right:auto;text-align:left;">Same gap between trigger and response, worked from two different doors. Neither is the advanced one &mdash; they're just entry points, and which one is open depends on the moment.</p>
 
   <div style="max-width:820px;margin:0 auto;text-align:left;">
     <div style="text-align:center;margin-bottom:8px;">
@@ -8238,7 +8265,7 @@ a.src-tag:hover{opacity:.75;}
      chain rather than a bulb/projector mapping, to avoid contradicting it. -->
 <section class="section" id="stop-sequence" style="scroll-margin-top:56px;">
   <span class="label">Daily Practice</span>
-  <p class="phil-line bright" style="margin-bottom:8px;">Acute Overwhelm &middot; The STOP Sequence</p>
+  <p class="phil-line bright sec-title" style="margin-bottom:8px;">Acute Overwhelm &middot; The STOP Sequence</p>
   <p class="phil-line dim" style="margin-bottom:36px;max-width:820px;margin-left:auto;margin-right:auto;text-align:left;">Neither of the two doors above quite fits when the flood is total &mdash; not one impulse, not one emotion to unpack, just every sense firing at once. This is the door for that: four steps, run in strict order, each aimed at one layer already mapped on this site &mdash; <span class="gloss"><a href="#neti-neti-method" onclick="expandNetiNeti();return false;" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">the koshas</a><span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Kosha">+</span><span class="gloss-pop">Kosha means &ldquo;sheath.&rdquo; Yoga and Vedanta describe you as layered like an onion &mdash; body, breath, mind, and deeper still &mdash; with awareness itself at the center. Each layer is a sheath you can learn to notice, and work with, one at a time.</span></span>, worked from the outside in.</p>
 
   <div style="max-width:820px;margin:0 auto;text-align:left;">
@@ -8265,8 +8292,8 @@ a.src-tag:hover{opacity:.75;}
      used elsewhere with .src-trad tags. -->
 <section class="section" id="esm-tapping" style="scroll-margin-top:56px;">
   <span class="label">Optional Practice</span>
-  <p class="phil-line bright" style="margin-bottom:8px;">Emotional Self-Management (ESM)</p>
-  <p class="phil-line dim" style="margin-bottom:8px;max-width:820px;margin-left:auto;margin-right:auto;text-align:left;">A tapping-and-breathing sequence you can run on one specific stuck feeling at a time.</p>
+  <p class="phil-line bright sec-title" style="margin-bottom:8px;">Emotional Self-Management (ESM)</p>
+  <p class="phil-line dim sec-sub" style="margin-bottom:8px;max-width:820px;margin-left:auto;margin-right:auto;text-align:left;">A tapping-and-breathing sequence you can run on one specific stuck feeling at a time.</p>
   <p class="phil-line dim" style="margin-bottom:36px;max-width:820px;margin-left:auto;margin-right:auto;text-align:left;">There's nothing to lose by trying it once. Rate the feeling before you start, run the sequence, rate it again. If it moved, you have your answer. If it didn&rsquo;t, you also have your answer &mdash; and that's a fine outcome too.</p>
 
   <div style="max-width:820px;margin:0 auto;text-align:left;">
@@ -8361,8 +8388,8 @@ a.src-tag:hover{opacity:.75;}
      above. Not another in-the-moment tool; a structure for the days between them. -->
 <section class="section" id="kaizen-method" style="scroll-margin-top:56px;">
   <span class="label">Optional Practice</span>
-  <p class="phil-line bright" style="margin-bottom:8px;">The 1% Method &mdash; Kaizen for the Nervous System</p>
-  <p class="phil-line dim" style="margin-bottom:8px;max-width:820px;margin-left:auto;margin-right:auto;text-align:left;">Not a new insight, but a way of actually keeping the ones above. A resolution usually doesn&rsquo;t collapse from weak willpower &mdash; it collapses from a step sized wrong for the nervous system running it.</p>
+  <p class="phil-line bright sec-title" style="margin-bottom:8px;">The 1% Method &mdash; Kaizen for the Nervous System</p>
+  <p class="phil-line dim sec-sub" style="margin-bottom:8px;max-width:820px;margin-left:auto;margin-right:auto;text-align:left;">Not a new insight, but a way of actually keeping the ones above. A resolution usually doesn&rsquo;t collapse from weak willpower &mdash; it collapses from a step sized wrong for the nervous system running it.</p>
   <p class="phil-line dim" style="margin-bottom:36px;max-width:820px;margin-left:auto;margin-right:auto;text-align:left;">The <a href="#autopilot-hardware" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">amygdala hardware</a> already covered on this site doesn&rsquo;t only fire at threats &mdash; it fires at drastic change. Kaizen (&#25913;&#21892;, &ldquo;good change&rdquo;) is the practice of staying small enough, every time, that the alarm never trips at all.</p>
 
   <div style="max-width:820px;margin:0 auto;text-align:left;">
@@ -8421,8 +8448,8 @@ a.src-tag:hover{opacity:.75;}
 <!-- 5 PILLARS -->
 <section class="astrolabe-section" id="self-enquiry" style="scroll-margin-top:56px;">
   <span class="label">Where Are You on the Map?</span>
-  <h2>The 5 Pillars of Self-Enquiry</h2>
-  <p class="sub">Answer honestly.</p>
+  <h2 class="sec-title">The 5 Pillars of Self-Enquiry</h2>
+  <p class="sub sec-sub">Answer honestly.</p>
   <div style="text-align:center;margin-bottom:8px;">
     <button class="collapse-toggle-btn" onclick="sectionCollapse('self-enquiry-full-content',this)">Expand &#9660;</button>
     <p class="section-collapse-label" style="margin-top:8px;">Tap to expand — the five pillar questions</p>
@@ -8471,7 +8498,7 @@ a.src-tag:hover{opacity:.75;}
 <!-- THE PRACTICE PARADOX -->
 <section class="section" id="practice-paradox" style="scroll-margin-top:56px;">
   <span class="label" style="color:var(--dim);">An Honest Caveat</span>
-  <h2 style="font-size:clamp(20px,3vw,28px);font-weight:300;color:var(--white);max-width:680px;margin:0 auto 16px;line-height:1.5;">Attention practice is not automatically safe just because it is popular.</h2>
+  <h2 class="sec-title" style="font-size:clamp(20px,3vw,28px);font-weight:300;color:var(--white);max-width:680px;margin:0 auto 16px;line-height:1.5;">Attention practice is not automatically safe just because it is popular.</h2>
   <div style="max-width:820px;margin:32px auto 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2px;text-align:left;">
     <div class="sl-stage"><span class="sl-num">The Clinical Case</span><div class="sl-name" style="font-size:15px;">Real, Measured Benefits</div><p class="sl-desc">Structured programs show genuine results in relapse prevention, stress reduction, and even changes in gray matter density.</p></div>
     <div class="sl-stage"><span class="sl-num">The Overlooked Risk</span><div class="sl-name" style="font-size:15px;">&ldquo;McMindfulness&rdquo;</div><p class="sl-desc">Strip a contemplative practice of the ethical intention behind it and you risk depersonalization, surfacing old trauma, or the disorienting territory some call the Dark Night &mdash; already flagged elsewhere on this site.</p></div>
@@ -8484,8 +8511,8 @@ a.src-tag:hover{opacity:.75;}
 <!-- TWO PATHS -->
 <section class="two-paths">
   <span class="label">The Two Paths</span>
-  <h2>You don't have to leave the world.</h2>
-  <p class="sub">Ancient seers mapped two routes to the same center &mdash; both walked while remaining an active participant in life.</p>
+  <h2 class="sec-title">You don't have to leave the world.</h2>
+  <p class="sub sec-sub">Ancient seers mapped two routes to the same center &mdash; both walked while remaining an active participant in life.</p>
     <div class="paths-grid">
     <div class="path-card jnana">
       <span class="path-label">Path of the Mind</span>
@@ -8563,7 +8590,7 @@ a.src-tag:hover{opacity:.75;}
      algorithm for working it, and the effort/grace question that follows. -->
 <section class="section" id="atma-vichara" style="scroll-margin-top:56px;">
   <span class="label">The Direct Path, Step by Step</span>
-  <h2 style="font-size:clamp(22px,3.5vw,32px);font-weight:300;color:var(--white);max-width:720px;margin:0 auto 20px;line-height:1.5;">Jnana names the door above. Here is how one sage actually walked through it.</h2>
+  <h2 class="sec-title" style="font-size:clamp(22px,3.5vw,32px);font-weight:300;color:var(--white);max-width:720px;margin:0 auto 20px;line-height:1.5;">Jnana names the door above. Here is how one sage actually walked through it.</h2>
   <p style="font-size:clamp(15px,2vw,18px);color:var(--grey);max-width:700px;margin:0 auto 36px;line-height:1.9;">In 1902, a young seeker climbed <span class="gloss">Arunachala<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Arunachala">+</span><span class="gloss-pop">The sacred hill in Tiruvannamalai, South India, where Ramana Maharshi lived from age sixteen until his death in 1950 &mdash; revered in the tradition as Shiva himself in the form of a mountain.</span></span> to ask <span class="gloss">Ramana Maharshi<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Ramana Maharshi">+</span><span class="gloss-pop">1879&ndash;1950. A South Indian sage who taught almost entirely through silence and through one recurring instruction &mdash; trace the &ldquo;I&rdquo;-thought back to its source. His recorded answers to a disciple's questions were later published as <em>Nan Y&#257;r?</em> (&ldquo;Who am I?&rdquo;).</span></span> fourteen questions about the nature of the mind. The answers, later published as <em>Nan Y&#257;r?</em>, don't add a new philosophy to what's already on this site &mdash; they give the Jnana path above an actual set of hands and feet.</p>
 
   <div style="text-align:center;margin:0 0 28px;">
@@ -8722,7 +8749,7 @@ a.src-tag:hover{opacity:.75;}
      including, eventually, the procedure. New author, new voice, same door. -->
 <section class="section" id="ashtavakra-gita" style="scroll-margin-top:56px;">
   <span class="label">The Uncompromising Text</span>
-  <h2 style="font-size:clamp(22px,3.5vw,32px);font-weight:300;color:var(--white);max-width:720px;margin:0 auto 20px;line-height:1.5;">You are not your body. Even the ugliest form is filled with radiance.</h2>
+  <h2 class="sec-title" style="font-size:clamp(22px,3.5vw,32px);font-weight:300;color:var(--white);max-width:720px;margin:0 auto 20px;line-height:1.5;">You are not your body. Even the ugliest form is filled with radiance.</h2>
   <p style="font-size:clamp(15px,2vw,18px);color:var(--grey);max-width:700px;margin:0 auto 24px;line-height:1.9;">Somewhere between the 8th and 14th centuries, an anonymous author took Shankaracharya's non-dualism and stripped it of every remaining trace of doctrine, deity, and gradual path. The result, the <span class="gloss">Ashtavakra Gita<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Ashtavakra Gita">+</span><span class="gloss-pop">A dialogue between the sage Ashtavakra and King Janaka, of uncertain date (roughly 8th&ndash;14th century C.E.), considered one of the most radical statements of Advaita &mdash; it offers no ritual, no deity, and no gradual path, only direct pointing.</span></span>, doesn't argue for non-dualism the way the Brahma-Sutra-Bhasya does above. It simply talks as though the reader is already free, and waits to see what that does.</p>
 
   <div style="text-align:center;margin:0 0 28px;">
@@ -8994,7 +9021,7 @@ a.src-tag:hover{opacity:.75;}
      the Integration Engine (East/West) by first showing East isn't even one thing. -->
 <section class="section" id="two-geographies" style="scroll-margin-top:56px;">
   <span class="label">Two Geographies of Liberation</span>
-  <h2 style="font-size:clamp(22px,3.5vw,32px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 20px;line-height:1.5;">One says home is a place you have never been. The other says you are already standing in it.</h2>
+  <h2 class="sec-title" style="font-size:clamp(22px,3.5vw,32px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 20px;line-height:1.5;">One says home is a place you have never been. The other says you are already standing in it.</h2>
   <p style="font-size:clamp(15px,2vw,18px);color:var(--grey);max-width:680px;margin:0 auto 36px;line-height:1.9;">Vedic cosmology and Zen mindfulness both begin by naming the same ache &mdash; birth, aging, and death as friction no one asked for. They part ways completely on where the exit is.</p>
 
   <div style="text-align:center;margin:0 0 28px;">
@@ -9237,8 +9264,8 @@ a.src-tag:hover{opacity:.75;}
 <!-- SOURCES / COSMOLOGICAL FOUNDATION -->
 <section id="sources" class="cosmo-block" style="scroll-margin-top:80px;">
   <div class="section-kicker">Sources</div>
-  <h2>The Foundation</h2>
-  <p>The universe doesn&rsquo;t contain Consciousness.</p>
+  <h2 class="sec-title">The Foundation</h2>
+  <p class="sec-sub">The universe doesn&rsquo;t contain Consciousness.</p>
   <p>Consciousness contains the universe.</p>
   <p class="plain">*SELF is the practice of knowing that from the inside.</p>
   <div class="src-key" style="margin-top:24px;">
@@ -9408,8 +9435,8 @@ a.src-tag:hover{opacity:.75;}
 
 <section class="section" id="theater-of-self" style="scroll-margin-top:56px;">
   <span class="label">The Theater of the Self</span>
-  <p class="phil-line bright" style="margin-bottom:8px;">Most days, you feel like a small actor on a very large stage.</p>
-  <p class="phil-line dim" style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;"><em><span class="gloss">Nartaka atma. Rango&rsquo;ntaratma.<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Nartaka atma, Rango'ntaratma">+</span><span class="gloss-pop">A Shiva Sutra: the Self is the dancer, the inner Self is the stage &mdash; reversing the usual sense of scale. The world doesn't contain you; you contain the stage it plays out on.</span></span></em> The Self is the dancer. The inner Self is the stage.</p>
+  <p class="phil-line bright sec-title" style="margin-bottom:8px;">Most days, you feel like a small actor on a very large stage.</p>
+  <p class="phil-line dim sec-sub" style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;"><em><span class="gloss">Nartaka atma. Rango&rsquo;ntaratma.<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Nartaka atma, Rango'ntaratma">+</span><span class="gloss-pop">A Shiva Sutra: the Self is the dancer, the inner Self is the stage &mdash; reversing the usual sense of scale. The world doesn't contain you; you contain the stage it plays out on.</span></span></em> The Self is the dancer. The inner Self is the stage.</p>
 
   <div style="max-width:820px;margin:0 auto;text-align:left;">
     <div class="sl-stage" style="border-left:2px solid var(--gold);">
@@ -9484,8 +9511,8 @@ a.src-tag:hover{opacity:.75;}
 <!-- THE DIMENSION BENEATH — John Dunne -->
 <section class="section-wide" id="dimension" style="scroll-margin-top:56px;">
   <span class="label">The Dimension Beneath</span>
-  <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:720px;margin:0 auto 16px;line-height:1.5;">Matter is not stuff. It is a dimension &mdash; and dimensions can hold spirit just fine.</h2>
-  <p style="font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:580px;margin:0 auto 40px;font-style:italic;line-height:1.85;">Neuroscience was never the enemy of the soul. It only ever described the stage. It was never in a position to describe the play.</p>
+  <h2 class="sec-title" style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:720px;margin:0 auto 16px;line-height:1.5;">Matter is not stuff. It is a dimension &mdash; and dimensions can hold spirit just fine.</h2>
+  <p class="sec-sub" style="font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:580px;margin:0 auto 40px;font-style:italic;line-height:1.85;">Neuroscience was never the enemy of the soul. It only ever described the stage. It was never in a position to describe the play.</p>
   <p style="font-family:var(--serif);font-size:clamp(16px,2.1vw,19px);color:var(--mid);line-height:1.9;max-width:680px;margin:0 auto 36px;text-align:center;">Matter need not be the opposite of spirit. It can be the dimension spirit appears through.</p>
 
   <div style="text-align:center;margin-bottom:16px;">
@@ -9600,7 +9627,7 @@ a.src-tag:hover{opacity:.75;}
 <!-- CONSCIOUSNESS VS AWARENESS -->
 <section class="section-wide" id="consciousness" style="scroll-margin-top:56px;">
   <span class="label">Before the Ego, the Field</span>
-  <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:720px;margin:0 auto 16px;line-height:1.5;">Consciousness is the operating system. Awareness is the moment it notices itself running.</h2>
+  <h2 class="sec-title" style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:720px;margin:0 auto 16px;line-height:1.5;">Consciousness is the operating system. Awareness is the moment it notices itself running.</h2>
   <p style="font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:620px;margin:0 auto 40px;font-style:italic;line-height:1.85;">Most people use these two words as if they were the same thing. They are not &mdash; and the gap between them is where the entire Default OS either keeps running unseen, or finally gets caught in the act.</p>
 
   <p style="font-family:var(--serif);font-size:clamp(16px,2.1vw,19px);color:var(--mid);line-height:1.9;max-width:820px;margin:0 auto 36px;text-align:left;">Consciousness is the whole field &mdash; every thought, sensation, memory, and impulse that ever arises, whether you notice it or not. It is always on. It is the screen nothing can appear outside of. Awareness is narrower and sharper: it is the flashlight, the instant you catch a specific thought, feeling, or reaction as it happens instead of being run by it. <span style="color:var(--gold);font-style:italic;">You can be fully conscious and still spend an entire day on autopilot.</span> Awareness is what interrupts the loop.</p>
@@ -10911,7 +10938,7 @@ a.src-tag:hover{opacity:.75;}
 <!-- ANTAHKARAN — THE FOURFOLD MIND -->
 <section class="section-wide" id="antahkaran" style="scroll-margin-top:56px;">
   <span class="label">The Machinery Beneath The Ego</span>
-  <p class="phil-line bright">&ldquo;Mind&rdquo; is a catch-all word for four different jobs.</p>
+  <p class="phil-line bright sec-title">&ldquo;Mind&rdquo; is a catch-all word for four different jobs.</p>
 
   <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.95;max-width:820px;margin:0 auto 32px;text-align:center;">The glossary already has each piece on its own — Manas, Buddhi, Chitta, Ahamkara keep surfacing separately throughout this page. Here they are as one instrument, the <span class="gloss">Antahkarana<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Antahkarana">+</span><span class="gloss-pop">Literally &ldquo;the inner instrument&rdquo; &mdash; the collective term in Vedanta for mind, intellect, memory, and ego-sense together, running as one apparatus powered by the soul's consciousness.</span></span> &mdash; because the ego section right after this one only makes sense once you can see all four parts working at once.</p>
 
@@ -10988,8 +11015,8 @@ a.src-tag:hover{opacity:.75;}
 <section class="ego-arch-section" id="ego">
   <span class="label">The Architecture of Ego</span>
   <a href="#master-matrix" class="layer-marker" onclick="expandMatrixRow(6);return false;">Layer 6 of 7 &middot; See in the Master Matrix &#8599;</a>
-  <h2>Suffering is not random.<br>It is a highly structured feedback loop.</h2>
-  <p class="sub">The ego creates an arbitrary boundary between &ldquo;me&rdquo; and the rest of the world &mdash; and suffering is its maintenance system.</p>
+  <h2 class="sec-title">Suffering is not random.<br>It is a highly structured feedback loop.</h2>
+  <p class="sub sec-sub">The ego creates an arbitrary boundary between &ldquo;me&rdquo; and the rest of the world &mdash; and suffering is its maintenance system.</p>
 
   <!-- System Specifications — Default OS vs Manual Override, at-a-glance orientation table -->
   <p style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.75;text-align:center;margin-bottom:14px;">System Specifications &mdash; The Two Drivers</p>
@@ -11671,8 +11698,8 @@ a.src-tag:hover{opacity:.75;}
 
 <section class="section" id="mansion-metaphor" style="scroll-margin-top:56px;">
   <span class="label">The Mansion Metaphor</span>
-  <p class="phil-line bright" style="margin-bottom:8px;">You are not the room you're standing in.</p>
-  <p class="phil-line dim" style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;">Awareness is light. Wherever it lands, that room lights up &mdash; and you live there until you move.</p>
+  <p class="phil-line bright sec-title" style="margin-bottom:8px;">You are not the room you're standing in.</p>
+  <p class="phil-line dim sec-sub" style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;">Awareness is light. Wherever it lands, that room lights up &mdash; and you live there until you move.</p>
 
   <div style="max-width:820px;margin:0 auto;text-align:left;">
     <div class="sl-stage" style="border-left:2px solid var(--gold);">
@@ -11698,8 +11725,8 @@ a.src-tag:hover{opacity:.75;}
 
 <section class="section" id="attention-training" style="scroll-margin-top:56px;">
   <span class="label">States of Awareness</span>
-  <p class="phil-line bright" style="margin-bottom:8px;">Untrained awareness bounds after every pigeon.</p>
-  <p class="phil-line dim" style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;">The goal was never to suppress the energy. It was to train it to sit until a command is given.</p>
+  <p class="phil-line bright sec-title" style="margin-bottom:8px;">Untrained awareness bounds after every pigeon.</p>
+  <p class="phil-line dim sec-sub" style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;">The goal was never to suppress the energy. It was to train it to sit until a command is given.</p>
 
   <div style="max-width:820px;margin:0 auto;text-align:left;">
     <div class="self-table-wrap">
@@ -11727,7 +11754,7 @@ a.src-tag:hover{opacity:.75;}
 <!-- LAW OF SUBLIMATION -->
 <section class="section-wide" id="sublimation" style="scroll-margin-top:56px;">
   <span class="label">What To Do With The Impulse Itself</span>
-  <p class="phil-line bright">You can't destroy a lower impulse. You can only redirect it somewhere it stops causing damage.</p>
+  <p class="phil-line bright sec-title">You can't destroy a lower impulse. You can only redirect it somewhere it stops causing damage.</p>
 
   <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.95;max-width:900px;margin:0 auto 32px;text-align:left;">Willpower is the instinct to fight the impulse head-on. It's also finite &mdash; a muscle that fatigues with every use, which is why white-knuckling a craving works right up until the moment it doesn't. There's a second option, and it isn't willpower at all.</p>
 
@@ -11763,7 +11790,7 @@ a.src-tag:hover{opacity:.75;}
 <!-- THE HIGHER CLIMB — VIRTUE'S TRAP -->
 <section class="section-wide" id="virtue-trap" style="scroll-margin-top:56px;">
   <span class="label">The Higher Climb &middot; The Steeper Fall</span>
-  <p class="phil-line bright">The deadliest traps aren&rsquo;t at the bottom of the path. They&rsquo;re built out of the virtues already won.</p>
+  <p class="phil-line bright sec-title">The deadliest traps aren&rsquo;t at the bottom of the path. They&rsquo;re built out of the virtues already won.</p>
 
   <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.95;max-width:900px;margin:0 auto 32px;text-align:left;">Sublimation is about what to do with a lower impulse. This is the problem further up, once practice is working: what is at risk is no longer a craving but an achievement. The Gita&rsquo;s eight-stage descent, mapped in the <a href="#ego" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">Architecture of Suffering</a>, starts from an object of desire. This one starts from a virtue &mdash; and arrives at the same place.</p>
 
@@ -11806,7 +11833,7 @@ a.src-tag:hover{opacity:.75;}
 <!-- THE FIVE AGGREGATES (SKANDHAS / NAMA RUPA) -->
 <section class="section-wide" id="five-aggregates" style="scroll-margin-top:56px;">
   <span class="label">Buddhist Analytical Psychology &middot; Nama Rupa</span>
-  <h2 style="margin:0 auto 20px;">You Are Not a Thing. You Are Five Things, Happening.</h2>
+  <h2 class="sec-title" style="margin:0 auto 20px;">You Are Not a Thing. You Are Five Things, Happening.</h2>
   <p class="sub" style="font-size:clamp(15px,2vw,19px);color:var(--grey);line-height:1.85;text-align:left;max-width:none;margin:0;">Early Buddhism took a different route to the same discovery as the Pain-Body above and the Enneagram below &mdash; not by naming the mask, but by taking the whole self apart into its moving parts. The formal name for this model is <span class="gloss">Nama Rupa<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Nama Rupa">+</span><span class="gloss-pop">Pāli/Sanskrit for &ldquo;name and form&rdquo; &mdash; the mind-and-body compound, shorthand for a person considered as five interacting processes rather than one fixed thing.</span></span> &mdash; five aggregates, temporarily bundled together, mistaken for one solid person.</p>
 
   <div style="text-align:center;margin:36px 0 28px;">
@@ -11898,8 +11925,8 @@ a.src-tag:hover{opacity:.75;}
 <!-- ENNEAGRAM -->
 <section class="enn-section" id="enneagram" style="scroll-margin-top:56px;">
   <span class="label">The Enneagram of Character Fixation</span>
-  <h2>The Enneagram is Not Who You Are.</h2>
-  <p class="sub">It is a diagnostic map of who you are NOT. It reveals the 9 specific masks the ego uses to manage the universal engine of desire, fear, and anger.</p>
+  <h2 class="sec-title">The Enneagram is Not Who You Are.</h2>
+  <p class="sub sec-sub">It is a diagnostic map of who you are NOT. It reveals the 9 specific masks the ego uses to manage the universal engine of desire, fear, and anger.</p>
 
   <div class="enn-intro-box">
     <p>Using the Enneagram to justify behaviour (&ldquo;I&rsquo;m a Six, that&rsquo;s why I act this way&rdquo;) is going deeper to sleep. The correct use: uncover the subconscious identification to trigger a jailbreak from the fixation.</p>
@@ -12182,8 +12209,8 @@ a.src-tag:hover{opacity:.75;}
 <!-- THE DESCENT — items 1-5 collapsible, antidote standalone -->
 <section class="descent-section" id="descent-into-psyche" style="scroll-margin-top:56px;">
   <span class="label">The Architecture of Awakening</span>
-  <h2>The Descent into the Psyche</h2>
-  <p class="sub">To break the fixation, you must neither act out the emotion nor suppress it. You must dive through it without a story. True joy is transcendent of the Enneagram &mdash; it lies at the bottom of the funnel, not the surface.</p>
+  <h2 class="sec-title">The Descent into the Psyche</h2>
+  <p class="sub sec-sub">To break the fixation, you must neither act out the emotion nor suppress it. You must dive through it without a story. True joy is transcendent of the Enneagram &mdash; it lies at the bottom of the funnel, not the surface.</p>
 
   <div style="text-align:center;margin-bottom:12px;">
     <button class="collapse-toggle-btn" id="descentBtn" onclick="sectionCollapse('descent-content',this)">Expand &#9660;</button>
@@ -12272,8 +12299,8 @@ a.src-tag:hover{opacity:.75;}
 <!-- ROSETTA STONE — table collapsible, closing text standalone -->
 <section class="rasa-section" id="rosetta-stone" style="scroll-margin-top:56px;">
   <span class="label">The Rosetta Stone of the Ego</span>
-  <h2>The Master Synthesis: Ego to Essence</h2>
-  <p class="sub">Two ancient traditions. One universal trance induction. The Enneagram maps the egoic structure. The Vedic Rasas map the emotional weather it generates. Together they reveal both the prison and the key.</p>
+  <h2 class="sec-title">The Master Synthesis: Ego to Essence</h2>
+  <p class="sub sec-sub">Two ancient traditions. One universal trance induction. The Enneagram maps the egoic structure. The Vedic Rasas map the emotional weather it generates. Together they reveal both the prison and the key.</p>
 
   <!-- ROSETTA STONE MAP — always-visible navigator, reusing the Enneagram
        map's exact node geometry (same hexad + triangle, same coordinates)
@@ -13623,7 +13650,7 @@ a.src-tag:hover{opacity:.75;}
 <!-- IDENTITY LAYER -->
   <section class="identity-section collapsed" id="subtilization" style="scroll-margin-top:56px;">
   <span class="label">The Path of Subtilization</span>
-  <h2>Seven stages. One journey. From body to SELF.</h2>
+  <h2 class="sec-title">Seven stages. One journey. From body to SELF.</h2>
   <p class="sub">Every tradition maps the same upward arc &mdash; the 7 <span class="gloss">Chakras<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Chakra">+</span><span class="gloss-pop">Sanskrit for &ldquo;wheel&rdquo; &mdash; a psychic energy center running along the spine. Here, each one names a different operating altitude of consciousness rather than a place in the body to unblock.</span></span>, the 7 Stages of Spiritual Progress, and the 7 Layers of Existence all describe one singular journey.</p>
   <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;max-width:820px;margin:0 auto 36px;text-align:left;">You've already seen these seven layers as a map in <a href="#spectrum" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">the Ascent of Self</a>. This is the same ladder walked as one continuous story &mdash; the felt experience of climbing, including the three forks where the path splits. It reads like seven stages of becoming more. It isn't: every tradition that has walked this road arrives at the same stranger claim &mdash; there is nothing to add. The climb is the falling away of whatever was blocking what was already whole. <em style="color:var(--gold);">What you'll be at the peak, you already are &mdash; underneath the wall you're about to spend seven stages taking down.</em></p>
   <div style="max-width:820px;margin:0 auto 36px;display:grid;grid-template-columns:1fr 1fr;gap:2px;" class="evo-grid">
@@ -13687,7 +13714,7 @@ a.src-tag:hover{opacity:.75;}
 <!-- FOUR YOGAS -->
 <section class="section-wide" id="four-yogas" style="scroll-margin-top:56px;">
   <span class="label">The Four Methodologies of Union</span>
-  <p class="phil-line bright">Yog is the destination. There isn't only one road there.</p>
+  <p class="phil-line bright sec-title">Yog is the destination. There isn't only one road there.</p>
 
   <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.95;max-width:820px;margin:0 auto 32px;text-align:center;"><span class="gloss">Yog<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Yog">+</span><span class="gloss-pop">From the Sanskrit root Yuj, &ldquo;to unite&rdquo; &mdash; the state of union between the individual self and the Supreme, and by extension, any methodology aimed at reaching it.</span></span> means union, not a posture practice. Four distinct methodologies claim to get you there, each built for a different temperament. None is fake. They simply don't carry the same risk, or ask for the same thing.</p>
 
@@ -13779,7 +13806,7 @@ a.src-tag:hover{opacity:.75;}
 <!-- YAJNA ECOSYSTEM -->
 <section class="section-wide" id="yajna-ecosystem" style="scroll-margin-top:56px;">
   <span class="label">Karm Yog In Practice</span>
-  <p class="phil-line bright"><span class="gloss">Yajña<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Yajna">+</span><span class="gloss-pop">Sacrifice, or selfless offering &mdash; any action performed as service to the whole rather than for private gain, of which the Vedic fire ritual is only the most literal example.</span></span>: creation runs on reciprocity, not on taking.</p>
+  <p class="phil-line bright sec-title"><span class="gloss">Yajña<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Yajna">+</span><span class="gloss-pop">Sacrifice, or selfless offering &mdash; any action performed as service to the whole rather than for private gain, of which the Vedic fire ritual is only the most literal example.</span></span>: creation runs on reciprocity, not on taking.</p>
 
   <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.95;max-width:820px;margin:0 auto 32px;text-align:center;">A hand receives blood from the body, and in return it works for the body &mdash; it doesn't get to keep the blood and stop moving. The Gita describes the entire cosmos running on that same closed loop, and names the soul's refusal to hold up its end as the actual root of bondage.</p>
 
@@ -13997,8 +14024,8 @@ a.src-tag:hover{opacity:.75;}
 <!-- STEADY WISDOM — Bhagavad Gita 2.54–72 (Sthita-prajna) -->
 <section class="section" id="sthita-prajna" style="scroll-margin-top:56px;">
   <span class="label">Steady Wisdom</span>
-  <p class="phil-line bright" style="margin-bottom:8px;">The Gita&rsquo;s answer to a hard world is not a better world. It is a steadier person.</p>
-  <p class="phil-line dim" style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;">Arjuna asks what such a person looks like. Krishna answers with marks, not rules.</p>
+  <p class="phil-line bright sec-title" style="margin-bottom:8px;">The Gita&rsquo;s answer to a hard world is not a better world. It is a steadier person.</p>
+  <p class="phil-line dim sec-sub" style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;">Arjuna asks what such a person looks like. Krishna answers with marks, not rules.</p>
 
   <div style="text-align:center;margin:0 0 28px;">
     <button class="collapse-toggle-btn" onclick="sectionCollapse('sthita-prajna-group',this)">Expand &#9660;</button>
@@ -14054,8 +14081,8 @@ a.src-tag:hover{opacity:.75;}
 <!-- THE LAYERS OF MIND — Peter Ralston, via the Gemini Notebook deck "The Genius of Being". Secondary-source summary; enlightenment/"absolute truth" claims and the survival-amoeba framing deliberately left out. -->
 <section class="section" id="layers-of-mind" style="scroll-margin-top:56px;">
   <span class="label">Layers of Mind</span>
-  <p class="phil-line bright" style="margin-bottom:8px;">Most of what runs your day is not truth, not fact, and not even a belief you chose.</p>
-  <p class="phil-line dim" style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;">Three cards on sorting what you know, testing it, and taking it in.</p>
+  <p class="phil-line bright sec-title" style="margin-bottom:8px;">Most of what runs your day is not truth, not fact, and not even a belief you chose.</p>
+  <p class="phil-line dim sec-sub" style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;">Three cards on sorting what you know, testing it, and taking it in.</p>
   <div style="text-align:center;margin:0 0 28px;">
     <button class="collapse-toggle-btn" onclick="sectionCollapse('layers-of-mind-group',this)">Expand &#9660;</button>
     <p class="section-collapse-label" style="margin-top:8px;">Tap to expand &mdash; three cards, from the four layers to the belief experiment to the three stages</p>
@@ -14100,8 +14127,8 @@ a.src-tag:hover{opacity:.75;}
 <!-- THE MACHINERY OF STILLNESS — Patanjali / Vivekananda -->
 <section class="section-wide" id="patanjali" style="scroll-margin-top:56px;">
   <span class="label">The Machinery of Stillness</span>
-  <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;">Patanjali never asked for faith. He asked you to run the experiment.</h2>
-  <p style="font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:820px;margin:0 auto 40px;font-style:italic;line-height:1.85;text-align:left">Twenty-three centuries before clinical psychology had a name for any of this, the Yoga Sutras already had the mechanics written down.</p>
+  <h2 class="sec-title" style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;">Patanjali never asked for faith. He asked you to run the experiment.</h2>
+  <p class="sec-sub" style="font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:820px;margin:0 auto 40px;font-style:italic;line-height:1.85;text-align:left">Twenty-three centuries before clinical psychology had a name for any of this, the Yoga Sutras already had the mechanics written down.</p>
   <p style="font-family:var(--serif);font-size:clamp(16px,2.1vw,19px);color:var(--mid);line-height:1.9;max-width:820px;margin:0 auto 40px;text-align:left;">Still water shows you the bottom of a lake. Agitated water shows you only your own reflection. <em style="color:var(--gold);"><span class="gloss">Chitta<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Chitta">+</span><span class="gloss-pop">The mind-stuff, or memory-store &mdash; the layer that holds impressions, conditioning, and habitual patterns built up over time.</span></span></em> &mdash; the mind-stuff &mdash; is the lake. <em style="color:var(--gold);"><span class="gloss">Vrittis<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Vritti">+</span><span class="gloss-pop">Fluctuations or waves of the mind-stuff (Chitta), stirred up by the senses &mdash; thought-forms, memories, and mental chatter rippling across an otherwise still lake of awareness.</span></span></em> are the waves the senses keep throwing across its surface. <em style="color:var(--gold);"><span class="gloss">Purusha<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Purusha">+</span><span class="gloss-pop">Pure consciousness in Samkhya and Yoga philosophy &mdash; the unmoving witness that never itself becomes an object.</span></span></em>, the true Self, was always sitting on the lakebed. It was never lost. The water just never went still enough to see it.</p>
 
   <div id="stillness-waves" style="max-width:820px;margin:-16px auto 40px;text-align:left;scroll-margin-top:72px;">
@@ -15258,7 +15285,7 @@ a.src-tag:hover{opacity:.75;}
      breathing, and the nasal cycle's parallel to Ida/Pingala. -->
 <section class="section-wide" id="pranayama" style="scroll-margin-top:56px;">
   <span class="label">The Fourth Limb &middot; Layer 2: Breath</span>
-  <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;">Every other system in the body runs on autopilot. This is the one switch you can reach on purpose.</h2>
+  <h2 class="sec-title" style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;">Every other system in the body runs on autopilot. This is the one switch you can reach on purpose.</h2>
   <p style="font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:820px;margin:0 auto 40px;font-style:italic;line-height:1.85;">An average life runs on roughly 670 million breaths, almost none of them noticed. Pranayama is the discipline of noticing on purpose &mdash; and using that lever to reach everything the breath is wired to.</p>
   <p style="font-family:var(--serif);font-size:clamp(16px,2.1vw,19px);color:var(--mid);line-height:1.9;max-width:820px;margin:0 auto 40px;text-align:left;">The Annamaya body above runs on food. One layer in, the <em style="color:var(--gold);"><span class="gloss">Pranamaya<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Pranamaya">+</span><span class="gloss-pop">The &ldquo;breath/vital-energy sheath&rdquo; &mdash; one layer in from the physical body: the life-force and breath that animates it.</span></span></em> sheath runs on breath &mdash; the only major bodily rhythm that is both entirely automatic and entirely available to conscious control at the same moment. <em style="color:var(--gold);"><span class="gloss">Pranayama<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Pranayama">+</span><span class="gloss-pop">Control of the breath &mdash; the fourth limb of Patanjali's Ashtanga Yoga. Not breathing exercises for their own sake, but the deliberate use of breath to steady the mind that rides on it. Read as prana + ayama, it can also mean extension: lengthening the breath rather than commanding it.</span></span></em> is what the tradition calls the deliberate use of that lever &mdash; and, four thousand years on, respiratory physiology has quietly confirmed most of what it always claimed.</p>
 
@@ -15780,8 +15807,8 @@ a.src-tag:hover{opacity:.75;}
 
 <section class="section" id="spectrum-of-energy" style="scroll-margin-top:56px;">
   <span class="label">The Spectrum of Energy</span>
-  <p class="phil-line bright" style="margin-bottom:8px;">Same energy, two directions.</p>
-  <p class="phil-line dim" style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;"><em><span class="gloss">Shakti chakra sandhane vishvasamharah<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Shakti chakra sandhane vishvasamharah">+</span><span class="gloss-pop">A Shiva Sutra: focusing on the energy centers dissolves the illusory world &mdash; sustained attention on the body's energy centers is what loosens Maya's grip.</span></span></em> &mdash; attend to where the energy sits, and the story on top of it loses its grip.</p>
+  <p class="phil-line bright sec-title" style="margin-bottom:8px;">Same energy, two directions.</p>
+  <p class="phil-line dim sec-sub" style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;"><em><span class="gloss">Shakti chakra sandhane vishvasamharah<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Shakti chakra sandhane vishvasamharah">+</span><span class="gloss-pop">A Shiva Sutra: focusing on the energy centers dissolves the illusory world &mdash; sustained attention on the body's energy centers is what loosens Maya's grip.</span></span></em> &mdash; attend to where the energy sits, and the story on top of it loses its grip.</p>
 
   <div style="max-width:820px;margin:0 auto;text-align:left;">
     <div class="self-table-wrap">
@@ -15812,8 +15839,8 @@ a.src-tag:hover{opacity:.75;}
 <!-- THE GREAT FOREST OF BEING — Brihadaranyaka Upanishad -->
 <section class="section-wide" id="great-forest" style="scroll-margin-top:56px;">
   <span class="label">The Great Forest of Being</span>
-  <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:720px;margin:0 auto 16px;line-height:1.5;">The oldest Upanishad does not read like a lecture. It reads like something you were meant to sit near.</h2>
-  <p style="font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:720px;margin:0 auto 40px;font-style:italic;line-height:1.85;">Brihadaranyaka means, literally, the great forest. Before Patanjali gave the mind a discipline, this text gave the cosmos a body &mdash; and gave that body back to you.</p>
+  <h2 class="sec-title" style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:720px;margin:0 auto 16px;line-height:1.5;">The oldest Upanishad does not read like a lecture. It reads like something you were meant to sit near.</h2>
+  <p class="sec-sub" style="font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:720px;margin:0 auto 40px;font-style:italic;line-height:1.85;">Brihadaranyaka means, literally, the great forest. Before Patanjali gave the mind a discipline, this text gave the cosmos a body &mdash; and gave that body back to you.</p>
   <p style="font-family:var(--serif);font-size:clamp(16px,2.1vw,19px);color:var(--mid);line-height:1.9;max-width:680px;margin:0 auto 36px;text-align:center;">Its method is not academic. <span class="gloss">Upanishad<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Upanishad">+</span><span class="gloss-pop">Literally &ldquo;sitting near&rdquo; in holy reverence &mdash; not the transfer of information, but a transmission of being from teacher to student.</span></span> literally means &ldquo;sitting near&rdquo; in holy reverence &mdash; not the transfer of data, but a transmission of being. The goal was never to know about Reality. It was to become indistinguishable from it.</p>
 
   <div style="text-align:center;margin-bottom:16px;">
@@ -15945,8 +15972,8 @@ a.src-tag:hover{opacity:.75;}
 <!-- ANATOMY OF LOVE -->
 <section class="section-wide" id="anatomy-of-love" style="scroll-margin-top:56px;">
   <span class="label">The Anatomy of Love</span>
-  <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;">Most love is a flashlight. It needs a wall.</h2>
-  <p style="font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:560px;margin:0 auto 40px;font-style:italic;line-height:1.85;">Point it at a person, a place, a version of yourself. Take the wall away and the beam has nothing to show.</p>
+  <h2 class="sec-title" style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;">Most love is a flashlight. It needs a wall.</h2>
+  <p class="sec-sub" style="font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:560px;margin:0 auto 40px;font-style:italic;line-height:1.85;">Point it at a person, a place, a version of yourself. Take the wall away and the beam has nothing to show.</p>
 
   <div style="text-align:center;margin:0 0 28px;">
     <button class="collapse-toggle-btn" onclick="sectionCollapse('anatomy-love-full-content',this)">Expand &#9660;</button>
@@ -16097,7 +16124,7 @@ a.src-tag:hover{opacity:.75;}
 <!-- COMPASSIONATE DETACHMENT -->
 <section class="section-wide" id="compassionate-detachment" style="scroll-margin-top:56px;">
   <span class="label">Forgiveness Without Becoming A Doormat</span>
-  <p class="phil-line bright">Two rules, held at the same time, doing two different jobs.</p>
+  <p class="phil-line bright sec-title">Two rules, held at the same time, doing two different jobs.</p>
 
   <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.95;max-width:820px;margin:0 auto 32px;text-align:center;">Detachment gets misread as coldness, and forgiveness gets misread as letting people walk over you. Neither reading survives contact with how the two are actually meant to run together &mdash; one governs what happens inside, the other governs what's allowed to happen from the outside in.</p>
 
@@ -16217,8 +16244,8 @@ a.src-tag:hover{opacity:.75;}
 <!-- QUANTITY VS QUALITY -->
 <section class="section-wide" id="quantity-or-quality" style="scroll-margin-top:56px;">
   <span class="label">Two Lenses on Existence</span>
-  <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;">When the quality of life goes missing, we run after quantity to replace it.</h2>
-  <p style="font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:700px;margin:0 auto 40px;font-style:italic;line-height:1.85;"><a href="#four-defects-card" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">The Four Defects of Perception</a>, above, describe how the mind distorts what it sees. This is what it&rsquo;s chasing instead &mdash; and what it misses while it chases.</p>
+  <h2 class="sec-title" style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;">When the quality of life goes missing, we run after quantity to replace it.</h2>
+  <p class="sec-sub" style="font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:700px;margin:0 auto 40px;font-style:italic;line-height:1.85;"><a href="#four-defects-card" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">The Four Defects of Perception</a>, above, describe how the mind distorts what it sees. This is what it&rsquo;s chasing instead &mdash; and what it misses while it chases.</p>
 
   <div class="self-table-wrap" style="max-width:680px;margin:0 auto 40px;">
     <table class="self-table compact qty-table" style="width:100%;">
@@ -16242,8 +16269,8 @@ a.src-tag:hover{opacity:.75;}
 <!-- COSMIC EXCHANGE -->
 <section class="section" id="cosmic-exchange">
   <span class="label">The Cosmic Exchange</span>
-  <p class="phil-line">A different Upanishad names the same two principles Rayi and Prana &mdash; matter and life, food and the energy that eats it.</p>
-  <p class="phil-line dim">Sun and moon. Bright half and dark half. The eaten and the eater. One exchange, running continuously &mdash; no true birth, no true death, only the exchange changing hands.</p>
+  <p class="phil-line sec-title">A different Upanishad names the same two principles Rayi and Prana &mdash; matter and life, food and the energy that eats it.</p>
+  <p class="phil-line dim sec-sub">Sun and moon. Bright half and dark half. The eaten and the eater. One exchange, running continuously &mdash; no true birth, no true death, only the exchange changing hands.</p>
   <div class="pull-quote" style="margin:40px auto 0;border:1px solid rgba(var(--accent-gold-rgb),0.45);border-left:3px solid var(--gold);padding:36px 40px;max-width:640px;">
     <p>The whole universe is the effect of the interaction of food and life, of matter and energy. Life is energy, and energy eats food.</p>
     <cite>Prasna Upanishad</cite>
@@ -16262,8 +16289,8 @@ a.src-tag:hover{opacity:.75;}
 <!-- COMMON FOOD LEAD-IN -->
 <section class="section" id="common-food">
   <span class="label">The Common Food</span>
-  <p class="phil-line">The Isha Upanishad opens with a claim, not a prayer: nothing here is truly yours.</p>
-  <p class="phil-line dim">Food, energy, the ground under you &mdash; held in trust, not owned. Hoarding what was never yours to keep has an old name: appropriation.</p>
+  <p class="phil-line sec-title">The Isha Upanishad opens with a claim, not a prayer: nothing here is truly yours.</p>
+  <p class="phil-line dim sec-sub">Food, energy, the ground under you &mdash; held in trust, not owned. Hoarding what was never yours to keep has an old name: appropriation.</p>
   <p class="phil-line dim" style="font-style:italic;">Ishavasyam idam sarvam &hellip; tena tyaktena bhunjitha, ma gridhah kasya svid dhanam &mdash; &ldquo;All this is the Lord&rsquo;s dwelling. Enjoy it through giving up; do not covet what belongs to no one.&rdquo; <span style="font-style:normal;">Isha Upanishad 1</span></p>
   <div style="text-align:center;margin:36px 0 8px;">
     <button class="collapse-toggle-btn" onclick="sectionCollapse('cf-full-content',this)">Expand &#9660;</button>
@@ -16399,8 +16426,8 @@ a.src-tag:hover{opacity:.75;}
 <!-- ATTENTION AS CURRENCY -->
 <section class="section" id="attention-currency" style="scroll-margin-top:56px;">
   <span class="label">The Attention Economy</span>
-  <p class="phil-line bright" style="margin-bottom:8px;">Before there is a ledger, there is a spend.</p>
-  <p class="phil-line dim" style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;">Attention is the currency the ledger below records. Most of it goes out the door before anyone checks the balance.</p>
+  <p class="phil-line bright sec-title" style="margin-bottom:8px;">Before there is a ledger, there is a spend.</p>
+  <p class="phil-line dim sec-sub" style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;">Attention is the currency the ledger below records. Most of it goes out the door before anyone checks the balance.</p>
 
   <div style="text-align:center;margin:0 0 28px;">
     <button class="collapse-toggle-btn" onclick="sectionCollapse('attention-group',this)">Expand &#9660;</button>
@@ -16475,8 +16502,8 @@ a.src-tag:hover{opacity:.75;}
      — see the fourth tag added to the Sources key. -->
 <section class="section" id="architecture-of-inspiration" style="scroll-margin-top:56px;">
   <span class="label">Relationship &amp; Attention</span>
-  <p class="phil-line bright" style="margin-bottom:8px;">Inspiration is not a trait. It is a system.</p>
-  <p class="phil-line dim" style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;text-align:left;">It cannot be forced onto another person. It radiates outward from a grounded center &mdash; the same direction the currency above gets spent &mdash; moving from an inner foundation, through visible execution, into whoever is standing close enough to feel the ripple.</p>
+  <p class="phil-line bright sec-title" style="margin-bottom:8px;">Inspiration is not a trait. It is a system.</p>
+  <p class="phil-line dim sec-sub" style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;text-align:left;">It cannot be forced onto another person. It radiates outward from a grounded center &mdash; the same direction the currency above gets spent &mdash; moving from an inner foundation, through visible execution, into whoever is standing close enough to feel the ripple.</p>
 
   <div style="max-width:720px;margin:0 auto 40px;padding:28px 24px;background:var(--bg-lift);border:1.5px solid rgba(var(--accent-gold-rgb),0.55);text-align:center;">
     <p style="font-family:var(--serif);font-size:clamp(16px,2.2vw,20px);color:var(--white);line-height:1.7;margin:0;">True Inspiration = <span style="color:var(--gold);">(Authenticity + Excellence)</span> &times; <span style="color:var(--gold);">Empathy</span></p>
@@ -16500,8 +16527,8 @@ a.src-tag:hover{opacity:.75;}
 
 <section class="section" id="mechanics-of-mantra" style="scroll-margin-top:56px;">
   <span class="label">The Mechanics of Mantra</span>
-  <p class="phil-line bright" style="margin-bottom:8px;">A mantra is a sound the mind repeats on purpose.</p>
-  <p class="phil-line dim" style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;">Where the loop comes from, how a chosen sound can replace it, and what the old traditions say a sound is made of.</p>
+  <p class="phil-line bright sec-title" style="margin-bottom:8px;">A mantra is a sound the mind repeats on purpose.</p>
+  <p class="phil-line dim sec-sub" style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;">Where the loop comes from, how a chosen sound can replace it, and what the old traditions say a sound is made of.</p>
 
   <div style="text-align:center;margin:36px 0 28px;">
     <button class="collapse-toggle-btn" onclick="sectionCollapse('mantra-group',this)">Expand &#9660;</button>
@@ -16599,8 +16626,8 @@ a.src-tag:hover{opacity:.75;}
 
 <section class="section" id="redirection" style="scroll-margin-top:56px;">
   <span class="label">The Anatomy of Redirection</span>
-  <p class="phil-line bright" style="margin-bottom:8px;">A couple argues on the subway. Your awareness is already halfway into their fight.</p>
-  <p class="phil-line dim" style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;">Four steps sit between the trigger and wherever you end up.</p>
+  <p class="phil-line bright sec-title" style="margin-bottom:8px;">A couple argues on the subway. Your awareness is already halfway into their fight.</p>
+  <p class="phil-line dim sec-sub" style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;">Four steps sit between the trigger and wherever you end up.</p>
 
   <div style="max-width:820px;margin:0 auto;text-align:left;">
     <div class="mobile-stack-cards" style="display:grid;grid-template-columns:repeat(2,1fr);gap:2px;">
@@ -16621,8 +16648,8 @@ a.src-tag:hover{opacity:.75;}
 
 <section class="section" id="law-of-practice" style="scroll-margin-top:56px;">
   <span class="label">The Law of Practice</span>
-  <p class="phil-line bright" style="margin-bottom:8px;">Whatever gets rehearsed is what you become good at.</p>
-  <p class="phil-line dim" style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;">No exceptions for attention. It follows the same law as every other skill.</p>
+  <p class="phil-line bright sec-title" style="margin-bottom:8px;">Whatever gets rehearsed is what you become good at.</p>
+  <p class="phil-line dim sec-sub" style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;">No exceptions for attention. It follows the same law as every other skill.</p>
 
   <div style="max-width:820px;margin:0 auto;text-align:left;">
     <div class="mobile-stack-cards" style="display:grid;grid-template-columns:repeat(2,1fr);gap:2px;">
@@ -16641,8 +16668,8 @@ a.src-tag:hover{opacity:.75;}
 <!-- THE SLEEPLESS KING -->
 <section class="section" id="sleepless-king" style="scroll-margin-top:56px;">
   <span class="label">Taittiriya Upanishad</span>
-  <p class="phil-line bright" style="margin-bottom:8px;">A king can own the whole earth and still not sleep.</p>
-  <p class="phil-line dim" style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;">Not from lacking anything. From everything he owns staying outside the one experiencing it.</p>
+  <p class="phil-line bright sec-title" style="margin-bottom:8px;">A king can own the whole earth and still not sleep.</p>
+  <p class="phil-line dim sec-sub" style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;">Not from lacking anything. From everything he owns staying outside the one experiencing it.</p>
 
   <div style="max-width:820px;margin:0 auto;text-align:left;">
     <div class="sl-stage" style="border-left:2px solid var(--gold);">
@@ -16679,8 +16706,8 @@ a.src-tag:hover{opacity:.75;}
 <!-- COSMIC LEDGER -->
   <section class="section" id="ledger">  
     <span class="label">The Cosmic Ledger</span>
-  <p class="phil-line">You buy Bitcoin. You hold it. You sell it.</p>
-  <p class="phil-line dim">The blockchain records the transaction and forgets you exist.</p>
+  <p class="phil-line sec-title">You buy Bitcoin. You hold it. You sell it.</p>
+  <p class="phil-line dim sec-sub">The blockchain records the transaction and forgets you exist.</p>
 </section>
 <div class="divider"></div>
 
@@ -16829,8 +16856,8 @@ a.src-tag:hover{opacity:.75;}
 <!-- RIPPLE: FROM SELF TO WORLD -->
 <section class="section" id="ripple-to-world" style="scroll-margin-top:56px;">
   <span class="label">The Ripple &middot; From Self to World</span>
-  <p class="phil-line">War is not a different kind of problem from the quarrel in your kitchen. It is the same ego, scaled up.</p>
-  <p class="phil-line dim">Two studies &mdash; one of how the world&rsquo;s peace machinery stalls, one of why ordinary disputes never truly heal &mdash; describe the same mechanism at two sizes. Seeing it at the large size makes it easier to catch at the small one.</p>
+  <p class="phil-line sec-title">War is not a different kind of problem from the quarrel in your kitchen. It is the same ego, scaled up.</p>
+  <p class="phil-line dim sec-sub">Two studies &mdash; one of how the world&rsquo;s peace machinery stalls, one of why ordinary disputes never truly heal &mdash; describe the same mechanism at two sizes. Seeing it at the large size makes it easier to catch at the small one.</p>
 
   <div style="text-align:center;margin:0 0 28px;">
     <button class="collapse-toggle-btn" onclick="sectionCollapse('ripple-all-content',this)">Expand &#9660;</button>
@@ -17071,7 +17098,7 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
 <!-- SVASTHYA: AYURVEDA / YOGA / TANTRA -->
 <section class="section-wide" id="svasthya" style="scroll-margin-top:56px;">
   <span class="label">Svasthya</span>
-  <p class="phil-line bright">Established in the Self.</p>
+  <p class="phil-line bright sec-title">Established in the Self.</p>
 
   <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.95;max-width:820px;margin:0 auto 28px;text-align:center;">
     <span class="gloss">Svasthya<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Svasthya">+</span><span class="gloss-pop">Sanskrit: sva (self) + stha (established/abiding) &mdash; usually translated as &ldquo;health,&rdquo; but literally &ldquo;abiding in one's own self.&rdquo;</span></span>
@@ -17943,8 +17970,8 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
 <!-- THE MASTERS — East and West, converging on the same destination -->
 <section class="section-wide" id="masters" style="scroll-margin-top:56px;">
   <span class="label">The Masters at a Glance</span>
-  <h2>Six teachers. Two hemispheres. One destination.</h2>
-  <p class="sub" style="max-width:900px;margin:0 auto;">The <a href="#subtilization" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">path of subtilization</a> was never the property of one tradition. East and West independently arrived at the same <a href="#spectrum" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">map</a> &mdash;By holding different lanterns. See the full coordinate-by-coordinate reference in <a href="#master-matrix" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">the Master Matrix</a>.</p>
+  <h2 class="sec-title">Six teachers. Two hemispheres. One destination.</h2>
+  <p class="sub sec-sub" style="max-width:900px;margin:0 auto;">The <a href="#subtilization" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">path of subtilization</a> was never the property of one tradition. East and West independently arrived at the same <a href="#spectrum" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">map</a> &mdash;By holding different lanterns. See the full coordinate-by-coordinate reference in <a href="#master-matrix" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">the Master Matrix</a>.</p>
 
   <!-- MASTERS AT A GLANCE MAP — always-visible navigator, two rows of
        three (Eastern / Western lineage). Tapping a node expands the grid
@@ -18685,8 +18712,8 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
      ============================================================ -->
 <section class="section-wide" id="memory-architect" style="scroll-margin-top:56px;">
   <span class="label" style="color:var(--dim);">A Closer Look — Memory</span>
-  <h2 style="font-size:clamp(20px,3vw,30px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;">You&rsquo;re not living your past. You&rsquo;re living memory&rsquo;s latest cut of it.</h2>
-  <p style="font-size:clamp(14px,1.8vw,17px);color:var(--grey);max-width:620px;margin:0 auto 32px;font-style:italic;line-height:1.85;">A closer look at <a href="#matrix-row-5" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">Layer 5 &mdash; Memory</a> in the Master Matrix, for anyone who wants to sit with this layer a while longer than a table row allows.</p>
+  <h2 class="sec-title" style="font-size:clamp(20px,3vw,30px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;">You&rsquo;re not living your past. You&rsquo;re living memory&rsquo;s latest cut of it.</h2>
+  <p class="sec-sub" style="font-size:clamp(14px,1.8vw,17px);color:var(--grey);max-width:620px;margin:0 auto 32px;font-style:italic;line-height:1.85;">A closer look at <a href="#matrix-row-5" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">Layer 5 &mdash; Memory</a> in the Master Matrix, for anyone who wants to sit with this layer a while longer than a table row allows.</p>
 
   <div style="text-align:center;margin-bottom:16px;">
     <button class="collapse-toggle-btn" onclick="sectionCollapse('memory-architect-detail',this)">Expand &#9660;</button>
@@ -18875,8 +18902,8 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
 <section class="section" id="ego-checklist">
   <span class="label">Quick Self-Check</span>
   <a href="#master-matrix" class="layer-marker" onclick="expandMatrixRow(6);return false;">Layer 6 of 7 &middot; See in the Master Matrix &#8599;</a>
-  <p class="phil-line bright" style="margin-bottom:8px;">Is your ego currently active?</p>
-  <p class="phil-line dim" style="margin-bottom:36px;">Ten warning lights. Notice which ones are flashing in your daily interactions &mdash; no need to fix anything yet, just notice.</p>
+  <p class="phil-line bright sec-title" style="margin-bottom:8px;">Is your ego currently active?</p>
+  <p class="phil-line dim sec-sub" style="margin-bottom:36px;">Ten warning lights. Notice which ones are flashing in your daily interactions &mdash; no need to fix anything yet, just notice.</p>
 
   <div style="max-width:900px;margin:0 auto 44px;">
     <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:16px;text-align:center;">What the Egoic Self Feeds On</p>
@@ -18941,8 +18968,8 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
 <!-- SELF-DIAGNOSTIC: Where Are You Right Now -->
 <section class="section" id="diagnostic">
   <span class="label">Place Yourself on the Grid</span>
-  <p class="phil-line bright" style="margin-bottom:8px;">You&rsquo;ve seen the matrix. Now find your six coordinates on it.</p>
-  <p class="phil-line dim" style="margin-bottom:36px;">Nine questions. No right answers &mdash; only honest ones.</p>
+  <p class="phil-line bright sec-title" style="margin-bottom:8px;">You&rsquo;ve seen the matrix. Now find your six coordinates on it.</p>
+  <p class="phil-line dim sec-sub" style="margin-bottom:36px;">Nine questions. No right answers &mdash; only honest ones.</p>
   <div class="diag-root" id="diagRoot"></div>
   <div id="diag-io-wrap" style="max-width:640px;margin:20px auto 0;text-align:center;display:none;">
     <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
@@ -18961,8 +18988,8 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
 <!-- THE FEEDBACK LOOP — recurring self-enquiry practice, not a one-time diagnostic -->
 <section class="section" id="feedback-loop">
   <span class="label">The Feedback Loop</span>
-  <p class="phil-line bright" style="margin-bottom:8px;max-width:640px;margin-left:auto;margin-right:auto;text-align:left;">Suffering runs on autopilot. This one runs on your input.</p>
-  <p class="phil-line dim" style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;text-align:left;">The grid above is a snapshot. This is the practice. Come back to it &mdash; daily, weekly, whenever you notice the Default OS running &mdash; and let your own answers be the feedback.</p>
+  <p class="phil-line bright sec-title" style="margin-bottom:8px;max-width:640px;margin-left:auto;margin-right:auto;text-align:left;">Suffering runs on autopilot. This one runs on your input.</p>
+  <p class="phil-line dim sec-sub" style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;text-align:left;">The grid above is a snapshot. This is the practice. Come back to it &mdash; daily, weekly, whenever you notice the Default OS running &mdash; and let your own answers be the feedback.</p>
 
   <div style="max-width:640px;margin:0 auto;text-align:left;">
     <div id="feedbackLoopList" style="display:flex;flex-direction:column;gap:2px;">
@@ -19009,8 +19036,8 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
      the bottom of the script). Results are open, no email gate. -->
 <section class="section" id="pattern-assessment" style="scroll-margin-top:56px;">
   <span class="label">Your Pattern Map</span>
-  <p class="phil-line bright" style="margin-bottom:8px;">Not another personality type. The specific way your Default OS runs.</p>
-  <p class="phil-line dim" style="margin-bottom:36px;">Body to Self, the same order as the framework. No score to chase &mdash; just a mirror.</p>
+  <p class="phil-line bright sec-title" style="margin-bottom:8px;">Not another personality type. The specific way your Default OS runs.</p>
+  <p class="phil-line dim sec-sub" style="margin-bottom:36px;">Body to Self, the same order as the framework. No score to chase &mdash; just a mirror.</p>
   <div class="diag-root" id="paRoot" style="scroll-margin-top:56px;"></div>
   <div id="paLastNote" style="max-width:520px;margin:0 auto;text-align:center;"></div>
 </section>
@@ -19020,8 +19047,8 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
 <!-- WATCH -->
 <section class="watch-section">
   <span class="label">Watch &amp; Listen</span>
-  <p class="phil-line bright">The full framework. Two formats.</p>
-  <p class="phil-line dim">Start with 90 seconds.</p>
+  <p class="phil-line bright sec-title">The full framework. Two formats.</p>
+  <p class="phil-line dim sec-sub">Start with 90 seconds.</p>
   <div class="watch-links">
     <div class="watch-link-inner">
       <a href="https://youtu.be/904IS3mxH3o" target="_blank" rel="noopener">
@@ -19054,7 +19081,7 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
 <!-- GO DEEPER -->
 <section class="section" id="go-deeper" style="scroll-margin-top:56px;">
   <span class="label">Go Deeper</span>
-  <p class="phil-line dim">The full framework. The complete map.</p>
+  <p class="phil-line dim sec-title">The full framework. The complete map.</p>
   <div class="deeper-box">
     <div class="deeper-grid">
       <a class="deeper-card" href="https://app.xmind.com/share/OcHbI8Mf?xid=XrVOVKnC" target="_blank" rel="noopener">
@@ -19086,8 +19113,8 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
 <!-- A FEW OLD DOORS — short parable/story reference set, Reference group -->
 <section class="section-wide" id="parables" style="scroll-margin-top:56px;">
   <span class="label">A Few Old Doors</span>
-  <h2 style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;">Small stories, kept short on purpose.</h2>
-  <p style="font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:680px;margin:0 auto 40px;font-style:italic;line-height:1.85;">No single tradition owns these. Read one, sit with it, move on &mdash; nothing here needs to be solved.</p>
+  <h2 class="sec-title" style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 16px;line-height:1.5;">Small stories, kept short on purpose.</h2>
+  <p class="sec-sub" style="font-size:clamp(15px,2vw,19px);color:var(--grey);max-width:680px;margin:0 auto 40px;font-style:italic;line-height:1.85;">No single tradition owns these. Read one, sit with it, move on &mdash; nothing here needs to be solved.</p>
 
   <div style="text-align:center;margin-bottom:16px;">
     <button class="collapse-toggle-btn" onclick="sectionCollapse('parables-detail',this)">Expand &#9660;</button>
@@ -19165,7 +19192,7 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
 <!-- GLOSSARY -->
 <section class="section-wide" id="glossary" style="padding:90px 24px;background:var(--bg);border-top:1px solid #111;">
   <span class="label" style="color:var(--dim);">Reference</span>
-  <h2 style="font-size:clamp(22px,3.4vw,32px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 14px;line-height:1.4;">Glossary</h2>
+  <h2 class="sec-title" style="font-size:clamp(22px,3.4vw,32px);font-weight:300;color:var(--white);max-width:700px;margin:0 auto 14px;line-height:1.4;">Glossary</h2>
   <p style="font-family:var(--serif);font-style:italic;font-size:clamp(14px,1.8vw,16px);color:var(--grey);max-width:820px;margin:0 auto 36px;line-height:1.8;text-align:left">This site borrows words from a few different traditions &mdash; Sanskrit psychology, alchemy, Hermetic philosophy, neuroscience. None of them are assumed knowledge. Look anything up here, or tap the <span style="color:var(--gold);">+</span> next to a word wherever you find it.</p>
   <div style="text-align:center;margin:0 0 28px;">
     <button class="collapse-toggle-btn" onclick="sectionCollapse('glossary-all-content',this)">Expand &#9660;</button>
@@ -20710,7 +20737,7 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
 <!-- FAQ — all collapsed by default -->
 <section class="faq-section" id="faq-section">
   <span class="label">Common Questions</span>
-  <h2>The questions people ask when they start noticing.</h2>
+  <h2 class="sec-title">The questions people ask when they start noticing.</h2>
   <div style="text-align:center;margin-bottom:28px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
     <button id="faqCatMenuBtn" onclick="toggleFaqCatMenu()" aria-expanded="false" aria-label="Browse FAQ by category" style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--white);background:transparent;border:1px solid #333;padding:10px 20px;cursor:pointer;transition:all .3s;opacity:.85;display:inline-flex;align-items:center;gap:10px;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.85'">
       <span style="display:inline-flex;flex-direction:column;gap:3px;">
@@ -21113,8 +21140,8 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
 <!-- FEEDBACK -->
 <section id="feedback" style="scroll-margin-top:56px;padding:90px 24px;background:var(--bg);border-top:1px solid #111;">
   <span class="label">Tell Us What You See</span>
-  <p class="phil-line bright" style="margin-bottom:8px;">The mirror only works one way so far. Now it&rsquo;s your turn to reflect something back.</p>
-  <p class="phil-line dim" style="margin-bottom:36px;text-align:center;">Confused by a section? Found something broken? Have a framework, a correction, or a question we haven&rsquo;t addressed? Say it here &mdash; three lines or three paragraphs, either is useful.</p>
+  <p class="phil-line bright sec-title" style="margin-bottom:8px;">The mirror only works one way so far. Now it&rsquo;s your turn to reflect something back.</p>
+  <p class="phil-line dim sec-sub" style="margin-bottom:36px;text-align:center;">Confused by a section? Found something broken? Have a framework, a correction, or a question we haven&rsquo;t addressed? Say it here &mdash; three lines or three paragraphs, either is useful.</p>
 
   <div style="max-width:560px;margin:0 auto;">
     <form id="feedbackForm" style="display:flex;flex-direction:column;gap:16px;text-align:left;">
