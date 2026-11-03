@@ -6298,9 +6298,15 @@ a.src-tag:hover{opacity:.75;}
   </div>
   <div style="text-align:center;margin:0 0 28px;">
     <button class="collapse-toggle-btn" onclick="sectionCollapse('neti-neti-full-content',this)">Expand &#9660;</button>
-    <p class="section-collapse-label" style="margin-top:8px;">Tap to expand &mdash; the five sheaths, the three bodies, the witness, the reflection, and the self and the world</p>
+    <p class="section-collapse-label" style="margin-top:8px;">Tap to expand &mdash; nine cards, in three groups: the negation, the witness, and the reflection and the world</p>
   </div>
   <div id="neti-neti-full-content" class="section-collapse-wrap collapsed">
+    <p style="font-family:var(--sans);font-size:15px;font-weight:700;letter-spacing:6px;text-transform:uppercase;color:var(--gold);opacity:1;text-align:center;margin:32px 0 10px;">The Negation</p>
+    <p style="font-family:var(--serif);font-size:13px;font-style:italic;color:var(--dim);text-align:center;margin:0 0 32px;">The five sheaths and the three bodies, ruled out one at a time</p>
+    <div style="text-align:center;margin:0 0 28px;">
+      <button class="collapse-toggle-btn" onclick="toggleGroupCards('neti-negation-group',this)">Expand All 2 Cards &#9660;</button>
+    </div>
+    <div id="neti-negation-group">
   <div class="ego-sub-header gf-sub-header" style="max-width:820px;">
     <div class="ego-sub-header-text">
       <h3>The Five Sheaths, Negated</h3>
@@ -6421,18 +6427,24 @@ a.src-tag:hover{opacity:.75;}
       <p style="font-family:var(--sans);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim);margin:14px 0 0;">Source: Mudgala Upanishad, chapter 4</p>
     </div>
   </div>
+    </div>
+
+    <p style="font-family:var(--sans);font-size:15px;font-weight:700;letter-spacing:6px;text-transform:uppercase;color:var(--gold);opacity:1;text-align:center;margin:48px 0 10px;">The Witness</p>
+    <p style="font-family:var(--serif);font-size:13px;font-style:italic;color:var(--dim);text-align:center;margin:0 0 32px;">What is left over, the argument for why it has to exist, the Kena's question, and the practice of it</p>
+    <div style="text-align:center;margin:0 0 28px;">
+      <button class="collapse-toggle-btn" onclick="toggleGroupCards('witness-group',this)">Expand All 4 Cards &#9660;</button>
+    </div>
+    <div id="witness-group">
   <div class="ego-sub-header gf-sub-header" style="max-width:820px;">
     <div class="ego-sub-header-text">
-      <h3>Sakshin &middot; The Witness</h3>
+      <h3><span class="gloss" style="color:inherit;">Sakshin<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Sakshin">+</span><span class="gloss-pop">The Witness &mdash; the non-intentional, formless awareness that illuminates every mental state without ever itself becoming an object of knowledge.</span></span> &middot; The Witness</h3>
       <p>What exactly is left over</p>
     </div>
     <button class="collapse-toggle-btn" onclick="sectionCollapse('neti-sakshin-detail',this)">Expand &#9660;</button>
   </div>
   <div id="neti-sakshin-detail" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 48px;text-align:left;">
     <!-- SAKSHIN -->
-    <div id="sakshin" style="margin:44px auto 0;max-width:900px;text-align:left;scroll-margin-top:56px;">
-      <p style="font-family:var(--sans);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:14px;">What Exactly Is Left Over</p>
-      <h3 style="font-family:var(--serif);font-size:clamp(20px,3vw,26px);color:var(--white);margin-bottom:16px;"><span class="gloss">Sakshin<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Sakshin">+</span><span class="gloss-pop">The Witness &mdash; the non-intentional, formless awareness that illuminates every mental state without ever itself becoming an object of knowledge.</span></span> &mdash; The Witness</h3>
+    <div id="sakshin" style="margin:20px auto 0;max-width:900px;text-align:left;scroll-margin-top:150px;">
       <p style="font-family:var(--serif);font-size:clamp(15px,1.9vw,17px);color:var(--mid);line-height:1.9;margin-bottom:20px;">Worth being precise about what this word actually names, since &ldquo;witness&rdquo; has already appeared quietly, five times, in the checklist above. It doesn't mean the reflective habit of noticing your own thoughts &mdash; that habit is real, useful, and still just Buddhi, the intellect, watching Manas, the mind. Two parts of the same instrument, both already ruled out above. The Sakshin is something else: not a better observer, but the light every observer, including that reflective one, borrows to see anything at all.</p>
 
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-bottom:20px;">
@@ -6489,6 +6501,156 @@ a.src-tag:hover{opacity:.75;}
       </div>
     </div>
   </div>
+
+    <div class="ego-sub-header gf-sub-header" style="max-width:820px;">
+      <div class="ego-sub-header-text">
+        <h3>Why a Witness Has to Exist</h3>
+        <p>Two structural arguments, one claim &mdash; a river's motion, and the eye's own blind spot</p>
+      </div>
+      <button class="collapse-toggle-btn" onclick="sectionCollapse('witness-argument-detail',this)">Expand &#9660;</button>
+    </div>
+    <div id="witness-argument-detail" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 48px;text-align:left;">
+      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--grey);line-height:1.9;margin:20px 0 20px;">There's a reason the flashlight picture in <a href="#conscious-vs-aware" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">Conscious &ne; Aware</a> can even be drawn: change can only be measured against something that doesn't change. A river tells you it's moving because the bank stays still. Try to clock the bank's motion using the river, and there's nothing to measure against &mdash; just more motion. Thoughts, moods, and circumstances are the river. The fact that you can notice any of them shifting is proof something in you isn't shifting with them.</p>
+      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--grey);line-height:1.9;margin:0 0 24px;">The eye makes the same point in tissue. Where the optic nerve exits the retina, there are no photoreceptors &mdash; that patch of the visual field is physically incapable of registering light. You have never once seen a hole there, not because the gap is small, but because the very bundle of fiber carrying sight out of the eye sits in the one place sight cannot reach.</p>
+      <p class="pq-standalone" style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:24px 28px;background:var(--bg-lift);text-align:left;margin:24px auto 0;">Two domains, one structure: whatever is doing the perceiving cannot appear inside what it perceives. That's not a metaphor for the witness &mdash; it's the argument for why one has to exist, before the tradition ever puts a name to it.</p>
+    </div>
+
+    <div id="ear-of-the-ear" class="ego-sub-header gf-sub-header" style="max-width:820px;scroll-margin-top:56px;">
+      <div class="ego-sub-header-text">
+        <h3>The Ear of the Ear</h3>
+        <p>The same argument, four thousand years earlier &mdash; asked as a question, never closed with an answer</p>
+      </div>
+      <button class="collapse-toggle-btn" onclick="sectionCollapse('ear-of-ear-detail',this)">Expand &#9660;</button>
+    </div>
+    <div id="ear-of-ear-detail" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 48px;text-align:left;">
+
+      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--grey);line-height:1.9;margin:20px 0 24px;text-align:left;">The <span class="gloss">Kena Upanishad<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Kena Upanishad">+</span><span class="gloss-pop">One of the oldest Upanishads, named for its opening word &ldquo;Kena&rdquo; &mdash; &ldquo;by whom.&rdquo; It opens with a student's question rather than a teacher's answer.</span></span> opens with a question, not a claim: by whom willed and directed does the mind alight? What Spirit indeed directs the eye and the ear? Not rhetorical &mdash; it's asking what's actually running the equipment.</p>
+
+      <div class="mobile-stack-cards" style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin:0 0 28px;text-align:left;">
+        <div style="padding:20px 18px;background:var(--bg);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);">
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:10px;">The Organ</div>
+          <p style="font-family:var(--serif);font-size:13.5px;color:var(--grey);line-height:1.8;">Can be lost. Hearing itself doesn't go with it.</p>
+        </div>
+        <div style="padding:20px 18px;background:var(--bg);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);">
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:10px;">The Membrane</div>
+          <p style="font-family:var(--serif);font-size:13.5px;color:var(--grey);line-height:1.8;">Can rupture. The capacity to register sound persists.</p>
+        </div>
+        <div style="padding:20px 18px;background:var(--bg);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);">
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:10px;">The Sense-Center</div>
+          <p style="font-family:var(--serif);font-size:13.5px;color:var(--grey);line-height:1.8;">Where sound is actually registered &mdash; still not the end of the line.</p>
+        </div>
+        <div style="padding:20px 18px;background:var(--bg);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);border-left:2px solid var(--gold);">
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.85;margin-bottom:10px;">What's Left</div>
+          <p style="font-family:var(--serif);font-size:13.5px;color:var(--mid);line-height:1.8;">Subtract all three, and something is still hearing this sentence being read.</p>
+        </div>
+      </div>
+
+      <p class="pq-standalone" style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:24px 28px;background:var(--bg-lift);text-align:left;margin:0;">&ldquo;That which cannot be spoken by speech, but by which speech is spoken &mdash; know that alone to be Brahman, not this which people worship.&rdquo; <span style="color:var(--grey);font-style:normal;">&mdash; Kena Upanishad</span></p>
+
+      <div id="not-this-which-people-worship" style="max-width:820px;margin:28px auto 0;scroll-margin-top:56px;text-align:left;">
+        <p style="font-family:var(--serif);font-size:clamp(14px,1.9vw,16.5px);color:var(--grey);line-height:1.9;margin-bottom:20px;">&ldquo;Not this&rdquo; isn't a dismissal of the <span class="gloss">m&#363;rti<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define murti">+</span><span class="gloss-pop">A deity worshipped as a representation of God &mdash; an image or idol used as a focal point for devotion.</span></span>, the idol, the ritual, the form. It's a note on what the form is <em>for</em>.</p>
+        <div class="mobile-stack-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;">
+          <div style="padding:20px 18px;background:var(--bg);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);">
+            <div style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:10px;">The Flag</div>
+            <p style="font-family:var(--serif);font-size:13.5px;color:var(--grey);line-height:1.8;">A flag represents a nation. It's a focal point for the uninitiated &mdash; not the country itself.</p>
+          </div>
+          <div style="padding:20px 18px;background:var(--bg);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);">
+            <div style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:10px;">The Hospital</div>
+            <p style="font-family:var(--serif);font-size:13.5px;color:var(--grey);line-height:1.8;">You go to be cured of something, not to move in. Once cured, you leave.</p>
+          </div>
+        </div>
+        <p style="font-family:var(--serif);font-size:clamp(14px,1.9vw,16.5px);color:var(--gold);font-style:italic;line-height:1.9;margin-top:20px;">To cling to the flag past the point of understanding what it stands for &mdash; or to the hospital past the point of being well &mdash; is to mistake the vehicle for the destination.</p>
+      </div>
+
+    </div>
+
+    <div class="ego-sub-header gf-sub-header" style="max-width:820px;">
+      <div class="ego-sub-header-text">
+        <h3>Sakshi Bhava &mdash; The Witness in Practice</h3>
+        <p>The state of awareness, named, shown twice over, and set against the Gita's own warning about what happens without it.</p>
+      </div>
+      <button class="collapse-toggle-btn" onclick="sectionCollapse('sakshi-bhava-detail',this)">Expand &#9660;</button>
+    </div>
+    <div id="sakshi-bhava-detail" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 48px;text-align:left;">
+
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--grey);line-height:1.9;margin:20px 0 24px;text-align:left;">Awareness, sustained, has a name in the tradition: <span class="gloss">Sakshi Bhava<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Sakshi Bhava">+</span><span class="gloss-pop">Literally &ldquo;the witness state&rdquo; &mdash; consciously observing one&rsquo;s own thoughts, feelings, and actions as they happen, rather than being run by them.</span></span> &mdash; being conscious of what is happening right now, inside and around you. It shows up in four places at once.</p>
+    <div class="mobile-stack-cards sakshi-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:2px;margin:0 0 40px;text-align:left;">
+      <div style="padding:22px 24px;background:var(--bg);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;margin-bottom:10px;">Thinking</div>
+        <p style="font-family:var(--serif);font-size:14.5px;color:var(--mid);line-height:1.85;">Knowing what you are thinking.</p>
+      </div>
+      <div style="padding:22px 24px;background:var(--bg);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;margin-bottom:10px;">Feeling</div>
+        <p style="font-family:var(--serif);font-size:14.5px;color:var(--mid);line-height:1.85;">Knowing what you are feeling.</p>
+      </div>
+      <div style="padding:22px 24px;background:var(--bg);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;margin-bottom:10px;">Doing</div>
+        <p style="font-family:var(--serif);font-size:14.5px;color:var(--mid);line-height:1.85;">Being conscious of what you are doing.</p>
+      </div>
+      <div style="padding:22px 24px;background:var(--bg);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);border-left:2px solid var(--gold);">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;margin-bottom:10px;">Karma</div>
+        <p style="font-family:var(--serif);font-size:14.5px;color:var(--mid);line-height:1.85;">Understanding the consequences of your actions.</p>
+      </div>
+    </div>
+
+    <p style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.85;margin:24px 0 32px;padding:20px 24px;border:1.5px solid rgba(var(--accent-gold-rgb),0.4);text-align:left;">Empress Wu once asked the monk Fazang to demonstrate interdependence. He lit a single candle inside a hall of mirrors &mdash; every mirror carried the source flame, and the reflection of every other mirror's flame besides. One act doesn't stay contained to its source.</p>
+
+    <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin:0 0 16px;text-align:left;">Same Moment, Two Ways to Live It</p>
+    <div class="mobile-stack-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin:0 0 24px;text-align:left;">
+      <div style="padding:24px 26px;background:var(--bg);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:10px;">Conscious, Not Aware</div>
+        <p style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.9;">You come home irritated, snap at someone, and scroll for an hour without knowing why any of it happened. The lights were on. Nobody was watching.</p>
+      </div>
+      <div style="padding:24px 26px;background:var(--bg);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);border-left:2px solid var(--gold);">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;margin-bottom:10px;">Conscious, and Aware</div>
+        <p style="font-family:var(--serif);font-size:14.5px;color:var(--mid);line-height:1.9;">Same irritation. This time you catch it &mdash; &ldquo;I&rsquo;m drained, and I&rsquo;m about to take it out on someone who doesn&rsquo;t deserve it.&rdquo; That one sentence is the entire practice. Everything downstream changes.</p>
+      </div>
+    </div>
+
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:24px 28px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg-lift);text-align:left;margin:32px 0 24px;">&ldquo;When awareness is there, choices are wise. When awareness is absent, mistakes happen.&rdquo; <span style="color:var(--grey);font-style:normal;">&mdash; Bhagavad Gita</span></p>
+
+    <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin:0 0 16px;text-align:left;">The Two States of Being, Side by Side</p>
+    <table class="states-table" style="width:100%;border-collapse:collapse;table-layout:fixed;margin:0 0 32px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg);">
+      <colgroup><col style="width:50%;"><col style="width:50%;"></colgroup>
+      <thead>
+        <tr>
+          <th style="font-weight:400;font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);text-align:center;padding:18px 20px 14px;">The Automatic Life</th>
+          <th style="font-weight:400;font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;text-align:center;padding:18px 20px 14px;border-left:2px solid var(--gold);">The Conscious Life</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.4;text-align:center;padding:12px 20px;border-top:1px solid rgba(var(--accent-gold-rgb),0.32);">Acts automatically</td>
+          <td style="font-family:var(--serif);font-size:14.5px;color:var(--white);line-height:1.4;text-align:center;padding:12px 20px;border-top:1px solid rgba(var(--accent-gold-rgb),0.32);border-left:2px solid var(--gold);">Acts consciously</td>
+        </tr>
+        <tr>
+          <td style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.4;text-align:center;padding:12px 20px;border-top:1px solid rgba(var(--accent-gold-rgb),0.32);">Lost in thought</td>
+          <td style="font-family:var(--serif);font-size:14.5px;color:var(--white);line-height:1.4;text-align:center;padding:12px 20px;border-top:1px solid rgba(var(--accent-gold-rgb),0.32);border-left:2px solid var(--gold);">Observing thought</td>
+        </tr>
+        <tr>
+          <td style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.4;text-align:center;padding:12px 20px;border-top:1px solid rgba(var(--accent-gold-rgb),0.32);">Reactionary</td>
+          <td style="font-family:var(--serif);font-size:14.5px;color:var(--white);line-height:1.4;text-align:center;padding:12px 20px;border-top:1px solid rgba(var(--accent-gold-rgb),0.32);border-left:2px solid var(--gold);">Intentional</td>
+        </tr>
+        <tr>
+          <td style="font-family:var(--sans);font-size:10.5px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);text-align:center;padding:14px 20px;border-top:1px solid rgba(var(--accent-gold-rgb),0.32);">Mistakes happen</td>
+          <td style="font-family:var(--sans);font-size:10.5px;letter-spacing:1px;text-transform:uppercase;color:var(--gold);text-align:center;padding:14px 20px;border-top:1px solid rgba(var(--accent-gold-rgb),0.32);border-left:2px solid var(--gold);">Choices are wise</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="cosmo-quote" style="margin:0;max-width:820px;">
+      <p>&ldquo;When one withdraws the senses from sense objects, as a tortoise withdraws its limbs, one&rsquo;s wisdom becomes steady.&rdquo;</p>
+      <cite>&mdash; Bhagavad Gita 2.58</cite>
+    </div>
+
+    </div>
+    </div>
+
+    <p style="font-family:var(--sans);font-size:15px;font-weight:700;letter-spacing:6px;text-transform:uppercase;color:var(--gold);opacity:1;text-align:center;margin:48px 0 10px;">The Reflection and the World</p>
+    <p style="font-family:var(--serif);font-size:13px;font-style:italic;color:var(--dim);text-align:center;margin:0 0 32px;">Where the feeling of &ldquo;me&rdquo; comes from, and where &ldquo;out there&rdquo; begins</p>
+    <div style="text-align:center;margin:0 0 28px;">
+      <button class="collapse-toggle-btn" onclick="toggleGroupCards('neti-reflection-group',this)">Expand All 3 Cards &#9660;</button>
+    </div>
+    <div id="neti-reflection-group">
   <div class="ego-sub-header gf-sub-header" style="max-width:820px;">
     <div class="ego-sub-header-text">
       <h3>Chid&#257;bh&#257;sa &middot; The Reflection Mechanism</h3>
@@ -6555,9 +6717,7 @@ a.src-tag:hover{opacity:.75;}
     <button class="collapse-toggle-btn" onclick="sectionCollapse('neti-self-world-detail',this)">Expand &#9660;</button>
   </div>
   <div id="neti-self-world-detail" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 48px;text-align:left;">
-    <div id="self-and-world" style="margin:52px auto 0;max-width:900px;text-align:left;scroll-margin-top:56px;">
-      <p style="font-family:var(--sans);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:14px;">Where Does It Sit?</p>
-      <h3 style="font-family:var(--serif);font-size:clamp(20px,3vw,26px);color:var(--white);margin-bottom:16px;">The Self and the World</h3>
+    <div id="self-and-world" style="margin:20px auto 0;max-width:900px;text-align:left;scroll-margin-top:150px;">
       <p style="font-family:var(--serif);font-size:clamp(15px,1.9vw,17px);color:var(--mid);line-height:1.9;margin-bottom:8px;">Sakshin and Chidabhasa ask what is left inside. These three pictures look the other way, at where the Self sits against everything outside it.</p>
       <div id="self-as-hub" style="margin:36px auto 0;">
         <p style="font-family:var(--sans);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:14px;">The Hub</p>
@@ -6574,7 +6734,7 @@ a.src-tag:hover{opacity:.75;}
         <p style="font-family:var(--serif);font-size:clamp(15px,1.9vw,17px);font-style:italic;color:var(--gold);line-height:1.85;margin:0;">Where, in the seeing, does &ldquo;inside&rdquo; stop?</p>
         <p style="font-family:var(--sans);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim);margin:14px 0 0;">Source: Brihadaranyaka Upanishad 3.7</p>
 
-        <p style="font-family:var(--serif);font-size:14px;font-style:italic;color:var(--dim);line-height:1.85;margin:14px 0 0;">The longer version of this question, with pictures, is in <a href="#out-there-more" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">Where Does &ldquo;Out There&rdquo; Begin?</a> under Before the Ego, the Field.</p>
+        <p style="font-family:var(--serif);font-size:14px;font-style:italic;color:var(--dim);line-height:1.85;margin:14px 0 0;">The longer version of this question, with pictures, is in <a href="#out-there-more" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">Where Does &ldquo;Out There&rdquo; Begin?</a>, the next card.</p>
       </div>
 
       <div id="isha-still-swift" style="margin:36px auto 0;scroll-margin-top:100px;">
@@ -6587,6 +6747,160 @@ a.src-tag:hover{opacity:.75;}
       </div>
     </div>
   </div>
+
+    <div class="ego-sub-header gf-sub-header" style="max-width:820px;">
+      <div class="ego-sub-header-text">
+        <h3>Where Does &ldquo;Out There&rdquo; Begin?</h3>
+        <p>Brihadaranyaka Upanishad &middot; If consciousness is the field nothing appears outside of, where does &ldquo;out there&rdquo; begin?</p>
+      </div>
+      <button class="collapse-toggle-btn" onclick="sectionCollapse('out-there-more',this)">Expand &#9660;</button>
+    </div>
+    <div id="out-there-more" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 48px;text-align:left;scroll-margin-top:56px;">
+      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin:20px 0 24px;text-align:left;">The short version of this question sits in <a href="#inside-outside" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">The Self and the World</a>, the card before this one. This is the long one: seven pictures, each with a reading of what it shows.</p>
+      <div class="ego-sub-header gf-sub-header nested-sub-header" style="max-width:820px;">
+        <div class="ego-sub-header-text">
+          <h3 id="out-there-mechanics" style="scroll-margin-top:56px;">How Consciousness Collides With Itself</h3>
+          <p>The mechanics of perception</p>
+        </div>
+        <button class="collapse-toggle-btn" onclick="sectionCollapse('out-there-mechanics-content',this)">Expand &#9660;</button>
+      </div>
+      <div id="out-there-mechanics-content" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 40px;">
+      <figure style="margin:20px 0 24px;"><img src="./assets/images/out-there-mechanics.webp" alt="Diagram: a glowing sphere on the left sends a wave of light across a gap to a second sphere, and a loop of light curls around the second sphere and returns" width="1200" height="629" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></figure>
+      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin:20px 0 24px;text-align:left;">Read the picture from left to right. A glowing sphere on the left is the knower. A wave leaves it, pinching and swelling as it crosses the gap, and arrives at a second sphere: the thing known. Then the line does not stop. It curls around that second sphere and comes back as a closed loop. That loop is the idea. On this reading perception does not end at contact. It ends in a verdict, and the verdict returns to the one who reached.</p>
+      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin-bottom:24px;text-align:left;">The four names in the picture mark four moments of one event, and each of them ends in <span class="gloss">Chaitanya<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Chaitanya">+</span><span class="gloss-pop">Sanskrit for &ldquo;consciousness&rdquo; &mdash; awareness itself, as opposed to anything it is aware of.</span></span>. Consciousness is present as the knower, as the reaching, as the known, and as the conclusion. Nothing in the sequence is a passive recording, and the same light fills both spheres.</p>
+      <p style="font-family:var(--sans);font-size:10.5px;letter-spacing:1px;color:var(--dim);line-height:1.7;margin:-8px 0 24px;text-align:left;">Honest limit: this is the Vedantic account of what perception is. Neuroscience describes the same event as signals processed in the brain, and this page does not claim to settle between the two.</p>
+      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:20px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg);margin:0 0 8px;">If seeing is a reaching, what is it that reaches?</p>
+      </div>
+
+      <div class="ego-sub-header gf-sub-header nested-sub-header" style="max-width:820px;">
+        <div class="ego-sub-header-text">
+          <h3 id="out-there-bridging-gap" style="scroll-margin-top:56px;">Bridging the Gap</h3>
+          <p>Why consciousness cannot stay inside the skin</p>
+        </div>
+        <button class="collapse-toggle-btn" onclick="sectionCollapse('out-there-bridging-gap-content',this)">Expand &#9660;</button>
+      </div>
+      <div id="out-there-bridging-gap-content" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 40px;">
+      <figure style="margin:20px 0 24px;"><img src="./assets/images/out-there-bridging-gap.webp" alt="Illustration: a glowing point inside a human head sends a dotted line of light through the cracking skull to a tree standing far outside the body" width="1200" height="612" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></figure>
+      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin:20px 0 24px;text-align:left;">The picture turns an argument into an event. A point of light starts inside the head, and the skull breaks open where the line leaves it, so the dotted line runs unbroken all the way to the tree. The breaking is the claim: wherever the boundary of the body seems to be, the knowing does not stop there.</p>
+      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin-bottom:24px;text-align:left;">The argument underneath is shorter than the picture. &ldquo;Outside&rdquo; is a judgment, and a judgment about the tree can only be made by something that has been where the tree is. So the reach is not decoration on perception. It is what perception is. The tradition reads that as a pointer to something unbounded: the body is where the reach starts, not where it stops.</p>
+      <p style="font-family:var(--sans);font-size:10.5px;letter-spacing:1px;color:var(--dim);line-height:1.7;margin:-8px 0 24px;text-align:left;">Honest limit: this is an argument from what &ldquo;out there&rdquo; means, not a laboratory result. It persuades only if you grant that seeing a tree is a way of knowing it, and not only a way of receiving signals from it.</p>
+      </div>
+
+      <div class="ego-sub-header gf-sub-header nested-sub-header" style="max-width:820px;">
+        <div class="ego-sub-header-text">
+          <h3 id="out-there-everywhere" style="scroll-margin-top:56px;">Everything Is Everywhere</h3>
+          <p>From one brain cell to every atom in the cosmos</p>
+        </div>
+        <button class="collapse-toggle-btn" onclick="sectionCollapse('out-there-everywhere-content',this)">Expand &#9660;</button>
+      </div>
+      <div id="out-there-everywhere-content" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 40px;">
+      <figure style="margin:20px 0 24px;"><img src="./assets/images/out-there-everywhere.webp" alt="A single glowing brain cell at the lower left joined by one bright golden curve to a cosmic atom at the upper right, with many thinner gold lines running in every direction behind it" width="1200" height="647" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></figure>
+      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin:20px 0 24px;text-align:left;">Two points of light sit at opposite corners of the picture: a single brain cell at the lower left, a cosmic atom at the upper right. One bright curve joins them, and behind it dozens of thinner gold lines run off in every direction. The curve is not a special road. It is one thread of a web in which every point is tied to every other.</p>
+      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin-bottom:24px;text-align:left;">That is the turn the Antaryami passage makes, set out under <a href="#inside-outside" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">Neti Neti</a>: if the same Self dwells within each thing, nothing is cut off from anything else. The slide draws the practical consequence in a line of its own. There is no distant place to go for what you are looking for, because it is just here. On this reading there is no &ldquo;elsewhere&rdquo; to travel to.</p>
+      <p style="font-family:var(--sans);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim);margin:-8px 0 24px;text-align:left;">Source: Brihadaranyaka Upanishad 3.7</p>
+      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:20px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg);margin:0 0 8px;">If every point is joined to every other, where would the &ldquo;distant place&rdquo; be?</p>
+      </div>
+
+      <div class="ego-sub-header gf-sub-header nested-sub-header" style="max-width:820px;">
+        <div class="ego-sub-header-text">
+          <h3 id="out-there-tripartite" style="scroll-margin-top:56px;">The Three Pulls</h3>
+          <p>The tripartite architecture of human attraction</p>
+        </div>
+        <button class="collapse-toggle-btn" onclick="sectionCollapse('out-there-tripartite-content',this)">Expand &#9660;</button>
+      </div>
+      <div id="out-there-tripartite-content" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 40px;">
+      <figure style="margin:20px 0 24px;"><img src="./assets/images/out-there-tripartite-attraction.webp" alt="Three glowing vessels side by side, cool grey-blue on the left, pale blue in the middle and gold on the right, each carrying a title and a short description" width="1200" height="635" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></figure>
+      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin:20px 0 24px;text-align:left;">Three glowing forms stand side by side, and their colours do some of the arguing: cool grey-blue on the left, pale blue in the middle, gold on the right. Read the colours as depth. The left form is the most physical pull, the right the most inward, and the middle one joins them.</p>
+      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin-bottom:24px;text-align:left;">On this reading the three are one pull seen at three depths. At the surface, matter finds matter: an eye answering light, an ear answering sound. In the middle, one existence calls to itself across a gap that was never as wide as it looked. At the centre, the Self is drawn only to what mirrors its own order. Why one thing gets loved and the one beside it does not is taken up in <a href="#anatomy-of-love" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">the Anatomy of Love</a>.</p>
+      <p style="font-family:var(--sans);font-size:10.5px;letter-spacing:1px;color:var(--dim);line-height:1.7;margin:-8px 0 24px;text-align:left;">Honest limit: the three-part grouping is the commentary&rsquo;s way of organizing the argument. Treat it as a lens on the Upanishad, not as three verses.</p>
+      </div>
+
+      <div class="ego-sub-header gf-sub-header nested-sub-header" style="max-width:820px;">
+        <div class="ego-sub-header-text">
+          <h3 id="out-there-cosmic-mirror" style="scroll-margin-top:56px;">The Cosmic Mirror</h3>
+          <p>The Infinite pulls the Infinite</p>
+        </div>
+        <button class="collapse-toggle-btn" onclick="sectionCollapse('out-there-cosmic-mirror-content',this)">Expand &#9660;</button>
+      </div>
+      <div id="out-there-cosmic-mirror-content" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 40px;">
+      <figure style="margin:20px 0 24px;"><img src="./assets/images/out-there-cosmic-mirror.webp" alt="Two glowing golden spheres facing each other across a pane of blue light, joined by curving golden field lines" width="1200" height="634" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></figure>
+      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin:20px 0 24px;text-align:left;">Two suns face each other across a pane of blue light, joined by field lines that curve from one to the other like a magnet&rsquo;s. The pane is the mirror. What looks like two bodies pulling toward each other is one field, seen from either end.</p>
+      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin-bottom:24px;text-align:left;">&ldquo;Under an illusion&rdquo; does not mean the beauty is fake. It means the source of the pull is misread. The pull is credited to the object, when on this reading it was the Self recognizing itself in a form. It is the same turn Yajnavalkya makes with Maitreyi, where husband, wife and wealth are dear for the sake of the Self.</p>
+      <p style="font-family:var(--sans);font-size:10.5px;letter-spacing:1px;color:var(--dim);line-height:1.7;margin:-8px 0 24px;text-align:left;">Source: Brihadaranyaka Upanishad 2.4.5, in the commentary&rsquo;s words.</p>
+      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:20px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg);margin:0 0 8px;">Next time something pulls you hard, ask what in it you are actually recognizing.</p>
+      </div>
+
+      <div class="ego-sub-header gf-sub-header nested-sub-header" style="max-width:820px;">
+        <div class="ego-sub-header-text">
+          <h3 id="out-there-departure" style="scroll-margin-top:56px;">Where the Particular Ends</h3>
+          <p>The departure of particularized consciousness</p>
+        </div>
+        <button class="collapse-toggle-btn" onclick="sectionCollapse('out-there-departure-content',this)">Expand &#9660;</button>
+      </div>
+      <div id="out-there-departure-content" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 40px;">
+      <figure style="margin:20px 0 24px;"><img src="./assets/images/out-there-departure.webp" alt="Two bands: a boxed band showing an eye and a pyramid joined by a double-headed arrow, and below it an unboxed band of one continuous wave of golden and blue light" width="1200" height="615" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></figure>
+      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin:20px 0 24px;text-align:left;">The picture has two bands. In the upper one, boxed and bordered, an eye and a pyramid face each other with a double-headed arrow between them: the whole of ordinary seeing, two things and a line. In the lower band there is no box and no border, only one wave of gold and blue light with no edge to look past. The box is what ends.</p>
+      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin-bottom:24px;text-align:left;">That is the answer Yajnavalkya gives Maitreyi when she is bewildered. What goes is the kind of awareness that needs a second thing in view. What the lower band shows is not a blank. It is awareness with nothing standing outside it. The exchange itself is set out under <a href="#maitreyi-departure" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">Who Knows the Knower?</a></p>
+      <p style="font-family:var(--sans);font-size:10.5px;letter-spacing:1px;color:var(--dim);line-height:1.7;margin:-8px 0 24px;text-align:left;">Honest limit: this is the tradition&rsquo;s claim about what ends, not something this page can show, and it does not ask you to settle what happens after death. Source: Brihadaranyaka Upanishad 2.4.12&ndash;14.</p>
+      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:20px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg);margin:0 0 8px;">How much of an ordinary day is lived in the upper band?</p>
+      </div>
+
+      <div class="ego-sub-header gf-sub-header nested-sub-header" style="max-width:820px;">
+        <div class="ego-sub-header-text">
+          <h3 id="out-there-paradigm" style="scroll-margin-top:56px;">The Paradigm Shift</h3>
+          <p>Illusion vs. Reality, row by row</p>
+        </div>
+        <button class="collapse-toggle-btn" onclick="sectionCollapse('out-there-paradigm-content',this)">Expand &#9660;</button>
+      </div>
+      <div id="out-there-paradigm-content" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 40px;">
+      <figure style="margin:20px 0 24px;"><img src="./assets/images/out-there-paradigm-shift.webp" alt="Two columns, the dualistic illusion and the non-dual reality, with a golden arrow crossing between them over four rows" width="1200" height="639" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></figure>
+      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin:20px 0 24px;text-align:left;">The arrow in the picture crosses from the left column to the right, and it crosses all four rows at once. Nothing on the right is new material. Each row is the left-hand experience seen from the other side, which is why the shift is called a paradigm shift and not an improvement.</p>
+      <div class="self-table-wrap" style="max-width:820px;margin:0 auto 24px;">
+        <table class="self-table" style="min-width:520px;">
+          <thead>
+            <tr>
+              <th style="width:18%;text-align:left;padding-left:16px;">Row</th>
+              <th style="width:48%;">What changes</th>
+              <th style="width:34%;">Met above</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td style="text-align:left;padding-left:16px;">Goal</td>
+            <td>What you are collecting stops being the question. What cannot be lost takes its place.</td>
+            <td>Maitreyi&rsquo;s question about wealth that cannot make her immortal</td>
+          </tr>
+          <tr>
+            <td style="text-align:left;padding-left:16px;">Love</td>
+            <td>The pull stops being read as a claim on the other, and is recognized as the Self.</td>
+            <td><a href="#out-there-cosmic-mirror" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">The Cosmic Mirror</a></td>
+          </tr>
+          <tr>
+            <td style="text-align:left;padding-left:16px;">Perception</td>
+            <td>A viewer and a viewed give way to consciousness meeting itself.</td>
+            <td><a href="#out-there-mechanics" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">How Consciousness Collides With Itself</a></td>
+          </tr>
+          <tr>
+            <td style="text-align:left;padding-left:16px;">The Universe</td>
+            <td>Separate parts give way to one sea, with nothing left standing apart.</td>
+            <td><a href="#out-there-departure" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">Where the Particular Ends</a></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-family:var(--sans);font-size:10.5px;letter-spacing:1px;color:var(--dim);line-height:1.7;margin:-8px 0 24px;text-align:left;">Honest limit: the table compresses one commentary&rsquo;s reading into four lines. Treat the right-hand claims as the tradition&rsquo;s, not as something the table proves.</p>
+      <div id="one-percent-outside" style="max-width:820px;margin:32px auto 0;text-align:left;scroll-margin-top:56px;">
+        <p style="font-family:var(--sans);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:14px;">A Way To Test The Right-Hand Column</p>
+        <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin:0 0 20px;">Draw yourself as a full circle. Anything held as outside, an object, a person, an idea, sits against the edge. In this picture, even a thin slice of life held as &ldquo;out there&rdquo; leaves a gap, and the gap is where the tension sits.</p>
+        <figure style="margin:20px 0 24px;"><img src="./assets/images/cosmic-tree-one-percent-outside.webp" alt="A slide titled The Geometry of 100 Percent Integration. Diagram 1, Unhappiness: a large circle labelled The Self beside a small circle labelled The Object, with a hatched crescent gap between them. Diagram 2, Integration: a single glowing golden circle of interlocking petals with the object united at its centre. Text says that if even 1 percent of your life is perceived as an external physical or conceptual object you remain in tension, and that happiness occurs when the external percentage joins the internal. A box at the bottom reads wholeness is the consciousness that absolutely nothing is external to you." width="1376" height="746" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></figure>
+        <p style="font-family:var(--serif);font-size:14.5px;color:var(--dim);line-height:1.9;margin:20px 0 8px;">Left: the object stays outside and the gap stays open. Right: nothing is removed. The object joins, and nothing is left over to reach for.</p>
+        <p style="font-family:var(--serif);font-size:14.5px;color:var(--gold);font-style:italic;line-height:1.85;margin:20px 0 8px;">What is the one percent in your day? The thing you would still say is simply out there?</p>
+        <p style="font-family:var(--sans);font-size:10.5px;letter-spacing:1px;color:var(--dim);line-height:1.7;margin:16px 0 0;">Honest limit: a geometry offered to look through, not a measurement. The percentage is a figure of speech.</p>
+      </div>
+      </div>
+
+    </div>
+    </div>
 
   </div>
 </section>
@@ -6639,8 +6953,7 @@ a.src-tag:hover{opacity:.75;}
     <button class="collapse-toggle-btn" onclick="sectionCollapse('tat-four-detail',this)">Expand &#9660;</button>
   </div>
   <div id="tat-four-detail" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 48px;text-align:left;">
-    <div id="four-mahavakyas" style="margin-top:36px;padding-top:28px;border-top:1px solid rgba(var(--accent-gold-rgb),0.28);">
-      <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:12px;">One of Four</p>
+    <div id="four-mahavakyas" style="margin-top:20px;scroll-margin-top:150px;">
       <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--mid);line-height:1.9;margin-bottom:20px;">Tat Tvam Asi has three companions, one from each Veda. Four sentences, one recognition, said from four positions.</p>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2px;">
         <div class="sl-stage"><span class="sl-num">What reality is</span><div class="sl-name" style="font-size:15px;"><span class="gloss">Prajnanam Brahma<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Prajnanam Brahma">+</span><span class="gloss-pop">&ldquo;Consciousness is Brahman&rdquo; &mdash; the Mahavakya of the Aitareya Upanishad (Rig Veda), pointing at what reality is made of.</span></span></div><p class="sl-desc">&ldquo;Consciousness is Brahman.&rdquo; Aitareya Upanishad, Rig Veda.</p></div>
@@ -6661,8 +6974,7 @@ a.src-tag:hover{opacity:.75;}
     <button class="collapse-toggle-btn" onclick="sectionCollapse('tat-kaushitaki-detail',this)">Expand &#9660;</button>
   </div>
   <div id="tat-kaushitaki-detail" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 48px;text-align:left;">
-    <div id="kaushitaki-who-are-you" style="max-width:820px;margin:28px auto 0;text-align:left;scroll-margin-top:56px;">
-      <p style="font-family:var(--sans);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:14px;">The Question Asked Back</p>
+    <div id="kaushitaki-who-are-you" style="max-width:820px;margin:20px auto 0;text-align:left;scroll-margin-top:150px;">
       <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--mid);line-height:1.9;margin-bottom:18px;"><a class="src-tag src-trad" href="#sources">Traditional Source</a> The four sentences above are statements. The Kaushitaki has the same recognition arrive as a question. In its first chapter a traveler reaches the hall of Brahman and is asked who he is. A name, a lineage or an office would be the ordinary reply, and none is what the scene wants. The exchange runs: what you are, I am; and then, &ldquo;Who am I, then?&rdquo; &mdash; the Truth.</p>
       <figure style="margin:20px 0 8px;text-align:left;"><img src="./assets/images/kaushitaki-dialogue-identity.webp" alt="A dark slide titled The Dialogue of Absolute Identity. On the left, a small gold star lattice around a sphere is labelled Man, the individual soul. On the right, a large glowing gold sphere is labelled Brahman, the cosmic soul, with concentric ripples between them. Text below has Brahman declaring that man is the Self in every living being and that what you are, I am, then Man asking who am I then, and Brahman answering the Truth." width="1376" height="744" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"><figcaption style="font-family:var(--sans);font-size:10.5px;letter-spacing:1px;color:var(--dim);line-height:1.7;margin-top:10px;">Small lattice, large sphere, and ripples where they meet.</figcaption></figure>
       <p style="font-family:var(--serif);font-size:14.5px;color:var(--dim);line-height:1.9;margin:20px 0 14px;">A name is a label that can be swapped. The reply given here is not a label, and it is said back and forth between the two rather than handed down from a teacher. It sits closest to Aham Brahmasmi, the sentence that arrives from the individual&rsquo;s side. The scene is set at the end of a journey through the afterlife (see <a href="#kaushitaki-moon-gate" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">the moon&rsquo;s gate</a>); this page does not rest on that geography, only on the move the dialogue makes.</p>
@@ -6676,8 +6988,7 @@ a.src-tag:hover{opacity:.75;}
     <button class="collapse-toggle-btn" onclick="sectionCollapse('tat-sparks-detail',this)">Expand &#9660;</button>
   </div>
   <div id="tat-sparks-detail" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 48px;text-align:left;">
-    <div id="mundaka-fire-sparks" style="max-width:820px;margin:44px auto 0;text-align:left;scroll-margin-top:56px;">
-      <p style="font-family:var(--sans);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:14px;">Same Fire, Different Sparks</p>
+    <div id="mundaka-fire-sparks" style="max-width:820px;margin:20px auto 0;text-align:left;scroll-margin-top:150px;">
       <p style="font-family:var(--serif);font-size:clamp(15px,1.9vw,17px);color:var(--mid);line-height:1.9;margin:0 0 16px;">The Mundaka puts the equation as a picture. From a blazing fire, sparks of the same kind fly out in thousands. From the Imperishable, beings of every kind arise, and go back into it.</p>
       <figure style="margin:20px 0 24px;text-align:left;"><img src="./assets/images/mundaka-fire-and-sparks.webp" alt="A slide titled The Fire and the Sparks: a blazing gold fire throwing off thousands of sparks to the right. A box contrasts the fire, the essence all individuals share, with the sparks, which differ only in the way the mind moves and in name and form. A note says freedom is absorbing the limited individual consciousness back into the essence underlying all sparks." width="1376" height="746" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"><figcaption style="font-family:var(--sans);font-size:10.5px;letter-spacing:1px;color:var(--dim);line-height:1.7;margin-top:10px;">One fire. The sparks differ in path and glow, not in what they are.</figcaption></figure>
       <p style="font-family:var(--serif);font-size:clamp(15px,1.9vw,17px);color:var(--mid);line-height:1.9;margin:0 0 16px;">Look at what differs between sparks: size, path, how long each one glows. Look at what doesn&rsquo;t: it is the same fire. Individuals differ in how their minds move and in name and form. What is underneath is the same in all of them.</p>
@@ -6693,8 +7004,7 @@ a.src-tag:hover{opacity:.75;}
     <button class="collapse-toggle-btn" onclick="sectionCollapse('tat-wave-clay-detail',this)">Expand &#9660;</button>
   </div>
   <div id="tat-wave-clay-detail" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 48px;text-align:left;">
-    <div id="wave-and-clay" style="margin:44px 0 0;text-align:left;scroll-margin-top:56px;">
-      <p style="font-family:var(--sans);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:14px;">Wave and Clay</p>
+    <div id="wave-and-clay" style="margin:20px 0 0;text-align:left;scroll-margin-top:56px;">
       <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--mid);line-height:1.9;margin:0 0 14px;"><a class="src-tag src-trad" href="#sources">Traditional Source</a> The sparks and the space-in-the-pot both say &ldquo;same stuff, different container.&rdquo; Two more pictures from the tradition say it with water and with earth, and each adds something the first two don&rsquo;t.</p>
       <figure style="margin:0 0 16px;max-width:760px;"><img src="./assets/images/adv-wave-rope-clay.webp" alt="A dark slide titled The Core Equation: Tat Tvam Asi (Thou Art That), in three columns. The Ocean and the Wave: the wave believes it is small, vulnerable and separate from other waves, but the wave is water, so the individual self appears separate yet is identical in essence to the Absolute. The Rope and the Snake: in dim light a coiled rope is mistaken for a snake and causes real panic; the snake never existed, and when the light of self-knowledge dawns the fear vanishes. The Clay and the Pot: a pot has a specific shape, function and name; break the pot and the clay remains, since all forms are names and shapes laid on one substance." width="1376" height="744" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"><figcaption style="font-family:var(--sans);font-size:10.5px;letter-spacing:1px;color:var(--dim);line-height:1.7;margin:10px 0 0;text-align:left;">Three pictures of one equation. The rope is the one met above, in the Orders of Reality. The wave and the clay are new here.</figcaption></figure>
       <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--mid);line-height:1.9;margin:0 0 14px;"><strong style="color:var(--white);font-weight:400;">The wave.</strong> A wave has a height, a speed and a lifespan, and it can feel like the whole of what it is. None of that is a second substance. Take the water out and there is no wave left to describe. The picture is about identity, not about size: the wave is not a small part of the ocean, it is the ocean in the shape of a wave. Shankara&rsquo;s commentary on the Brahma Sutras uses the sea with its waves and foam for exactly this point.</p>
@@ -9226,7 +9536,6 @@ a.src-tag:hover{opacity:.75;}
     <div style="height:20px;"></div>
 
     <div style="max-width:820px;margin:0 auto 40px;padding:36px 32px;background:var(--bg-lift);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);text-align:center;">
-      <p style="font-family:var(--serif);font-size:clamp(20px,3vw,28px);color:var(--white);margin-bottom:10px;">Mind &ne; Brain</p>
       <p style="font-family:var(--serif);font-size:clamp(16px,2.2vw,20px);color:var(--gold);font-style:italic;margin-bottom:28px;">Mind &divide; Brain &nbsp;=&nbsp; Spirit &divide; Matter</p>
       <div class="mobile-stack-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;text-align:left;">
         <div style="padding:20px 22px;background:var(--bg);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);">
@@ -9327,16 +9636,34 @@ a.src-tag:hover{opacity:.75;}
 
   <p style="font-family:var(--serif);font-size:clamp(16px,2.1vw,19px);color:var(--mid);line-height:1.9;max-width:820px;margin:0 auto 36px;text-align:left;">Consciousness is the whole field &mdash; every thought, sensation, memory, and impulse that ever arises, whether you notice it or not. It is always on. It is the screen nothing can appear outside of. Awareness is narrower and sharper: it is the flashlight, the instant you catch a specific thought, feeling, or reaction as it happens instead of being run by it. <span style="color:var(--gold);font-style:italic;">You can be fully conscious and still spend an entire day on autopilot.</span> Awareness is what interrupts the loop.</p>
 
+  <p style="font-family:var(--serif);font-size:clamp(16px,2.1vw,19px);color:var(--mid);line-height:1.9;max-width:820px;margin:0 auto 36px;text-align:left;">The one who does the noticing has its own home, under <a href="#sakshin" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">Sakshin &middot; The Witness</a>: the argument for why a witness has to exist, and the practice of it. This section stays with the field itself. It starts with the difference between consciousness and awareness, then follows the field through waking, dreaming and deep sleep, and ends with what it is worth.</p>
+
   <div style="max-width:820px;margin:0 auto 36px;padding:22px 26px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg);text-align:center;">
     <p style="font-family:var(--serif);font-size:clamp(16px,2.2vw,20px);font-style:italic;color:var(--gold);line-height:1.8;margin:0 0 10px;">In the beginning there was only the Self. Nothing else whatsoever winked.</p>
     <p style="font-family:var(--sans);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim);margin:0;">Aitareya Upanishad</p>
   </div>
 
-  <!-- Conscious ≠ Aware — standalone, always visible -->
-  <div style="max-width:820px;margin:0 auto 48px;padding:36px 32px;background:var(--bg-lift);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);text-align:center;">
-    <p style="font-family:var(--serif);font-size:clamp(20px,3vw,28px);color:var(--white);margin-bottom:10px;">Conscious &ne; Aware</p>
-    <p style="font-family:var(--serif);font-size:clamp(16px,2.2vw,20px);color:var(--gold);font-style:italic;margin-bottom:28px;">Being awake is not the same as being present.</p>
-    <div class="mobile-stack-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;text-align:left;">
+  <div style="text-align:center;margin-bottom:8px;">
+    <button class="collapse-toggle-btn" onclick="sectionCollapse('consciousness-detail',this)">Expand &#9660;</button>
+    <p class="section-collapse-label" style="margin-top:8px;">Tap to expand — eleven cards, in three groups: field and flashlight, the four states, and what it's worth</p>
+  </div>
+  <div id="consciousness-detail" class="section-collapse-wrap collapsed">
+
+    <p style="font-family:var(--sans);font-size:15px;font-weight:700;letter-spacing:6px;text-transform:uppercase;color:var(--gold);opacity:1;text-align:center;margin:32px 0 10px;">Field and Flashlight</p>
+    <p style="font-family:var(--serif);font-size:13px;font-style:italic;color:var(--dim);text-align:center;margin:0 0 32px;">What the field is, what awareness adds, and the two directions attention runs</p>
+    <div style="text-align:center;margin:0 0 28px;">
+      <button class="collapse-toggle-btn" onclick="toggleGroupCards('distinction-group',this)">Expand All 2 Cards &#9660;</button>
+    </div>
+    <div id="distinction-group">
+    <div id="conscious-vs-aware" class="ego-sub-header" style="max-width:820px;scroll-margin-top:56px;">
+      <div class="ego-sub-header-text">
+        <h3>Conscious &ne; Aware</h3>
+        <p>Being awake is not the same as being present.</p>
+      </div>
+      <button class="collapse-toggle-btn" onclick="sectionCollapse('conscious-aware-detail',this)">Expand &#9660;</button>
+    </div>
+    <div id="conscious-aware-detail" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 48px;">
+    <div class="mobile-stack-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;text-align:left;margin:20px 0 0;">
       <div style="padding:20px 22px;background:var(--bg);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);">
         <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:10px;">Consciousness &middot; The Field</div>
         <p style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.85;">The entire capacity to perceive, think, and feel. It holds everything &mdash; including the parts of you currently running on autopilot. Broad, constant, mostly unmonitored.</p>
@@ -9346,324 +9673,26 @@ a.src-tag:hover{opacity:.75;}
         <p style="font-family:var(--serif);font-size:14.5px;color:var(--mid);line-height:1.85;">The specific act of catching what is happening right now &mdash; &ldquo;I am tense,&rdquo; &ldquo;I am defending,&rdquo; &ldquo;I am scrolling to avoid something.&rdquo; Narrow, deliberate, trainable.</p>
       </div>
     </div>
-  </div>
+    </div>
 
-  <div id="reaching-receiving" style="max-width:820px;margin:0 auto 48px;text-align:left;scroll-margin-top:56px;">
-    <p style="font-family:var(--sans);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.8;margin:0 0 14px;">Reaching And Receiving</p>
+    <div class="ego-sub-header" style="max-width:820px;">
+      <div class="ego-sub-header-text">
+        <h3>Reaching and Receiving</h3>
+        <p>Attention works in both directions: it grasps, and it is where things arrive.</p>
+      </div>
+      <button class="collapse-toggle-btn" onclick="sectionCollapse('reaching-receiving-detail',this)">Expand &#9660;</button>
+    </div>
+    <div id="reaching-receiving-detail" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 48px;">
+    <div id="reaching-receiving" style="max-width:820px;margin:20px auto 0;text-align:left;scroll-margin-top:56px;">
     <p style="font-family:var(--serif);font-size:clamp(15px,1.9vw,17px);color:var(--mid);line-height:1.9;margin:0 0 16px;">&ldquo;I gave the boy the clock.&rdquo; The clock is what gets grasped. The boy is who it is given to. Attention works in both directions. It reaches out and takes hold of a thought, a sound, a task. And it is where those things arrive: the open place they are given to and appear in.</p>
     <p style="font-family:var(--serif);font-size:clamp(15px,1.9vw,17px);color:var(--mid);line-height:1.9;margin:0 0 16px;">Most training goes into the reaching. Focus, effort, control. Drop the reach for a few seconds and see what is still receiving.</p>
     <p style="font-family:var(--serif);font-size:clamp(15px,1.9vw,17px);font-style:italic;color:var(--gold);line-height:1.85;margin:0 0 16px;">Right now, is attention reaching for something, or is it where things are arriving?</p>
     <p style="font-family:var(--sans);font-size:10.5px;letter-spacing:1px;color:var(--dim);line-height:1.7;margin:16px 0 0;">Honest limit: a distinction drawn in one philosophical paper, not a measurement. Whether receiving is something separate, or the same awareness seen from the other side, is the open part.</p>
     <p style="font-family:var(--sans);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim);margin:14px 0 0;">Source: Journal of Consciousness Studies 31(5), 2024</p>
-  </div>
-
-  <div style="text-align:center;margin-bottom:8px;">
-    <button class="collapse-toggle-btn" onclick="sectionCollapse('consciousness-detail',this)">Expand &#9660;</button>
-    <p class="section-collapse-label" style="margin-top:8px;">Tap to expand — thirteen cards, in three groups: the witness, the four states, and what it's worth</p>
-  </div>
-  <div id="consciousness-detail" class="section-collapse-wrap collapsed">
-
-    <p style="font-family:var(--sans);font-size:15px;font-weight:700;letter-spacing:6px;text-transform:uppercase;color:var(--gold);opacity:1;text-align:center;margin:32px 0 10px;">The Witness</p>
-    <p style="font-family:var(--serif);font-size:13px;font-style:italic;color:var(--dim);text-align:center;margin:0 0 32px;">Sakshi Bhava, the argument for why a witness has to exist at all, and where &ldquo;out there&rdquo; begins</p>
-    <div style="text-align:center;margin:0 0 28px;">
-      <button class="collapse-toggle-btn" onclick="toggleGroupCards('witness-group',this)">Expand All 4 Cards &#9660;</button>
-    </div>
-    <div id="witness-group">
-    <div class="ego-sub-header" style="max-width:820px;">
-      <div class="ego-sub-header-text">
-        <h3>Why a Witness Has to Exist</h3>
-        <p>Two structural arguments, one claim &mdash; a river's motion, and the eye's own blind spot</p>
-      </div>
-      <button class="collapse-toggle-btn" onclick="sectionCollapse('witness-argument-detail',this)">Expand &#9660;</button>
-    </div>
-    <div id="witness-argument-detail" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 48px;">
-      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--grey);line-height:1.9;margin:20px 0 20px;">There's a reason the flashlight card above can even be drawn: change can only be measured against something that doesn't change. A river tells you it's moving because the bank stays still. Try to clock the bank's motion using the river, and there's nothing to measure against &mdash; just more motion. Thoughts, moods, and circumstances are the river. The fact that you can notice any of them shifting is proof something in you isn't shifting with them.</p>
-      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--grey);line-height:1.9;margin:0 0 24px;">The eye makes the same point in tissue. Where the optic nerve exits the retina, there are no photoreceptors &mdash; that patch of the visual field is physically incapable of registering light. You have never once seen a hole there, not because the gap is small, but because the very bundle of fiber carrying sight out of the eye sits in the one place sight cannot reach.</p>
-      <p class="pq-standalone" style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:24px 28px;background:var(--bg-lift);text-align:left;margin:24px auto 0;">Two domains, one structure: whatever is doing the perceiving cannot appear inside what it perceives. That's not a metaphor for the witness &mdash; it's the argument for why one has to exist, before the tradition ever puts a name to it.</p>
-    </div>
-
-    <div id="ear-of-the-ear" class="ego-sub-header" style="max-width:820px;scroll-margin-top:56px;">
-      <div class="ego-sub-header-text">
-        <h3>The Ear of the Ear</h3>
-        <p>The same argument, four thousand years earlier &mdash; asked as a question, never closed with an answer</p>
-      </div>
-      <button class="collapse-toggle-btn" onclick="sectionCollapse('ear-of-ear-detail',this)">Expand &#9660;</button>
-    </div>
-    <div id="ear-of-ear-detail" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 48px;">
-
-      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--grey);line-height:1.9;margin:20px 0 24px;text-align:left;">The <span class="gloss">Kena Upanishad<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Kena Upanishad">+</span><span class="gloss-pop">One of the oldest Upanishads, named for its opening word &ldquo;Kena&rdquo; &mdash; &ldquo;by whom.&rdquo; It opens with a student's question rather than a teacher's answer.</span></span> opens with a question, not a claim: by whom willed and directed does the mind alight? What Spirit indeed directs the eye and the ear? Not rhetorical &mdash; it's asking what's actually running the equipment.</p>
-
-      <div class="mobile-stack-cards" style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin:0 0 28px;text-align:left;">
-        <div style="padding:20px 18px;background:var(--bg);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);">
-          <div style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:10px;">The Organ</div>
-          <p style="font-family:var(--serif);font-size:13.5px;color:var(--grey);line-height:1.8;">Can be lost. Hearing itself doesn't go with it.</p>
-        </div>
-        <div style="padding:20px 18px;background:var(--bg);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);">
-          <div style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:10px;">The Membrane</div>
-          <p style="font-family:var(--serif);font-size:13.5px;color:var(--grey);line-height:1.8;">Can rupture. The capacity to register sound persists.</p>
-        </div>
-        <div style="padding:20px 18px;background:var(--bg);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);">
-          <div style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:10px;">The Sense-Center</div>
-          <p style="font-family:var(--serif);font-size:13.5px;color:var(--grey);line-height:1.8;">Where sound is actually registered &mdash; still not the end of the line.</p>
-        </div>
-        <div style="padding:20px 18px;background:var(--bg);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);border-left:2px solid var(--gold);">
-          <div style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.85;margin-bottom:10px;">What's Left</div>
-          <p style="font-family:var(--serif);font-size:13.5px;color:var(--mid);line-height:1.8;">Subtract all three, and something is still hearing this sentence being read.</p>
-        </div>
-      </div>
-
-      <p class="pq-standalone" style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:24px 28px;background:var(--bg-lift);text-align:left;margin:0;">&ldquo;That which cannot be spoken by speech, but by which speech is spoken &mdash; know that alone to be Brahman, not this which people worship.&rdquo; <span style="color:var(--grey);font-style:normal;">&mdash; Kena Upanishad</span></p>
-
-      <div id="not-this-which-people-worship" style="max-width:820px;margin:28px auto 0;scroll-margin-top:56px;text-align:left;">
-        <p style="font-family:var(--serif);font-size:clamp(14px,1.9vw,16.5px);color:var(--grey);line-height:1.9;margin-bottom:20px;">&ldquo;Not this&rdquo; isn't a dismissal of the <span class="gloss">m&#363;rti<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define murti">+</span><span class="gloss-pop">A deity worshipped as a representation of God &mdash; an image or idol used as a focal point for devotion.</span></span>, the idol, the ritual, the form. It's a note on what the form is <em>for</em>.</p>
-        <div class="mobile-stack-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;">
-          <div style="padding:20px 18px;background:var(--bg);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);">
-            <div style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:10px;">The Flag</div>
-            <p style="font-family:var(--serif);font-size:13.5px;color:var(--grey);line-height:1.8;">A flag represents a nation. It's a focal point for the uninitiated &mdash; not the country itself.</p>
-          </div>
-          <div style="padding:20px 18px;background:var(--bg);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);">
-            <div style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:10px;">The Hospital</div>
-            <p style="font-family:var(--serif);font-size:13.5px;color:var(--grey);line-height:1.8;">You go to be cured of something, not to move in. Once cured, you leave.</p>
-          </div>
-        </div>
-        <p style="font-family:var(--serif);font-size:clamp(14px,1.9vw,16.5px);color:var(--gold);font-style:italic;line-height:1.9;margin-top:20px;">To cling to the flag past the point of understanding what it stands for &mdash; or to the hospital past the point of being well &mdash; is to mistake the vehicle for the destination.</p>
-      </div>
-
-    </div>
-
-    <div class="ego-sub-header" style="max-width:820px;">
-      <div class="ego-sub-header-text">
-        <h3>Where Does &ldquo;Out There&rdquo; Begin?</h3>
-        <p>Brihadaranyaka Upanishad &middot; If consciousness is the field nothing appears outside of, where does &ldquo;out there&rdquo; begin?</p>
-      </div>
-      <button class="collapse-toggle-btn" onclick="sectionCollapse('out-there-more',this)">Expand &#9660;</button>
-    </div>
-    <div id="out-there-more" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 48px;scroll-margin-top:56px;">
-      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin:20px 0 24px;text-align:left;">The short version of this question sits under <a href="#inside-outside" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">Neti Neti</a>. This is the long one: seven pictures, each with a reading of what it shows.</p>
-      <div class="ego-sub-header gf-sub-header nested-sub-header" style="max-width:820px;">
-        <div class="ego-sub-header-text">
-          <h3 id="out-there-mechanics" style="scroll-margin-top:56px;">How Consciousness Collides With Itself</h3>
-          <p>The mechanics of perception</p>
-        </div>
-        <button class="collapse-toggle-btn" onclick="sectionCollapse('out-there-mechanics-content',this)">Expand &#9660;</button>
-      </div>
-      <div id="out-there-mechanics-content" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 40px;">
-      <figure style="margin:20px 0 24px;"><img src="./assets/images/out-there-mechanics.webp" alt="Diagram: a glowing sphere on the left sends a wave of light across a gap to a second sphere, and a loop of light curls around the second sphere and returns" width="1200" height="629" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></figure>
-      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin:20px 0 24px;text-align:left;">Read the picture from left to right. A glowing sphere on the left is the knower. A wave leaves it, pinching and swelling as it crosses the gap, and arrives at a second sphere: the thing known. Then the line does not stop. It curls around that second sphere and comes back as a closed loop. That loop is the idea. On this reading perception does not end at contact. It ends in a verdict, and the verdict returns to the one who reached.</p>
-      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin-bottom:24px;text-align:left;">The four names in the picture mark four moments of one event, and each of them ends in <span class="gloss">Chaitanya<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Chaitanya">+</span><span class="gloss-pop">Sanskrit for &ldquo;consciousness&rdquo; &mdash; awareness itself, as opposed to anything it is aware of.</span></span>. Consciousness is present as the knower, as the reaching, as the known, and as the conclusion. Nothing in the sequence is a passive recording, and the same light fills both spheres.</p>
-      <p style="font-family:var(--sans);font-size:10.5px;letter-spacing:1px;color:var(--dim);line-height:1.7;margin:-8px 0 24px;text-align:left;">Honest limit: this is the Vedantic account of what perception is. Neuroscience describes the same event as signals processed in the brain, and this page does not claim to settle between the two.</p>
-      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:20px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg);margin:0 0 8px;">If seeing is a reaching, what is it that reaches?</p>
-      </div>
-
-      <div class="ego-sub-header gf-sub-header nested-sub-header" style="max-width:820px;">
-        <div class="ego-sub-header-text">
-          <h3 id="out-there-bridging-gap" style="scroll-margin-top:56px;">Bridging the Gap</h3>
-          <p>Why consciousness cannot stay inside the skin</p>
-        </div>
-        <button class="collapse-toggle-btn" onclick="sectionCollapse('out-there-bridging-gap-content',this)">Expand &#9660;</button>
-      </div>
-      <div id="out-there-bridging-gap-content" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 40px;">
-      <figure style="margin:20px 0 24px;"><img src="./assets/images/out-there-bridging-gap.webp" alt="Illustration: a glowing point inside a human head sends a dotted line of light through the cracking skull to a tree standing far outside the body" width="1200" height="612" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></figure>
-      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin:20px 0 24px;text-align:left;">The picture turns an argument into an event. A point of light starts inside the head, and the skull breaks open where the line leaves it, so the dotted line runs unbroken all the way to the tree. The breaking is the claim: wherever the boundary of the body seems to be, the knowing does not stop there.</p>
-      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin-bottom:24px;text-align:left;">The argument underneath is shorter than the picture. &ldquo;Outside&rdquo; is a judgment, and a judgment about the tree can only be made by something that has been where the tree is. So the reach is not decoration on perception. It is what perception is. The tradition reads that as a pointer to something unbounded: the body is where the reach starts, not where it stops.</p>
-      <p style="font-family:var(--sans);font-size:10.5px;letter-spacing:1px;color:var(--dim);line-height:1.7;margin:-8px 0 24px;text-align:left;">Honest limit: this is an argument from what &ldquo;out there&rdquo; means, not a laboratory result. It persuades only if you grant that seeing a tree is a way of knowing it, and not only a way of receiving signals from it.</p>
-      </div>
-
-      <div class="ego-sub-header gf-sub-header nested-sub-header" style="max-width:820px;">
-        <div class="ego-sub-header-text">
-          <h3 id="out-there-everywhere" style="scroll-margin-top:56px;">Everything Is Everywhere</h3>
-          <p>From one brain cell to every atom in the cosmos</p>
-        </div>
-        <button class="collapse-toggle-btn" onclick="sectionCollapse('out-there-everywhere-content',this)">Expand &#9660;</button>
-      </div>
-      <div id="out-there-everywhere-content" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 40px;">
-      <figure style="margin:20px 0 24px;"><img src="./assets/images/out-there-everywhere.webp" alt="A single glowing brain cell at the lower left joined by one bright golden curve to a cosmic atom at the upper right, with many thinner gold lines running in every direction behind it" width="1200" height="647" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></figure>
-      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin:20px 0 24px;text-align:left;">Two points of light sit at opposite corners of the picture: a single brain cell at the lower left, a cosmic atom at the upper right. One bright curve joins them, and behind it dozens of thinner gold lines run off in every direction. The curve is not a special road. It is one thread of a web in which every point is tied to every other.</p>
-      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin-bottom:24px;text-align:left;">That is the turn the Antaryami passage makes, set out under <a href="#inside-outside" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">Neti Neti</a>: if the same Self dwells within each thing, nothing is cut off from anything else. The slide draws the practical consequence in a line of its own. There is no distant place to go for what you are looking for, because it is just here. On this reading there is no &ldquo;elsewhere&rdquo; to travel to.</p>
-      <p style="font-family:var(--sans);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim);margin:-8px 0 24px;text-align:left;">Source: Brihadaranyaka Upanishad 3.7</p>
-      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:20px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg);margin:0 0 8px;">If every point is joined to every other, where would the &ldquo;distant place&rdquo; be?</p>
-      </div>
-
-      <div class="ego-sub-header gf-sub-header nested-sub-header" style="max-width:820px;">
-        <div class="ego-sub-header-text">
-          <h3 id="out-there-tripartite" style="scroll-margin-top:56px;">The Three Pulls</h3>
-          <p>The tripartite architecture of human attraction</p>
-        </div>
-        <button class="collapse-toggle-btn" onclick="sectionCollapse('out-there-tripartite-content',this)">Expand &#9660;</button>
-      </div>
-      <div id="out-there-tripartite-content" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 40px;">
-      <figure style="margin:20px 0 24px;"><img src="./assets/images/out-there-tripartite-attraction.webp" alt="Three glowing vessels side by side, cool grey-blue on the left, pale blue in the middle and gold on the right, each carrying a title and a short description" width="1200" height="635" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></figure>
-      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin:20px 0 24px;text-align:left;">Three glowing forms stand side by side, and their colours do some of the arguing: cool grey-blue on the left, pale blue in the middle, gold on the right. Read the colours as depth. The left form is the most physical pull, the right the most inward, and the middle one joins them.</p>
-      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin-bottom:24px;text-align:left;">On this reading the three are one pull seen at three depths. At the surface, matter finds matter: an eye answering light, an ear answering sound. In the middle, one existence calls to itself across a gap that was never as wide as it looked. At the centre, the Self is drawn only to what mirrors its own order. Why one thing gets loved and the one beside it does not is taken up in <a href="#anatomy-of-love" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">the Anatomy of Love</a>.</p>
-      <p style="font-family:var(--sans);font-size:10.5px;letter-spacing:1px;color:var(--dim);line-height:1.7;margin:-8px 0 24px;text-align:left;">Honest limit: the three-part grouping is the commentary&rsquo;s way of organizing the argument. Treat it as a lens on the Upanishad, not as three verses.</p>
-      </div>
-
-      <div class="ego-sub-header gf-sub-header nested-sub-header" style="max-width:820px;">
-        <div class="ego-sub-header-text">
-          <h3 id="out-there-cosmic-mirror" style="scroll-margin-top:56px;">The Cosmic Mirror</h3>
-          <p>The Infinite pulls the Infinite</p>
-        </div>
-        <button class="collapse-toggle-btn" onclick="sectionCollapse('out-there-cosmic-mirror-content',this)">Expand &#9660;</button>
-      </div>
-      <div id="out-there-cosmic-mirror-content" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 40px;">
-      <figure style="margin:20px 0 24px;"><img src="./assets/images/out-there-cosmic-mirror.webp" alt="Two glowing golden spheres facing each other across a pane of blue light, joined by curving golden field lines" width="1200" height="634" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></figure>
-      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin:20px 0 24px;text-align:left;">Two suns face each other across a pane of blue light, joined by field lines that curve from one to the other like a magnet&rsquo;s. The pane is the mirror. What looks like two bodies pulling toward each other is one field, seen from either end.</p>
-      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin-bottom:24px;text-align:left;">&ldquo;Under an illusion&rdquo; does not mean the beauty is fake. It means the source of the pull is misread. The pull is credited to the object, when on this reading it was the Self recognizing itself in a form. It is the same turn Yajnavalkya makes with Maitreyi, where husband, wife and wealth are dear for the sake of the Self.</p>
-      <p style="font-family:var(--sans);font-size:10.5px;letter-spacing:1px;color:var(--dim);line-height:1.7;margin:-8px 0 24px;text-align:left;">Source: Brihadaranyaka Upanishad 2.4.5, in the commentary&rsquo;s words.</p>
-      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:20px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg);margin:0 0 8px;">Next time something pulls you hard, ask what in it you are actually recognizing.</p>
-      </div>
-
-      <div class="ego-sub-header gf-sub-header nested-sub-header" style="max-width:820px;">
-        <div class="ego-sub-header-text">
-          <h3 id="out-there-departure" style="scroll-margin-top:56px;">Where the Particular Ends</h3>
-          <p>The departure of particularized consciousness</p>
-        </div>
-        <button class="collapse-toggle-btn" onclick="sectionCollapse('out-there-departure-content',this)">Expand &#9660;</button>
-      </div>
-      <div id="out-there-departure-content" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 40px;">
-      <figure style="margin:20px 0 24px;"><img src="./assets/images/out-there-departure.webp" alt="Two bands: a boxed band showing an eye and a pyramid joined by a double-headed arrow, and below it an unboxed band of one continuous wave of golden and blue light" width="1200" height="615" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></figure>
-      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin:20px 0 24px;text-align:left;">The picture has two bands. In the upper one, boxed and bordered, an eye and a pyramid face each other with a double-headed arrow between them: the whole of ordinary seeing, two things and a line. In the lower band there is no box and no border, only one wave of gold and blue light with no edge to look past. The box is what ends.</p>
-      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin-bottom:24px;text-align:left;">That is the answer Yajnavalkya gives Maitreyi when she is bewildered. What goes is the kind of awareness that needs a second thing in view. What the lower band shows is not a blank. It is awareness with nothing standing outside it. The exchange itself is set out under <a href="#maitreyi-departure" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">Who Knows the Knower?</a></p>
-      <p style="font-family:var(--sans);font-size:10.5px;letter-spacing:1px;color:var(--dim);line-height:1.7;margin:-8px 0 24px;text-align:left;">Honest limit: this is the tradition&rsquo;s claim about what ends, not something this page can show, and it does not ask you to settle what happens after death. Source: Brihadaranyaka Upanishad 2.4.12&ndash;14.</p>
-      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:20px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg);margin:0 0 8px;">How much of an ordinary day is lived in the upper band?</p>
-      </div>
-
-      <div class="ego-sub-header gf-sub-header nested-sub-header" style="max-width:820px;">
-        <div class="ego-sub-header-text">
-          <h3 id="out-there-paradigm" style="scroll-margin-top:56px;">The Paradigm Shift</h3>
-          <p>Illusion vs. Reality, row by row</p>
-        </div>
-        <button class="collapse-toggle-btn" onclick="sectionCollapse('out-there-paradigm-content',this)">Expand &#9660;</button>
-      </div>
-      <div id="out-there-paradigm-content" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 40px;">
-      <figure style="margin:20px 0 24px;"><img src="./assets/images/out-there-paradigm-shift.webp" alt="Two columns, the dualistic illusion and the non-dual reality, with a golden arrow crossing between them over four rows" width="1200" height="639" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></figure>
-      <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin:20px 0 24px;text-align:left;">The arrow in the picture crosses from the left column to the right, and it crosses all four rows at once. Nothing on the right is new material. Each row is the left-hand experience seen from the other side, which is why the shift is called a paradigm shift and not an improvement.</p>
-      <div class="self-table-wrap" style="max-width:820px;margin:0 auto 24px;">
-        <table class="self-table" style="min-width:520px;">
-          <thead>
-            <tr>
-              <th style="width:18%;text-align:left;padding-left:16px;">Row</th>
-              <th style="width:48%;">What changes</th>
-              <th style="width:34%;">Met above</th>
-            </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <td style="text-align:left;padding-left:16px;">Goal</td>
-            <td>What you are collecting stops being the question. What cannot be lost takes its place.</td>
-            <td>Maitreyi&rsquo;s question about wealth that cannot make her immortal</td>
-          </tr>
-          <tr>
-            <td style="text-align:left;padding-left:16px;">Love</td>
-            <td>The pull stops being read as a claim on the other, and is recognized as the Self.</td>
-            <td><a href="#out-there-cosmic-mirror" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">The Cosmic Mirror</a></td>
-          </tr>
-          <tr>
-            <td style="text-align:left;padding-left:16px;">Perception</td>
-            <td>A viewer and a viewed give way to consciousness meeting itself.</td>
-            <td><a href="#out-there-mechanics" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">How Consciousness Collides With Itself</a></td>
-          </tr>
-          <tr>
-            <td style="text-align:left;padding-left:16px;">The Universe</td>
-            <td>Separate parts give way to one sea, with nothing left standing apart.</td>
-            <td><a href="#out-there-departure" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">Where the Particular Ends</a></td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
-      <p style="font-family:var(--sans);font-size:10.5px;letter-spacing:1px;color:var(--dim);line-height:1.7;margin:-8px 0 24px;text-align:left;">Honest limit: the table compresses one commentary&rsquo;s reading into four lines. Treat the right-hand claims as the tradition&rsquo;s, not as something the table proves.</p>
-      <div id="one-percent-outside" style="max-width:820px;margin:32px auto 0;text-align:left;scroll-margin-top:56px;">
-        <p style="font-family:var(--sans);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:14px;">A Way To Test The Right-Hand Column</p>
-        <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin:0 0 20px;">Draw yourself as a full circle. Anything held as outside, an object, a person, an idea, sits against the edge. In this picture, even a thin slice of life held as &ldquo;out there&rdquo; leaves a gap, and the gap is where the tension sits.</p>
-        <figure style="margin:20px 0 24px;"><img src="./assets/images/cosmic-tree-one-percent-outside.webp" alt="A slide titled The Geometry of 100 Percent Integration. Diagram 1, Unhappiness: a large circle labelled The Self beside a small circle labelled The Object, with a hatched crescent gap between them. Diagram 2, Integration: a single glowing golden circle of interlocking petals with the object united at its centre. Text says that if even 1 percent of your life is perceived as an external physical or conceptual object you remain in tension, and that happiness occurs when the external percentage joins the internal. A box at the bottom reads wholeness is the consciousness that absolutely nothing is external to you." width="1376" height="746" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></figure>
-        <p style="font-family:var(--serif);font-size:14.5px;color:var(--dim);line-height:1.9;margin:20px 0 8px;">Left: the object stays outside and the gap stays open. Right: nothing is removed. The object joins, and nothing is left over to reach for.</p>
-        <p style="font-family:var(--serif);font-size:14.5px;color:var(--gold);font-style:italic;line-height:1.85;margin:20px 0 8px;">What is the one percent in your day? The thing you would still say is simply out there?</p>
-        <p style="font-family:var(--sans);font-size:10.5px;letter-spacing:1px;color:var(--dim);line-height:1.7;margin:16px 0 0;">Honest limit: a geometry offered to look through, not a measurement. The percentage is a figure of speech.</p>
-      </div>
-      </div>
-
-    </div>
-
-    <div class="ego-sub-header" style="max-width:820px;">
-      <div class="ego-sub-header-text">
-        <h3>Sakshi Bhava &mdash; The Witness in Practice</h3>
-        <p>The state of awareness, named, shown twice over, and set against the Gita's own warning about what happens without it.</p>
-      </div>
-      <button class="collapse-toggle-btn" onclick="sectionCollapse('sakshi-bhava-detail',this)">Expand &#9660;</button>
-    </div>
-    <div id="sakshi-bhava-detail" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 48px;">
-
-    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--grey);line-height:1.9;margin:20px 0 24px;text-align:left;">Awareness, sustained, has a name in the tradition: <span class="gloss">Sakshi Bhava<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Sakshi Bhava">+</span><span class="gloss-pop">Literally &ldquo;the witness state&rdquo; &mdash; consciously observing one&rsquo;s own thoughts, feelings, and actions as they happen, rather than being run by them.</span></span> &mdash; being conscious of what is happening right now, inside and around you. It shows up in four places at once.</p>
-    <div class="mobile-stack-cards sakshi-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:2px;margin:0 0 40px;text-align:left;">
-      <div style="padding:22px 24px;background:var(--bg);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);">
-        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;margin-bottom:10px;">Thinking</div>
-        <p style="font-family:var(--serif);font-size:14.5px;color:var(--mid);line-height:1.85;">Knowing what you are thinking.</p>
-      </div>
-      <div style="padding:22px 24px;background:var(--bg);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);">
-        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;margin-bottom:10px;">Feeling</div>
-        <p style="font-family:var(--serif);font-size:14.5px;color:var(--mid);line-height:1.85;">Knowing what you are feeling.</p>
-      </div>
-      <div style="padding:22px 24px;background:var(--bg);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);">
-        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;margin-bottom:10px;">Doing</div>
-        <p style="font-family:var(--serif);font-size:14.5px;color:var(--mid);line-height:1.85;">Being conscious of what you are doing.</p>
-      </div>
-      <div style="padding:22px 24px;background:var(--bg);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);border-left:2px solid var(--gold);">
-        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;margin-bottom:10px;">Karma</div>
-        <p style="font-family:var(--serif);font-size:14.5px;color:var(--mid);line-height:1.85;">Understanding the consequences of your actions.</p>
-      </div>
-    </div>
-
-    <p style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.85;margin:24px 0 32px;padding:20px 24px;border:1.5px solid rgba(var(--accent-gold-rgb),0.4);text-align:left;">Empress Wu once asked the monk Fazang to demonstrate interdependence. He lit a single candle inside a hall of mirrors &mdash; every mirror carried the source flame, and the reflection of every other mirror's flame besides. One act doesn't stay contained to its source.</p>
-
-    <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin:0 0 16px;text-align:left;">Same Moment, Two Ways to Live It</p>
-    <div class="mobile-stack-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin:0 0 24px;text-align:left;">
-      <div style="padding:24px 26px;background:var(--bg);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);">
-        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-bottom:10px;">Conscious, Not Aware</div>
-        <p style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.9;">You come home irritated, snap at someone, and scroll for an hour without knowing why any of it happened. The lights were on. Nobody was watching.</p>
-      </div>
-      <div style="padding:24px 26px;background:var(--bg);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);border-left:2px solid var(--gold);">
-        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;margin-bottom:10px;">Conscious, and Aware</div>
-        <p style="font-family:var(--serif);font-size:14.5px;color:var(--mid);line-height:1.9;">Same irritation. This time you catch it &mdash; &ldquo;I&rsquo;m drained, and I&rsquo;m about to take it out on someone who doesn&rsquo;t deserve it.&rdquo; That one sentence is the entire practice. Everything downstream changes.</p>
-      </div>
-    </div>
-
-    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:24px 28px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg-lift);text-align:left;margin:32px 0 24px;">&ldquo;When awareness is there, choices are wise. When awareness is absent, mistakes happen.&rdquo; <span style="color:var(--grey);font-style:normal;">&mdash; Bhagavad Gita</span></p>
-
-    <p style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin:0 0 16px;text-align:left;">The Two States of Being, Side by Side</p>
-    <table class="states-table" style="width:100%;border-collapse:collapse;table-layout:fixed;margin:0 0 32px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg);">
-      <colgroup><col style="width:50%;"><col style="width:50%;"></colgroup>
-      <thead>
-        <tr>
-          <th style="font-weight:400;font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);text-align:center;padding:18px 20px 14px;">The Automatic Life</th>
-          <th style="font-weight:400;font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.85;text-align:center;padding:18px 20px 14px;border-left:2px solid var(--gold);">The Conscious Life</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.4;text-align:center;padding:12px 20px;border-top:1px solid rgba(var(--accent-gold-rgb),0.32);">Acts automatically</td>
-          <td style="font-family:var(--serif);font-size:14.5px;color:var(--white);line-height:1.4;text-align:center;padding:12px 20px;border-top:1px solid rgba(var(--accent-gold-rgb),0.32);border-left:2px solid var(--gold);">Acts consciously</td>
-        </tr>
-        <tr>
-          <td style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.4;text-align:center;padding:12px 20px;border-top:1px solid rgba(var(--accent-gold-rgb),0.32);">Lost in thought</td>
-          <td style="font-family:var(--serif);font-size:14.5px;color:var(--white);line-height:1.4;text-align:center;padding:12px 20px;border-top:1px solid rgba(var(--accent-gold-rgb),0.32);border-left:2px solid var(--gold);">Observing thought</td>
-        </tr>
-        <tr>
-          <td style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.4;text-align:center;padding:12px 20px;border-top:1px solid rgba(var(--accent-gold-rgb),0.32);">Reactionary</td>
-          <td style="font-family:var(--serif);font-size:14.5px;color:var(--white);line-height:1.4;text-align:center;padding:12px 20px;border-top:1px solid rgba(var(--accent-gold-rgb),0.32);border-left:2px solid var(--gold);">Intentional</td>
-        </tr>
-        <tr>
-          <td style="font-family:var(--sans);font-size:10.5px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);text-align:center;padding:14px 20px;border-top:1px solid rgba(var(--accent-gold-rgb),0.32);">Mistakes happen</td>
-          <td style="font-family:var(--sans);font-size:10.5px;letter-spacing:1px;text-transform:uppercase;color:var(--gold);text-align:center;padding:14px 20px;border-top:1px solid rgba(var(--accent-gold-rgb),0.32);border-left:2px solid var(--gold);">Choices are wise</td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="cosmo-quote" style="margin:0;max-width:820px;">
-      <p>&ldquo;When one withdraws the senses from sense objects, as a tortoise withdraws its limbs, one&rsquo;s wisdom becomes steady.&rdquo;</p>
-      <cite>&mdash; Bhagavad Gita 2.58</cite>
-    </div>
-
     </div>
     </div>
+    </div>
+
 
     <p id="four-states" style="scroll-margin-top:56px;font-family:var(--sans);font-size:15px;font-weight:700;letter-spacing:6px;text-transform:uppercase;color:var(--gold);opacity:1;text-align:center;margin:48px 0 10px;">The Four States</p>
     <p style="font-family:var(--serif);font-size:13px;font-style:italic;color:var(--dim);text-align:center;margin:0 0 32px;">Waking, dreaming, and deep sleep &mdash; the fourth named underneath them, then heard, then read at a scale with nothing bound to it</p>
@@ -12653,7 +12682,6 @@ a.src-tag:hover{opacity:.75;}
       <div style="margin-top:20px;">
       <p style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.9;margin:0 0 24px;">Start with the part that's easiest to verify: the number itself, encoded straight into the machine.</p>
       <div style="max-width:720px;margin:0 auto;padding:40px 36px;border:1px solid var(--gold);background:radial-gradient(ellipse at 50% 0%,rgba(var(--accent-gold-rgb),.07) 0%,transparent 65%);text-align:center;">
-        <p style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:20px;">The Universal Wildcard</p>
         <p style="font-family:var(--serif);font-size:clamp(18px,2.8vw,26px);color:var(--white);line-height:1.75;margin-bottom:16px;">In computer science, ASCII code 42 translates exactly to the Asterisk (<strong style="color:var(--gold);">*</strong>) &mdash; the universal wildcard for &ldquo;Everything&rdquo; and &ldquo;Anything.&rdquo;</p>
         <p style="font-family:var(--serif);font-size:clamp(17px,2.4vw,22px);color:var(--gold);font-style:italic;">We build our symbol on 42. You are the wildcard. You define the value.</p>
       </div>
@@ -13410,7 +13438,6 @@ a.src-tag:hover{opacity:.75;}
            tally itself converges on 42 — a second, independent vector from
            the Master Matrix's 7×6, not a competing definition of it. -->
       <div style="padding:32px 28px;background:var(--bg);border:1.5px solid rgba(var(--accent-gold-rgb),0.45);text-align:left;margin-bottom:20px;">
-        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:14px;">The System Requirement &mdash; A Second, Independent Tally</div>
         <p style="font-family:var(--serif);font-size:15px;color:var(--mid);line-height:1.85;margin-bottom:20px;"><a href="#master-matrix" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">The Master Matrix</a>, below, is the map of the journey &mdash; 6 stages of Life across 7 layers of Existence, the coordinates you move through. This is a completely different question: not where consciousness travels, but what it takes to build a vessel capable of making the trip at all. Nature's own bill of materials, tallied by component, lands on the same number by a route that shares nothing with the grid's own math.</p>
         <div class="grid-scroll-safe">
         <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-bottom:18px;">
@@ -18320,8 +18347,14 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
     </div>
   </div>
 
-    <div id="full-matrix-card" style="max-width:820px;margin:0 auto 36px;padding:32px 20px;background:var(--bg);position:relative;">
-
+    <div class="ego-sub-header gf-sub-header" style="max-width:820px;">
+      <div class="ego-sub-header-text">
+        <h3>The Full Matrix</h3>
+        <p>All 42 cells in one table, read three ways</p>
+      </div>
+      <button class="collapse-toggle-btn" onclick="sectionCollapse('master-matrix-full-content',this)">Expand &#9660;</button>
+    </div>
+    <div id="master-matrix-full-content" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 48px;">
     <div style="max-width:820px;margin:0 auto;padding:0;">
       <p style="text-align:left;font-family:var(--serif);font-style:italic;font-size:14px;color:var(--dim);max-width:820px;margin:0 auto 28px;line-height:1.8;">
         This table expands directly on
@@ -18333,12 +18366,6 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
         shows six teachers across two hemispheres arriving at the same destination independently.
       </p>
     </div>
-
-    <div style="text-align:center;margin-bottom:8px;">
-      <button class="collapse-toggle-btn" onclick="sectionCollapse('master-matrix-full-content',this)">Expand &#9660;</button>
-      <p class="section-collapse-label">Section collapsed by default — tap to expand the full matrix</p>
-    </div>
-    <div id="master-matrix-full-content" class="section-collapse-wrap collapsed">
 
     <!-- THE MATRIX TABLE — one table, mode toggles which columns are visible -->
     <div class="matrix-mode-toggle" role="tablist">
@@ -18555,7 +18582,6 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
     </div>
 
     </div>
-    </div>
 
     <!-- QUICK ANCHOR — a sub-card like the others; the closing question follows it. -->
   <div class="ego-sub-header gf-sub-header" style="max-width:820px;">
@@ -18575,7 +18601,8 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
         <div id="mqLastNote" style="text-align:center;"></div>
       </div>
   </div>
-  <!-- THE ONLY QUESTION — closing note, last thing inside the section's single Expand card. -->
+  </div>
+  <!-- THE ONLY QUESTION — closing note, after the last card; visible whenever the section is open. -->
   <div style="max-width:820px;margin:32px auto 0;padding:28px 32px;background:var(--bg-lift);border:1px solid var(--gold);text-align:center;position:relative;">
       <div style="position:absolute;top:-1px;left:-1px;width:16px;height:16px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);"></div>
       <div style="position:absolute;bottom:-1px;right:-1px;width:16px;height:16px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);"></div>
@@ -18584,7 +18611,6 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
       <p style="font-family:var(--serif);font-size:clamp(14px,1.9vw,17px);color:var(--gold);font-style:italic;line-height:1.7;margin:0;">The vertical movement takes one decision: you are more than the layer you currently inhabit. Not a destiny &mdash; an invitation.</p>
     </div>
 
-    </div>
     </div>
   </div>
 </section>
