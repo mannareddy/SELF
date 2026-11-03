@@ -4145,6 +4145,30 @@ section .sec-sub.sec-sub{
   margin-left:auto !important;
   margin-right:auto !important;
 }
+
+/* ── CARD CONTENT GAP (desktop only; mobile spacing is left as it was) ───
+   Content of a card that opens under an .ego-sub-header (title + subtitle)
+   used to start right under the subtitle with no gap. A 20px spacer sits at
+   the top of the card body (clipped while collapsed), and the first child's
+   own top margin is zeroed so the gap is the same everywhere. */
+@media(min-width:641px){
+  .ego-sub-header + .section-collapse-wrap::before{content:"";display:block;height:20px;}
+  .ego-sub-header + .section-collapse-wrap > :first-child{margin-top:0 !important;}
+}
+
+/* ── NO BLANK FLASH WHEN A FRAMEWORK CARD CLOSES ─────────────────────────
+   On close the card got .collapsed at once, so its content faded to
+   opacity 0 in 0.3s while its height was still animating down, leaving a
+   blank box. The fade now waits until the height has gone. */
+.framework-card.collapsed .framework-content{
+  transition:max-height .4s cubic-bezier(0,1,.25,1),opacity .1s ease .32s;
+}
+/* Neti Neti sheath cards: the Expand/Collapse label was centred on the whole
+   card when closed (so it jumped to mid-height while the card was still
+   shrinking). Pin it to the header row in both states. */
+@media(min-width:641px){
+  #neti-neti-grid .framework-card.framework-card::after{top:38px !important;transform:none !important;}
+}
 </style>
 </head>
 <body>
@@ -7483,7 +7507,7 @@ section .sec-sub.sec-sub{
 
   <div style="text-align:center;margin-bottom:8px;">
     <button class="collapse-toggle-btn" onclick="sectionCollapse('ladder-of-intention-full-content',this)">Expand &#9660;</button>
-    <p class="section-collapse-label" style="margin-top:8px;">Tap to expand — the four rungs, base to apex</p>
+    <p class="section-collapse-label" style="margin-top:8px;">Tap to expand — the four rungs, base to apex, and a closing card on describing versus doing</p>
   </div>
   <div id="ladder-of-intention-full-content" class="section-collapse-wrap collapsed">
   <div class="framework-grid">
@@ -7508,7 +7532,6 @@ section .sec-sub.sec-sub{
       <p>The action offered without a claim on the result. Not "beyond good" — beyond the need to be recognized as good. The rarest rung, and the only one with no audience built in.</p>
     </div></div>
   </div>
-  </div>
 
   <div class="superordinate-box" style="border-right:4px solid var(--gold);text-align:left;position:relative;margin:32px auto 0;max-width:900px;">
     <div style="position:absolute;top:-1px;left:-1px;width:18px;height:18px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);"></div>
@@ -7518,14 +7541,23 @@ section .sec-sub.sec-sub{
 
   <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;max-width:900px;margin:28px auto 0;padding:20px 24px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg);text-align:center;">Not every &ldquo;should&rdquo; is the same voice. One was absorbed &mdash; from parents, culture, everyone&rsquo;s expectations. Another arrives before any argument, fits one person in one situation, and no rulebook could have predicted it. Which one is asking right now?<span style="display:block;font-family:var(--sans);font-size:10px;font-style:normal;letter-spacing:2px;text-transform:uppercase;color:var(--grey);margin-top:12px;">After Viktor Frankl&rsquo;s account of conscience</span></p>
 
-  <div id="talk-or-be" style="max-width:900px;margin:52px auto 0;text-align:left;scroll-margin-top:56px;">
-    <p style="font-family:var(--sans);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.8;margin:0 0 14px;">Describing It, Or Doing It</p>
+  <div class="ego-sub-header gf-sub-header" style="max-width:900px;margin:52px auto 8px;">
+    <div class="ego-sub-header-text">
+      <h3>Describing It, Or Doing It</h3>
+      <p>Marcus Aurelius &middot; talking about goodness versus doing it</p>
+    </div>
+    <button class="collapse-toggle-btn" onclick="sectionCollapse('talk-or-be-detail',this)">Expand &#9660;</button>
+  </div>
+  <div id="talk-or-be-detail" class="section-collapse-wrap collapsed" style="max-width:900px;margin:0 auto 48px;text-align:left;">
+  <div id="talk-or-be" style="margin:20px auto 0;text-align:left;scroll-margin-top:56px;">
     <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin:0 0 20px;">Marcus&rsquo;s note to himself is one instruction: stop talking about the kind of person a good one ought to be, and be one. Sort anything you did this week by two questions &mdash; who saw it, and did it actually happen? Quoting Seneca at dinner and quietly repaying $40 sit in different corners.</p>
     <figure style="margin:24px 0 16px;"><img src="./assets/images/stoic-action-over-proclamation.webp" alt="A two-by-two grid. The vertical axis runs from no audience (bottom) to high audience (top); the horizontal axis runs from just talking (left) to high action (right). Top left: quoting Seneca at dinner, posting motivational lines. Top right: performative goodness, seeking the applause. Bottom left: empty intentions. Bottom right, highlighted: paying back $40 before being asked, treating the diner server like a CEO, admitting a mistake before anyone else finds it." width="1376" height="738" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></figure>
     <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:24px 28px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg-lift);text-align:left;margin:24px 0 0;">&ldquo;No longer talk at all about the kind of man that a good man ought to be, but be such.&rdquo; &mdash; Marcus Aurelius, <em>Meditations</em> 10.16</p>
     <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin:0 0 20px;margin-top:24px;">Which corner did today&rsquo;s good deed land in? The bottom-right corner is the ground of the <a href="#gunatit-card" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">fourth rung</a> above: no audience built in.</p>
     <p style="font-family:var(--sans);font-size:10.5px;letter-spacing:1px;color:var(--dim);line-height:1.7;margin:16px 0 0;text-align:left;">Honest limit: visible good is still good, and speaking is sometimes the action &mdash; a warning, an apology, a refusal. The grid sorts where the doing comes from, not whether it helped.</p>
     <p style="font-family:var(--sans);font-size:10.5px;letter-spacing:1px;color:var(--dim);line-height:1.7;margin:16px 0 0;text-align:left;">Source: Marcus Aurelius, <em>Meditations</em> 10.16 (George Long translation).</p>
+  </div>
+  </div>
   </div>
 </section>
 <span class="continue-hint">continue</span>
