@@ -6659,10 +6659,8 @@ a.src-tag:hover{opacity:.75;}
   </div>
   <div id="neti-chidabhasa-detail" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 48px;text-align:left;">
     <!-- CHIDABHASA -->
-    <div id="chidabhasa" style="margin:52px auto 0;max-width:900px;text-align:left;scroll-margin-top:56px;">
-      <p style="font-family:var(--sans);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:14px;">Where The Feeling Of &ldquo;Me&rdquo; Actually Comes From</p>
-      <h3 style="font-family:var(--serif);font-size:clamp(20px,3vw,26px);color:var(--white);margin-bottom:16px;"><span class="gloss">Chid&#257;bh&#257;sa<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Chidabhasa">+</span><span class="gloss-pop">&ldquo;Reflection of consciousness&rdquo; &mdash; the borrowed appearance of awareness in the intellect, mistaken for consciousness itself, the way sunlight caught in water is mistaken for a second sun.</span></span> &mdash; The Reflection Mechanism</h3>
-      <p style="font-family:var(--serif);font-size:clamp(15px,1.9vw,17px);color:var(--mid);line-height:1.9;margin-bottom:20px;">The <a href="#antahkaran" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">Fourfold Mind</a> named Ahamkara as the part that stamps &ldquo;me&rdquo; onto experience, without explaining the mechanics of how. This is the mechanics. Sunlight falling on still water throws a second, wavering image of the sun onto the wall &mdash; not a second sun, just the one sun's light, caught and bent by a reflective surface. The Sakshin does the same thing to Buddhi, the sattva-lucid, mirror-like part of the intellect. The reflection is called Chidabhasa, and the entire felt sense of being a located, limited someone is that reflection, mistaken for the light behind it.</p>
+    <div id="chidabhasa" style="margin:20px auto 0;max-width:900px;text-align:left;scroll-margin-top:150px;">
+      <p style="font-family:var(--serif);font-size:clamp(15px,1.9vw,17px);color:var(--mid);line-height:1.9;margin-bottom:20px;">The <a href="#antahkaran" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">Fourfold Mind</a> named Ahamkara as the part that stamps &ldquo;me&rdquo; onto experience, without explaining the mechanics of how. This is the mechanics. Sunlight falling on still water throws a second, wavering image of the sun onto the wall &mdash; not a second sun, just the one sun's light, caught and bent by a reflective surface. The Sakshin does the same thing to Buddhi, the sattva-lucid, mirror-like part of the intellect. The reflection is called <span class="gloss">Chid&#257;bh&#257;sa<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Chidabhasa">+</span><span class="gloss-pop">&ldquo;Reflection of consciousness&rdquo; &mdash; the borrowed appearance of awareness in the intellect, mistaken for consciousness itself, the way sunlight caught in water is mistaken for a second sun.</span></span>, and the entire felt sense of being a located, limited someone is that reflection, mistaken for the light behind it.</p>
   <figure style="max-width:820px;margin:28px auto 24px;text-align:left;"><img src="./assets/images/ego-adhyasa-overlap.webp" alt="Two overlapping translucent discs, one gold labelled Sat-Chit-Ananda and one grey labelled the mind and sense organs, their overlap marked as ego" width="1376" height="768" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"><figcaption style="font-family:var(--sans);font-size:10.5px;letter-spacing:1px;color:var(--dim);line-height:1.7;margin-top:10px;">Adhyasa: the seer overlapped with its instruments, and the overlap taken for &ldquo;I.&rdquo;</figcaption></figure>
       <div class="mobile-stack-cards" style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-bottom:20px;">
         <div class="sl-stage"><span class="sl-num">1</span><div class="sl-name" style="font-size:13px;">The Source</div><p class="sl-desc">Sakshin: all-pervasive, non-intentional, like ambient light.</p></div>
@@ -22579,6 +22577,26 @@ function updateNav(){
       if(fcAncestor && fcAncestor.classList.contains('collapsed')){
         fcAncestor.click();
         didExpand = true;
+      }
+
+      // Path / Traditions (desktop flyouts + mobile drill screens): a link to a
+      // section whose body now lives in one collapsed wrap used to land on the
+      // bare header. Open that outermost wrap so the content shows too.
+      var mScreen = this.closest('.mnav-screen');
+      var isPathTrad = this.dataset.group === 'path' || this.dataset.group === 'traditions' ||
+        (mScreen && /^(path|trad)/.test(mScreen.dataset.screen || ''));
+      if(isPathTrad && !didExpand){
+        var outerWraps = Array.prototype.filter.call(
+          target.querySelectorAll('.section-collapse-wrap.collapsed'),
+          function(w){
+            var up = w.parentElement ? w.parentElement.closest('.section-collapse-wrap') : null;
+            return !up || up === target || !target.contains(up);
+          }
+        );
+        if(outerWraps.length === 1 && outerWraps[0].id){
+          sectionCollapse(outerWraps[0].id);
+          didExpand = true;
+        }
       }
 
       // Delay scroll slightly if we just expanded so max-height transition registers
