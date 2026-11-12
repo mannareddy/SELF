@@ -4157,8 +4157,14 @@ section .sec-sub.sec-sub{
    the top of the card body (clipped while collapsed), and the first child's
    own top margin is zeroed so the gap is the same everywhere. */
 @media(min-width:641px){
-  .ego-sub-header + .section-collapse-wrap::before{content:"";display:block;height:20px;}
+  .ego-sub-header + .section-collapse-wrap::before{content:"";display:block;height:16px;}
   .ego-sub-header + .section-collapse-wrap > :first-child{margin-top:0 !important;}
+  /* Some cards also carry an inline empty spacer div (20-28px) before the first paragraph,
+     and that paragraph keeps its own 20px top margin, stacking to ~70px+ above the
+     "Applied Framework" tag. On desktop the spacer is collapsed and the paragraph after it
+     has its top margin zeroed, so every card has the same single 16px gap. */
+  .ego-sub-header + .section-collapse-wrap > div:first-child:empty{height:0 !important;}
+  .ego-sub-header + .section-collapse-wrap > div:first-child:empty + *{margin-top:0 !important;}
 }
 
 /* ── NO BLANK FLASH WHEN A FRAMEWORK CARD CLOSES ─────────────────────────
@@ -11786,7 +11792,7 @@ section .sec-sub.sec-sub{
   <p style="font-family:var(--serif);font-size:13px;font-style:italic;color:var(--dim);text-align:center;margin:0 0 32px;">Four ways to work with the mechanism instead of being run by it</p>
   <!-- The Soft Spot — Bodhichitta -->
   <div style="text-align:center;margin:0 0 28px;">
-    <button class="collapse-toggle-btn" onclick="toggleGroupCards('wayout-group',this)">Expand All 4 Cards &#9660;</button>
+    <button class="collapse-toggle-btn" onclick="toggleGroupCards('wayout-group',this)">Expand All 5 Cards &#9660;</button>
   </div>
   <div id="wayout-group">
   <div class="ego-sub-header">
@@ -14278,7 +14284,7 @@ section .sec-sub.sec-sub{
 
   <div style="text-align:center;margin:0 0 28px;">
     <button class="collapse-toggle-btn" onclick="sectionCollapse('karm-yog-group',this)">Expand &#9660;</button>
-    <p class="section-collapse-label" style="margin-top:8px;">Tap to expand &mdash; eleven cards, from the closed loop to the loop closing</p>
+    <p class="section-collapse-label" style="margin-top:8px;">Tap to expand &mdash; twelve cards, from the closed loop to the loop closing</p>
   </div>
   <div id="karm-yog-group" class="section-collapse-wrap collapsed">
 
