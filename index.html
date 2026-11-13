@@ -4181,6 +4181,7 @@ section .sec-sub.sec-sub{
   #neti-neti-grid .framework-card.framework-card::after{top:38px !important;transform:none !important;}
 }
 </style>
+<style id="img-map-hit-css">.img-map-hit{cursor:pointer;outline:none;}.img-map-hit:hover .img-map-shape,.img-map-hit:focus .img-map-shape,.img-map-hit:focus-visible .img-map-shape{fill:rgba(var(--accent-gold-rgb),.16);stroke:rgba(var(--accent-gold-rgb),.75);}</style>
 </head>
 <body>
 
@@ -8108,71 +8109,7 @@ section .sec-sub.sec-sub{
        on the node's own x-coordinate — a label placed straight below would
        sit right on top of that line. -->
   <div style="max-width:420px;margin:40px auto 36px;">
-    <svg viewBox="0 0 440 470" style="width:100%;height:auto;overflow:visible;" role="img" aria-label="Ascent of Self map — tap a stage to jump to its full breakdown">
-      <style>
-        .ascent-map-node{cursor:pointer;}
-        .ascent-map-node:hover circle.ascent-node-bg{fill:rgba(var(--accent-gold-rgb),.14);}
-        .ascent-map-node:focus circle.ascent-node-bg{fill:rgba(var(--accent-gold-rgb),.14);}
-        .ascent-map-node text{pointer-events:none;}
-      </style>
-      <!-- connectors: fixed 3-step staircase between every consecutive pair -->
-      <path d="M 44,414 h14 v-18 h14 v-18 h14 v-18" fill="none" stroke="var(--gold)" stroke-width="1.5" opacity="0.4"/>
-      <path d="M 86,360 h14 v-18 h14 v-18 h14 v-18" fill="none" stroke="var(--gold)" stroke-width="1.5" opacity="0.4"/>
-      <path d="M 128,306 h14 v-18 h14 v-18 h14 v-18" fill="none" stroke="var(--gold)" stroke-width="1.5" opacity="0.4"/>
-      <path d="M 170,252 h14 v-18 h14 v-18 h14 v-18" fill="none" stroke="var(--gold)" stroke-width="1.5" opacity="0.4"/>
-      <path d="M 212,198 h14 v-18 h14 v-18 h14 v-18" fill="none" stroke="var(--gold)" stroke-width="1.5" opacity="0.4"/>
-      <path d="M 254,144 h14 v-18 h14 v-18 h14 v-18" fill="none" stroke="var(--gold)" stroke-width="1.5" opacity="0.4"/>
-      <!-- nodes -->
-      <g class="ascent-map-node" tabindex="0" role="button" aria-label="Layer 1 — Survival, I Exist" onclick="scrollToAscentCard(1)" onkeypress="if(event.key==='Enter')scrollToAscentCard(1)">
-        <title>L1 — Survival — &ldquo;I Exist&rdquo;</title>
-        <circle class="ascent-node-bg" cx="44" cy="414" r="22" fill="var(--bg-lift)" stroke="#e74c3c" stroke-width="1.5"/>
-        <text x="44" y="420" text-anchor="middle" font-family="var(--sans)" font-size="14" font-weight="700" fill="#e74c3c">1</text>
-        <text x="78" y="411" text-anchor="start" font-family="var(--sans)" font-size="9" letter-spacing="1.5" fill="var(--dim)" style="text-transform:uppercase;">L1</text>
-        <text x="78" y="425" text-anchor="start" font-family="var(--sans)" font-size="13" fill="var(--white)">Survival</text>
-      </g>
-      <g class="ascent-map-node" tabindex="0" role="button" aria-label="Layer 2 — Emotion, I Feel" onclick="scrollToAscentCard(2)" onkeypress="if(event.key==='Enter')scrollToAscentCard(2)">
-        <title>L2 — Emotion — &ldquo;I Feel&rdquo;</title>
-        <circle class="ascent-node-bg" cx="86" cy="360" r="22" fill="var(--bg-lift)" stroke="#e67e22" stroke-width="1.5"/>
-        <text x="86" y="366" text-anchor="middle" font-family="var(--sans)" font-size="14" font-weight="700" fill="#e67e22">2</text>
-        <text x="120" y="357" text-anchor="start" font-family="var(--sans)" font-size="9" letter-spacing="1.5" fill="var(--dim)" style="text-transform:uppercase;">L2</text>
-        <text x="120" y="371" text-anchor="start" font-family="var(--sans)" font-size="13" fill="var(--white)">Emotion</text>
-      </g>
-      <g class="ascent-map-node" tabindex="0" role="button" aria-label="Layer 3 — Thought, I Think" onclick="scrollToAscentCard(3)" onkeypress="if(event.key==='Enter')scrollToAscentCard(3)">
-        <title>L3 — Thought — &ldquo;I Think&rdquo;</title>
-        <circle class="ascent-node-bg" cx="128" cy="306" r="22" fill="var(--bg-lift)" stroke="var(--chakra-3)" stroke-width="1.5"/>
-        <text x="128" y="312" text-anchor="middle" font-family="var(--sans)" font-size="14" font-weight="700" fill="var(--chakra-3)">3</text>
-        <text x="162" y="303" text-anchor="start" font-family="var(--sans)" font-size="9" letter-spacing="1.5" fill="var(--dim)" style="text-transform:uppercase;">L3</text>
-        <text x="162" y="317" text-anchor="start" font-family="var(--sans)" font-size="13" fill="var(--white)">Thought</text>
-      </g>
-      <g class="ascent-map-node" tabindex="0" role="button" aria-label="Layer 4 — Love, I Connect" onclick="scrollToAscentCard(4)" onkeypress="if(event.key==='Enter')scrollToAscentCard(4)">
-        <title>L4 — Love — &ldquo;I Connect&rdquo;</title>
-        <circle class="ascent-node-bg" cx="170" cy="252" r="22" fill="var(--bg-lift)" stroke="var(--chakra-4)" stroke-width="1.5"/>
-        <text x="170" y="258" text-anchor="middle" font-family="var(--sans)" font-size="14" font-weight="700" fill="var(--chakra-4)">4</text>
-        <text x="204" y="249" text-anchor="start" font-family="var(--sans)" font-size="9" letter-spacing="1.5" fill="var(--dim)" style="text-transform:uppercase;">L4</text>
-        <text x="204" y="263" text-anchor="start" font-family="var(--sans)" font-size="13" fill="var(--white)">Love</text>
-      </g>
-      <g class="ascent-map-node" tabindex="0" role="button" aria-label="Layer 5 — Wisdom, I Understand" onclick="scrollToAscentCard(5)" onkeypress="if(event.key==='Enter')scrollToAscentCard(5)">
-        <title>L5 — Wisdom — &ldquo;I Understand&rdquo;</title>
-        <circle class="ascent-node-bg" cx="212" cy="198" r="22" fill="var(--bg-lift)" stroke="#3498db" stroke-width="1.5"/>
-        <text x="212" y="204" text-anchor="middle" font-family="var(--sans)" font-size="14" font-weight="700" fill="#3498db">5</text>
-        <text x="246" y="195" text-anchor="start" font-family="var(--sans)" font-size="9" letter-spacing="1.5" fill="var(--dim)" style="text-transform:uppercase;">L5</text>
-        <text x="246" y="209" text-anchor="start" font-family="var(--sans)" font-size="13" fill="var(--white)">Wisdom</text>
-      </g>
-      <g class="ascent-map-node" tabindex="0" role="button" aria-label="Layer 6 — Bliss, I Transcend" onclick="scrollToAscentCard(6)" onkeypress="if(event.key==='Enter')scrollToAscentCard(6)">
-        <title>L6 — Bliss — &ldquo;I Transcend&rdquo;</title>
-        <circle class="ascent-node-bg" cx="254" cy="144" r="22" fill="var(--bg-lift)" stroke="#6a5acd" stroke-width="1.5"/>
-        <text x="254" y="150" text-anchor="middle" font-family="var(--sans)" font-size="14" font-weight="700" fill="#6a5acd">6</text>
-        <text x="288" y="141" text-anchor="start" font-family="var(--sans)" font-size="9" letter-spacing="1.5" fill="var(--dim)" style="text-transform:uppercase;">L6</text>
-        <text x="288" y="155" text-anchor="start" font-family="var(--sans)" font-size="13" fill="var(--white)">Bliss</text>
-      </g>
-      <g class="ascent-map-node" tabindex="0" role="button" aria-label="Layer 7 — Oneness, I Am" onclick="scrollToAscentCard(7)" onkeypress="if(event.key==='Enter')scrollToAscentCard(7)">
-        <title>L7 — Oneness — &ldquo;I Am&rdquo;</title>
-        <circle class="ascent-node-bg" cx="296" cy="90" r="22" fill="var(--bg-lift)" stroke="#9b59b6" stroke-width="1.5"/>
-        <text x="296" y="96" text-anchor="middle" font-family="var(--sans)" font-size="14" font-weight="700" fill="#9b59b6">7</text>
-        <text x="330" y="87" text-anchor="start" font-family="var(--sans)" font-size="9" letter-spacing="1.5" fill="var(--dim)" style="text-transform:uppercase;">L7</text>
-        <text x="330" y="101" text-anchor="start" font-family="var(--sans)" font-size="13" fill="var(--white)">Oneness</text>
-      </g>
-    </svg>
+    <div style="position:relative;width:100%;line-height:0;"><img src="./assets/images/ascent-map.webp" alt="Ascent of Self map — tap a stage to jump to its full breakdown" width="1400" height="1495" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;"><svg viewBox="0 0 1400 1495" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible;" role="group" aria-label="Ascent of Self map — tap a stage to jump to its full breakdown"><g class="ascent-map-node img-map-hit" tabindex="0" role="button" aria-label="Layer 1 — Survival, I Exist" onclick="scrollToAscentCard(1)" onkeypress="if(event.key==='Enter')scrollToAscentCard(1)"><title>L1 — Survival — “I Exist”</title><circle class="img-map-shape" cx="140.0" cy="1317.3" r="78.4" fill="transparent" stroke="transparent" stroke-width="2"/></g><g class="ascent-map-node img-map-hit" tabindex="0" role="button" aria-label="Layer 2 — Emotion, I Feel" onclick="scrollToAscentCard(2)" onkeypress="if(event.key==='Enter')scrollToAscentCard(2)"><title>L2 — Emotion — “I Feel”</title><circle class="img-map-shape" cx="273.6" cy="1145.5" r="78.4" fill="transparent" stroke="transparent" stroke-width="2"/></g><g class="ascent-map-node img-map-hit" tabindex="0" role="button" aria-label="Layer 3 — Thought, I Think" onclick="scrollToAscentCard(3)" onkeypress="if(event.key==='Enter')scrollToAscentCard(3)"><title>L3 — Thought — “I Think”</title><circle class="img-map-shape" cx="407.3" cy="973.6" r="78.4" fill="transparent" stroke="transparent" stroke-width="2"/></g><g class="ascent-map-node img-map-hit" tabindex="0" role="button" aria-label="Layer 4 — Love, I Connect" onclick="scrollToAscentCard(4)" onkeypress="if(event.key==='Enter')scrollToAscentCard(4)"><title>L4 — Love — “I Connect”</title><circle class="img-map-shape" cx="540.9" cy="801.8" r="78.4" fill="transparent" stroke="transparent" stroke-width="2"/></g><g class="ascent-map-node img-map-hit" tabindex="0" role="button" aria-label="Layer 5 — Wisdom, I Understand" onclick="scrollToAscentCard(5)" onkeypress="if(event.key==='Enter')scrollToAscentCard(5)"><title>L5 — Wisdom — “I Understand”</title><circle class="img-map-shape" cx="674.5" cy="630.0" r="78.4" fill="transparent" stroke="transparent" stroke-width="2"/></g><g class="ascent-map-node img-map-hit" tabindex="0" role="button" aria-label="Layer 6 — Bliss, I Transcend" onclick="scrollToAscentCard(6)" onkeypress="if(event.key==='Enter')scrollToAscentCard(6)"><title>L6 — Bliss — “I Transcend”</title><circle class="img-map-shape" cx="808.2" cy="458.2" r="78.4" fill="transparent" stroke="transparent" stroke-width="2"/></g><g class="ascent-map-node img-map-hit" tabindex="0" role="button" aria-label="Layer 7 — Oneness, I Am" onclick="scrollToAscentCard(7)" onkeypress="if(event.key==='Enter')scrollToAscentCard(7)"><title>L7 — Oneness — “I Am”</title><circle class="img-map-shape" cx="941.8" cy="286.4" r="78.4" fill="transparent" stroke="transparent" stroke-width="2"/></g></svg></div>
     <p style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#555;text-align:center;margin-top:8px;">Tap a stage to jump to its full breakdown</p>
   </div>
 
@@ -12335,81 +12272,7 @@ section .sec-sub.sec-sub{
        full card. Purely navigational — no content lives in the map itself,
        so nothing here needs to stay in sync with the card text below. -->
   <div style="max-width:480px;margin:40px auto 36px;">
-    <svg viewBox="-55 -35 495 470" style="width:100%;height:auto;overflow:visible;" role="img" aria-label="Enneagram map — tap a type to jump to its full breakdown">
-      <style>
-        .enn-map-node{cursor:pointer;}
-        .enn-map-node:hover circle.enn-node-bg{fill:rgba(var(--accent-gold-rgb),.14);stroke:var(--gold);}
-        .enn-map-node:focus circle.enn-node-bg{fill:rgba(var(--accent-gold-rgb),.14);stroke:var(--gold);}
-        .enn-map-node text{pointer-events:none;}
-      </style>
-      <!-- connecting lines: classic Enneagram hexad (1-4-2-8-5-7-1) + triangle (3-6-9-3) -->
-      <polyline points="296,85 251,341 348,174 104,85 149,341 52,174 296,85" fill="none" stroke="var(--gold)" stroke-width="1" opacity="0.28"/>
-      <polyline points="330,275 70,275 200,50 330,275" fill="none" stroke="var(--gold)" stroke-width="1" opacity="0.28"/>
-      <!-- outer ring -->
-      <circle cx="200" cy="200" r="150" fill="none" stroke="var(--gold)" stroke-width="1" opacity="0.18"/>
-      <!-- triad labels: viewBox extends 20px above y=0 just for these, and
-           they're nudged out at the two lower corners, so none of them ever
-           sits under a node's own name label (Body/Peacemaker was the worst
-           offender — they used to be only 17px apart). -->
-      <text x="200" y="-25" text-anchor="middle" font-family="var(--sans)" font-size="9" letter-spacing="2" fill="var(--gold)" opacity="0.5" style="text-transform:uppercase;">Body</text>
-      <text x="415" y="225" text-anchor="middle" font-family="var(--sans)" font-size="9" letter-spacing="2" fill="var(--gold)" opacity="0.5" style="text-transform:uppercase;">Heart</text>
-      <text x="-15" y="225" text-anchor="middle" font-family="var(--sans)" font-size="9" letter-spacing="2" fill="var(--gold)" opacity="0.5" style="text-transform:uppercase;">Head</text>
-      <!-- nodes -->
-      <g class="enn-map-node" tabindex="0" role="button" aria-label="Type 1 — The Perfectionist" onclick="scrollToEnnCard(1)" onkeypress="if(event.key==='Enter')scrollToEnnCard(1)">
-        <title>Type 1 — The Perfectionist</title>
-        <circle class="enn-node-bg" cx="296" cy="85" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
-        <text x="296" y="91" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">1</text>
-        <text x="296" y="45" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Perfectionist</text>
-      </g>
-      <g class="enn-map-node" tabindex="0" role="button" aria-label="Type 2 — The Giver" onclick="scrollToEnnCard(2)" onkeypress="if(event.key==='Enter')scrollToEnnCard(2)">
-        <title>Type 2 — The Giver</title>
-        <circle class="enn-node-bg" cx="348" cy="174" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
-        <text x="348" y="180" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">2</text>
-        <text x="388" y="178" text-anchor="start" font-family="var(--sans)" font-size="9" fill="var(--dim)">Giver</text>
-      </g>
-      <g class="enn-map-node" tabindex="0" role="button" aria-label="Type 3 — The Achiever" onclick="scrollToEnnCard(3)" onkeypress="if(event.key==='Enter')scrollToEnnCard(3)">
-        <title>Type 3 — The Achiever</title>
-        <circle class="enn-node-bg" cx="330" cy="275" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
-        <text x="330" y="281" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">3</text>
-        <text x="370" y="279" text-anchor="start" font-family="var(--sans)" font-size="9" fill="var(--dim)">Achiever</text>
-      </g>
-      <g class="enn-map-node" tabindex="0" role="button" aria-label="Type 4 — The Individualist" onclick="scrollToEnnCard(4)" onkeypress="if(event.key==='Enter')scrollToEnnCard(4)">
-        <title>Type 4 — The Individualist</title>
-        <circle class="enn-node-bg" cx="251" cy="341" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
-        <text x="251" y="347" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">4</text>
-        <text x="251" y="381" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Individualist</text>
-      </g>
-      <g class="enn-map-node" tabindex="0" role="button" aria-label="Type 5 — The Investigator" onclick="scrollToEnnCard(5)" onkeypress="if(event.key==='Enter')scrollToEnnCard(5)">
-        <title>Type 5 — The Investigator</title>
-        <circle class="enn-node-bg" cx="149" cy="341" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
-        <text x="149" y="347" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">5</text>
-        <text x="149" y="381" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Investigator</text>
-      </g>
-      <g class="enn-map-node" tabindex="0" role="button" aria-label="Type 6 — The Skeptic" onclick="scrollToEnnCard(6)" onkeypress="if(event.key==='Enter')scrollToEnnCard(6)">
-        <title>Type 6 — The Skeptic</title>
-        <circle class="enn-node-bg" cx="70" cy="275" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
-        <text x="70" y="281" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">6</text>
-        <text x="30" y="279" text-anchor="end" font-family="var(--sans)" font-size="9" fill="var(--dim)">Skeptic</text>
-      </g>
-      <g class="enn-map-node" tabindex="0" role="button" aria-label="Type 7 — The Enthusiast" onclick="scrollToEnnCard(7)" onkeypress="if(event.key==='Enter')scrollToEnnCard(7)">
-        <title>Type 7 — The Enthusiast</title>
-        <circle class="enn-node-bg" cx="52" cy="174" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
-        <text x="52" y="180" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">7</text>
-        <text x="12" y="178" text-anchor="end" font-family="var(--sans)" font-size="9" fill="var(--dim)">Enthusiast</text>
-      </g>
-      <g class="enn-map-node" tabindex="0" role="button" aria-label="Type 8 — The Challenger" onclick="scrollToEnnCard(8)" onkeypress="if(event.key==='Enter')scrollToEnnCard(8)">
-        <title>Type 8 — The Challenger</title>
-        <circle class="enn-node-bg" cx="104" cy="85" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
-        <text x="104" y="91" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">8</text>
-        <text x="104" y="45" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Challenger</text>
-      </g>
-      <g class="enn-map-node" tabindex="0" role="button" aria-label="Type 9 — The Peacemaker" onclick="scrollToEnnCard(9)" onkeypress="if(event.key==='Enter')scrollToEnnCard(9)">
-        <title>Type 9 — The Peacemaker</title>
-        <circle class="enn-node-bg" cx="200" cy="50" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
-        <text x="200" y="56" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">9</text>
-        <text x="200" y="10" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Peacemaker</text>
-      </g>
-    </svg>
+    <div style="position:relative;width:100%;line-height:0;"><img src="./assets/images/enneagram-map.webp" alt="Enneagram map — tap a type to jump to its full breakdown" width="1024" height="1024" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;"><svg viewBox="0 0 1024 1024" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible;" role="group" aria-label="Enneagram map — tap a type to jump to its full breakdown"><g class="enn-map-node img-map-hit" tabindex="0" role="button" aria-label="Type 1 — The Perfectionist" onclick="scrollToEnnCard(1)" onkeypress="if(event.key==='Enter')scrollToEnnCard(1)"><title>Type 1 — The Perfectionist</title><circle class="img-map-shape" cx="726.5" cy="279.5" r="58.0" fill="transparent" stroke="transparent" stroke-width="2"/></g><g class="enn-map-node img-map-hit" tabindex="0" role="button" aria-label="Type 2 — The Giver" onclick="scrollToEnnCard(2)" onkeypress="if(event.key==='Enter')scrollToEnnCard(2)"><title>Type 2 — The Giver</title><circle class="img-map-shape" cx="835.5" cy="465.5" r="58.0" fill="transparent" stroke="transparent" stroke-width="2"/></g><g class="enn-map-node img-map-hit" tabindex="0" role="button" aria-label="Type 3 — The Achiever" onclick="scrollToEnnCard(3)" onkeypress="if(event.key==='Enter')scrollToEnnCard(3)"><title>Type 3 — The Achiever</title><circle class="img-map-shape" cx="797.5" cy="675.5" r="58.0" fill="transparent" stroke="transparent" stroke-width="2"/></g><g class="enn-map-node img-map-hit" tabindex="0" role="button" aria-label="Type 4 — The Individualist" onclick="scrollToEnnCard(4)" onkeypress="if(event.key==='Enter')scrollToEnnCard(4)"><title>Type 4 — The Individualist</title><circle class="img-map-shape" cx="632.5" cy="814.5" r="58.0" fill="transparent" stroke="transparent" stroke-width="2"/></g><g class="enn-map-node img-map-hit" tabindex="0" role="button" aria-label="Type 5 — The Investigator" onclick="scrollToEnnCard(5)" onkeypress="if(event.key==='Enter')scrollToEnnCard(5)"><title>Type 5 — The Investigator</title><circle class="img-map-shape" cx="420.5" cy="814.5" r="58.0" fill="transparent" stroke="transparent" stroke-width="2"/></g><g class="enn-map-node img-map-hit" tabindex="0" role="button" aria-label="Type 6 — The Skeptic" onclick="scrollToEnnCard(6)" onkeypress="if(event.key==='Enter')scrollToEnnCard(6)"><title>Type 6 — The Skeptic</title><circle class="img-map-shape" cx="257.5" cy="676.5" r="58.0" fill="transparent" stroke="transparent" stroke-width="2"/></g><g class="enn-map-node img-map-hit" tabindex="0" role="button" aria-label="Type 7 — The Enthusiast" onclick="scrollToEnnCard(7)" onkeypress="if(event.key==='Enter')scrollToEnnCard(7)"><title>Type 7 — The Enthusiast</title><circle class="img-map-shape" cx="219.5" cy="464.5" r="58.0" fill="transparent" stroke="transparent" stroke-width="2"/></g><g class="enn-map-node img-map-hit" tabindex="0" role="button" aria-label="Type 8 — The Challenger" onclick="scrollToEnnCard(8)" onkeypress="if(event.key==='Enter')scrollToEnnCard(8)"><title>Type 8 — The Challenger</title><circle class="img-map-shape" cx="328.5" cy="279.5" r="58.0" fill="transparent" stroke="transparent" stroke-width="2"/></g><g class="enn-map-node img-map-hit" tabindex="0" role="button" aria-label="Type 9 — The Peacemaker" onclick="scrollToEnnCard(9)" onkeypress="if(event.key==='Enter')scrollToEnnCard(9)"><title>Type 9 — The Peacemaker</title><circle class="img-map-shape" cx="526.5" cy="206.5" r="58.0" fill="transparent" stroke="transparent" stroke-width="2"/></g></svg></div>
     <p style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#555;text-align:center;margin-top:8px;">Tap a type to jump to its full breakdown</p>
   </div>
 
@@ -12707,71 +12570,7 @@ section .sec-sub.sec-sub{
        node expands the table (if collapsed) and scrolls to + flashes
        that type's row. -->
   <div style="max-width:480px;margin:32px auto 36px;">
-    <svg viewBox="-55 -35 495 470" style="width:100%;height:auto;overflow:visible;" role="img" aria-label="Rosetta Stone map — tap a type to jump to its Shadow Rasa and Essence">
-      <style>
-        .rasa-map-node{cursor:pointer;}
-        .rasa-map-node:hover circle.rasa-node-bg{fill:rgba(var(--accent-gold-rgb),.14);stroke:var(--gold);}
-        .rasa-map-node:focus circle.rasa-node-bg{fill:rgba(var(--accent-gold-rgb),.14);stroke:var(--gold);}
-        .rasa-map-node text{pointer-events:none;}
-      </style>
-      <polyline points="296,85 251,341 348,174 104,85 149,341 52,174 296,85" fill="none" stroke="var(--gold)" stroke-width="1" opacity="0.28"/>
-      <polyline points="330,275 70,275 200,50 330,275" fill="none" stroke="var(--gold)" stroke-width="1" opacity="0.28"/>
-      <circle cx="200" cy="200" r="150" fill="none" stroke="var(--gold)" stroke-width="1" opacity="0.18"/>
-      <g class="rasa-map-node" tabindex="0" role="button" aria-label="Type 1 — Perfectionist, Shadow Rasa Disgust" onclick="scrollToRasaRow(1)" onkeypress="if(event.key==='Enter')scrollToRasaRow(1)">
-        <title>Type 1 — Perfectionist</title>
-        <circle class="rasa-node-bg" cx="296" cy="85" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
-        <text x="296" y="91" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">1</text>
-        <text x="296" y="45" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Perfectionist</text>
-      </g>
-      <g class="rasa-map-node" tabindex="0" role="button" aria-label="Type 2 — Giver, Shadow Rasa Attachment" onclick="scrollToRasaRow(2)" onkeypress="if(event.key==='Enter')scrollToRasaRow(2)">
-        <title>Type 2 — Giver</title>
-        <circle class="rasa-node-bg" cx="348" cy="174" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
-        <text x="348" y="180" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">2</text>
-        <text x="388" y="178" text-anchor="start" font-family="var(--sans)" font-size="9" fill="var(--dim)">Giver</text>
-      </g>
-      <g class="rasa-map-node" tabindex="0" role="button" aria-label="Type 3 — Achiever, Shadow Rasa Performative Joy" onclick="scrollToRasaRow(3)" onkeypress="if(event.key==='Enter')scrollToRasaRow(3)">
-        <title>Type 3 — Achiever</title>
-        <circle class="rasa-node-bg" cx="330" cy="275" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
-        <text x="330" y="281" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">3</text>
-        <text x="370" y="279" text-anchor="start" font-family="var(--sans)" font-size="9" fill="var(--dim)">Achiever</text>
-      </g>
-      <g class="rasa-map-node" tabindex="0" role="button" aria-label="Type 4 — Individualist, Shadow Rasa Sorrow" onclick="scrollToRasaRow(4)" onkeypress="if(event.key==='Enter')scrollToRasaRow(4)">
-        <title>Type 4 — Individualist</title>
-        <circle class="rasa-node-bg" cx="251" cy="341" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
-        <text x="251" y="347" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">4</text>
-        <text x="251" y="381" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Individualist</text>
-      </g>
-      <g class="rasa-map-node" tabindex="0" role="button" aria-label="Type 5 — Investigator, Shadow Rasa Fear" onclick="scrollToRasaRow(5)" onkeypress="if(event.key==='Enter')scrollToRasaRow(5)">
-        <title>Type 5 — Investigator</title>
-        <circle class="rasa-node-bg" cx="149" cy="341" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
-        <text x="149" y="347" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">5</text>
-        <text x="149" y="381" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Investigator</text>
-      </g>
-      <g class="rasa-map-node" tabindex="0" role="button" aria-label="Type 6 — Skeptic, Shadow Rasa Anxiety" onclick="scrollToRasaRow(6)" onkeypress="if(event.key==='Enter')scrollToRasaRow(6)">
-        <title>Type 6 — Skeptic</title>
-        <circle class="rasa-node-bg" cx="70" cy="275" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
-        <text x="70" y="281" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">6</text>
-        <text x="30" y="279" text-anchor="end" font-family="var(--sans)" font-size="9" fill="var(--dim)">Skeptic</text>
-      </g>
-      <g class="rasa-map-node" tabindex="0" role="button" aria-label="Type 7 — Enthusiast, Shadow Rasa Distraction" onclick="scrollToRasaRow(7)" onkeypress="if(event.key==='Enter')scrollToRasaRow(7)">
-        <title>Type 7 — Enthusiast</title>
-        <circle class="rasa-node-bg" cx="52" cy="174" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
-        <text x="52" y="180" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">7</text>
-        <text x="12" y="178" text-anchor="end" font-family="var(--sans)" font-size="9" fill="var(--dim)">Enthusiast</text>
-      </g>
-      <g class="rasa-map-node" tabindex="0" role="button" aria-label="Type 8 — Challenger, Shadow Rasa Rage" onclick="scrollToRasaRow(8)" onkeypress="if(event.key==='Enter')scrollToRasaRow(8)">
-        <title>Type 8 — Challenger</title>
-        <circle class="rasa-node-bg" cx="104" cy="85" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
-        <text x="104" y="91" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">8</text>
-        <text x="104" y="45" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Challenger</text>
-      </g>
-      <g class="rasa-map-node" tabindex="0" role="button" aria-label="Type 9 — Peacemaker, Shadow Rasa Sadness" onclick="scrollToRasaRow(9)" onkeypress="if(event.key==='Enter')scrollToRasaRow(9)">
-        <title>Type 9 — Peacemaker</title>
-        <circle class="rasa-node-bg" cx="200" cy="50" r="24" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
-        <text x="200" y="56" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--gold)">9</text>
-        <text x="200" y="10" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="var(--dim)">Peacemaker</text>
-      </g>
-    </svg>
+    <div style="position:relative;width:100%;line-height:0;"><img src="./assets/images/rosetta-map.webp" alt="Rosetta Stone map — tap a type to jump to its Shadow Rasa and Essence" width="1024" height="1024" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;"><svg viewBox="0 0 1024 1024" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible;" role="group" aria-label="Rosetta Stone map — tap a type to jump to its Shadow Rasa and Essence"><g class="rasa-map-node img-map-hit" tabindex="0" role="button" aria-label="Type 1 — Perfectionist, Shadow Rasa Disgust" onclick="scrollToRasaRow(1)" onkeypress="if(event.key==='Enter')scrollToRasaRow(1)"><title>Type 1 — Perfectionist</title><circle class="img-map-shape" cx="736.5" cy="267.5" r="58.0" fill="transparent" stroke="transparent" stroke-width="2"/></g><g class="rasa-map-node img-map-hit" tabindex="0" role="button" aria-label="Type 2 — Giver, Shadow Rasa Attachment" onclick="scrollToRasaRow(2)" onkeypress="if(event.key==='Enter')scrollToRasaRow(2)"><title>Type 2 — Giver</title><circle class="img-map-shape" cx="848.5" cy="462.5" r="58.0" fill="transparent" stroke="transparent" stroke-width="2"/></g><g class="rasa-map-node img-map-hit" tabindex="0" role="button" aria-label="Type 3 — Achiever, Shadow Rasa Performative Joy" onclick="scrollToRasaRow(3)" onkeypress="if(event.key==='Enter')scrollToRasaRow(3)"><title>Type 3 — Achiever</title><circle class="img-map-shape" cx="810.5" cy="681.5" r="58.0" fill="transparent" stroke="transparent" stroke-width="2"/></g><g class="rasa-map-node img-map-hit" tabindex="0" role="button" aria-label="Type 4 — Individualist, Shadow Rasa Sorrow" onclick="scrollToRasaRow(4)" onkeypress="if(event.key==='Enter')scrollToRasaRow(4)"><title>Type 4 — Individualist</title><circle class="img-map-shape" cx="637.5" cy="825.5" r="58.0" fill="transparent" stroke="transparent" stroke-width="2"/></g><g class="rasa-map-node img-map-hit" tabindex="0" role="button" aria-label="Type 5 — Investigator, Shadow Rasa Fear" onclick="scrollToRasaRow(5)" onkeypress="if(event.key==='Enter')scrollToRasaRow(5)"><title>Type 5 — Investigator</title><circle class="img-map-shape" cx="416.5" cy="824.5" r="58.0" fill="transparent" stroke="transparent" stroke-width="2"/></g><g class="rasa-map-node img-map-hit" tabindex="0" role="button" aria-label="Type 6 — Skeptic, Shadow Rasa Anxiety" onclick="scrollToRasaRow(6)" onkeypress="if(event.key==='Enter')scrollToRasaRow(6)"><title>Type 6 — Skeptic</title><circle class="img-map-shape" cx="247.5" cy="682.5" r="58.0" fill="transparent" stroke="transparent" stroke-width="2"/></g><g class="rasa-map-node img-map-hit" tabindex="0" role="button" aria-label="Type 7 — Enthusiast, Shadow Rasa Distraction" onclick="scrollToRasaRow(7)" onkeypress="if(event.key==='Enter')scrollToRasaRow(7)"><title>Type 7 — Enthusiast</title><circle class="img-map-shape" cx="207.5" cy="462.5" r="58.0" fill="transparent" stroke="transparent" stroke-width="2"/></g><g class="rasa-map-node img-map-hit" tabindex="0" role="button" aria-label="Type 8 — Challenger, Shadow Rasa Rage" onclick="scrollToRasaRow(8)" onkeypress="if(event.key==='Enter')scrollToRasaRow(8)"><title>Type 8 — Challenger</title><circle class="img-map-shape" cx="320.5" cy="268.5" r="58.0" fill="transparent" stroke="transparent" stroke-width="2"/></g><g class="rasa-map-node img-map-hit" tabindex="0" role="button" aria-label="Type 9 — Peacemaker, Shadow Rasa Sadness" onclick="scrollToRasaRow(9)" onkeypress="if(event.key==='Enter')scrollToRasaRow(9)"><title>Type 9 — Peacemaker</title><circle class="img-map-shape" cx="527.5" cy="191.5" r="58.0" fill="transparent" stroke="transparent" stroke-width="2"/></g></svg></div>
     <p style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#555;text-align:center;margin-top:8px;">Tap a type to jump to its Shadow Rasa &amp; Essence</p>
   </div>
 
@@ -17420,42 +17219,7 @@ section .sec-sub.sec-sub{
   </div>
   <div id="cf-cycle-content" class="section-collapse-wrap collapsed" style="max-width:900px;margin:0 auto 48px;">
     <div style="padding-top:12px;">
-<svg viewBox="0 0 600 560" role="img" aria-label="Cycle: five elements, plant life, animal and human life, death and decay, merging back into the elements" style="width:100%;max-width:520px;height:auto;display:block;margin:0 auto 8px;">
-<style>
-.cyc-arc{fill:none;stroke:var(--gold);stroke-width:2;opacity:.75}
-.cyc-node{fill:none;stroke:var(--gold);stroke-width:1.5;opacity:.9}
-.cyc-core{fill:none;stroke:var(--gold);stroke-width:1;stroke-dasharray:4 5;opacity:.7}
-.cyc-name{font-family:var(--serif);font-size:17px;fill:var(--mid)}
-.cyc-num{font-family:var(--sans);font-size:12px;letter-spacing:2px;fill:var(--gold)}
-.cyc-core-t{font-family:var(--serif);font-size:15px;font-style:italic;fill:var(--dim)}
-</style>
-<defs><marker id="cycHead" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1,1 L9,5 L1,9" fill="none" stroke="var(--gold)" stroke-width="1.6"/></marker></defs>
-<path d="M383.3,109.2 A190,190 0 0 1 470.8,196.7" class="cyc-arc" marker-end="url(#cycHead)"/>
-<path d="M470.8,363.3 A190,190 0 0 1 383.3,450.8" class="cyc-arc" marker-end="url(#cycHead)"/>
-<path d="M216.7,450.8 A190,190 0 0 1 129.2,363.3" class="cyc-arc" marker-end="url(#cycHead)"/>
-<path d="M129.2,196.7 A190,190 0 0 1 216.7,109.2" class="cyc-arc" marker-end="url(#cycHead)"/>
-<circle cx="300.0" cy="90.0" r="62" class="cyc-node"/>
-<text x="300.0" y="66.0" text-anchor="middle" class="cyc-num">1</text>
-<text x="300.0" y="94.0" text-anchor="middle" class="cyc-name">Five</text>
-<text x="300.0" y="113.0" text-anchor="middle" class="cyc-name">Elements</text>
-<circle cx="490.0" cy="280.0" r="62" class="cyc-node"/>
-<text x="490.0" y="256.0" text-anchor="middle" class="cyc-num">2</text>
-<text x="490.0" y="284.0" text-anchor="middle" class="cyc-name">Plant</text>
-<text x="490.0" y="303.0" text-anchor="middle" class="cyc-name">Life</text>
-<circle cx="300.0" cy="470.0" r="62" class="cyc-node"/>
-<text x="300.0" y="446.0" text-anchor="middle" class="cyc-num">3</text>
-<text x="300.0" y="474.0" text-anchor="middle" class="cyc-name">Animal &amp;</text>
-<text x="300.0" y="493.0" text-anchor="middle" class="cyc-name">Human</text>
-<circle cx="110.0" cy="280.0" r="62" class="cyc-node"/>
-<text x="110.0" y="256.0" text-anchor="middle" class="cyc-num">4</text>
-<text x="110.0" y="284.0" text-anchor="middle" class="cyc-name">Death &amp;</text>
-<text x="110.0" y="303.0" text-anchor="middle" class="cyc-name">Decay</text>
-<circle cx="300" cy="280" r="72" class="cyc-core"/>
-<text x="300" y="258" text-anchor="middle" class="cyc-num">5</text>
-<text x="300" y="282" text-anchor="middle" class="cyc-name">Merging</text>
-<text x="300" y="304" text-anchor="middle" class="cyc-core-t">back to the</text>
-<text x="300" y="322" text-anchor="middle" class="cyc-core-t">elements</text>
-</svg>
+<img src="./assets/images/food-cycle-map.webp" alt="The cycle of food: five elements, plant life, animal and human life, death and decay, merging back into the elements" width="1024" height="1024" loading="lazy" decoding="async" style="width:100%;max-width:520px;height:auto;display:block;margin:0 auto 8px;">
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2px;margin-top:22px;">
       <div class="sl-stage"><div class="sl-name">1 &middot; The Five Elements</div><p class="sl-desc">Earth, water, fire, air, ether &mdash; the panchamahabhutas. Everything starts here and returns here.</p></div>
@@ -19332,52 +19096,7 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
        three (Eastern / Western lineage). Tapping a node expands the grid
        (if collapsed) and scrolls to + flashes that teacher's card. -->
   <div style="max-width:460px;margin:32px auto 36px;">
-    <svg viewBox="0 0 420 250" style="width:100%;height:auto;overflow:visible;" role="img" aria-label="Masters at a Glance map — tap a teacher to jump to their card">
-      <style>
-        .masters-map-node{cursor:pointer;}
-        .masters-map-node:hover circle.masters-node-bg{fill:rgba(var(--accent-gold-rgb),.14);stroke:var(--gold);}
-        .masters-map-node:focus circle.masters-node-bg{fill:rgba(var(--accent-gold-rgb),.14);stroke:var(--gold);}
-        .masters-map-node text{pointer-events:none;}
-      </style>
-      <text x="210" y="16" text-anchor="middle" font-family="var(--sans)" font-size="9" letter-spacing="2" fill="var(--dim)" opacity="0.7" style="text-transform:uppercase;">Eastern Lineage</text>
-      <g class="masters-map-node" tabindex="0" role="button" aria-label="Srila Prabhupada — Bhakti Yoga, ISKCON" onclick="scrollToMasterCard(1)" onkeypress="if(event.key==='Enter')scrollToMasterCard(1)">
-        <title>Srila Prabhupada</title>
-        <circle class="masters-node-bg" cx="70" cy="60" r="24" fill="var(--bg-lift)" stroke="var(--dim)" stroke-width="1.5"/>
-        <text x="70" y="66" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--dim)">1</text>
-        <text x="70" y="100" text-anchor="middle" font-family="var(--sans)" font-size="10.5" fill="var(--white)">Prabhupada</text>
-      </g>
-      <g class="masters-map-node" tabindex="0" role="button" aria-label="Gurudev Sri Sri Ravi Shankar — The Art of Living" onclick="scrollToMasterCard(2)" onkeypress="if(event.key==='Enter')scrollToMasterCard(2)">
-        <title>Sri Sri Ravi Shankar</title>
-        <circle class="masters-node-bg" cx="210" cy="60" r="24" fill="var(--bg-lift)" stroke="var(--dim)" stroke-width="1.5"/>
-        <text x="210" y="66" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--dim)">2</text>
-        <text x="210" y="100" text-anchor="middle" font-family="var(--sans)" font-size="10.5" fill="var(--white)">Sri Sri Ravi Shankar</text>
-      </g>
-      <g class="masters-map-node" tabindex="0" role="button" aria-label="The Buddha — The Middle Way" onclick="scrollToMasterCard(3)" onkeypress="if(event.key==='Enter')scrollToMasterCard(3)">
-        <title>The Buddha</title>
-        <circle class="masters-node-bg" cx="350" cy="60" r="24" fill="var(--bg-lift)" stroke="var(--dim)" stroke-width="1.5"/>
-        <text x="350" y="66" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--dim)">3</text>
-        <text x="350" y="100" text-anchor="middle" font-family="var(--sans)" font-size="10.5" fill="var(--white)">The Buddha</text>
-      </g>
-      <text x="210" y="148" text-anchor="middle" font-family="var(--sans)" font-size="9" letter-spacing="2" fill="var(--dim)" opacity="0.7" style="text-transform:uppercase;">Western Lineage</text>
-      <g class="masters-map-node" tabindex="0" role="button" aria-label="Socrates — The Examined Life" onclick="scrollToMasterCard(4)" onkeypress="if(event.key==='Enter')scrollToMasterCard(4)">
-        <title>Socrates</title>
-        <circle class="masters-node-bg" cx="70" cy="192" r="24" fill="var(--bg-lift)" stroke="var(--dim)" stroke-width="1.5"/>
-        <text x="70" y="198" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--dim)">4</text>
-        <text x="70" y="232" text-anchor="middle" font-family="var(--sans)" font-size="10.5" fill="var(--white)">Socrates</text>
-      </g>
-      <g class="masters-map-node" tabindex="0" role="button" aria-label="Marcus Aurelius — Stoicism" onclick="scrollToMasterCard(5)" onkeypress="if(event.key==='Enter')scrollToMasterCard(5)">
-        <title>Marcus Aurelius</title>
-        <circle class="masters-node-bg" cx="210" cy="192" r="24" fill="var(--bg-lift)" stroke="var(--dim)" stroke-width="1.5"/>
-        <text x="210" y="198" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--dim)">5</text>
-        <text x="210" y="232" text-anchor="middle" font-family="var(--sans)" font-size="10.5" fill="var(--white)">Marcus Aurelius</text>
-      </g>
-      <g class="masters-map-node" tabindex="0" role="button" aria-label="Eckhart Tolle — Present-Moment Teaching" onclick="scrollToMasterCard(6)" onkeypress="if(event.key==='Enter')scrollToMasterCard(6)">
-        <title>Eckhart Tolle</title>
-        <circle class="masters-node-bg" cx="350" cy="192" r="24" fill="var(--bg-lift)" stroke="var(--dim)" stroke-width="1.5"/>
-        <text x="350" y="198" text-anchor="middle" font-family="var(--sans)" font-size="15" font-weight="700" fill="var(--dim)">6</text>
-        <text x="350" y="232" text-anchor="middle" font-family="var(--sans)" font-size="10.5" fill="var(--white)">Eckhart Tolle</text>
-      </g>
-    </svg>
+    <div style="position:relative;width:100%;line-height:0;"><img src="./assets/images/masters-map.webp" alt="Masters at a Glance map — tap a teacher to jump to their card" width="1400" height="833" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;"><svg viewBox="0 0 1400 833" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible;" role="group" aria-label="Masters at a Glance map — tap a teacher to jump to their card"><g class="masters-map-node img-map-hit" tabindex="0" role="button" aria-label="Srila Prabhupada — Bhakti Yoga, ISKCON" onclick="scrollToMasterCard(1)" onkeypress="if(event.key==='Enter')scrollToMasterCard(1)"><title>Srila Prabhupada</title><circle class="img-map-shape" cx="233.3" cy="200.0" r="89.6" fill="transparent" stroke="transparent" stroke-width="2"/></g><g class="masters-map-node img-map-hit" tabindex="0" role="button" aria-label="Gurudev Sri Sri Ravi Shankar — The Art of Living" onclick="scrollToMasterCard(2)" onkeypress="if(event.key==='Enter')scrollToMasterCard(2)"><title>Sri Sri Ravi Shankar</title><circle class="img-map-shape" cx="700.0" cy="200.0" r="89.6" fill="transparent" stroke="transparent" stroke-width="2"/></g><g class="masters-map-node img-map-hit" tabindex="0" role="button" aria-label="The Buddha — The Middle Way" onclick="scrollToMasterCard(3)" onkeypress="if(event.key==='Enter')scrollToMasterCard(3)"><title>The Buddha</title><circle class="img-map-shape" cx="1166.7" cy="200.0" r="89.6" fill="transparent" stroke="transparent" stroke-width="2"/></g><g class="masters-map-node img-map-hit" tabindex="0" role="button" aria-label="Socrates — The Examined Life" onclick="scrollToMasterCard(4)" onkeypress="if(event.key==='Enter')scrollToMasterCard(4)"><title>Socrates</title><circle class="img-map-shape" cx="233.3" cy="640.0" r="89.6" fill="transparent" stroke="transparent" stroke-width="2"/></g><g class="masters-map-node img-map-hit" tabindex="0" role="button" aria-label="Marcus Aurelius — Stoicism" onclick="scrollToMasterCard(5)" onkeypress="if(event.key==='Enter')scrollToMasterCard(5)"><title>Marcus Aurelius</title><circle class="img-map-shape" cx="700.0" cy="640.0" r="89.6" fill="transparent" stroke="transparent" stroke-width="2"/></g><g class="masters-map-node img-map-hit" tabindex="0" role="button" aria-label="Eckhart Tolle — Present-Moment Teaching" onclick="scrollToMasterCard(6)" onkeypress="if(event.key==='Enter')scrollToMasterCard(6)"><title>Eckhart Tolle</title><circle class="img-map-shape" cx="1166.7" cy="640.0" r="89.6" fill="transparent" stroke="transparent" stroke-width="2"/></g></svg></div>
     <p style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#555;text-align:center;margin-top:8px;">Tap a teacher to jump to their card</p>
   </div>
 
@@ -19641,142 +19360,7 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
   <div id="mm-map-detail" class="section-collapse-wrap collapsed" style="max-width:820px;margin:0 auto 48px;text-align:left;">
 <div style="max-width:none;margin:32px 0 36px;">
   <p style="font-family:var(--serif);font-size:14px;color:var(--mid);line-height:1.8;text-align:left;margin:0 0 14px;"><strong style="color:var(--gold);font-weight:500;">How to read it.</strong> Each ring is one layer of you &mdash; the numbered badges on the left spoke name them, from <em>1 Body</em> at the centre out to <em>7 Self</em> on the rim. Each wedge is one life stage, running clockwise from Birth at the top. Every cell is a ring crossed with a wedge: <em>Crisis</em> sits in ring 6 (Ego) within wedge 4 (Transform), so its coordinate is (L6, S4).</p>
-  <svg viewBox="0 0 700 722" style="width:100%;height:auto;overflow:visible;" role="img" aria-label="Master Matrix hexagonal map — 7 layers as rings, 6 stages as sectors clockwise from Birth at the top; tap a ring to jump to its full detail">
-    <style>.matrix-map-node{cursor:pointer;}.matrix-map-node:hover polygon.matrix-hex-cell,.matrix-map-node:focus polygon.matrix-hex-cell{fill-opacity:0.30;}.matrix-map-node:focus{outline:none;}.matrix-map-node text{pointer-events:none;}.matrix-cell-text{font-family:var(--sans);}</style>
-    <g opacity="0.85" font-family="var(--sans)" font-size="10" letter-spacing="0.5" fill="var(--gold)">
-      <text x="350" y="30" text-anchor="middle">1 &#183; BIRTH</text>
-      <text x="350" y="640" text-anchor="middle">4 &#183; TRANSFORM</text>
-      <text x="622.7" y="176.0" text-anchor="start" dominant-baseline="middle">2 &#183; GROWTH</text>
-      <text x="622.7" y="484.0" text-anchor="start" dominant-baseline="middle">3 &#183; SUSTAIN</text>
-      <text x="77.3" y="484.0" text-anchor="end" dominant-baseline="middle">5 &#183; DECLINE</text>
-      <text x="77.3" y="176.0" text-anchor="end" dominant-baseline="middle">6 &#183; DEATH</text>
-    </g>
-    <g class="matrix-map-node" tabindex="0" role="button" aria-label="Layer 7 — Self" onclick="expandMatrixRow(7)" onkeypress="if(event.key==='Enter')expandMatrixRow(7)">
-      <title>L7 — Self</title>
-      <polygon class="matrix-hex-cell" points="205.7,80.1 494.3,80.1 515.0,44.2 185.0,44.2" fill="#9b59b6" fill-opacity="0.08" stroke="#9b59b6" stroke-width="0.75" stroke-opacity="0.55" stroke-linejoin="round"><title>Manifestation &#183; Birth (L7, S1)</title></polygon>
-      <text class="matrix-cell-text" x="350.0" y="66.4" text-anchor="middle" font-size="12" fill="var(--grey)">Manifest</text>
-      <polygon class="matrix-hex-cell" points="494.3,80.1 638.6,330.0 680.0,330.0 515.0,44.2" fill="#9b59b6" fill-opacity="0.08" stroke="#9b59b6" stroke-width="0.75" stroke-opacity="0.55" stroke-linejoin="round"><title>Realization &#183; Growth (L7, S2)</title></polygon>
-      <text class="matrix-cell-text" x="582.0" y="200.3" text-anchor="middle" font-size="12" fill="var(--grey)" transform="rotate(60 582.0 196.1)">Realize</text>
-      <polygon class="matrix-hex-cell" points="638.6,330.0 494.3,579.9 515.0,615.8 680.0,330.0" fill="#9b59b6" fill-opacity="0.08" stroke="#9b59b6" stroke-width="0.75" stroke-opacity="0.55" stroke-linejoin="round"><title>Eternal Witness &#183; Sustain (L7, S3)</title></polygon>
-      <text class="matrix-cell-text" x="582.0" y="468.1" text-anchor="middle" font-size="12" fill="var(--grey)" transform="rotate(-60 582.0 463.9)">Witness</text>
-      <polygon class="matrix-hex-cell" points="494.3,579.9 205.7,579.9 185.0,615.8 515.0,615.8" fill="#9b59b6" fill-opacity="0.08" stroke="#9b59b6" stroke-width="0.75" stroke-opacity="0.55" stroke-linejoin="round"><title>Transcends &#183; Transform (L7, S4)</title></polygon>
-      <text class="matrix-cell-text" x="350.0" y="602.0" text-anchor="middle" font-size="12" fill="var(--grey)">Beyond</text>
-      <polygon class="matrix-hex-cell" points="205.7,579.9 61.4,330.0 20.0,330.0 185.0,615.8" fill="#9b59b6" fill-opacity="0.08" stroke="#9b59b6" stroke-width="0.75" stroke-opacity="0.55" stroke-linejoin="round"><title>Unchanged &#183; Decline (L7, S5)</title></polygon>
-      <text class="matrix-cell-text" x="118.0" y="468.1" text-anchor="middle" font-size="12" fill="var(--grey)" transform="rotate(60 118.0 463.9)">Unchngd</text>
-      <polygon class="matrix-hex-cell" points="61.4,330.0 205.7,80.1 185.0,44.2 20.0,330.0" fill="#9b59b6" fill-opacity="0.08" stroke="#9b59b6" stroke-width="0.75" stroke-opacity="0.55" stroke-linejoin="round"><title>Unchanged &#183; Death (L7, S6)</title></polygon>
-      <text class="matrix-cell-text" x="118.0" y="200.3" text-anchor="middle" font-size="12" fill="var(--grey)" transform="rotate(-60 118.0 196.1)">Unchngd</text>
-      <circle cx="40.7" cy="330.0" r="9" fill="var(--bg-lift)" stroke="#9b59b6" stroke-width="1.5"/><text x="40.7" y="334.0" text-anchor="middle" font-family="var(--sans)" font-size="11" font-weight="700" fill="#9b59b6">7</text>
-    </g>
-    <g class="matrix-map-node" tabindex="0" role="button" aria-label="Layer 6 — Ego" onclick="expandMatrixRow(6)" onkeypress="if(event.key==='Enter')expandMatrixRow(6)">
-      <title>L6 — Ego</title>
-      <polygon class="matrix-hex-cell" points="226.4,116.0 473.6,116.0 494.3,80.1 205.7,80.1" fill="#6a5acd" fill-opacity="0.08" stroke="#6a5acd" stroke-width="0.75" stroke-opacity="0.55" stroke-linejoin="round"><title>Toddlerhood &#183; Birth (L6, S1)</title></polygon>
-      <text class="matrix-cell-text" x="350.0" y="102.2" text-anchor="middle" font-size="12" fill="var(--grey)">Toddler</text>
-      <polygon class="matrix-hex-cell" points="473.6,116.0 597.1,330.0 638.6,330.0 494.3,80.1" fill="#6a5acd" fill-opacity="0.08" stroke="#6a5acd" stroke-width="0.75" stroke-opacity="0.55" stroke-linejoin="round"><title>Ambition &#183; Growth (L6, S2)</title></polygon>
-      <text class="matrix-cell-text" x="550.9" y="218.2" text-anchor="middle" font-size="12" fill="var(--grey)" transform="rotate(60 550.9 214.0)">Ambition</text>
-      <polygon class="matrix-hex-cell" points="597.1,330.0 473.6,544.0 494.3,579.9 638.6,330.0" fill="#6a5acd" fill-opacity="0.08" stroke="#6a5acd" stroke-width="0.75" stroke-opacity="0.55" stroke-linejoin="round"><title>Persona &#183; Sustain (L6, S3)</title></polygon>
-      <text class="matrix-cell-text" x="550.9" y="450.2" text-anchor="middle" font-size="12" fill="var(--grey)" transform="rotate(-60 550.9 446.0)">Persona</text>
-      <polygon class="matrix-hex-cell" points="473.6,544.0 226.4,544.0 205.7,579.9 494.3,579.9" fill="#e74c3c" fill-opacity="0.16" stroke="#e74c3c" stroke-width="1.3" stroke-opacity="0.55" stroke-linejoin="round"><title>Crisis &#183; Transform (L6, S4)</title></polygon>
-      <text class="matrix-cell-text" x="350.0" y="566.2" text-anchor="middle" font-size="12" fill="#e74c3c">Crisis</text>
-      <polygon class="matrix-hex-cell" points="226.4,544.0 102.9,330.0 61.4,330.0 205.7,579.9" fill="#e74c3c" fill-opacity="0.16" stroke="#e74c3c" stroke-width="1.3" stroke-opacity="0.55" stroke-linejoin="round"><title>Rigidity &#183; Decline (L6, S5)</title></polygon>
-      <text class="matrix-cell-text" x="149.1" y="450.2" text-anchor="middle" font-size="12" fill="#e74c3c" transform="rotate(60 149.1 446.0)">Rigidity</text>
-      <polygon class="matrix-hex-cell" points="102.9,330.0 226.4,116.0 205.7,80.1 61.4,330.0" fill="var(--gold)" fill-opacity="0.22" stroke="var(--gold)" stroke-width="1.5" stroke-opacity="0.55" stroke-linejoin="round"><title>Dissolution ✦ &#183; Death (L6, S6)</title></polygon>
-      <text class="matrix-cell-text" x="149.1" y="218.2" text-anchor="middle" font-size="12" fill="var(--gold)" transform="rotate(-60 149.1 214.0)">Dissolve</text>
-      <circle cx="82.1" cy="330.0" r="9" fill="var(--bg-lift)" stroke="#6a5acd" stroke-width="1.5"/><text x="82.1" y="334.0" text-anchor="middle" font-family="var(--sans)" font-size="11" font-weight="700" fill="#6a5acd">6</text>
-    </g>
-    <g class="matrix-map-node" tabindex="0" role="button" aria-label="Layer 5 — Memory" onclick="expandMatrixRow(5)" onkeypress="if(event.key==='Enter')expandMatrixRow(5)">
-      <title>L5 — Memory</title>
-      <polygon class="matrix-hex-cell" points="247.1,151.8 452.9,151.8 473.6,116.0 226.4,116.0" fill="#3498db" fill-opacity="0.08" stroke="#3498db" stroke-width="0.75" stroke-opacity="0.55" stroke-linejoin="round"><title>First impression &#183; Birth (L5, S1)</title></polygon>
-      <text class="matrix-cell-text" x="350.0" y="138.1" text-anchor="middle" font-size="12" fill="var(--grey)">1st impr</text>
-      <polygon class="matrix-hex-cell" points="452.9,151.8 555.7,330.0 597.1,330.0 473.6,116.0" fill="#3498db" fill-opacity="0.08" stroke="#3498db" stroke-width="0.75" stroke-opacity="0.55" stroke-linejoin="round"><title>Experience &#183; Growth (L5, S2)</title></polygon>
-      <text class="matrix-cell-text" x="519.8" y="236.2" text-anchor="middle" font-size="12" fill="var(--grey)" transform="rotate(60 519.8 232.0)">Gaining</text>
-      <polygon class="matrix-hex-cell" points="555.7,330.0 452.9,508.2 473.6,544.0 597.1,330.0" fill="#3498db" fill-opacity="0.08" stroke="#3498db" stroke-width="0.75" stroke-opacity="0.55" stroke-linejoin="round"><title>Storing &#183; Sustain (L5, S3)</title></polygon>
-      <text class="matrix-cell-text" x="519.8" y="432.2" text-anchor="middle" font-size="12" fill="var(--grey)" transform="rotate(-60 519.8 428.0)">Storing</text>
-      <polygon class="matrix-hex-cell" points="452.9,508.2 247.1,508.2 226.4,544.0 473.6,544.0" fill="var(--gold)" fill-opacity="0.14" stroke="var(--gold)" stroke-width="1.3" stroke-opacity="0.55" stroke-linejoin="round"><title>Trauma &#183; Transform (L5, S4)</title></polygon>
-      <text class="matrix-cell-text" x="350.0" y="530.3" text-anchor="middle" font-size="12" fill="var(--gold)">Trauma</text>
-      <polygon class="matrix-hex-cell" points="247.1,508.2 144.3,330.0 102.9,330.0 226.4,544.0" fill="#3498db" fill-opacity="0.08" stroke="#3498db" stroke-width="0.75" stroke-opacity="0.55" stroke-linejoin="round"><title>Forgetfulness &#183; Decline (L5, S5)</title></polygon>
-      <text class="matrix-cell-text" x="180.2" y="432.2" text-anchor="middle" font-size="12" fill="var(--grey)" transform="rotate(60 180.2 428.0)">Forgetng</text>
-      <polygon class="matrix-hex-cell" points="144.3,330.0 247.1,151.8 226.4,116.0 102.9,330.0" fill="#3498db" fill-opacity="0.08" stroke="#3498db" stroke-width="0.75" stroke-opacity="0.55" stroke-linejoin="round"><title>Erasure &#183; Death (L5, S6)</title></polygon>
-      <text class="matrix-cell-text" x="180.2" y="236.2" text-anchor="middle" font-size="12" fill="var(--grey)" transform="rotate(-60 180.2 232.0)">Erasure</text>
-      <circle cx="123.6" cy="330.0" r="9" fill="var(--bg-lift)" stroke="#3498db" stroke-width="1.5"/><text x="123.6" y="334.0" text-anchor="middle" font-family="var(--sans)" font-size="11" font-weight="700" fill="#3498db">5</text>
-    </g>
-    <g class="matrix-map-node" tabindex="0" role="button" aria-label="Layer 4 — Intellect" onclick="expandMatrixRow(4)" onkeypress="if(event.key==='Enter')expandMatrixRow(4)">
-      <title>L4 — Intellect</title>
-      <polygon class="matrix-hex-cell" points="267.9,187.7 432.1,187.7 452.9,151.8 247.1,151.8" fill="var(--chakra-4)" fill-opacity="0.08" stroke="var(--chakra-4)" stroke-width="0.75" stroke-opacity="0.55" stroke-linejoin="round"><title>Curiosity &#183; Birth (L4, S1)</title></polygon>
-      <text class="matrix-cell-text" x="350.0" y="174.0" text-anchor="middle" font-size="12" fill="var(--grey)">Curious</text>
-      <polygon class="matrix-hex-cell" points="432.1,187.7 514.3,330.0 555.7,330.0 452.9,151.8" fill="var(--chakra-4)" fill-opacity="0.08" stroke="var(--chakra-4)" stroke-width="0.75" stroke-opacity="0.55" stroke-linejoin="round"><title>Logic &#183; Growth (L4, S2)</title></polygon>
-      <text class="matrix-cell-text" x="488.8" y="254.1" text-anchor="middle" font-size="12" fill="var(--grey)" transform="rotate(60 488.8 249.9)">Logic</text>
-      <polygon class="matrix-hex-cell" points="514.3,330.0 432.1,472.3 452.9,508.2 555.7,330.0" fill="var(--chakra-4)" fill-opacity="0.08" stroke="var(--chakra-4)" stroke-width="0.75" stroke-opacity="0.55" stroke-linejoin="round"><title>Stability &#183; Sustain (L4, S3)</title></polygon>
-      <text class="matrix-cell-text" x="488.8" y="414.3" text-anchor="middle" font-size="12" fill="var(--grey)" transform="rotate(-60 488.8 410.1)">Stable</text>
-      <polygon class="matrix-hex-cell" points="432.1,472.3 267.9,472.3 247.1,508.2 452.9,508.2" fill="var(--gold)" fill-opacity="0.14" stroke="var(--gold)" stroke-width="1.3" stroke-opacity="0.55" stroke-linejoin="round"><title>Shifting beliefs &#183; Transform (L4, S4)</title></polygon>
-      <text class="matrix-cell-text" x="350.0" y="494.4" text-anchor="middle" font-size="12" fill="var(--gold)">Reframe</text>
-      <polygon class="matrix-hex-cell" points="267.9,472.3 185.7,330.0 144.3,330.0 247.1,508.2" fill="var(--chakra-4)" fill-opacity="0.08" stroke="var(--chakra-4)" stroke-width="0.75" stroke-opacity="0.55" stroke-linejoin="round"><title>Decline &#183; Decline (L4, S5)</title></polygon>
-      <text class="matrix-cell-text" x="211.2" y="414.3" text-anchor="middle" font-size="12" fill="var(--grey)" transform="rotate(60 211.2 410.1)">Decline</text>
-      <polygon class="matrix-hex-cell" points="185.7,330.0 267.9,187.7 247.1,151.8 144.3,330.0" fill="var(--chakra-4)" fill-opacity="0.08" stroke="var(--chakra-4)" stroke-width="0.75" stroke-opacity="0.55" stroke-linejoin="round"><title>Loss of judgment &#183; Death (L4, S6)</title></polygon>
-      <text class="matrix-cell-text" x="211.2" y="254.1" text-anchor="middle" font-size="12" fill="var(--grey)" transform="rotate(-60 211.2 249.9)">No judgm</text>
-      <circle cx="165.0" cy="330.0" r="9" fill="var(--bg-lift)" stroke="var(--chakra-4)" stroke-width="1.5"/><text x="165.0" y="334.0" text-anchor="middle" font-family="var(--sans)" font-size="11" font-weight="700" fill="var(--chakra-4)">4</text>
-    </g>
-    <g class="matrix-map-node" tabindex="0" role="button" aria-label="Layer 3 — Mind" onclick="expandMatrixRow(3)" onkeypress="if(event.key==='Enter')expandMatrixRow(3)">
-      <title>L3 — Mind</title>
-      <polygon class="matrix-hex-cell" points="288.6,223.6 411.4,223.6 432.1,187.7 267.9,187.7" fill="var(--chakra-3)" fill-opacity="0.08" stroke="var(--chakra-3)" stroke-width="0.75" stroke-opacity="0.55" stroke-linejoin="round"><title>Sensory &#183; Birth (L3, S1)</title></polygon>
-      <text class="matrix-cell-text" x="350.0" y="209.9" text-anchor="middle" font-size="12" fill="var(--grey)">Sensory</text>
-      <polygon class="matrix-hex-cell" points="411.4,223.6 472.9,330.0 514.3,330.0 432.1,187.7" fill="var(--chakra-3)" fill-opacity="0.08" stroke="var(--chakra-3)" stroke-width="0.75" stroke-opacity="0.55" stroke-linejoin="round"><title>Learning &#183; Growth (L3, S2)</title></polygon>
-      <text class="matrix-cell-text" x="457.7" y="272.0" text-anchor="middle" font-size="12" fill="var(--grey)" transform="rotate(60 457.7 267.8)">Learning</text>
-      <polygon class="matrix-hex-cell" points="472.9,330.0 411.4,436.4 432.1,472.3 514.3,330.0" fill="var(--chakra-3)" fill-opacity="0.08" stroke="var(--chakra-3)" stroke-width="0.75" stroke-opacity="0.55" stroke-linejoin="round"><title>Perception &#183; Sustain (L3, S3)</title></polygon>
-      <text class="matrix-cell-text" x="457.7" y="396.4" text-anchor="middle" font-size="12" fill="var(--grey)" transform="rotate(-60 457.7 392.2)">Percept.</text>
-      <polygon class="matrix-hex-cell" points="411.4,436.4 288.6,436.4 267.9,472.3 432.1,472.3" fill="var(--chakra-3)" fill-opacity="0.08" stroke="var(--chakra-3)" stroke-width="0.75" stroke-opacity="0.55" stroke-linejoin="round"><title>Shifting &#183; Transform (L3, S4)</title></polygon>
-      <text class="matrix-cell-text" x="350.0" y="458.5" text-anchor="middle" font-size="12" fill="var(--grey)">Shifting</text>
-      <polygon class="matrix-hex-cell" points="288.6,436.4 227.1,330.0 185.7,330.0 267.9,472.3" fill="var(--chakra-3)" fill-opacity="0.08" stroke="var(--chakra-3)" stroke-width="0.75" stroke-opacity="0.55" stroke-linejoin="round"><title>Fatigue &#183; Decline (L3, S5)</title></polygon>
-      <text class="matrix-cell-text" x="242.3" y="396.4" text-anchor="middle" font-size="12" fill="var(--grey)" transform="rotate(60 242.3 392.2)">Fatigue</text>
-      <polygon class="matrix-hex-cell" points="227.1,330.0 288.6,223.6 267.9,187.7 185.7,330.0" fill="var(--chakra-3)" fill-opacity="0.08" stroke="var(--chakra-3)" stroke-width="0.75" stroke-opacity="0.55" stroke-linejoin="round"><title>Loss of senses &#183; Death (L3, S6)</title></polygon>
-      <text class="matrix-cell-text" x="242.3" y="272.0" text-anchor="middle" font-size="12" fill="var(--grey)" transform="rotate(-60 242.3 267.8)">No sense</text>
-      <circle cx="206.4" cy="330.0" r="9" fill="var(--bg-lift)" stroke="var(--chakra-3)" stroke-width="1.5"/><text x="206.4" y="334.0" text-anchor="middle" font-family="var(--sans)" font-size="11" font-weight="700" fill="var(--chakra-3)">3</text>
-    </g>
-    <g class="matrix-map-node" tabindex="0" role="button" aria-label="Layer 2 — Breath" onclick="expandMatrixRow(2)" onkeypress="if(event.key==='Enter')expandMatrixRow(2)">
-      <title>L2 — Breath</title>
-      <polygon class="matrix-hex-cell" points="309.3,259.5 390.7,259.5 411.4,223.6 288.6,223.6" fill="#e67e22" fill-opacity="0.08" stroke="#e67e22" stroke-width="0.75" stroke-opacity="0.55" stroke-linejoin="round"><title>First cry &#183; Birth (L2, S1)</title></polygon>
-      <text class="matrix-cell-text" x="350.0" y="245.7" text-anchor="middle" font-size="12" fill="var(--grey)">1st cry</text>
-      <polygon class="matrix-hex-cell" points="390.7,259.5 431.4,330.0 472.9,330.0 411.4,223.6" fill="#e67e22" fill-opacity="0.08" stroke="#e67e22" stroke-width="0.75" stroke-opacity="0.55" stroke-linejoin="round"><title>Deepening &#183; Growth (L2, S2)</title></polygon>
-      <text class="matrix-cell-text" x="426.6" y="290.0" text-anchor="middle" font-size="12" fill="var(--grey)" transform="rotate(60 426.6 285.8)">Deepen</text>
-      <polygon class="matrix-hex-cell" points="431.4,330.0 390.7,400.5 411.4,436.4 472.9,330.0" fill="#e67e22" fill-opacity="0.08" stroke="#e67e22" stroke-width="0.75" stroke-opacity="0.55" stroke-linejoin="round"><title>Rhythm &#183; Sustain (L2, S3)</title></polygon>
-      <text class="matrix-cell-text" x="426.6" y="378.4" text-anchor="middle" font-size="12" fill="var(--grey)" transform="rotate(-60 426.6 374.2)">Rhythm</text>
-      <polygon class="matrix-hex-cell" points="390.7,400.5 309.3,400.5 288.6,436.4 411.4,436.4" fill="#e67e22" fill-opacity="0.08" stroke="#e67e22" stroke-width="0.75" stroke-opacity="0.55" stroke-linejoin="round"><title>Emotion &#183; Transform (L2, S4)</title></polygon>
-      <text class="matrix-cell-text" x="350.0" y="422.7" text-anchor="middle" font-size="12" fill="var(--grey)">Emotion</text>
-      <polygon class="matrix-hex-cell" points="309.3,400.5 268.6,330.0 227.1,330.0 288.6,436.4" fill="#e67e22" fill-opacity="0.08" stroke="#e67e22" stroke-width="0.75" stroke-opacity="0.55" stroke-linejoin="round"><title>Laboured &#183; Decline (L2, S5)</title></polygon>
-      <text class="matrix-cell-text" x="273.4" y="378.4" text-anchor="middle" font-size="12" fill="var(--grey)" transform="rotate(60 273.4 374.2)">Labored</text>
-      <polygon class="matrix-hex-cell" points="268.6,330.0 309.3,259.5 288.6,223.6 227.1,330.0" fill="#e67e22" fill-opacity="0.08" stroke="#e67e22" stroke-width="0.75" stroke-opacity="0.55" stroke-linejoin="round"><title>Last breath &#183; Death (L2, S6)</title></polygon>
-      <text class="matrix-cell-text" x="273.4" y="290.0" text-anchor="middle" font-size="12" fill="var(--grey)" transform="rotate(-60 273.4 285.8)">Dying</text>
-      <circle cx="247.9" cy="330.0" r="9" fill="var(--bg-lift)" stroke="#e67e22" stroke-width="1.5"/><text x="247.9" y="334.0" text-anchor="middle" font-family="var(--sans)" font-size="11" font-weight="700" fill="#e67e22">2</text>
-    </g>
-    <g class="matrix-map-node" tabindex="0" role="button" aria-label="Layer 1 — Body" onclick="expandMatrixRow(1)" onkeypress="if(event.key==='Enter')expandMatrixRow(1)">
-      <title>L1 — Body</title>
-      <polygon class="matrix-hex-cell" points="330.0,295.4 370.0,295.4 390.7,259.5 309.3,259.5" fill="#e74c3c" fill-opacity="0.08" stroke="#e74c3c" stroke-width="0.75" stroke-opacity="0.55" stroke-linejoin="round"><title>Womb &#183; Birth (L1, S1)</title></polygon>
-      <text class="matrix-cell-text" x="350.0" y="281.6" text-anchor="middle" font-size="12" fill="var(--grey)">Womb</text>
-      <polygon class="matrix-hex-cell" points="370.0,295.4 390.0,330.0 431.4,330.0 390.7,259.5" fill="#e74c3c" fill-opacity="0.08" stroke="#e74c3c" stroke-width="0.75" stroke-opacity="0.55" stroke-linejoin="round"><title>Infancy &#183; Growth (L1, S2)</title></polygon>
-      <text class="matrix-cell-text" x="395.5" y="307.9" text-anchor="middle" font-size="12" fill="var(--grey)" transform="rotate(60 395.5 303.7)">Infancy</text>
-      <polygon class="matrix-hex-cell" points="390.0,330.0 370.0,364.6 390.7,400.5 431.4,330.0" fill="#e74c3c" fill-opacity="0.08" stroke="#e74c3c" stroke-width="0.75" stroke-opacity="0.55" stroke-linejoin="round"><title>Health &#183; Sustain (L1, S3)</title></polygon>
-      <text class="matrix-cell-text" x="395.5" y="360.5" text-anchor="middle" font-size="12" fill="var(--grey)" transform="rotate(-60 395.5 356.3)">Health</text>
-      <polygon class="matrix-hex-cell" points="370.0,364.6 330.0,364.6 309.3,400.5 390.7,400.5" fill="#e74c3c" fill-opacity="0.08" stroke="#e74c3c" stroke-width="0.75" stroke-opacity="0.55" stroke-linejoin="round"><title>Aging &#183; Transform (L1, S4)</title></polygon>
-      <text class="matrix-cell-text" x="350.0" y="386.8" text-anchor="middle" font-size="12" fill="var(--grey)">Aging</text>
-      <polygon class="matrix-hex-cell" points="330.0,364.6 310.0,330.0 268.6,330.0 309.3,400.5" fill="#e74c3c" fill-opacity="0.08" stroke="#e74c3c" stroke-width="0.75" stroke-opacity="0.55" stroke-linejoin="round"><title>Senescence &#183; Decline (L1, S5)</title></polygon>
-      <text class="matrix-cell-text" x="304.5" y="360.5" text-anchor="middle" font-size="12" fill="var(--grey)" transform="rotate(60 304.5 356.3)">Senesc.</text>
-      <polygon class="matrix-hex-cell" points="310.0,330.0 330.0,295.4 309.3,259.5 268.6,330.0" fill="#e74c3c" fill-opacity="0.08" stroke="#e74c3c" stroke-width="0.75" stroke-opacity="0.55" stroke-linejoin="round"><title>Mortality &#183; Death (L1, S6)</title></polygon>
-      <text class="matrix-cell-text" x="304.5" y="307.9" text-anchor="middle" font-size="12" fill="var(--grey)" transform="rotate(-60 304.5 303.7)">Mortal</text>
-      <circle cx="289.3" cy="330.0" r="9" fill="var(--bg-lift)" stroke="#e74c3c" stroke-width="1.5"/><text x="289.3" y="334.0" text-anchor="middle" font-family="var(--sans)" font-size="11" font-weight="700" fill="#e74c3c">1</text>
-    </g>
-    <circle cx="350" cy="330" r="38" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
-    <text x="350" y="333" text-anchor="middle" font-family="var(--sans)" font-size="18" font-weight="700" fill="var(--gold)">42</text>
-    <text x="350" y="346" text-anchor="middle" font-family="var(--sans)" font-size="9" letter-spacing="1" fill="var(--dim)">7 &#215; 6</text>
-    <text x="350" y="668" text-anchor="middle" font-family="var(--sans)" font-size="10" letter-spacing="1" fill="var(--gold)">THE 7 RINGS &#8212; LAYER 1 AT THE CENTRE, LAYER 7 ON THE OUTER RIM</text>
-    <g font-family="var(--sans)" font-size="11" fill="var(--grey)">
-      <g class="matrix-map-node" tabindex="0" role="button" aria-label="Layer 1 — Body" onclick="expandMatrixRow(1)" onkeypress="if(event.key==='Enter')expandMatrixRow(1)"><circle cx="44" cy="696" r="11" fill="var(--bg-lift)" stroke="#e74c3c" stroke-width="1.5"/><text x="44" y="700" text-anchor="middle" font-weight="700" fill="#e74c3c">1</text><text x="60" y="700">Body</text></g>
-      <g class="matrix-map-node" tabindex="0" role="button" aria-label="Layer 2 — Breath" onclick="expandMatrixRow(2)" onkeypress="if(event.key==='Enter')expandMatrixRow(2)"><circle cx="142" cy="696" r="11" fill="var(--bg-lift)" stroke="#e67e22" stroke-width="1.5"/><text x="142" y="700" text-anchor="middle" font-weight="700" fill="#e67e22">2</text><text x="158" y="700">Breath</text></g>
-      <g class="matrix-map-node" tabindex="0" role="button" aria-label="Layer 3 — Mind" onclick="expandMatrixRow(3)" onkeypress="if(event.key==='Enter')expandMatrixRow(3)"><circle cx="240" cy="696" r="11" fill="var(--bg-lift)" stroke="var(--chakra-3)" stroke-width="1.5"/><text x="240" y="700" text-anchor="middle" font-weight="700" fill="var(--chakra-3)">3</text><text x="256" y="700">Mind</text></g>
-      <g class="matrix-map-node" tabindex="0" role="button" aria-label="Layer 4 — Intellect" onclick="expandMatrixRow(4)" onkeypress="if(event.key==='Enter')expandMatrixRow(4)"><circle cx="338" cy="696" r="11" fill="var(--bg-lift)" stroke="var(--chakra-4)" stroke-width="1.5"/><text x="338" y="700" text-anchor="middle" font-weight="700" fill="var(--chakra-4)">4</text><text x="354" y="700">Intellect</text></g>
-      <g class="matrix-map-node" tabindex="0" role="button" aria-label="Layer 5 — Memory" onclick="expandMatrixRow(5)" onkeypress="if(event.key==='Enter')expandMatrixRow(5)"><circle cx="436" cy="696" r="11" fill="var(--bg-lift)" stroke="#3498db" stroke-width="1.5"/><text x="436" y="700" text-anchor="middle" font-weight="700" fill="#3498db">5</text><text x="452" y="700">Memory</text></g>
-      <g class="matrix-map-node" tabindex="0" role="button" aria-label="Layer 6 — Ego" onclick="expandMatrixRow(6)" onkeypress="if(event.key==='Enter')expandMatrixRow(6)"><circle cx="534" cy="696" r="11" fill="var(--bg-lift)" stroke="#6a5acd" stroke-width="1.5"/><text x="534" y="700" text-anchor="middle" font-weight="700" fill="#6a5acd">6</text><text x="550" y="700">Ego</text></g>
-      <g class="matrix-map-node" tabindex="0" role="button" aria-label="Layer 7 — Self" onclick="expandMatrixRow(7)" onkeypress="if(event.key==='Enter')expandMatrixRow(7)"><circle cx="632" cy="696" r="11" fill="var(--bg-lift)" stroke="#9b59b6" stroke-width="1.5"/><text x="632" y="700" text-anchor="middle" font-weight="700" fill="#9b59b6">7</text><text x="648" y="700">Self</text></g>
-    </g>
-  </svg>
+  <div style="position:relative;width:100%;line-height:0;"><img src="./assets/images/master-matrix-map.webp" alt="Master Matrix hexagonal map — 7 layers as rings, 6 stages as sectors clockwise from Birth at the top; tap a ring to jump to its full detail" width="1400" height="1444" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;"><svg viewBox="0 0 1400 1444" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible;" role="group" aria-label="Master Matrix hexagonal map — 7 layers as rings, 6 stages as sectors clockwise from Birth at the top; tap a ring to jump to its full detail"><g class="matrix-map-node img-map-hit" tabindex="0" role="button" aria-label="Layer 7 — Self" onclick="expandMatrixRow(7)" onkeypress="if(event.key==='Enter')expandMatrixRow(7)"><title>L7 — Self</title><polygon class="img-map-shape" points="411.4,160.2 988.6,160.2 1030.0,88.4 370.0,88.4" fill="transparent" stroke="transparent" stroke-width="2"/><polygon class="img-map-shape" points="988.6,160.2 1277.2,660.0 1360.0,660.0 1030.0,88.4" fill="transparent" stroke="transparent" stroke-width="2"/><polygon class="img-map-shape" points="1277.2,660.0 988.6,1159.8 1030.0,1231.6 1360.0,660.0" fill="transparent" stroke="transparent" stroke-width="2"/><polygon class="img-map-shape" points="988.6,1159.8 411.4,1159.8 370.0,1231.6 1030.0,1231.6" fill="transparent" stroke="transparent" stroke-width="2"/><polygon class="img-map-shape" points="411.4,1159.8 122.8,660.0 40.0,660.0 370.0,1231.6" fill="transparent" stroke="transparent" stroke-width="2"/><polygon class="img-map-shape" points="122.8,660.0 411.4,160.2 370.0,88.4 40.0,660.0" fill="transparent" stroke="transparent" stroke-width="2"/><circle class="img-map-shape" cx="81.4" cy="660.0" r="21.6" fill="transparent" stroke="transparent" stroke-width="2"/></g><g class="matrix-map-node img-map-hit" tabindex="0" role="button" aria-label="Layer 6 — Ego" onclick="expandMatrixRow(6)" onkeypress="if(event.key==='Enter')expandMatrixRow(6)"><title>L6 — Ego</title><polygon class="img-map-shape" points="452.8,232.0 947.2,232.0 988.6,160.2 411.4,160.2" fill="transparent" stroke="transparent" stroke-width="2"/><polygon class="img-map-shape" points="947.2,232.0 1194.2,660.0 1277.2,660.0 988.6,160.2" fill="transparent" stroke="transparent" stroke-width="2"/><polygon class="img-map-shape" points="1194.2,660.0 947.2,1088.0 988.6,1159.8 1277.2,660.0" fill="transparent" stroke="transparent" stroke-width="2"/><polygon class="img-map-shape" points="947.2,1088.0 452.8,1088.0 411.4,1159.8 988.6,1159.8" fill="transparent" stroke="transparent" stroke-width="2"/><polygon class="img-map-shape" points="452.8,1088.0 205.8,660.0 122.8,660.0 411.4,1159.8" fill="transparent" stroke="transparent" stroke-width="2"/><polygon class="img-map-shape" points="205.8,660.0 452.8,232.0 411.4,160.2 122.8,660.0" fill="transparent" stroke="transparent" stroke-width="2"/><circle class="img-map-shape" cx="164.2" cy="660.0" r="21.6" fill="transparent" stroke="transparent" stroke-width="2"/></g><g class="matrix-map-node img-map-hit" tabindex="0" role="button" aria-label="Layer 5 — Memory" onclick="expandMatrixRow(5)" onkeypress="if(event.key==='Enter')expandMatrixRow(5)"><title>L5 — Memory</title><polygon class="img-map-shape" points="494.2,303.6 905.8,303.6 947.2,232.0 452.8,232.0" fill="transparent" stroke="transparent" stroke-width="2"/><polygon class="img-map-shape" points="905.8,303.6 1111.4,660.0 1194.2,660.0 947.2,232.0" fill="transparent" stroke="transparent" stroke-width="2"/><polygon class="img-map-shape" points="1111.4,660.0 905.8,1016.4 947.2,1088.0 1194.2,660.0" fill="transparent" stroke="transparent" stroke-width="2"/><polygon class="img-map-shape" points="905.8,1016.4 494.2,1016.4 452.8,1088.0 947.2,1088.0" fill="transparent" stroke="transparent" stroke-width="2"/><polygon class="img-map-shape" points="494.2,1016.4 288.6,660.0 205.8,660.0 452.8,1088.0" fill="transparent" stroke="transparent" stroke-width="2"/><polygon class="img-map-shape" points="288.6,660.0 494.2,303.6 452.8,232.0 205.8,660.0" fill="transparent" stroke="transparent" stroke-width="2"/><circle class="img-map-shape" cx="247.2" cy="660.0" r="21.6" fill="transparent" stroke="transparent" stroke-width="2"/></g><g class="matrix-map-node img-map-hit" tabindex="0" role="button" aria-label="Layer 4 — Intellect" onclick="expandMatrixRow(4)" onkeypress="if(event.key==='Enter')expandMatrixRow(4)"><title>L4 — Intellect</title><polygon class="img-map-shape" points="535.8,375.4 864.2,375.4 905.8,303.6 494.2,303.6" fill="transparent" stroke="transparent" stroke-width="2"/><polygon class="img-map-shape" points="864.2,375.4 1028.6,660.0 1111.4,660.0 905.8,303.6" fill="transparent" stroke="transparent" stroke-width="2"/><polygon class="img-map-shape" points="1028.6,660.0 864.2,944.6 905.8,1016.4 1111.4,660.0" fill="transparent" stroke="transparent" stroke-width="2"/><polygon class="img-map-shape" points="864.2,944.6 535.8,944.6 494.2,1016.4 905.8,1016.4" fill="transparent" stroke="transparent" stroke-width="2"/><polygon class="img-map-shape" points="535.8,944.6 371.4,660.0 288.6,660.0 494.2,1016.4" fill="transparent" stroke="transparent" stroke-width="2"/><polygon class="img-map-shape" points="371.4,660.0 535.8,375.4 494.2,303.6 288.6,660.0" fill="transparent" stroke="transparent" stroke-width="2"/><circle class="img-map-shape" cx="330.0" cy="660.0" r="21.6" fill="transparent" stroke="transparent" stroke-width="2"/></g><g class="matrix-map-node img-map-hit" tabindex="0" role="button" aria-label="Layer 3 — Mind" onclick="expandMatrixRow(3)" onkeypress="if(event.key==='Enter')expandMatrixRow(3)"><title>L3 — Mind</title><polygon class="img-map-shape" points="577.2,447.2 822.8,447.2 864.2,375.4 535.8,375.4" fill="transparent" stroke="transparent" stroke-width="2"/><polygon class="img-map-shape" points="822.8,447.2 945.8,660.0 1028.6,660.0 864.2,375.4" fill="transparent" stroke="transparent" stroke-width="2"/><polygon class="img-map-shape" points="945.8,660.0 822.8,872.8 864.2,944.6 1028.6,660.0" fill="transparent" stroke="transparent" stroke-width="2"/><polygon class="img-map-shape" points="822.8,872.8 577.2,872.8 535.8,944.6 864.2,944.6" fill="transparent" stroke="transparent" stroke-width="2"/><polygon class="img-map-shape" points="577.2,872.8 454.2,660.0 371.4,660.0 535.8,944.6" fill="transparent" stroke="transparent" stroke-width="2"/><polygon class="img-map-shape" points="454.2,660.0 577.2,447.2 535.8,375.4 371.4,660.0" fill="transparent" stroke="transparent" stroke-width="2"/><circle class="img-map-shape" cx="412.8" cy="660.0" r="21.6" fill="transparent" stroke="transparent" stroke-width="2"/></g><g class="matrix-map-node img-map-hit" tabindex="0" role="button" aria-label="Layer 2 — Breath" onclick="expandMatrixRow(2)" onkeypress="if(event.key==='Enter')expandMatrixRow(2)"><title>L2 — Breath</title><polygon class="img-map-shape" points="618.6,519.0 781.4,519.0 822.8,447.2 577.2,447.2" fill="transparent" stroke="transparent" stroke-width="2"/><polygon class="img-map-shape" points="781.4,519.0 862.8,660.0 945.8,660.0 822.8,447.2" fill="transparent" stroke="transparent" stroke-width="2"/><polygon class="img-map-shape" points="862.8,660.0 781.4,801.0 822.8,872.8 945.8,660.0" fill="transparent" stroke="transparent" stroke-width="2"/><polygon class="img-map-shape" points="781.4,801.0 618.6,801.0 577.2,872.8 822.8,872.8" fill="transparent" stroke="transparent" stroke-width="2"/><polygon class="img-map-shape" points="618.6,801.0 537.2,660.0 454.2,660.0 577.2,872.8" fill="transparent" stroke="transparent" stroke-width="2"/><polygon class="img-map-shape" points="537.2,660.0 618.6,519.0 577.2,447.2 454.2,660.0" fill="transparent" stroke="transparent" stroke-width="2"/><circle class="img-map-shape" cx="495.8" cy="660.0" r="21.6" fill="transparent" stroke="transparent" stroke-width="2"/></g><g class="matrix-map-node img-map-hit" tabindex="0" role="button" aria-label="Layer 1 — Body" onclick="expandMatrixRow(1)" onkeypress="if(event.key==='Enter')expandMatrixRow(1)"><title>L1 — Body</title><polygon class="img-map-shape" points="660.0,590.8 740.0,590.8 781.4,519.0 618.6,519.0" fill="transparent" stroke="transparent" stroke-width="2"/><polygon class="img-map-shape" points="740.0,590.8 780.0,660.0 862.8,660.0 781.4,519.0" fill="transparent" stroke="transparent" stroke-width="2"/><polygon class="img-map-shape" points="780.0,660.0 740.0,729.2 781.4,801.0 862.8,660.0" fill="transparent" stroke="transparent" stroke-width="2"/><polygon class="img-map-shape" points="740.0,729.2 660.0,729.2 618.6,801.0 781.4,801.0" fill="transparent" stroke="transparent" stroke-width="2"/><polygon class="img-map-shape" points="660.0,729.2 620.0,660.0 537.2,660.0 618.6,801.0" fill="transparent" stroke="transparent" stroke-width="2"/><polygon class="img-map-shape" points="620.0,660.0 660.0,590.8 618.6,519.0 537.2,660.0" fill="transparent" stroke="transparent" stroke-width="2"/><circle class="img-map-shape" cx="578.6" cy="660.0" r="21.6" fill="transparent" stroke="transparent" stroke-width="2"/></g><g class="matrix-map-node img-map-hit" tabindex="0" role="button" aria-label="Layer 1 — Body" onclick="expandMatrixRow(1)" onkeypress="if(event.key==='Enter')expandMatrixRow(1)"><title></title><circle class="img-map-shape" cx="88.0" cy="1392.0" r="26.4" fill="transparent" stroke="transparent" stroke-width="2"/></g><g class="matrix-map-node img-map-hit" tabindex="0" role="button" aria-label="Layer 2 — Breath" onclick="expandMatrixRow(2)" onkeypress="if(event.key==='Enter')expandMatrixRow(2)"><title></title><circle class="img-map-shape" cx="284.0" cy="1392.0" r="26.4" fill="transparent" stroke="transparent" stroke-width="2"/></g><g class="matrix-map-node img-map-hit" tabindex="0" role="button" aria-label="Layer 3 — Mind" onclick="expandMatrixRow(3)" onkeypress="if(event.key==='Enter')expandMatrixRow(3)"><title></title><circle class="img-map-shape" cx="480.0" cy="1392.0" r="26.4" fill="transparent" stroke="transparent" stroke-width="2"/></g><g class="matrix-map-node img-map-hit" tabindex="0" role="button" aria-label="Layer 4 — Intellect" onclick="expandMatrixRow(4)" onkeypress="if(event.key==='Enter')expandMatrixRow(4)"><title></title><circle class="img-map-shape" cx="676.0" cy="1392.0" r="26.4" fill="transparent" stroke="transparent" stroke-width="2"/></g><g class="matrix-map-node img-map-hit" tabindex="0" role="button" aria-label="Layer 5 — Memory" onclick="expandMatrixRow(5)" onkeypress="if(event.key==='Enter')expandMatrixRow(5)"><title></title><circle class="img-map-shape" cx="872.0" cy="1392.0" r="26.4" fill="transparent" stroke="transparent" stroke-width="2"/></g><g class="matrix-map-node img-map-hit" tabindex="0" role="button" aria-label="Layer 6 — Ego" onclick="expandMatrixRow(6)" onkeypress="if(event.key==='Enter')expandMatrixRow(6)"><title></title><circle class="img-map-shape" cx="1068.0" cy="1392.0" r="26.4" fill="transparent" stroke="transparent" stroke-width="2"/></g><g class="matrix-map-node img-map-hit" tabindex="0" role="button" aria-label="Layer 7 — Self" onclick="expandMatrixRow(7)" onkeypress="if(event.key==='Enter')expandMatrixRow(7)"><title></title><circle class="img-map-shape" cx="1264.0" cy="1392.0" r="26.4" fill="transparent" stroke="transparent" stroke-width="2"/></g></svg></div>
   <p style="font-family:var(--sans);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#555;text-align:left;margin-top:8px;">Tap a ring to jump to its full detail</p>
 </div>
     <div class="cosmo-quote" style="max-width:none;margin:0 0 36px;">
@@ -20183,39 +19767,7 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
     <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin:0 0 24px;">Bergson also gave this relationship a shape &mdash; and the shape carries one of his stronger claims along with it: that the whole of your past is preserved somewhere, intact and indestructible, whether or not you ever revisit it. That&rsquo;s a metaphysical bet, not an established fact &mdash; neuroscience doesn&rsquo;t require a warehouse of untouched memories sitting in reserve. What&rsquo;s worth keeping regardless of the bet is the shape itself: a genuinely useful way to picture the relationship between remembering and acting.</p>
 
     <div style="max-width:560px;margin:0 auto 32px;">
-      <svg viewBox="0 0 600 460" style="width:100%;height:auto;overflow:visible;" role="img" aria-label="The cone of memory — a wide base labeled A to B representing the whole preserved past, narrowing to a single point S where it touches the plane of the present">
-        <defs>
-          <radialGradient id="coneApexGlow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="var(--gold)" stop-opacity="0.9"/>
-            <stop offset="60%" stop-color="var(--gold)" stop-opacity="0.3"/>
-            <stop offset="100%" stop-color="var(--gold)" stop-opacity="0"/>
-          </radialGradient>
-        </defs>
-
-        <!-- Plane P — the present -->
-        <line x1="60" y1="370" x2="540" y2="370" stroke="var(--dim)" stroke-width="1" opacity="0.5"/>
-        <text x="70" y="395" font-family="var(--sans)" font-size="10" letter-spacing="2" fill="var(--dim)" text-transform="uppercase">PLANE P &mdash; THE PRESENT</text>
-
-        <!-- the cone body -->
-        <line x1="90" y1="80" x2="300" y2="370" stroke="var(--gold)" stroke-width="1" opacity="0.55"/>
-        <line x1="510" y1="80" x2="300" y2="370" stroke="var(--gold)" stroke-width="1" opacity="0.55"/>
-        <ellipse cx="300" cy="80" rx="210" ry="26" fill="none" stroke="var(--gold)" stroke-width="1.5" opacity="0.7"/>
-
-        <!-- faint interior lines suggesting descent toward the apex -->
-        <line x1="180" y1="130" x2="300" y2="370" stroke="var(--grey)" stroke-width="0.75" opacity="0.3"/>
-        <line x1="300" y1="106" x2="300" y2="370" stroke="var(--grey)" stroke-width="0.75" opacity="0.3"/>
-        <line x1="420" y1="130" x2="300" y2="370" stroke="var(--grey)" stroke-width="0.75" opacity="0.3"/>
-
-        <!-- the apex — S, the body -->
-        <circle cx="300" cy="370" r="20" fill="url(#coneApexGlow)"/>
-        <circle cx="300" cy="370" r="6" fill="var(--bg-lift)" stroke="var(--gold)" stroke-width="1.5"/>
-
-        <!-- labels -->
-        <text x="70" y="62" font-family="var(--sans)" font-size="10" letter-spacing="2" fill="var(--mid)">A</text>
-        <text x="510" y="62" font-family="var(--sans)" font-size="10" letter-spacing="2" fill="var(--mid)">B</text>
-        <text x="300" y="45" font-family="var(--serif)" font-size="13" fill="var(--white)" text-anchor="middle">Base A&ndash;B &mdash; the whole preserved past</text>
-        <text x="300" y="415" font-family="var(--serif)" font-size="13" fill="var(--gold)" text-anchor="middle">Apex S &mdash; the body, always at the present</text>
-      </svg>
+      <img src="./assets/images/memory-cone-map.webp" alt="The cone of memory — a wide base labeled A to B representing the whole preserved past, narrowing to a single point S where it touches the plane of the present" width="1400" height="1073" loading="lazy" decoding="async" style="width:100%;height:auto;">
     </div>
 
     <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin:0 0 16px;">At the wide end, the whole past sits at rest &mdash; every version of you that has ever existed, still on file, unmoving, unconscious.</p>
