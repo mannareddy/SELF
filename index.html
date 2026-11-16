@@ -793,13 +793,36 @@ body{
    the top of <body>) applies a gamma curve that darkens the mid-tones so thin
    gold lines and grey sub-labels stay readable; multiply then dissolves the
    white into the cream page. Dark theme is untouched. To keep one image dark
-   in light mode, add class="keep-dark" to its <img>. To remove the effect
-   entirely, delete this block and the <svg id="lightArtDefs"> after <body>. */
+   in light mode, add class="keep-dark" to its <img>. A small script before </body>
+   also does this automatically for images that are not black-background line
+   art (navy slides, photo-like art): it adds class "auto-keep-dark". To remove
+   the effect entirely, delete this block, the script, and the <svg id="lightArtDefs">. */
 [data-theme="light"] img[style*="border:1.5px solid rgba(var(--accent-gold-rgb),0.45)"]{
   filter:invert(1) hue-rotate(180deg) url(#lightArtDeepen);
   mix-blend-mode:multiply;
 }
-[data-theme="light"] img.keep-dark[style]{filter:none;mix-blend-mode:normal;}
+[data-theme="light"] img.keep-dark[style],
+[data-theme="light"] img.auto-keep-dark[style]{filter:none;mix-blend-mode:normal;}
+/* The filter also recolours the image's own 1.5px border (and with the blend it
+   disappeared on cream). So in light theme the border moves off the filtered
+   <img> onto the <figure> as an overlay drawn after the filter, in the same
+   gold tint the page already uses. The img keeps a transparent 1.5px border so
+   nothing shifts. Needs :has(); without it the rules below are skipped. */
+@supports selector(:has(a)){
+  [data-theme="light"] figure > img[style*="border:1.5px solid rgba(var(--accent-gold-rgb),0.45)"],
+  [data-theme="light"] figure > picture > img[style*="border:1.5px solid rgba(var(--accent-gold-rgb),0.45)"]{
+    border-color:transparent !important;
+  }
+  [data-theme="light"] figure:has(> img[style*="border:1.5px solid rgba(var(--accent-gold-rgb),0.45)"]),
+  [data-theme="light"] figure:has(> picture > img[style*="border:1.5px solid rgba(var(--accent-gold-rgb),0.45)"]){
+    position:relative;
+  }
+  [data-theme="light"] figure:has(> img[style*="border:1.5px solid rgba(var(--accent-gold-rgb),0.45)"])::after,
+  [data-theme="light"] figure:has(> picture > img[style*="border:1.5px solid rgba(var(--accent-gold-rgb),0.45)"])::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    border:1.5px solid rgba(var(--accent-gold-rgb),0.45);
+  }
+}
 /* Samsung Internet paints mix-blend-mode on images wrongly (see the nav-logo
    notes below); there the art keeps the invert but sits as a near-white panel. */
 html.is-samsung[data-theme="light"] img[style*="border:1.5px solid rgba(var(--accent-gold-rgb),0.45)"]{mix-blend-mode:normal;}
@@ -5818,7 +5841,7 @@ section .sec-sub.sec-sub{
   <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.95;max-width:820px;margin:0 auto 28px;text-align:center;">The Veda's diagnosis of the human condition isn't circumstantial &mdash; a bad job, a bad year, a bad relationship. It's structural. <span class="gloss">Samsara<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Samsara">+</span><span class="gloss-pop">The cycle of birth, death, and rebirth &mdash; the ceaseless churn of conditioned existence every layer below the Self remains bound to.</span></span> isn't only the biological wheel of birth and death. It's a five-step engine, cycling underneath an ordinary Tuesday, that manufactures the felt sense of incompleteness fresh every day &mdash; and then hands you the bill for trying to fix it from the wrong end.</p>
 
   <div id="samsara-wheel-wrap" style="max-width:820px;margin:8px auto 32px;">
-    <figure style="margin:8px auto 32px;max-width:820px;width:100%;"><img src="./assets/images/pb-samsara.webp" alt="A dark star-field slide titled The Tyranny of Samsara. Five gold-ringed circles form a closed wheel with arrows running clockwise: Ignorance (Avidya), I do not know who I truly am; Wrong Identification (Adhyasa), I am this limited body or mind; Desire and Aversion (Raga-Dvesha), I need things to complete me; Action (Karma), compulsive striving in the world; Results (Phalam), vasanas that feed right back into Ignorance. A panel on the right, The Disease is Mistaken Identity, says the Veda declares our fundamental state is bondage, Samsara, a psychological gnawing of incompleteness; finite worldly solutions cannot cure an infinite problem of mistaken identity; the only cure is Moksha, absolute liberation." width="1488" height="812" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></figure>
+    <figure style="margin:8px auto 32px;max-width:820px;width:100%;"><img class="keep-dark" src="./assets/images/pb-samsara.webp" alt="A dark star-field slide titled The Tyranny of Samsara. Five gold-ringed circles form a closed wheel with arrows running clockwise: Ignorance (Avidya), I do not know who I truly am; Wrong Identification (Adhyasa), I am this limited body or mind; Desire and Aversion (Raga-Dvesha), I need things to complete me; Action (Karma), compulsive striving in the world; Results (Phalam), vasanas that feed right back into Ignorance. A panel on the right, The Disease is Mistaken Identity, says the Veda declares our fundamental state is bondage, Samsara, a psychological gnawing of incompleteness; finite worldly solutions cannot cure an infinite problem of mistaken identity; the only cure is Moksha, absolute liberation." width="1488" height="812" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></figure>
   </div>
 
   <div style="text-align:center;margin:32px 0 16px;">
@@ -26661,5 +26684,51 @@ paRenderLastNote();
 </script>
 </div><!-- /#zoomScope -->
 <div id="glossPortal" class="gloss-portal" role="tooltip"></div>
+<script>
+/* Light-theme art classifier. The re-ink filter (see the "re-ink" CSS) suits
+   gold-on-black line art. Images with a coloured background (navy star-field
+   slides) or lots of bright painted detail look wrong inverted, so when an
+   image loads we sample a 64px copy: near-black edges AND a low overall
+   brightness = line art (re-inked); anything else gets "auto-keep-dark" and
+   shows as drawn. Same-origin only; if the canvas is blocked (e.g. opened from
+   file://) it does nothing and every image is re-inked. */
+(function(){
+  var SEL='img[style*="border:1.5px solid rgba(var(--accent-gold-rgb),0.45)"]';
+  var cache={};
+  function classify(img){
+    try{
+      var src=img.currentSrc||img.src;
+      if(!src||!img.naturalWidth) return;
+      var isArt=cache[src];
+      if(isArt===undefined){
+        var w=64,h=Math.max(8,Math.round(64*img.naturalHeight/img.naturalWidth));
+        var c=document.createElement('canvas');c.width=w;c.height=h;
+        var x=c.getContext('2d',{willReadFrequently:true});
+        x.drawImage(img,0,0,w,h);
+        var d=x.getImageData(0,0,w,h).data,n=w*h,sum=0,ring=[];
+        for(var i=0;i<n;i++){
+          var r=d[i*4],g=d[i*4+1],b=d[i*4+2];
+          sum+=0.2126*r+0.7152*g+0.0722*b;
+          var px=i%w,py=(i/w)|0;
+          if(px<4||px>=w-4||py<4||py>=h-4) ring.push(Math.max(r,g,b));
+        }
+        ring.sort(function(a,b){return a-b;});
+        isArt=(sum/n<=30)&&(ring[ring.length>>1]<=18);
+        cache[src]=isArt;
+      }
+      img.classList.toggle('auto-keep-dark',!isArt);
+    }catch(e){}
+  }
+  document.addEventListener('load',function(e){
+    var t=e.target;
+    if(t&&t.tagName==='IMG'&&t.matches&&t.matches(SEL)) classify(t);
+  },true);
+  function sweep(){
+    var l=document.querySelectorAll(SEL);
+    for(var i=0;i<l.length;i++){ if(l[i].complete) classify(l[i]); }
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',sweep); else sweep();
+})();
+</script>
 </body>
 </html>
