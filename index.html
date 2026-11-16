@@ -786,6 +786,23 @@ body{
 }
 [data-theme="light"] body{background:var(--bg-page) !important;color:var(--text-body) !important;font-weight:400;}
 [data-theme="light"]{color-scheme:light;}
+/* Light theme: the section illustrations are gold-on-black art. On the cream
+   page they read as heavy black slabs. This re-inks them for light mode:
+   invert(1) turns black to white and light text to dark; hue-rotate(180deg)
+   puts the gold hues back after the invert; #lightArtDeepen (SVG, defined at
+   the top of <body>) applies a gamma curve that darkens the mid-tones so thin
+   gold lines and grey sub-labels stay readable; multiply then dissolves the
+   white into the cream page. Dark theme is untouched. To keep one image dark
+   in light mode, add class="keep-dark" to its <img>. To remove the effect
+   entirely, delete this block and the <svg id="lightArtDefs"> after <body>. */
+[data-theme="light"] img[style*="border:1.5px solid rgba(var(--accent-gold-rgb),0.45)"]{
+  filter:invert(1) hue-rotate(180deg) url(#lightArtDeepen);
+  mix-blend-mode:multiply;
+}
+[data-theme="light"] img.keep-dark[style]{filter:none;mix-blend-mode:normal;}
+/* Samsung Internet paints mix-blend-mode on images wrongly (see the nav-logo
+   notes below); there the art keeps the invert but sits as a near-white panel. */
+html.is-samsung[data-theme="light"] img[style*="border:1.5px solid rgba(var(--accent-gold-rgb),0.45)"]{mix-blend-mode:normal;}
 
 /* Light: boost body text weight/brightness across all text elements */
 [data-theme="light"] p,[data-theme="light"] li,[data-theme="light"] span:not(.label):not(.ec-type):not(.p-num):not(.num):not(.layer-tag):not(.s-sub):not(.ds-subtitle):not(.rasa-cell):not(.tradition-cell):not(.col-title):not(.gloss-btn){color:var(--text-body) !important;font-weight:400 !important;}
@@ -4185,6 +4202,7 @@ section .sec-sub.sec-sub{
 <style id="img-map-hit-css">.img-map-hit{cursor:pointer;outline:none;}.img-map-hit:hover .img-map-shape,.img-map-hit:focus .img-map-shape,.img-map-hit:focus-visible .img-map-shape{fill:rgba(var(--accent-gold-rgb),.16);stroke:rgba(var(--accent-gold-rgb),.75);}</style>
 </head>
 <body>
+<svg id="lightArtDefs" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><filter id="lightArtDeepen" color-interpolation-filters="sRGB"><feComponentTransfer><feFuncR type="gamma" amplitude="1" exponent="1.7" offset="0"/><feFuncG type="gamma" amplitude="1" exponent="1.7" offset="0"/><feFuncB type="gamma" amplitude="1" exponent="1.7" offset="0"/></feComponentTransfer></filter></svg>
 
 <!-- STICKY NAV — logo centered, items split left/right -->
 <nav class="site-nav" id="siteNav" aria-label="Site navigation">
