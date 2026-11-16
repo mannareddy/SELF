@@ -786,39 +786,45 @@ body{
 }
 [data-theme="light"] body{background:var(--bg-page) !important;color:var(--text-body) !important;font-weight:400;}
 [data-theme="light"]{color-scheme:light;}
-/* Light theme: the section illustrations are gold-on-black art. On the cream
-   page they read as heavy black slabs. This re-inks them for light mode:
+/* Light theme: the 15 illustration sets made for the image series (see the list
+   in the notes below) are gold-on-black art, which reads as a heavy black slab
+   on the cream page. Images marked class="reink" are re-inked in light mode:
    invert(1) turns black to white and light text to dark; hue-rotate(180deg)
    puts the gold hues back after the invert; #lightArtDeepen (SVG, defined at
    the top of <body>) applies a gamma curve that darkens the mid-tones so thin
    gold lines and grey sub-labels stay readable; multiply then dissolves the
-   white into the cream page. Dark theme is untouched. To keep one image dark
-   in light mode, add class="keep-dark" to its <img>. A small script before </body>
-   also does this automatically for images that are not black-background line
-   art (navy slides, photo-like art): it adds class "auto-keep-dark". To remove
-   the effect entirely, delete this block, the script, and the <svg id="lightArtDefs">. */
-[data-theme="light"] img[style*="border:1.5px solid rgba(var(--accent-gold-rgb),0.45)"]{
+   white into the cream page. Every other image on the page is untouched, and
+   so is dark theme. To include another image, add class="reink" to its <img>.
+   To remove the effect entirely, delete this block and the
+   <svg id="lightArtDefs"> after <body>.
+   Series: start-here-three-doors, control-circles, awakening-strip/-m1/-m2/-m3,
+   mirror-three-lamps, stop-sequence-bars, five-pillars-self-enquiry,
+   two-paths-jnana-bhakti, five-stages-of-surrender, ashtavakra-radiance,
+   dissolution-arc-rings, paradigms-joined-roof, aurobindo-four-views,
+   dancer-stage-reversal, four-mechanisms-ladder, mansion-rooms-awareness,
+   states-of-awareness-dogs, virtue-trap-higher-climb (and their -mobile files). */
+[data-theme="light"] img.reink{
   filter:invert(1) hue-rotate(180deg) url(#lightArtDeepen);
   mix-blend-mode:multiply;
 }
-[data-theme="light"] img.keep-dark[style],
-[data-theme="light"] img.auto-keep-dark[style]{filter:none;mix-blend-mode:normal;}
-/* The filter also recolours the image's own 1.5px border (and with the blend it
-   disappeared on cream). So in light theme the border moves off the filtered
-   <img> onto the <figure> as an overlay drawn after the filter, in the same
-   gold tint the page already uses. The img keeps a transparent 1.5px border so
-   nothing shifts. Needs :has(); without it the rules below are skipped. */
+/* Samsung Internet paints mix-blend-mode on images wrongly (see the nav-logo
+   notes below); there the art keeps the invert but sits as a near-white panel. */
+html.is-samsung[data-theme="light"] img.reink{mix-blend-mode:normal;}
+/* The filter also recolours an image's own 1.5px border. So in light theme the
+   border moves off the filtered <img> onto the <figure> as an overlay drawn
+   after the filter, in the gold tint the page already uses. The img keeps a
+   transparent border of the same width so nothing shifts. Needs :has(). */
 @supports selector(:has(a)){
-  [data-theme="light"] figure > img[style*="border:1.5px solid rgba(var(--accent-gold-rgb),0.45)"],
-  [data-theme="light"] figure > picture > img[style*="border:1.5px solid rgba(var(--accent-gold-rgb),0.45)"]{
+  [data-theme="light"] figure > img.reink[style*="border:1.5px solid rgba(var(--accent-gold-rgb),0.45)"],
+  [data-theme="light"] figure > picture > img.reink[style*="border:1.5px solid rgba(var(--accent-gold-rgb),0.45)"]{
     border-color:transparent !important;
   }
-  [data-theme="light"] figure:has(> img[style*="border:1.5px solid rgba(var(--accent-gold-rgb),0.45)"]),
-  [data-theme="light"] figure:has(> picture > img[style*="border:1.5px solid rgba(var(--accent-gold-rgb),0.45)"]){
+  [data-theme="light"] figure:has(> img.reink[style*="border:1.5px solid rgba(var(--accent-gold-rgb),0.45)"]),
+  [data-theme="light"] figure:has(> picture > img.reink[style*="border:1.5px solid rgba(var(--accent-gold-rgb),0.45)"]){
     position:relative;
   }
-  [data-theme="light"] figure:has(> img[style*="border:1.5px solid rgba(var(--accent-gold-rgb),0.45)"])::after,
-  [data-theme="light"] figure:has(> picture > img[style*="border:1.5px solid rgba(var(--accent-gold-rgb),0.45)"])::after{
+  [data-theme="light"] figure:has(> img.reink[style*="border:1.5px solid rgba(var(--accent-gold-rgb),0.45)"])::after,
+  [data-theme="light"] figure:has(> picture > img.reink[style*="border:1.5px solid rgba(var(--accent-gold-rgb),0.45)"])::after{
     content:"";position:absolute;inset:0;pointer-events:none;
     border:1.5px solid rgba(var(--accent-gold-rgb),0.45);
   }
@@ -4926,7 +4932,7 @@ section .sec-sub.sec-sub{
   <span class="label">Start Here</span>
   <p style="font-family:var(--serif);font-size:clamp(16px,2.2vw,20px);color:var(--mid);line-height:1.9;max-width:980px;margin:0 auto 40px;text-align:left;">In one paragraph: <strong style="color:var(--white);font-weight:400;">*SELF is a self-enquiry framework</strong> &mdash; a synthesis of Vedanta, Stoicism, Jungian psychology, and modern neuroscience, built around the practice of noticing the gap between a trigger and your reaction to it. It exists as a free website, a paid write-in workbook, and a free web companion &mdash; with a token launching soon to fund and stress-test it in public. These are related but not the same, and you don&rsquo;t need all of them to use any one.</p>
 
-  <figure style="max-width:980px;margin:0 auto 40px;"><picture><source media="(max-width:640px)" srcset="./assets/images/start-here-three-doors-mobile.webp" width="1200" height="900"><img src="./assets/images/start-here-three-doors.webp" alt="Three arched doorways side by side, labelled Just curious, Ready to practice and Here about the token. Each has a small gold line icon: an open eye, a hand over a notebook, a coin. A single path splits from below into all three doors." width="1376" height="726" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></picture></figure>
+  <figure style="max-width:980px;margin:0 auto 40px;"><picture><source media="(max-width:640px)" srcset="./assets/images/start-here-three-doors-mobile.webp" width="1200" height="900"><img class="reink" src="./assets/images/start-here-three-doors.webp" alt="Three arched doorways side by side, labelled Just curious, Ready to practice and Here about the token. Each has a small gold line icon: an open eye, a hand over a notebook, a coin. A single path splits from below into all three doors." width="1376" height="726" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></picture></figure>
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2px;max-width:980px;margin:0 auto 40px;">
     <div class="why-card" style="text-align:left;display:flex;flex-direction:column;">
       <h4 style="margin-bottom:10px;">Just curious</h4>
@@ -4992,7 +4998,7 @@ section .sec-sub.sec-sub{
   <span class="label">What Was Never Yours to Lose</span>
   <p class="phil-line sec-title">The chart moves. The price moves. The world moves.</p>
   <p class="phil-line dim sec-sub">None of it was ever yours to govern.</p>
-  <figure style="max-width:760px;margin:36px auto 0;"><img src="./assets/images/control-circles.webp" alt="Concentric circles on a dark ground. In gold, from the centre outward: Thoughts, Reactions, Desires and Aversions, bracketed as In Your Power. The outer grey ring, labelled Price, Fate, Opinion and marked Not Yours, holds a faint candlestick chart that stays outside the gold rings." width="1376" height="768" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></figure>
+  <figure style="max-width:760px;margin:36px auto 0;"><img class="reink" src="./assets/images/control-circles.webp" alt="Concentric circles on a dark ground. In gold, from the centre outward: Thoughts, Reactions, Desires and Aversions, bracketed as In Your Power. The outer grey ring, labelled Price, Fate, Opinion and marked Not Yours, holds a faint candlestick chart that stays outside the gold rings." width="1376" height="768" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></figure>
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:2px;max-width:760px;margin:36px auto 0;">
     <div class="sl-stage" style="border-left:2px solid var(--gold);"><span class="sl-num" style="color:var(--gold);">In Your Power</span><div class="sl-name" style="color:var(--gold);">Thoughts</div><p class="sl-desc">The one territory that answers only to you.</p></div>
     <div class="sl-stage" style="border-left:2px solid var(--gold);"><span class="sl-num" style="color:var(--gold);">In Your Power</span><div class="sl-name" style="color:var(--gold);">Reactions</div><p class="sl-desc">How you meet what happens, not what happens.</p></div>
@@ -5046,13 +5052,13 @@ section .sec-sub.sec-sub{
 -->
 <section class="section-wide" style="padding:70px 24px 80px;">
   <style>.awk-m{display:none}@media(max-width:640px){.awk-d{display:none}.awk-m{display:block}}</style>
-  <figure class="awk-d" style="max-width:980px;margin:0 auto 40px;"><img src="./assets/images/awakening-strip.webp" alt="Three panels on a dark ground. First: a faint faceless silhouette split by a crack of gold light, captioned You knew something was off. Second: a coin, a pulse heart and a laurel wreath with arrows pointing outward, captioned You tried to fix it outside. Wealth. Health. Status. Third: the same silhouette with a soft gold glow in the chest, captioned Something deeper starts talking." width="1285" height="563" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;"></figure>
+  <figure class="awk-d" style="max-width:980px;margin:0 auto 40px;"><img class="reink" src="./assets/images/awakening-strip.webp" alt="Three panels on a dark ground. First: a faint faceless silhouette split by a crack of gold light, captioned You knew something was off. Second: a coin, a pulse heart and a laurel wreath with arrows pointing outward, captioned You tried to fix it outside. Wealth. Health. Status. Third: the same silhouette with a soft gold glow in the chest, captioned Something deeper starts talking." width="1285" height="563" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;"></figure>
   <div class="awk-m" style="margin:0 auto 40px;">
-    <figure style="margin:0 auto;max-width:230px;"><img src="./assets/images/awakening-m1.webp" alt="A faint faceless outline of a person, split down the middle by a crack of gold light. Caption: You knew something was off." width="607" height="669" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;"></figure>
+    <figure style="margin:0 auto;max-width:230px;"><img class="reink" src="./assets/images/awakening-m1.webp" alt="A faint faceless outline of a person, split down the middle by a crack of gold light. Caption: You knew something was off." width="607" height="669" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;"></figure>
     <div class="divider"></div>
-    <figure style="margin:0 auto;max-width:230px;"><img src="./assets/images/awakening-m2.webp" alt="A gold line coin with a dollar sign, a heart with a pulse line and a laurel wreath, with arrows pointing outward. Caption: You tried to fix it outside. Wealth. Health. Status." width="607" height="659" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;"></figure>
+    <figure style="margin:0 auto;max-width:230px;"><img class="reink" src="./assets/images/awakening-m2.webp" alt="A gold line coin with a dollar sign, a heart with a pulse line and a laurel wreath, with arrows pointing outward. Caption: You tried to fix it outside. Wealth. Health. Status." width="607" height="659" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;"></figure>
     <div class="divider"></div>
-    <figure style="margin:0 auto;max-width:230px;"><img src="./assets/images/awakening-m3.webp" alt="The same faceless outline of a person, with a soft gold glow in the chest. Caption: Something deeper starts talking." width="607" height="669" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;"></figure>
+    <figure style="margin:0 auto;max-width:230px;"><img class="reink" src="./assets/images/awakening-m3.webp" alt="The same faceless outline of a person, with a soft gold glow in the chest. Caption: Something deeper starts talking." width="607" height="669" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;"></figure>
   </div>
   <p class="phil-line dim">Every tradition has a name for what comes next.</p>
 </section>
@@ -5841,7 +5847,7 @@ section .sec-sub.sec-sub{
   <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.95;max-width:820px;margin:0 auto 28px;text-align:center;">The Veda's diagnosis of the human condition isn't circumstantial &mdash; a bad job, a bad year, a bad relationship. It's structural. <span class="gloss">Samsara<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Samsara">+</span><span class="gloss-pop">The cycle of birth, death, and rebirth &mdash; the ceaseless churn of conditioned existence every layer below the Self remains bound to.</span></span> isn't only the biological wheel of birth and death. It's a five-step engine, cycling underneath an ordinary Tuesday, that manufactures the felt sense of incompleteness fresh every day &mdash; and then hands you the bill for trying to fix it from the wrong end.</p>
 
   <div id="samsara-wheel-wrap" style="max-width:820px;margin:8px auto 32px;">
-    <figure style="margin:8px auto 32px;max-width:820px;width:100%;"><img class="keep-dark" src="./assets/images/pb-samsara.webp" alt="A dark star-field slide titled The Tyranny of Samsara. Five gold-ringed circles form a closed wheel with arrows running clockwise: Ignorance (Avidya), I do not know who I truly am; Wrong Identification (Adhyasa), I am this limited body or mind; Desire and Aversion (Raga-Dvesha), I need things to complete me; Action (Karma), compulsive striving in the world; Results (Phalam), vasanas that feed right back into Ignorance. A panel on the right, The Disease is Mistaken Identity, says the Veda declares our fundamental state is bondage, Samsara, a psychological gnawing of incompleteness; finite worldly solutions cannot cure an infinite problem of mistaken identity; the only cure is Moksha, absolute liberation." width="1488" height="812" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></figure>
+    <figure style="margin:8px auto 32px;max-width:820px;width:100%;"><img src="./assets/images/pb-samsara.webp" alt="A dark star-field slide titled The Tyranny of Samsara. Five gold-ringed circles form a closed wheel with arrows running clockwise: Ignorance (Avidya), I do not know who I truly am; Wrong Identification (Adhyasa), I am this limited body or mind; Desire and Aversion (Raga-Dvesha), I need things to complete me; Action (Karma), compulsive striving in the world; Results (Phalam), vasanas that feed right back into Ignorance. A panel on the right, The Disease is Mistaken Identity, says the Veda declares our fundamental state is bondage, Samsara, a psychological gnawing of incompleteness; finite worldly solutions cannot cure an infinite problem of mistaken identity; the only cure is Moksha, absolute liberation." width="1488" height="812" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></figure>
   </div>
 
   <div style="text-align:center;margin:32px 0 16px;">
@@ -6510,7 +6516,7 @@ section .sec-sub.sec-sub{
 
   <p class="sec-sub" style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.95;max-width:820px;margin:0 auto 28px;text-align:center;">Fair question. Two tools of knowing carry you through almost everything else in life. Neither was built to reach the one thing doing all the knowing.</p>
 
-  <figure style="max-width:640px;margin:0 auto 32px;"><img src="./assets/images/mirror-three-lamps.webp" alt="Three gold oil lamps in a column, labelled Direct Perception, Inference and Testimony. Each sends a soft beam of light toward a small empty circle on the right, and each beam fades out before it reaches it. The circle is labelled the one doing all the knowing." width="1200" height="900" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></figure>
+  <figure style="max-width:640px;margin:0 auto 32px;"><img class="reink" src="./assets/images/mirror-three-lamps.webp" alt="Three gold oil lamps in a column, labelled Direct Perception, Inference and Testimony. Each sends a soft beam of light toward a small empty circle on the right, and each beam fades out before it reaches it. The circle is labelled the one doing all the knowing." width="1200" height="900" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></figure>
 
   <div style="max-width:820px;margin:0 auto;text-align:left;">
     <div style="text-align:center;margin-bottom:8px;">
@@ -9010,7 +9016,7 @@ section .sec-sub.sec-sub{
   <p class="phil-line bright sec-title" style="margin-bottom:8px;">Acute Overwhelm &middot; The STOP Sequence</p>
   <p class="phil-line dim" style="margin-bottom:36px;max-width:820px;margin-left:auto;margin-right:auto;text-align:left;">Neither of the two doors above quite fits when the flood is total &mdash; not one impulse, not one emotion to unpack, just every sense firing at once. This is the door for that: four steps, run in strict order, each aimed at one layer already mapped on this site &mdash; <span class="gloss"><a href="#neti-neti-method" onclick="expandNetiNeti();return false;" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">the koshas</a><span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Kosha">+</span><span class="gloss-pop">Kosha means &ldquo;sheath.&rdquo; Yoga and Vedanta describe you as layered like an onion &mdash; body, breath, mind, and deeper still &mdash; with awareness itself at the center. Each layer is a sheath you can learn to notice, and work with, one at a time.</span></span>, worked from the outside in.</p>
 
-  <figure style="max-width:720px;margin:0 auto 32px;"><img src="./assets/images/stop-sequence-bars.webp" alt="Four stacked bars in strict order. S: Space the Senses, mental sheath, 3 seconds. T: Tether the Prana, breath sheath, long exhale. O: Objectify the Experience, Purusha, the witness. P: Position as the Screen, consciousness, the screen." width="1200" height="900" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;"></figure>
+  <figure style="max-width:720px;margin:0 auto 32px;"><img class="reink" src="./assets/images/stop-sequence-bars.webp" alt="Four stacked bars in strict order. S: Space the Senses, mental sheath, 3 seconds. T: Tether the Prana, breath sheath, long exhale. O: Objectify the Experience, Purusha, the witness. P: Position as the Screen, consciousness, the screen." width="1200" height="900" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;"></figure>
 
   <div style="max-width:820px;margin:0 auto;text-align:left;">
     <div class="mobile-stack-cards" style="display:grid;grid-template-columns:repeat(2,1fr);gap:2px;max-width:820px;margin:0 auto 8px;">
@@ -9168,7 +9174,7 @@ section .sec-sub.sec-sub{
   <span class="label">Where Are You on the Map?</span>
   <h2 class="sec-title">The 5 Pillars of Self-Enquiry</h2>
   <p class="sub sec-sub">Answer honestly.</p>
-  <figure style="max-width:880px;margin:0 auto 32px;"><picture><source media="(max-width:640px)" srcset="./assets/images/five-pillars-self-enquiry-mobile.webp" width="1200" height="900"><img src="./assets/images/five-pillars-self-enquiry.webp" alt="Five gold pillars of rising height on a stepped base. Each is topped by a question and labelled below. Who am I? Gift. Where am I from? Source. Why am I here? Purpose. What can I do? Action. Where am I going? Direction." width="1376" height="768" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></picture></figure>
+  <figure style="max-width:880px;margin:0 auto 32px;"><picture><source media="(max-width:640px)" srcset="./assets/images/five-pillars-self-enquiry-mobile.webp" width="1200" height="900"><img class="reink" src="./assets/images/five-pillars-self-enquiry.webp" alt="Five gold pillars of rising height on a stepped base. Each is topped by a question and labelled below. Who am I? Gift. Where am I from? Source. Why am I here? Purpose. What can I do? Action. Where am I going? Direction." width="1376" height="768" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></picture></figure>
   <div style="text-align:center;margin-bottom:8px;">
     <button class="collapse-toggle-btn" onclick="sectionCollapse('self-enquiry-full-content',this)">Expand &#9660;</button>
     <p class="section-collapse-label" style="margin-top:8px;">Tap to expand — the five pillar questions</p>
@@ -9247,14 +9253,14 @@ section .sec-sub.sec-sub{
       <p style="margin-top:12px;font-size:13.5px;color:var(--dim);line-height:1.8;">A form to worship isn't in tension with a formless goal &mdash; see <a href="#not-this-which-people-worship" style="color:var(--gold);text-decoration:underline;">why, further down</a>.</p>
     </div>
   </div>
-  <figure style="max-width:880px;margin:0 auto 32px;"><img src="./assets/images/two-paths-jnana-bhakti.webp" alt="Two routes rise from the bottom corners toward one glowing point at the centre. The left route is a straight line labelled Jnana, Knowledge. The right route is a winding curve labelled Bhakti, Devotion. Small market stalls, street lamps and walking figures line both routes, so everyday life continues along the way." width="1376" height="620" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></figure>
+  <figure style="max-width:880px;margin:0 auto 32px;"><img class="reink" src="./assets/images/two-paths-jnana-bhakti.webp" alt="Two routes rise from the bottom corners toward one glowing point at the centre. The left route is a straight line labelled Jnana, Knowledge. The right route is a winding curve labelled Bhakti, Devotion. Small market stalls, street lamps and walking figures line both routes, so everyday life continues along the way." width="1376" height="620" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></figure>
   <p class="paths-convergence">Both paths lead to the same *SELF.<br>The question is only which door you are walking through.</p>
 
   <!-- 5 Stages of Surrender -->
   <div class="surrender-section collapsed">
     <h4>The Five Stages of Surrender</h4>
     <p class="surrender-sub" style="max-width:660px;margin-left:auto;margin-right:auto;">In the Sivananda Lahiri, Adi Shankaracharya maps the melting of the individual ego through five vivid metaphors &mdash; from strenuous individual effort to effortless, absolute wholeness.</p>
-    <figure style="max-width:420px;margin:0 auto 28px;"><img src="./assets/images/five-stages-of-surrender.webp" alt="Five gold line icons stacked top to bottom, joined by downward arrows, each with a title and a one-word label. The Seeds of the Ankola Tree, Effort. The Magnet and the Iron, Attraction. The Spouses, Oneness of Purpose. The Creeper and the Tree, Inseparable Dependence. The River and the Ocean, Total Merging." width="768" height="1270" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></figure>
+    <figure style="max-width:420px;margin:0 auto 28px;"><img class="reink" src="./assets/images/five-stages-of-surrender.webp" alt="Five gold line icons stacked top to bottom, joined by downward arrows, each with a title and a one-word label. The Seeds of the Ankola Tree, Effort. The Magnet and the Iron, Attraction. The Spouses, Oneness of Purpose. The Creeper and the Tree, Inseparable Dependence. The River and the Ocean, Total Merging." width="768" height="1270" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></figure>
     <div style="text-align:center;margin-bottom:8px;">
       <button class="collapse-toggle-btn" onclick="surrenderToggle(this)">Expand &#9660;</button>
       <p class="section-collapse-label" style="margin-top:8px;">Tap to expand — the five stages of surrender</p>
@@ -9506,7 +9512,7 @@ section .sec-sub.sec-sub{
     <button class="collapse-toggle-btn" onclick="sectionCollapse('ashtavakra-myth-detail',this)">Expand &#9660;</button>
   </div>
   <div id="ashtavakra-myth-detail" class="section-collapse-wrap collapsed" style="max-width:820px;margin:20px auto 48px;">
-  <figure style="max-width:680px;margin:0 auto 28px;"><img src="./assets/images/ashtavakra-radiance.webp" alt="A faint gold outline of a standing figure, faceless, with a soft golden disc of light glowing behind it. Caption: Even the ugliest form is filled with radiance." width="1376" height="675" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></figure>
+  <figure style="max-width:680px;margin:0 auto 28px;"><img class="reink" src="./assets/images/ashtavakra-radiance.webp" alt="A faint gold outline of a standing figure, faceless, with a soft golden disc of light glowing behind it. Caption: Even the ugliest form is filled with radiance." width="1376" height="675" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></figure>
   <p style="font-family:var(--serif);font-size:clamp(15px,1.9vw,17px);color:var(--mid);line-height:1.9;text-align:left;margin-bottom:16px;">While still in the womb, Ashtavakra corrected his father Kahoda's recitation of the Vedas. Cursed by his insulted father, he was born with deformed limbs &mdash; &ldquo;eight twists.&rdquo; At age twelve, he traveled to King Janaka's court, defeated the scholar Bandin in debate, and proved the absolute oneness of God.</p>
   <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);font-style:italic;color:var(--gold);line-height:1.85;padding:20px 24px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg-lift);text-align:left;margin:0 0 12px;">&ldquo;The body is nothing, the Self is everything. Even the ugliest form is filled with God's radiance.&rdquo;</p>
   <p style="font-family:var(--serif);font-size:14.5px;color:var(--grey);line-height:1.85;text-align:left;">The physical vessel is the illusion the text spends its length dismantling. A visibly broken teacher, delivering a gospel of absolute self-effacement, is the point &mdash; not an irony to explain away.</p>
@@ -9535,7 +9541,7 @@ section .sec-sub.sec-sub{
     <button class="collapse-toggle-btn" onclick="sectionCollapse('dissolution-arc-detail',this)">Expand &#9660;</button>
   </div>
   <div id="dissolution-arc-detail" class="section-collapse-wrap collapsed" style="max-width:820px;margin:20px auto 48px;">
-  <figure style="max-width:640px;margin:0 auto 28px;"><img src="./assets/images/dissolution-arc-rings.webp" alt="Five gold rings around a glowing core. The outer rings are faint, broken and dusty, and each ring is brighter and more solid than the one outside it. Labels from the outermost ring inward: 01 Give Up the Body, 02 Give Up the Senses, 03 Give Up the Mind, 04 Give Up Practice, 05 Give Up Detachment." width="1200" height="900" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></figure>
+  <figure style="max-width:640px;margin:0 auto 28px;"><img class="reink" src="./assets/images/dissolution-arc-rings.webp" alt="Five gold rings around a glowing core. The outer rings are faint, broken and dusty, and each ring is brighter and more solid than the one outside it. Labels from the outermost ring inward: 01 Give Up the Body, 02 Give Up the Senses, 03 Give Up the Mind, 04 Give Up Practice, 05 Give Up Detachment." width="1200" height="900" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></figure>
   <div class="mobile-stack-cards" style="display:grid;grid-template-columns:1fr;gap:2px;text-align:left;">
     <div class="stage-item" style="margin-bottom:0;">
       <div class="stage-num-col"><span class="s-n">01</span></div>
@@ -9606,7 +9612,7 @@ section .sec-sub.sec-sub{
   <!-- STEP 1: THE PROBLEM — Two Hemispheres -->
   <div style="max-width:980px;margin:0 auto 16px;">
     <p style="font-family:var(--sans);font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);opacity:.75;text-align:center;margin-bottom:24px;">Step 1 — The Two Hemispheres</p>
-    <figure style="max-width:880px;margin:0 auto 28px;"><picture><source media="(max-width:640px)" srcset="./assets/images/paradigms-joined-roof-mobile.webp" width="1376" height="735"><img src="./assets/images/paradigms-joined-roof.webp" alt="Two slender gold line pillars stand side by side on black, joined across the top by a single roof. Left pillar: The Western Paradigm, The Head. Strength: Psychology, Clarity. Gap: Ignores the Spirit. Right pillar: The Eastern Paradigm, The Heart. Strength: Spirituality, Spaciousness. Gap: Fails external development. Caption: Joined by a roof that spans the divide." width="1376" height="768" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></picture></figure>
+    <figure style="max-width:880px;margin:0 auto 28px;"><picture><source media="(max-width:640px)" srcset="./assets/images/paradigms-joined-roof-mobile.webp" width="1376" height="735"><img class="reink" src="./assets/images/paradigms-joined-roof.webp" alt="Two slender gold line pillars stand side by side on black, joined across the top by a single roof. Left pillar: The Western Paradigm, The Head. Strength: Psychology, Clarity. Gap: Ignores the Spirit. Right pillar: The Eastern Paradigm, The Heart. Strength: Spirituality, Spaciousness. Gap: Fails external development. Caption: Joined by a roof that spans the divide." width="1376" height="768" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></picture></figure>
     <div class="mobile-stack-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;max-width:800px;margin:0 auto;">
       <div style="padding:36px 32px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg);text-align:left;">
         <div style="font-size:36px;color:var(--gold);margin-bottom:16px;opacity:.5;">①</div>
@@ -9759,7 +9765,7 @@ section .sec-sub.sec-sub{
   <div style="max-width:860px;margin:0 auto;">
     <span class="label" style="margin-bottom:12px;">The Four Theories of Human Existence</span>
     <p style="text-align:center;margin-bottom:20px;"><a class="src-tag src-trad" href="#sources">Traditional Source</a> &mdash; drawn from Sri Aurobindo&rsquo;s <em style="color:var(--dim);">The Life Divine</em>.</p>
-<figure style="max-width:820px;margin:0 auto 28px;"><picture><source media="(max-width:640px)" srcset="./assets/images/aurobindo-four-views-mobile.webp" width="1200" height="858"><img src="./assets/images/aurobindo-four-views.webp" alt="Four tall gold-framed panels side by side on black, joined by one gold bracket along the base. Supracosmic (Ascetic): a globe dissolving upward into fine lines and dots. Cosmic-Terrestrial (Materialist): a solid globe resting on a gold ground with roots, nothing above it. Supraterrestrial (Religious): a cloud and sun high above, with a small, distant landscape below. Integral (Aurobindonian): a bright light pouring down onto a glowing globe. Caption: Drawn from Sri Aurobindo's The Life Divine." width="1376" height="768" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></picture></figure>
+<figure style="max-width:820px;margin:0 auto 28px;"><picture><source media="(max-width:640px)" srcset="./assets/images/aurobindo-four-views-mobile.webp" width="1200" height="858"><img class="reink" src="./assets/images/aurobindo-four-views.webp" alt="Four tall gold-framed panels side by side on black, joined by one gold bracket along the base. Supracosmic (Ascetic): a globe dissolving upward into fine lines and dots. Cosmic-Terrestrial (Materialist): a solid globe resting on a gold ground with roots, nothing above it. Supraterrestrial (Religious): a cloud and sun high above, with a small, distant landscape below. Integral (Aurobindonian): a bright light pouring down onto a glowing globe. Caption: Drawn from Sri Aurobindo's The Life Divine." width="1376" height="768" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></picture></figure>
 <div class="self-table-wrap" style="max-width:820px;margin:0 auto;">
   <table class="self-table" style="min-width:520px;">
     <thead>
@@ -9876,7 +9882,7 @@ section .sec-sub.sec-sub{
   <span class="label">The Theater of the Self</span>
   <p class="phil-line bright sec-title" style="margin-bottom:8px;">Most days, you feel like a small actor on a very large stage.</p>
   <p class="phil-line dim sec-sub" style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;"><em><span class="gloss">Nartaka atma. Rango&rsquo;ntaratma.<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Nartaka atma, Rango'ntaratma">+</span><span class="gloss-pop">A Shiva Sutra: the Self is the dancer, the inner Self is the stage &mdash; reversing the usual sense of scale. The world doesn't contain you; you contain the stage it plays out on.</span></span></em> The Self is the dancer. The inner Self is the stage.</p>
-  <figure style="max-width:880px;margin:0 auto 32px;"><picture><source media="(max-width:640px)" srcset="./assets/images/dancer-stage-reversal-mobile.webp" width="1200" height="872"><img src="./assets/images/dancer-stage-reversal.webp" alt="A split frame on black, divided by a thin vertical line. Left, labelled Most days: a small gold line dancer on a stage framed by an ornate proscenium arch and curtains. Right, labelled The Reversal: the outline of a faceless standing figure with the whole stage, and the dancer on it, drawn inside its torso. Between them: The Self is the dancer. The inner Self is the stage. Caption: The stage is inside the dancer." width="1376" height="735" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></picture></figure>
+  <figure style="max-width:880px;margin:0 auto 32px;"><picture><source media="(max-width:640px)" srcset="./assets/images/dancer-stage-reversal-mobile.webp" width="1200" height="872"><img class="reink" src="./assets/images/dancer-stage-reversal.webp" alt="A split frame on black, divided by a thin vertical line. Left, labelled Most days: a small gold line dancer on a stage framed by an ornate proscenium arch and curtains. Right, labelled The Reversal: the outline of a faceless standing figure with the whole stage, and the dancer on it, drawn inside its torso. Between them: The Self is the dancer. The inner Self is the stage. Caption: The stage is inside the dancer." width="1376" height="735" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></picture></figure>
 
 
   <div style="max-width:820px;margin:0 auto;text-align:left;">
@@ -9900,7 +9906,7 @@ section .sec-sub.sec-sub{
   <section id="four-mechanisms" style="padding:52px 24px;background:var(--bg);overflow-x:hidden;scroll-margin-top:56px;">
   <div style="max-width:960px;margin:0 auto;">
     <span class="label" style="margin-bottom:28px;">Four Mechanisms of Cognition</span>
-    <figure style="max-width:760px;margin:0 auto 28px;"><img src="./assets/images/four-mechanisms-ladder.webp" alt="A dark slide titled Four Mechanisms of Cognition: a four-step ladder, step 1 at the bottom. Each step pairs a gold dot, the knower, with a ring, the object. Step 1, Indirect Contact (Normal Mind), External and Separative: the dot is far from the ring. Step 2, Intimate Contact (Subliminal), Unmediated Inner Knowing: the dot is close to the ring. Step 3, Direct Contact (Subliminal), Touching but Other: the dot touches the ring. Step 4, By Identity (Supermind), Being the Object: dot and ring merge into one." width="1200" height="900" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></figure>
+    <figure style="max-width:760px;margin:0 auto 28px;"><img class="reink" src="./assets/images/four-mechanisms-ladder.webp" alt="A dark slide titled Four Mechanisms of Cognition: a four-step ladder, step 1 at the bottom. Each step pairs a gold dot, the knower, with a ring, the object. Step 1, Indirect Contact (Normal Mind), External and Separative: the dot is far from the ring. Step 2, Intimate Contact (Subliminal), Unmediated Inner Knowing: the dot is close to the ring. Step 3, Direct Contact (Subliminal), Touching but Other: the dot touches the ring. Step 4, By Identity (Supermind), Being the Object: dot and ring merge into one." width="1200" height="900" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></figure>
     <div class="self-table-wrap" style="max-width:960px;margin:28px auto 0;">
   <table class="self-table compact" style="min-width:900px;">
     <thead>
@@ -12298,7 +12304,7 @@ section .sec-sub.sec-sub{
   <p class="phil-line bright sec-title" style="margin-bottom:8px;">You are not the room you're standing in.</p>
   <p class="phil-line dim sec-sub" style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;">Awareness is light. Wherever it lands, that room lights up &mdash; and you live there until you move.</p>
 
-  <figure style="max-width:880px;margin:0 auto 32px;"><picture><source media="(max-width:640px)" srcset="./assets/images/mansion-rooms-awareness-mobile.webp" width="1376" height="768"><img src="./assets/images/mansion-rooms-awareness.webp" alt="A gold line cutaway of a dark, many-roomed mansion on black. One room, labelled anger, is lit gold with a fireplace and chairs. Two others, labelled joy and jealousy, sit dim. A small beam of light is mid-travel between rooms. Caption: You are not the room you’re standing in." width="1376" height="768" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></picture></figure>
+  <figure style="max-width:880px;margin:0 auto 32px;"><picture><source media="(max-width:640px)" srcset="./assets/images/mansion-rooms-awareness-mobile.webp" width="1376" height="768"><img class="reink" src="./assets/images/mansion-rooms-awareness.webp" alt="A gold line cutaway of a dark, many-roomed mansion on black. One room, labelled anger, is lit gold with a fireplace and chairs. Two others, labelled joy and jealousy, sit dim. A small beam of light is mid-travel between rooms. Caption: You are not the room you’re standing in." width="1376" height="768" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></picture></figure>
 
   <div style="max-width:820px;margin:0 auto;text-align:left;">
     <div class="sl-stage" style="border-left:2px solid var(--gold);">
@@ -12327,7 +12333,7 @@ section .sec-sub.sec-sub{
   <p class="phil-line bright sec-title" style="margin-bottom:8px;">Untrained awareness bounds after every pigeon.</p>
   <p class="phil-line dim sec-sub" style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;">The goal was never to suppress the energy. It was to train it to sit until a command is given.</p>
 
-  <figure style="max-width:880px;margin:0 auto 32px;"><picture><source media="(max-width:640px)" srcset="./assets/images/states-of-awareness-dogs-mobile.webp" width="1200" height="900"><img src="./assets/images/states-of-awareness-dogs.webp" alt="A dark slide titled States of Awareness with three stacked panels, each with a gold line dog. Stage 01, Unleashed: a dog leaps after a pigeon. Bounds at every scent, every sound. Total distraction. Stage 02, Leashed: a dog strains at a harness, its leash trailing to an anchor. Some control, mostly reactive. Partial control. Stage 03, Trained: a dog sits still beside its owner’s hand, a food bowl in front of it. Salivates at the bowl — waits anyway. Mastery." width="1600" height="1000" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></picture></figure>
+  <figure style="max-width:880px;margin:0 auto 32px;"><picture><source media="(max-width:640px)" srcset="./assets/images/states-of-awareness-dogs-mobile.webp" width="1200" height="900"><img class="reink" src="./assets/images/states-of-awareness-dogs.webp" alt="A dark slide titled States of Awareness with three stacked panels, each with a gold line dog. Stage 01, Unleashed: a dog leaps after a pigeon. Bounds at every scent, every sound. Total distraction. Stage 02, Leashed: a dog strains at a harness, its leash trailing to an anchor. Some control, mostly reactive. Partial control. Stage 03, Trained: a dog sits still beside its owner’s hand, a food bowl in front of it. Salivates at the bowl — waits anyway. Mastery." width="1600" height="1000" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></picture></figure>
 
   <div style="max-width:820px;margin:0 auto;text-align:left;">
     <div class="self-table-wrap">
@@ -12395,7 +12401,7 @@ section .sec-sub.sec-sub{
 
   <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.95;max-width:900px;margin:0 auto 32px;text-align:left;">Sublimation is about what to do with a lower impulse. This is the problem further up, once practice is working: what is at risk is no longer a craving but an achievement. The Gita&rsquo;s eight-stage descent, mapped in the <a href="#ego" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">Architecture of Suffering</a>, starts from an object of desire. This one starts from a virtue &mdash; and arrives at the same place.</p>
 
-  <figure style="max-width:900px;margin:0 auto 32px;"><picture><source media="(max-width:640px)" srcset="./assets/images/virtue-trap-higher-climb-mobile.webp" width="1200" height="900"><img src="./assets/images/virtue-trap-higher-climb.webp" alt="A dark slide titled The Higher Climb · The Steeper Fall: a thin gold mountain path climbs through two markers to a summit, then drops more steeply through three. 1 · The Virtue, A Real Gain. 2 · The Pivot, This Makes Me Safe. 3 · The Mirror, Self-Adoration. 4 · The Lens, I’m Perfect, They’re Not. 5 · The Fall, Infatuation, Then Forgetting." width="1600" height="900" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></picture></figure>
+  <figure style="max-width:900px;margin:0 auto 32px;"><picture><source media="(max-width:640px)" srcset="./assets/images/virtue-trap-higher-climb-mobile.webp" width="1200" height="900"><img class="reink" src="./assets/images/virtue-trap-higher-climb.webp" alt="A dark slide titled The Higher Climb · The Steeper Fall: a thin gold mountain path climbs through two markers to a summit, then drops more steeply through three. 1 · The Virtue, A Real Gain. 2 · The Pivot, This Makes Me Safe. 3 · The Mirror, Self-Adoration. 4 · The Lens, I’m Perfect, They’re Not. 5 · The Fall, Infatuation, Then Forgetting." width="1600" height="900" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></picture></figure>
 
   <div style="max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2px;text-align:left;">
     <div class="sl-stage"><span class="sl-num">Step 1 &middot; The Virtue</span><div class="sl-name" style="font-size:15px;">A Real Gain</div><p class="sl-desc"><span class="gloss">Santosha<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Santosha">+</span><span class="gloss-pop">Contentment &mdash; one of the Niyamas in Patanjali&rsquo;s eight limbs. Accepting what is, without needing it to be otherwise.</span></span> arrives, or a steady commitment to truth. Nothing wrong yet &mdash; this is what practice is supposed to produce, and it is real.</p></div>
@@ -26684,51 +26690,5 @@ paRenderLastNote();
 </script>
 </div><!-- /#zoomScope -->
 <div id="glossPortal" class="gloss-portal" role="tooltip"></div>
-<script>
-/* Light-theme art classifier. The re-ink filter (see the "re-ink" CSS) suits
-   gold-on-black line art. Images with a coloured background (navy star-field
-   slides) or lots of bright painted detail look wrong inverted, so when an
-   image loads we sample a 64px copy: near-black edges AND a low overall
-   brightness = line art (re-inked); anything else gets "auto-keep-dark" and
-   shows as drawn. Same-origin only; if the canvas is blocked (e.g. opened from
-   file://) it does nothing and every image is re-inked. */
-(function(){
-  var SEL='img[style*="border:1.5px solid rgba(var(--accent-gold-rgb),0.45)"]';
-  var cache={};
-  function classify(img){
-    try{
-      var src=img.currentSrc||img.src;
-      if(!src||!img.naturalWidth) return;
-      var isArt=cache[src];
-      if(isArt===undefined){
-        var w=64,h=Math.max(8,Math.round(64*img.naturalHeight/img.naturalWidth));
-        var c=document.createElement('canvas');c.width=w;c.height=h;
-        var x=c.getContext('2d',{willReadFrequently:true});
-        x.drawImage(img,0,0,w,h);
-        var d=x.getImageData(0,0,w,h).data,n=w*h,sum=0,ring=[];
-        for(var i=0;i<n;i++){
-          var r=d[i*4],g=d[i*4+1],b=d[i*4+2];
-          sum+=0.2126*r+0.7152*g+0.0722*b;
-          var px=i%w,py=(i/w)|0;
-          if(px<4||px>=w-4||py<4||py>=h-4) ring.push(Math.max(r,g,b));
-        }
-        ring.sort(function(a,b){return a-b;});
-        isArt=(sum/n<=30)&&(ring[ring.length>>1]<=18);
-        cache[src]=isArt;
-      }
-      img.classList.toggle('auto-keep-dark',!isArt);
-    }catch(e){}
-  }
-  document.addEventListener('load',function(e){
-    var t=e.target;
-    if(t&&t.tagName==='IMG'&&t.matches&&t.matches(SEL)) classify(t);
-  },true);
-  function sweep(){
-    var l=document.querySelectorAll(SEL);
-    for(var i=0;i<l.length;i++){ if(l[i].complete) classify(l[i]); }
-  }
-  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',sweep); else sweep();
-})();
-</script>
 </body>
 </html>
