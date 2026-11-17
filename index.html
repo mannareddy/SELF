@@ -4236,6 +4236,80 @@ section .sec-sub.sec-sub{
 </style>
 <style id="width-harmony-css">#spectrum .framework-grid{max-width:900px;margin-left:auto;margin-right:auto;}</style>
 <style id="img-map-hit-css">.img-map-hit{cursor:pointer;outline:none;}.img-map-hit:hover .img-map-shape,.img-map-hit:focus .img-map-shape,.img-map-hit:focus-visible .img-map-shape{fill:rgba(var(--accent-gold-rgb),.16);stroke:rgba(var(--accent-gold-rgb),.75);}</style>
+
+<style id="slideZoomCSS">
+/* Slide enlarge viewer: slide images carry their text inside the picture, so they
+   need a way to be seen at full size. Tap/click any slide to open it. */
+figure.sz-fig{position:relative;}
+figure.sz-fig > img{cursor:zoom-in;}
+.sz-btn{position:absolute;right:10px;bottom:10px;z-index:2;display:inline-flex;align-items:center;gap:6px;
+  font:600 11px/1 var(--sans,system-ui,sans-serif);letter-spacing:1px;text-transform:uppercase;
+  color:#e8c76a;background:rgba(10,10,10,.82);border:1px solid rgba(232,199,106,.6);border-radius:999px;
+  padding:8px 12px;cursor:pointer;-webkit-tap-highlight-color:transparent;}
+.sz-btn:hover,.sz-btn:focus-visible{background:#000;border-color:#e8c76a;outline:none;}
+.sz-btn svg{width:13px;height:13px;flex:none;}
+#szOverlay{position:fixed;inset:0;z-index:10000;display:none;background:rgba(0,0,0,.94);
+  flex-direction:column;overscroll-behavior:contain;}
+#szOverlay.sz-open{display:flex;}
+#szBar{flex:none;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:10px 14px;padding-top:max(10px,env(safe-area-inset-top,0px));color:#cfcfcf;
+  font:12px/1.4 var(--sans,system-ui,sans-serif);letter-spacing:.5px;}
+#szBar button{font:600 12px/1 var(--sans,system-ui,sans-serif);letter-spacing:1px;text-transform:uppercase;
+  color:#e8c76a;background:transparent;border:1px solid rgba(232,199,106,.6);border-radius:999px;
+  padding:9px 14px;cursor:pointer;}
+#szBar button:hover,#szBar button:focus-visible{background:rgba(232,199,106,.15);outline:none;}
+#szStage{flex:1;min-height:0;overflow:auto;-webkit-overflow-scrolling:touch;display:flex;
+  padding:0 14px 14px;padding-bottom:max(14px,env(safe-area-inset-bottom,0px));}
+#szImg{margin:auto;display:block;max-width:100%;max-height:100%;width:auto;height:auto;
+  object-fit:contain;cursor:zoom-in;background:#000;filter:none !important;mix-blend-mode:normal !important;}
+#szOverlay.sz-full #szImg{max-width:none;max-height:none;width:var(--sz-w,1376px);cursor:zoom-out;margin:0 auto auto;}
+@media (max-width:900px){
+  /* phones: fit-to-screen is still tiny, so go straight to a scrollable large size */
+  #szOverlay.sz-full #szImg{width:var(--sz-w-m,1100px);}
+}
+html.sz-lock,html.sz-lock body{overflow:hidden !important;}
+</style>
+
+<style id="shSlidesCSS">
+/* Native (live-text) versions of two former slide images in the Shatsampatti card */
+.sh-stair,.sh-quote{margin:0 0 20px;padding:clamp(18px,3.2vw,32px);background:var(--bg-lift);
+  border:1.5px solid rgba(var(--accent-gold-rgb),0.45);color:var(--mid);}
+.sh-fig-title{font-family:var(--serif);font-size:clamp(20px,3vw,28px);line-height:1.25;color:var(--white);margin:0 0 18px;}
+.sh-stair-axis{display:flex;align-items:center;gap:12px;font-family:var(--sans);font-size:11.5px;letter-spacing:1.5px;
+  text-transform:uppercase;color:var(--gold);}
+.sh-stair-axis .sh-rule{flex:1;height:1px;background:rgba(var(--accent-gold-rgb),0.5);}
+.sh-stair-top{margin-bottom:12px;} .sh-stair-bottom{margin-top:12px;}
+.sh-stair-steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0;}
+.sh-step{box-sizing:border-box;width:calc(100% - 66px);padding:14px 18px 16px;border:1px solid rgba(var(--accent-gold-rgb),0.55);
+  margin-top:-1px;background:transparent;}
+.sh-step.s1{margin-left:0;} .sh-step.s2{margin-left:22px;} .sh-step.s3{margin-left:44px;} .sh-step.s4{margin-left:66px;width:calc(100% - 66px);}
+.sh-step.s1{width:calc(100% - 66px);} 
+.sh-step-name{font-family:var(--serif);font-size:clamp(21px,2.6vw,26px);line-height:1.2;color:var(--white);}
+.sh-step-name .dv{font-size:.9em;color:var(--mid);margin-left:6px;}
+.sh-step-kind{font-family:var(--sans);font-size:11.5px;letter-spacing:1.4px;text-transform:uppercase;color:var(--gold);margin:6px 0 6px;}
+.sh-step p{margin:0 !important;max-width:none !important;font-family:var(--serif);font-size:clamp(16px,1.9vw,18px);line-height:1.6;color:var(--mid);}
+.sh-step.s4{background:var(--gold);border-color:var(--gold);}
+.sh-step.s4 .sh-step-name,.sh-step.s4 .sh-step-name .dv,.sh-step.s4 p{color:var(--bg-page,#0a0a0a);}
+.sh-step.s4 .sh-step-kind{color:var(--bg-page,#0a0a0a);opacity:.8;}
+@media(min-width:760px){
+  .sh-step{width:calc(100% - 150px);} .sh-step.s2{margin-left:50px;} .sh-step.s3{margin-left:100px;} .sh-step.s4{margin-left:150px;width:calc(100% - 150px);}
+  .sh-step.s1{width:calc(100% - 150px);}
+}
+.sh-quote-grid{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:clamp(20px,3vw,36px);align-items:center;}
+.sh-quote-text{margin:0;padding:0;border:0;}
+.sh-quote-text p{margin:0 0 20px !important;max-width:none !important;font-family:var(--serif);font-size:clamp(22px,3vw,32px);
+  line-height:1.4;color:var(--white);}
+.sh-quote-text footer{display:flex;flex-direction:column;gap:3px;font-family:var(--serif);}
+.sh-quote-text cite{font-style:normal;font-size:clamp(16px,2vw,19px);color:var(--gold);}
+.sh-quote-text footer span{font-family:var(--sans);font-size:13.5px;color:var(--mid);}
+.sh-quote-side{border-left:1px solid rgba(var(--accent-gold-rgb),0.55);padding-left:clamp(16px,2.4vw,26px);}
+.sh-quote-side-h{font-family:var(--sans);font-size:15px;font-weight:600;color:var(--white);margin-bottom:10px;line-height:1.35;}
+.sh-quote-side p{margin:0 !important;max-width:none !important;font-family:var(--sans);font-size:15px;line-height:1.65;color:var(--mid);}
+@media(max-width:700px){
+  .sh-quote-grid{grid-template-columns:1fr;}
+  .sh-quote-side{border-left:0;padding-left:0;border-top:1px solid rgba(var(--accent-gold-rgb),0.55);padding-top:16px;}
+}
+</style>
 </head>
 <body>
 <svg id="lightArtDefs" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><filter id="lightArtDeepen" color-interpolation-filters="sRGB"><feComponentTransfer><feFuncR type="gamma" amplitude="1" exponent="1.7" offset="0"/><feFuncG type="gamma" amplitude="1" exponent="1.7" offset="0"/><feFuncB type="gamma" amplitude="1" exponent="1.7" offset="0"/></feComponentTransfer></filter></svg>
@@ -6122,10 +6196,31 @@ section .sec-sub.sec-sub{
         <p style="font-family:var(--sans);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:.8;margin:0 0 12px;">Where Shama Comes From</p>
         <p style="font-family:var(--sans);font-size:10.5px;letter-spacing:1px;color:var(--dim);line-height:1.7;margin:0 0 14px;">Sanskrit word family &middot; Brihadaranyaka Upanishad 4.4.23</p>
         <p style="font-family:var(--serif);font-size:16px;color:var(--mid);line-height:1.9;margin:0 0 16px;">Shama is one of four words grown from a single root, <span class="gloss">&#347;am<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define &#347;am">+</span><span class="gloss-pop">Sanskrit root meaning to grow quiet, to be calmed or pacified. Shama, shanta and shanti are all built from it.</span></span>, &ldquo;to grow quiet.&rdquo; The root is the act of settling a disturbance. <span class="gloss">Shama<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Shama">+</span><span class="gloss-pop">Mastery of the mind &mdash; the ability to keep it from chasing every stray thought or craving.</span></span> is that act as a discipline, the one listed above. <span class="gloss">Shanta<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Shanta">+</span><span class="gloss-pop">Past participle of &#347;am: calmed, one who has become quiet. Also the name of the ninth rasa, tranquillity.</span></span> is the person it has made. <span class="gloss">Shanti<span class="gloss-btn" onclick="toggleGloss(this)" onkeydown="glossKeydown(event,this)" role="button" tabindex="0" aria-label="Define Shanti">+</span><span class="gloss-pop">Feminine noun from the same root: peace, stillness itself. The word repeated at the close of the Upanishadic peace invocations.</span></span> is the quiet itself, what is left when the disturbance has stopped.</p>
-        <figure style="margin:0 0 16px;"><img src="./assets/images/sh-staircase.webp" alt="A dark slide titled The Progression Staircase: From Action to Reality. Four steps descend from Active Discipline at the top to the Primordial Condition at the bottom. Sam, the verbal root, means to pacify, quiet or extinguish. Shama, the masculine noun, is inner quietude, the active discipline of removing mental distortion. Shanta, the past participle, is one who is pacified, the embodied state where agitation has ceased. Shanti, the feminine noun, is cosmic stillness, the primordial undisturbed condition of existence itself, drawn as the final gold step." width="1376" height="728" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></figure>
+        <figure class="sh-stair" role="group" aria-label="The Progression Staircase: From Action to Reality. Four steps descend from Active Discipline to the Primordial Condition.">
+  <div class="sh-fig-title">The Progression Staircase: From Action to Reality</div>
+  <div class="sh-stair-axis sh-stair-top"><span>Active discipline</span><span class="sh-rule"></span><span>Progression &rarr;</span></div>
+  <ol class="sh-stair-steps">
+    <li class="sh-step s1"><div class="sh-step-name">&#346;am <span class="dv" lang="sa">&#2358;&#2350;&#2381;</span></div><div class="sh-step-kind">Verbal root</div><p>To pacify, quiet or extinguish. The foundational movement of settling disturbance.</p></li>
+    <li class="sh-step s2"><div class="sh-step-name">Shama <span class="dv" lang="sa">&#2358;&#2350;</span></div><div class="sh-step-kind">Masculine noun</div><p>Inner quietude. The active discipline of removing mental distortion.</p></li>
+    <li class="sh-step s3"><div class="sh-step-name">Shanta <span class="dv" lang="sa">&#2358;&#2366;&#2344;&#2381;&#2340;</span></div><div class="sh-step-kind">Past participle</div><p>One who is pacified. The embodied state of being where agitation has ceased.</p></li>
+    <li class="sh-step s4"><div class="sh-step-name">Shanti <span class="dv" lang="sa">&#2358;&#2366;&#2344;&#2381;&#2340;&#2367;</span></div><div class="sh-step-kind">Feminine noun</div><p>Cosmic stillness. The primordial, undisturbed condition of existence itself.</p></li>
+  </ol>
+  <div class="sh-stair-axis sh-stair-bottom"><span>Primordial condition</span><span class="sh-rule"></span><span>Depth &darr;</span></div>
+</figure>
         <p style="font-family:var(--serif);font-size:14.5px;color:var(--dim);line-height:1.9;margin:0 0 16px;">Read down the steps and the grammar changes with the depth: a verb, a noun for the practice, a participle for the person, a noun for the condition. Effort sits at the top. By the bottom there is nothing left to do.</p>
         <p style="font-family:var(--serif);font-size:16px;color:var(--mid);line-height:1.9;margin:0 0 14px;"><a class="src-tag src-trad" href="#sources">Traditional Source</a> Brihadaranyaka 4.4.23 puts the list to work. Whoever knows this, having become calm, self-controlled, withdrawn, enduring and collected, sees the Self in the self and sees everything as the Self. Five of the six treasures turn up there as adjectives, in the order of the grid above. The usual lists add Shraddha as the sixth. The line makes quiet the condition for the seeing, not the seeing itself.</p>
-<figure style="margin:0 0 16px;"><img src="./assets/images/sh-bu-4423-quote.webp" alt="A dark slide quoting Brihadaranyaka Upanishad 4.4.23, Sage Yajnavalkya instructing Emperor Janaka: Therefore, he who knows it as such, having become calm (shanta), self-controlled, withdrawn into himself, enduring, and concentrated, sees the Self in his own self; he sees all as the Self. A side panel titled Adi Shankaracharya&rsquo;s Insight says that when mental waves settle through shama, the calm sage perceives reality without distortion." width="1376" height="745" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></figure>
+<figure class="sh-quote" role="group" aria-label="Brihadaranyaka Upanishad 4.4.23, with Adi Shankaracharya's insight">
+  <div class="sh-quote-grid">
+    <blockquote class="sh-quote-text">
+      <p>&ldquo;Therefore, he who knows it as such, having become calm (&#347;&#257;nta), self-controlled, withdrawn into himself, enduring, and concentrated, sees the Self in his own self; he sees all as the Self.&rdquo;</p>
+      <footer><cite>B&#7771;had&#257;ra&#7751;yaka Upani&#7779;ad (4.4.23)</cite><span>Sage Y&#257;j&#241;avalkya instructing Emperor Janaka</span></footer>
+    </blockquote>
+    <aside class="sh-quote-side">
+      <div class="sh-quote-side-h">Adi Shankaracharya&rsquo;s Insight</div>
+      <p>When mental waves settle through shama, the &#347;&#257;nta sage perceives reality without distortion. The ultimate realization is that individual awareness and universal existence are completely identical.</p>
+    </aside>
+  </div>
+</figure>
 <p style="font-family:var(--sans);font-size:10.5px;letter-spacing:1px;color:var(--dim);line-height:1.7;margin:0 0 14px;">The side panel is the slide&rsquo;s reading in the Advaita voice. The verse itself says only that the calm, collected one sees the Self in the self and sees all as the Self.</p>
         <p style="font-family:var(--sans);font-size:10.5px;letter-spacing:1px;color:var(--dim);line-height:1.7;margin:0 0 14px;">Honest limit: the staircase is a family of words from one root, not a ladder the texts tell you to climb. Reading shanti as the original condition of existence is this site&rsquo;s own interpretation; in the texts it mostly means peace.</p>
         <p style="font-family:var(--sans);font-size:10.5px;letter-spacing:1px;color:var(--dim);line-height:1.7;margin:0 0 14px;;margin:0;padding-top:14px;border-top:1px solid rgba(var(--accent-gold-rgb),0.28);">Source: Brihadaranyaka Upanishad 4.4.23.</p>
@@ -26901,5 +26996,82 @@ paRenderLastNote();
 </script>
 </div><!-- /#zoomScope -->
 <div id="glossPortal" class="gloss-portal" role="tooltip"></div>
+
+<div id="szOverlay" role="dialog" aria-modal="true" aria-label="Enlarged slide" aria-hidden="true">
+  <div id="szBar"><span id="szHint">Click the slide to zoom to full size</span>
+    <button type="button" id="szClose" aria-label="Close enlarged slide">Close &#10005;</button></div>
+  <div id="szStage"><img id="szImg" alt="" decoding="async"></div>
+</div>
+<script id="slideZoomJS">
+(function(){
+  var ov=document.getElementById('szOverlay'), img=document.getElementById('szImg'),
+      stage=document.getElementById('szStage'), hint=document.getElementById('szHint'),
+      closeBtn=document.getElementById('szClose'), lastFocus=null;
+  var ICON='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2h4v4M6 14H2v-4M14 2l-5 5M2 14l5-5"/></svg>';
+  var touch = window.matchMedia && window.matchMedia('(pointer:coarse)').matches;
+
+  function isSlide(el){
+    if(!el || el.tagName!=='IMG' || el.id==='szImg') return false;
+    var f=el.parentNode; if(!f || f.tagName!=='FIGURE') return false;
+    return (parseInt(el.getAttribute('width'),10)||0) >= 900;   // full-size slides only
+  }
+  function open(el){
+    lastFocus=document.activeElement;
+    img.src=el.currentSrc||el.src;
+    img.alt=el.alt||'';
+    var nat=el.naturalWidth||parseInt(el.getAttribute('width'),10)||1376;
+    ov.style.setProperty('--sz-w', Math.max(nat,1376)+'px');
+    ov.style.setProperty('--sz-w-m', Math.round(Math.max(window.innerWidth*2.4,1000))+'px');
+    ov.classList.remove('sz-full');
+    stage.scrollTop=0; stage.scrollLeft=0;
+    hint.textContent = touch ? 'Tap the slide to enlarge, drag to pan' : 'Click the slide to zoom to full size';
+    ov.classList.add('sz-open'); ov.setAttribute('aria-hidden','false');
+    document.documentElement.classList.add('sz-lock');
+    closeBtn.focus();
+  }
+  function close(){
+    ov.classList.remove('sz-open','sz-full'); ov.setAttribute('aria-hidden','true');
+    document.documentElement.classList.remove('sz-lock');
+    img.removeAttribute('src');
+    if(lastFocus && lastFocus.focus) try{lastFocus.focus({preventScroll:true});}catch(e){}
+  }
+  function toggleFull(){
+    var full=ov.classList.toggle('sz-full');
+    if(full){
+      // centre the view on the middle of the enlarged slide
+      requestAnimationFrame(function(){
+        stage.scrollLeft=(stage.scrollWidth-stage.clientWidth)/2; stage.scrollTop=0;
+      });
+    }
+    hint.textContent = full ? (touch?'Drag to pan, tap to fit screen':'Scroll to pan, click to fit screen')
+                            : (touch?'Tap the slide to enlarge, drag to pan':'Click the slide to zoom to full size');
+  }
+
+  // decorate every slide figure with an "Enlarge" button
+  var imgs=document.querySelectorAll('figure > img');
+  for(var i=0;i<imgs.length;i++){
+    if(!isSlide(imgs[i])) continue;
+    var fig=imgs[i].parentNode; fig.classList.add('sz-fig');
+    var b=document.createElement('button');
+    b.type='button'; b.className='sz-btn'; b.setAttribute('aria-label','Enlarge slide: '+(imgs[i].alt||'image').slice(0,80));
+    b.innerHTML=ICON+'<span>Enlarge</span>';
+    fig.appendChild(b);
+  }
+  document.addEventListener('click',function(e){
+    var t=e.target;
+    if(t.closest && t.closest('.sz-btn')){ var im=t.closest('figure').querySelector('img'); if(im) open(im); return; }
+    if(isSlide(t)){ open(t); return; }
+    if(t===img){ toggleFull(); return; }
+    if(t===ov||t===stage){ close(); }
+  });
+  closeBtn.addEventListener('click',close);
+  document.addEventListener('keydown',function(e){
+    if(!ov.classList.contains('sz-open')) return;
+    if(e.key==='Escape'){ e.preventDefault(); close(); }
+    else if(e.key==='Tab'){ e.preventDefault(); closeBtn.focus(); }   // keep focus on Close while open
+    else if(e.key==='+'||e.key==='='||e.key==='-'){ e.preventDefault(); toggleFull(); }
+  });
+})();
+</script>
 </body>
 </html>
