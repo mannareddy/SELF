@@ -2561,9 +2561,9 @@ section{scroll-margin-top:56px;}
 /* ── "BEFORE THE INQUIRY CAN BEGIN" (SADHANA CHATUSHTAYA) GRID: match the
    body text / pull-quote width, and pack the 4 cards 2-per-row on desktop
    instead of the framework-grid default (which fits 3 across at 900px). ── */
-@media(min-width:641px){
-  #qualified-seeker .framework-grid{max-width:900px;grid-template-columns:repeat(2,1fr) !important;}
-}
+/* One card per row at every width: an expanded card (e.g. Shatsampatti, with its
+   diagrams and tables) needs the full column, and two-up left it cramped. */
+#qualified-seeker .framework-grid{max-width:900px;grid-template-columns:minmax(0,1fr) !important;gap:10px;}
 
 /* ── NETI NETI KOSHA CARDS: each card holds a wide (680-viewBox) diagram
    SVG. A single full-width column made cards oversized on desktop, so
