@@ -4240,14 +4240,16 @@ section .sec-sub.sec-sub{
 <style id="slideZoomCSS">
 /* Slide enlarge viewer: slide images carry their text inside the picture, so they
    need a way to be seen at full size. Tap/click any slide to open it. */
-figure.sz-fig{position:relative;}
-figure.sz-fig > img{cursor:zoom-in;}
-.sz-btn{position:absolute;right:10px;bottom:10px;z-index:2;display:inline-flex;align-items:center;gap:6px;
-  font:600 11px/1 var(--sans,system-ui,sans-serif);letter-spacing:1px;text-transform:uppercase;
-  color:#e8c76a;background:rgba(10,10,10,.82);border:1px solid rgba(232,199,106,.6);border-radius:999px;
-  padding:8px 12px;cursor:pointer;-webkit-tap-highlight-color:transparent;}
-.sz-btn:hover,.sz-btn:focus-visible{background:#000;border-color:#e8c76a;outline:none;}
-.sz-btn svg{width:13px;height:13px;flex:none;}
+figure.sz-fig,.sz-wrap{position:relative;}
+.sz-wrap{display:block;}
+img.sz-img{cursor:zoom-in;}
+.sz-btn{position:absolute;right:8px;bottom:8px;z-index:2;display:inline-flex;align-items:center;justify-content:center;
+  width:30px;height:30px;padding:0;margin:0;line-height:0;
+  color:#e8c76a;background:rgba(10,10,10,.6);border:1px solid rgba(232,199,106,.5);border-radius:50%;
+  opacity:.8;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:opacity .15s,background .15s;}
+.sz-btn:hover,.sz-btn:focus-visible{opacity:1;background:#000;border-color:#e8c76a;outline:none;}
+.sz-btn svg{width:14px;height:14px;flex:none;}
+@media (pointer:coarse){.sz-btn{width:36px;height:36px;}.sz-btn svg{width:16px;height:16px;}}
 #szOverlay{position:fixed;inset:0;z-index:10000;display:none;background:rgba(0,0,0,.94);
   flex-direction:column;overscroll-behavior:contain;}
 #szOverlay.sz-open{display:flex;}
@@ -26961,10 +26963,17 @@ paRenderLastNote();
   var ICON='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2h4v4M6 14H2v-4M14 2l-5 5M2 14l5-5"/></svg>';
   var touch = window.matchMedia && window.matchMedia('(pointer:coarse)').matches;
 
+  function inMap(el){
+    // tap-to-jump maps keep their own click behaviour
+    var p=el.parentNode; return !!(p && p.querySelector && p.querySelector('.img-map-hit, svg.img-map, .img-map-shape'));
+  }
   function isSlide(el){
     if(!el || el.tagName!=='IMG' || el.id==='szImg') return false;
-    var f=el.parentNode; if(!f || f.tagName!=='FIGURE') return false;
-    return (parseInt(el.getAttribute('width'),10)||0) >= 900;   // full-size slides only
+    var src=el.getAttribute('src')||''; if(src.indexOf('assets/images/')<0) return false;
+    if(/SELF_|Banner\.|OG-/.test(src)) return false;
+    if(el.closest && el.closest('nav,header,footer,.hero,.banner-section,#szOverlay')) return false;
+    if((parseInt(el.getAttribute('width'),10)||0) < 300) return false;
+    return !inMap(el);
   }
   function open(el){
     lastFocus=document.activeElement;
@@ -26998,23 +27007,36 @@ paRenderLastNote();
                             : (touch?'Tap the slide to enlarge, drag to pan':'Click the slide to zoom to full size');
   }
 
-  // decorate every slide figure with an "Enlarge" button
-  var imgs=document.querySelectorAll('figure > img');
+  // decorate every content image with an icon-only enlarge button
+  var imgs=document.querySelectorAll('img');
   for(var i=0;i<imgs.length;i++){
-    if(!isSlide(imgs[i])) continue;
-    var fig=imgs[i].parentNode; fig.classList.add('sz-fig');
+    var im=imgs[i];
+    if(!isSlide(im)) continue;
+    var host=im.closest('figure');
+    if(host){ host.classList.add('sz-fig'); }
+    else{
+      host=document.createElement('span'); host.className='sz-wrap';
+      im.parentNode.insertBefore(host,im); host.appendChild(im);
+    }
+    im.classList.add('sz-img');
     var b=document.createElement('button');
-    b.type='button'; b.className='sz-btn'; b.setAttribute('aria-label','Enlarge slide: '+(imgs[i].alt||'image').slice(0,80));
-    b.innerHTML=ICON+'<span>Enlarge</span>';
-    fig.appendChild(b);
+    b.type='button'; b.className='sz-btn'; b.setAttribute('aria-label','Enlarge image: '+(im.alt||'image').slice(0,80));
+    b.innerHTML=ICON;
+    host.appendChild(b);
   }
+  // capture phase: works even where a wrapper stops click propagation (e.g. collapsible cards)
   document.addEventListener('click',function(e){
-    var t=e.target;
-    if(t.closest && t.closest('.sz-btn')){ var im=t.closest('figure').querySelector('img'); if(im) open(im); return; }
-    if(isSlide(t)){ open(t); return; }
+    var t=e.target; if(!t || !t.closest) return;
+    var btn=t.closest('.sz-btn');
+    if(btn){
+      var host=btn.parentNode, im=host.querySelector('img.sz-img');
+      if(im){ e.preventDefault(); e.stopPropagation(); open(im); }
+      return;
+    }
+    if(t.tagName==='IMG' && t.classList.contains('sz-img')){ e.preventDefault(); e.stopPropagation(); open(t); return; }
     if(t===img){ toggleFull(); return; }
     if(t===ov||t===stage){ close(); }
-  });
+  },true);
   closeBtn.addEventListener('click',close);
   document.addEventListener('keydown',function(e){
     if(!ov.classList.contains('sz-open')) return;
