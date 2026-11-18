@@ -786,55 +786,18 @@ body{
 }
 [data-theme="light"] body{background:var(--bg-page) !important;color:var(--text-body) !important;font-weight:400;}
 [data-theme="light"]{color-scheme:light;}
-/* Light theme: the 15 illustration sets made for the image series (see the list
-   in the notes below) are gold-on-black art, which reads as a heavy black slab
-   on the cream page. Images marked class="reink" are re-inked in light mode:
-   invert(1) turns black to white and light text to dark; hue-rotate(180deg)
-   puts the gold hues back after the invert; #lightArtDeepen (SVG, defined at
-   the top of <body>) applies a gamma curve that darkens the mid-tones so thin
-   gold lines and grey sub-labels stay readable; multiply then dissolves the
-   white into the cream page. Every other image on the page is untouched, and
-   so is dark theme. To include another image, add class="reink" to its <img>.
-   To remove the effect entirely, delete this block and the
-   <svg id="lightArtDefs"> after <body>.
-   Series: start-here-three-doors, control-circles, awakening-strip/-m1/-m2/-m3,
-   mirror-three-lamps, stop-sequence-bars, five-pillars-self-enquiry,
-   two-paths-jnana-bhakti, five-stages-of-surrender, ashtavakra-radiance,
-   dissolution-arc-rings, paradigms-joined-roof, aurobindo-four-views,
-   dancer-stage-reversal, four-mechanisms-ladder, mansion-rooms-awareness,
-   states-of-awareness-dogs, virtue-trap-higher-climb, subtilization-seven-rungs,
-   same-energy-two-directions, ashvamedha-cosmic-horse,
-   four-stages-one-substance, three-concentric-rings-atman,
-   objective-vs-objectless-love (and their -mobile files). */
+/* Light theme: illustrations keep their original dark artwork. Every image in
+   the page body (the whole illustration series, the parables, all slide-style
+   figures) is shown exactly as built, on its own dark background, in both
+   themes. No invert, hue-rotate or blend mode is applied to them. The class
+   "reink" that older markup still carries is now inert. The nav logo has its
+   own light-theme treatment further below and is not part of this rule. */
+[data-theme="light"] figure img,
+[data-theme="light"] figure picture img,
 [data-theme="light"] img.reink{
-  filter:invert(1) hue-rotate(180deg) url(#lightArtDeepen);
-  mix-blend-mode:multiply;
+  filter:none !important;
+  mix-blend-mode:normal !important;
 }
-/* Samsung Internet paints mix-blend-mode on images wrongly (see the nav-logo
-   notes below); there the art keeps the invert but sits as a near-white panel. */
-html.is-samsung[data-theme="light"] img.reink{mix-blend-mode:normal;}
-/* The filter also recolours an image's own 1.5px border. So in light theme the
-   border moves off the filtered <img> onto the <figure> as an overlay drawn
-   after the filter, in the gold tint the page already uses. The img keeps a
-   transparent border of the same width so nothing shifts. Needs :has(). */
-@supports selector(:has(a)){
-  [data-theme="light"] figure > img.reink[style*="border:1.5px solid rgba(var(--accent-gold-rgb),0.45)"],
-  [data-theme="light"] figure > picture > img.reink[style*="border:1.5px solid rgba(var(--accent-gold-rgb),0.45)"]{
-    border-color:transparent !important;
-  }
-  [data-theme="light"] figure:has(> img.reink[style*="border:1.5px solid rgba(var(--accent-gold-rgb),0.45)"]),
-  [data-theme="light"] figure:has(> picture > img.reink[style*="border:1.5px solid rgba(var(--accent-gold-rgb),0.45)"]){
-    position:relative;
-  }
-  [data-theme="light"] figure:has(> img.reink[style*="border:1.5px solid rgba(var(--accent-gold-rgb),0.45)"])::after,
-  [data-theme="light"] figure:has(> picture > img.reink[style*="border:1.5px solid rgba(var(--accent-gold-rgb),0.45)"])::after{
-    content:"";position:absolute;inset:0;pointer-events:none;
-    border:1.5px solid rgba(var(--accent-gold-rgb),0.45);
-  }
-}
-/* Samsung Internet paints mix-blend-mode on images wrongly (see the nav-logo
-   notes below); there the art keeps the invert but sits as a near-white panel. */
-html.is-samsung[data-theme="light"] img[style*="border:1.5px solid rgba(var(--accent-gold-rgb),0.45)"]{mix-blend-mode:normal;}
 
 /* Light: boost body text weight/brightness across all text elements */
 [data-theme="light"] p,[data-theme="light"] li,[data-theme="light"] span:not(.label):not(.ec-type):not(.p-num):not(.num):not(.layer-tag):not(.s-sub):not(.ds-subtitle):not(.rasa-cell):not(.tradition-cell):not(.col-title):not(.gloss-btn){color:var(--text-body) !important;font-weight:400 !important;}
@@ -4274,7 +4237,6 @@ html.sz-lock,html.sz-lock body{overflow:hidden !important;}
 
 </head>
 <body>
-<svg id="lightArtDefs" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><filter id="lightArtDeepen" color-interpolation-filters="sRGB"><feComponentTransfer><feFuncR type="gamma" amplitude="1" exponent="1.7" offset="0"/><feFuncG type="gamma" amplitude="1" exponent="1.7" offset="0"/><feFuncB type="gamma" amplitude="1" exponent="1.7" offset="0"/></feComponentTransfer></filter></svg>
 
 <!-- STICKY NAV — logo centered, items split left/right -->
 <nav class="site-nav" id="siteNav" aria-label="Site navigation">
