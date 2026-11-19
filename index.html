@@ -4202,6 +4202,22 @@ section .sec-sub.sec-sub{
   #neti-neti-grid .framework-card.framework-card::after{top:38px !important;transform:none !important;}
 }
 </style>
+<style id="desktop-image-fit-css">
+/* Desktop: every content image fits within one screen (no scrolling to see a whole picture).
+   Height is capped to the viewport minus the fixed nav and room for the caption/margins;
+   width shrinks proportionally (aspect ratio kept), image is centred. Tap-to-enlarge still shows full size. */
+@media (min-width:901px){
+  :root{--img-fit-h:max(320px, calc(100vh - var(--nav-h, 44px) - 96px));}
+  figure.sz-fig, figure.art-dark, figure.art-light{width:fit-content !important;max-width:min(100%,720px);margin-left:auto !important;margin-right:auto !important;}
+  figure img, .sz-wrap img, img.sz-img{
+    width:auto !important;height:auto !important;
+    max-width:100% !important;max-height:var(--img-fit-h) !important;
+    object-fit:contain;margin-left:auto !important;margin-right:auto !important;
+  }
+  .sz-wrap{width:fit-content;max-width:100%;margin-left:auto;margin-right:auto;}
+  .banner-image{width:100%;height:auto;aspect-ratio:auto;max-height:calc(100vh - var(--nav-h, 44px));object-fit:contain;}
+}
+</style>
 <style id="width-harmony-css">#spectrum .framework-grid{max-width:900px;margin-left:auto;margin-right:auto;}</style>
 <style id="img-map-hit-css">.img-map-hit{cursor:pointer;outline:none;}.img-map-hit:hover .img-map-shape,.img-map-hit:focus .img-map-shape,.img-map-hit:focus-visible .img-map-shape{fill:rgba(var(--accent-gold-rgb),.16);stroke:rgba(var(--accent-gold-rgb),.75);}</style>
 
