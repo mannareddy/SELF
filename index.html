@@ -4233,16 +4233,16 @@ section .sec-sub.sec-sub{
 }
 </style>
 <style id="destiny-image-width-css">
-/* Fatalist's Objection section: images span the full text column instead of shrinking to fit one screen height */
+/* Desktop only (901px+): content images span the full width of their text column
+   instead of shrinking to fit one screen height. Phones and tablets are unchanged. */
 @media (min-width:901px){
-  #destiny-and-free-will figure.sz-fig,
-  #destiny-and-free-will figure.art-dark,
-  #destiny-and-free-will figure.art-light,
-  #destiny-and-free-will figure:not(.love-split-fig){width:100% !important;max-width:100% !important;margin-left:0 !important;margin-right:0 !important;}
-  #destiny-and-free-will figure:not(.love-split-fig) img,
-  #destiny-and-free-will figure:not(.love-split-fig) img.sz-img{width:100% !important;max-width:100% !important;max-height:none !important;height:auto !important;margin-left:0 !important;margin-right:0 !important;}
-  #destiny-and-free-will .sz-wrap{width:100%;max-width:100%;margin-left:0;margin-right:0;}
-  #destiny-and-free-will .sz-wrap img{width:100% !important;max-height:none !important;}
+  figure.sz-fig:not(.love-split-fig),
+  figure.art-dark:not(.love-split-fig),
+  figure.art-light:not(.love-split-fig){width:100% !important;max-width:100% !important;margin-left:0 !important;margin-right:0 !important;}
+  figure:not(.love-split-fig) img,
+  figure:not(.love-split-fig) img.sz-img{width:100% !important;max-width:100% !important;max-height:none !important;height:auto !important;margin-left:0 !important;margin-right:0 !important;}
+  .sz-wrap{width:100%;max-width:100%;margin-left:0;margin-right:0;}
+  .sz-wrap img,img.sz-img{width:100% !important;max-height:none !important;}
 }
 </style>
 <style id="width-harmony-css">#spectrum .framework-grid{max-width:900px;margin-left:auto;margin-right:auto;}</style>
