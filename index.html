@@ -4312,6 +4312,10 @@ img.sz-img{cursor:zoom-in;}
   /* phones: fit-to-screen is still tiny, so go straight to a scrollable large size */
   #szOverlay.sz-full #szImg{width:var(--sz-w-m,1100px);}
 }
+@media (min-width:901px){
+  /* desktop: the enlarged image fills the screen (scaled to the free space, up or down); a click zooms further */
+  #szOverlay:not(.sz-full) #szImg{max-width:none;max-height:none;width:var(--sz-fit-w,auto);height:auto;}
+}
 html.sz-lock,html.sz-lock body{overflow:hidden !important;}
 </style>
 
@@ -27310,18 +27314,30 @@ paRenderLastNote();
     if((parseInt(el.getAttribute('width'),10)||0) < 300) return false;
     return !inMap(el);
   }
+  var curNW=1376, curNH=768;
+  function fitSize(){
+    // scale the picture to the free stage space (desktop CSS uses --sz-fit-w); full-size view becomes 1.75x that
+    var aw=stage.clientWidth-30, ah=stage.clientHeight-16;
+    if(aw<=0||ah<=0) return;
+    var sc=Math.min(aw/curNW, ah/curNH, 2.5), fw=Math.round(curNW*sc);
+    ov.style.setProperty('--sz-fit-w', fw+'px');
+    ov.style.setProperty('--sz-w', Math.round(Math.max(curNW,1376,fw*1.75))+'px');
+  }
+  window.addEventListener('resize',function(){ if(ov.classList.contains('sz-open')) fitSize(); });
   function open(el){
     lastFocus=document.activeElement;
     img.src=el.currentSrc||el.src;
     img.alt=el.alt||'';
     var nat=el.naturalWidth||parseInt(el.getAttribute('width'),10)||1376;
+    curNW=nat; curNH=el.naturalHeight||parseInt(el.getAttribute('height'),10)||Math.round(nat*0.55);
     ov.style.setProperty('--sz-w', Math.max(nat,1376)+'px');
     ov.style.setProperty('--sz-w-m', Math.round(Math.max(window.innerWidth*2.4,1000))+'px');
     ov.classList.remove('sz-full');
     stage.scrollTop=0; stage.scrollLeft=0;
-    hint.textContent = touch ? 'Tap the slide to enlarge, drag to pan' : 'Click the slide to zoom to full size';
+    hint.textContent = touch ? 'Tap the slide to enlarge, drag to pan' : 'Click the slide to zoom in further';
     ov.classList.add('sz-open'); ov.setAttribute('aria-hidden','false');
     document.documentElement.classList.add('sz-lock');
+    fitSize();
     closeBtn.focus();
   }
   function close(){
@@ -27339,7 +27355,7 @@ paRenderLastNote();
       });
     }
     hint.textContent = full ? (touch?'Drag to pan, tap to fit screen':'Scroll to pan, click to fit screen')
-                            : (touch?'Tap the slide to enlarge, drag to pan':'Click the slide to zoom to full size');
+                            : (touch?'Tap the slide to enlarge, drag to pan':'Click the slide to zoom in further');
   }
 
   // decorate every content image with an icon-only enlarge button
