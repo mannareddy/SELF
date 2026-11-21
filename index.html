@@ -4233,11 +4233,11 @@ section .sec-sub.sec-sub{
 }
 </style>
 <style id="pullquote-width-css">
-/* Desktop only (901px+): pull-quote boxes span the full width of their text column,
-   so they line up with the content above and below. Phones and tablets are unchanged. */
+/* Desktop only (901px+): pull-quote boxes span the full width of their text column (capped at 900px,
+   the standard text column), so they line up with the content above and below. Phones and tablets are unchanged. */
 @media (min-width:901px){
   .cosmo-quote,
-  .pull-quote:not(.pq-standalone){width:100% !important;max-width:none !important;margin-left:0 !important;margin-right:0 !important;box-sizing:border-box;}
+  .pull-quote:not(.pq-standalone){width:100% !important;max-width:900px !important;margin-left:auto !important;margin-right:auto !important;box-sizing:border-box;}
   /* a quote that sits alone in its own narrow section: widen that section to the 900px text column used elsewhere */
   .section:has(> .cosmo-quote:only-child),
   .section:has(> .pull-quote:only-child){max-width:948px !important;}
