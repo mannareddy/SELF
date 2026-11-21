@@ -4232,6 +4232,17 @@ section .sec-sub.sec-sub{
   figure.love-split-fig .sz-btn{bottom:8px;}
 }
 </style>
+<style id="pullquote-width-css">
+/* Desktop only (901px+): pull-quote boxes span the full width of their text column,
+   so they line up with the content above and below. Phones and tablets are unchanged. */
+@media (min-width:901px){
+  .cosmo-quote,
+  .pull-quote:not(.pq-standalone){width:100% !important;max-width:none !important;margin-left:0 !important;margin-right:0 !important;box-sizing:border-box;}
+  /* a quote that sits alone in its own narrow section: widen that section to the 900px text column used elsewhere */
+  .section:has(> .cosmo-quote:only-child),
+  .section:has(> .pull-quote:only-child){max-width:948px !important;}
+}
+</style>
 <style id="destiny-image-width-css">
 /* Desktop only (901px+): content images span the full width of their text column
    instead of shrinking to fit one screen height. Phones and tablets are unchanged. */
