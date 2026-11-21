@@ -4236,11 +4236,12 @@ section .sec-sub.sec-sub{
 /* Desktop only (901px+): pull-quote boxes span the full width of their text column (capped at 900px,
    the standard text column), so they line up with the content above and below. Phones and tablets are unchanged. */
 @media (min-width:901px){
-  .cosmo-quote,
-  .pull-quote:not(.pq-standalone){width:100% !important;max-width:900px !important;margin-left:auto !important;margin-right:auto !important;box-sizing:border-box;}
+  .cosmo-quote:not(.pq-short),
+  .pull-quote:not(.pq-standalone):not(.pq-short){width:100% !important;max-width:900px !important;margin-left:auto !important;margin-right:auto !important;box-sizing:border-box;}
   /* a quote that sits alone in its own narrow section: widen that section to the 900px text column used elsewhere */
-  .section:has(> .cosmo-quote:only-child),
-  .section:has(> .pull-quote:only-child){max-width:948px !important;}
+  .section:has(> .cosmo-quote:not(.pq-short):only-child),
+  .section:has(> .pull-quote:not(.pq-short):only-child){max-width:948px !important;}
+  /* short quotes (a line or two) keep the narrower width they were written with, so the box is not mostly empty */
 }
 </style>
 <style id="destiny-image-width-css">
@@ -27367,6 +27368,18 @@ paRenderLastNote();
     else if(e.key==='Tab'){ e.preventDefault(); closeBtn.focus(); }   // keep focus on Close while open
     else if(e.key==='+'||e.key==='='||e.key==='-'){ e.preventDefault(); toggleFull(); }
   });
+})();
+</script>
+<script id="pq-short-js">
+(function(){
+  function tag(){
+    var q=document.querySelectorAll('.cosmo-quote,.pull-quote');
+    for(var i=0;i<q.length;i++){
+      var t=(q[i].textContent||'').replace(/\s+/g,' ').trim();
+      if(t.length<100) q[i].classList.add('pq-short');
+    }
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',tag); else tag();
 })();
 </script>
 </body>
