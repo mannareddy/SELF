@@ -24585,55 +24585,109 @@ function updateNav(){
     if(el) observer.observe(el);
   });
 
-  /* ── SMOOTH SCROLL ON NAV CLICK (flat + dropdown + mobile) ── */
-  var allNavAnchors = document.querySelectorAll(
-    '.nav-left li a, .nav-right li a, .nav-dropdown-panel a, .mnav-list a'
-  );
-  allNavAnchors.forEach(function(link){
+  /* ── SMOOTH SCROLL ON NAV CLICK (flat + dropdown + mobile) ──────────────
+     ONE handler now owns every menu link. Before, two handlers fired on the
+     same click (this one, plus the "anchor links into collapsed sections"
+     handler further down), and both measured the target and scrolled BEFORE
+     the page had finished changing height:
+       - collapsed wraps/cards animate open over ~0.4-0.55s (plus pinScroll()
+         holding the clicked card for 600ms), but the scroll was computed at
+         0-60ms;
+       - nearly every image on the page is loading="lazy" and 2px tall until
+         it loads, so the page grows by thousands of px while a long smooth
+         scroll passes them, and the scroll stops far short of the target.
+     The second click only worked because everything was open/loaded by then.
+     navLandOn() fixes this: it starts loading the lazy images above the
+     target, scrolls, waits for the scroll to go idle, re-measures and
+     re-aims until the target really sits under the nav bar. ── */
+  var NAV_LINK_SEL = '.nav-left li a, .nav-right li a, .nav-dropdown-panel a, .mnav-list a';
+  window.__navLinkSel = NAV_LINK_SEL;
+
+  function scrollIdle(cb, maxMs){
+    var last = -1, still = 0, t0 = Date.now();
+    (function tick(){
+      var y = window.scrollY;
+      still = (Math.abs(y - last) < 0.5) ? still + 1 : 0;
+      last = y;
+      if(still >= 8 || Date.now() - t0 > (maxMs || 2500)) cb();
+      else requestAnimationFrame(tick);
+    })();
+  }
+  function preloadAbove(target){
+    var tt = target.getBoundingClientRect().top + window.scrollY;
+    var imgs = document.images;
+    for(var i = 0; i < imgs.length; i++){
+      var im = imgs[i];
+      if(im.loading === 'lazy' && !im.complete && !im.closest('.collapsed')){
+        if(im.getBoundingClientRect().top + window.scrollY < tt) im.loading = 'eager';
+      }
+    }
+  }
+  window.navLandOn = function(target){
+    if(!target) return;
+    preloadAbove(target);
+    var tries = 0, MAX = 10, t0 = Date.now();
+    function pass(){
+      var d = target.getBoundingClientRect().top - NAV_OFFSET;
+      if(Math.abs(d) <= 3 || tries >= MAX || Date.now() - t0 > 12000){ cacheSectionTops(); return; }
+      tries++;
+      window.scrollBy({top: d, left: 0, behavior: Math.abs(d) > 400 ? 'smooth' : 'instant'});
+      requestAnimationFrame(function(){ requestAnimationFrame(function(){ scrollIdle(pass, 3500); }); });
+    }
+    pass();
+  };
+
+  document.querySelectorAll(NAV_LINK_SEL).forEach(function(link){
     link.addEventListener('click', function(e){
       var href = this.getAttribute('href');
       if(!href || href.charAt(0) !== '#') return;
       e.preventDefault();
-      var target = document.getElementById(href.slice(1));
+      var id = href.slice(1);
+      var target = document.getElementById(id);
       if(!target) return;
+      // Neti Neti links carry an inline onclick="expandNetiNeti()" that opens
+      // the section and lands on its first card itself.
+      if(/expandNetiNeti/.test(this.getAttribute('onclick') || '')) return;
 
-      // Auto-expand any ancestor collapsed section-collapse-wrap first
-      var didExpand = false;
-      var ancestor = target.parentElement;
-      while(ancestor){
-        if(ancestor.classList && ancestor.classList.contains('section-collapse-wrap') && ancestor.classList.contains('collapsed')){
-          sectionCollapse(ancestor.id);
-          didExpand = true;
-        }
-        ancestor = ancestor.parentElement;
-      }
-      // Also expand the target itself if it is a collapsed section-collapse-wrap
-      if(target.classList.contains('section-collapse-wrap') && target.classList.contains('collapsed')){
-        sectionCollapse(target.id);
-        didExpand = true;
-      }
+      var menuOpen = document.body.classList.contains('mnav-open');
+      var openedWrap = false, clickedCard = false;
 
-      // Also open any collapsed .framework-card that is the target itself,
-      // or an ancestor of it (e.g. a nav link pointing at a subsection that
-      // lives inside a card collapsed by default) — reuse the existing
-      // accordion click handler rather than re-implementing its open/
-      // sibling-close logic here. Without this, the browser tries to scroll
-      // to a target that's still collapsed to zero height, so the computed
-      // scroll position is wrong and keeps correcting itself mid-animation
-      // as the page settles — reading as a jarring jump/flash rather than a
-      // clean scroll to the right spot.
-      var fcAncestor = target.classList.contains('framework-card') ? target : target.closest('.framework-card');
-      if(fcAncestor && fcAncestor.classList.contains('collapsed')){
-        fcAncestor.click();
-        didExpand = true;
+      // 1. every collapsed section wrap around (or at) the target
+      var wraps = [], n = target;
+      while(n){
+        if(n.classList && n.classList.contains('section-collapse-wrap') && n.classList.contains('collapsed')) wraps.push(n);
+        n = n.parentElement;
       }
-
-      // Delay scroll slightly if we just expanded so max-height transition registers
-      var delay = didExpand ? 60 : 0;
+      wraps.forEach(function(w){
+        // re-check: sectionCollapse() on an inner wrap also opens its collapsed ancestors
+        if(w.id && w.classList.contains('collapsed')){ sectionCollapse(w.id); openedWrap = true; }
+      });
+      // 2. the Path of Subtilization section collapses with its own toggle
+      var idSec = target.classList.contains('identity-section') ? target : target.closest('.identity-section');
+      if(idSec && idSec.classList.contains('collapsed')){
+        var ib = document.getElementById('identityExpandBtn');
+        if(ib){ ib.click(); openedWrap = true; }
+      }
+      // 3. framework card, then sub-card, using their own click handlers
+      var fc = target.classList.contains('framework-card') ? target : target.closest('.framework-card');
+      if(fc && fc.classList.contains('collapsed')){ fc.click(); clickedCard = true; }
+      var sc = target.classList.contains('framework-subcard') ? target : target.closest('.framework-subcard');
+      if(sc && sc.classList.contains('collapsed')){ sc.click(); clickedCard = true; }
+      // 4. data-expand="id id ..." on a link: also open these wraps
+      var extra = this.getAttribute('data-expand');
+      if(extra) extra.split(/\s+/).forEach(function(w){
+        var el = document.getElementById(w);
+        if(el && el.classList.contains('collapsed')){ sectionCollapse(w); openedWrap = true; }
+      });
+      if(openedWrap || clickedCard){
+        try{ history.pushState ? history.pushState(null, '', '#' + id) : (location.hash = id); }catch(_){}
+      }
+      // let the open animations (.4-.55s) and pinScroll()'s 600ms hold finish,
+      // and the mobile menu finish closing, before measuring anything
+      var delay = (clickedCard ? 700 : (openedWrap ? 650 : 0)) + (menuOpen ? 450 : 0);
       setTimeout(function(){
-        var top = target.getBoundingClientRect().top + window.scrollY - NAV_OFFSET;
-        window.scrollTo({top: top, behavior: 'smooth'});
-        setActive(href.slice(1));
+        window.navLandOn(target);
+        setActive(id);
       }, delay);
     });
   });
@@ -25761,11 +25815,12 @@ function toggleTheme(){
         if(el && el.classList.contains('collapsed')){ sectionCollapse(w); didExpand = true; }
       });
     }
-    var run = function(){ target.scrollIntoView({behavior:'smooth', block:'start'}); };
+    var run = function(){ if(window.navLandOn) window.navLandOn(target); else target.scrollIntoView({behavior:'smooth', block:'start'}); };
     var wait = (didExpand ? (target.closest('.framework-subcard') ? 700 : (extra ? 500 : 300)) : 0) + (menuOpen ? 400 : 0);
     if(wait){ setTimeout(run, wait); } else { run(); }
   }
   document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    if(window.__navLinkSel && a.matches(window.__navLinkSel)) return; // menu links: handled by the single nav handler
     var id = a.getAttribute('href').slice(1);
     var target = id && document.getElementById(id);
     var extraIds = a.getAttribute('data-expand');
@@ -27077,7 +27132,7 @@ paRenderLastNote();
       var firstCard = grid ? grid.querySelector('.framework-card') : null;
       if(firstCard && firstCard.classList.contains('collapsed')) firstCard.click();
       var target = firstCard || document.getElementById('neti-neti-method');
-      if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
+      if(target) setTimeout(function(){ if(window.navLandOn) window.navLandOn(target); else target.scrollIntoView({behavior:'smooth', block:'start'}); }, 650);
     }, 700);
   };
 
