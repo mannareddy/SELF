@@ -7645,8 +7645,7 @@ html.sz-lock,html.sz-lock body{overflow:hidden !important;}
   <div id="maya" style="max-width:820px;margin:0 auto 28px;text-align:left;">
     <h2 class="sec-title" style="font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--white);max-width:820px;margin:0 0 16px;line-height:1.4;text-align:left;">Maya</h2>
     <p class="sec-sub" style="font-size:clamp(15px,2vw,18px);color:var(--grey);font-style:italic;line-height:1.85;margin:0 0 20px;">The most translated word on this page, and the least understood.</p>
-    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--mid);line-height:1.9;margin:0 0 16px;"><a href="#tat-tvam-asi" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">Tat Tvam Asi</a>, above, ends on a recognition: set aside creatorship and limitation, and what is left is one. That leaves the obvious question of why it ever looked like two. The rope and the snake in <a href="#orders-of-reality" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">Beneath the Screen</a> gave the picture, and the three-answers card gave the theory. Maya is the tradition&rsquo;s word for the working part, and this is where the page keeps everything it says about it.</p>
-    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--mid);line-height:1.9;margin:0 0 8px;">&ldquo;Illusion&rdquo; is the one-word answer everyone has heard. The cards below take the word apart in the order a question would: what the word itself measures, why a complete reality allows it, how it works, what it produces in a running life, how different schools use it, and what it can and cannot be called, with a few older and narrower strands after that. Then the trap it sets in an ordinary day, and the places elsewhere on the page where it turns up. Open the section below, then each card on its own.</p>
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--mid);line-height:1.9;margin:0 0 8px;"><a href="#tat-tvam-asi" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">Tat Tvam Asi</a>, above, ends on a recognition: set aside creatorship and limitation, and what is left is one. Why it ever looked like two is Maya&rsquo;s work. &ldquo;Illusion&rdquo; is the one-word answer everyone has heard; the cards below take the word apart.</p>
   </div>
   <div style="text-align:center;margin:0 0 28px;">
     <button class="collapse-toggle-btn" onclick="sectionCollapse('maya-full-content',this)">Expand &#9660;</button>
@@ -7668,6 +7667,7 @@ html.sz-lock,html.sz-lock body{overflow:hidden !important;}
     <figure style="margin:0 0 20px;"><img src="./assets/images/maya-word-measures.webp" alt="Blueprint slide showing the root ma, to measure, forming the word Maya, with a drafting compass" width="1376" height="768" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></figure>
     <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--mid);line-height:1.9;margin-bottom:20px;">&ldquo;Illusion&rdquo; is the translation that stuck. The root under Maya is <em>ma</em>: to measure, to mete out. Read that way, Maya is less a lie than a ruler laid across something with no edges.</p>
     <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--mid);line-height:1.9;margin-bottom:20px;">To measure is to draw edges. Edges give a thing a size, a shape, a name. None of that is added to the thing itself. It is laid across it.</p>
+    <p style="font-family:var(--serif);font-size:clamp(15px,2vw,17px);color:var(--mid);line-height:1.9;margin-bottom:20px;">Where this fits: the rope and the snake in <a href="#orders-of-reality" style="color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);">Beneath the Screen</a> gave the picture of why one thing can look like two, and the three-answers card gave the theory. Maya is the tradition&rsquo;s word for the working part of that theory, and this section keeps everything the page says about it. The cards run in the order a question would: what the word measures, why a complete reality allows it, how it works, what it produces in a running life, how the schools use it, and what it can and cannot be called. After that come a few older and narrower strands, the trap it sets in an ordinary day, and the places elsewhere on the page where it turns up.</p>
     <p style="font-family:var(--serif);font-size:14.5px;color:var(--gold);font-style:italic;line-height:1.85;margin-top:18px;margin-bottom:14px;">What is the last thing you measured yourself by, and who was holding the ruler?</p>
     <p style="font-size:12px;color:var(--dim);line-height:1.7;margin-bottom:10px;">Honest limit: <em>ma</em> carries other senses in Sanskrit too, including binding and negation, and Advaita does read Maya as ignorance. This is where the word starts, not all the tradition does with it.</p>
     <figure style="margin:20px 0 20px;"><img src="./assets/images/maya-root-ma-senses.webp" alt="A blueprint-style hub with the root ma at the centre and five branches: measurement and form, meaning to mete, to measure and to be contained; knowledge and power, meaning authority, light and knowledge; constraint and end, meaning binding, fettering and death; the maternal and divine, meaning a mother or the goddess Lakshmi; and negation and doubt, a prohibitive particle meaning not, lest or would that not." width="1376" height="742" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></figure>
@@ -24585,109 +24585,55 @@ function updateNav(){
     if(el) observer.observe(el);
   });
 
-  /* ── SMOOTH SCROLL ON NAV CLICK (flat + dropdown + mobile) ──────────────
-     ONE handler now owns every menu link. Before, two handlers fired on the
-     same click (this one, plus the "anchor links into collapsed sections"
-     handler further down), and both measured the target and scrolled BEFORE
-     the page had finished changing height:
-       - collapsed wraps/cards animate open over ~0.4-0.55s (plus pinScroll()
-         holding the clicked card for 600ms), but the scroll was computed at
-         0-60ms;
-       - nearly every image on the page is loading="lazy" and 2px tall until
-         it loads, so the page grows by thousands of px while a long smooth
-         scroll passes them, and the scroll stops far short of the target.
-     The second click only worked because everything was open/loaded by then.
-     navLandOn() fixes this: it starts loading the lazy images above the
-     target, scrolls, waits for the scroll to go idle, re-measures and
-     re-aims until the target really sits under the nav bar. ── */
-  var NAV_LINK_SEL = '.nav-left li a, .nav-right li a, .nav-dropdown-panel a, .mnav-list a';
-  window.__navLinkSel = NAV_LINK_SEL;
-
-  function scrollIdle(cb, maxMs){
-    var last = -1, still = 0, t0 = Date.now();
-    (function tick(){
-      var y = window.scrollY;
-      still = (Math.abs(y - last) < 0.5) ? still + 1 : 0;
-      last = y;
-      if(still >= 8 || Date.now() - t0 > (maxMs || 2500)) cb();
-      else requestAnimationFrame(tick);
-    })();
-  }
-  function preloadAbove(target){
-    var tt = target.getBoundingClientRect().top + window.scrollY;
-    var imgs = document.images;
-    for(var i = 0; i < imgs.length; i++){
-      var im = imgs[i];
-      if(im.loading === 'lazy' && !im.complete && !im.closest('.collapsed')){
-        if(im.getBoundingClientRect().top + window.scrollY < tt) im.loading = 'eager';
-      }
-    }
-  }
-  window.navLandOn = function(target){
-    if(!target) return;
-    preloadAbove(target);
-    var tries = 0, MAX = 10, t0 = Date.now();
-    function pass(){
-      var d = target.getBoundingClientRect().top - NAV_OFFSET;
-      if(Math.abs(d) <= 3 || tries >= MAX || Date.now() - t0 > 12000){ cacheSectionTops(); return; }
-      tries++;
-      window.scrollBy({top: d, left: 0, behavior: Math.abs(d) > 400 ? 'smooth' : 'instant'});
-      requestAnimationFrame(function(){ requestAnimationFrame(function(){ scrollIdle(pass, 3500); }); });
-    }
-    pass();
-  };
-
-  document.querySelectorAll(NAV_LINK_SEL).forEach(function(link){
+  /* ── SMOOTH SCROLL ON NAV CLICK (flat + dropdown + mobile) ── */
+  var allNavAnchors = document.querySelectorAll(
+    '.nav-left li a, .nav-right li a, .nav-dropdown-panel a, .mnav-list a'
+  );
+  allNavAnchors.forEach(function(link){
     link.addEventListener('click', function(e){
       var href = this.getAttribute('href');
       if(!href || href.charAt(0) !== '#') return;
       e.preventDefault();
-      var id = href.slice(1);
-      var target = document.getElementById(id);
+      var target = document.getElementById(href.slice(1));
       if(!target) return;
-      // Neti Neti links carry an inline onclick="expandNetiNeti()" that opens
-      // the section and lands on its first card itself.
-      if(/expandNetiNeti/.test(this.getAttribute('onclick') || '')) return;
 
-      var menuOpen = document.body.classList.contains('mnav-open');
-      var openedWrap = false, clickedCard = false;
+      // Auto-expand any ancestor collapsed section-collapse-wrap first
+      var didExpand = false;
+      var ancestor = target.parentElement;
+      while(ancestor){
+        if(ancestor.classList && ancestor.classList.contains('section-collapse-wrap') && ancestor.classList.contains('collapsed')){
+          sectionCollapse(ancestor.id);
+          didExpand = true;
+        }
+        ancestor = ancestor.parentElement;
+      }
+      // Also expand the target itself if it is a collapsed section-collapse-wrap
+      if(target.classList.contains('section-collapse-wrap') && target.classList.contains('collapsed')){
+        sectionCollapse(target.id);
+        didExpand = true;
+      }
 
-      // 1. every collapsed section wrap around (or at) the target
-      var wraps = [], n = target;
-      while(n){
-        if(n.classList && n.classList.contains('section-collapse-wrap') && n.classList.contains('collapsed')) wraps.push(n);
-        n = n.parentElement;
+      // Also open any collapsed .framework-card that is the target itself,
+      // or an ancestor of it (e.g. a nav link pointing at a subsection that
+      // lives inside a card collapsed by default) — reuse the existing
+      // accordion click handler rather than re-implementing its open/
+      // sibling-close logic here. Without this, the browser tries to scroll
+      // to a target that's still collapsed to zero height, so the computed
+      // scroll position is wrong and keeps correcting itself mid-animation
+      // as the page settles — reading as a jarring jump/flash rather than a
+      // clean scroll to the right spot.
+      var fcAncestor = target.classList.contains('framework-card') ? target : target.closest('.framework-card');
+      if(fcAncestor && fcAncestor.classList.contains('collapsed')){
+        fcAncestor.click();
+        didExpand = true;
       }
-      wraps.forEach(function(w){
-        // re-check: sectionCollapse() on an inner wrap also opens its collapsed ancestors
-        if(w.id && w.classList.contains('collapsed')){ sectionCollapse(w.id); openedWrap = true; }
-      });
-      // 2. the Path of Subtilization section collapses with its own toggle
-      var idSec = target.classList.contains('identity-section') ? target : target.closest('.identity-section');
-      if(idSec && idSec.classList.contains('collapsed')){
-        var ib = document.getElementById('identityExpandBtn');
-        if(ib){ ib.click(); openedWrap = true; }
-      }
-      // 3. framework card, then sub-card, using their own click handlers
-      var fc = target.classList.contains('framework-card') ? target : target.closest('.framework-card');
-      if(fc && fc.classList.contains('collapsed')){ fc.click(); clickedCard = true; }
-      var sc = target.classList.contains('framework-subcard') ? target : target.closest('.framework-subcard');
-      if(sc && sc.classList.contains('collapsed')){ sc.click(); clickedCard = true; }
-      // 4. data-expand="id id ..." on a link: also open these wraps
-      var extra = this.getAttribute('data-expand');
-      if(extra) extra.split(/\s+/).forEach(function(w){
-        var el = document.getElementById(w);
-        if(el && el.classList.contains('collapsed')){ sectionCollapse(w); openedWrap = true; }
-      });
-      if(openedWrap || clickedCard){
-        try{ history.pushState ? history.pushState(null, '', '#' + id) : (location.hash = id); }catch(_){}
-      }
-      // let the open animations (.4-.55s) and pinScroll()'s 600ms hold finish,
-      // and the mobile menu finish closing, before measuring anything
-      var delay = (clickedCard ? 700 : (openedWrap ? 650 : 0)) + (menuOpen ? 450 : 0);
+
+      // Delay scroll slightly if we just expanded so max-height transition registers
+      var delay = didExpand ? 60 : 0;
       setTimeout(function(){
-        window.navLandOn(target);
-        setActive(id);
+        var top = target.getBoundingClientRect().top + window.scrollY - NAV_OFFSET;
+        window.scrollTo({top: top, behavior: 'smooth'});
+        setActive(href.slice(1));
       }, delay);
     });
   });
@@ -25815,12 +25761,11 @@ function toggleTheme(){
         if(el && el.classList.contains('collapsed')){ sectionCollapse(w); didExpand = true; }
       });
     }
-    var run = function(){ if(window.navLandOn) window.navLandOn(target); else target.scrollIntoView({behavior:'smooth', block:'start'}); };
+    var run = function(){ target.scrollIntoView({behavior:'smooth', block:'start'}); };
     var wait = (didExpand ? (target.closest('.framework-subcard') ? 700 : (extra ? 500 : 300)) : 0) + (menuOpen ? 400 : 0);
     if(wait){ setTimeout(run, wait); } else { run(); }
   }
   document.querySelectorAll('a[href^="#"]').forEach(function(a){
-    if(window.__navLinkSel && a.matches(window.__navLinkSel)) return; // menu links: handled by the single nav handler
     var id = a.getAttribute('href').slice(1);
     var target = id && document.getElementById(id);
     var extraIds = a.getAttribute('data-expand');
@@ -27132,7 +27077,7 @@ paRenderLastNote();
       var firstCard = grid ? grid.querySelector('.framework-card') : null;
       if(firstCard && firstCard.classList.contains('collapsed')) firstCard.click();
       var target = firstCard || document.getElementById('neti-neti-method');
-      if(target) setTimeout(function(){ if(window.navLandOn) window.navLandOn(target); else target.scrollIntoView({behavior:'smooth', block:'start'}); }, 650);
+      if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
     }, 700);
   };
 
