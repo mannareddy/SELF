@@ -4131,6 +4131,10 @@ tr.matrix-highlight{
    and content that is 42SELF's own interpretive synthesis across traditions.
    A labeling convention only — doesn't change layout or existing styles. */
 .src-key{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin:0 auto 28px;max-width:700px;}
+/* SOURCE LABEL PLACEMENT (.src-tag): place the label at the BOTTOM of the card, under a thin gold divider, never at the start,
+   so the content comes first and the label does not pull attention. Mention a label ONCE per card: do not repeat the same label for each subcard.
+   Keep separate labels only where parts of a card come from different sources (different label types), and put each beside the content it refers to.
+   Bottom-block style: margin:22px 0 8px;padding-top:14px;border-top:1px solid rgba(var(--accent-gold-rgb),0.28). */
 .src-tag{display:inline-flex;align-items:center;gap:6px;font-family:var(--sans);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:5px 11px;border:1px solid;white-space:nowrap;margin-bottom:4px;}
 a.src-tag{text-decoration:none;cursor:pointer;transition:opacity .2s,border-color .2s;}
 a.src-tag:hover{opacity:.75;}
@@ -10034,6 +10038,9 @@ html.sz-lock,html.sz-lock body{overflow:hidden !important;}
   <p class="sec-sub">The universe doesn&rsquo;t contain Consciousness.</p>
   <p>Consciousness contains the universe.</p>
   <p class="plain">*SELF is the practice of knowing that from the inside.</p>
+<!-- NOTE FOR EDITORS: source labels (Traditional Source, Modern Research, Applied Framework, 42Self Interpretation) go at the BOTTOM of the card,
+     not the start. Use one label per card; do not repeat the same label on every subcard. Use several labels in one card only when its
+     parts rely on different sources, and place each next to the content it refers to. -->
   <div class="src-key" style="margin-top:24px;">
     <span class="src-tag src-trad">Traditional Source</span>
     <span class="src-tag src-research">Modern Research</span>
