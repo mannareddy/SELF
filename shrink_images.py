@@ -23,6 +23,7 @@ ap.add_argument("--max-long", type=int, default=1800, help="max length of the lo
 ap.add_argument("--max-width", type=int, default=1600, help="max width (px)")
 ap.add_argument("--quality", type=int, default=88, help="WebP quality 1-100")
 ap.add_argument("--no-backup", action="store_true", help="skip the _originals backup (use in git, where history is the backup)")
+ap.add_argument("--thumbs", action="store_true", help="also make 480px-wide copies of parable-*.webp (name-480.webp) for desktop")
 ap.add_argument("--apply", action="store_true", help="actually write files (default is a dry run)")
 a = ap.parse_args()
 
@@ -52,6 +53,22 @@ for f in sorted(root.glob("*.webp")):
     before = f.stat().st_size
     out.save(f, "WEBP", quality=a.quality, method=6)
     saved += before - f.stat().st_size
+
+if a.thumbs:
+    made = 0
+    for f in sorted(root.glob("parable-*.webp")):
+        if f.stem.endswith("-480"):
+            continue
+        out_path = f.with_name(f.stem + "-480.webp")
+        with Image.open(f) as im:
+            w, h = im.size
+            nw, nh = 480, round(h * 480 / w)
+            print(f"{out_path.name}: {w}x{h} -> {nw}x{nh}")
+            made += 1
+            if a.apply:
+                im.convert("RGBA" if im.mode in ("RGBA", "LA", "P") else "RGB").resize((nw, nh), Image.LANCZOS).save(
+                    out_path, "WEBP", quality=a.quality, method=6)
+    print(f"{made} thumbnail(s) {'written' if a.apply else 'would be written'}.")
 
 print(f"\n{changed} file(s) {'resized' if a.apply else 'would be resized'}.")
 if a.apply:
