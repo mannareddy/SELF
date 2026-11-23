@@ -4303,6 +4303,26 @@ section .sec-sub.sec-sub{
 <style id="width-harmony-css">#spectrum .framework-grid{max-width:900px;margin-left:auto;margin-right:auto;}</style>
 <style id="img-map-hit-css">.img-map-hit{cursor:pointer;outline:none;}.img-map-hit:hover .img-map-shape,.img-map-hit:focus .img-map-shape,.img-map-hit:focus-visible .img-map-shape{fill:rgba(var(--accent-gold-rgb),.16);stroke:rgba(var(--accent-gold-rgb),.75);}</style>
 
+<style id="parables-img-reserve-css">
+/* A Few Old Doors: give each card image a definite width so its width/height attributes reserve
+   the picture's height before the lazy-loaded file arrives. Without this, the desktop image-fit rules
+   (width:auto !important) plus the fit-content enlarge wrapper collapsed an unloaded image to 0 wide,
+   so each card grew by ~350px on load, the grid row jumped, and with scroll anchoring off the page
+   visibly shook while scrolling. */
+#parables-detail .sz-wrap{width:100% !important;max-width:100% !important;margin-left:0 !important;margin-right:0 !important;}
+#parables-detail .pimg-dark img,#parables-detail .pimg-light img{width:100% !important;max-width:100% !important;height:auto !important;margin-left:0 !important;margin-right:0 !important;}
+</style>
+
+<style id="love-pane-layer-css">
+/* Split-panel figures (Flashlight / Sun in The Anatomy of Love, and the RRRR dual-path graphic) draw
+   two crops of one very tall image (1536x2719) as CSS backgrounds. Left as ordinary paint, the browser
+   re-rasterises and can re-decode that big image tile by tile while scrolling, which reads as the panel
+   blinking. Promoting each pane to its own compositor layer makes it paint once and then just move. */
+@media (min-width:901px){
+  .love-pane{transform:translateZ(0);will-change:transform;backface-visibility:hidden;-webkit-backface-visibility:hidden;}
+}
+</style>
+
 <style id="slideZoomCSS">
 /* Slide enlarge viewer: slide images carry their text inside the picture, so they
    need a way to be seen at full size. Tap/click any slide to open it. */
