@@ -22,6 +22,7 @@ ap.add_argument("--dir", default="assets/images", help="images folder")
 ap.add_argument("--max-long", type=int, default=1800, help="max length of the longer side (px)")
 ap.add_argument("--max-width", type=int, default=1600, help="max width (px)")
 ap.add_argument("--quality", type=int, default=88, help="WebP quality 1-100")
+ap.add_argument("--no-backup", action="store_true", help="skip the _originals backup (use in git, where history is the backup)")
 ap.add_argument("--apply", action="store_true", help="actually write files (default is a dry run)")
 a = ap.parse_args()
 
@@ -43,9 +44,10 @@ for f in sorted(root.glob("*.webp")):
         changed += 1
         if not a.apply:
             continue
-        backup.mkdir(exist_ok=True)
-        if not (backup / f.name).exists():
-            shutil.copy2(f, backup / f.name)
+        if not a.no_backup:
+            backup.mkdir(exist_ok=True)
+            if not (backup / f.name).exists():
+                shutil.copy2(f, backup / f.name)
         out = im.convert("RGBA" if im.mode in ("RGBA", "LA", "P") else "RGB").resize((nw, nh), Image.LANCZOS)
     before = f.stat().st_size
     out.save(f, "WEBP", quality=a.quality, method=6)
@@ -53,6 +55,6 @@ for f in sorted(root.glob("*.webp")):
 
 print(f"\n{changed} file(s) {'resized' if a.apply else 'would be resized'}.")
 if a.apply:
-    print(f"Disk saved: {saved/1e6:.1f} MB. Originals are in {backup}/")
+    print(f"Disk saved: {saved/1e6:.1f} MB." + ("" if a.no_backup else f" Originals are in {backup}/"))
 else:
     print("Dry run only. Re-run with --apply to write the changes.")
