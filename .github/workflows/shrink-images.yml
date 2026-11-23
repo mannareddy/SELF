@@ -27,11 +27,11 @@ jobs:
 
       - name: Dry run (list only)
         if: ${{ !inputs.apply }}
-        run: python shrink_images.py
+        run: python shrink_images.py --thumbs
 
       - name: Resize images
         if: ${{ inputs.apply }}
-        run: python shrink_images.py --apply --no-backup
+        run: python shrink_images.py --apply --no-backup --thumbs
 
       - name: Commit resized images
         if: ${{ inputs.apply }}
