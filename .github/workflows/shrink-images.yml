@@ -1,1 +1,47 @@
+name: Shrink images
 
+# Run it by hand: GitHub > Actions > "Shrink images" > Run workflow.
+# Leave "apply" unticked first: it only lists what would be resized (see the job log).
+on:
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: "Resize and commit the images (unticked = dry run, just list them)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  shrink:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install pillow
+
+      - name: Dry run (list only)
+        if: ${{ !inputs.apply }}
+        run: python shrink_images.py
+
+      - name: Resize images
+        if: ${{ inputs.apply }}
+        run: python shrink_images.py --apply --no-backup
+
+      - name: Commit resized images
+        if: ${{ inputs.apply }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A assets/images
+          if git diff --cached --quiet; then
+            echo "Nothing to commit"
+          else
+            git commit -m "Shrink oversized images"
+            git push
+          fi
