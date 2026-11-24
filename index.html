@@ -25270,6 +25270,16 @@ function updateNav(){
     card.addEventListener('click', function(e){
       if(e.target.tagName === 'A') return;
       e.stopPropagation();
+      /* Controls nested INSIDE this card's body (inner Expand/Collapse buttons,
+         nested sub-headers, text inside an opened inner section, glossary
+         pops) own their own click. Without this guard the click bubbled up to
+         here and toggled the whole subcard shut: the inner section opened
+         inside a card that had just collapsed, so the reader lost the place
+         (e.g. From Self to World > The Mirror and the Window). Only the card
+         header / padding toggles the card. stopPropagation above already
+         keeps the parent framework-card from reacting. */
+      var nestedCtl = e.target.closest('button, input, select, textarea, summary, [onclick], .ego-sub-header, .section-collapse-wrap, .gloss');
+      if(nestedCtl && nestedCtl !== this && content && content.contains(nestedCtl)) return;
       freezeTransitions();
       pinScroll(this);
       var group = this.closest('.framework-subcards');
