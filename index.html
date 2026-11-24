@@ -25210,6 +25210,18 @@ function updateNav(){
   /* When a framework card closes, close any sub-cards left open inside it, so
      reopening the card always starts with every sub-card collapsed. Runs
      after the card's own collapse animation so the shrink isn't doubled. */
+  /* Close any inner Expand/Collapse sections left open inside a subcard once the
+     card has finished closing, so reopening it always starts all-collapsed. */
+  function resetInnerWraps(card){
+    setTimeout(function(){
+      if(!card.classList.contains('collapsed')) return;
+      card.querySelectorAll('.section-collapse-wrap:not(.collapsed)').forEach(function(w){
+        if(w.classList.contains('collapsed')) return;
+        if(w.id){ sectionCollapse(w.id); } else { w.classList.add('collapsed'); }
+      });
+    }, 450);
+  }
+  window.resetInnerWraps = resetInnerWraps;
   function resetSubcards(card){
     setTimeout(function(){
       if(!card.classList.contains('collapsed')) return;
@@ -25217,6 +25229,7 @@ function updateNav(){
         sc.classList.add('collapsed');
         var c = sc.querySelector('.framework-subcard-content');
         if(c) c.style.maxHeight = '0px';
+        resetInnerWraps(sc);
       });
     }, 450);
   }
@@ -25299,12 +25312,14 @@ function updateNav(){
         var sibContent = openSibling.querySelector('.framework-subcard-content');
         openSibling.classList.add('collapsed');
         collapseHeight(sibContent);
+        resetInnerWraps(openSibling);
         if(isOpening) openSelf();
       } else if(isOpening){
         openSelf();
       } else {
         this.classList.toggle('collapsed');
         collapseHeight(content);
+        if(this.classList.contains('collapsed')) resetInnerWraps(this);
       }
     });
   });
