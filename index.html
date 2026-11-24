@@ -4255,6 +4255,13 @@ section .sec-sub.sec-sub{
   .rrrr-split-fig .love-pane{background-size:100% auto;background-origin:border-box;}
 }
 </style>
+<style id="fulcrum-image-width-css">
+/* Desktop: pictures in The Fulcrum Under the Swing run the full width of the card text instead of shrinking to fit one screen height. */
+@media (min-width:901px){
+  #fulcrum-equanimity-detail figure, #fulcrum-equanimity-detail figure.sz-fig{width:100% !important;max-width:100% !important;margin-left:0 !important;margin-right:0 !important;}
+  #fulcrum-equanimity-detail figure img{width:100% !important;max-width:100% !important;max-height:none !important;height:auto !important;}
+}
+</style>
 <style id="pullquote-width-css">
 /* Desktop only (901px+): pull-quote boxes span the full width of their text column (capped at 900px,
    the standard text column), so they line up with the content above and below. Phones and tablets are unchanged. */
