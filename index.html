@@ -4393,26 +4393,18 @@ html.sz-lock,html.sz-lock body{overflow:hidden !important;}
 
 <style id="kural-img-fit-css">
 /* Kural images: section-level rules (#svasthya, #ladder-of-intention) force max-height:none !important,
-   so these selectors are more specific to win. Desktop: the frame spans the full text width, the image
-   keeps its proportions at a height that fits the screen, and the side areas are filled with a soft
-   blur of the image itself so nothing is cropped or stretched. */
+   so these selectors are more specific to win. Desktop: image spans the full text width and is set to
+   natural proportions when the screen is tall enough; on shorter screens the height is capped to fit and the image stretches sideways (object-fit:fill). */
 @media (min-width:901px){
   #svasthya figure.kural-frame:not(.love-split-fig),
   #ladder-of-intention figure.kural-frame:not(.love-split-fig){
     width:100% !important;max-width:100% !important;margin-left:0 !important;margin-right:0 !important;
-    position:relative;overflow:hidden;display:flex;justify-content:center;
-    border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:#000;
-  }
-  figure.kural-frame::before{
-    content:"";position:absolute;inset:-30px;background:var(--kf-bg) center/cover no-repeat;
-    filter:blur(28px) saturate(.9) brightness(.8);z-index:0;
   }
   #svasthya figure.kural-frame:not(.love-split-fig) img.fit-screen-img.sz-img,
   #ladder-of-intention figure.kural-frame:not(.love-split-fig) img.fit-screen-img.sz-img{
-    position:relative;z-index:1;border:0 !important;
-    width:auto !important;height:auto !important;max-width:100% !important;
-    max-height:calc(100vh - 120px) !important;object-fit:contain;
-    display:block;margin-left:auto !important;margin-right:auto !important;
+    width:100% !important;max-width:100% !important;
+    height:auto !important;max-height:calc(100vh - 120px) !important;
+    object-fit:fill;display:block;margin-left:0 !important;margin-right:0 !important;
   }
 }
 </style>
