@@ -4224,6 +4224,11 @@ section .sec-sub.sec-sub{
 @media(min-width:641px){
   #neti-neti-grid .framework-card.framework-card::after{top:38px !important;transform:none !important;}
 }
+
+/* Desktop: keep the Kural images fully visible within one screen (no scrolling) */
+@media (min-width:901px){
+  img.fit-screen-img{width:auto !important;height:auto !important;max-width:100% !important;max-height:calc(100vh - 120px) !important;object-fit:contain;margin:0 auto;}
+}
 </style>
 <style id="desktop-image-fit-css">
 /* Desktop: every content image fits within one screen (no scrolling to see a whole picture).
@@ -8484,7 +8489,7 @@ html.sz-lock,html.sz-lock body{overflow:hidden !important;}
 <div id="kural-purity" class="ego-sub-header gf-sub-header" style="max-width:900px;margin:0 auto 8px;scroll-margin-top:56px;text-align:left;"><div class="ego-sub-header-text"><h3>Purity Is the Whole of It</h3><p>Tirukkural 34 &middot; the stain-free mind, and what is only noise</p></div><button class="collapse-toggle-btn" onclick="sectionCollapse('kural-purity-detail',this)">Expand &#9660;</button></div>
 <div id="kural-purity-detail" class="section-collapse-wrap collapsed" style="max-width:900px;margin:0 auto 48px;text-align:left;"><div style="height:28px;"></div>
   <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin:0 0 20px;">Tiruvalluvar puts virtue in one place: the mind without stain. The Tamil word for conduct, <em>ozhukkam</em>, is tied to a verb meaning to flow. Conduct as a current that fits the moment, not a rulebook held against it. What keeps the current clean is the intention under it.</p>
-  <figure style="margin:24px 0 16px;"><img src="./assets/images/kural-geometry-of-virtue.webp" alt="A slide titled Book 1: The Geometry of Virtue. A dark river with gold threads winds between angular grey and gold rocks. Text beside it says the Tamil word for conduct, ozhukkam, shares a root with the word for a flowing river, and that virtue is right action that adapts to the moment and needs purity of intention." width="840" height="735" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></figure>
+  <figure style="margin:24px 0 16px;"><img class="fit-screen-img" src="./assets/images/kural-geometry-of-virtue.webp" alt="A slide titled Book 1: The Geometry of Virtue. A dark river with gold threads winds between angular grey and gold rocks. Text beside it says the Tamil word for conduct, ozhukkam, shares a root with the word for a flowing river, and that virtue is right action that adapts to the moment and needs purity of intention." width="840" height="735" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></figure>
   <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);font-style:italic;color:var(--gold);line-height:1.85;padding:24px 28px;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);background:var(--bg-lift);text-align:left;margin:24px 0 0;">Virtue is a mind without stain. Everything else is noise. &mdash; <em>Tirukkural</em> 34 (paraphrase)</p>
   <p style="font-family:var(--serif);font-size:clamp(15px,2vw,18px);color:var(--mid);line-height:1.9;margin:24px 0 20px;">Take the noise out of today: the display, the explaining, the keeping score. What is left of what you did?</p>
   <p style="font-family:var(--sans);font-size:10.5px;letter-spacing:1px;color:var(--dim);line-height:1.7;margin:16px 0 0;text-align:left;">Honest limit: the wording above is a paraphrase, and &ldquo;noise&rdquo; stands for the Tamil sense of show without substance; translators render it differently. A clean mind is not a stand-in for conduct. The Kural itself is mostly chapters on conduct.</p>
@@ -9892,7 +9897,7 @@ html.sz-lock,html.sz-lock body{overflow:hidden !important;}
 
   <div style="text-align:center;margin:0 0 28px;">
     <button class="collapse-toggle-btn" onclick="sectionCollapse('atma-vichara-group',this)">Expand &#9660;</button>
-    <p class="section-collapse-label" style="margin-top:8px;">Tap to expand — seven cards, from the &ldquo;I&rdquo;-thought to devotion paired with action</p>
+    <p class="section-collapse-label" style="margin-top:8px;">Tap to expand — eight cards, from the &ldquo;I&rdquo;-thought to devotion paired with action</p>
   </div>
   <div id="atma-vichara-group" class="section-collapse-wrap collapsed">
   <div class="ego-sub-header" style="max-width:820px;">
@@ -19686,7 +19691,7 @@ rgba(var(--accent-gold-rgb),.06) 0%,transparent 65%);">
       <p style="margin-top:16px;font-size:14px;color:var(--gold);font-style:italic;text-align:left;">Notice what counts as wealth: contentment is on the list, and money is meant to be mastered as energy, not served. Health, as the second rung, is part of the foundation for liberation, not a detour from it. Svasthya, again, but as an order of operations.</p>
       <div id="no-fourth-book" style="scroll-margin-top:56px;margin-top:20px;padding-top:14px;border-top:1px solid rgba(var(--accent-gold-rgb),0.28);text-align:left;">
       <p style="margin:0 0 12px;font-size:14px;color:var(--gold);font-style:italic;text-align:left;"><strong style="font-style:normal;font-weight:400;letter-spacing:.5px;">Why there is no fourth book.</strong> The Tirukkural, a Tamil classic by Tiruvalluvar, has three books: virtue (<em>aram</em>), wealth (<em>porul</em>), and love (<em>inpam</em>). None is named for liberation. Many readers take the gap as the point. Liberation is not a fourth thing to chase. It is where the other three lead when they are lived fully and honestly.</p>
-      <figure style="margin:16px 0 14px;"><img src="./assets/images/kural-missing-fourth-book.webp" alt="A slide titled The Missing Fourth Book. Four blocks in a square: Virtue (Aram) top left, Wealth (Porul) top right, Love (Inpam) bottom left, and a fourth block, Liberation (Moksha), drawn as a glowing translucent form that overlaps the other three instead of standing apart." width="925" height="735" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></figure>
+      <figure style="margin:16px 0 14px;"><img class="fit-screen-img" src="./assets/images/kural-missing-fourth-book.webp" alt="A slide titled The Missing Fourth Book. Four blocks in a square: Virtue (Aram) top left, Wealth (Porul) top right, Love (Inpam) bottom left, and a fourth block, Liberation (Moksha), drawn as a glowing translucent form that overlaps the other three instead of standing apart." width="925" height="735" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1.5px solid rgba(var(--accent-gold-rgb),0.45);"></figure>
       <p style="margin:0 0 12px;font-size:14px;color:var(--gold);font-style:italic;text-align:left;">Is anything you call liberation sitting off to the side, a project for later?</p>
       <p style="font-family:var(--sans);font-size:10.5px;letter-spacing:1px;color:var(--dim);line-height:1.7;margin:12px 0 0;text-align:left;">Honest limit: this is one reading of an absence. The Kural also has chapters on renunciation, and commentators weigh them differently.</p>
       <p style="font-family:var(--sans);font-size:10.5px;letter-spacing:1px;color:var(--dim);line-height:1.7;margin:12px 0 0;text-align:left;"><a class="src-tag src-trad" href="#sources" style="margin-bottom:6px;">Traditional Source</a><br>Tiruvalluvar, <em>Tirukkural</em>.</p>
