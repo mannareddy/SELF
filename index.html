@@ -4391,6 +4391,18 @@ img.sz-img{cursor:zoom-in;}
 html.sz-lock,html.sz-lock body{overflow:hidden !important;}
 </style>
 
+<style id="kural-img-fit-css">
+/* Kural images: section-level rules (#svasthya, #ladder-of-intention) force max-height:none !important,
+   so these selectors are more specific to win. Desktop only; image fits one screen, centred. */
+@media (min-width:901px){
+  #svasthya figure:not(.love-split-fig) img.fit-screen-img.sz-img,
+  #ladder-of-intention figure:not(.love-split-fig) img.fit-screen-img.sz-img{
+    width:auto !important;height:auto !important;max-width:100% !important;
+    max-height:calc(100vh - 120px) !important;object-fit:contain;
+    display:block;margin-left:auto !important;margin-right:auto !important;
+  }
+}
+</style>
 </head>
 <body>
 
